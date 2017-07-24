@@ -1,0 +1,6 @@
+﻿criar mecanismo para renomear request/body
+criar mecanismo para copiar como curl
+multiplas linguas
+preferencias
+splash
+testar sem java na maquina
