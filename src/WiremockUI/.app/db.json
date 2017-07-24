@@ -1,0 +1,55 @@
+{
+  "MockServices": null,
+  "Proxies": [
+    {
+      "Id": "92f3f103-8263-4990-b6ed-c4d96a210639",
+      "UrlOriginal": "http://jsonplaceholder.typicode.com/posts",
+      "PortProxy": 5500,
+      "Name": "Api",
+      "Mocks": [
+        {
+          "Id": "57f0dcc9-2dfd-44c9-9ca6-775a99a1dc8c",
+          "Name": "mock1",
+          "IsDefault": false
+        },
+        {
+          "Id": "269ece5c-13ab-4670-baae-f081280b006f",
+          "Name": "asd",
+          "IsDefault": true
+        }
+      ]
+    },
+    {
+      "Id": "74a2535a-a5d1-4ffc-aac9-c28c2e1d809c",
+      "UrlOriginal": "http://jsonplaceholder.typicode.com/users",
+      "PortProxy": 5501,
+      "Name": "Api2",
+      "Mocks": [
+        {
+          "Id": "9f315b64-ae20-4114-b7f8-0a7d824258fb",
+          "Name": "mock1",
+          "IsDefault": false
+        },
+        {
+          "Id": "0bd0fd04-036c-4450-b914-b54a6c121ae9",
+          "Name": "asds",
+          "IsDefault": true
+        }
+      ]
+    },
+    {
+      "Id": "e4f48982-abda-491d-9dad-d98e370b2863",
+      "UrlOriginal": "http://jsonplaceholder.typicode.com",
+      "PortProxy": 5502,
+      "Name": "Api3",
+      "Mocks": []
+    },
+    {
+      "Id": "73743978-65df-4099-8c5c-f48808622369",
+      "UrlOriginal": "dasd",
+      "PortProxy": 5503,
+      "Name": "ll",
+      "Mocks": []
+    }
+  ]
+}
