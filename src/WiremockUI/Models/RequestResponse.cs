@@ -63,27 +63,23 @@ namespace WiremockUI
 
         public string GetRequestName()
         {
-            return Path.GetFileNameWithoutExtension(Request.FileName);
+            return Path.GetFileName(Request.FileName);
         }
 
         public string GetResponseName()
         {
-            return Path.GetFileNameWithoutExtension(Response.FileName);
+            return Path.GetFileName(Response.FileName);
         }
 
-        internal string GetFormattedName()
+        internal string GetRequestFormattedName()
         {
-            return GetRequestName() + GetUrlGet();
-        }
-
-        private string GetUrlGet()
-        {
+            var fileName = GetRequestName();
             if (jMapping != null)
             {
-                var fileName = jMapping.SelectToken("request.url").Value<string>();
-                return " (" + fileName + ")";
+                var get = jMapping.SelectToken("request.url").Value<string>();
+                return get + " -> " + fileName;
             }
-            return "";
+            return fileName;
         }
     }
 }

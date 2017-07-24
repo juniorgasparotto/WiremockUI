@@ -424,7 +424,7 @@ namespace WiremockUI
         {
             var proxy = (Proxy)nodeMock.Parent.Tag;
             var requestResponseFile = new RequestResponse(proxy, mock, mapFile);
-            var nodeRequest = new TreeNode(requestResponseFile.GetFormattedName());
+            var nodeRequest = new TreeNode(requestResponseFile.GetRequestFormattedName());
             var nodeResponse = new TreeNode(requestResponseFile.GetResponseName());
             nodeRequest.Nodes.Add(nodeResponse);
             nodeMock.Nodes.Add(nodeRequest);
