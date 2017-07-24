@@ -81,7 +81,7 @@ namespace WiremockUI
             if (jMapping != null)
             {
                 var fileName = jMapping.SelectToken("request.url").Value<string>();
-                return "(" + fileName + ")";
+                return " (" + fileName + ")";
             }
             return "";
         }
