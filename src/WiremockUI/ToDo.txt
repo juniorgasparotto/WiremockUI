@@ -18,3 +18,4 @@ melhorar treeview do json
 melhorar visualização de json para valores (criar um form especifico pra json)
 suportar visualização de resultado de XML
 criar tutorial no github
+quando fechar uma tab, deve ir para a tab de tras da fechada
