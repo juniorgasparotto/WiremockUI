@@ -60,7 +60,7 @@
             this.lblOpenFolder.Size = new System.Drawing.Size(106, 13);
             this.lblOpenFolder.TabIndex = 23;
             this.lblOpenFolder.TabStop = true;
-            this.lblOpenFolder.Text = "Abrir local do cenário";
+            this.lblOpenFolder.Text = "Abrir local das mocks desse proxy";
             this.lblOpenFolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblOpenFolder_LinkClicked_1);
             // 
             // lblUrlProxy
