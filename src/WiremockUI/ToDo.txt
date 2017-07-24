@@ -4,3 +4,16 @@ multiplas linguas
 preferencias
 splash
 testar sem java na maquina
+criar uma mock automaticamente após criar um proxy
+criar mecanismo de duplicar mock
+criar uma aba dentro de cada mock com as configs avançados do wiremock
+subir no chocolatey
+tentar apt-get com wine ou mono
+criar tutorial
+crir menu para remover mock
+visualizar json do request e response do mapa de forma amigavel
+adicionar url do get no treenode do mock
+adicionar URL do serviço no treeNode para cada proxy
+melhorar treeview do json
+melhorar visualização de json para valores (criar um form especifico pra json)
+suportar visualização de resultado de XML

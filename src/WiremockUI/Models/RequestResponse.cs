@@ -9,6 +9,8 @@ namespace WiremockUI
 {
     public class RequestResponse
     {
+        private JObject jMapping;
+
         public RequestFile Request { get; set; }
         public ResponseFile Response { get; set; }
 
@@ -36,7 +38,7 @@ namespace WiremockUI
 
             this.Response = new ResponseFile();
             this.Response.RequestResponse = this;
-            var jMapping = JsonConvert.DeserializeObject<JObject>(Request.Body);
+            this.jMapping = JsonConvert.DeserializeObject<JObject>(Request.Body);
             if (jMapping != null)
             {
                 var fileName = jMapping.SelectToken("response.bodyFileName").Value<string>();
@@ -67,6 +69,21 @@ namespace WiremockUI
         public string GetResponseName()
         {
             return Path.GetFileNameWithoutExtension(Response.FileName);
+        }
+
+        internal string GetFormattedName()
+        {
+            return GetRequestName() + GetUrlGet();
+        }
+
+        private string GetUrlGet()
+        {
+            if (jMapping != null)
+            {
+                var fileName = jMapping.SelectToken("request.url").Value<string>();
+                return "(" + fileName + ")";
+            }
+            return "";
         }
     }
 }

@@ -268,6 +268,11 @@ namespace WiremockUI
                 topNode.Expand();
         }
 
+        internal TabControl GetTabControl()
+        {
+            return tabForms;
+        }
+
         private void LoadMocks(TreeNode nodeProxy, Proxy proxy)
         {
             var db = new UnitOfWork();
@@ -419,7 +424,7 @@ namespace WiremockUI
         {
             var proxy = (Proxy)nodeMock.Parent.Tag;
             var requestResponseFile = new RequestResponse(proxy, mock, mapFile);
-            var nodeRequest = new TreeNode(requestResponseFile.GetRequestName());
+            var nodeRequest = new TreeNode(requestResponseFile.GetFormattedName());
             var nodeResponse = new TreeNode(requestResponseFile.GetResponseName());
             nodeRequest.Nodes.Add(nodeResponse);
             nodeMock.Nodes.Add(nodeRequest);
