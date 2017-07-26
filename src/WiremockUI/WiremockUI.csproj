@@ -285,6 +285,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Jar\wiremock-standalone-2.6.0.jar" />
+    <Content Include="ToDo.txt" />
     <Content Include="wiremock.ico" />
   </ItemGroup>
   <ItemGroup>
