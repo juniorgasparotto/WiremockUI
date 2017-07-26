@@ -17,7 +17,7 @@ namespace WiremockUI.Data
 
         internal string GetFormattedName()
         {
-            return $"{Name} (http://localhost:{PortProxy})";
+            return $"{Name} (http://localhost:{PortProxy} <- {UrlOriginal})";
         }
 
         internal string GetFolderName()
