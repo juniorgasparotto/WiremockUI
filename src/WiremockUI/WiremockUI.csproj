@@ -203,6 +203,19 @@
     <Compile Include="FormAddProxy.Designer.cs">
       <DependentUpon>FormAddProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="TabControlCustom\TabMaster.cs" />
+    <Compile Include="TabControlCustom\TabPageCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TabControlCustom\TabControlCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UcJsonView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcJsonView.Designer.cs">
+      <DependentUpon>UcJsonView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Models\RequestResponse.cs" />
     <Compile Include="FormAbout.cs">
@@ -269,6 +282,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UcJsonView.resx">
+      <DependentUpon>UcJsonView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include=".app\db.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -285,6 +301,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="images\tab-close.png" />
     <Content Include="Jar\wiremock-standalone-2.6.0.jar" />
     <Content Include="ToDo.txt" />
     <Content Include="wiremock.ico" />

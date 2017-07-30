@@ -38,13 +38,10 @@
             this.txtContent = new System.Windows.Forms.TextBox();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.tabJson = new System.Windows.Forms.TabPage();
-            this.lblError = new System.Windows.Forms.Label();
-            this.jsonExplorer = new System.Windows.Forms.TreeView();
             this.panel3.SuspendLayout();
             this.tabResponse.SuspendLayout();
             this.tabRaw.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.tabJson.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -144,8 +141,6 @@
             // 
             // tabJson
             // 
-            this.tabJson.Controls.Add(this.lblError);
-            this.tabJson.Controls.Add(this.jsonExplorer);
             this.tabJson.Location = new System.Drawing.Point(4, 25);
             this.tabJson.Name = "tabJson";
             this.tabJson.Padding = new System.Windows.Forms.Padding(3);
@@ -153,26 +148,6 @@
             this.tabJson.TabIndex = 1;
             this.tabJson.Text = "JSON";
             this.tabJson.UseVisualStyleBackColor = true;
-            // 
-            // lblError
-            // 
-            this.lblError.AutoSize = true;
-            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(6, 11);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(325, 13);
-            this.lblError.TabIndex = 1;
-            this.lblError.Text = "Ocorreu um erro ao tentar montar a visualização do json";
-            this.lblError.Visible = false;
-            // 
-            // jsonExplorer
-            // 
-            this.jsonExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.jsonExplorer.Location = new System.Drawing.Point(3, 3);
-            this.jsonExplorer.Name = "jsonExplorer";
-            this.jsonExplorer.Size = new System.Drawing.Size(474, 192);
-            this.jsonExplorer.TabIndex = 0;
             // 
             // FormViewFile
             // 
@@ -190,8 +165,6 @@
             this.tabRaw.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.tabJson.ResumeLayout(false);
-            this.tabJson.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -208,7 +181,5 @@
         private System.Windows.Forms.TextBox txtContent;
         private System.Windows.Forms.TextBox txtPath;
         private System.Windows.Forms.TabPage tabJson;
-        private System.Windows.Forms.Label lblError;
-        private System.Windows.Forms.TreeView jsonExplorer;
     }
 }

@@ -11,10 +11,10 @@ namespace WiremockUI
 {
     public partial class FormViewFile : Form
     {
-        private TabPage tabPage;
+        private TabPageCustom tabPage;
         private FormMaster master;
 
-        public FormViewFile(FormMaster master, TabPage tabPage, string fileName, string content)
+        public FormViewFile(FormMaster master, TabPageCustom tabPage, string fileName, string content)
         {
             InitializeComponent();
             this.tabPage = tabPage;
@@ -36,95 +36,95 @@ namespace WiremockUI
             }
         }
 
-        private void LoadJsonExplorer()
-        {
-            jsonExplorer.Nodes.Clear();
-            var js = new JavaScriptSerializer();
+        //private void LoadJsonExplorer()
+        //{
+        //    jsonExplorer.Nodes.Clear();
+        //    var js = new JavaScriptSerializer();
 
-            try
-            {
-                try
-                {
-                    var dic = js.Deserialize<List<Dictionary<string, object>>>(txtContent.Text);
-                    if (dic.Count == 0)
-                        throw new Exception();
+        //    try
+        //    {
+        //        try
+        //        {
+        //            var dic = js.Deserialize<List<Dictionary<string, object>>>(txtContent.Text);
+        //            if (dic.Count == 0)
+        //                throw new Exception();
 
-                    var i = 0;
-                    TreeNode rootNode = new TreeNode("Root");
-                    jsonExplorer.Nodes.Add(rootNode);
+        //            var i = 0;
+        //            TreeNode rootNode = new TreeNode("Root");
+        //            jsonExplorer.Nodes.Add(rootNode);
 
-                    foreach (var d in dic)
-                    {
-                        TreeNode node = new TreeNode(i++.ToString());
-                        rootNode.Nodes.Add(node);
-                        BuildTree(d, node);                        
-                    }
+        //            foreach (var d in dic)
+        //            {
+        //                TreeNode node = new TreeNode(i++.ToString());
+        //                rootNode.Nodes.Add(node);
+        //                BuildTree(d, node);                        
+        //            }
 
-                    rootNode.Expand();
-                }
-                catch
-                {
-                    var dic = js.Deserialize<Dictionary<string, object>>(txtContent.Text);
+        //            rootNode.Expand();
+        //        }
+        //        catch
+        //        {
+        //            var dic = js.Deserialize<Dictionary<string, object>>(txtContent.Text);
 
-                    TreeNode rootNode = new TreeNode("Root");
-                    jsonExplorer.Nodes.Add(rootNode);
-                    BuildTree(dic, rootNode);
-                    rootNode.ExpandAll();
-                }
-            }
-            catch 
-            {
-                lblError.Visible = true;
-            }
-        }
+        //            TreeNode rootNode = new TreeNode("Root");
+        //            jsonExplorer.Nodes.Add(rootNode);
+        //            BuildTree(dic, rootNode);
+        //            rootNode.ExpandAll();
+        //        }
+        //    }
+        //    catch 
+        //    {
+        //        lblError.Visible = true;
+        //    }
+        //}
 
-        public void BuildTree(Dictionary<string, object> dictionary, TreeNode node)
-        {
-            foreach (KeyValuePair<string, object> item in dictionary)
-            {
-                TreeNode parentNode = new TreeNode(item.Key);
-                node.Nodes.Add(parentNode);
+        //public void BuildTree(Dictionary<string, object> dictionary, TreeNode node)
+        //{
+        //    foreach (KeyValuePair<string, object> item in dictionary)
+        //    {
+        //        TreeNode parentNode = new TreeNode(item.Key);
+        //        node.Nodes.Add(parentNode);
 
-                try
-                {
-                    dictionary = (Dictionary<string, object>)item.Value;
-                    BuildTree(dictionary, parentNode);
-                }
-                catch (InvalidCastException dicE)
-                {
-                    try
-                    {
-                        ArrayList list = (ArrayList)item.Value;
+        //        try
+        //        {
+        //            dictionary = (Dictionary<string, object>)item.Value;
+        //            BuildTree(dictionary, parentNode);
+        //        }
+        //        catch (InvalidCastException dicE)
+        //        {
+        //            try
+        //            {
+        //                ArrayList list = (ArrayList)item.Value;
 
-                        if (list.Count > 0 && list[0] is Dictionary<string, object> dic)
-                        {
-                            BuildTree(dic, parentNode);
-                        }
-                        else
-                        {
-                            foreach (string value in list)
-                            {
-                                TreeNode finalNode = new TreeNode(value);
-                                finalNode.ForeColor = Color.Blue;
-                                parentNode.Nodes.Add(finalNode);
-                            }
-                        }
-                    }
-                    catch (InvalidCastException ex)
-                    {
-                        TreeNode finalNode = new TreeNode(item.Value.ToString());
-                        finalNode.ForeColor = Color.Blue;
-                        parentNode.Nodes.Add(finalNode);
-                        AddMenuTrip(finalNode);
-                    }
-                }
-            }
-        }
+        //                if (list.Count > 0 && list[0] is Dictionary<string, object> dic)
+        //                {
+        //                    BuildTree(dic, parentNode);
+        //                }
+        //                else
+        //                {
+        //                    foreach (string value in list)
+        //                    {
+        //                        TreeNode finalNode = new TreeNode(value);
+        //                        finalNode.ForeColor = Color.Blue;
+        //                        parentNode.Nodes.Add(finalNode);
+        //                    }
+        //                }
+        //            }
+        //            catch (InvalidCastException ex)
+        //            {
+        //                TreeNode finalNode = new TreeNode(item.Value.ToString());
+        //                finalNode.ForeColor = Color.Blue;
+        //                parentNode.Nodes.Add(finalNode);
+        //                AddMenuTrip(finalNode);
+        //            }
+        //        }
+        //    }
+        //}
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            master.CloseTab(tabPage);
+            master.TabMaster.CloseTab(tabPage);
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -140,9 +140,28 @@ namespace WiremockUI
                 seleceted.Tag = true;
                 if (seleceted == tabJson)
                 {
-                    LoadJsonExplorer();
+                    LoadTabJsonView();
                 }
             }
+        }
+
+        private void LoadTabJsonView()
+        {
+            var jsonView = new UcJsonView(master, "", this.txtContent.Text);
+            jsonView.Dock = DockStyle.Fill;
+            tabJson.Controls.Add(jsonView);
+        }
+
+        private void OpenJson(string name, string body)
+        {
+            var tabpage = new TabPageCustom { Text = name };
+            var frmStart = new UcJsonView(master, name,  body);
+            tabpage.BorderStyle = BorderStyle.None;
+            master.GetTabControl().TabPages.Add(tabpage);
+            frmStart.Parent = tabpage;
+            frmStart.Show();
+            frmStart.Dock = DockStyle.Fill;
+            master.GetTabControl().SelectedTab = tabpage;
         }
 
         private void AddMenuTrip(TreeNode node)
@@ -169,17 +188,5 @@ namespace WiremockUI
             node.ContextMenuStrip = menu;
         }
 
-        private void OpenJson(string name, string body)
-        {
-            var tabpage = new TabPage { Text = name };
-            var frmStart = new FormViewFile(master, tabpage, null, body);
-            tabpage.BorderStyle = BorderStyle.Fixed3D;
-            master.GetTabControl().TabPages.Add(tabpage);            
-            frmStart.TopLevel = false;
-            frmStart.Parent = tabpage;
-            frmStart.Show();
-            frmStart.Dock = DockStyle.Fill;
-            master.GetTabControl().SelectedTab = tabpage;
-        }
     }
 }

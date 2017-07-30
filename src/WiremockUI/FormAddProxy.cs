@@ -81,10 +81,10 @@ namespace WiremockUI
                                     s.Id != idExists
                               select 1).Any();
 
-            var existsUrlOriginal = (from s in db.Proxies.AsQueryable()
-                                     where s.UrlOriginal.ToLower() == urlOriginal.ToLower() &&
-                                     s.Id != idExists
-                                     select 1).Any();
+            //var existsUrlOriginal = (from s in db.Proxies.AsQueryable()
+            //                         where s.UrlOriginal.ToLower() == urlOriginal.ToLower() &&
+            //                         s.Id != idExists
+            //                         select 1).Any();
 
             var existsPort = (from s in db.Proxies.AsQueryable()
                               where s.PortProxy == portNumber &&
@@ -98,12 +98,12 @@ namespace WiremockUI
                 return;
             }
 
-            if (existsUrlOriginal)
-            {
-                Helper.MessageBoxError("Esse 'Url original' já está em uso");
-                txtUrlOriginal.Focus();
-                return;
-            }
+            //if (existsUrlOriginal)
+            //{
+            //    Helper.MessageBoxError("Esse 'Url original' já está em uso");
+            //    txtUrlOriginal.Focus();
+            //    return;
+            //}
 
             if (existsPort)
             {

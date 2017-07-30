@@ -47,7 +47,7 @@ namespace WiremockUI
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.treeServices = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.tabForms = new System.Windows.Forms.TabControl();
+            this.tabForms = new WiremockUI.TabControlCustom();
             this.menuOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -152,7 +152,7 @@ namespace WiremockUI
             this.menuAbout.Name = "menuAbout";
             this.menuAbout.Size = new System.Drawing.Size(49, 20);
             this.menuAbout.Text = "Sobre";
-            this.menuAbout.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
+            this.menuAbout.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
             // splitContainer
             // 
@@ -206,8 +206,10 @@ namespace WiremockUI
             // tabForms
             // 
             this.tabForms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabForms.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabForms.Location = new System.Drawing.Point(0, 0);
             this.tabForms.Name = "tabForms";
+            this.tabForms.Padding = new System.Drawing.Point(20, 5);
             this.tabForms.SelectedIndex = 0;
             this.tabForms.Size = new System.Drawing.Size(565, 364);
             this.tabForms.TabIndex = 0;
@@ -248,7 +250,6 @@ namespace WiremockUI
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.TreeView treeServices;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.TabControl tabForms;
         private System.Windows.Forms.ToolStripMenuItem menuPlayAndRecordAll;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem menuStopAll;
@@ -258,5 +259,6 @@ namespace WiremockUI
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem menuClose;
         private System.Windows.Forms.ToolStripMenuItem menuAbout;
+        private TabControlCustom tabForms;
     }
 }

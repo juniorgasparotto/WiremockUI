@@ -13,7 +13,7 @@ namespace WiremockUI
     {
         delegate void ActionDelegate();
         private int treeX;
-
+        public TabMaster TabMaster { get; private set;}
         public Dashboard Dashboard { get; private set; }
 
         public FormMaster()
@@ -24,6 +24,7 @@ namespace WiremockUI
         private void Master_Load(object sender, EventArgs e)
         {
             this.Dashboard = new Dashboard();
+            this.TabMaster = new TabMaster(this);
             LoadProxies();
         }
 
@@ -225,7 +226,7 @@ namespace WiremockUI
                 removeMenu.ImageKey = "remove";
                 removeMenu.Click += (a, b) =>
                 {
-                    RemoveProxy(nodeProxy, proxy);
+                    RemoveProxy(nodeProxy);
                 };
 
                 // play
@@ -278,6 +279,21 @@ namespace WiremockUI
             var db = new UnitOfWork();
             foreach (var c in proxy.Mocks)
                 SetMock(nodeProxy, c);
+        }
+
+        private void LoadRequestsAndResponses(TreeNode nodeMock, Mock mock)
+        {
+            var proxy = (Proxy)nodeMock.Parent.Tag;
+            var path = proxy.GetMappingPath(mock);
+            if (!Directory.Exists(path))
+                return;
+
+            string[] filePaths = Directory.GetFiles(path);
+            
+            foreach(var mapFile in filePaths)
+            {
+                AddRequestResponseNode(nodeMock, mock, mapFile);
+            }
         }
 
         internal void SetMock(TreeNode nodeProxy, Mock mock)
@@ -405,21 +421,6 @@ namespace WiremockUI
             frmAdd.ShowDialog();
         }
 
-        private void LoadRequestsAndResponses(TreeNode nodeMock, Mock mock)
-        {
-            var proxy = (Proxy)nodeMock.Parent.Tag;
-            var path = proxy.GetMappingPath(mock);
-            if (!Directory.Exists(path))
-                return;
-
-            string[] filePaths = Directory.GetFiles(path);
-            
-            foreach(var mapFile in filePaths)
-            {
-                AddRequestResponseNode(nodeMock, mock, mapFile);
-            }
-        }
-
         private void AddRequestResponseNode(TreeNode nodeMock, Mock mock, string mapFile)
         {
             var proxy = (Proxy)nodeMock.Parent.Tag;
@@ -463,7 +464,7 @@ namespace WiremockUI
             Dashboard.AddWatchers(mock, watcher);
         }
 
-        private void RemoveProxy(TreeNode nodeProxy, object defaultMock)
+        private void RemoveProxy(TreeNode nodeProxy)
         {
             if (MessageBox.Show("Deseja realmente excluir esse proxy de mock?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -570,23 +571,29 @@ namespace WiremockUI
 
             var frmStart = new FormStartMockService(this, proxy, mock, record);
             frmStart.Play();
-
             var recordText = record ? " (Gravando)" : "";
-            var tabpage = new TabPage { Text = mock.Name + recordText };
-            tabpage.Tag = mock.Id;
-            tabpage.BorderStyle = BorderStyle.Fixed3D;
-            tabForms.TabPages.Add(tabpage);
-            frmStart.TopLevel = false;
-            frmStart.Parent = tabpage;
-            frmStart.Show();
-            frmStart.Dock = DockStyle.Fill;
+            TabMaster.AddTab(frmStart, mock.Id, mock.Name + recordText)
+                .CanClose = () => {
+                    if (Helper.MessageBoxQuestion("Deseja realmente parar o serviço?") == DialogResult.Yes)
+                        StopService(mock);
+
+                    return false;
+                };
+
+            //var tabpage = new TabPageCustom { Text = mock.Name + recordText };
+            //tabpage.Tag = mock.Id;
+            //tabpage.BorderStyle = BorderStyle.Fixed3D;
+            //tabForms.TabPages.Add(tabpage);
+            //frmStart.TopLevel = false;
+            //frmStart.Parent = tabpage;
+            //frmStart.Show();
+            //frmStart.Dock = DockStyle.Fill;
+            //tabForms.SelectedTab = tabpage;
+
             ChangeTreeNodeImage(nodeProxy, (record ? "record" : "start"));
-            tabForms.SelectedTab = tabpage;
 
             if (record)
-            {
                 StartWatcherFolder(nodeMock, mock);
-            }
         }
 
         private void StopService(Mock mock)
@@ -597,30 +604,16 @@ namespace WiremockUI
             Dashboard.Stop(mock);
             ChangeTreeNodeImage(nodeProxy, "stop");
 
-            foreach (TabPage t in tabForms.TabPages)
-            {
-                if (t.Tag != null && t.Tag is Guid && (Guid)t.Tag == mock.Id)
-                {
-                    tabForms.TabPages.Remove(t);
-                    break;
-                }
-            }
-        }
+            TabMaster.CloseTab(mock.Id);
 
-        public void CloseTab(TabPage tab)
-        {
-            tabForms.TabPages.Remove(tab);
-        }
-
-        public TabPage GetTabIfOpen(object tag)
-        {
-            foreach (TabPage t in tabForms.TabPages)
-            {
-                if (t.Tag == tag)
-                    return t;
-            }
-
-            return null;
+            //foreach (var t in tabForms.TabPages)
+            //{
+            //    if (t.Tag != null && t.Tag is Guid && (Guid)t.Tag == mock.Id)
+            //    {
+            //        tabForms.TabPages.Remove(t);
+            //        break;
+            //    }
+            //}
         }
 
         private IEnumerable<TreeNode> GetAllProxiesNodes()
@@ -694,7 +687,7 @@ namespace WiremockUI
             }
             else if (selected.Tag != null && selected.Tag is RequestResponse.RequestFile)
             {
-                var currentTab = GetTabIfOpen(selected.Tag);
+                var currentTab = TabMaster.GetTabByTag(selected.Tag);
                 if (currentTab != null)
                 {
                     tabForms.SelectedTab = currentTab;
@@ -703,21 +696,23 @@ namespace WiremockUI
 
                 var request = (RequestResponse.RequestFile)selected.Tag;
 
-                var tabpage = new TabPage { Text = request.RequestResponse.GetRequestName() };
-                tabpage.Tag = selected.Tag;
+                var frmStart = new FormViewFile(this, null, request.FileName, request.Body);
+                TabMaster.AddTab(frmStart, request.RequestResponse.Request, request.RequestResponse.GetRequestName());
 
-                var frmStart = new FormViewFile(this, tabpage, request.FileName, request.Body);
-                tabpage.BorderStyle = BorderStyle.Fixed3D;
-                tabForms.TabPages.Add(tabpage);
-                frmStart.TopLevel = false;
-                frmStart.Parent = tabpage;
-                frmStart.Show();
-                frmStart.Dock = DockStyle.Fill;
-                tabForms.SelectedTab = tabpage;
+                //var tabpage = new TabPageCustom { Text = request.RequestResponse.GetRequestName() };
+                //tabpage.Tag = selected.Tag;
+
+                //tabpage.BorderStyle = BorderStyle.Fixed3D;
+                //tabForms.TabPages.Add(tabpage);
+                //frmStart.TopLevel = false;
+                //frmStart.Parent = tabpage;
+                //frmStart.Show();
+                //frmStart.Dock = DockStyle.Fill;
+                //tabForms.SelectedTab = tabpage;
             }
             else if (selected.Tag != null && selected.Tag is RequestResponse.ResponseFile)
             {
-                var currentTab = GetTabIfOpen(selected.Tag);
+                var currentTab = TabMaster.GetTabByTag(selected.Tag);
                 if (currentTab != null)
                 {
                     tabForms.SelectedTab = currentTab;
@@ -726,17 +721,19 @@ namespace WiremockUI
 
                 var request = (RequestResponse.ResponseFile)selected.Tag;
 
-                var tabpage = new TabPage { Text = request.RequestResponse.GetResponseName() };
-                tabpage.Tag = selected.Tag;
+                var frmStart = new FormViewFile(this, null, request.FileName, request.Body);
+                TabMaster.AddTab(frmStart, request.RequestResponse.Response, request.RequestResponse.GetResponseName());
 
-                var frmStart = new FormViewFile(this, tabpage, request.FileName, request.Body);
-                tabpage.BorderStyle = BorderStyle.Fixed3D;
-                tabForms.TabPages.Add(tabpage);
-                frmStart.TopLevel = false;
-                frmStart.Parent = tabpage;
-                frmStart.Show();
-                frmStart.Dock = DockStyle.Fill;
-                tabForms.SelectedTab = tabpage;
+                //var tabpage = new TabPageCustom { Text = request.RequestResponse.GetResponseName() };
+                //tabpage.Tag = selected.Tag;
+
+                //tabpage.BorderStyle = BorderStyle.Fixed3D;
+                //tabForms.TabPages.Add(tabpage);
+                //frmStart.TopLevel = false;
+                //frmStart.Parent = tabpage;
+                //frmStart.Show();
+                //frmStart.Dock = DockStyle.Fill;
+                //tabForms.SelectedTab = tabpage;
             }
         }
 
@@ -783,7 +780,7 @@ namespace WiremockUI
             if (treeX > e.Node.Bounds.Left) e.Cancel = true;
         }
 
-        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        private void aboutMenuItem_Click(object sender, EventArgs e)
         {
             new FormAbout().ShowDialog();
         }
