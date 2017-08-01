@@ -36,14 +36,21 @@ namespace WiremockUI
             Request.FileName = requestFileName;
             Request.Body = ReadAllText(requestFileName);
 
-            this.Response = new ResponseFile();
-            this.Response.RequestResponse = this;
-            this.jMapping = JsonConvert.DeserializeObject<JObject>(Request.Body);
-            if (jMapping != null)
+            try
             {
-                var fileName = jMapping.SelectToken("response.bodyFileName").Value<string>();
-                Response.FileName = Path.Combine(proxy.GetFullPath(mock), "__files", fileName);
-                Response.Body = ReadAllText(Response.FileName);
+                this.Response = new ResponseFile();
+                this.Response.RequestResponse = this;
+                this.jMapping = JsonConvert.DeserializeObject<JObject>(Request.Body);
+                if (jMapping != null)
+                {
+                    var fileName = jMapping.SelectToken("response.bodyFileName").Value<string>();
+                    Response.FileName = Path.Combine(proxy.GetFullPath(mock), "__files", fileName);
+                    Response.Body = ReadAllText(Response.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -80,7 +87,7 @@ namespace WiremockUI
         {
             if (jMapping != null)
             {
-                var fileName = jMapping.SelectToken("request.url").Value<string>();
+                var fileName = jMapping.SelectToken("request.url")?.Value<string>();
                 return " (" + fileName + ")";
             }
             return "";

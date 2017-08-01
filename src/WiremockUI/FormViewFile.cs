@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,15 +15,18 @@ namespace WiremockUI
     {
         private TabPageCustom tabPage;
         private FormMaster master;
+        private UcJsonView jsonView;
 
-        public FormViewFile(FormMaster master, TabPageCustom tabPage, string fileName, string content)
+        public FormViewFile(FormMaster master, TabPageCustom tabPage, string fileName)
         {
             InitializeComponent();
+            var content = "";
             this.tabPage = tabPage;
             this.master = master;
             if (fileName != null)
             {
                 txtPath.Text = fileName;
+                content = File.ReadAllText(fileName);
             }
             else
             {
@@ -121,10 +126,22 @@ namespace WiremockUI
         //    }
         //}
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            this.Close();
-            master.TabMaster.CloseTab(tabPage);
+            try
+            {
+                if (!IsValidJson(txtContent.Text))
+                {
+                    Helper.MessageBoxError("Esse JSON não é válido.");
+                    return;
+                }
+
+                File.WriteAllText(txtPath.Text, txtContent.Text);
+            }
+            catch (Exception ex)
+            {
+                Helper.MessageBoxError("Ocorreu um erro ao tentar salvar o arquivo: " + ex.Message);
+            }
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -135,19 +152,18 @@ namespace WiremockUI
         private void tabResponse_Click(object sender, EventArgs e)
         {
             var seleceted = tabResponse.SelectedTab;
-            if (seleceted.Tag == null)
+            if (seleceted == tabJson)
             {
-                seleceted.Tag = true;
-                if (seleceted == tabJson)
-                {
-                    LoadTabJsonView();
-                }
+                LoadTabJsonView();
             }
         }
 
         private void LoadTabJsonView()
         {
-            var jsonView = new UcJsonView(master, "", this.txtContent.Text);
+            if (this.jsonView != null)
+                tabJson.Controls.Remove(jsonView);
+
+            this.jsonView = new UcJsonView(master, "", this.txtContent.Text);
             jsonView.Dock = DockStyle.Fill;
             tabJson.Controls.Add(jsonView);
         }
@@ -188,5 +204,33 @@ namespace WiremockUI
             node.ContextMenuStrip = menu;
         }
 
+        private static bool IsValidJson(string strInput)
+        {
+            strInput = strInput.Trim();
+            if ((strInput.StartsWith("{") && strInput.EndsWith("}")) || //For object
+                (strInput.StartsWith("[") && strInput.EndsWith("]"))) //For array
+            {
+                try
+                {
+                    var obj = JToken.Parse(strInput);
+                    return true;
+                }
+                catch (JsonReaderException jex)
+                {
+                    //Exception in parsing json
+                    Console.WriteLine(jex.Message);
+                    return false;
+                }
+                catch (Exception ex) //some other exception
+                {
+                    Console.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

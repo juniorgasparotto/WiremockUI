@@ -42,8 +42,11 @@ namespace WiremockUI
         public void CloseTab(object tag)
         {
             var tab = GetTabByTag(tag);
-            ((Tag)tab.Tag).Form.Close();
-            tabControl.TabPages.Remove(tab);
+            if (tab != null)
+            {
+                ((Tag)tab.Tag).Form.Close();
+                tabControl.TabPages.Remove(tab);
+            }
         }
 
         public TabPageCustom GetTabByTag(object tag)

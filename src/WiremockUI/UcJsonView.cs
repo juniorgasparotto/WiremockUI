@@ -172,10 +172,5 @@ namespace WiremockUI
             frmStart.Dock = DockStyle.Fill;
             master.GetTabControl().SelectedTab = tabpage;
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

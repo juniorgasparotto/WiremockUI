@@ -696,7 +696,7 @@ namespace WiremockUI
 
                 var request = (RequestResponse.RequestFile)selected.Tag;
 
-                var frmStart = new FormViewFile(this, null, request.FileName, request.Body);
+                var frmStart = new FormViewFile(this, null, request.FileName);
                 TabMaster.AddTab(frmStart, request.RequestResponse.Request, request.RequestResponse.GetRequestName());
 
                 //var tabpage = new TabPageCustom { Text = request.RequestResponse.GetRequestName() };
@@ -721,7 +721,7 @@ namespace WiremockUI
 
                 var request = (RequestResponse.ResponseFile)selected.Tag;
 
-                var frmStart = new FormViewFile(this, null, request.FileName, request.Body);
+                var frmStart = new FormViewFile(this, null, request.FileName);
                 TabMaster.AddTab(frmStart, request.RequestResponse.Response, request.RequestResponse.GetResponseName());
 
                 //var tabpage = new TabPageCustom { Text = request.RequestResponse.GetResponseName() };
