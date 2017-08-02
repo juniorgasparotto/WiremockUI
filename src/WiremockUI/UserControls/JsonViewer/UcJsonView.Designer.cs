@@ -30,7 +30,7 @@
         {
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabRaw = new System.Windows.Forms.TabPage();
-            this.txtContent = new WiremockUI.HistoryTextBox();
+            this.txtContent = new WiremockUI.EditorTextbox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFormat = new System.Windows.Forms.Button();
             this.tabTree = new System.Windows.Forms.TabPage();
@@ -75,7 +75,7 @@
             this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtContent.Size = new System.Drawing.Size(136, 79);
             this.txtContent.TabIndex = 11;
-            this.txtContent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContent_KeyPress);
+            
             // 
             // panel1
             // 
@@ -155,6 +155,6 @@
         private System.Windows.Forms.TreeView treeRaw;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnFormat;
-        private HistoryTextBox txtContent;
+        private EditorTextbox txtContent;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WiremockUI
 {
-    partial class FormJsonFile
+    partial class FormTextFile
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.txtPath = new WiremockUI.EditorTextbox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtPath = new WiremockUI.EditorTextbox();
-            this.ucJsonView = new WiremockUI.UcJsonView();
+            this.txtContent = new WiremockUI.EditorTextbox();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // txtPath
+            // 
+            this.txtPath.AcceptsTab = true;
+            this.txtPath.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtPath.Location = new System.Drawing.Point(0, 0);
+            this.txtPath.Multiline = true;
+            this.txtPath.Name = "txtPath";
+            this.txtPath.ReadOnly = true;
+            this.txtPath.Size = new System.Drawing.Size(284, 20);
+            this.txtPath.TabIndex = 1;
             // 
             // panel3
             // 
@@ -44,8 +55,8 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 227);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(488, 34);
-            this.panel3.TabIndex = 3;
+            this.panel3.Size = new System.Drawing.Size(284, 34);
+            this.panel3.TabIndex = 4;
             // 
             // btnOpen
             // 
@@ -67,40 +78,29 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtPath
+            // txtContent
             // 
-            this.txtPath.AcceptsTab = true;
-            this.txtPath.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtPath.Location = new System.Drawing.Point(0, 0);
-            this.txtPath.Multiline = true;
-            this.txtPath.Name = "txtPath";
-            this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(488, 20);
-            this.txtPath.TabIndex = 6;
+            this.txtContent.AcceptsTab = true;
+            this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtContent.Location = new System.Drawing.Point(0, 20);
+            this.txtContent.Multiline = true;
+            this.txtContent.Name = "txtContent";
+            this.txtContent.Size = new System.Drawing.Size(284, 207);
+            this.txtContent.TabIndex = 5;
             // 
-            // ucJsonView
-            // 
-            this.ucJsonView.ContentJson = "";
-            this.ucJsonView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucJsonView.ExpandAll = true;
-            this.ucJsonView.Location = new System.Drawing.Point(0, 20);
-            this.ucJsonView.Name = "ucJsonView";
-            this.ucJsonView.OnJsonVisualizer = null;
-            this.ucJsonView.Size = new System.Drawing.Size(488, 207);
-            this.ucJsonView.TabIndex = 7;
-            // 
-            // FormJsonFile
+            // FormTextFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 261);
-            this.Controls.Add(this.ucJsonView);
-            this.Controls.Add(this.txtPath);
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.txtContent);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.txtPath);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormJsonFile";
+            this.KeyPreview = true;
+            this.Name = "FormTextFile";
             this.Text = "...";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormJsonFile_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormTextFile_KeyDown);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -108,11 +108,10 @@
         }
 
         #endregion
-
+        private EditorTextbox txtPath;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnSave;
-        private EditorTextbox txtPath;
-        private UcJsonView ucJsonView;
+        private EditorTextbox txtContent;
     }
 }

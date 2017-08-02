@@ -203,17 +203,35 @@
     <Compile Include="FormAddProxy.Designer.cs">
       <DependentUpon>FormAddProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormImageFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImageFile.Designer.cs">
+      <DependentUpon>FormImageFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormJsonViewer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormJsonViewer.Designer.cs">
       <DependentUpon>FormJsonViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTextFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTextFile.Designer.cs">
+      <DependentUpon>FormTextFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormXmlFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormXmlFile.Designer.cs">
+      <DependentUpon>FormXmlFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\TreeNodeBodyModel.cs" />
     <Compile Include="Models\TreeNodeMappingModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\MappingModel.cs" />
-    <Compile Include="UserControls\HistoryTextbox\UcHistoryTextBox.cs">
+    <Compile Include="UserControls\EditorTextbox\EditorTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\TabControlCustom\TabMaster.cs" />
@@ -286,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormJsonFile.resx">
       <DependentUpon>FormJsonFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTextFile.resx">
+      <DependentUpon>FormTextFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

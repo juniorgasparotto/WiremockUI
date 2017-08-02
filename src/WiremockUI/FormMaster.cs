@@ -752,9 +752,27 @@ namespace WiremockUI
                     return;
                 }
 
-                var frmStart = new FormJsonFile(this, null, treeNodeBody.File.FullPath);
-                frmStart.ExpandAll = false;
-                TabMaster.AddTab(frmStart, selected, treeNodeBody.File.GetOnlyFileName());
+                if (treeNodeBody.TreeNodeMapping.Mapping.Response.IsJson())
+                {
+                    var frmStart = new FormJsonFile(this, null, treeNodeBody.File.FullPath);
+                    frmStart.ExpandAll = false;
+                    TabMaster.AddTab(frmStart, selected, treeNodeBody.File.GetOnlyFileName());
+                }
+                else if (treeNodeBody.TreeNodeMapping.Mapping.Response.IsImage())
+                {
+                    var frmStart = new FormImageFile(this, null, treeNodeBody.File.FullPath);
+                    TabMaster.AddTab(frmStart, selected, treeNodeBody.File.GetOnlyFileName());
+                }
+                else if (treeNodeBody.TreeNodeMapping.Mapping.Response.IsXml())
+                {
+                    var frmStart = new FormXmlFile(this, null, treeNodeBody.File.FullPath);
+                    TabMaster.AddTab(frmStart, selected, treeNodeBody.File.GetOnlyFileName());
+                }
+                else
+                {
+                    var frmStart = new FormTextFile(this, null, treeNodeBody.File.FullPath);
+                    TabMaster.AddTab(frmStart, selected, treeNodeBody.File.GetOnlyFileName());
+                }
             }
         }
 

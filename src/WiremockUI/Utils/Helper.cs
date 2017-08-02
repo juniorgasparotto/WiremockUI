@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WiremockUI
@@ -89,6 +90,14 @@ namespace WiremockUI
             }
 
             return false;
+        }
+
+        public static async void AnimateSaveButton(Button button)
+        {
+            var text = button.Text;
+            button.Text = "*";
+            await Task.Delay(300);
+            button.Text = text;
         }
     }
 }

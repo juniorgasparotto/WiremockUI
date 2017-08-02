@@ -4,14 +4,15 @@ using System.Windows.Forms;
 
 namespace WiremockUI
 {
-    public class HistoryTextBox : TextBox
+    public class EditorTextbox : TextBox
     {
         Stack<Func<object>> undoStack = new Stack<Func<object>>();
         Stack<Func<object>> redoStack = new Stack<Func<object>>();
 
-        public HistoryTextBox()
+        public EditorTextbox()
         {
             this.AcceptsTab = true;
+            this.Multiline = true;
             this.KeyDown += HistoryTextBox_KeyDown;
         }
 
@@ -20,8 +21,16 @@ namespace WiremockUI
             var spaces = "    ";
 
             if (e.KeyCode == Keys.ControlKey && ModifierKeys == Keys.Control) { }
+            else if (e.KeyCode == Keys.A && ModifierKeys == Keys.Control)
+            {
+                ((TextBox)sender).SelectAll();
+                e.Handled = true;
+            }
             else if (e.KeyCode == Keys.Tab && ModifierKeys == Keys.None)
             {
+                if (ReadOnly)
+                    return;
+
                 e.SuppressKeyPress = true;
                 var posFinal = this.SelectionStart + spaces.Length;
                 this.Text = this.Text.Insert(this.SelectionStart, spaces);
@@ -29,6 +38,9 @@ namespace WiremockUI
             }
             else if (e.KeyCode == Keys.Tab && ModifierKeys == Keys.Shift)
             {
+                if (ReadOnly)
+                    return;
+
                 e.SuppressKeyPress = true;
 
                 var posStart = this.SelectionStart - spaces.Length;

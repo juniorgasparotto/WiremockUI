@@ -1,29 +1,25 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WiremockUI
 {
-    public partial class FormJsonFile : Form
+    public partial class FormTextFile : Form
     {
-        private TabPageCustom tabPage;
-        private FormMaster master;
-
-        public bool ExpandAll
-        {
-            get => ucJsonView.ExpandAll;
-            set => ucJsonView.ExpandAll = value;
-        }
+        private object tabPage;
+        private object master;
 
         public Action OnSave { get; set; }
 
-        public FormJsonFile(FormMaster master, TabPageCustom tabPage, string fileName)
+        public FormTextFile(FormMaster master, TabPageCustom tabPage, string fileName)
         {
             InitializeComponent();
 
-            // to work Ctrl+S
-            this.KeyPreview = true;
+            this.TabStop = false;
 
             var content = "";
             this.tabPage = tabPage;
@@ -43,16 +39,7 @@ namespace WiremockUI
             var text = Helper.ResolveBreakLineIncompatibility(content);
             if (text != null)
             {
-                ucJsonView.ContentJson = content;
-                ucJsonView.OnJsonVisualizer = (_elementName, _elementValue, _expandAll) =>
-                {
-                    var tabName = Path.GetFileName(fileName);
-                    if (!string.IsNullOrWhiteSpace(_elementName))
-                        tabName += "." + _elementName;
-
-                    var frm = new FormJsonViewer(master, tabName, _elementValue, true);
-                    master.TabMaster.AddTab(frm, null, tabName);
-                };
+                txtContent.Text = content;
             }
         }
 
@@ -60,13 +47,7 @@ namespace WiremockUI
         {
             try
             {
-                if (!ucJsonView.IsValidJson(ucJsonView.ContentJson))
-                {
-                    Helper.MessageBoxError("Esse JSON não é válido.");
-                    return;
-                }
-                
-                File.WriteAllText(txtPath.Text, ucJsonView.ContentJson);
+                File.WriteAllText(txtPath.Text, txtContent.Text);
                 OnSave?.Invoke();
             }
             catch (Exception ex)
@@ -85,13 +66,13 @@ namespace WiremockUI
             Process.Start(txtPath.Text);
         }
 
-        private void FormJsonFile_KeyDown(object sender, KeyEventArgs e)
+        private void FormTextFile_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
             {
                 Save();
                 Helper.AnimateSaveButton(btnSave);
-                e.SuppressKeyPress = true;  
+                e.SuppressKeyPress = true;
             }
         }
     }

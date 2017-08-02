@@ -58,6 +58,14 @@ namespace WiremockUI
             return fileName + " (" + Request?.Url + ")";
         }
 
+        public enum ContentType
+        {
+            Other = 0,
+            Json = 1,
+            Xml = 2,
+            Image = 2
+        }
+
         public class RequestModel
         {
             public string Url { get; set; }
@@ -70,6 +78,51 @@ namespace WiremockUI
             public string BodyFileName { get; set; }
             public Dictionary<string, string> Headers { get; set; }
 
+            public bool IsJson()
+            {
+
+                return GetContentType() == ContentType.Json;
+            }
+
+            public bool IsImage()
+            {
+                return GetContentType() == ContentType.Image;
+            }
+
+            public bool IsXml()
+            {
+                return GetContentType() == ContentType.Xml;
+            }
+
+            public ContentType GetContentType()
+            {
+                var value = GetContentTypeValue();
+                var contentType = ContentType.Other;
+                if (value != null)
+                {
+                    if (value.Contains("json"))
+                        contentType = ContentType.Json;
+                    if (value.Contains("xml"))
+                        contentType = ContentType.Xml;
+                    if (value.Contains("soap"))
+                        contentType = ContentType.Xml;
+                    if (value.Contains("image"))
+                        contentType = ContentType.Image;
+                }
+                return contentType;
+            }
+
+            public string GetContentTypeValue()
+            {
+                if (Headers != null)
+                {
+                    foreach (var header in Headers)
+                        if (header.Key.ToLower().Trim() == "content-type")
+                            return header.Value;
+                }
+
+                return null;
+            }
         }
     }
 }

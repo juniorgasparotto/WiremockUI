@@ -18,20 +18,6 @@ namespace WiremockUI
             set;
         }
 
-        //[Description("The master form"), Category("Data")]
-        //public FormMaster Master
-        //{
-        //    get => master;
-        //    set => master = value;
-        //}
-
-        //[Description("The tab name"), Category("Data")]
-        //public string TabName
-        //{
-        //    get => tabName;
-        //    set => tabName = value;
-        //}
-
         [Description("The content json"), Category("Data")]
         public string ContentJson
         {
@@ -249,15 +235,6 @@ namespace WiremockUI
             else
             {
                 return false;
-            }
-        }
-
-        private void txtContent_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == '\x1')
-            {
-                ((TextBox)sender).SelectAll();
-                e.Handled = true;
             }
         }
     }
