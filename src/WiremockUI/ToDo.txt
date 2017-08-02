@@ -1,4 +1,10 @@
-﻿criar mecanismo para renomear request/body
+﻿criar control +A nos textareas - OK
+aceitar tab com 4 chars - OK
+salvar com ctrl + s - OK
+adicionar caractere com tab - OK
+remover caracteres vazios com tab - OK
+
+criar mecanismo para renomear request/body
 criar mecanismo para copiar como curl
 multiplas linguas
 preferencias
@@ -18,8 +24,6 @@ melhorar treeview do json
 melhorar visualização de json para valores (criar um form especifico pra json)
 suportar visualização de resultado de XML
 deixar inserir mais de um url para a mesma api
-criar control +A nos textareas
-aceitar tab com 4 chars
 criar response especial
 cria request especial
 testar request sem body

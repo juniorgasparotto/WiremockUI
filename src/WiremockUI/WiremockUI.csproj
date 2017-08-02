@@ -213,6 +213,9 @@
     <Compile Include="Models\TreeNodeMappingModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\MappingModel.cs" />
+    <Compile Include="UserControls\HistoryTextbox\UcHistoryTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\TabControlCustom\TabMaster.cs" />
     <Compile Include="UserControls\TabControlCustom\TabPageCustom.cs">
       <SubType>Component</SubType>

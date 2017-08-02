@@ -83,10 +83,11 @@
             this.ucJsonView.ExpandAll = true;
             this.ucJsonView.Location = new System.Drawing.Point(0, 20);
             this.ucJsonView.Name = "ucJsonView";
+            this.ucJsonView.OnJsonVisualizer = null;
             this.ucJsonView.Size = new System.Drawing.Size(488, 207);
             this.ucJsonView.TabIndex = 7;
             // 
-            // FormViewFile
+            // FormJsonFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -95,8 +96,10 @@
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormViewFile";
+            this.KeyPreview = true;
+            this.Name = "FormJsonFile";
             this.Text = "...";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormJsonFile_KeyDown);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

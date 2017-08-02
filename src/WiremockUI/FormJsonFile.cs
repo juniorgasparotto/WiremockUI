@@ -1,12 +1,6 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace WiremockUI
@@ -27,6 +21,7 @@ namespace WiremockUI
         public FormJsonFile(FormMaster master, TabPageCustom tabPage, string fileName)
         {
             InitializeComponent();
+
             var content = "";
             this.tabPage = tabPage;
             this.master = master;
@@ -58,7 +53,7 @@ namespace WiremockUI
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void Save()
         {
             try
             {
@@ -77,9 +72,23 @@ namespace WiremockUI
             }
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
         private void btnOpen_Click(object sender, EventArgs e)
         {
             Process.Start(txtPath.Text);
+        }
+
+        private void FormJsonFile_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                Save();
+                e.SuppressKeyPress = true;  
+            }
         }
     }
 }

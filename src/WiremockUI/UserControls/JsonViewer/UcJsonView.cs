@@ -251,5 +251,14 @@ namespace WiremockUI
                 return false;
             }
         }
+
+        private void txtContent_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\x1')
+            {
+                ((TextBox)sender).SelectAll();
+                e.Handled = true;
+            }
+        }
     }
 }
