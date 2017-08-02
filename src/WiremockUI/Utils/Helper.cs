@@ -61,6 +61,20 @@ namespace WiremockUI
             return strbuilder.ToString();
         }
 
+        public static string ReadAllText(string fileName)
+        {
+            while (IsFileLocked(fileName))
+            { }
+
+            using (var lockFileStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None))
+            {
+                using (var reader = new StreamReader(lockFileStream))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
+        }
+
         public static bool IsFileLocked(string filePath)
         {
             try

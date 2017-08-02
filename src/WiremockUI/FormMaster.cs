@@ -13,7 +13,7 @@ namespace WiremockUI
     {
         delegate void ActionDelegate();
         private int treeX;
-
+        public TabMaster TabMaster { get; private set;}
         public Dashboard Dashboard { get; private set; }
 
         public FormMaster()
@@ -24,6 +24,7 @@ namespace WiremockUI
         private void Master_Load(object sender, EventArgs e)
         {
             this.Dashboard = new Dashboard();
+            this.TabMaster = new TabMaster(this);
             LoadProxies();
         }
 
@@ -225,7 +226,7 @@ namespace WiremockUI
                 removeMenu.ImageKey = "remove";
                 removeMenu.Click += (a, b) =>
                 {
-                    RemoveProxy(nodeProxy, proxy);
+                    RemoveProxy(nodeProxy);
                 };
 
                 // play
@@ -278,6 +279,21 @@ namespace WiremockUI
             var db = new UnitOfWork();
             foreach (var c in proxy.Mocks)
                 SetMock(nodeProxy, c);
+        }
+
+        private void LoadRequestsAndResponses(TreeNode nodeMock, Mock mock)
+        {
+            var proxy = (Proxy)nodeMock.Parent.Tag;
+            var path = proxy.GetMappingPath(mock);
+            if (!Directory.Exists(path))
+                return;
+
+            string[] filePaths = Directory.GetFiles(path);
+            
+            foreach(var mapFile in filePaths)
+            {
+                AddMappingNode(nodeMock, mock, mapFile);
+            }
         }
 
         internal void SetMock(TreeNode nodeProxy, Mock mock)
@@ -405,35 +421,77 @@ namespace WiremockUI
             frmAdd.ShowDialog();
         }
 
-        private void LoadRequestsAndResponses(TreeNode nodeMock, Mock mock)
+        private void AddMappingNode(TreeNode nodeMock, Mock mock, string mapFile)
         {
             var proxy = (Proxy)nodeMock.Parent.Tag;
-            var path = proxy.GetMappingPath(mock);
-            if (!Directory.Exists(path))
-                return;
+            var treeNodeMapping = GetTreeNodeMapping(proxy, mock, mapFile);
 
-            string[] filePaths = Directory.GetFiles(path);
-            
-            foreach(var mapFile in filePaths)
+            var nodeMapping = new TreeNode(treeNodeMapping.Name);
+            nodeMapping.Tag = treeNodeMapping;
+            nodeMock.Nodes.Add(nodeMapping);
+            ChangeTreeNodeImage(nodeMapping, "request");
+
+            if (treeNodeMapping.TreeNodeBody != null)
             {
-                AddRequestResponseNode(nodeMock, mock, mapFile);
+                var nodeResponse = new TreeNode(treeNodeMapping.TreeNodeBody.Name);
+                nodeMapping.Nodes.Add(nodeResponse);
+                nodeResponse.Tag = treeNodeMapping.TreeNodeBody;
+                ChangeTreeNodeImage(nodeResponse, "response");
             }
         }
 
-        private void AddRequestResponseNode(TreeNode nodeMock, Mock mock, string mapFile)
+        private void UpdateMappingNode(TreeNode nodeMapping, TreeNodeMappingModel newTreeNodeMapping)
         {
-            var proxy = (Proxy)nodeMock.Parent.Tag;
-            var requestResponseFile = new RequestResponse(proxy, mock, mapFile);
-            var nodeRequest = new TreeNode(requestResponseFile.GetRequestFormattedName());
-            var nodeResponse = new TreeNode(requestResponseFile.GetResponseName());
-            nodeRequest.Nodes.Add(nodeResponse);
-            nodeMock.Nodes.Add(nodeRequest);
+            nodeMapping.Text = newTreeNodeMapping.Name;
+            nodeMapping.Tag = newTreeNodeMapping;
+            nodeMapping.Nodes.Clear();
+            ChangeTreeNodeImage(nodeMapping, "request");
 
-            nodeRequest.Tag = requestResponseFile.Request;
-            nodeResponse.Tag = requestResponseFile.Response;
+            if (newTreeNodeMapping.TreeNodeBody != null)
+            {
+                var nodeResponse = new TreeNode(newTreeNodeMapping.TreeNodeBody.Name);
+                nodeMapping.Nodes.Add(nodeResponse);
+                nodeResponse.Tag = newTreeNodeMapping.TreeNodeBody;
+                ChangeTreeNodeImage(nodeResponse, "response");
+            }
+        }
 
-            ChangeTreeNodeImage(nodeRequest, "request");
-            ChangeTreeNodeImage(nodeResponse, "response");
+        private TreeNodeMappingModel GetTreeNodeMapping(Proxy proxy, Mock mock, string mapFile)
+        {
+            var fileModelMapping = FileModel.Create(mapFile);
+
+            var content = fileModelMapping.GetContent(out var ex);
+            var mapName = fileModelMapping.GetOnlyFileName();
+            MappingModel mapping = null;
+            Exception exMap = null;
+
+            if (content != null)
+                mapping = MappingModel.Create(proxy, mock, content, out exMap);
+
+            if (mapping != null)
+                mapName = mapping.GetFormattedName(mapName);
+
+            var treeNodeMapping = new TreeNodeMappingModel
+            {
+                Name = mapName,
+                File = fileModelMapping,
+                Mapping = mapping,
+                Proxy = proxy,
+                Mock = mock
+            };
+
+            if (mapping?.HasBodyFile() == true)
+            {
+                treeNodeMapping.TreeNodeBody = new TreeNodeBodyModel
+                {
+                    File = FileModel.Create(mapping?.GetBodyFullPath()),
+                    TreeNodeMapping = treeNodeMapping
+                };
+
+                treeNodeMapping.TreeNodeBody.Name = treeNodeMapping.TreeNodeBody.File.GetOnlyFileName();
+            }
+
+            return treeNodeMapping;
         }
 
         private void StartWatcherFolder(TreeNode nodeMock, Mock mock)
@@ -442,16 +500,14 @@ namespace WiremockUI
             var proxy = (Proxy)nodeMock.Parent.Tag;
 
             watcher.Path = proxy.GetMappingPath(mock);
-            //watcher.NotifyFilter = NotifyFilters.LastWrite;
             watcher.Filter = "*.*";
             watcher.IncludeSubdirectories = true;
 
             watcher.Created += (sender, e) =>
             {
-                //nodeService.Expand();
                 var d = new ActionDelegate(() =>
                 {
-                    AddRequestResponseNode(nodeMock, mock, e.FullPath);
+                    AddMappingNode(nodeMock, mock, e.FullPath);
                     nodeMock.Expand();
                 });
 
@@ -463,7 +519,7 @@ namespace WiremockUI
             Dashboard.AddWatchers(mock, watcher);
         }
 
-        private void RemoveProxy(TreeNode nodeProxy, object defaultMock)
+        private void RemoveProxy(TreeNode nodeProxy)
         {
             if (MessageBox.Show("Deseja realmente excluir esse proxy de mock?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -570,23 +626,19 @@ namespace WiremockUI
 
             var frmStart = new FormStartMockService(this, proxy, mock, record);
             frmStart.Play();
-
             var recordText = record ? " (Gravando)" : "";
-            var tabpage = new TabPage { Text = mock.Name + recordText };
-            tabpage.Tag = mock.Id;
-            tabpage.BorderStyle = BorderStyle.Fixed3D;
-            tabForms.TabPages.Add(tabpage);
-            frmStart.TopLevel = false;
-            frmStart.Parent = tabpage;
-            frmStart.Show();
-            frmStart.Dock = DockStyle.Fill;
+            TabMaster.AddTab(frmStart, mock.Id, mock.Name + recordText)
+                .CanClose = () => {
+                    if (Helper.MessageBoxQuestion("Deseja realmente parar o serviço?") == DialogResult.Yes)
+                        StopService(mock);
+
+                    return false;
+                };
+
             ChangeTreeNodeImage(nodeProxy, (record ? "record" : "start"));
-            tabForms.SelectedTab = tabpage;
 
             if (record)
-            {
                 StartWatcherFolder(nodeMock, mock);
-            }
         }
 
         private void StopService(Mock mock)
@@ -597,30 +649,7 @@ namespace WiremockUI
             Dashboard.Stop(mock);
             ChangeTreeNodeImage(nodeProxy, "stop");
 
-            foreach (TabPage t in tabForms.TabPages)
-            {
-                if (t.Tag != null && t.Tag is Guid && (Guid)t.Tag == mock.Id)
-                {
-                    tabForms.TabPages.Remove(t);
-                    break;
-                }
-            }
-        }
-
-        public void CloseTab(TabPage tab)
-        {
-            tabForms.TabPages.Remove(tab);
-        }
-
-        public TabPage GetTabIfOpen(object tag)
-        {
-            foreach (TabPage t in tabForms.TabPages)
-            {
-                if (t.Tag == tag)
-                    return t;
-            }
-
-            return null;
+            TabMaster.CloseTab(mock.Id);
         }
 
         private IEnumerable<TreeNode> GetAllProxiesNodes()
@@ -684,6 +713,10 @@ namespace WiremockUI
         private void treeServices_DoubleClick(object sender, EventArgs e)
         {
             var selected = ((TreeView)sender).SelectedNode;
+            
+            if (selected == null)
+                return;
+
             if (selected.Tag != null && selected.Tag is Proxy)
             {
                 OpenAddOrEditProxy((Proxy)selected.Tag);
@@ -692,51 +725,36 @@ namespace WiremockUI
             {
                 OpenAddOrEditMock(selected.Parent, (Mock)selected.Tag);
             }
-            else if (selected.Tag != null && selected.Tag is RequestResponse.RequestFile)
+            else if (selected.Tag != null && selected.Tag is TreeNodeMappingModel treeNodeMapping)
             {
-                var currentTab = GetTabIfOpen(selected.Tag);
+                var currentTab = TabMaster.GetTabByTag(selected);
                 if (currentTab != null)
                 {
                     tabForms.SelectedTab = currentTab;
                     return;
                 }
 
-                var request = (RequestResponse.RequestFile)selected.Tag;
+                var frmStart = new FormJsonFile(this, null, treeNodeMapping.File.FullPath);
+                frmStart.OnSave = () =>
+                {
+                    var newTreeNodeMapping = GetTreeNodeMapping(treeNodeMapping.Proxy, treeNodeMapping.Mock, treeNodeMapping.File.FullPath);
+                    UpdateMappingNode(selected, newTreeNodeMapping);
+                };
 
-                var tabpage = new TabPage { Text = request.RequestResponse.GetRequestName() };
-                tabpage.Tag = selected.Tag;
-
-                var frmStart = new FormViewFile(this, tabpage, request.FileName, request.Body);
-                tabpage.BorderStyle = BorderStyle.Fixed3D;
-                tabForms.TabPages.Add(tabpage);
-                frmStart.TopLevel = false;
-                frmStart.Parent = tabpage;
-                frmStart.Show();
-                frmStart.Dock = DockStyle.Fill;
-                tabForms.SelectedTab = tabpage;
+                TabMaster.AddTab(frmStart, selected, treeNodeMapping.File.GetOnlyFileName());
             }
-            else if (selected.Tag != null && selected.Tag is RequestResponse.ResponseFile)
+            else if (selected.Tag != null && selected.Tag is TreeNodeBodyModel treeNodeBody)
             {
-                var currentTab = GetTabIfOpen(selected.Tag);
+                var currentTab = TabMaster.GetTabByTag(selected);
                 if (currentTab != null)
                 {
                     tabForms.SelectedTab = currentTab;
                     return;
                 }
 
-                var request = (RequestResponse.ResponseFile)selected.Tag;
-
-                var tabpage = new TabPage { Text = request.RequestResponse.GetResponseName() };
-                tabpage.Tag = selected.Tag;
-
-                var frmStart = new FormViewFile(this, tabpage, request.FileName, request.Body);
-                tabpage.BorderStyle = BorderStyle.Fixed3D;
-                tabForms.TabPages.Add(tabpage);
-                frmStart.TopLevel = false;
-                frmStart.Parent = tabpage;
-                frmStart.Show();
-                frmStart.Dock = DockStyle.Fill;
-                tabForms.SelectedTab = tabpage;
+                var frmStart = new FormJsonFile(this, null, treeNodeBody.File.FullPath);
+                frmStart.ExpandAll = false;
+                TabMaster.AddTab(frmStart, selected, treeNodeBody.File.GetOnlyFileName());
             }
         }
 
@@ -783,7 +801,7 @@ namespace WiremockUI
             if (treeX > e.Node.Bounds.Left) e.Cancel = true;
         }
 
-        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        private void aboutMenuItem_Click(object sender, EventArgs e)
         {
             new FormAbout().ShowDialog();
         }

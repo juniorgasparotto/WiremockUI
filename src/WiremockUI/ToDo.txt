@@ -1,4 +1,10 @@
-﻿criar mecanismo para renomear request/body
+﻿criar control +A nos textareas - OK
+aceitar tab com 4 chars - OK
+salvar com ctrl + s - OK
+adicionar caractere com tab - OK
+remover caracteres vazios com tab - OK
+
+criar mecanismo para renomear request/body
 criar mecanismo para copiar como curl
 multiplas linguas
 preferencias
@@ -19,3 +25,17 @@ melhorar visualização de json para valores (criar um form especifico pra json)
 suportar visualização de resultado de XML
 criar tutorial no github
 quando fechar uma tab, deve ir para a tab de tras da fechada
+deixar inserir mais de um url para a mesma api
+criar response especial
+cria request especial
+testar request sem body
+criar pesquisar
+criar mock/renomear/duplicar/remover
+criar formatador de json
+criar mecanismo para visualizar os logs do wiremock em forma de json
+criar comparador de json
+criar comentario por mock
+criar um visualizador generico para a resposta quando não json
+criar um visualizador de xml para a resposta com formatação
+criar um visualizador de imagem para a resposta
+ao fechar a tab ir para a anterior
