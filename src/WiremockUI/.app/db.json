@@ -2,24 +2,6 @@
   "MockServices": null,
   "Proxies": [
     {
-      "Id": "92f3f103-8263-4990-b6ed-c4d96a210639",
-      "UrlOriginal": "http://jsonplaceholder.typicode.com/posts",
-      "PortProxy": 5500,
-      "Name": "Api",
-      "Mocks": [
-        {
-          "Id": "57f0dcc9-2dfd-44c9-9ca6-775a99a1dc8c",
-          "Name": "mock1",
-          "IsDefault": false
-        },
-        {
-          "Id": "269ece5c-13ab-4670-baae-f081280b006f",
-          "Name": "Teste do test para voce testar o teste",
-          "IsDefault": true
-        }
-      ]
-    },
-    {
       "Id": "74a2535a-a5d1-4ffc-aac9-c28c2e1d809c",
       "UrlOriginal": "http://jsonplaceholder.typicode.com/users",
       "PortProxy": 5501,
@@ -38,18 +20,17 @@
       ]
     },
     {
-      "Id": "e4f48982-abda-491d-9dad-d98e370b2863",
-      "UrlOriginal": "http://jsonplaceholder.typicode.com",
+      "Id": "851af5b2-0682-4441-aca0-d048a4a80d30",
+      "UrlOriginal": "http://www.newtonsoft.com/json/help/html/SerializationAttributes.htm",
       "PortProxy": 5502,
-      "Name": "Api3",
-      "Mocks": []
-    },
-    {
-      "Id": "73743978-65df-4099-8c5c-f48808622369",
-      "UrlOriginal": "dasd",
-      "PortProxy": 5503,
-      "Name": "ll",
-      "Mocks": []
+      "Name": "Teste",
+      "Mocks": [
+        {
+          "Id": "c092f505-62ba-400f-9710-1b6369c067bd",
+          "Name": "Cenario 1",
+          "IsDefault": true
+        }
+      ]
     }
   ]
 }

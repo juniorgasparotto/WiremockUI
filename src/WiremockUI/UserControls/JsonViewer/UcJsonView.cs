@@ -3,45 +3,89 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace WiremockUI
 {
     public partial class UcJsonView : UserControl
     {
-        private FormMaster master;
-        private string tabName;
+        private bool expandAll;
 
-        public UcJsonView(FormMaster master, string tabName, string content, bool expandAll = true)
+        public Action<string, string, bool> OnJsonVisualizer
+        {
+            get;
+            set;
+        }
+
+        //[Description("The master form"), Category("Data")]
+        //public FormMaster Master
+        //{
+        //    get => master;
+        //    set => master = value;
+        //}
+
+        //[Description("The tab name"), Category("Data")]
+        //public string TabName
+        //{
+        //    get => tabName;
+        //    set => tabName = value;
+        //}
+
+        [Description("The content json"), Category("Data")]
+        public string ContentJson
+        {
+            get => txtContent.Text;
+            set => txtContent.Text = value;
+        }
+
+        [Description("If true all nodes are expanded"), Category("Data")]
+        public bool ExpandAll
+        {
+            get => expandAll;
+            set => expandAll = value;
+        }
+
+        public UcJsonView()
         {
             InitializeComponent();
+        }
 
-            this.tabName = tabName;
-            this.master = master;
+        public UcJsonView(string content, bool expandAll = true)
+        {
+            InitializeComponent();
+            this.ContentJson = content;
+            this.expandAll = expandAll;
+        }
+
+        private void GenerateTree()
+        {
+            treeRaw.Nodes.Clear();
             string rootName = "root", nodeName = "node";
 
             JContainer json;
             try
             {
-                if (content.StartsWith("["))
+                if (this.ContentJson.StartsWith("["))
                 {
-                    json = JArray.Parse(content);
-                    treeJson.Nodes.Add(Json2Tree((JArray)json, rootName, nodeName));
+                    json = JArray.Parse(this.ContentJson);
+                    treeRaw.Nodes.Add(Json2Tree((JArray)json, rootName, nodeName));
                 }
                 else
                 {
-                    json = JObject.Parse(content);
-                    treeJson.Nodes.Add(Json2Tree((JObject)json, rootName));
+                    json = JObject.Parse(this.ContentJson);
+                    treeRaw.Nodes.Add(Json2Tree((JObject)json, rootName));
                 }
 
                 // aways expand root
-                treeJson.Nodes[0].Expand();
+                treeRaw.Nodes[0].Expand();
 
                 if (expandAll)
-                    treeJson.ExpandAll();
+                    treeRaw.ExpandAll();
             }
             catch (Exception ex)
             {
-                lblError.Text = string.Format(lblError.Text, ex.Message);
+                lblError.Text = string.Format("Ocorreu um erro ao tentar carregar o JSON: {0}", ex.Message);
                 lblError.Visible = true;
             }
         }
@@ -137,10 +181,7 @@ namespace WiremockUI
             viewJsonMenu.Text = "Visualizar como Json";
             viewJsonMenu.Click += (a, b) =>
             {
-                var name = tabName;
-                if (node.Parent != null)
-                    name = name + "(" + node.Parent.Text + ")";
-
+                var name = node.Parent?.Text;
                 OpenJson(name, node.Text);
             };
 
@@ -163,14 +204,52 @@ namespace WiremockUI
 
         private void OpenJson(string name, string body)
         {
-            var tabpage = new TabPageCustom { Text = name };
-            var frmStart = new UcJsonView(master, tabName, body, true);
-            tabpage.BorderStyle = BorderStyle.None;
-            master.GetTabControl().TabPages.Add(tabpage);
-            frmStart.Parent = tabpage;
-            frmStart.Show();
-            frmStart.Dock = DockStyle.Fill;
-            master.GetTabControl().SelectedTab = tabpage;
+            OnJsonVisualizer?.Invoke(name, body, true);            
+        }
+
+        private void tabs_Click(object sender, EventArgs e)
+        {
+            var seleceted = tabs.SelectedTab;
+            if (seleceted == tabTree)
+                GenerateTree();
+        }
+
+        private void btnFormat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ContentJson = JToken.Parse(ContentJson).ToString();
+            }
+            catch(Exception ex)
+            {
+                Helper.MessageBoxError("Esse JSON não é válido.");
+            }
+        }
+
+        public bool IsValidJson(string strInput)
+        {
+            strInput = strInput.Trim();
+            if ((strInput.StartsWith("{") && strInput.EndsWith("}")) || //For object
+                (strInput.StartsWith("[") && strInput.EndsWith("]"))) //For array
+            {
+                try
+                {
+                    var obj = JToken.Parse(strInput);
+                    return true;
+                }
+                catch (JsonReaderException jex)
+                {
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

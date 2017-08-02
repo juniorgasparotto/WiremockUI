@@ -18,3 +18,18 @@ melhorar treeview do json
 melhorar visualização de json para valores (criar um form especifico pra json)
 suportar visualização de resultado de XML
 deixar inserir mais de um url para a mesma api
+criar control +A nos textareas
+aceitar tab com 4 chars
+criar response especial
+cria request especial
+testar request sem body
+criar pesquisar
+criar mock/renomear/duplicar/remover
+criar formatador de json
+criar mecanismo para visualizar os logs do wiremock em forma de json
+criar comparador de json
+criar comentario por mock
+criar um visualizador generico para a resposta quando não json
+criar um visualizador de xml para a resposta com formatação
+criar um visualizador de imagem para a resposta
+ao fechar a tab ir para a anterior

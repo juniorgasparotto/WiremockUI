@@ -203,21 +203,30 @@
     <Compile Include="FormAddProxy.Designer.cs">
       <DependentUpon>FormAddProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="TabControlCustom\TabMaster.cs" />
-    <Compile Include="TabControlCustom\TabPageCustom.cs">
+    <Compile Include="FormJsonViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormJsonViewer.Designer.cs">
+      <DependentUpon>FormJsonViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TreeNodeBodyModel.cs" />
+    <Compile Include="Models\TreeNodeMappingModel.cs" />
+    <Compile Include="Models\FileModel.cs" />
+    <Compile Include="Models\MappingModel.cs" />
+    <Compile Include="UserControls\TabControlCustom\TabMaster.cs" />
+    <Compile Include="UserControls\TabControlCustom\TabPageCustom.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TabControlCustom\TabControlCustom.cs">
+    <Compile Include="UserControls\TabControlCustom\TabControlCustom.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UcJsonView.cs">
+    <Compile Include="UserControls\JsonViewer\UcJsonView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UcJsonView.Designer.cs">
+    <Compile Include="UserControls\JsonViewer\UcJsonView.Designer.cs">
       <DependentUpon>UcJsonView.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Helper.cs" />
-    <Compile Include="Models\RequestResponse.cs" />
     <Compile Include="FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,11 +256,11 @@
     <Compile Include="Services\Dashboard.cs" />
     <Compile Include="Services\WireMockServer.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="FormViewFile.cs">
+    <Compile Include="FormJsonFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormViewFile.Designer.cs">
-      <DependentUpon>FormViewFile.cs</DependentUpon>
+    <Compile Include="FormJsonFile.Designer.cs">
+      <DependentUpon>FormJsonFile.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAbout.resx">
@@ -259,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddProxy.resx">
       <DependentUpon>FormAddProxy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormJsonViewer.resx">
+      <DependentUpon>FormJsonViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStartMockService.resx">
       <DependentUpon>FormStartMockService.cs</DependentUpon>
@@ -269,8 +281,8 @@
     <EmbeddedResource Include="FormMaster.resx">
       <DependentUpon>FormMaster.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormViewFile.resx">
-      <DependentUpon>FormViewFile.cs</DependentUpon>
+    <EmbeddedResource Include="FormJsonFile.resx">
+      <DependentUpon>FormJsonFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -282,7 +294,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UcJsonView.resx">
+    <EmbeddedResource Include="UserControls\JsonViewer\UcJsonView.resx">
       <DependentUpon>UcJsonView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".app\db.json" />
@@ -301,7 +313,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\tab-close.png" />
+    <None Include="Images\tab-close.png" />
     <Content Include="Jar\wiremock-standalone-2.6.0.jar" />
     <Content Include="ToDo.txt" />
     <Content Include="wiremock.ico" />
