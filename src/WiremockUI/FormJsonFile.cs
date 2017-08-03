@@ -21,6 +21,7 @@ namespace WiremockUI
         public FormJsonFile(FormMaster master, TabPageCustom tabPage, string fileName)
         {
             InitializeComponent();
+            this.TabStop = false;
 
             // to work Ctrl+S
             this.KeyPreview = true;

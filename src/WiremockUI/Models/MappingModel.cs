@@ -63,7 +63,7 @@ namespace WiremockUI
             Other = 0,
             Json = 1,
             Xml = 2,
-            Image = 2
+            Image = 3
         }
 
         public class RequestModel
