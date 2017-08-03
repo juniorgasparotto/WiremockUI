@@ -182,6 +182,7 @@ namespace WiremockUI
             this.treeServices.SelectedImageIndex = 0;
             this.treeServices.Size = new System.Drawing.Size(106, 364);
             this.treeServices.TabIndex = 2;
+            this.treeServices.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_AfterLabelEdit);
             this.treeServices.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeServices_BeforeCollapse);
             this.treeServices.DoubleClick += new System.EventHandler(this.treeServices_DoubleClick);
             this.treeServices.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeServices_MouseMove);

@@ -203,17 +203,17 @@
     <Compile Include="FormAddProxy.Designer.cs">
       <DependentUpon>FormAddProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormImageFile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormImageFile.Designer.cs">
-      <DependentUpon>FormImageFile.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormJsonViewer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormJsonViewer.Designer.cs">
       <DependentUpon>FormJsonViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormImageFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImageFile.Designer.cs">
+      <DependentUpon>FormImageFile.cs</DependentUpon>
     </Compile>
     <Compile Include="FormXmlFile.cs">
       <SubType>Form</SubType>
@@ -304,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormJsonFile.resx">
       <DependentUpon>FormJsonFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImageFile.resx">
+      <DependentUpon>FormImageFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTextFile.resx">
       <DependentUpon>FormTextFile.cs</DependentUpon>

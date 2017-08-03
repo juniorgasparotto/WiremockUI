@@ -25,6 +25,9 @@ namespace WiremockUI
         {
             this.Dashboard = new Dashboard();
             this.TabMaster = new TabMaster(this);
+
+            // permite renomear os nodes
+            treeServices.LabelEdit = true;
             LoadProxies();
         }
 
@@ -427,6 +430,30 @@ namespace WiremockUI
             var treeNodeMapping = GetTreeNodeMapping(proxy, mock, mapFile);
 
             var nodeMapping = new TreeNode(treeNodeMapping.Name);
+
+            // context menu
+            var menu = new ContextMenuStrip();
+            menu.ImageList = imageList1;
+            var renameMenu = new ToolStripMenuItem();
+            var deleteMenu = new ToolStripMenuItem();
+            var disableMenu = new ToolStripMenuItem();
+
+            menu.Items.AddRange(new ToolStripMenuItem[]
+            {
+                renameMenu,
+                deleteMenu,
+                disableMenu
+            });
+
+
+            // add files
+            renameMenu.Text = "Renomear";
+            renameMenu.Click += (a, b) =>
+            {
+                nodeMapping.BeginEdit();
+            };
+
+            nodeMapping.ContextMenuStrip = menu;
             nodeMapping.Tag = treeNodeMapping;
             nodeMock.Nodes.Add(nodeMapping);
             ChangeTreeNodeImage(nodeMapping, "request");
@@ -822,6 +849,64 @@ namespace WiremockUI
         private void aboutMenuItem_Click(object sender, EventArgs e)
         {
             new FormAbout().ShowDialog();
+        }
+
+        private string GetNewName(string newName, FileModel file)
+        {
+            var currentPath = file.FullPath;
+            var directory = Path.GetDirectoryName(file.FullPath);
+            return Path.Combine(directory, newName);
+        }
+
+        private void treeServices_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            if (e.Label != null)
+            {
+                if (e.Label.Length > 0)
+                {
+                    try
+                    {
+                        var selected = e.Node;
+                        if (selected.Tag is TreeNodeMappingModel model)
+                        {
+                            string newNameMap = null;
+                            string newNameBody = null;
+
+                            newNameMap = GetNewName(e.Label, model.File);
+
+                            if (File.Exists(newNameMap))
+                            {
+                                Helper.MessageBoxError("Esse arquivo de mapa já existe");
+                                return;
+                            }
+
+                            if (model.Mapping != null && model.Mapping.HasBodyFile())
+                            {
+                                newNameBody = GetNewName(e.Label, model.TreeNodeBody.File);
+
+                                if (File.Exists(newNameBody))
+                                {
+                                    Helper.MessageBoxError("Esse arquivo de resposta já existe");
+                                    return;
+                                }
+                            }
+
+                            File.Move(model.File.FullPath, newNameMap);
+                            if (newNameBody != null)
+                                File.Move(model.TreeNodeBody.File.FullPath, newNameBody);
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        Helper.MessageBoxError("Erro ao renomear arquivo: " + ex.Message);
+                        e.CancelEdit = true;
+                    }
+                }
+                else
+                {                    
+                    e.CancelEdit = true;                    
+                }
+            }
         }
     }
 }

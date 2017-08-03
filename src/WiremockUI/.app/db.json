@@ -13,6 +13,19 @@
           "IsDefault": true
         }
       ]
+    },
+    {
+      "Id": "15d0be54-d9e7-4935-9d09-a8274e4d9a84",
+      "UrlOriginal": "https://tt.ciandt.com/",
+      "PortProxy": 5504,
+      "Name": "TT",
+      "Mocks": [
+        {
+          "Id": "c54709c2-2e0d-46a0-a5a6-425273073dba",
+          "Name": "Teste",
+          "IsDefault": true
+        }
+      ]
     }
   ]
 }

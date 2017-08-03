@@ -1,31 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WiremockUI
 {
     public partial class FormImageFile : Form
     {
-        private FormMaster formMaster;
-        private object p;
-        private string fullPath;
+        private object tabPage;
+        private object master;
 
-        public FormImageFile()
+        public Action OnSave { get; set; }
+
+        public FormImageFile(FormMaster master, TabPageCustom tabPage, string fileName)
         {
             InitializeComponent();
+
+            this.tabPage = tabPage;
+            this.master = master;
+
+            if (fileName != null)
+            {
+                txtPath.Text = fileName;
+                imgFile.ImageLocation = fileName;
+            }
+            else
+            {
+                txtPath.Enabled = false;
+                btnOpen.Enabled = false;
+            }
         }
 
-        public FormImageFile(FormMaster formMaster, object p, string fullPath)
+        private void btnOpen_Click(object sender, EventArgs e)
         {
-            this.formMaster = formMaster;
-            this.p = p;
-            this.fullPath = fullPath;
+            Process.Start(txtPath.Text);
         }
     }
 }

@@ -39,3 +39,4 @@ criar um visualizador generico para a resposta quando não json
 criar um visualizador de xml para a resposta com formatação
 criar um visualizador de imagem para a resposta
 ao fechar a tab ir para a anterior
+fechar tab com botao do scroll do meio

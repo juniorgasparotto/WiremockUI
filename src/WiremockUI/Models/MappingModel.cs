@@ -55,7 +55,7 @@ namespace WiremockUI
 
         public string GetFormattedName(string fileName)
         {
-            return fileName + " (" + Request?.Url + ")";
+            return Request?.Url + " (" + fileName + ")";
         }
 
         public enum ContentType
