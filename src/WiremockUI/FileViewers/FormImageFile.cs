@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace WiremockUI
 {
-    public partial class FormImageFile : Form
+    public partial class FormImageFile : Form, IFormFileUpdate
     {
         private object tabPage;
         private object master;
@@ -18,7 +18,11 @@ namespace WiremockUI
 
             this.tabPage = tabPage;
             this.master = master;
+            LoadForm(fileName);
+        }
 
+        private void LoadForm(string fileName)
+        {
             if (fileName != null)
             {
                 txtPath.Text = fileName;
@@ -34,6 +38,11 @@ namespace WiremockUI
         private void btnOpen_Click(object sender, EventArgs e)
         {
             Process.Start(txtPath.Text);
+        }
+
+        public void Update(string fileName)
+        {
+            LoadForm(fileName);
         }
     }
 }

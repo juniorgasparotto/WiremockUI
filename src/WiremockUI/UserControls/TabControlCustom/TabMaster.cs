@@ -7,7 +7,7 @@ namespace WiremockUI
         private FormMaster master;
         private TabControl tabControl;
 
-        private class Tag
+        public class Tag
         {
             public object InternalTag { get; set; }
             public Form Form { get; set; }
@@ -59,6 +59,11 @@ namespace WiremockUI
             }
 
             return null;
+        }
+
+        public Form GetForm(TabPageCustom tab)
+        {
+            return ((TabMaster.Tag)tab.Tag).Form;
         }
     }
 }

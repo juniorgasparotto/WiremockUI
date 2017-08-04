@@ -209,28 +209,29 @@
     <Compile Include="FormJsonViewer.Designer.cs">
       <DependentUpon>FormJsonViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormImageFile.cs">
+    <Compile Include="FileViewers\FormImageFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormImageFile.Designer.cs">
+    <Compile Include="FileViewers\FormImageFile.Designer.cs">
       <DependentUpon>FormImageFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormXmlFile.cs">
+    <Compile Include="FileViewers\FormXmlFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormXmlFile.Designer.cs">
+    <Compile Include="FileViewers\FormXmlFile.Designer.cs">
       <DependentUpon>FormXmlFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTextFile.cs">
+    <Compile Include="FileViewers\FormTextFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTextFile.Designer.cs">
+    <Compile Include="FileViewers\FormTextFile.Designer.cs">
       <DependentUpon>FormTextFile.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\TreeNodeBodyModel.cs" />
     <Compile Include="Models\TreeNodeMappingModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\MappingModel.cs" />
+    <Compile Include="FileViewers\IFormFileUpdate.cs" />
     <Compile Include="UserControls\EditorTextbox\EditorTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -277,10 +278,10 @@
     <Compile Include="Services\Dashboard.cs" />
     <Compile Include="Services\WireMockServer.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="FormJsonFile.cs">
+    <Compile Include="FileViewers\FormJsonFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormJsonFile.Designer.cs">
+    <Compile Include="FileViewers\FormJsonFile.Designer.cs">
       <DependentUpon>FormJsonFile.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -302,16 +303,16 @@
     <EmbeddedResource Include="FormMaster.resx">
       <DependentUpon>FormMaster.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormJsonFile.resx">
+    <EmbeddedResource Include="FileViewers\FormJsonFile.resx">
       <DependentUpon>FormJsonFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormImageFile.resx">
+    <EmbeddedResource Include="FileViewers\FormImageFile.resx">
       <DependentUpon>FormImageFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTextFile.resx">
+    <EmbeddedResource Include="FileViewers\FormTextFile.resx">
       <DependentUpon>FormTextFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormXmlFile.resx">
+    <EmbeddedResource Include="FileViewers\FormXmlFile.resx">
       <DependentUpon>FormXmlFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

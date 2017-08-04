@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace WiremockUI
 {
-    public partial class FormJsonFile : Form
+    public partial class FormJsonFile : Form, IFormFileUpdate
     {
         private TabPageCustom tabPage;
         private FormMaster master;
@@ -26,10 +26,14 @@ namespace WiremockUI
             // to work Ctrl+S
             this.KeyPreview = true;
 
-            var content = "";
             this.tabPage = tabPage;
             this.master = master;
+            LoadForm(fileName);
+        }
 
+        private void LoadForm(string fileName)
+        {
+            var content = "";
             if (fileName != null)
             {
                 txtPath.Text = fileName;
@@ -94,6 +98,11 @@ namespace WiremockUI
                 Helper.AnimateSaveButton(btnSave);
                 e.SuppressKeyPress = true;  
             }
+        }
+
+        public void Update(string fileName)
+        {
+            LoadForm(fileName);
         }
     }
 }

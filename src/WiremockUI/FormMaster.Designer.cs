@@ -168,7 +168,7 @@ namespace WiremockUI
             // 
             this.splitContainer.Panel2.Controls.Add(this.tabForms);
             this.splitContainer.Size = new System.Drawing.Size(675, 364);
-            this.splitContainer.SplitterDistance = 106;
+            this.splitContainer.SplitterDistance = 200;
             this.splitContainer.TabIndex = 2;
             // 
             // treeServices
@@ -180,11 +180,13 @@ namespace WiremockUI
             this.treeServices.Location = new System.Drawing.Point(0, 0);
             this.treeServices.Name = "treeServices";
             this.treeServices.SelectedImageIndex = 0;
-            this.treeServices.Size = new System.Drawing.Size(106, 364);
+            this.treeServices.Size = new System.Drawing.Size(100, 364);
             this.treeServices.TabIndex = 2;
+            this.treeServices.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_BeforeLabelEdit);
             this.treeServices.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_AfterLabelEdit);
             this.treeServices.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeServices_BeforeCollapse);
             this.treeServices.DoubleClick += new System.EventHandler(this.treeServices_DoubleClick);
+            this.treeServices.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeServices_KeyDown);
             this.treeServices.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeServices_MouseMove);
             // 
             // imageList1
@@ -203,6 +205,7 @@ namespace WiremockUI
             this.imageList1.Images.SetKeyName(9, "response");
             this.imageList1.Images.SetKeyName(10, "default");
             this.imageList1.Images.SetKeyName(11, "mock");
+            this.imageList1.Images.SetKeyName(12, "check");
             // 
             // tabForms
             // 
@@ -212,7 +215,7 @@ namespace WiremockUI
             this.tabForms.Name = "tabForms";
             this.tabForms.Padding = new System.Drawing.Point(20, 5);
             this.tabForms.SelectedIndex = 0;
-            this.tabForms.Size = new System.Drawing.Size(565, 364);
+            this.tabForms.Size = new System.Drawing.Size(422, 364);
             this.tabForms.TabIndex = 0;
             // 
             // FormMaster

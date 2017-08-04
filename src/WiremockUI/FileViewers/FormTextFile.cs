@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WiremockUI
 {
-    public partial class FormTextFile : Form
+    public partial class FormTextFile : Form, IFormFileUpdate
     {
         private object tabPage;
         private object master;
@@ -21,10 +18,14 @@ namespace WiremockUI
 
             this.TabStop = false;
 
-            var content = "";
             this.tabPage = tabPage;
             this.master = master;
+            LoadForm(fileName);
+        }
 
+        private void LoadForm(string fileName)
+        {
+            var content = "";
             if (fileName != null)
             {
                 txtPath.Text = fileName;
@@ -74,6 +75,11 @@ namespace WiremockUI
                 Helper.AnimateSaveButton(btnSave);
                 e.SuppressKeyPress = true;
             }
+        }
+
+        public void Update(string fileName)
+        {
+            LoadForm(fileName);
         }
     }
 }

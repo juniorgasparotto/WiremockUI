@@ -7,7 +7,7 @@ using System.Text;
 
 namespace WiremockUI
 {
-    public partial class FormXmlFile : Form
+    public partial class FormXmlFile : Form, IFormFileUpdate
     {
         private object tabPage;
         private object master;
@@ -20,10 +20,14 @@ namespace WiremockUI
 
             this.TabStop = false;
 
-            var content = "";
             this.tabPage = tabPage;
             this.master = master;
+            LoadForm(fileName);
+        }
 
+        private void LoadForm(string fileName)
+        {
+            var content = "";
             if (fileName != null)
             {
                 txtPath.Text = fileName;
@@ -127,6 +131,11 @@ namespace WiremockUI
             {
                 Helper.MessageBoxError("Esse XML está inválido: " + ex.Message);
             }
+        }
+
+        public void Update(string fileName)
+        {
+            LoadForm(fileName);
         }
     }
 }

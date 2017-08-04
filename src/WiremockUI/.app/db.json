@@ -10,7 +10,14 @@
         {
           "Id": "c092f505-62ba-400f-9710-1b6369c067bd",
           "Name": "Cenario 1",
-          "IsDefault": true
+          "IsDefault": true,
+          "ShowURL": true
+        },
+        {
+          "Id": "ff7035fd-49e2-4369-b55b-0d827dd51715",
+          "Name": "sd",
+          "IsDefault": false,
+          "ShowURL": false
         }
       ]
     },
@@ -23,7 +30,8 @@
         {
           "Id": "c54709c2-2e0d-46a0-a5a6-425273073dba",
           "Name": "Teste",
-          "IsDefault": true
+          "IsDefault": true,
+          "ShowURL": false
         }
       ]
     }

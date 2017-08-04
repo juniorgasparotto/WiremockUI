@@ -3,6 +3,7 @@ using System.IO;
 using WiremockUI.Data;
 using System.Collections.Generic;
 using System;
+using Newtonsoft.Json.Linq;
 
 namespace WiremockUI
 {
@@ -41,6 +42,13 @@ namespace WiremockUI
             }
         }
 
+        public void RenameBodyName(FileModel fileMap, string bodyFileName)
+        {
+            var mapping = JsonConvert.DeserializeObject<JObject>(fileMap.GetContent(out _));
+            mapping.SelectToken("response")["bodyFileName"] = Path.GetFileName(bodyFileName);
+            File.WriteAllText(fileMap.FullPath, mapping.ToString());
+        }
+
         public bool HasBodyFile()
         {
             if (!string.IsNullOrWhiteSpace(Response.BodyFileName) && File.Exists(GetBodyFullPath()))
@@ -53,9 +61,12 @@ namespace WiremockUI
             return Path.Combine(Proxy.GetFullPath(Mock), "__files", Response.BodyFileName);
         }
 
-        public string GetFormattedName(string fileName)
+        public string GetFormattedName(string fileName, bool showUrl)
         {
-            return Request?.Url + " (" + fileName + ")";
+            if (showUrl)
+                return Request?.Url + " (" + fileName + ")";
+
+            return fileName;
         }
 
         public enum ContentType
