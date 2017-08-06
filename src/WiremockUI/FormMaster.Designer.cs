@@ -180,7 +180,7 @@ namespace WiremockUI
             this.treeServices.Location = new System.Drawing.Point(0, 0);
             this.treeServices.Name = "treeServices";
             this.treeServices.SelectedImageIndex = 0;
-            this.treeServices.Size = new System.Drawing.Size(100, 364);
+            this.treeServices.Size = new System.Drawing.Size(200, 364);
             this.treeServices.TabIndex = 2;
             this.treeServices.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_BeforeLabelEdit);
             this.treeServices.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_AfterLabelEdit);
@@ -206,6 +206,9 @@ namespace WiremockUI
             this.imageList1.Images.SetKeyName(10, "default");
             this.imageList1.Images.SetKeyName(11, "mock");
             this.imageList1.Images.SetKeyName(12, "check");
+            this.imageList1.Images.SetKeyName(13, "disable");
+            this.imageList1.Images.SetKeyName(14, "duplicate");
+            this.imageList1.Images.SetKeyName(15, "rename");
             // 
             // tabForms
             // 
@@ -215,7 +218,7 @@ namespace WiremockUI
             this.tabForms.Name = "tabForms";
             this.tabForms.Padding = new System.Drawing.Point(20, 5);
             this.tabForms.SelectedIndex = 0;
-            this.tabForms.Size = new System.Drawing.Size(422, 364);
+            this.tabForms.Size = new System.Drawing.Size(471, 364);
             this.tabForms.TabIndex = 0;
             // 
             // FormMaster

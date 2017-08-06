@@ -42,11 +42,11 @@ namespace WiremockUI
             }
         }
 
-        public void RenameBodyName(FileModel fileMap, string bodyFileName)
+        public string RenameBodyName(string content, string bodyFileName)
         {
-            var mapping = JsonConvert.DeserializeObject<JObject>(fileMap.GetContent(out _));
+            var mapping = JsonConvert.DeserializeObject<JObject>(content);
             mapping.SelectToken("response")["bodyFileName"] = Path.GetFileName(bodyFileName);
-            File.WriteAllText(fileMap.FullPath, mapping.ToString());
+            return mapping.ToString();
         }
 
         public bool HasBodyFile()

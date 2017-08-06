@@ -32,6 +32,10 @@ namespace WiremockUI
             set => expandAll = value;
         }
 
+        public TabPage TabRaw => tabRaw;
+        public TabPage TabJsonTree => tabTree;
+        public TabControl Tabs => tabs;
+
         public UcJsonView()
         {
             InitializeComponent();
@@ -44,7 +48,7 @@ namespace WiremockUI
             this.expandAll = expandAll;
         }
 
-        private void GenerateTree()
+        public void GenerateTree()
         {
             treeRaw.Nodes.Clear();
             string rootName = "root", nodeName = "node";
@@ -195,8 +199,8 @@ namespace WiremockUI
 
         private void tabs_Click(object sender, EventArgs e)
         {
-            var seleceted = tabs.SelectedTab;
-            if (seleceted == tabTree)
+            var selected = tabs.SelectedTab;
+            if (selected == tabTree)
                 GenerateTree();
         }
 

@@ -465,14 +465,25 @@ namespace WiremockUI
             var deleteMenu = new ToolStripMenuItem();
             var toggleMapStateMenu = new ToolStripMenuItem();
             var duplicateMenu = new ToolStripMenuItem();
+            var viewInExplorerMenu = new ToolStripMenuItem();
 
             menu.Opening += (a, b) =>
             {
                 var treeNodeMappingActual = (TreeNodeMappingModel)nodeMapping.Tag;
                 if (IsMapEnable(treeNodeMappingActual.File.FullPath))
-                    toggleMapStateMenu.Text = "Desabilitar";
+                {
+                    toggleMapStateMenu.ImageKey = "check";
+                }
                 else
-                    toggleMapStateMenu.Text = "Habilitar";
+                {
+                    toggleMapStateMenu.ImageKey = "";
+                }
+
+                var isRunning = Dashboard.IsRunning(mock);
+                renameMenu.Enabled = !isRunning;
+                deleteMenu.Enabled = !isRunning;
+                toggleMapStateMenu.Enabled = !isRunning;
+                duplicateMenu.Enabled = !isRunning;
             };
 
             menu.Items.AddRange(new ToolStripMenuItem[]
@@ -481,10 +492,12 @@ namespace WiremockUI
                 duplicateMenu,
                 toggleMapStateMenu,
                 deleteMenu,
+                viewInExplorerMenu
             });
-            
+
             // rename
             renameMenu.Text = "Renomear";
+            renameMenu.ImageKey = "rename";
             renameMenu.Click += (a, b) =>
             {
                 nodeMapping.BeginEdit();
@@ -504,6 +517,7 @@ namespace WiremockUI
                             File.Delete(treeNodeMappingActual.TreeNodeBody.File.FullPath);
                         File.Delete(treeNodeMappingActual.File.FullPath);
                         nodeMapping.Parent.Nodes.Remove(nodeMapping);
+                        DeleteMappingTab(nodeMapping);
                     }
                     catch (Exception ex)
                     {
@@ -513,6 +527,7 @@ namespace WiremockUI
             };
 
             // disable
+            toggleMapStateMenu.Text = "Habilitado";
             toggleMapStateMenu.Click += (a, b) =>
             {
                 try
@@ -529,42 +544,152 @@ namespace WiremockUI
                 }
             };
 
+            // duplicate
+            duplicateMenu.Text = "Duplicar";
+            duplicateMenu.ImageKey = "duplicate";
+            duplicateMenu.Click += (a, b) =>
+            {
+                var actual = (TreeNodeMappingModel)nodeMapping.Tag;
+                var content = actual.File.GetContent(out _);
+                var newMapFile = GetNewFileName(actual.File.FullPath);
+                var newBodyFile = "";
+                if (actual.Mapping != null)
+                {
+                    if (actual.Mapping.HasBodyFile())
+                    {
+                        newBodyFile = GetNewFileName(actual.TreeNodeBody.File.FullPath);
+                        content = actual.Mapping.RenameBodyName(content, newBodyFile);
+                        File.WriteAllText(newBodyFile, actual.TreeNodeBody.File.GetContent(out _));
+                    }
+                }
+
+                File.WriteAllText(newMapFile, content);
+            };
+
+            // view in explorer
+            viewInExplorerMenu.Text = "Visualizar no explorer";
+            viewInExplorerMenu.Click += (a, b) =>
+            {
+                var treeNodeMappingActual = (TreeNodeMappingModel)nodeMapping.Tag;
+                ViewFileInExplorer(treeNodeMappingActual.File.FullPath);
+            };
+
+            
             nodeMapping.ContextMenuStrip = menu;
             nodeMapping.Tag = treeNodeMapping;
             nodeMock.Nodes.Add(nodeMapping);
             ChangeTreeNodeImage(nodeMapping, "request");
+            SetMappingNodeState(mapFile, nodeMapping);
 
             if (treeNodeMapping.TreeNodeBody != null)
             {
                 var nodeResponse = new TreeNode(treeNodeMapping.TreeNodeBody.Name);
+                nodeResponse.ContextMenuStrip = GetMenuTripToNodeResponse(nodeMapping); 
                 nodeMapping.Nodes.Add(nodeResponse);
                 nodeResponse.Tag = treeNodeMapping.TreeNodeBody;
                 ChangeTreeNodeImage(nodeResponse, "response");
             }
         }
 
-        private void UpdateMappingTab(TreeNode nodeMapping)
+        private string GetNewFileName(string fileName)
         {
-            var tab = TabMaster.GetTabByTag(nodeMapping);
+            var fileNameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
+            var ext = Path.GetExtension(fileName);
+            var directory = Path.GetDirectoryName(fileName);
+
+            var fileCount = 0;
+            var newFileName = fileName;
+            while (File.Exists(newFileName))
+            {
+                fileCount++;
+                newFileName = Path.Combine(directory, fileNameWithoutExt + fileCount + ext);
+            }
+
+            return newFileName;
+        }
+
+        private ContextMenuStrip GetMenuTripToNodeResponse(TreeNode nodeMapping)
+        {
+            // context menu
+            var menuResponse = new ContextMenuStrip();
+            var viewInExplorerResponseMenu = new ToolStripMenuItem();
+            menuResponse.ImageList = imageList1;
+            menuResponse.Items.AddRange(new ToolStripMenuItem[]
+            {
+                    viewInExplorerResponseMenu
+            });
+
+            // view in explorer
+            viewInExplorerResponseMenu.Text = "Visualizar no explorer";
+            viewInExplorerResponseMenu.Click += (a, b) =>
+            {
+                var treeNodeMappingActual = (TreeNodeMappingModel)nodeMapping.Tag;
+                ViewFileInExplorer(treeNodeMappingActual.TreeNodeBody.File.FullPath);
+            };
+            return menuResponse;
+        }
+
+        private static void ViewFileInExplorer(string fileName)
+        {
+            string args = string.Format("/e, /select, \"{0}\"", fileName);
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = "explorer";
+            info.Arguments = args;
+            Process.Start(info);
+        }
+
+        private void SetMappingNodeState(string mapFile, TreeNode nodeMapping)
+        {
+            if (IsMapEnable(mapFile))
+                nodeMapping.NodeFont = new Font(treeServices.Font.FontFamily, treeServices.Font.Size, treeServices.Font.Style);
+            else
+                nodeMapping.NodeFont = new Font(treeServices.Font.FontFamily, treeServices.Font.Size, FontStyle.Strikeout);
+        }
+
+        private void UpdateMappingTab(TreeNode nodeMapping, TreeNode oldNodeBody)
+        {
+            var tab = TabMaster.GetTabByInternalTag(nodeMapping);
             if (tab != null)
             {
                 var model = (TreeNodeMappingModel)nodeMapping.Tag;
                 var form = TabMaster.GetForm(tab);
                 if (form is IFormFileUpdate formUpdate)
                     formUpdate.Update(model.File.FullPath);
+                
+                tab.Text = model.File.GetOnlyFileName();
+                TabMaster.GetTag(tab).InternalTag = nodeMapping;
             }
 
             if (nodeMapping.Nodes.Count > 0)
             {
-                var tabResponse = TabMaster.GetTabByTag(nodeMapping.Nodes[0]);
+                var nodeBody = nodeMapping.Nodes[0];
+                var model = (TreeNodeBodyModel)nodeBody.Tag;
+                var tabResponse = TabMaster.GetTabByInternalTag(oldNodeBody);
 
                 if (tabResponse != null)
                 {
-                    var model = (TreeNodeBodyModel)nodeMapping.Nodes[0].Tag;
-                    var form = TabMaster.GetForm(tab);
+                    var form = TabMaster.GetForm(tabResponse);
                     if (form is IFormFileUpdate formUpdate)
                         formUpdate.Update(model.File.FullPath);
+                    tabResponse.Text = model.File.GetOnlyFileName();
+                    TabMaster.GetTag(tabResponse).InternalTag = nodeBody;
                 }
+            }
+        }
+
+        private void DeleteMappingTab(TreeNode nodeMapping)
+        {
+            var tab = TabMaster.GetTabByInternalTag(nodeMapping);
+            if (tab != null)
+                TabMaster.CloseTab(tab);
+
+            if (nodeMapping.Nodes.Count > 0)
+            {
+                var nodeBody = nodeMapping.Nodes[0];
+                var tabResponse = TabMaster.GetTabByInternalTag(nodeBody);
+
+                if (tabResponse != null)
+                    TabMaster.CloseTab(tabResponse);
             }
         }
 
@@ -574,10 +699,12 @@ namespace WiremockUI
             nodeMapping.Tag = newTreeNodeMapping;
             nodeMapping.Nodes.Clear();
             ChangeTreeNodeImage(nodeMapping, "request");
+            SetMappingNodeState(newTreeNodeMapping.File.FullPath, nodeMapping);
 
             if (newTreeNodeMapping.TreeNodeBody != null)
             {
                 var nodeResponse = new TreeNode(newTreeNodeMapping.TreeNodeBody.Name);
+                nodeResponse.ContextMenuStrip = GetMenuTripToNodeResponse(nodeMapping);
                 nodeMapping.Nodes.Add(nodeResponse);
                 nodeResponse.Tag = newTreeNodeMapping.TreeNodeBody;
                 ChangeTreeNodeImage(nodeResponse, "response");
@@ -866,7 +993,7 @@ namespace WiremockUI
             }
             else if (selected.Tag != null && selected.Tag is TreeNodeMappingModel treeNodeMapping)
             {
-                var currentTab = TabMaster.GetTabByTag(selected);
+                var currentTab = TabMaster.GetTabByInternalTag(selected);
                 if (currentTab != null)
                 {
                     tabForms.SelectedTab = currentTab;
@@ -884,7 +1011,7 @@ namespace WiremockUI
             }
             else if (selected.Tag != null && selected.Tag is TreeNodeBodyModel treeNodeBody)
             {
-                var currentTab = TabMaster.GetTabByTag(selected);
+                var currentTab = TabMaster.GetTabByInternalTag(selected);
                 if (currentTab != null)
                 {
                     tabForms.SelectedTab = currentTab;
@@ -1014,7 +1141,8 @@ namespace WiremockUI
             if (newNameBody != null)
             {
                 File.Move(model.TreeNodeBody.File.FullPath, newNameBody);
-                model.Mapping.RenameBodyName(model.File, newNameBody);
+                var newContent = model.Mapping.RenameBodyName(model.File.GetContent(out _), newNameBody);
+                File.WriteAllText(model.File.FullPath, newContent);
                 File.Move(model.File.FullPath, newNameMap);
             }
             else
@@ -1022,16 +1150,17 @@ namespace WiremockUI
                 File.Move(model.File.FullPath, newNameMap);
             }
 
+            var oldNodeBody = nodeMap.Nodes.Count > 0 ? nodeMap.Nodes[0] : null;
             var newModel = GetTreeNodeMapping(model.Proxy, model.Mock, newNameMap);
             UpdateMappingNode(nodeMap, newModel);
-            UpdateMappingTab(nodeMap);
+            UpdateMappingTab(nodeMap, oldNodeBody);
         }
 
         private string GetNewName(string newName, FileModel file, string extension)
         {
             var ext = extension ?? Path.GetExtension(file.FullPath);
             var directory = Path.GetDirectoryName(file.FullPath);
-            return Path.Combine(directory, newName + ext);
+            return Path.Combine(directory, Path.GetFileNameWithoutExtension(newName) + ext);
         }
         
         private void treeServices_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)

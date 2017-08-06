@@ -103,6 +103,9 @@ namespace WiremockUI
         public void Update(string fileName)
         {
             LoadForm(fileName);
+
+            if (ucJsonView.Tabs.SelectedTab == ucJsonView.TabJsonTree)
+                ucJsonView.GenerateTree();
         }
     }
 }

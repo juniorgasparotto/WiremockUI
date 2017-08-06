@@ -41,7 +41,7 @@ namespace WiremockUI
 
         public void CloseTab(object tag)
         {
-            var tab = GetTabByTag(tag);
+            var tab = GetTabByInternalTag(tag);
             if (tab != null)
             {
                 ((Tag)tab.Tag).Form.Close();
@@ -49,7 +49,7 @@ namespace WiremockUI
             }
         }
 
-        public TabPageCustom GetTabByTag(object tag)
+        public TabPageCustom GetTabByInternalTag(object tag)
         {
             foreach (TabPageCustom t in tabControl.TabPages)
             {
@@ -60,6 +60,23 @@ namespace WiremockUI
 
             return null;
         }
+
+        public TabPageCustom GetTabByText(string text)
+        {
+            foreach (TabPageCustom t in tabControl.TabPages)
+            {
+                if (t.Text == text)
+                    return t;
+            }
+
+            return null;
+        }
+
+        public Tag GetTag(TabPageCustom tab)
+        {
+            return (Tag)tab.Tag;
+        }
+
 
         public Form GetForm(TabPageCustom tab)
         {

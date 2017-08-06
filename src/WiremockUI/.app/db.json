@@ -12,12 +12,6 @@
           "Name": "Cenario 1",
           "IsDefault": true,
           "ShowURL": true
-        },
-        {
-          "Id": "ff7035fd-49e2-4369-b55b-0d827dd51715",
-          "Name": "sd",
-          "IsDefault": false,
-          "ShowURL": false
         }
       ]
     },
