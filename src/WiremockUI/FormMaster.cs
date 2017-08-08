@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WiremockUI.Data;
 
@@ -326,6 +327,7 @@ namespace WiremockUI
 
                 // Create the ContextMenuStrip.
                 var menu = new ContextMenuStrip();
+                var addMenu = new ToolStripMenuItem();
                 var setDefaultMenu = new ToolStripMenuItem();
                 var openFolderMenu = new ToolStripMenuItem();
                 var editMenu = new ToolStripMenuItem();
@@ -335,6 +337,7 @@ namespace WiremockUI
                 //Add the menu items to the menu.
                 menu.Items.AddRange(new ToolStripMenuItem[]
                 {
+                    addMenu,
                     setDefaultMenu,
                     openFolderMenu,
                     editMenu,
@@ -347,6 +350,7 @@ namespace WiremockUI
                 {
                     var isRunning = Dashboard.IsRunning(mock);
                     //setDefaultMenu.Enabled = !Dashboard.IsAnyRunning();
+                    addMenu.Enabled = !isRunning;
                     editMenu.Enabled = !isRunning;
                     removeMenu.Enabled = !isRunning;
 
@@ -363,6 +367,14 @@ namespace WiremockUI
                     {
                         openFolderMenu.Visible = true;
                     }
+                };
+
+                // add menu
+                addMenu.Text = "Adicionar";
+                addMenu.ImageKey = "add";
+                addMenu.Click += (a, b) =>
+                {
+                    AddNewMap(nodeMock);
                 };
 
                 // show files
@@ -451,7 +463,7 @@ namespace WiremockUI
             frmAdd.ShowDialog();
         }
 
-        private void AddMappingNode(TreeNode nodeMock, Mock mock, string mapFile)
+        private TreeNode AddMappingNode(TreeNode nodeMock, Mock mock, string mapFile, int index = -1)
         {
             var proxy = (Proxy)nodeMock.Parent.Tag;
             var treeNodeMapping = GetTreeNodeMapping(proxy, mock, mapFile);
@@ -497,6 +509,7 @@ namespace WiremockUI
 
             // rename
             renameMenu.Text = "Renomear";
+            renameMenu.ShortcutKeys = Keys.F2;
             renameMenu.ImageKey = "rename";
             renameMenu.Click += (a, b) =>
             {
@@ -506,24 +519,10 @@ namespace WiremockUI
             // delete
             deleteMenu.Text = "Remover";
             deleteMenu.ImageKey = "remove";
+            deleteMenu.ShortcutKeys = Keys.Delete;
             deleteMenu.Click += (a, b) =>
             {
-                if (Helper.MessageBoxQuestion("Deseja realmente remover esse arquivo?") == DialogResult.Yes)
-                {
-                    try
-                    {
-                        var treeNodeMappingActual = (TreeNodeMappingModel)nodeMapping.Tag;
-                        if (treeNodeMappingActual.Mapping?.HasBodyFile() == true)
-                            File.Delete(treeNodeMappingActual.TreeNodeBody.File.FullPath);
-                        File.Delete(treeNodeMappingActual.File.FullPath);
-                        nodeMapping.Parent.Nodes.Remove(nodeMapping);
-                        DeleteMappingTab(nodeMapping);
-                    }
-                    catch (Exception ex)
-                    {
-                        Helper.MessageBoxError("Ocorreu um erro ao tentar excluir esse arquivo: " + ex.Message);
-                    }
-                }
+                DeleteMap(nodeMapping);
             };
 
             // disable
@@ -547,37 +546,28 @@ namespace WiremockUI
             // duplicate
             duplicateMenu.Text = "Duplicar";
             duplicateMenu.ImageKey = "duplicate";
+            duplicateMenu.ShortcutKeys = Keys.Control | Keys.D;
             duplicateMenu.Click += (a, b) =>
             {
-                var actual = (TreeNodeMappingModel)nodeMapping.Tag;
-                var content = actual.File.GetContent(out _);
-                var newMapFile = GetNewFileName(actual.File.FullPath);
-                var newBodyFile = "";
-                if (actual.Mapping != null)
-                {
-                    if (actual.Mapping.HasBodyFile())
-                    {
-                        newBodyFile = GetNewFileName(actual.TreeNodeBody.File.FullPath);
-                        content = actual.Mapping.RenameBodyName(content, newBodyFile);
-                        File.WriteAllText(newBodyFile, actual.TreeNodeBody.File.GetContent(out _));
-                    }
-                }
-
-                File.WriteAllText(newMapFile, content);
+                DuplicateMap(nodeMapping);
             };
 
             // view in explorer
             viewInExplorerMenu.Text = "Visualizar no explorer";
             viewInExplorerMenu.Click += (a, b) =>
             {
-                var treeNodeMappingActual = (TreeNodeMappingModel)nodeMapping.Tag;
-                ViewFileInExplorer(treeNodeMappingActual.File.FullPath);
+                var model = (TreeNodeMappingModel)nodeMapping.Tag;
+                ViewFileInExplorer(model.File.FullPath);
             };
 
-            
             nodeMapping.ContextMenuStrip = menu;
             nodeMapping.Tag = treeNodeMapping;
-            nodeMock.Nodes.Add(nodeMapping);
+
+            if (index >= 0)
+                nodeMock.Nodes.Insert(index, nodeMapping);
+            else
+                nodeMock.Nodes.Add(nodeMapping);
+
             ChangeTreeNodeImage(nodeMapping, "request");
             SetMappingNodeState(mapFile, nodeMapping);
 
@@ -589,6 +579,80 @@ namespace WiremockUI
                 nodeResponse.Tag = treeNodeMapping.TreeNodeBody;
                 ChangeTreeNodeImage(nodeResponse, "response");
             }
+
+            return nodeMapping;
+        }
+
+        private void DeleteMap(TreeNode nodeMapping)
+        {
+            if (Helper.MessageBoxQuestion("Deseja realmente remover esse arquivo?") == DialogResult.Yes)
+            {
+                try
+                {
+                    var treeNodeMappingActual = (TreeNodeMappingModel)nodeMapping.Tag;
+                    if (treeNodeMappingActual.Mapping?.HasBodyFile() == true)
+                        File.Delete(treeNodeMappingActual.TreeNodeBody.File.FullPath);
+                    File.Delete(treeNodeMappingActual.File.FullPath);
+                    nodeMapping.Parent.Nodes.Remove(nodeMapping);
+                    DeleteMappingTab(nodeMapping);
+                }
+                catch (Exception ex)
+                {
+                    Helper.MessageBoxError("Ocorreu um erro ao tentar excluir esse arquivo: " + ex.Message);
+                }
+            }
+        }
+
+        private void DuplicateMap(TreeNode nodeMapping)
+        {
+            var model = (TreeNodeMappingModel)nodeMapping.Tag;
+            var content = model.File.GetContent(out _);
+            var newMapFile = GetNewFileName(model.File.FullPath);
+            var newBodyFile = "";
+            if (model.Mapping != null)
+            {
+                if (model.Mapping.HasBodyFile())
+                {
+                    newBodyFile = GetNewFileName(model.TreeNodeBody.File.FullPath);
+                    content = MappingModel.RenameBodyName(content, newBodyFile);
+                    File.WriteAllText(newBodyFile, model.TreeNodeBody.File.GetContent(out _));
+                }
+            }
+
+            File.WriteAllText(newMapFile, content);
+            treeServices.SelectedNode = AddMappingNode(GetNodeMockById(model.Mock.Id), model.Mock, newMapFile, nodeMapping.Index + 1);
+        }
+
+        private void AddNewMap(TreeNode nodeMock)
+        {
+            var contentMap = "";
+            var contentBody = "";
+            var templateMapFileName = "Templates/Mappings/New.json";
+            var templateBodyFileName = "Templates/Files/New.txt";
+            var mockName = "Mock.json";
+            var mockBodyName = "Mock.txt";
+            var mock = (Mock)nodeMock.Tag;
+            var proxy = (Proxy)nodeMock.Parent.Tag;
+            var newMapFileName = GetNewFileName(Path.Combine(proxy.GetMappingPath(mock), mockName));
+            var newBodyFileName = GetNewFileName(Path.Combine(proxy.GetBodyFilesPath(mock), mockBodyName));
+
+            if (File.Exists(templateMapFileName))
+            {
+                contentMap = File.ReadAllText(templateMapFileName);
+                contentMap = MappingModel.RenameBodyName(contentMap, Path.GetFileName(newBodyFileName));
+            }
+
+            if (File.Exists(templateBodyFileName))
+                contentBody = File.ReadAllText(templateBodyFileName);
+
+            CreateFolderIfNeeded(newMapFileName);
+            CreateFolderIfNeeded(newBodyFileName);
+
+            File.WriteAllText(newMapFileName, contentMap);
+            File.WriteAllText(newBodyFileName, contentBody);
+
+            var nodeMap = AddMappingNode(nodeMock, mock, newMapFileName);
+            treeServices.SelectedNode = nodeMap;
         }
 
         private string GetNewFileName(string fileName)
@@ -601,11 +665,26 @@ namespace WiremockUI
             var newFileName = fileName;
             while (File.Exists(newFileName))
             {
+                fileNameWithoutExt = Regex.Replace(fileNameWithoutExt, @"\d+$", (resut) =>
+                {
+                    fileCount = int.Parse(resut.Value);
+                    return "";
+                });
+
                 fileCount++;
                 newFileName = Path.Combine(directory, fileNameWithoutExt + fileCount + ext);
             }
 
             return newFileName;
+        }
+
+        public void CreateFolderIfNeeded(string filename)
+        {
+            string folder = Path.GetDirectoryName(filename);
+            if (!string.IsNullOrEmpty(folder) && !Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
         }
 
         private ContextMenuStrip GetMenuTripToNodeResponse(TreeNode nodeMapping)
@@ -1141,7 +1220,7 @@ namespace WiremockUI
             if (newNameBody != null)
             {
                 File.Move(model.TreeNodeBody.File.FullPath, newNameBody);
-                var newContent = model.Mapping.RenameBodyName(model.File.GetContent(out _), newNameBody);
+                var newContent = MappingModel.RenameBodyName(model.File.GetContent(out _), newNameBody);
                 File.WriteAllText(model.File.FullPath, newContent);
                 File.Move(model.File.FullPath, newNameMap);
             }
@@ -1200,9 +1279,23 @@ namespace WiremockUI
 
         private void treeServices_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F2)
+            if (treeServices.SelectedNode?.Tag is TreeNodeMappingModel model
+                && !Dashboard.IsRunning(model.Mock))
             {
-                treeServices.SelectedNode.BeginEdit();
+                if (e.KeyCode == Keys.Delete)
+                {
+                    DeleteMap(treeServices.SelectedNode);
+                }
+                if (e.KeyCode == Keys.F2)
+                {
+                    treeServices.SelectedNode.BeginEdit();
+                }
+                else if (e.Control && e.KeyCode == Keys.D)
+                {
+                    DuplicateMap(treeServices.SelectedNode);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+                }
             }
         }
     }

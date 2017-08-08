@@ -46,6 +46,11 @@ namespace WiremockUI.Data
             return Path.Combine(GetFullPath(mock), "mappings");
         }
 
+        internal string GetBodyFilesPath(Mock mock)
+        {
+            return Path.Combine(GetFullPath(mock), "__files");
+        }
+
         internal bool AlreadyRecord(Mock mock)
         {
             if (Directory.Exists(GetMappingPath(mock)))

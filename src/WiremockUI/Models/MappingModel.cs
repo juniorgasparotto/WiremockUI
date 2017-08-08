@@ -27,7 +27,7 @@ namespace WiremockUI
             try
             {
                 var mapping = JsonConvert.DeserializeObject<MappingModel>(content);
-                if (mapping.Id != null)
+                if (mapping.Request != null)
                 { 
                     mapping.Proxy = proxy;
                     mapping.Mock = mock;
@@ -42,7 +42,7 @@ namespace WiremockUI
             }
         }
 
-        public string RenameBodyName(string content, string bodyFileName)
+        public static string RenameBodyName(string content, string bodyFileName)
         {
             var mapping = JsonConvert.DeserializeObject<JObject>(content);
             mapping.SelectToken("response")["bodyFileName"] = Path.GetFileName(bodyFileName);

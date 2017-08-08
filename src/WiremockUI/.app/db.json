@@ -28,6 +28,20 @@
           "ShowURL": false
         }
       ]
+    },
+    {
+      "Id": "f7a63164-29be-4190-b990-ad388f8d58e0",
+      "UrlOriginal": "http://qulquercoisa.com",
+      "PortProxy": 5505,
+      "Name": "gy",
+      "Mocks": [
+        {
+          "Id": "1c1769a3-6906-4cf3-8479-3de50ed5710c",
+          "Name": "cenrio1",
+          "IsDefault": true,
+          "ShowURL": true
+        }
+      ]
     }
   ]
 }

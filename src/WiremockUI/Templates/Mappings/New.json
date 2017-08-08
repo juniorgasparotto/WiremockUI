@@ -1,0 +1,13 @@
+﻿{
+  "request" : {
+    "url" : "/",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "",
+    "headers" : {
+      "Content-Type" : "application/json"
+    }
+  }
+}

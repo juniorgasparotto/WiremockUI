@@ -4,25 +4,30 @@ salvar com ctrl + s - OK
 adicionar caractere com tab - OK
 remover caracteres vazios com tab - OK
 
-criar mecanismo para renomear request/body
-criar mecanismo para copiar como curl
+criar mecanismo para renomear request/body - OK
+criar mecanismo de duplicar mock - OK
+crir menu para remover mock - OK
+adicionar url do get no treenode do mock - OK
+melhorar treeview do json - OK
+suportar visualização de resultado de XML - OK
+criar mock/renomear/duplicar/remove - OK
+criar um visualizador generico para a resposta quando não json - OK
+criar um visualizador de xml para a resposta com formatação - OK
+criar um visualizador de imagem para a resposta - OK
+
+criar mecanismo para copiar como curl 
 multiplas linguas
 preferencias
 splash
 testar sem java na maquina
 criar uma mock automaticamente após criar um proxy
-criar mecanismo de duplicar mock
 criar uma aba dentro de cada mock com as configs avançados do wiremock
 subir no chocolatey
 tentar apt-get com wine ou mono
 criar tutorial
-crir menu para remover mock
 visualizar json do request e response do mapa de forma amigavel
-adicionar url do get no treenode do mock
 adicionar URL do serviço no treeNode para cada proxy
-melhorar treeview do json
 melhorar visualização de json para valores (criar um form especifico pra json)
-suportar visualização de resultado de XML
 criar tutorial no github
 quando fechar uma tab, deve ir para a tab de tras da fechada
 deixar inserir mais de um url para a mesma api
@@ -30,13 +35,23 @@ criar response especial
 cria request especial
 testar request sem body
 criar pesquisar
-criar mock/renomear/duplicar/remover
 criar formatador de json
 criar mecanismo para visualizar os logs do wiremock em forma de json
 criar comparador de json
 criar comentario por mock
-criar um visualizador generico para a resposta quando não json
-criar um visualizador de xml para a resposta com formatação
-criar um visualizador de imagem para a resposta
 ao fechar a tab ir para a anterior
 fechar tab com botao do scroll do meio
+criar copiar para area de transferecia
+  - url do serviço final
+  - url do proxy
+  - comando java -jar 
+  - curl
+criar um iniciar com todas as configs do wiremock e deixar adicionar ou modificar as configs
+criar esquema para subir codigo c# para programar o request e response
+deixar copiar os textos da tela de start
+criar comparador do request do log do wiremock com os requests existentes
+criar menu "Ferramentas" com os comparadores e formatadores
+criar delete para cada nivel da treeview 
+criar open ao apertar enter em cada nivel da treeview
+adicionar atalhos em todos os niveis da treeview
+criar esquema para abrir o url dos mapas no browser ou em um componente de composer
