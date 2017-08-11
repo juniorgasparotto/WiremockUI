@@ -27,6 +27,7 @@ namespace WiremockUI
                 this.txtName.Text = proxy.Name;
                 this.txtUrlOriginal.Text = proxy.UrlOriginal;
                 this.txtMockPort.Text = proxy.PortProxy.ToString();
+                this.txtArguments = proxy.Arguments;
                 this.btnAdd.Text = "Editar";
                 this.oldPath = this.proxy.GetFullPath();
 
@@ -118,6 +119,7 @@ namespace WiremockUI
             proxy.Name = name;
             proxy.UrlOriginal = urlOriginal;
             proxy.PortProxy = portNumber;
+            proxy.Arguments = txtArguments.Text;
 
             var newPath = proxy.GetFullPath();
 

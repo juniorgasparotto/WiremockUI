@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace WiremockUI.Data
 {
@@ -14,6 +15,8 @@ namespace WiremockUI.Data
         private List<Mock> mocks = new List<Mock>();
 
         public IEnumerable<Mock> Mocks => mocks;
+
+        public string[] Arguments { get; internal set; }
 
         internal string GetFormattedName()
         {

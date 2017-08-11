@@ -83,7 +83,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtName);
             this.Name = "FormAddMock";
-            this.Text = "Nova mock";
+            this.Text = "Nova Mock";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -37,6 +37,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtArguments = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtUrlOriginal
@@ -68,7 +70,7 @@
             // 
             this.txtMockPort.Location = new System.Drawing.Point(92, 140);
             this.txtMockPort.Name = "txtMockPort";
-            this.txtMockPort.Size = new System.Drawing.Size(215, 20);
+            this.txtMockPort.Size = new System.Drawing.Size(224, 20);
             this.txtMockPort.TabIndex = 3;
             this.txtMockPort.Text = "5500";
             // 
@@ -100,7 +102,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(10, 189);
+            this.btnAdd.Location = new System.Drawing.Point(12, 302);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(87, 44);
             this.btnAdd.TabIndex = 4;
@@ -111,7 +113,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(103, 189);
+            this.btnCancel.Location = new System.Drawing.Point(118, 302);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 44);
             this.btnCancel.TabIndex = 5;
@@ -119,13 +121,32 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // txtOthersOptions
+            // 
+            this.txtArguments.Location = new System.Drawing.Point(12, 192);
+            this.txtArguments.Multiline = true;
+            this.txtArguments.Name = "txtOthersOptions";
+            this.txtArguments.Size = new System.Drawing.Size(304, 104);
+            this.txtArguments.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 176);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Outras opções";
+            // 
             // FormAddProxy
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(328, 245);
+            this.ClientSize = new System.Drawing.Size(328, 358);
             this.ControlBox = false;
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtArguments);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label4);
@@ -152,6 +173,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox txtArguments;
+        private System.Windows.Forms.Label label5;
     }
 }
 
