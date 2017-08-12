@@ -209,6 +209,7 @@ namespace WiremockUI
             this.imageList1.Images.SetKeyName(13, "disable");
             this.imageList1.Images.SetKeyName(14, "duplicate");
             this.imageList1.Images.SetKeyName(15, "rename");
+            this.imageList1.Images.SetKeyName(16, "play-proxy");
             // 
             // tabForms
             // 

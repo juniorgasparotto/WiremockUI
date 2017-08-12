@@ -15,10 +15,10 @@ namespace WiremockUI
         private TextBoxWriter log;
         private FormMaster master;
         private Mock mockService;
-        private bool record;
+        private Dashboard.PlayType playType;
         private Proxy proxy;
 
-        public FormStartMockService(FormMaster master, Proxy proxy, Mock mock, bool record)
+        public FormStartMockService(FormMaster master, Proxy proxy, Mock mock, Dashboard.PlayType playType)
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace WiremockUI
             this.master = master;
             this.proxy = proxy;
             this.mockService = mock;
-            this.record = record;
+            this.playType = playType;
 
             this.lblUrlOriginal.Text = proxy.UrlOriginal;
             this.lblUrlOriginal.Links.Add(0, this.lblUrlOriginal.Text.Length, this.lblUrlOriginal.Text);
@@ -43,7 +43,7 @@ namespace WiremockUI
 
         public void Play()
         {
-            master.Dashboard.Play(proxy, mockService, record, log);
+            master.Dashboard.Play(proxy, mockService, playType, log);
         }
 
         public class TextBoxWriter : TextWriter

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace WiremockUI.Data
 {
@@ -15,65 +14,58 @@ namespace WiremockUI.Data
         private List<Mock> mocks = new List<Mock>();
 
         public IEnumerable<Mock> Mocks => mocks;
+        public IEnumerable<Argument> Arguments { get; set; }
 
-        public string[] Arguments { get; internal set; }
-
-        internal string GetFormattedName()
+        public string GetFormattedName()
         {
             return $"{Name} (http://localhost:{PortProxy} <- {UrlOriginal})";
         }
 
-        internal string GetFolderName()
+        public string GetFolderName()
         {
             return PortProxy.ToString();
         }
 
-        internal string GetUrlProxy()
+        public string GetUrlProxy()
         {
             return $"http://localhost:{PortProxy}";
         }
 
-        internal string GetFullPath()
+        public string GetFullPath()
         {
             var path = Path.Combine(Directory.GetCurrentDirectory(), GetFolderName());
             return Path.Combine(Directory.GetCurrentDirectory(), GetFolderName());
         }
 
-        internal string GetFullPath(Mock mock)
+        public string GetFullPath(Mock mock)
         {
             return Path.Combine(GetFullPath(), mock.GetFolderName());
         }
 
-        internal string GetMappingPath(Mock mock)
+        public string GetMappingPath(Mock mock)
         {
             return Path.Combine(GetFullPath(mock), "mappings");
         }
 
-        internal string GetBodyFilesPath(Mock mock)
+        public string GetBodyFilesPath(Mock mock)
         {
             return Path.Combine(GetFullPath(mock), "__files");
         }
 
-        internal bool AlreadyRecord(Mock mock)
+        public bool AlreadyRecord(Mock mock)
         {
             if (Directory.Exists(GetMappingPath(mock)))
                 return true;
             return false;
         }
 
-        internal Mock GetDefaultMock()
+        public Mock GetDefaultMock()
         {
             var d = mocks.FirstOrDefault(f => f.IsDefault);
-            //if (d == null)
-            //{
-            //    FixDefault();
-            //    d = mocks.FirstOrDefault(f => f.IsDefault);
-            //}
-
             return d;
         }
 
-        internal void SetDefault(Mock mock)
+        public void SetDefault(Mock mock)
         {
             mock.IsDefault = true;
             foreach (var m in mocks)
@@ -96,21 +88,40 @@ namespace WiremockUI.Data
             mocks.Add(mock);
         }
 
-        internal void RemoveMock(Guid id)
+        public void RemoveMock(Guid id)
         {
             mocks.RemoveAll(f => f.Id == id);
-            //FixDefault();
         }
 
-        //private void FixDefault()
-        //{
-        //    var existsDefault = mocks.Any(f => f.IsDefault);
-        //    if (!existsDefault)
-        //    {
-        //        var first = mocks.FirstOrDefault();
-        //        if (first != null)
-        //            first.IsDefault = true;
-        //    }
-        //}
+        public List<string> GetArguments()
+        {
+            var lst = new List<string>();
+            foreach (var arg in Arguments)
+            {
+                if (!string.IsNullOrWhiteSpace(arg.Value))
+                {
+                    if (arg.Type == "Boolean" && bool.TryParse(arg.Value, out var b))
+                    {
+                        if (b)
+                            lst.Add(arg.ArgName);
+                    }
+                    else
+                    {
+                        lst.Add(arg.ArgName);
+                        if (arg.ArgName != arg.Value)
+                            lst.Add(arg.Value);
+                    }
+                }
+            }
+            return lst;
+        }
+
+        public class Argument
+        {
+            public string Name { get; set; }
+            public string Value { get; set; }
+            public string ArgName { get; set; }
+            public string Type { get; set; }
+        }
     }
 }

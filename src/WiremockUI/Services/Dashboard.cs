@@ -10,6 +10,13 @@ namespace WiremockUI
         public Dictionary<Guid, WireMockServer> Services { get; private set; }
         public Dictionary<Guid, FileSystemWatcher> Watchers { get; private set; }
 
+        public enum PlayType
+        {
+            Play,
+            PlayAsProxy,
+            PlayAndRecord
+        }
+
         public Dashboard()
         {
             this.Services = new Dictionary<Guid, WireMockServer>();
@@ -50,7 +57,7 @@ namespace WiremockUI
             }
         }
 
-        public void Play(Proxy proxy, Mock mock, bool record, TextWriter textWriter)
+        public void Play(Proxy proxy, Mock mock, PlayType type, TextWriter textWriter)
         {
             if (Services.ContainsKey(mock.Id))
                 Stop(mock);
@@ -61,15 +68,22 @@ namespace WiremockUI
             string[] args;
 
             var relativeFolder = Path.Combine(proxy.GetFolderName(), mock.GetFolderName());
-            if (record)
+            if (type == PlayType.PlayAndRecord)
             {
                 args = new string[]
                 {
-                "--port", proxy.PortProxy.ToString(),
-                "--proxy-all", proxy.UrlOriginal,
-                "--record-mappings",
-                "--root-dir", relativeFolder,
-                "--verbose"
+                    "--port", proxy.PortProxy.ToString(),
+                    "--proxy-all", proxy.UrlOriginal,
+                    "--record-mappings",
+                    "--root-dir", relativeFolder
+                };
+            }
+            else if (type == PlayType.PlayAsProxy)
+            {
+                args = new string[]
+                {
+                    "--port", proxy.PortProxy.ToString(),
+                    "--proxy-all", proxy.UrlOriginal,
                 };
             }
             else
@@ -77,12 +91,13 @@ namespace WiremockUI
                 args = new string[]
                 {
                     "--port", proxy.PortProxy.ToString(),
-                    "--root-dir", relativeFolder,
-                    "--verbose"
+                    "--root-dir", relativeFolder
                 };
             }
 
-            server.run(args);
+            var argsProxy = proxy.GetArguments();
+            argsProxy.InsertRange(0, args);
+            server.run(argsProxy.ToArray());
         }
 
         internal void AddWatchers(Mock service, FileSystemWatcher watcher)

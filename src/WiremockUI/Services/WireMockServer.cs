@@ -79,7 +79,7 @@ namespace WiremockUI
 
         public void Stop()
         {
-            wireMockServer.stop();
+            wireMockServer?.stop();
         }
 
         public bool IsRunning()
@@ -89,8 +89,8 @@ namespace WiremockUI
 
         public void ShutDown()
         {
-            wireMockServer.shutdown();
-            wireMockServer.shutdownServer();
+            wireMockServer?.shutdown();
+            wireMockServer?.shutdownServer();
         }
 
         private class InternalOutput : java.io.OutputStream

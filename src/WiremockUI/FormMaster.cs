@@ -67,7 +67,7 @@ namespace WiremockUI
             startAllMenu.ImageKey = "play";
             startAllMenu.Click += (a, b) =>
             {
-                PlayAll(false);
+                PlayAll(Dashboard.PlayType.Play);
             };
 
             // start and record all
@@ -75,7 +75,7 @@ namespace WiremockUI
             startAndRecordAllMenu.ImageKey = "record";
             startAndRecordAllMenu.Click += (a, b) =>
             {
-                PlayAll(true);
+                PlayAll(Dashboard.PlayType.PlayAndRecord);
             };
 
             // stop all
@@ -121,6 +121,7 @@ namespace WiremockUI
                 // Create the ContextMenuStrip.
                 var menu = new ContextMenuStrip();
                 var addMock = new ToolStripMenuItem();
+                var startAsProxyMenu = new ToolStripMenuItem();
                 var startMenu = new ToolStripMenuItem();
                 var startAndRecordMenu = new ToolStripMenuItem();
                 var stopMenu = new ToolStripMenuItem();
@@ -135,6 +136,7 @@ namespace WiremockUI
                 {
                     addMock,
                     startMenu,
+                    startAsProxyMenu,
                     startAndRecordMenu,
                     stopMenu,
                     openFolderMenu,
@@ -160,6 +162,7 @@ namespace WiremockUI
                     {
                         var defaultMock = proxy.GetDefaultMock();
                         var isRunning = Dashboard.IsRunning(defaultMock);
+                        startAsProxyMenu.Enabled = !isRunning;
                         startMenu.Enabled = !isRunning;
                         startAndRecordMenu.Enabled = !isRunning;
                         stopMenu.Enabled = isRunning;
@@ -239,7 +242,7 @@ namespace WiremockUI
                 startMenu.Click += (a, b) =>
                 {
                     var defaultMock = proxy.GetDefaultMock();
-                    StartService(defaultMock, false);
+                    StartService(defaultMock, Dashboard.PlayType.Play);
                 };
 
                 // play and record
@@ -248,7 +251,16 @@ namespace WiremockUI
                 startAndRecordMenu.Click += (a, b) =>
                 {
                     var defaultMock = proxy.GetDefaultMock();
-                    StartService(defaultMock, true);
+                    StartService(defaultMock, Dashboard.PlayType.PlayAndRecord);
+                };
+
+                // play
+                startAsProxyMenu.Text = "Iniciar (Somente Proxy)";
+                startAsProxyMenu.ImageKey = "play-proxy";
+                startAsProxyMenu.Click += (a, b) =>
+                {
+                    var defaultMock = proxy.GetDefaultMock();
+                    StartService(defaultMock, Dashboard.PlayType.PlayAsProxy);
                 };
 
                 // stop
@@ -952,15 +964,26 @@ namespace WiremockUI
             nodeService.StateImageKey = nodeService.ImageKey;
         }
 
-        private void StartService(Mock mock, bool record)
+        private void StartService(Mock mock, Dashboard.PlayType playType)
         {
             var nodeMock = GetNodeMockById(mock.Id);
             var nodeProxy = nodeMock.Parent;
             var proxy = (Proxy)nodeProxy.Tag;
 
-            var frmStart = new FormStartMockService(this, proxy, mock, record);
-            frmStart.Play();
-            var recordText = record ? " (Gravando)" : "";
+            var frmStart = new FormStartMockService(this, proxy, mock, playType);
+            
+            try
+            {
+                frmStart.Play();
+            }
+            catch (Exception ex)
+            {
+                StopService(mock);
+                Helper.MessageBoxError($"Ocorreu um erro ao tentar iniciar: {ex.GetType().Name}: {ex.Message}");
+                return;
+            }
+
+            var recordText = playType == Dashboard.PlayType.PlayAndRecord ? " (Gravando)" : "";
             TabMaster.AddTab(frmStart, mock.Id, mock.Name + recordText)
                 .CanClose = () => {
                     if (Helper.MessageBoxQuestion("Deseja realmente parar o serviço?") == DialogResult.Yes)
@@ -969,9 +992,15 @@ namespace WiremockUI
                     return false;
                 };
 
-            ChangeTreeNodeImage(nodeProxy, (record ? "record" : "start"));
+            var icon = "start";
+            if (playType == Dashboard.PlayType.PlayAndRecord)
+                icon = "record";
+            else if (playType == Dashboard.PlayType.PlayAsProxy)
+                icon = "play-proxy";
 
-            if (record)
+            ChangeTreeNodeImage(nodeProxy, icon);
+
+            if (playType == Dashboard.PlayType.PlayAndRecord)
                 StartWatcherFolder(nodeMock, mock);
         }
 
@@ -1030,7 +1059,7 @@ namespace WiremockUI
             Dashboard.Watchers.Clear();
         }
 
-        private void PlayAll(bool record)
+        private void PlayAll(Dashboard.PlayType playType)
         {
             foreach (TreeNode n in GetAllProxiesNodes())
             {
@@ -1043,9 +1072,9 @@ namespace WiremockUI
 
                     // inicia gravando caso ainda não tenha sido feito
                     if (!proxy.AlreadyRecord(mock))
-                        record = true;
+                        playType = Dashboard.PlayType.PlayAsProxy;
 
-                    StartService(mock, record);
+                    StartService(mock, playType);
                 }
             }
         }
@@ -1138,12 +1167,12 @@ namespace WiremockUI
 
         private void menuPlayAll_Click(object sender, EventArgs e)
         {
-            PlayAll(false);
+            PlayAll(Dashboard.PlayType.Play);
         }
 
         private void menuPlayAndRecordAll_Click(object sender, EventArgs e)
         {
-            PlayAll(true);
+            PlayAll(Dashboard.PlayType.PlayAndRecord);
         }
 
         private void menuRefresh_Click(object sender, EventArgs e)

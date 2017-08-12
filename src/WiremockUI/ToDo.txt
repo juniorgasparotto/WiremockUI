@@ -56,3 +56,4 @@ criar open ao apertar enter em cada nivel da treeview
 adicionar atalhos em todos os niveis da treeview
 criar esquema para abrir o url dos mapas no browser ou em um componente de composer
 adicionar varios tipos de mock (json, xml)
+limpar log
