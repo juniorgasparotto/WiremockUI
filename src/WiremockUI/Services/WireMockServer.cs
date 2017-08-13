@@ -137,7 +137,7 @@ namespace WiremockUI
 
             public void loadMappingsInto(StubMappings stubMappings)
             {
-                RequestPattern requestPattern = com.github.tomakehurst.wiremock.matching.RequestPatternBuilder.newRequestPattern(com.github.tomakehurst.wiremock.http.RequestMethod.ANY, com.github.tomakehurst.wiremock.client.WireMock.anyUrl()).build();
+                RequestPattern requestPattern = RequestPatternBuilder.newRequestPattern(RequestMethod.ANY, com.github.tomakehurst.wiremock.client.WireMock.anyUrl()).build();
                 ResponseDefinition responseDef = com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder.responseDefinition()
                         .proxiedFrom(baseUrl)
                         .build();

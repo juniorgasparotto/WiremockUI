@@ -31,7 +31,7 @@
     },
     {
       "Id": "15d0be54-d9e7-4935-9d09-a8274e4d9a84",
-      "UrlOriginal": "https://tt.ciandt.com/",
+      "UrlOriginal": "http://wiremock.org/",
       "PortProxy": 5504,
       "Name": "TT",
       "Mocks": [
@@ -45,7 +45,7 @@
       "Arguments": [
         {
           "Name": "Verbose",
-          "Value": "False",
+          "Value": "True",
           "ArgName": "--verbose",
           "Type": "Boolean"
         }
@@ -67,7 +67,7 @@
       "Arguments": [
         {
           "Name": "Verbose",
-          "Value": "False",
+          "Value": "True",
           "ArgName": "--verbose",
           "Type": "Boolean"
         }

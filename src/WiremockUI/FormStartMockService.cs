@@ -31,11 +31,12 @@ namespace WiremockUI
             this.mockService = mock;
             this.playType = playType;
 
-            this.lblUrlOriginal.Text = proxy.UrlOriginal;
-            this.lblUrlOriginal.Links.Add(0, this.lblUrlOriginal.Text.Length, this.lblUrlOriginal.Text);
+            this.txtFrom.Text = proxy.UrlOriginal;
+            this.lblUrlOriginal.Links.Add(0, proxy.UrlOriginal.Length, proxy.UrlOriginal);
 
-            this.lblUrlProxy.Text = proxy.GetUrlProxy();
-            this.lblUrlProxy.Links.Add(0, this.lblUrlProxy.Text.Length, this.lblUrlProxy.Text);
+            var urlProxy = proxy.GetUrlProxy();
+            this.txtTo.Text = urlProxy;
+            this.lblUrlProxy.Links.Add(0, urlProxy.Length, urlProxy);
 
             var folderPath = proxy.GetFullPath(mock);
             this.lblOpenFolder.Links.Add(0, folderPath.Length, folderPath);
@@ -104,5 +105,9 @@ namespace WiremockUI
             Process.Start(e.Link.LinkData.ToString());
         }
 
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+            txtLog.Clear();
+        }
     }
 }
