@@ -6,13 +6,14 @@ using com.github.tomakehurst.wiremock.stubbing;
 using System.Text;
 using System.IO;
 using System;
+using com.github.tomakehurst.wiremock.core;
 
 namespace WiremockUI
 {
     public class WireMockServer
     {
         private com.github.tomakehurst.wiremock.WireMockServer wireMockServer;
-        private TextWriter log;
+        private TextWriter writer;
 
         private const string BANNER = @" /$$      /$$ /$$                     /$$      /$$                     /$$      \n" +
             "| $$  /$ | $$|__/                    | $$$    /$$$                    | $$      \n" +
@@ -22,31 +23,38 @@ namespace WiremockUI
             "| $$$/ \\  $$$| $$| $$      | $$_____/| $$\\  $ | $$| $$  | $$| $$      | $$_  $$ \n" +
             "| $$/   \\  $$| $$| $$      |  $$$$$$$| $$ \\/  | $$|  $$$$$$/|  $$$$$$$| $$ \\  $$\n" +
             "|__/     \\__/|__/|__/       \\_______/|__/     |__/ \\______/  \\_______/|__/  \\__/";
+        private bool useLogStdout;
 
         static WireMockServer()
         {
             java.lang.System.setProperty("wiremock.org.mortbay.log.class", "com.github.tomakehurst.wiremock.jetty.LoggerAdapter");
         }
 
-        public WireMockServer(TextWriter textReader)
+        public WireMockServer(TextWriter writer, bool useLogStdout = false)
         {
-            this.log = textReader;
+            this.useLogStdout = useLogStdout;
+            this.writer = writer;
         }
 
         public void run(params string[] args)
         {
-            var debug = new InternalOutput(log);
-            var print = new java.io.PrintStream(debug);
-
-            java.lang.System.setOut(print);
-
-            CommandLineOptions options = new CommandLineOptions(args);
-
+            CommandLineOptions options;
+            if (useLogStdout)
+            {
+                var debug = new InternalOutput(writer);
+                var print = new java.io.PrintStream(debug);
+                java.lang.System.setOut(print);
+                options = new CommandLineOptions(args);
+            }
+            else
+            {
+                options = new CommandLineOptionsWithLog(new Log(writer), args);
+            }
+            
             var FILES_ROOT = @"__files";
             var MAPPINGS_ROOT = @"mappings";
 
             FileSource fileSource = options.filesRoot();
-            //FileSource fileSource = new SingleRootFileSource("./cenary1/");
             fileSource.createIfNecessary();
             FileSource filesFileSource = fileSource.child(FILES_ROOT);
             filesFileSource.createIfNecessary();
@@ -54,7 +62,6 @@ namespace WiremockUI
             mappingsFileSource.createIfNecessary();
 
             wireMockServer = new com.github.tomakehurst.wiremock.WireMockServer(options);
-
             if (options.recordMappingsEnabled())
             {
                 wireMockServer.enableRecordMappings(mappingsFileSource, filesFileSource);
@@ -66,10 +73,20 @@ namespace WiremockUI
             }
 
             wireMockServer.start();
-            
-            java.lang.System.@out.println(BANNER);
-            java.lang.System.@out.println();
-            java.lang.System.@out.println(options);
+
+            if (useLogStdout)
+            {
+                java.lang.System.@out.println(BANNER);
+                java.lang.System.@out.println();
+                java.lang.System.@out.println(options);
+            }
+            else
+            {
+                options.notifier().info(BANNER);
+                options.notifier().info("\r\n\r\n");
+                options.notifier().info(options.ToString());
+                options.notifier().info("\r\n");
+            }
         }
 
         private void addProxyMapping(string baseUrl)
@@ -91,6 +108,46 @@ namespace WiremockUI
         {
             wireMockServer?.shutdown();
             wireMockServer?.shutdownServer();
+        }
+
+        private class CommandLineOptionsWithLog : CommandLineOptions
+        {
+            private Log log;
+
+            public CommandLineOptionsWithLog(Log log, params string[] args) : base(args)
+            {
+                this.log = log;
+            }
+
+            public override Notifier notifier()
+            {
+                return log;
+            }
+        }
+
+        private class Log : Notifier
+        {
+            private TextWriter writer;
+
+            public Log(TextWriter writer)
+            {
+                this.writer = writer;
+            }
+
+            public void error(string str)
+            {
+                this.writer.Write(Helper.ResolveBreakLineIncompatibility(str));
+            }
+
+            public void error(string str, Exception t)
+            {
+                this.writer.Write(Helper.ResolveBreakLineIncompatibility(str));
+            }
+
+            public void info(string str)
+            {
+                this.writer.Write(Helper.ResolveBreakLineIncompatibility(str));
+            }
         }
 
         private class InternalOutput : java.io.OutputStream

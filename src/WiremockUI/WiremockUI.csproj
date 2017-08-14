@@ -190,9 +190,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="wiremock-standalone-2.6.0, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dlls\wiremock-standalone-2.6.0.dll</HintPath>
+    <Reference Include="wiremock-standalone-2.7.1">
+      <HintPath>Dlls\wiremock-standalone-2.7.1.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -351,7 +350,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\tab-close.png" />
-    <Content Include="Jar\wiremock-standalone-2.6.0.jar" />
     <Content Include="ToDo.txt" />
     <Content Include="wiremock.ico" />
   </ItemGroup>
@@ -366,6 +364,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Jar\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
