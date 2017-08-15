@@ -983,7 +983,13 @@ namespace WiremockUI
                 return;
             }
 
-            var recordText = playType == Dashboard.PlayType.PlayAndRecord ? " (Gravando)" : "";
+            var recordText = "";
+
+            if (playType == Dashboard.PlayType.PlayAndRecord)
+                recordText = " (Gravando)";
+            else if (playType == Dashboard.PlayType.PlayAsProxy)
+                recordText = " (Proxy)";
+
             TabMaster.AddTab(frmStart, mock.Id, mock.Name + recordText)
                 .CanClose = () => {
                     if (Helper.MessageBoxQuestion("Deseja realmente parar o serviço?") == DialogResult.Yes)
