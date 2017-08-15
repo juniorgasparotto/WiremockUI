@@ -33,7 +33,7 @@
             this.btnClean = new System.Windows.Forms.Button();
             this.txtTo = new WiremockUI.EditorTextbox();
             this.txtFrom = new WiremockUI.EditorTextbox();
-            this.lblUrlOriginal = new System.Windows.Forms.LinkLabel();
+            this.lblUrlTarget = new System.Windows.Forms.LinkLabel();
             this.lblOpenFolder = new System.Windows.Forms.LinkLabel();
             this.lblUrlProxy = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.panel1.Controls.Add(this.btnClean);
             this.panel1.Controls.Add(this.txtTo);
             this.panel1.Controls.Add(this.txtFrom);
-            this.panel1.Controls.Add(this.lblUrlOriginal);
+            this.panel1.Controls.Add(this.lblUrlTarget);
             this.panel1.Controls.Add(this.lblOpenFolder);
             this.panel1.Controls.Add(this.lblUrlProxy);
             this.panel1.Controls.Add(this.label4);
@@ -108,16 +108,16 @@
             this.txtFrom.Size = new System.Drawing.Size(440, 20);
             this.txtFrom.TabIndex = 24;
             // 
-            // lblUrlOriginal
+            // lblUrlTarget
             // 
-            this.lblUrlOriginal.AutoSize = true;
-            this.lblUrlOriginal.Location = new System.Drawing.Point(537, 27);
-            this.lblUrlOriginal.Name = "lblUrlOriginal";
-            this.lblUrlOriginal.Size = new System.Drawing.Size(23, 13);
-            this.lblUrlOriginal.TabIndex = 20;
-            this.lblUrlOriginal.TabStop = true;
-            this.lblUrlOriginal.Text = "Ver";
-            this.lblUrlOriginal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblUrlOriginal_LinkClicked);
+            this.lblUrlTarget.AutoSize = true;
+            this.lblUrlTarget.Location = new System.Drawing.Point(537, 27);
+            this.lblUrlTarget.Name = "lblUrlTarget";
+            this.lblUrlTarget.Size = new System.Drawing.Size(23, 13);
+            this.lblUrlTarget.TabIndex = 20;
+            this.lblUrlTarget.TabStop = true;
+            this.lblUrlTarget.Text = "Ver";
+            this.lblUrlTarget.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblUrlTarget_LinkClicked);
             // 
             // lblOpenFolder
             // 
@@ -219,7 +219,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.LinkLabel lblOpenFolder;
         private System.Windows.Forms.LinkLabel lblUrlProxy;
-        private System.Windows.Forms.LinkLabel lblUrlOriginal;
+        private System.Windows.Forms.LinkLabel lblUrlTarget;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private EditorTextbox txtTo;

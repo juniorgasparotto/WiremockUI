@@ -8,7 +8,7 @@ namespace WiremockUI.Data
     public class Proxy
     {
         public Guid Id { get; set; }
-        public string UrlOriginal { get; set; }
+        public string UrlTarget { get; set; }
         public int PortProxy { get; set; }
         public string Name { get; set; }
         private List<Mock> mocks = new List<Mock>();
@@ -18,7 +18,7 @@ namespace WiremockUI.Data
 
         public string GetFormattedName()
         {
-            return $"{Name} (http://localhost:{PortProxy} <- {UrlOriginal})";
+            return $"{Name} (http://localhost:{PortProxy} <- {UrlTarget})";
         }
 
         public string GetFolderName()

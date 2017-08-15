@@ -126,7 +126,7 @@ namespace WiremockUI
                 var startAndRecordMenu = new ToolStripMenuItem();
                 var stopMenu = new ToolStripMenuItem();
                 var openFolderMenu = new ToolStripMenuItem();
-                var openUrlOriginalMenu = new ToolStripMenuItem();
+                var openUrlTargetMenu = new ToolStripMenuItem();
                 var openUrlProxyMockMenu = new ToolStripMenuItem();
                 var editMenu = new ToolStripMenuItem();
                 var removeMenu = new ToolStripMenuItem();
@@ -140,7 +140,7 @@ namespace WiremockUI
                     startAndRecordMenu,
                     stopMenu,
                     openFolderMenu,
-                    openUrlOriginalMenu,
+                    openUrlTargetMenu,
                     openUrlProxyMockMenu,
                     editMenu,
                     removeMenu
@@ -155,7 +155,7 @@ namespace WiremockUI
                     startAndRecordMenu.Visible = hasMock;
                     stopMenu.Visible = hasMock;
                     openFolderMenu.Visible = hasMock;
-                    openUrlOriginalMenu.Visible = hasMock;
+                    openUrlTargetMenu.Visible = hasMock;
                     openUrlProxyMockMenu.Visible = hasMock;
 
                     if (hasMock)
@@ -204,12 +204,12 @@ namespace WiremockUI
                     Process.Start(proxy.GetFullPath());
                 };
 
-                // open url original
-                openUrlOriginalMenu.Text = "Abrir URL original no browser";
-                openUrlOriginalMenu.ImageKey = "services";
-                openUrlOriginalMenu.Click += (a, b) =>
+                // open url target
+                openUrlTargetMenu.Text = "Abrir URL destino no browser";
+                openUrlTargetMenu.ImageKey = "services";
+                openUrlTargetMenu.Click += (a, b) =>
                 {
-                    Process.Start(proxy.UrlOriginal);
+                    Process.Start(proxy.UrlTarget);
                 };
 
                 // open url mock

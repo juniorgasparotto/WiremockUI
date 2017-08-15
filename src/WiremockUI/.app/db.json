@@ -3,7 +3,7 @@
   "Proxies": [
     {
       "Id": "851af5b2-0682-4441-aca0-d048a4a80d30",
-      "UrlOriginal": "http://www.newtonsoft.com/json/help/html/SerializationAttributes.htm",
+      "UrlTarget": "http://www.newtonsoft.com/json/help/html/SerializationAttributes.htm",
       "PortProxy": 5502,
       "Name": "Teste",
       "Mocks": [
@@ -31,7 +31,7 @@
     },
     {
       "Id": "15d0be54-d9e7-4935-9d09-a8274e4d9a84",
-      "UrlOriginal": "http://wiremock.org/",
+      "UrlTarget": "http://wiremock.org/",
       "PortProxy": 5504,
       "Name": "TT",
       "Mocks": [
@@ -53,7 +53,7 @@
     },
     {
       "Id": "f7a63164-29be-4190-b990-ad388f8d58e0",
-      "UrlOriginal": "http://wiremock.org/docs/record-playback/",
+      "UrlTarget": "http://wiremock.org",
       "PortProxy": 5505,
       "Name": "test proxy",
       "Mocks": [

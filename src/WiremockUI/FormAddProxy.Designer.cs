@@ -37,7 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtMockPort = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtUrlOriginal = new System.Windows.Forms.TextBox();
+            this.txtUrlTarget = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -83,7 +83,7 @@
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.txtMockPort);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.txtUrlOriginal);
+            this.tabPage1.Controls.Add(this.txtUrlTarget);
             this.tabPage1.Location = new System.Drawing.Point(4, 36);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -144,12 +144,12 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Url de destino:";
             // 
-            // txtUrlOriginal
+            // txtUrlTarget
             // 
-            this.txtUrlOriginal.Location = new System.Drawing.Point(9, 91);
-            this.txtUrlOriginal.Name = "txtUrlOriginal";
-            this.txtUrlOriginal.Size = new System.Drawing.Size(530, 20);
-            this.txtUrlOriginal.TabIndex = 18;
+            this.txtUrlTarget.Location = new System.Drawing.Point(9, 91);
+            this.txtUrlTarget.Name = "txtUrlTarget";
+            this.txtUrlTarget.Size = new System.Drawing.Size(530, 20);
+            this.txtUrlTarget.TabIndex = 18;
             // 
             // tabPage2
             // 
@@ -245,7 +245,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMockPort;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtUrlOriginal;
+        private System.Windows.Forms.TextBox txtUrlTarget;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.PropertyGrid propertyGrid1;
         private System.Windows.Forms.Panel panel3;

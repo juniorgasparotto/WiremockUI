@@ -73,7 +73,7 @@ namespace WiremockUI
                 args = new string[]
                 {
                     "--port", proxy.PortProxy.ToString(),
-                    "--proxy-all", proxy.UrlOriginal,
+                    "--proxy-all", proxy.UrlTarget,
                     "--record-mappings",
                     "--root-dir", relativeFolder
                 };
@@ -83,7 +83,7 @@ namespace WiremockUI
                 args = new string[]
                 {
                     "--port", proxy.PortProxy.ToString(),
-                    "--proxy-all", proxy.UrlOriginal,
+                    "--proxy-all", proxy.UrlTarget,
                 };
             }
             else

@@ -30,7 +30,7 @@ namespace WiremockUI
             else
             {
                 this.txtName.Text = proxy.Name;
-                this.txtUrlOriginal.Text = proxy.UrlOriginal;
+                this.txtUrlTarget.Text = proxy.UrlTarget;
                 this.txtMockPort.Text = proxy.PortProxy.ToString();
                 this.btnAdd.Text = "Editar";
                 this.oldPath = this.proxy.GetFullPath();
@@ -91,7 +91,7 @@ namespace WiremockUI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var name = txtName.Text.Trim();
-            var urlOriginal = txtUrlOriginal.Text.Trim();
+            var urlTarget = txtUrlTarget.Text.Trim();
             var port = txtMockPort.Text.Trim();
             var idExists = proxy?.Id;
 
@@ -102,10 +102,10 @@ namespace WiremockUI
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(urlOriginal))
+            if (string.IsNullOrWhiteSpace(urlTarget))
             {
-                Helper.MessageBoxError("O campo 'Url Original' é obrigatório.");
-                txtUrlOriginal.Focus();
+                Helper.MessageBoxError("O campo 'Url destino' é obrigatório.");
+                txtUrlTarget.Focus();
                 return;
             }
 
@@ -152,7 +152,7 @@ namespace WiremockUI
                 proxy = new Proxy();
 
             proxy.Name = name;
-            proxy.UrlOriginal = urlOriginal;
+            proxy.UrlTarget = urlTarget;
             proxy.PortProxy = portNumber;
             proxy.Arguments = GetProperties();
 

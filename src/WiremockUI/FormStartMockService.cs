@@ -29,8 +29,8 @@ namespace WiremockUI
             this.mockService = mock;
             this.playType = playType;
 
-            this.txtFrom.Text = proxy.UrlOriginal;
-            this.lblUrlOriginal.Links.Add(0, proxy.UrlOriginal.Length, proxy.UrlOriginal);
+            this.txtFrom.Text = proxy.UrlTarget;
+            this.lblUrlTarget.Links.Add(0, proxy.UrlTarget.Length, proxy.UrlTarget);
 
             var urlProxy = proxy.GetUrlProxy();
             this.txtTo.Text = urlProxy;
@@ -45,7 +45,7 @@ namespace WiremockUI
             master.Dashboard.Play(proxy, mockService, playType, logWriter);
         }
 
-        private void lblUrlOriginal_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void lblUrlTarget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(e.Link.LinkData.ToString());
         }
