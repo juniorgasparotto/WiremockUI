@@ -91,21 +91,21 @@
             // txtTo
             // 
             this.txtTo.AcceptsTab = true;
-            this.txtTo.Location = new System.Drawing.Point(76, 51);
+            this.txtTo.Location = new System.Drawing.Point(91, 51);
             this.txtTo.Multiline = true;
             this.txtTo.Name = "txtTo";
             this.txtTo.ReadOnly = true;
-            this.txtTo.Size = new System.Drawing.Size(455, 20);
+            this.txtTo.Size = new System.Drawing.Size(440, 20);
             this.txtTo.TabIndex = 24;
             // 
             // txtFrom
             // 
             this.txtFrom.AcceptsTab = true;
-            this.txtFrom.Location = new System.Drawing.Point(76, 23);
+            this.txtFrom.Location = new System.Drawing.Point(91, 23);
             this.txtFrom.Multiline = true;
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.ReadOnly = true;
-            this.txtFrom.Size = new System.Drawing.Size(455, 20);
+            this.txtFrom.Size = new System.Drawing.Size(440, 20);
             this.txtFrom.TabIndex = 24;
             // 
             // lblUrlOriginal
@@ -147,19 +147,19 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(6, 55);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 13);
+            this.label4.Size = new System.Drawing.Size(79, 13);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Url PARA:";
+            this.label4.Text = "Url do proxy:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 27);
+            this.label2.Location = new System.Drawing.Point(12, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Url DE:";
+            this.label2.Text = "Url destino:";
             // 
             // panel2
             // 
