@@ -42,7 +42,7 @@ namespace WiremockUI
             }
         }
 
-        public static string ResolveBreakLineIncompatibility(string text)
+        public static string ResolveBreakLineInCompatibility(string text)
         {
             if (text == null)
                 return text;

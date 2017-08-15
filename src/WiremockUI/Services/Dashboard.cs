@@ -57,7 +57,7 @@ namespace WiremockUI
             }
         }
 
-        public void Play(Proxy proxy, Mock mock, PlayType type, TextWriter textWriter)
+        public void Play(Proxy proxy, Mock mock, PlayType type, ILogWriter textWriter)
         {
             if (Services.ContainsKey(mock.Id))
                 Stop(mock);

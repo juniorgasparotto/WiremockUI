@@ -226,11 +226,13 @@
     <Compile Include="FileViewers\FormTextFile.Designer.cs">
       <DependentUpon>FormTextFile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Log\ILogWriter.cs" />
     <Compile Include="Models\TreeNodeBodyModel.cs" />
     <Compile Include="Models\TreeNodeMappingModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\MappingModel.cs" />
     <Compile Include="FileViewers\IFormFileUpdate.cs" />
+    <Compile Include="Log\RichTextBoxLogWriter.cs" />
     <Compile Include="UserControls\EditorTextbox\EditorTextbox.cs">
       <SubType>Component</SubType>
     </Compile>

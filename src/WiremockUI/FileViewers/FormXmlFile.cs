@@ -39,7 +39,7 @@ namespace WiremockUI
                 btnOpen.Enabled = false;
             }
 
-            var text = Helper.ResolveBreakLineIncompatibility(content);
+            var text = Helper.ResolveBreakLineInCompatibility(content);
             if (text != null)
             {
                 txtContent.Text = content;

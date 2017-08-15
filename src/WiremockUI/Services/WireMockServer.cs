@@ -13,16 +13,7 @@ namespace WiremockUI
     public class WireMockServer
     {
         private com.github.tomakehurst.wiremock.WireMockServer wireMockServer;
-        private TextWriter writer;
-
-        private const string BANNER = @" /$$      /$$ /$$                     /$$      /$$                     /$$      \n" +
-            "| $$  /$ | $$|__/                    | $$$    /$$$                    | $$      \n" +
-            "| $$ /$$$| $$ /$$  /$$$$$$   /$$$$$$ | $$$$  /$$$$  /$$$$$$   /$$$$$$$| $$   /$$\n" +
-            "| $$/$$ $$ $$| $$ /$$__  $$ /$$__  $$| $$ $$/$$ $$ /$$__  $$ /$$_____/| $$  /$$/\n" +
-            "| $$$$_  $$$$| $$| $$  \\__/| $$$$$$$$| $$  $$$| $$| $$  \\ $$| $$      | $$$$$$/ \n" +
-            "| $$$/ \\  $$$| $$| $$      | $$_____/| $$\\  $ | $$| $$  | $$| $$      | $$_  $$ \n" +
-            "| $$/   \\  $$| $$| $$      |  $$$$$$$| $$ \\/  | $$|  $$$$$$/|  $$$$$$$| $$ \\  $$\n" +
-            "|__/     \\__/|__/|__/       \\_______/|__/     |__/ \\______/  \\_______/|__/  \\__/";
+        private ILogWriter writer;
         private bool useLogStdout;
 
         static WireMockServer()
@@ -30,7 +21,7 @@ namespace WiremockUI
             java.lang.System.setProperty("wiremock.org.mortbay.log.class", "com.github.tomakehurst.wiremock.jetty.LoggerAdapter");
         }
 
-        public WireMockServer(TextWriter writer, bool useLogStdout = false)
+        public WireMockServer(ILogWriter writer, bool useLogStdout = false)
         {
             this.useLogStdout = useLogStdout;
             this.writer = writer;
@@ -48,7 +39,7 @@ namespace WiremockUI
             }
             else
             {
-                options = new CommandLineOptionsWithLog(new Log(writer), args);
+                options = new CommandLineOptionsWithLog(writer, args);
             }
             
             var FILES_ROOT = @"__files";
@@ -76,16 +67,12 @@ namespace WiremockUI
 
             if (useLogStdout)
             {
-                java.lang.System.@out.println(BANNER);
                 java.lang.System.@out.println();
                 java.lang.System.@out.println(options);
             }
             else
             {
-                options.notifier().info(BANNER);
-                options.notifier().info("\r\n\r\n");
-                options.notifier().info(options.ToString());
-                options.notifier().info("\r\n");
+                writer.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true);
             }
         }
 
@@ -112,11 +99,11 @@ namespace WiremockUI
 
         private class CommandLineOptionsWithLog : CommandLineOptions
         {
-            private Log log;
+            private ConsoleNotifier log;
 
-            public CommandLineOptionsWithLog(Log log, params string[] args) : base(args)
+            public CommandLineOptionsWithLog(ILogWriter writer, params string[] args) : base(args)
             {
-                this.log = log;
+                this.log = new ConsoleNotifier(this.verboseLoggingEnabled(), writer);
             }
 
             public override Notifier notifier()
@@ -125,36 +112,48 @@ namespace WiremockUI
             }
         }
 
-        private class Log : Notifier
+        private class ConsoleNotifier : Notifier
         {
-            private TextWriter writer;
+            private ILogWriter writer;
+            private bool verbose;
 
-            public Log(TextWriter writer)
+            public ConsoleNotifier(bool verbose, ILogWriter writer)
             {
+                this.verbose = verbose;
                 this.writer = writer;
-            }
 
-            public void error(string str)
-            {
-                this.writer.Write(Helper.ResolveBreakLineIncompatibility(str));
-            }
-
-            public void error(string str, Exception t)
-            {
-                this.writer.Write(Helper.ResolveBreakLineIncompatibility(str));
+                if (verbose)
+                    info("Verbose logging enabled");
             }
 
             public void info(string str)
             {
-                this.writer.Write(Helper.ResolveBreakLineIncompatibility(str));
+                if (verbose)
+                    this.writer.Info(FormatMessage(Helper.ResolveBreakLineInCompatibility(str)));
+            }
+
+            public void error(string str)
+            {
+                this.writer.Error(FormatMessage(Helper.ResolveBreakLineInCompatibility(str)));
+            }
+
+            public void error(string str, Exception e)
+            {
+                this.writer.Error(FormatMessage(Helper.ResolveBreakLineInCompatibility(str)));
+                this.writer.Error(e.ToString());
+            }
+
+            private static String FormatMessage(String message)
+            {
+                return String.Format("{0} {1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"), message);
             }
         }
 
         private class InternalOutput : java.io.OutputStream
         {
-            private TextWriter log;
+            private ILogWriter log;
 
-            public InternalOutput(TextWriter log)
+            public InternalOutput(ILogWriter log)
             {
                 this.log = log;
             }

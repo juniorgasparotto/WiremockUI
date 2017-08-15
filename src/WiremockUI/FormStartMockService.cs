@@ -1,9 +1,5 @@
-﻿using com.github.tomakehurst.wiremock.standalone;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System;
 using System.Windows.Forms;
-using System.Text;
 using System.Diagnostics;
 using WiremockUI.Data;
 
@@ -11,8 +7,7 @@ namespace WiremockUI
 {
     public partial class FormStartMockService : Form
     {
-        delegate void SetTextCallback(string text);
-        private TextBoxWriter log;
+        private RichTextBoxLogWriter logWriter;
         private FormMaster master;
         private Mock mockService;
         private Dashboard.PlayType playType;
@@ -21,11 +16,14 @@ namespace WiremockUI
         public FormStartMockService(FormMaster master, Proxy proxy, Mock mock, Dashboard.PlayType playType)
         {
             InitializeComponent();
+            this.logWriter = new RichTextBoxLogWriter(rtxtLog);
+            this.logWriter.EnableAutoScroll = chkAutoScroll.Checked;
+            this.logWriter.Enabled = !chkDisable.Checked;
 
-            this.log = new TextBoxWriter(txtLog);
-            Console.SetOut(log);
-            TextWriterTraceListener myWriter = new TextWriterTraceListener(log);
-            Debug.Listeners.Add(myWriter);
+            //Console.SetOut(logWriter);
+            //TextWriterTraceListener myWriter = new TextWriterTraceListener(logWriter);
+            //Debug.Listeners.Add(myWriter);
+
             this.master = master;
             this.proxy = proxy;
             this.mockService = mock;
@@ -44,45 +42,7 @@ namespace WiremockUI
 
         public void Play()
         {
-            master.Dashboard.Play(proxy, mockService, playType, log);
-        }
-
-        public class TextBoxWriter : TextWriter
-        {
-            TextBox _output = null;
-
-            public TextBoxWriter(TextBox output)
-            {
-                _output = output;
-            }
-
-            public override void Write(string value)
-            {
-                if (_output.InvokeRequired)
-                {
-                    SetTextCallback d = new SetTextCallback(f => _output.AppendText(f));
-                    _output.Invoke(d, new object[] { value });
-                }
-                else
-                {
-                    this._output.AppendText(value);
-                }
-            }
-
-            public override void Write(char[] buffer, int index, int count)
-            {
-                base.Write(buffer, index, count);
-            }
-
-            public override void Write(char value)
-            {
-                base.Write(value);
-            }
-
-            public override Encoding Encoding
-            {
-                get { return System.Text.Encoding.UTF8; }
-            }
+            master.Dashboard.Play(proxy, mockService, playType, logWriter);
         }
 
         private void lblUrlOriginal_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -107,7 +67,17 @@ namespace WiremockUI
 
         private void btnClean_Click(object sender, EventArgs e)
         {
-            txtLog.Clear();
+            rtxtLog.Clear();
+        }
+
+        private void chkAutoScroll_CheckedChanged(object sender, EventArgs e)
+        {
+            this.logWriter.EnableAutoScroll = chkAutoScroll.Checked;
+        }
+
+        private void chkDisable_CheckedChanged(object sender, EventArgs e)
+        {
+            this.logWriter.Enabled = !chkDisable.Checked;
         }
     }
 }

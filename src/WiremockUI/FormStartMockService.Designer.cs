@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkAutoScroll = new System.Windows.Forms.CheckBox();
             this.btnClean = new System.Windows.Forms.Button();
             this.txtTo = new WiremockUI.EditorTextbox();
             this.txtFrom = new WiremockUI.EditorTextbox();
@@ -37,13 +38,18 @@
             this.lblUrlProxy = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtLog = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.rtxtLog = new System.Windows.Forms.RichTextBox();
+            this.chkDisable = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.chkDisable);
+            this.panel1.Controls.Add(this.chkAutoScroll);
             this.panel1.Controls.Add(this.btnClean);
             this.panel1.Controls.Add(this.txtTo);
             this.panel1.Controls.Add(this.txtFrom);
@@ -57,6 +63,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(584, 108);
             this.panel1.TabIndex = 0;
+            // 
+            // chkAutoScroll
+            // 
+            this.chkAutoScroll.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.chkAutoScroll.AutoSize = true;
+            this.chkAutoScroll.Checked = true;
+            this.chkAutoScroll.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoScroll.Location = new System.Drawing.Point(425, 85);
+            this.chkAutoScroll.Name = "chkAutoScroll";
+            this.chkAutoScroll.Size = new System.Drawing.Size(135, 17);
+            this.chkAutoScroll.TabIndex = 26;
+            this.chkAutoScroll.Text = "Rolar automáticamente";
+            this.chkAutoScroll.UseVisualStyleBackColor = true;
+            this.chkAutoScroll.CheckedChanged += new System.EventHandler(this.chkAutoScroll_CheckedChanged);
             // 
             // btnClean
             // 
@@ -141,16 +161,39 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Url DE:";
             // 
-            // txtLog
+            // panel2
             // 
-            this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLog.Location = new System.Drawing.Point(0, 108);
-            this.txtLog.Multiline = true;
-            this.txtLog.Name = "txtLog";
-            this.txtLog.ReadOnly = true;
-            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(584, 153);
-            this.txtLog.TabIndex = 12;
+            this.panel2.Controls.Add(this.rtxtLog);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 108);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(584, 153);
+            this.panel2.TabIndex = 1;
+            // 
+            // rtxtLog
+            // 
+            this.rtxtLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtxtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtLog.Location = new System.Drawing.Point(0, 0);
+            this.rtxtLog.Name = "rtxtLog";
+            this.rtxtLog.ReadOnly = true;
+            this.rtxtLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtxtLog.ShowSelectionMargin = true;
+            this.rtxtLog.Size = new System.Drawing.Size(584, 153);
+            this.rtxtLog.TabIndex = 14;
+            this.rtxtLog.Text = "";
+            // 
+            // chkDisable
+            // 
+            this.chkDisable.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.chkDisable.AutoSize = true;
+            this.chkDisable.Location = new System.Drawing.Point(321, 84);
+            this.chkDisable.Name = "chkDisable";
+            this.chkDisable.Size = new System.Drawing.Size(88, 17);
+            this.chkDisable.TabIndex = 27;
+            this.chkDisable.Text = "Desativar log";
+            this.chkDisable.UseVisualStyleBackColor = true;
+            this.chkDisable.CheckedChanged += new System.EventHandler(this.chkDisable_CheckedChanged);
             // 
             // FormStartMockService
             // 
@@ -158,7 +201,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(584, 261);
-            this.Controls.Add(this.txtLog);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -166,8 +209,8 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -179,9 +222,12 @@
         private System.Windows.Forms.LinkLabel lblUrlOriginal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtLog;
         private EditorTextbox txtTo;
         private EditorTextbox txtFrom;
         private System.Windows.Forms.Button btnClean;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RichTextBox rtxtLog;
+        private System.Windows.Forms.CheckBox chkAutoScroll;
+        private System.Windows.Forms.CheckBox chkDisable;
     }
 }
