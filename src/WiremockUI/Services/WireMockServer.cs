@@ -7,6 +7,11 @@ using System.Text;
 using System.IO;
 using System;
 using com.github.tomakehurst.wiremock.core;
+using com.github.tomakehurst.wiremock.http.trafficlistener;
+using java.net;
+using java.nio;
+using java.nio.charset;
+using System.Linq;
 
 namespace WiremockUI
 {
@@ -53,6 +58,8 @@ namespace WiremockUI
             mappingsFileSource.createIfNecessary();
 
             wireMockServer = new com.github.tomakehurst.wiremock.WireMockServer(options);
+            wireMockServer.addMockServiceRequestListener(new RequestListenerTest());
+
             if (options.recordMappingsEnabled())
             {
                 wireMockServer.enableRecordMappings(mappingsFileSource, filesFileSource);
@@ -100,15 +107,86 @@ namespace WiremockUI
         private class CommandLineOptionsWithLog : CommandLineOptions
         {
             private ConsoleNotifier log;
+            private TrafficLog trafficLog;
 
             public CommandLineOptionsWithLog(ILogWriter writer, params string[] args) : base(args)
             {
                 this.log = new ConsoleNotifier(this.verboseLoggingEnabled(), writer);
+                this.trafficLog = new TrafficLog(args.Contains("--print-all-network-traffic"), writer);
+            }
+
+            public override WiremockNetworkTrafficListener networkTrafficListener()
+            {
+                return this.trafficLog;
             }
 
             public override Notifier notifier()
             {
                 return log;
+            }
+        }
+
+        private class TrafficLog : WiremockNetworkTrafficListener
+        {
+            private bool verbose;
+            private ILogWriter writer;
+            private static Charset charset = Charset.forName("UTF-8");
+            private static CharsetDecoder decoder = charset.newDecoder();
+
+            public TrafficLog(bool verbose, ILogWriter writer)
+            {
+                this.verbose = verbose;
+                this.writer = writer;
+
+                if (verbose)
+                    writer.Info(FormatMessage("Enable print all raw incoming and outgoing network traffic"));
+            }
+
+            public void incoming(Socket socket, ByteBuffer bytes)
+            {
+                if (!verbose)
+                    return;
+
+                try
+                {
+                    writer.Info(decoder.decode(bytes).toString());
+                }
+                catch (CharacterCodingException e)
+                {
+                    writer.Error("Problem decoding network traffic: " + e.ToString());
+                }
+            }
+
+            public void outgoing(Socket socket, ByteBuffer bytes)
+            {
+                if (!verbose)
+                    return;
+
+                try
+                {
+                    writer.Info(decoder.decode(bytes).toString());
+                }
+                catch (CharacterCodingException e)
+                {
+                    writer.Error("Problem decoding network traffic" + e.ToString());
+                }
+            }
+
+            public void opened(Socket socket)
+            {
+                if (!verbose)
+                    return;
+            }
+
+            public void closed(Socket s)
+            {
+                if (!verbose)
+                    return;
+            }
+
+            private static String FormatMessage(String message)
+            {
+                return String.Format("{0} {1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"), message);
             }
         }
 

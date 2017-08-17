@@ -152,6 +152,7 @@ namespace WiremockUI
                     var hasMock = proxy.Mocks.Any();
 
                     startMenu.Visible = hasMock;
+                    startAsProxyMenu.Visible = hasMock;
                     startAndRecordMenu.Visible = hasMock;
                     stopMenu.Visible = hasMock;
                     openFolderMenu.Visible = hasMock;

@@ -70,6 +70,40 @@
           "Value": "True",
           "ArgName": "--verbose",
           "Type": "Boolean"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "True",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
+        }
+      ]
+    },
+    {
+      "Id": "9fb90a75-523e-439e-bb08-266410a7a1c8",
+      "UrlTarget": "http://www.aorank.com/tutorial/jQuery_Ajax_post_method_livedemo/jquery_send.php",
+      "PortProxy": 5506,
+      "Name": "teste2",
+      "Mocks": [
+        {
+          "Id": "e27b4160-ea24-46b7-bb3c-641643118208",
+          "Name": "cenario1",
+          "IsDefault": true,
+          "ShowURL": true
+        }
+      ],
+      "Arguments": [
+        {
+          "Name": "Verbose",
+          "Value": "True",
+          "ArgName": "--verbose",
+          "Type": "Boolean"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "False",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
         }
       ]
     }

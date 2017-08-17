@@ -226,6 +226,7 @@
     <Compile Include="FileViewers\FormTextFile.Designer.cs">
       <DependentUpon>FormTextFile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Listeners\RequestListenerTest.cs" />
     <Compile Include="Log\ILogWriter.cs" />
     <Compile Include="Models\TreeNodeBodyModel.cs" />
     <Compile Include="Models\TreeNodeMappingModel.cs" />

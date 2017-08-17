@@ -350,7 +350,7 @@ namespace WiremockUI
             [Description("Print all raw incoming and outgoing network traffic to console.")]
             [Category("Argumentos")]
             [Argument("--print-all-network-traffic")]
-            public string PrintAllNetworkTraffic
+            public bool PrintAllNetworkTraffic
             {
                 get; set;
             }

@@ -3,7 +3,6 @@ aceitar tab com 4 chars - OK
 salvar com ctrl + s - OK
 adicionar caractere com tab - OK
 remover caracteres vazios com tab - OK
-
 criar mecanismo para renomear request/body - OK
 criar mecanismo de duplicar mock - OK
 crir menu para remover mock - OK
@@ -14,6 +13,8 @@ criar mock/renomear/duplicar/remove - OK
 criar um visualizador generico para a resposta quando não json - OK
 criar um visualizador de xml para a resposta com formatação - OK
 criar um visualizador de imagem para a resposta - OK
+
+limpar log, autoscroll - ok
 
 criar mecanismo para copiar como curl 
 multiplas linguas
@@ -56,4 +57,4 @@ criar open ao apertar enter em cada nivel da treeview
 adicionar atalhos em todos os niveis da treeview
 criar esquema para abrir o url dos mapas no browser ou em um componente de composer
 adicionar varios tipos de mock (json, xml)
-limpar log
+mudar pasta do debug para dentro da .app
