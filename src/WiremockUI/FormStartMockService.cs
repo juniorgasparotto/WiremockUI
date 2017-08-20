@@ -2,32 +2,45 @@
 using System.Windows.Forms;
 using System.Diagnostics;
 using WiremockUI.Data;
-using System.Drawing;
+using com.github.tomakehurst.wiremock.http;
 
 namespace WiremockUI
 {
     public partial class FormStartMockService : Form
     {
         private RichTextBoxLogWriter logWriter;
+        private GridViewLogRequestResponse logTable;
         private FormMaster master;
         private Mock mockService;
         private Dashboard.PlayType playType;
         private Proxy proxy;
         private int start;
         private int indexOfSearchText;
+        private string labelDiff;
 
         public FormStartMockService(FormMaster master, Proxy proxy, Mock mock, Dashboard.PlayType playType)
         {
             InitializeComponent();
             this.txtSearchValue.Multiline = false;
 
+            // log text
             this.logWriter = new RichTextBoxLogWriter(rtxtLog);
             this.logWriter.EnableAutoScroll = chkAutoScroll.Checked;
             this.logWriter.Enabled = !chkDisable.Checked;
-            
-            //Console.SetOut(logWriter);
-            //TextWriterTraceListener myWriter = new TextWriterTraceListener(logWriter);
-            //Debug.Listeners.Add(myWriter);
+
+            // log table
+            this.logTable = new GridViewLogRequestResponse(gridLog, master, (row) =>
+            {
+                if (gridLog.Rows.Count == 0)
+                    tabLogs.SelectedTab = tabLogTable;
+                toolStripStatusCount.Text = row.Number.ToString();
+            });
+
+            this.logTable.EnableAutoScroll = chkAutoScroll.Checked;
+            this.logTable.Enabled = !chkDisable.Checked;
+
+            gridLog.Columns[gridLog.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.labelDiff = toolStripStatusValue.Text;
 
             this.master = master;
             this.proxy = proxy;
@@ -51,10 +64,10 @@ namespace WiremockUI
                 this.lblOpenFolder.Visible = false;
             }
         }
-
+        
         public void Play()
         {
-            master.Dashboard.Play(proxy, mockService, playType, logWriter);
+            master.Dashboard.Play(proxy, mockService, playType, logWriter, logTable);
         }
 
         private void Search()
@@ -141,17 +154,22 @@ namespace WiremockUI
 
         private void btnClean_Click(object sender, EventArgs e)
         {
-            rtxtLog.Clear();
+            if (tabLogs.SelectedTab == tabLogText)
+                rtxtLog.Clear();
+            else
+                gridLog.Rows.Clear();
         }
 
         private void chkAutoScroll_CheckedChanged(object sender, EventArgs e)
         {
             this.logWriter.EnableAutoScroll = chkAutoScroll.Checked;
+            this.logTable.EnableAutoScroll = chkAutoScroll.Checked;
         }
 
         private void chkDisable_CheckedChanged(object sender, EventArgs e)
         {
             this.logWriter.Enabled = !chkDisable.Checked;
+            this.logTable.Enabled = !chkDisable.Checked;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -181,5 +199,18 @@ namespace WiremockUI
             }
         }
 
+        private void gridLog_SelectionChanged(object sender, EventArgs e)
+        {
+            toolStripStatusValue.Text = this.labelDiff;
+            if (gridLog.SelectedCells.Count == 2)
+            {
+                var sel1 = gridLog.SelectedCells[0];
+                var sel2 = gridLog.SelectedCells[1];
+                if (sel1.Tag is TimeSpan t1 && sel2.Tag is TimeSpan t2)
+                {
+                    toolStripStatusValue.Text = (t1 - t2).ToString();
+                }
+            }
+        }
     }
 }

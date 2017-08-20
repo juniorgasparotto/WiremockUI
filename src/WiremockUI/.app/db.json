@@ -2,56 +2,6 @@
   "MockServices": null,
   "Proxies": [
     {
-      "Id": "851af5b2-0682-4441-aca0-d048a4a80d30",
-      "UrlTarget": "http://www.newtonsoft.com/json/help/html/SerializationAttributes.htm",
-      "PortProxy": 5502,
-      "Name": "Teste",
-      "Mocks": [
-        {
-          "Id": "c092f505-62ba-400f-9710-1b6369c067bd",
-          "Name": "Cenario 1",
-          "IsDefault": true,
-          "ShowURL": true
-        }
-      ],
-      "Arguments": [
-        {
-          "Name": "Verbose",
-          "Value": "True",
-          "ArgName": "--verbose",
-          "Type": "Boolean"
-        },
-        {
-          "Name": "MatchHeaders",
-          "Value": "true",
-          "ArgName": "--match-headers",
-          "Type": "String"
-        }
-      ]
-    },
-    {
-      "Id": "15d0be54-d9e7-4935-9d09-a8274e4d9a84",
-      "UrlTarget": "http://wiremock.org/",
-      "PortProxy": 5504,
-      "Name": "TT",
-      "Mocks": [
-        {
-          "Id": "c54709c2-2e0d-46a0-a5a6-425273073dba",
-          "Name": "Teste",
-          "IsDefault": true,
-          "ShowURL": false
-        }
-      ],
-      "Arguments": [
-        {
-          "Name": "Verbose",
-          "Value": "True",
-          "ArgName": "--verbose",
-          "Type": "Boolean"
-        }
-      ]
-    },
-    {
       "Id": "f7a63164-29be-4190-b990-ad388f8d58e0",
       "UrlTarget": "http://wiremock.org",
       "PortProxy": 5505,
@@ -81,13 +31,69 @@
     },
     {
       "Id": "9fb90a75-523e-439e-bb08-266410a7a1c8",
-      "UrlTarget": "http://www.aorank.com/tutorial/jQuery_Ajax_post_method_livedemo/jquery_send.php",
+      "UrlTarget": "http://localhost",
       "PortProxy": 5506,
       "Name": "teste2",
       "Mocks": [
         {
           "Id": "e27b4160-ea24-46b7-bb3c-641643118208",
           "Name": "cenario1",
+          "IsDefault": true,
+          "ShowURL": true
+        }
+      ],
+      "Arguments": [
+        {
+          "Name": "Verbose",
+          "Value": "True",
+          "ArgName": "--verbose",
+          "Type": "Boolean"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "False",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
+        }
+      ]
+    },
+    {
+      "Id": "d44015af-8d9d-4f6c-807c-67fe464ea713",
+      "UrlTarget": "http://localhost",
+      "PortProxy": 5507,
+      "Name": "A",
+      "Mocks": [
+        {
+          "Id": "91a00fa3-a1cd-439c-8ed7-29dcdf81fdc3",
+          "Name": "cenario1",
+          "IsDefault": true,
+          "ShowURL": true
+        }
+      ],
+      "Arguments": [
+        {
+          "Name": "Verbose",
+          "Value": "True",
+          "ArgName": "--verbose",
+          "Type": "Boolean"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "False",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
+        }
+      ]
+    },
+    {
+      "Id": "02f90a02-d2e4-4e60-99e4-8b745b860dc3",
+      "UrlTarget": "http://localhost:5507",
+      "PortProxy": 5508,
+      "Name": "B",
+      "Mocks": [
+        {
+          "Id": "f5716370-96fb-46f8-bec2-55d639988d8e",
+          "Name": "cenario2",
           "IsDefault": true,
           "ShowURL": true
         }

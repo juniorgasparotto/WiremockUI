@@ -18,7 +18,8 @@ namespace WiremockUI
     public class WireMockServer
     {
         private com.github.tomakehurst.wiremock.WireMockServer wireMockServer;
-        private ILogWriter writer;
+        private ILogWriter logText;
+        private ILogTableRequestResponse logTableRequestResponse;
         private bool useLogStdout;
 
         static WireMockServer()
@@ -26,10 +27,11 @@ namespace WiremockUI
             java.lang.System.setProperty("wiremock.org.mortbay.log.class", "com.github.tomakehurst.wiremock.jetty.LoggerAdapter");
         }
 
-        public WireMockServer(ILogWriter writer, bool useLogStdout = false)
+        public WireMockServer(ILogWriter writer, ILogTableRequestResponse logTableRequestResponse, bool useLogStdout = false)
         {
             this.useLogStdout = useLogStdout;
-            this.writer = writer;
+            this.logText = writer;
+            this.logTableRequestResponse = logTableRequestResponse;
         }
 
         public void run(params string[] args)
@@ -37,14 +39,14 @@ namespace WiremockUI
             CommandLineOptions options;
             if (useLogStdout)
             {
-                var debug = new InternalOutput(writer);
+                var debug = new InternalOutput(logText);
                 var print = new java.io.PrintStream(debug);
                 java.lang.System.setOut(print);
                 options = new CommandLineOptions(args);
             }
             else
             {
-                options = new CommandLineOptionsWithLog(writer, args);
+                options = new CommandLineOptionsWithLog(logText, logTableRequestResponse, args);
             }
             
             var FILES_ROOT = @"__files";
@@ -58,7 +60,7 @@ namespace WiremockUI
             mappingsFileSource.createIfNecessary();
 
             wireMockServer = new com.github.tomakehurst.wiremock.WireMockServer(options);
-            wireMockServer.addMockServiceRequestListener(new RequestListenerTest());
+            wireMockServer.addMockServiceRequestListener(new RequestAndResponseListener(logTableRequestResponse));
 
             if (options.recordMappingsEnabled())
             {
@@ -79,7 +81,7 @@ namespace WiremockUI
             }
             else
             {
-                writer.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true);
+                logText.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true);
             }
         }
 
@@ -109,10 +111,10 @@ namespace WiremockUI
             private ConsoleNotifier log;
             private TrafficLog trafficLog;
 
-            public CommandLineOptionsWithLog(ILogWriter writer, params string[] args) : base(args)
+            public CommandLineOptionsWithLog(ILogWriter writer, ILogTableRequestResponse logTableRequestResponse, params string[] args) : base(args)
             {
                 this.log = new ConsoleNotifier(this.verboseLoggingEnabled(), writer);
-                this.trafficLog = new TrafficLog(args.Contains("--print-all-network-traffic"), writer);
+                this.trafficLog = new TrafficLog(args.Contains("--print-all-network-traffic"), writer, logTableRequestResponse);
             }
 
             public override WiremockNetworkTrafficListener networkTrafficListener()
@@ -130,13 +132,15 @@ namespace WiremockUI
         {
             private bool verbose;
             private ILogWriter writer;
+            private ILogTableRequestResponse logTableRequestResponse;
             private static Charset charset = Charset.forName("UTF-8");
             private static CharsetDecoder decoder = charset.newDecoder();
 
-            public TrafficLog(bool verbose, ILogWriter writer)
+            public TrafficLog(bool verbose, ILogWriter writer, ILogTableRequestResponse logTableRequestResponse)
             {
                 this.verbose = verbose;
                 this.writer = writer;
+                this.logTableRequestResponse = logTableRequestResponse;
 
                 if (verbose)
                     writer.Info(FormatMessage("Enable print all raw incoming and outgoing network traffic"));
@@ -144,31 +148,36 @@ namespace WiremockUI
 
             public void incoming(Socket socket, ByteBuffer bytes)
             {
-                if (!verbose)
-                    return;
-
                 try
                 {
-                    writer.Info(decoder.decode(bytes).toString());
+                    var decode = decoder.decode(bytes).toString();
+                    this.logTableRequestResponse.AddServerIncoming(decode, DateTime.Now);
+
+                    if (verbose)
+                        writer.Info(decode);
                 }
                 catch (CharacterCodingException e)
                 {
-                    writer.Error("Problem decoding network traffic: " + e.ToString());
+                    this.logTableRequestResponse.AddServerIncoming(null, DateTime.Now);
+                    if (verbose)
+                        writer.Error("Problem decoding network traffic: " + e.ToString());
                 }
             }
 
             public void outgoing(Socket socket, ByteBuffer bytes)
             {
-                if (!verbose)
-                    return;
-
                 try
                 {
-                    writer.Info(decoder.decode(bytes).toString());
+                    var decode = decoder.decode(bytes).toString();
+                    this.logTableRequestResponse.AddServerOutgoing(decode, DateTime.Now);
+                    if (verbose)
+                        writer.Info(decode);
                 }
                 catch (CharacterCodingException e)
                 {
-                    writer.Error("Problem decoding network traffic" + e.ToString());
+                    this.logTableRequestResponse.AddServerOutgoing(null, DateTime.Now);
+                    if (verbose)
+                        writer.Error("Problem decoding network traffic" + e.ToString());
                 }
             }
 

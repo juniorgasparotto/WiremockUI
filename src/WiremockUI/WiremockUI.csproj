@@ -202,10 +202,10 @@
     <Compile Include="FormAddProxy.Designer.cs">
       <DependentUpon>FormAddProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormJsonViewer.cs">
+    <Compile Include="TextViewers\FormJsonViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormJsonViewer.Designer.cs">
+    <Compile Include="TextViewers\FormJsonViewer.Designer.cs">
       <DependentUpon>FormJsonViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="FileViewers\FormImageFile.cs">
@@ -226,14 +226,22 @@
     <Compile Include="FileViewers\FormTextFile.Designer.cs">
       <DependentUpon>FormTextFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Listeners\RequestListenerTest.cs" />
+    <Compile Include="Listeners\RequestAndResponseListener.cs" />
+    <Compile Include="Log\ILogTableRequestResponse.cs" />
     <Compile Include="Log\ILogWriter.cs" />
+    <Compile Include="Log\GridViewLogRequestResponse.cs" />
     <Compile Include="Models\TreeNodeBodyModel.cs" />
     <Compile Include="Models\TreeNodeMappingModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\MappingModel.cs" />
     <Compile Include="FileViewers\IFormFileUpdate.cs" />
     <Compile Include="Log\RichTextBoxLogWriter.cs" />
+    <Compile Include="TextViewers\FormTextView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextViewers\FormTextView.Designer.cs">
+      <DependentUpon>FormTextView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EditorTextbox\EditorTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -293,7 +301,7 @@
     <EmbeddedResource Include="FormAddProxy.resx">
       <DependentUpon>FormAddProxy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormJsonViewer.resx">
+    <EmbeddedResource Include="TextViewers\FormJsonViewer.resx">
       <DependentUpon>FormJsonViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStartMockService.resx">
@@ -327,6 +335,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TextViewers\FormTextView.resx">
+      <DependentUpon>FormTextView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\JsonViewer\UcJsonView.resx">
       <DependentUpon>UcJsonView.cs</DependentUpon>
     </EmbeddedResource>
@@ -341,6 +352,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Jar\wiremock-standalone-2.7.1.jar" />
     <Content Include="Templates\Files\New.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -368,8 +380,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Jar\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

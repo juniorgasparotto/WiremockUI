@@ -57,12 +57,12 @@ namespace WiremockUI
             }
         }
 
-        public void Play(Proxy proxy, Mock mock, PlayType type, ILogWriter textWriter)
+        public void Play(Proxy proxy, Mock mock, PlayType type, ILogWriter textWriter, ILogTableRequestResponse logTableRequestResponse)
         {
             if (Services.ContainsKey(mock.Id))
                 Stop(mock);
 
-            var server = new WireMockServer(textWriter);
+            var server = new WireMockServer(textWriter, logTableRequestResponse);
             Services.Add(mock.Id, server);
 
             string[] args;
