@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using WiremockUI.Data;
 using com.github.tomakehurst.wiremock.http;
+using System.IO;
 
 namespace WiremockUI
 {
@@ -54,9 +55,9 @@ namespace WiremockUI
             this.txtTo.Text = urlProxy;
             this.lblUrlProxy.Links.Add(0, urlProxy.Length, urlProxy);
 
-            if (mock != null)
+            var folderPath = proxy.GetFullPath(mock);
+            if (mock != null && File.Exists(folderPath))
             {
-                var folderPath = proxy.GetFullPath(mock);
                 this.lblOpenFolder.Links.Add(0, folderPath.Length, folderPath);
             }
             else
@@ -143,11 +144,6 @@ namespace WiremockUI
         }
 
         private void lblOpenFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(e.Link.LinkData.ToString());
-        }
-
-        private void lblOpenFolder_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(e.Link.LinkData.ToString());
         }

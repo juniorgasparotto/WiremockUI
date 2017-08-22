@@ -229,7 +229,7 @@
             this.lblOpenFolder.TabIndex = 23;
             this.lblOpenFolder.TabStop = true;
             this.lblOpenFolder.Text = "Abrir local";
-            this.lblOpenFolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblOpenFolder_LinkClicked_1);
+            this.lblOpenFolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblOpenFolder_LinkClicked);
             // 
             // lblUrlTarget
             // 
