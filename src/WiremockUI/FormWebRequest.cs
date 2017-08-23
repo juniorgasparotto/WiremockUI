@@ -49,33 +49,41 @@ namespace WiremockUI
                     webRequest.Method = cmbVerb.Text;
                     webRequest.Timeout = (int)txtTimeout.Value;
                     webRequest.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-
+                    
                     foreach (var h in headers)
                     {
-                        var valueLower = h.Key.ToLower();
-                        switch (valueLower)
+                        // continue if header if invalid
+                        try
                         {
-                            case "host":
-                                continue;
-                            case "content-type":
-                                webRequest.ContentType = h.Value;
-                                break;
-                            case "user-agent":
-                                webRequest.UserAgent = h.Value;
-                                break;
-                            case "accept":
-                                webRequest.Accept = h.Value;
-                                break;
-                            case "referer":
-                                webRequest.Referer = h.Value;
-                                break;
-                            case "connection":
-                                if (valueLower == "keep-alive")
-                                    webRequest.KeepAlive = true;
-                                break;
-                            default:
-                                webRequest.Headers.Add(h.Key, h.Value);
-                                break;
+                            var valueLower = h.Key.ToLower();
+                            switch (valueLower)
+                            {
+                                case "host":
+                                    continue;
+                                case "content-type":
+                                    webRequest.ContentType = h.Value;
+                                    break;
+                                case "user-agent":
+                                    webRequest.UserAgent = h.Value;
+                                    break;
+                                case "accept":
+                                    webRequest.Accept = h.Value;
+                                    break;
+                                case "referer":
+                                    webRequest.Referer = h.Value;
+                                    break;
+                                case "connection":
+                                    if (valueLower == "keep-alive")
+                                        webRequest.KeepAlive = true;
+                                    break;
+                                default:
+                                    webRequest.Headers.Add(h.Key, h.Value);
+                                    break;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Helper.MessageBoxError(ex.Message);
                         }
                     }
 
