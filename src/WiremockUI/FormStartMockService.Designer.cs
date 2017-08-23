@@ -39,7 +39,10 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.tabLogTable = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.gridLog = new System.Windows.Forms.DataGridView();
+            this.toolStripStatusLabelCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblOpenFolder = new System.Windows.Forms.LinkLabel();
             this.lblUrlTarget = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -52,10 +55,7 @@
             this.txtSearchValue = new WiremockUI.EditorTextbox();
             this.txtTo = new WiremockUI.EditorTextbox();
             this.txtFrom = new WiremockUI.EditorTextbox();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusValue = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelCount = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.gridLog = new System.Windows.Forms.DataGridView();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,8 +71,8 @@
             this.pnlSearch.SuspendLayout();
             this.tabLogTable.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLog)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLog)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -168,8 +168,8 @@
             // 
             // tabLogTable
             // 
-            this.tabLogTable.Controls.Add(this.statusStrip1);
             this.tabLogTable.Controls.Add(this.gridLog);
+            this.tabLogTable.Controls.Add(this.statusStrip1);
             this.tabLogTable.Location = new System.Drawing.Point(4, 29);
             this.tabLogTable.Name = "tabLogTable";
             this.tabLogTable.Padding = new System.Windows.Forms.Padding(3);
@@ -191,34 +191,31 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // gridLog
+            // toolStripStatusLabelCount
             // 
-            this.gridLog.AllowUserToAddRows = false;
-            this.gridLog.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.gridLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.gridLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Number,
-            this.TypeLog,
-            this.Method,
-            this.Url,
-            this.Status,
-            this.RequestTime,
-            this.ResponseTime,
-            this.Raw});
-            this.gridLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridLog.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gridLog.Location = new System.Drawing.Point(3, 3);
-            this.gridLog.Name = "gridLog";
-            this.gridLog.RowHeadersWidth = 30;
-            this.gridLog.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.gridLog.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridLog.Size = new System.Drawing.Size(570, 114);
-            this.gridLog.TabIndex = 0;
-            this.gridLog.SelectionChanged += new System.EventHandler(this.gridLog_SelectionChanged);
+            this.toolStripStatusLabelCount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabelCount.Name = "toolStripStatusLabelCount";
+            this.toolStripStatusLabelCount.Size = new System.Drawing.Size(114, 17);
+            this.toolStripStatusLabelCount.Text = "Total de resultados:";
+            // 
+            // toolStripStatusCount
+            // 
+            this.toolStripStatusCount.Name = "toolStripStatusCount";
+            this.toolStripStatusCount.Size = new System.Drawing.Size(13, 17);
+            this.toolStripStatusCount.Text = "0";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(122, 17);
+            this.toolStripStatusLabel1.Text = "Diferença de tempo:";
+            // 
+            // toolStripStatusValue
+            // 
+            this.toolStripStatusValue.Name = "toolStripStatusValue";
+            this.toolStripStatusValue.Size = new System.Drawing.Size(317, 15);
+            this.toolStripStatusValue.Text = "(Selecione duas celulas de tempo para calcular a diferença)";
             // 
             // lblOpenFolder
             // 
@@ -359,31 +356,34 @@
             this.txtFrom.Size = new System.Drawing.Size(440, 20);
             this.txtFrom.TabIndex = 24;
             // 
-            // toolStripStatusLabel1
+            // gridLog
             // 
-            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(122, 17);
-            this.toolStripStatusLabel1.Text = "Diferença de tempo:";
-            // 
-            // toolStripStatusValue
-            // 
-            this.toolStripStatusValue.Name = "toolStripStatusValue";
-            this.toolStripStatusValue.Size = new System.Drawing.Size(317, 17);
-            this.toolStripStatusValue.Text = "(Selecione duas celulas de tempo para calcular a diferença)";
-            // 
-            // toolStripStatusLabelCount
-            // 
-            this.toolStripStatusLabelCount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabelCount.Name = "toolStripStatusLabelCount";
-            this.toolStripStatusLabelCount.Size = new System.Drawing.Size(114, 17);
-            this.toolStripStatusLabelCount.Text = "Total de resultados:";
-            // 
-            // toolStripStatusCount
-            // 
-            this.toolStripStatusCount.Name = "toolStripStatusCount";
-            this.toolStripStatusCount.Size = new System.Drawing.Size(13, 17);
-            this.toolStripStatusCount.Text = "0";
+            this.gridLog.AllowUserToAddRows = false;
+            this.gridLog.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.gridLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gridLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Number,
+            this.TypeLog,
+            this.Method,
+            this.Url,
+            this.Status,
+            this.RequestTime,
+            this.ResponseTime,
+            this.Raw});
+            this.gridLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridLog.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gridLog.Location = new System.Drawing.Point(3, 3);
+            this.gridLog.Name = "gridLog";
+            this.gridLog.RowHeadersWidth = 30;
+            this.gridLog.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridLog.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridLog.Size = new System.Drawing.Size(570, 92);
+            this.gridLog.TabIndex = 2;
+            this.gridLog.SelectionChanged += new System.EventHandler(this.gridLog_SelectionChanged);
             // 
             // Number
             // 
@@ -473,9 +473,9 @@
             this.tabLogTable.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLog)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLog)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -503,12 +503,12 @@
         private System.Windows.Forms.LinkLabel lblUrlProxy;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView gridLog;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusValue;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCount;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusCount;
+        private System.Windows.Forms.DataGridView gridLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn Method;

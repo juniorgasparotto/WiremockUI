@@ -256,7 +256,7 @@ namespace WiremockUI
             };
 
             // view in composer
-            viewInComposerMenu.Text = "Visualizar/Re-executar no compositor";
+            viewInComposerMenu.Text = "Visualizar com WebRequest";
             viewInComposerMenu.Click += (a, b) =>
             {
                 var requestHeaders = GetHeaders(row.RequestLog);
@@ -264,7 +264,7 @@ namespace WiremockUI
                 var responseHeaders = GetHeaders(row.Response);
                 var responseBody = row.Response.getBodyAsString();
 
-                var frmComposer = new FormComposer(row.UrlAbsolute, requestHeaders, requestBody, responseHeaders, responseBody);
+                var frmComposer = new FormWebRequest(row.UrlAbsolute, requestHeaders, requestBody, responseHeaders, responseBody);
                 master.TabMaster.AddTab(frmComposer, row, row.Url);
             };
 

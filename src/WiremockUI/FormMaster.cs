@@ -401,6 +401,8 @@ namespace WiremockUI
                         return;
                     }
 
+                    proxy.SetDefault(mock);
+                    SaveProxy(proxy);
                     SetNodeMockAsDefault(mock, nodeMock);
                 };
 
@@ -921,41 +923,34 @@ namespace WiremockUI
                 nodeMock.Parent.Nodes.Remove(nodeMock);
                 proxy.RemoveMock(mock.Id);
 
-                if (mock.IsDefault)
-                    SetFirstMockAsDefault(nodeProxy);
+                if (mock.IsDefault && nodeProxy.Nodes.Count > 0)
+                {
+                    var nodeMockFirst = nodeProxy.Nodes[0];
+                    var mockFirst = (Mock)nodeMockFirst.Tag;
+                    proxy.SetDefault(mockFirst);
+                    SetNodeMockAsDefault(mockFirst, nodeMockFirst);
+                }
 
-                var db = new UnitOfWork();
-                db.Proxies.Update(proxy);
-                db.Save();
-            }
-        }
-
-        private void SetFirstMockAsDefault(TreeNode nodeProxy)
-        {
-            if (nodeProxy.Nodes.Count > 0)
-            {
-                var nodeMock = nodeProxy.Nodes[0];
-                SetNodeMockAsDefault((Mock)nodeMock.Tag, nodeMock);
+                SaveProxy(proxy);
             }
         }
 
         private void SetNodeMockAsDefault(Mock mock, TreeNode nodeMock)
         {
-            // change database
-            var proxy = (Proxy)nodeMock.Parent.Tag;
-            proxy.SetDefault(mock);
-
-            var db = new UnitOfWork();
-            db.Proxies.Update(proxy);
-            db.Save();
-
             // change front
             var font = new Font(treeServices.Font.FontFamily, treeServices.Font.Size, FontStyle.Bold);
             nodeMock.NodeFont = font;
 
-            foreach(TreeNode n in nodeMock.Parent.Nodes)
+            foreach (TreeNode n in nodeMock.Parent.Nodes)
                 if (n != nodeMock)
                     n.NodeFont = new Font(treeServices.Font.FontFamily, treeServices.Font.Size, treeServices.Font.Style);
+        }
+
+        private static void SaveProxy(Proxy proxy)
+        {
+            var db = new UnitOfWork();
+            db.Proxies.Update(proxy);
+            db.Save();
         }
 
         private static void ChangeTreeNodeImage(TreeNode nodeService, string imageKey)

@@ -8,10 +8,16 @@
       "Name": "test proxy",
       "Mocks": [
         {
-          "Id": "1c1769a3-6906-4cf3-8479-3de50ed5710c",
-          "Name": "cenrio1",
+          "Id": "a5aef29d-f93b-41d0-96fb-22da378b1e1f",
+          "Name": "f",
+          "IsDefault": false,
+          "ShowURL": true
+        },
+        {
+          "Id": "506d5e80-0dac-44f9-aece-0b0f18d4a41e",
+          "Name": "ss",
           "IsDefault": true,
-          "ShowURL": false
+          "ShowURL": true
         }
       ],
       "Arguments": [

@@ -1,5 +1,8 @@
 ﻿using com.github.tomakehurst.wiremock.http;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System;
 
 namespace WiremockUI
 {
@@ -35,14 +38,23 @@ namespace WiremockUI
             return dic;
         }
 
-        public static string GetHeaderValue(Dictionary<string, string> headers, string name)
+        public static Dictionary<string, string> GetHeaders(WebResponse response)
         {
-            if (headers.ContainsKey(name))
-                return headers[name];
-            return null;
+            var dic = new Dictionary<string, string>();
+            foreach(var name in response.Headers.AllKeys)
+                dic.Add(name, response.Headers[name]);
+            return dic;
         }
 
-        public static Dictionary<string, string> GetHeaders(string headers, bool response = false)
+        public static Dictionary<string, string> GetHeaders(WebRequest request)
+        {
+            var dic = new Dictionary<string, string>();
+            foreach (var name in request.Headers.AllKeys)
+                dic.Add(name, request.Headers[name]);
+            return dic;
+        }
+
+        public static Dictionary<string, string> GetHeaders(string headers, bool response = false, bool useLowerCaseInName = true)
         {
             var dic = new Dictionary<string, string>();
             if (headers == null)
@@ -53,7 +65,8 @@ namespace WiremockUI
 
             foreach (var line in lines)
             {
-                if (count == 0 && !response)
+                var isNameValue = System.Text.RegularExpressions.Regex.IsMatch(line, @"^[^\s]*:.*$");
+                if (count == 0 && !isNameValue && !response)
                 {
                     var split2 = line.Split(' ');
                     if (split2.Length > 0)
@@ -76,7 +89,7 @@ namespace WiremockUI
                         }
                     }
                 }
-                else if (count == 0 && response)
+                else if (count == 0 && !isNameValue && response)
                 {
                     var split2 = line.Split(' ');
                     if (split2.Length > 0)
@@ -103,7 +116,9 @@ namespace WiremockUI
                     string[] split = line.Split(new char[] { ':' }, 2);
                     if (split.Length > 1)
                     {
-                        var name = split[0].Trim().ToLower();
+                        var name = split[0].Trim();
+                        if (useLowerCaseInName)
+                            name = name.ToLower();
                         dic[name] = split[1].Trim();
                     }
                 }
@@ -111,6 +126,18 @@ namespace WiremockUI
             }
 
             return dic;
+        }
+
+        public static string GetHeadersAsString(Dictionary<string, string> dic)
+        {
+            return string.Join("\r\n", dic.Select(x => x.Key + ": " + x.Value).ToArray());
+        }
+
+        public static string GetHeaderValue(Dictionary<string, string> headers, string name)
+        {
+            if (headers.ContainsKey(name))
+                return headers[name];
+            return null;
         }
 
         public static string GetUrlAbsolute(Dictionary<string, string> headers)
