@@ -1329,5 +1329,11 @@ namespace WiremockUI
                 }
             }
         }
+
+        private void webRequestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmComposer = new FormWebRequest();
+            TabMaster.AddTab(frmComposer, null, webRequestToolStripMenuItem.Text);
+        }
     }
 }

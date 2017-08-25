@@ -264,7 +264,7 @@ namespace WiremockUI
                 var responseHeaders = GetHeaders(row.Response);
                 var responseBody = row.Response.getBodyAsString();
 
-                var frmComposer = new FormWebRequest(row.UrlAbsolute, requestHeaders, requestBody, responseHeaders, responseBody);
+                var frmComposer = new FormWebRequest(row.Method, row.UrlAbsolute, requestHeaders, requestBody, responseHeaders, responseBody);
                 master.TabMaster.AddTab(frmComposer, row, row.Url);
             };
 

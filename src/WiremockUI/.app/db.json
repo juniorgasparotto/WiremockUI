@@ -93,7 +93,7 @@
     },
     {
       "Id": "02f90a02-d2e4-4e60-99e4-8b745b860dc3",
-      "UrlTarget": "http://localhost:5507",
+      "UrlTarget": "http://www.g1.com.br",
       "PortProxy": 5508,
       "Name": "B",
       "Mocks": [

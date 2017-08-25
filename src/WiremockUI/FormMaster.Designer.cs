@@ -43,6 +43,8 @@ namespace WiremockUI
             this.menuPlayAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPlayAndRecordAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStopAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.webRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.treeServices = new System.Windows.Forms.TreeView();
@@ -60,6 +62,7 @@ namespace WiremockUI
             this.menuOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
             this.menuServices,
+            this.ferramentasToolStripMenuItem,
             this.menuAbout});
             this.menuOptions.Location = new System.Drawing.Point(0, 0);
             this.menuOptions.Name = "menuOptions";
@@ -146,6 +149,21 @@ namespace WiremockUI
             this.menuStopAll.Size = new System.Drawing.Size(184, 22);
             this.menuStopAll.Text = "Parar todos";
             this.menuStopAll.Click += new System.EventHandler(this.menuStopAll_Click);
+            // 
+            // ferramentasToolStripMenuItem
+            // 
+            this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.webRequestToolStripMenuItem});
+            this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
+            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.ferramentasToolStripMenuItem.Text = "Ferramentas";
+            // 
+            // webRequestToolStripMenuItem
+            // 
+            this.webRequestToolStripMenuItem.Name = "webRequestToolStripMenuItem";
+            this.webRequestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.webRequestToolStripMenuItem.Text = "Web Request";
+            this.webRequestToolStripMenuItem.Click += new System.EventHandler(this.webRequestToolStripMenuItem_Click);
             // 
             // menuAbout
             // 
@@ -268,5 +286,7 @@ namespace WiremockUI
         private System.Windows.Forms.ToolStripMenuItem menuClose;
         private System.Windows.Forms.ToolStripMenuItem menuAbout;
         private TabControlCustom tabForms;
+        private System.Windows.Forms.ToolStripMenuItem ferramentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem webRequestToolStripMenuItem;
     }
 }

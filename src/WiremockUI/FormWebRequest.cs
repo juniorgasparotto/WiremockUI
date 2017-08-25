@@ -16,15 +16,16 @@ namespace WiremockUI
             txtUrl.Multiline = false;
         }
 
-        public FormWebRequest(string urlAbsolute, Dictionary<string, string> requestHeaders, string requestBody, Dictionary<string, string> responseHeaders, string responseBody)
+        public FormWebRequest(string method, string urlAbsolute, Dictionary<string, string> requestHeaders, string requestBody, Dictionary<string, string> responseHeaders, string responseBody)
         {
             InitializeComponent();
+            txtUrl.Multiline = false;
 
             this.txtUrl.Text = urlAbsolute;
             this.txtRequestHeaders.Text = HttpUtils.GetHeadersAsString(requestHeaders);
-            this.txtRequestBody.Text = requestBody;
+            this.txtRequestBody.Text = Helper.ResolveBreakLineInCompatibility(requestBody);
             this.txtResponseHeaders.Text = HttpUtils.GetHeadersAsString(responseHeaders);
-            this.txtResponseBody.Text = responseBody;
+            this.txtResponseBody.Text = Helper.ResolveBreakLineInCompatibility(responseBody);
             if (string.IsNullOrWhiteSpace(requestBody) && !string.IsNullOrWhiteSpace(this.txtRequestHeaders.Text))
                 tabRequest.SelectedTab = tabRequestHeaders;
 
@@ -50,6 +51,20 @@ namespace WiremockUI
                     webRequest.Timeout = (int)txtTimeout.Value;
                     webRequest.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
                     
+                    if (!string.IsNullOrWhiteSpace(this.txtRequestBody.Text))
+                    {
+                        string stringData = ""; //place body here
+                        var data = Encoding.ASCII.GetBytes(stringData); // or UTF8
+
+                        request.Method = "PUT";
+                        request.ContentType = ""; //place MIME type here
+                        request.ContentLength = data.Length;
+
+                        var newStream = request.GetRequestStream();
+                        newStream.Write(data, 0, data.Length);
+                        newStream.Close();
+                    }
+
                     foreach (var h in headers)
                     {
                         // continue if header if invalid
@@ -59,6 +74,10 @@ namespace WiremockUI
                             switch (valueLower)
                             {
                                 case "host":
+                                    continue;
+                                case "content-length":
+                                    if (this.chkAutoContentLength.Enabled)
+                                        webRequest.ContentLength 
                                     continue;
                                 case "content-type":
                                     webRequest.ContentType = h.Value;
@@ -134,7 +153,7 @@ namespace WiremockUI
             txtResponseHeaders.Text += HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(response));
         }
 
-        private void btnExecute_Click(object sender, System.EventArgs e)
+        private void Execute()
         {
             btnExecute.Enabled = false;
             txtResponseBody.Text = "";
@@ -142,14 +161,20 @@ namespace WiremockUI
             WebRequest();
         }
 
-        private void btnExecute_Click_1(object sender, EventArgs e)
+        private void btnExecute_Click(object sender, System.EventArgs e)
         {
-
+            Execute();
         }
 
         private void panel4_Resize(object sender, EventArgs e)
         {
             txtUrl.Width = panel4.Width;
+        }
+
+        private void txtUrl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Execute();
         }
     }
 }

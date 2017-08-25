@@ -249,7 +249,7 @@ namespace WiremockUI
             public bool Verbose
             {
                 get; set;
-            }
+            } = true;
 
             [Description("When in record mode, capture request headers with the keys specified. See record-playback.")]
             [Category("Argumentos")]
