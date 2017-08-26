@@ -20,6 +20,7 @@ namespace WiremockUI
 
             this.tabPage = tabPage;
             this.master = master;
+            this.txtContent.EnableFormatter = true;
             LoadForm(fileName);
         }
 

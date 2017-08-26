@@ -14,13 +14,13 @@ namespace WiremockUI
         {
             InitializeComponent();
             txtUrl.Multiline = false;
+            this.txtRequestBody.EnableFormatter = true;
+            this.txtResponseBody.EnableFormatter = true;
         }
 
         public FormWebRequest(string method, string urlAbsolute, Dictionary<string, string> requestHeaders, string requestBody, Dictionary<string, string> responseHeaders, string responseBody)
+            : this()
         {
-            InitializeComponent();
-            txtUrl.Multiline = false;
-
             this.txtUrl.Text = urlAbsolute;
             this.txtRequestHeaders.Text = HttpUtils.GetHeadersAsString(requestHeaders);
             this.txtRequestBody.Text = Helper.ResolveBreakLineInCompatibility(requestBody);
@@ -35,10 +35,16 @@ namespace WiremockUI
 
         private async void WebRequest()
         {
+            btnExecute.Enabled = false;
+            CleanResponses();
+
+            HttpWebRequest webRequest = null;
+            var start = DateTime.Now;
+
             try
             {
                 var headers = HttpUtils.GetHeaders(txtRequestHeaders.Text, false, false);
-                var webRequest = (HttpWebRequest)System.Net.WebRequest.Create(txtUrl.Text);
+                webRequest = (HttpWebRequest)System.Net.WebRequest.Create(txtUrl.Text);
 
                 headers.Remove("method");
                 headers.Remove("url");
@@ -49,38 +55,49 @@ namespace WiremockUI
                 {
                     webRequest.Method = cmbVerb.Text;
                     webRequest.Timeout = (int)txtTimeout.Value;
-                    webRequest.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-                    
+                    if (headers.Any(f => f.Key.ToLower() == "accept-encoding"))
+                        webRequest.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+
+                    var contentTypeHeader = headers.FirstOrDefault(f => f.Key.ToLower() == "content-type");
+                    if (contentTypeHeader.Key != null)
+                        webRequest.ContentType = contentTypeHeader.Value;
+
+                    webRequest.ServicePoint.Expect100Continue = chk100Expect.Checked;
+
                     if (!string.IsNullOrWhiteSpace(this.txtRequestBody.Text))
                     {
-                        string stringData = ""; //place body here
-                        var data = Encoding.ASCII.GetBytes(stringData); // or UTF8
-
-                        request.Method = "PUT";
-                        request.ContentType = ""; //place MIME type here
-                        request.ContentLength = data.Length;
-
-                        var newStream = request.GetRequestStream();
+                        var data = Encoding.ASCII.GetBytes(this.txtRequestBody.Text);
+                        if (this.chkAutoContentLength.Checked)
+                            webRequest.ContentLength = data.Length;
+                        var newStream = webRequest.GetRequestStream();
                         newStream.Write(data, 0, data.Length);
                         newStream.Close();
                     }
 
                     foreach (var h in headers)
                     {
-                        // continue if header if invalid
                         try
                         {
-                            var valueLower = h.Key.ToLower();
-                            switch (valueLower)
+                            var nameLower = h.Key.ToLower();
+                            var valueLower = h.Value.ToLower();
+                            switch (nameLower)
                             {
                                 case "host":
-                                    continue;
+                                    break;
                                 case "content-length":
-                                    if (this.chkAutoContentLength.Enabled)
-                                        webRequest.ContentLength 
-                                    continue;
+                                    if (!this.chkAutoContentLength.Checked)
+                                        webRequest.ContentLength = Convert.ToInt64(h.Value);
+                                    break;
+                                case "accept-encoding":
+                                    break;
+                                case "proxy-connection":
+                                    break;
                                 case "content-type":
                                     webRequest.ContentType = h.Value;
+                                    break;
+                                case "expect":
+                                    if (h.Value?.ToLower() == "100-expect")
+                                        webRequest.ServicePoint.Expect100Continue = true;
                                     break;
                                 case "user-agent":
                                     webRequest.UserAgent = h.Value;
@@ -106,22 +123,15 @@ namespace WiremockUI
                         }
                     }
 
-                    var newHeaders = HttpUtils.GetHeaders(webRequest);
-                    foreach(var h in newHeaders)
-                    {
-                        if (!headers.Keys.Any(f => f.ToLower() == h.Key.ToLower()))
-                            headers.Add(h.Key, h.Value);
-                    }
-
-                    txtRequestHeaders.Text = HttpUtils.GetHeadersAsString(headers);
+                    start = DateTime.Now;
                     var response = await webRequest.GetResponseAsync();
-                    ShowResponse((HttpWebResponse)response);
+                    ShowResponse(start, DateTime.Now, webRequest, (HttpWebResponse)response);
                 }
             }
             catch(WebException ex)
             {
                 if (ex.Response != null)
-                    ShowResponse((HttpWebResponse)ex.Response);
+                    ShowResponse(start, DateTime.Now, webRequest, (HttpWebResponse)ex.Response);
                 else
                     Helper.MessageBoxError(ex.Message);
             }
@@ -135,10 +145,13 @@ namespace WiremockUI
             }
         }
 
-        private async void ShowResponse(HttpWebResponse response)
+        private async void ShowResponse(DateTime t1, DateTime t2, HttpWebRequest request, HttpWebResponse response)
         {
-            txtResponseBody.Text = "";
-            txtResponseHeaders.Text = "";
+            stsTimeValue.Text = (t2 - t1).ToString();
+            stsStatusValue.Text = $"{(int)response.StatusCode} ({response.StatusDescription})";
+            txtResponseHeadersFinal.Text = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(request));
+            txtResponseHeaders.Text = $"{(int)response.StatusCode} {response.StatusDescription}\r\n";
+            txtResponseHeaders.Text += HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(response));
 
             using (var s = response.GetResponseStream())
             {
@@ -148,22 +161,19 @@ namespace WiremockUI
                     txtResponseBody.Text = Helper.ResolveBreakLineInCompatibility(content);
                 }
             }
-
-            txtResponseHeaders.Text = $"{(int)response.StatusCode} {response.StatusDescription}\r\n";
-            txtResponseHeaders.Text += HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(response));
         }
 
-        private void Execute()
+        private void CleanResponses()
         {
-            btnExecute.Enabled = false;
             txtResponseBody.Text = "";
             txtResponseHeaders.Text = "";
-            WebRequest();
+            stsStatusValue.Text = "-";
+            stsTimeValue.Text = "-";
         }
 
         private void btnExecute_Click(object sender, System.EventArgs e)
         {
-            Execute();
+            WebRequest();
         }
 
         private void panel4_Resize(object sender, EventArgs e)
@@ -174,7 +184,7 @@ namespace WiremockUI
         private void txtUrl_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                Execute();
+                WebRequest();
         }
     }
 }

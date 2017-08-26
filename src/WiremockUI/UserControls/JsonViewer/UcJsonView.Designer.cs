@@ -30,7 +30,7 @@
         {
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabRaw = new System.Windows.Forms.TabPage();
-            this.txtContent = new WiremockUI.EditorTextbox();
+            this.txtContent = new WiremockUI.EditorTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFormat = new System.Windows.Forms.Button();
             this.tabTree = new System.Windows.Forms.TabPage();
@@ -155,6 +155,6 @@
         private System.Windows.Forms.TreeView treeRaw;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnFormat;
-        private EditorTextbox txtContent;
+        private EditorTextBox txtContent;
     }
 }

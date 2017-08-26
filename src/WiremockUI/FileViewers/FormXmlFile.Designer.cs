@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPath = new WiremockUI.EditorTextbox();
+            this.txtPath = new WiremockUI.EditorTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFormat = new System.Windows.Forms.Button();
-            this.txtContent = new WiremockUI.EditorTextbox();
+            this.txtContent = new WiremockUI.EditorTextBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -132,12 +132,12 @@
         }
 
         #endregion
-        private EditorTextbox txtPath;
+        private EditorTextBox txtPath;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnFormat;
-        private EditorTextbox txtContent;
+        private EditorTextBox txtContent;
     }
 }

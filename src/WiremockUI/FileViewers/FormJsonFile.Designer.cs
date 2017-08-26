@@ -31,7 +31,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtPath = new WiremockUI.EditorTextbox();
+            this.txtPath = new WiremockUI.EditorTextBox();
             this.ucJsonView = new WiremockUI.UcJsonView();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -112,7 +112,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnSave;
-        private EditorTextbox txtPath;
+        private EditorTextBox txtPath;
         private UcJsonView ucJsonView;
     }
 }

@@ -206,14 +206,7 @@ namespace WiremockUI
 
         private void btnFormat_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ContentJson = JToken.Parse(ContentJson).ToString();
-            }
-            catch(Exception ex)
-            {
-                Helper.MessageBoxError("Esse JSON não é válido.");
-            }
+            ContentJson = Helper.FormatToJson(ContentJson);
         }
 
         public bool IsValidJson(string strInput)

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtTitle = new WiremockUI.EditorTextbox();
-            this.txtContent = new WiremockUI.EditorTextbox();
+            this.txtTitle = new WiremockUI.EditorTextBox();
+            this.txtContent = new WiremockUI.EditorTextBox();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -70,7 +70,7 @@
         }
 
         #endregion
-        private EditorTextbox txtTitle;
-        private EditorTextbox txtContent;
+        private EditorTextBox txtTitle;
+        private EditorTextBox txtContent;
     }
 }

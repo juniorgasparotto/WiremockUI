@@ -4,12 +4,54 @@ using System.Windows.Forms;
 
 namespace WiremockUI
 {
-    public class EditorTextbox : TextBox
+    public class EditorTextBox : TextBox
     {
         Stack<Func<object>> undoStack = new Stack<Func<object>>();
         Stack<Func<object>> redoStack = new Stack<Func<object>>();
+        private bool enableFormatter;
 
-        public EditorTextbox()
+        public bool EnableFormatter
+        {
+            get => enableFormatter;
+            set
+            {
+                this.enableFormatter = value;
+                if (value)
+                {
+                    var menu = new ContextMenuStrip();
+                    var viewJsonMenu = new ToolStripMenuItem();
+                    var viewXml = new ToolStripMenuItem();
+
+                    menu.Items.AddRange(new ToolStripMenuItem[]
+                    {
+                    viewJsonMenu,
+                    viewXml
+                    });
+
+                    // json
+                    viewJsonMenu.Text = "Formatar para Json";
+                    viewJsonMenu.Click += (a, b) =>
+                    {
+                        Text = Helper.FormatToJson(Text);
+                    };
+
+                    // xml
+                    viewXml.Text = "Formatar para XML";
+                    viewXml.Click += (a, b) =>
+                    {
+                        Text = Helper.FormatToXml(Text);
+                    };
+
+                    this.ContextMenuStrip = menu;
+                }
+                else
+                {
+                    this.ContextMenuStrip = null;
+                }
+            }
+        }
+
+        public EditorTextBox()
         {
             this.AcceptsTab = true;
             this.Multiline = true;

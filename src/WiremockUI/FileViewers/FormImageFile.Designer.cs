@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPath = new WiremockUI.EditorTextbox();
+            this.txtPath = new WiremockUI.EditorTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnOpen = new System.Windows.Forms.Button();
             this.imgFile = new System.Windows.Forms.PictureBox();
@@ -96,7 +96,7 @@
         }
 
         #endregion
-        private EditorTextbox txtPath;
+        private EditorTextBox txtPath;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.PictureBox imgFile;

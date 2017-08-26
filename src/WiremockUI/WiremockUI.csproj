@@ -248,7 +248,7 @@
     <Compile Include="TextViewers\FormTextView.Designer.cs">
       <DependentUpon>FormTextView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\EditorTextbox\EditorTextbox.cs">
+    <Compile Include="UserControls\EditorTextbox\EditorTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\TabControlCustom\TabMaster.cs" />

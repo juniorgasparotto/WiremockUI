@@ -118,6 +118,34 @@
           "Type": "Boolean"
         }
       ]
+    },
+    {
+      "Id": "6c25c98e-c683-4dd8-aba8-4b2dcaa5bd52",
+      "UrlTarget": "http://www.webservicex.net",
+      "PortProxy": 5509,
+      "Name": "teste",
+      "Mocks": [
+        {
+          "Id": "fecb2455-a597-4460-9730-82f4a5743c39",
+          "Name": "cenario1",
+          "IsDefault": true,
+          "ShowURL": true
+        }
+      ],
+      "Arguments": [
+        {
+          "Name": "Verbose",
+          "Value": "True",
+          "ArgName": "--verbose",
+          "Type": "Boolean"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "False",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
+        }
+      ]
     }
   ]
 }
