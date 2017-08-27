@@ -50,6 +50,7 @@ namespace WiremockUI
             this.treeServices = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabForms = new WiremockUI.TabControlCustom();
+            this.compareTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -153,7 +154,8 @@ namespace WiremockUI
             // ferramentasToolStripMenuItem
             // 
             this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.webRequestToolStripMenuItem});
+            this.webRequestToolStripMenuItem,
+            this.compareTextToolStripMenuItem});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
             this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ferramentasToolStripMenuItem.Text = "Ferramentas";
@@ -240,6 +242,13 @@ namespace WiremockUI
             this.tabForms.Size = new System.Drawing.Size(471, 364);
             this.tabForms.TabIndex = 0;
             // 
+            // compareTextToolStripMenuItem
+            // 
+            this.compareTextToolStripMenuItem.Name = "compareTextToolStripMenuItem";
+            this.compareTextToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.compareTextToolStripMenuItem.Text = "TextCompare";
+            this.compareTextToolStripMenuItem.Click += new System.EventHandler(this.compareTextToolStripMenuItem_Click);
+            // 
             // FormMaster
             // 
             this.AllowDrop = true;
@@ -288,5 +297,6 @@ namespace WiremockUI
         private TabControlCustom tabForms;
         private System.Windows.Forms.ToolStripMenuItem ferramentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem webRequestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compareTextToolStripMenuItem;
     }
 }

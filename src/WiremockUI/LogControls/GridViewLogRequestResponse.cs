@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using com.github.tomakehurst.wiremock.verification;
 using static WiremockUI.HttpUtils;
+using System.Text;
 
 namespace WiremockUI
 {
@@ -203,13 +204,15 @@ namespace WiremockUI
             var viewResponseMenu = new ToolStripMenuItem();
             var viewRawMenu = new ToolStripMenuItem();
             var viewInComposerMenu = new ToolStripMenuItem();
+            var compareMenu = new ToolStripMenuItem();
 
             menu.Items.AddRange(new ToolStripMenuItem[]
             {
                 viewRequestMenu,
                 viewResponseMenu,
                 viewRawMenu,
-                viewInComposerMenu
+                viewInComposerMenu,
+                compareMenu
             });
 
             menu.Opening += (a, b) =>
@@ -221,6 +224,7 @@ namespace WiremockUI
                     viewRequestMenu.Visible = false;
                     viewResponseMenu.Visible = false;
                     viewInComposerMenu.Visible = false;
+                    compareMenu.Visible = false;
                 }
                 else
                 {
@@ -228,6 +232,7 @@ namespace WiremockUI
                     viewRequestMenu.Visible = true;
                     viewResponseMenu.Visible = true;
                     viewInComposerMenu.Visible = true;
+                    compareMenu.Visible = true;
                 }
             };
 
@@ -266,6 +271,31 @@ namespace WiremockUI
 
                 var frmComposer = new FormWebRequest(row.Method, row.UrlAbsolute, requestHeaders, requestBody, responseHeaders, responseBody);
                 master.TabMaster.AddTab(frmComposer, row, row.Url);
+            };
+
+            // view in composer
+            compareMenu.Text = "Comparar...";
+            compareMenu.Click += (a, b) =>
+            {
+                var strBuilder = new StringBuilder();
+                var requestHeaders = GetHeaders(row.RequestLog);
+                var requestBody = row.RequestLog.getBodyAsString();
+
+                strBuilder.AppendLine($"{row.Method} {row.UrlAbsolute}");
+                strBuilder.AppendLine();
+                if (requestBody?.Length == 0)
+                {
+                    strBuilder.Append(GetHeadersAsString(requestHeaders));
+                }
+                else
+                {
+                    strBuilder.AppendLine(GetHeadersAsString(requestHeaders));
+                    strBuilder.AppendLine();
+                    strBuilder.Append(requestBody);
+                }
+
+                var frmCompare = new FormCompare(strBuilder.ToString());
+                master.TabMaster.AddTab(frmCompare, row, row.Url);
             };
 
 
