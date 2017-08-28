@@ -196,6 +196,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCompareResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiffEngine\BinaryFile.cs" />
+    <Compile Include="DiffEngine\CharData.cs" />
+    <Compile Include="DiffEngine\Engine.cs" />
+    <Compile Include="DiffEngine\Structures.cs" />
+    <Compile Include="DiffEngine\TextFile.cs" />
     <Compile Include="FormCompare.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +320,9 @@
     <Compile Include="Utils\HttpUtils.cs" />
     <EmbeddedResource Include="FormCompare.resx">
       <DependentUpon>FormCompare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCompareResult.resx">
+      <DependentUpon>FormCompareResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormWebRequest.resx">
       <DependentUpon>FormWebRequest.cs</DependentUpon>
