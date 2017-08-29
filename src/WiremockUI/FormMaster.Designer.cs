@@ -45,17 +45,21 @@ namespace WiremockUI
             this.menuStopAll = new System.Windows.Forms.ToolStripMenuItem();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.webRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compareTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.treeServices = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.pnlSelectFile = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCancelFileSelectiong = new System.Windows.Forms.Button();
             this.tabForms = new WiremockUI.TabControlCustom();
-            this.compareTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
+            this.pnlSelectFile.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuOptions
@@ -163,9 +167,16 @@ namespace WiremockUI
             // webRequestToolStripMenuItem
             // 
             this.webRequestToolStripMenuItem.Name = "webRequestToolStripMenuItem";
-            this.webRequestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.webRequestToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.webRequestToolStripMenuItem.Text = "Web Request";
             this.webRequestToolStripMenuItem.Click += new System.EventHandler(this.webRequestToolStripMenuItem_Click);
+            // 
+            // compareTextToolStripMenuItem
+            // 
+            this.compareTextToolStripMenuItem.Name = "compareTextToolStripMenuItem";
+            this.compareTextToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.compareTextToolStripMenuItem.Text = "TextCompare";
+            this.compareTextToolStripMenuItem.Click += new System.EventHandler(this.compareTextToolStripMenuItem_Click);
             // 
             // menuAbout
             // 
@@ -231,6 +242,41 @@ namespace WiremockUI
             this.imageList1.Images.SetKeyName(15, "rename");
             this.imageList1.Images.SetKeyName(16, "play-proxy");
             // 
+            // pnlSelectFile
+            // 
+            this.pnlSelectFile.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.pnlSelectFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSelectFile.Controls.Add(this.btnCancelFileSelectiong);
+            this.pnlSelectFile.Controls.Add(this.label1);
+            this.pnlSelectFile.Location = new System.Drawing.Point(237, 144);
+            this.pnlSelectFile.Name = "pnlSelectFile";
+            this.pnlSelectFile.Size = new System.Drawing.Size(200, 136);
+            this.pnlSelectFile.TabIndex = 4;
+            this.pnlSelectFile.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Location = new System.Drawing.Point(27, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 94);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Selecione na árvore ao lado  (<) um arquivo para fazer a comparação. Use dois cli" +
+    "ques para selecionar.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnCancelFileSelectiong
+            // 
+            this.btnCancelFileSelectiong.Location = new System.Drawing.Point(62, 102);
+            this.btnCancelFileSelectiong.Name = "btnCancelFileSelectiong";
+            this.btnCancelFileSelectiong.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelFileSelectiong.TabIndex = 1;
+            this.btnCancelFileSelectiong.Text = "Cancelar";
+            this.btnCancelFileSelectiong.UseVisualStyleBackColor = true;
+            this.btnCancelFileSelectiong.Click += new System.EventHandler(this.btnCancelFileSelectiong_Click);
+            // 
             // tabForms
             // 
             this.tabForms.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -242,13 +288,6 @@ namespace WiremockUI
             this.tabForms.Size = new System.Drawing.Size(471, 364);
             this.tabForms.TabIndex = 0;
             // 
-            // compareTextToolStripMenuItem
-            // 
-            this.compareTextToolStripMenuItem.Name = "compareTextToolStripMenuItem";
-            this.compareTextToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.compareTextToolStripMenuItem.Text = "TextCompare";
-            this.compareTextToolStripMenuItem.Click += new System.EventHandler(this.compareTextToolStripMenuItem_Click);
-            // 
             // FormMaster
             // 
             this.AllowDrop = true;
@@ -256,6 +295,7 @@ namespace WiremockUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(675, 388);
+            this.Controls.Add(this.pnlSelectFile);
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.menuOptions);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -272,6 +312,7 @@ namespace WiremockUI
             this.splitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
+            this.pnlSelectFile.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +339,8 @@ namespace WiremockUI
         private System.Windows.Forms.ToolStripMenuItem ferramentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem webRequestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compareTextToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlSelectFile;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCancelFileSelectiong;
     }
 }

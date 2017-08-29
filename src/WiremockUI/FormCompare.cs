@@ -1,6 +1,6 @@
-﻿using WiremockUI;
-using System;
+﻿using System;
 using System.Collections;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WiremockUI
@@ -8,18 +8,100 @@ namespace WiremockUI
     public partial class FormCompare : Form
     {
 		private DiffEngineLevel _level;
+        private FormMaster master;
 
-        public FormCompare()
+        public FormCompare(FormMaster master)
         {
             InitializeComponent();
             this.txtContent1.EnableFormatter = true;
             this.txtContent2.EnableFormatter = true;
+            this.master = master;
+            btnOpen1.ContextMenuStrip = GetOptionsMenu(txtFile1, txtContent1);
+            btnOpen2.ContextMenuStrip = GetOptionsMenu(txtFile2, txtContent2);
         }
 
-        public FormCompare(string content1)
-            : this()
+        public FormCompare(FormMaster master, string content1)
+            : this(master)
         {
             this.txtContent1.Text = content1;
+        }
+
+        private ContextMenuStrip GetOptionsMenu(TextBox txtFile, TextBox txtContent)
+        {
+            // context menu
+            var menu = new ContextMenuStrip();
+            var openFileMenu = new ToolStripMenuItem();
+            var openFileFromTreeViewMenu = new ToolStripMenuItem();
+            var saveMenu = new ToolStripMenuItem();
+
+            menu.Opening += (o, e) =>
+            {
+                if (!File.Exists(txtFile.Text))
+                    saveMenu.Enabled = false;
+                else
+                    saveMenu.Enabled = true;
+            };
+
+            menu.Items.AddRange(new ToolStripMenuItem[]
+            {
+                openFileMenu,
+                openFileFromTreeViewMenu,
+                saveMenu
+            });
+
+            // open file
+            openFileMenu.Text = "Abrir arquivo";
+            openFileMenu.Click += (a, b) =>
+            {
+                var openFileDialog1 = new OpenFileDialog();
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    OpenFile(txtFile, txtContent, openFileDialog1.FileName, openFileDialog1.OpenFile());
+                }
+            };
+
+            // select file
+            openFileFromTreeViewMenu.Text = "Selecionar na árvore";
+            openFileFromTreeViewMenu.Click += (a, b) =>
+            {
+                master.SelectToCompare(filename =>
+                {
+                    OpenFile(txtFile, txtContent, filename);
+                });
+            };
+
+            // save file
+            saveMenu.Text = "Salvar";
+            saveMenu.Click += (a, b) =>
+            {
+                try
+                {
+                    File.WriteAllText(txtFile.Text, txtContent.Text);
+                }
+                catch (Exception ex)
+                {
+                    Helper.MessageBoxError("Ocorreu um erro ao tentar salvar o arquivo: " + ex.Message);
+                }
+            };
+
+            return menu;
+        }
+
+        private void OpenFile(TextBox txtFile, TextBox txtContent, string fileName)
+        {
+            OpenFile(txtFile, txtContent, fileName, new FileStream(fileName, FileMode.Open));
+        }
+
+        private void OpenFile(TextBox txtFile, TextBox txtContent, string fileName, Stream stream)
+        {
+            using (stream)
+            {
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    txtFile.Text = fileName;
+                    txtContent.Text = sr.ReadToEnd();
+                }
+            }
         }
 
         private void TextDiff(ArrayList lines1, ArrayList lines2)
@@ -64,11 +146,33 @@ namespace WiremockUI
             this.Cursor = Cursors.Default;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCompare_Click(object sender, EventArgs e)
         {
             var lines1 = TextFileDiff.GetByText(this.txtContent1.Text);
             var lines2 = TextFileDiff.GetByText(this.txtContent2.Text);
             TextDiff(lines1, lines2);
+        }
+
+        private void txtFile1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (File.Exists(txtFile1.Text))
+                    txtContent1.Text = File.ReadAllText(txtFile1.Text);
+                else
+                    Helper.MessageBoxError("Arquivo inexistente");
+            }
+        }
+
+        private void txtFile2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (File.Exists(txtFile2.Text))
+                    txtContent2.Text = File.ReadAllText(txtFile2.Text);
+                else
+                    Helper.MessageBoxError("Arquivo inexistente");
+            }
         }
     }
 }

@@ -294,7 +294,7 @@ namespace WiremockUI
                     strBuilder.Append(requestBody);
                 }
 
-                var frmCompare = new FormCompare(strBuilder.ToString());
+                var frmCompare = new FormCompare(this.master, strBuilder.ToString());
                 master.TabMaster.AddTab(frmCompare, row, row.Url);
             };
 

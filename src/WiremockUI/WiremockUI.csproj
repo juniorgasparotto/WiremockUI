@@ -266,6 +266,9 @@
     <Compile Include="UserControls\EditorTextbox\EditorTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\MenuButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\TabControlCustom\TabMaster.cs" />
     <Compile Include="UserControls\TabControlCustom\TabPageCustom.cs">
       <SubType>Component</SubType>
@@ -279,7 +282,7 @@
     <Compile Include="UserControls\JsonViewer\UcJsonView.Designer.cs">
       <DependentUpon>UcJsonView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Class1.cs" />
+    <Compile Include="Utils\DiffMatchPatch.cs" />
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="FormAbout.cs">
       <SubType>Form</SubType>

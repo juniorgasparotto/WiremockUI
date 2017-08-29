@@ -17,6 +17,9 @@ namespace WiremockUI
         public TabMaster TabMaster { get; private set;}
         public Dashboard Dashboard { get; private set; }
 
+        public bool InSelectingFile { get => actionSelectionFile != null && pnlSelectFile.Visible; }
+        private Action<string> actionSelectionFile;
+
         public FormMaster()
         {
             InitializeComponent();
@@ -93,6 +96,25 @@ namespace WiremockUI
             foreach (var p in proxies)
                 SetProxy(p);
             topNode.Expand();
+        }
+
+        internal void SelectToCompare(Action<string> action)
+        {
+            Cursor = Cursors.Hand;
+            pnlSelectFile.Location = new Point(
+                this.ClientSize.Width / 2 - pnlSelectFile.Size.Width / 2,
+                this.ClientSize.Height / 2 - pnlSelectFile.Size.Height / 2);
+            pnlSelectFile.Anchor = AnchorStyles.None;
+
+            this.actionSelectionFile = action;
+            pnlSelectFile.Visible = true;
+        }
+
+        private void CancelFileSelection()
+        {
+            Cursor = Cursors.Arrow;
+            pnlSelectFile.Visible = false;
+            actionSelectionFile = null;
         }
 
         internal void SetProxy(Proxy proxy, bool expand = true)
@@ -1103,6 +1125,13 @@ namespace WiremockUI
             }
             else if (selected.Tag != null && selected.Tag is TreeNodeMappingModel treeNodeMapping)
             {
+                if (InSelectingFile)
+                {
+                    actionSelectionFile(treeNodeMapping.File.FullPath);
+                    CancelFileSelection();
+                    return;
+                }
+
                 var currentTab = TabMaster.GetTabByInternalTag(selected);
                 if (currentTab != null)
                 {
@@ -1121,6 +1150,13 @@ namespace WiremockUI
             }
             else if (selected.Tag != null && selected.Tag is TreeNodeBodyModel treeNodeBody)
             {
+                if (InSelectingFile)
+                {
+                    actionSelectionFile(treeNodeBody.File.FullPath);
+                    CancelFileSelection();
+                    return;
+                }
+
                 var currentTab = TabMaster.GetTabByInternalTag(selected);
                 if (currentTab != null)
                 {
@@ -1338,8 +1374,14 @@ namespace WiremockUI
 
         private void compareTextToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FormCompare();
+            var frm = new FormCompare(this);
             TabMaster.AddTab(frm, null, compareTextToolStripMenuItem.Text);
         }
+
+        private void btnCancelFileSelectiong_Click(object sender, EventArgs e)
+        {
+            CancelFileSelection();
+        }
+
     }
 }
