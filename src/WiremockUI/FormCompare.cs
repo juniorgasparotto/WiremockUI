@@ -64,9 +64,13 @@ namespace WiremockUI
             openFileFromTreeViewMenu.Text = "Selecionar na árvore";
             openFileFromTreeViewMenu.Click += (a, b) =>
             {
-                master.SelectToCompare(filename =>
+                master.SelectToCompare((filename) =>
                 {
                     OpenFile(txtFile, txtContent, filename);
+                },
+                (filename, content) =>
+                {
+                    OpenFile(txtFile, txtContent, filename, content);
                 });
             };
 
@@ -98,10 +102,15 @@ namespace WiremockUI
             {
                 using (StreamReader sr = new StreamReader(stream))
                 {
-                    txtFile.Text = fileName;
-                    txtContent.Text = sr.ReadToEnd();
+                    OpenFile(txtFile, txtContent, fileName, sr.ReadToEnd());
                 }
             }
+        }
+
+        private void OpenFile(TextBox txtFile, TextBox txtContent, string fileName, string content)
+        {
+            txtFile.Text = fileName;
+            txtContent.Text = content;
         }
 
         private void TextDiff(ArrayList lines1, ArrayList lines2)

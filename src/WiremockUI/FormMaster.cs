@@ -1,9 +1,15 @@
-﻿using System;
+﻿using com.github.tomakehurst.wiremock.client;
+using com.github.tomakehurst.wiremock.common;
+using com.github.tomakehurst.wiremock.http;
+using com.github.tomakehurst.wiremock.standalone;
+using com.github.tomakehurst.wiremock.stubbing;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WiremockUI.Data;
@@ -19,6 +25,7 @@ namespace WiremockUI
 
         public bool InSelectingFile { get => actionSelectionFile != null && pnlSelectFile.Visible; }
         private Action<string> actionSelectionFile;
+        private Action<string, string> actionSelectionFileAndContent;
 
         public FormMaster()
         {
@@ -98,7 +105,7 @@ namespace WiremockUI
             topNode.Expand();
         }
 
-        internal void SelectToCompare(Action<string> action)
+        internal void SelectToCompare(Action<string> action, Action<string, string> actionAndContent)
         {
             Cursor = Cursors.Hand;
             pnlSelectFile.Location = new Point(
@@ -107,6 +114,7 @@ namespace WiremockUI
             pnlSelectFile.Anchor = AnchorStyles.None;
 
             this.actionSelectionFile = action;
+            this.actionSelectionFileAndContent = actionAndContent;
             pnlSelectFile.Visible = true;
         }
 
@@ -1127,7 +1135,28 @@ namespace WiremockUI
             {
                 if (InSelectingFile)
                 {
-                    actionSelectionFile(treeNodeMapping.File.FullPath);
+                    var fileContent = File.ReadAllText(treeNodeMapping.File.FullPath);
+                    var stub = StubMapping.buildFrom(fileContent);
+                    var a = ResponseDefinitionBuilder.jsonResponse(stub, java.net.HttpURLConnection.HTTP_CREATED);
+                    var strBuilder = new StringBuilder();
+                    var requestHeaders = Helper.GetHeaders(row.RequestLog);
+                    var requestBody = row.RequestLog.getBodyAsString();
+
+                    strBuilder.AppendLine($"{row.Method} {row.UrlAbsolute}");
+                    strBuilder.AppendLine();
+                    if (requestBody?.Length == 0)
+                    {
+                        strBuilder.Append(GetHeadersAsString(requestHeaders));
+                    }
+                    else
+                    {
+                        strBuilder.AppendLine(GetHeadersAsString(requestHeaders));
+                        strBuilder.AppendLine();
+                        strBuilder.Append(requestBody);
+                    }
+
+                    stub.getRequest();
+                    actionSelectionFileAndContent(treeNodeMapping.File.FullPath, strBuilder.ToString());
                     CancelFileSelection();
                     return;
                 }
