@@ -1135,29 +1135,74 @@ namespace WiremockUI
             {
                 if (InSelectingFile)
                 {
-                    var fileContent = File.ReadAllText(treeNodeMapping.File.FullPath);
-                    var stub = StubMapping.buildFrom(fileContent);
-                    var a = ResponseDefinitionBuilder.jsonResponse(stub, java.net.HttpURLConnection.HTTP_CREATED);
-                    var strBuilder = new StringBuilder();
-                    var requestHeaders = Helper.GetHeaders(row.RequestLog);
-                    var requestBody = row.RequestLog.getBodyAsString();
-
-                    strBuilder.AppendLine($"{row.Method} {row.UrlAbsolute}");
-                    strBuilder.AppendLine();
-                    if (requestBody?.Length == 0)
+                    try
                     {
-                        strBuilder.Append(GetHeadersAsString(requestHeaders));
+                        var strBuilder = new StringBuilder();
+                        var headers = new Dictionary<string, string>();
+                        string body = null;
+
+                        var fileContent = File.ReadAllText(treeNodeMapping.File.FullPath);
+                        var stub = StubMapping.buildFrom(fileContent);
+                        var method = stub.getRequest().getMethod().ToString();
+                        var url = stub.getRequest().getUrl();
+
+                        var iterator = stub.getRequest().getHeaders()?.keySet()?.iterator();
+                        if (iterator != null)
+                        {
+                            while (iterator.hasNext())
+                            {
+                                var name = (string)iterator.next();
+                                var value = (com.github.tomakehurst.wiremock.matching.MultiValuePattern)stub.getRequest().getHeaders().get(name);
+                                var compareName = value.getName();
+                                headers[name] = value.getExpected();
+                            }
+                        }
+
+                        var iteratorCookie = stub.getRequest().getCookies()?.keySet()?.iterator();
+                        if (iteratorCookie != null && !headers.Any(f => f.Key.ToLower() == "cookies"))
+                        {
+                            headers["Cookies"] = stub.getRequest().getCookies().ToString();
+                        }
+
+                        var bodyPatterns = stub.getRequest().getBodyPatterns()?.toArray();
+                        if (bodyPatterns != null)
+                        {
+                            foreach (var bodyPattern in bodyPatterns)
+                            {
+                                if (bodyPattern is com.github.tomakehurst.wiremock.matching.StringValuePattern converted)
+                                {
+                                    body = converted.getExpected();
+                                    break;
+                                }
+                            }
+                        }
+
+                        strBuilder.Append($"{method} {url}");
+                        if (headers.Count > 0)
+                        {
+                            strBuilder.AppendLine();
+                            strBuilder.AppendLine();
+                            strBuilder.Append(HttpUtils.GetHeadersAsString(headers));
+                        }
+
+                        if (body?.Length > 0)
+                        {
+                            strBuilder.AppendLine();
+                            strBuilder.AppendLine();
+                            strBuilder.Append(body);
+                        }
+
+                        actionSelectionFileAndContent("", strBuilder.ToString());
                     }
-                    else
+                    catch(Exception ex)
                     {
-                        strBuilder.AppendLine(GetHeadersAsString(requestHeaders));
-                        strBuilder.AppendLine();
-                        strBuilder.Append(requestBody);
+                        Helper.MessageBoxError("Ocorreu um erro ao selecionar o arquivo: " + ex.Message);
+                    }
+                    finally
+                    {
+                        CancelFileSelection();
                     }
 
-                    stub.getRequest();
-                    actionSelectionFileAndContent(treeNodeMapping.File.FullPath, strBuilder.ToString());
-                    CancelFileSelection();
                     return;
                 }
 
@@ -1181,8 +1226,19 @@ namespace WiremockUI
             {
                 if (InSelectingFile)
                 {
-                    actionSelectionFile(treeNodeBody.File.FullPath);
-                    CancelFileSelection();
+                    try
+                    {
+                        actionSelectionFile(treeNodeBody.File.FullPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        Helper.MessageBoxError("Ocorreu um erro ao selecionar o arquivo: " + ex.Message);
+                    }
+                    finally
+                    {
+                        CancelFileSelection();
+                    }
+
                     return;
                 }
 

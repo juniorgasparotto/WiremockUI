@@ -32,6 +32,12 @@
           "Value": "True",
           "ArgName": "--print-all-network-traffic",
           "Type": "Boolean"
+        },
+        {
+          "Name": "MatchHeaders",
+          "Value": "Cookies",
+          "ArgName": "--match-headers",
+          "Type": "String"
         }
       ]
     },
