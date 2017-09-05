@@ -43,7 +43,9 @@
             // 
             this.txtPath.AcceptsTab = true;
             this.txtPath.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtPath.EnableFormatter = false;
             this.txtPath.Location = new System.Drawing.Point(0, 0);
+            this.txtPath.MaxLength = 0;
             this.txtPath.Multiline = true;
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
@@ -104,9 +106,12 @@
             // 
             this.txtContent.AcceptsTab = true;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtContent.EnableFormatter = false;
             this.txtContent.Location = new System.Drawing.Point(0, 59);
+            this.txtContent.MaxLength = 0;
             this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
+            this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent.Size = new System.Drawing.Size(284, 168);
             this.txtContent.TabIndex = 12;
             // 

@@ -32,14 +32,20 @@ namespace WiremockUI
                     viewJsonMenu.Text = "Formatar para Json";
                     viewJsonMenu.Click += (a, b) =>
                     {
-                        Text = Helper.FormatToJson(Text);
+                        if (SelectedText == null)
+                            Text = Helper.FormatToJson(Text);
+                        else
+                            Paste(Helper.FormatToJson(SelectedText));
                     };
 
                     // xml
                     viewXml.Text = "Formatar para XML";
                     viewXml.Click += (a, b) =>
                     {
-                        Text = Helper.FormatToXml(Text);
+                        if (SelectedText == null)
+                            Text = Helper.FormatToXml(Text);
+                        else
+                            Paste(Helper.FormatToXml(SelectedText));
                     };
 
                     this.ContextMenuStrip = menu;
@@ -56,6 +62,7 @@ namespace WiremockUI
             this.AcceptsTab = true;
             this.Multiline = true;
             this.KeyDown += HistoryTextBox_KeyDown;
+            this.MaxLength = 0; 
         }
 
         private void HistoryTextBox_KeyDown(object sender, KeyEventArgs e)

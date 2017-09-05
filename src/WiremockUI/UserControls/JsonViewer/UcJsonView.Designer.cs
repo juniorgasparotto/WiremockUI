@@ -68,14 +68,16 @@
             // 
             // txtContent
             // 
+            this.txtContent.AcceptsTab = true;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtContent.EnableFormatter = false;
             this.txtContent.Location = new System.Drawing.Point(3, 42);
+            this.txtContent.MaxLength = 0;
             this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
-            this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent.Size = new System.Drawing.Size(136, 79);
             this.txtContent.TabIndex = 11;
-            
             // 
             // panel1
             // 

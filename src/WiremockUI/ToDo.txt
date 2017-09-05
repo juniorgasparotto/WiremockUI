@@ -58,3 +58,8 @@ adicionar atalhos em todos os niveis da treeview
 criar esquema para abrir o url dos mapas no browser ou em um componente de composer
 adicionar varios tipos de mock (json, xml)
 mudar pasta do debug para dentro da .app
+deu um problema de encode no compara ao selecionar um mapa
+esta criando pastas "files" e "mapping na raiz do projeto"
+adicionar "visualizar com xml" no componente de JSON
+adicionar opção para remover o nome da treeview
+ao renomear deve exibir apenas o nome do arquivo e não a URL

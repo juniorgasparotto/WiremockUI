@@ -25,16 +25,26 @@ namespace WiremockUI
             if (this.mock != null)
             {
                 this.txtName.Text = mock.Name;
-                this.btnAdd.Text = "Editar";
+                this.txtDesc.Text = mock.Description;
+                this.btnAdd.Text = "Salvar";
                 this.oldPath = proxy.GetFullPath(mock);
 
                 if (master.Dashboard.IsRunning(mock))
                     btnAdd.Enabled = false;
             }
+
+            ResizeTexts();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            if (InTab())
+            {
+                var tabPage = (TabPage)this.Parent;
+                var tab = (TabControl)tabPage.Parent;
+                tab.TabPages.Remove(tabPage);
+            }
+
             this.Close();
         }
 
@@ -67,6 +77,7 @@ namespace WiremockUI
                 mock = new Mock();
 
             mock.Name = name;
+            mock.Description = this.txtDesc.Text;
 
             var newPath = proxy.GetFullPath(mock);
             if (!string.IsNullOrWhiteSpace(this.oldPath) && Directory.Exists(oldPath) && oldPath != newPath)
@@ -78,9 +89,28 @@ namespace WiremockUI
                 proxy.AddMock(mock);
 
             db.Save();
-            this.Close();
+
+            if (!InTab())
+                this.Close();
 
             master.SetMock(this.parent, mock);
+        }
+
+        private bool InTab()
+        {
+            return this.Parent is TabPage;
+        }
+
+        private void FormAddMock_Resize(object sender, EventArgs e)
+        {
+            ResizeTexts();
+        }
+
+        private void ResizeTexts()
+        {
+            txtDesc.Width = this.ClientSize.Width - 15;
+            txtName.Width = this.ClientSize.Width - 15;
+            txtDesc.Height = this.ClientSize.Height - 150;
         }
     }
 }

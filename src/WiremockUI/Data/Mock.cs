@@ -8,6 +8,7 @@ namespace WiremockUI.Data
         public string Name { get; set; }
         public bool IsDefault { get; set; }
         public bool ShowURL { get; set; } = true;
+        public string Description { get; set; }
 
         public string GetFormattedName()
         {

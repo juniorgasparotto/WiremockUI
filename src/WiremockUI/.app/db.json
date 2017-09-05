@@ -11,13 +11,15 @@
           "Id": "a5aef29d-f93b-41d0-96fb-22da378b1e1f",
           "Name": "f",
           "IsDefault": false,
-          "ShowURL": true
+          "ShowURL": true,
+          "Description": ""
         },
         {
           "Id": "506d5e80-0dac-44f9-aece-0b0f18d4a41e",
           "Name": "ss",
           "IsDefault": true,
-          "ShowURL": true
+          "ShowURL": true,
+          "Description": ""
         }
       ],
       "Arguments": [
@@ -51,7 +53,8 @@
           "Id": "e27b4160-ea24-46b7-bb3c-641643118208",
           "Name": "cenario1",
           "IsDefault": true,
-          "ShowURL": true
+          "ShowURL": true,
+          "Description": null
         }
       ],
       "Arguments": [
@@ -79,7 +82,8 @@
           "Id": "91a00fa3-a1cd-439c-8ed7-29dcdf81fdc3",
           "Name": "cenario1",
           "IsDefault": true,
-          "ShowURL": true
+          "ShowURL": true,
+          "Description": null
         }
       ],
       "Arguments": [
@@ -107,7 +111,8 @@
           "Id": "f5716370-96fb-46f8-bec2-55d639988d8e",
           "Name": "cenario2",
           "IsDefault": true,
-          "ShowURL": true
+          "ShowURL": true,
+          "Description": null
         }
       ],
       "Arguments": [
@@ -135,7 +140,8 @@
           "Id": "fecb2455-a597-4460-9730-82f4a5743c39",
           "Name": "cenario1",
           "IsDefault": true,
-          "ShowURL": true
+          "ShowURL": true,
+          "Description": null
         }
       ],
       "Arguments": [

@@ -503,9 +503,21 @@ namespace WiremockUI
         private void OpenAddOrEditMock(TreeNode nodeProxy, Mock mockService = null)
         {
             var proxy = (Proxy)nodeProxy.Tag;
-            var frmAdd = new FormAddMock(this, nodeProxy, proxy, mockService?.Id);
-            frmAdd.StartPosition = FormStartPosition.CenterParent;
-            frmAdd.ShowDialog();
+            if (mockService == null)
+            {
+                var frmAdd = new FormAddMock(this, nodeProxy, proxy, null);
+                frmAdd.StartPosition = FormStartPosition.CenterParent;
+                frmAdd.ShowDialog();
+            }
+            else
+            {
+                if (TabMaster.GetTabByInternalTag(mockService.Id) == null)
+                { 
+                    var frmEdit = new FormAddMock(this, nodeProxy, proxy, mockService.Id);
+                    frmEdit.FormBorderStyle = FormBorderStyle.None;
+                    TabMaster.AddTab(frmEdit, mockService.Id, frmEdit.Text);
+                }
+            }
         }
 
         private TreeNode AddMappingNode(TreeNode nodeMock, Mock mock, string mapFile, int index = -1)
