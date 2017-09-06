@@ -101,9 +101,13 @@ namespace WiremockUI
         {
             if (keyData == Keys.Escape && SelectedTab != null)
             {
-                this.TabPages.Remove((TabPageCustom) SelectedTab);
-                SelectLastTab();
-                return true;
+                var tab = (TabPageCustom)SelectedTab;
+                if (tab.CanClose == null || tab.CanClose())
+                {
+                    this.TabPages.Remove(tab);
+                    SelectLastTab();
+                    return true;
+                }
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -118,10 +122,14 @@ namespace WiremockUI
             {
                 if (SelectedTab != null)
                 {
-                    tabs.Remove(tabs.Cast<TabPage>()
+                    var tab = tabs.Cast<TabPageCustom>()
                         .Where((t, i) => tabControl.GetTabRect(i).Contains(e.Location))
-                        .First());
-                    SelectLastTab();
+                        .FirstOrDefault();
+                    if (tab != null && tab.CanClose == null || tab.CanClose())
+                    {
+                        tabs.Remove(tab);
+                        SelectLastTab();
+                    }
                 }
             }
         }

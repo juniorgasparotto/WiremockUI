@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabLogs = new System.Windows.Forms.TabControl();
@@ -172,10 +172,11 @@
             this.txtSearchValue.AcceptsTab = true;
             this.txtSearchValue.EnableFormatter = false;
             this.txtSearchValue.Location = new System.Drawing.Point(9, 8);
-            this.txtSearchValue.Multiline = true;
+            this.txtSearchValue.MaxLength = 0;
             this.txtSearchValue.Name = "txtSearchValue";
             this.txtSearchValue.Size = new System.Drawing.Size(214, 20);
             this.txtSearchValue.TabIndex = 0;
+            this.txtSearchValue.Text = "";
             this.txtSearchValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchValue_KeyDown);
             // 
             // tabLogTable
@@ -194,8 +195,8 @@
             // 
             this.gridLog.AllowUserToAddRows = false;
             this.gridLog.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.gridLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gridLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -403,29 +404,33 @@
             // txtTo
             // 
             this.txtTo.AcceptsTab = true;
+            this.txtTo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTo.EnableFormatter = false;
-            this.txtTo.Location = new System.Drawing.Point(91, 51);
-            this.txtTo.Multiline = true;
+            this.txtTo.Location = new System.Drawing.Point(91, 56);
+            this.txtTo.MaxLength = 0;
             this.txtTo.Name = "txtTo";
             this.txtTo.ReadOnly = true;
-            this.txtTo.Size = new System.Drawing.Size(440, 20);
+            this.txtTo.Size = new System.Drawing.Size(440, 15);
             this.txtTo.TabIndex = 24;
+            this.txtTo.Text = "";
             // 
             // txtFrom
             // 
             this.txtFrom.AcceptsTab = true;
+            this.txtFrom.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFrom.EnableFormatter = false;
-            this.txtFrom.Location = new System.Drawing.Point(91, 23);
-            this.txtFrom.Multiline = true;
+            this.txtFrom.Location = new System.Drawing.Point(91, 26);
+            this.txtFrom.MaxLength = 0;
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.ReadOnly = true;
-            this.txtFrom.Size = new System.Drawing.Size(440, 20);
+            this.txtFrom.Size = new System.Drawing.Size(440, 15);
             this.txtFrom.TabIndex = 24;
+            this.txtFrom.Text = "";
             // 
             // lblUrlProxy
             // 
             this.lblUrlProxy.AutoSize = true;
-            this.lblUrlProxy.Location = new System.Drawing.Point(537, 55);
+            this.lblUrlProxy.Location = new System.Drawing.Point(537, 57);
             this.lblUrlProxy.Name = "lblUrlProxy";
             this.lblUrlProxy.Size = new System.Drawing.Size(23, 13);
             this.lblUrlProxy.TabIndex = 21;
@@ -453,7 +458,7 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Url destino:";
             // 
-            // FormStartMockService
+            // FormStartWiremockService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -464,7 +469,7 @@
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Name = "FormStartMockService";
+            this.Name = "FormStartWiremockService";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormStartMockService_KeyDown);
             this.panel2.ResumeLayout(false);
@@ -472,7 +477,6 @@
             this.tabLogs.ResumeLayout(false);
             this.tabLogText.ResumeLayout(false);
             this.pnlSearch.ResumeLayout(false);
-            this.pnlSearch.PerformLayout();
             this.tabLogTable.ResumeLayout(false);
             this.tabLogTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLog)).EndInit();
