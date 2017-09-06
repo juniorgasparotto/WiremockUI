@@ -35,7 +35,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtMockPort = new System.Windows.Forms.TextBox();
+            this.txtPort = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUrlTarget = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -81,7 +81,7 @@
             this.tabPage1.Controls.Add(this.txtName);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.txtMockPort);
+            this.tabPage1.Controls.Add(this.txtPort);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.txtUrlTarget);
             this.tabPage1.Location = new System.Drawing.Point(4, 36);
@@ -127,13 +127,13 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Porta do proxy:";
             // 
-            // txtMockPort
+            // txtPort
             // 
-            this.txtMockPort.Location = new System.Drawing.Point(89, 146);
-            this.txtMockPort.Name = "txtMockPort";
-            this.txtMockPort.Size = new System.Drawing.Size(450, 20);
-            this.txtMockPort.TabIndex = 19;
-            this.txtMockPort.Text = "5500";
+            this.txtPort.Location = new System.Drawing.Point(89, 146);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(450, 20);
+            this.txtPort.TabIndex = 19;
+            this.txtPort.Text = "5500";
             // 
             // label1
             // 
@@ -246,7 +246,7 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMockPort;
+        private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUrlTarget;
         private System.Windows.Forms.TabPage tabPage2;

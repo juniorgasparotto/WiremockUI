@@ -1,5 +1,4 @@
 {
-  "MockServices": null,
   "Proxies": [
     {
       "Id": "f7a63164-29be-4190-b990-ad388f8d58e0",
@@ -27,6 +26,20 @@
           "IsDefault": false,
           "ShowURL": true,
           "Description": "sdf"
+        },
+        {
+          "Id": "8eb21e48-afaf-4c3c-b764-e27c7fb3ec1c",
+          "Name": "asd",
+          "IsDefault": false,
+          "ShowURL": true,
+          "Description": "asd"
+        },
+        {
+          "Id": "c94cbaa0-0c43-49a6-a466-e815583ec7a6",
+          "Name": "asdasd",
+          "IsDefault": false,
+          "ShowURL": true,
+          "Description": "asdasd"
         }
       ],
       "Arguments": [

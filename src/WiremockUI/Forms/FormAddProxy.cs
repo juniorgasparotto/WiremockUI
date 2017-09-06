@@ -25,13 +25,13 @@ namespace WiremockUI
 
             if (this.proxy == null)
             {
-                this.txtMockPort.Text = GetAutoPort().ToString();
+                this.txtPort.Text = GetAutoPort().ToString();
             }
             else
             {
                 this.txtName.Text = proxy.Name;
                 this.txtUrlTarget.Text = proxy.UrlTarget;
-                this.txtMockPort.Text = proxy.PortProxy.ToString();
+                this.txtPort.Text = proxy.PortProxy.ToString();
                 this.btnAdd.Text = "Editar";
                 this.oldPath = this.proxy.GetFullPath();
                 SetProperties(proxy);
@@ -92,7 +92,7 @@ namespace WiremockUI
         {
             var name = txtName.Text.Trim();
             var urlTarget = txtUrlTarget.Text.Trim();
-            var port = txtMockPort.Text.Trim();
+            var port = txtPort.Text.Trim();
             var idExists = proxy?.Id;
 
             if (string.IsNullOrWhiteSpace(name))
@@ -112,14 +112,14 @@ namespace WiremockUI
             if (string.IsNullOrWhiteSpace(port))
             {
                 Helper.MessageBoxError("O campo 'Porta' é obrigatório.");
-                txtMockPort.Focus();
+                txtPort.Focus();
                 return;
             }
 
             if (!int.TryParse(port, out int portNumber))
             {
                 Helper.MessageBoxError("O campo 'Porta' está inválido.");
-                txtMockPort.Focus();
+                txtPort.Focus();
                 return;
             }
 
@@ -144,7 +144,7 @@ namespace WiremockUI
             if (existsPort)
             {
                 Helper.MessageBoxError("Essa 'Porta' já está em uso");
-                txtMockPort.Focus();
+                txtPort.Focus();
                 return;
             }
 

@@ -1,6 +1,6 @@
 ﻿namespace WiremockUI
 {
-    partial class FormStartMockService
+    partial class FormStartWiremockService
     {
         /// <summary>
         /// Required designer variable.

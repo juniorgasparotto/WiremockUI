@@ -12,7 +12,7 @@ namespace WiremockUI
         [JsonIgnore]
         public Proxy Proxy { get; private set; }
         [JsonIgnore]
-        public Scenario Mock { get; private set; }
+        public Scenario Scenario { get; private set; }
 
         public string Id { get; set; }
         public string Uuid { get; set; }
@@ -21,7 +21,7 @@ namespace WiremockUI
         
         private MappingModel() { }
 
-        public static MappingModel Create(Proxy proxy, Scenario mock, string content, out Exception exception)
+        public static MappingModel Create(Proxy proxy, Scenario scenario, string content, out Exception exception)
         {
             exception = null;
             try
@@ -30,7 +30,7 @@ namespace WiremockUI
                 if (mapping.Request != null)
                 { 
                     mapping.Proxy = proxy;
-                    mapping.Mock = mock;
+                    mapping.Scenario = scenario;
                     return mapping;
                 }
                 return null;
@@ -58,7 +58,7 @@ namespace WiremockUI
 
         public string GetBodyFullPath()
         {
-            return Path.Combine(Proxy.GetFullPath(Mock), "__files", Response.BodyFileName);
+            return Path.Combine(Proxy.GetFullPath(Scenario), "__files", Response.BodyFileName);
         }
 
         public string GetFormattedName(string fileName, bool showUrl)

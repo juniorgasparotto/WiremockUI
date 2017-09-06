@@ -33,6 +33,7 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtContent = new WiremockUI.EditorTextBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,18 +47,19 @@
             this.txtPath.Multiline = true;
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(284, 20);
+            this.txtPath.Size = new System.Drawing.Size(496, 20);
             this.txtPath.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel3.Controls.Add(this.btnClose);
             this.panel3.Controls.Add(this.btnOpen);
             this.panel3.Controls.Add(this.btnSave);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 227);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(284, 34);
+            this.panel3.Size = new System.Drawing.Size(496, 34);
             this.panel3.TabIndex = 4;
             // 
             // btnOpen
@@ -90,15 +92,27 @@
             this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
             this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtContent.Size = new System.Drawing.Size(284, 207);
+            this.txtContent.Size = new System.Drawing.Size(496, 207);
             this.txtContent.TabIndex = 2;
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(279, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 6;
+            this.btnClose.Text = "Fechar";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // FormTextFile
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.CancelButton = this.btnClose;
+            this.ClientSize = new System.Drawing.Size(496, 261);
             this.Controls.Add(this.txtContent);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.txtPath);
@@ -120,5 +134,6 @@
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnSave;
         private EditorTextBox txtContent;
+        private System.Windows.Forms.Button btnClose;
     }
 }

@@ -145,32 +145,32 @@ namespace WiremockUI
                 nodeProxy.Tag = proxy;
                 topNode.Nodes.Add(nodeProxy);
 
-                LoadMocks(nodeProxy, proxy);
+                LoadScenarios(nodeProxy, proxy);
 
                 // Create the ContextMenuStrip.
                 var menu = new ContextMenuStrip();
-                var addMock = new ToolStripMenuItem();
+                var addScenario = new ToolStripMenuItem();
                 var startAsProxyMenu = new ToolStripMenuItem();
                 var startMenu = new ToolStripMenuItem();
                 var startAndRecordMenu = new ToolStripMenuItem();
                 var stopMenu = new ToolStripMenuItem();
                 var openFolderMenu = new ToolStripMenuItem();
                 var openUrlTargetMenu = new ToolStripMenuItem();
-                var openUrlProxyMockMenu = new ToolStripMenuItem();
+                var openUrlProxyScenarioMenu = new ToolStripMenuItem();
                 var editMenu = new ToolStripMenuItem();
                 var removeMenu = new ToolStripMenuItem();
 
                 //Add the menu items to the menu.
                 menu.Items.AddRange(new ToolStripMenuItem[]
                 {
-                    addMock,
+                    addScenario,
                     startMenu,
                     startAsProxyMenu,
                     startAndRecordMenu,
                     stopMenu,
                     openFolderMenu,
                     openUrlTargetMenu,
-                    openUrlProxyMockMenu,
+                    openUrlProxyScenarioMenu,
                     editMenu,
                     removeMenu
                 });
@@ -178,25 +178,25 @@ namespace WiremockUI
                 menu.ImageList = imageList1;
                 menu.Opening += (a, b) =>
                 {
-                    var hasMock = proxy.Scenarios.Any();
+                    var hasScenario = proxy.Scenarios.Any();
 
-                    startMenu.Visible = hasMock;
-                    startAsProxyMenu.Visible = hasMock;
-                    startAndRecordMenu.Visible = hasMock;
-                    stopMenu.Visible = hasMock;
-                    openFolderMenu.Visible = hasMock;
-                    openUrlTargetMenu.Visible = hasMock;
-                    openUrlProxyMockMenu.Visible = hasMock;
+                    startMenu.Visible = hasScenario;
+                    startAsProxyMenu.Visible = hasScenario;
+                    startAndRecordMenu.Visible = hasScenario;
+                    stopMenu.Visible = hasScenario;
+                    openFolderMenu.Visible = hasScenario;
+                    openUrlTargetMenu.Visible = hasScenario;
+                    openUrlProxyScenarioMenu.Visible = hasScenario;
 
-                    if (hasMock)
+                    if (hasScenario)
                     {
-                        var defaultMock = proxy.GetDefaultScenario();
-                        var isRunning = Dashboard.IsRunning(defaultMock);
+                        var defaultScenario = proxy.GetDefaultScenario();
+                        var isRunning = Dashboard.IsRunning(defaultScenario);
                         startAsProxyMenu.Enabled = !isRunning;
                         startMenu.Enabled = !isRunning;
                         startAndRecordMenu.Enabled = !isRunning;
                         stopMenu.Enabled = isRunning;
-                        openUrlProxyMockMenu.Visible = isRunning;
+                        openUrlProxyScenarioMenu.Visible = isRunning;
                         editMenu.Enabled = !isRunning;
                         removeMenu.Enabled = !isRunning;
 
@@ -219,11 +219,11 @@ namespace WiremockUI
                 };
 
                 // add cenary
-                addMock.Text = "Adicionar mock";
-                addMock.ImageKey = "add";
-                addMock.Click += (a, b) =>
+                addScenario.Text = "Adicionar cenário";
+                addScenario.ImageKey = "add";
+                addScenario.Click += (a, b) =>
                 {
-                    OpenAddOrEditMock(nodeProxy);
+                    OpenAddOrEditScenario(nodeProxy);
                 };
 
                 // show files
@@ -242,15 +242,15 @@ namespace WiremockUI
                     Process.Start(proxy.UrlTarget);
                 };
 
-                // open url mock
-                openUrlProxyMockMenu.Text = "Abrir URL do proxy no browser";
-                openUrlProxyMockMenu.ImageKey = "services";
-                openUrlProxyMockMenu.Click += (a, b) =>
+                // open url Scenario
+                openUrlProxyScenarioMenu.Text = "Abrir URL do proxy no browser";
+                openUrlProxyScenarioMenu.ImageKey = "services";
+                openUrlProxyScenarioMenu.Click += (a, b) =>
                 {
                     Process.Start(proxy.GetUrlProxy());
                 };
 
-                // edit mock
+                // edit Scenario
                 editMenu.Text = "Editar";
                 editMenu.ImageKey = "edit";
                 editMenu.Click += (a, b) =>
@@ -258,7 +258,7 @@ namespace WiremockUI
                     OpenAddOrEditProxy(proxy);
                 };
 
-                // remove mock
+                // remove Scenario
                 removeMenu.Text = "Remover";
                 removeMenu.ImageKey = "remove";
                 removeMenu.Click += (a, b) =>
@@ -271,8 +271,8 @@ namespace WiremockUI
                 startMenu.ImageKey = "play";
                 startMenu.Click += (a, b) =>
                 {
-                    var defaultMock = proxy.GetDefaultScenario();
-                    StartService(defaultMock, Dashboard.PlayType.Play);
+                    var defaultScenario = proxy.GetDefaultScenario();
+                    StartService(defaultScenario, Dashboard.PlayType.Play);
                 };
 
                 // play and record
@@ -280,8 +280,8 @@ namespace WiremockUI
                 startAndRecordMenu.ImageKey = "record";
                 startAndRecordMenu.Click += (a, b) =>
                 {
-                    var defaultMock = proxy.GetDefaultScenario();
-                    StartService(defaultMock, Dashboard.PlayType.PlayAndRecord);
+                    var defaultScenario = proxy.GetDefaultScenario();
+                    StartService(defaultScenario, Dashboard.PlayType.PlayAndRecord);
                 };
 
                 // play
@@ -289,8 +289,8 @@ namespace WiremockUI
                 startAsProxyMenu.ImageKey = "play-proxy";
                 startAsProxyMenu.Click += (a, b) =>
                 {
-                    var defaultMock = proxy.GetDefaultScenario();
-                    StartService(defaultMock, Dashboard.PlayType.PlayAsProxy);
+                    var defaultScenario = proxy.GetDefaultScenario();
+                    StartService(defaultScenario, Dashboard.PlayType.PlayAsProxy);
                 };
 
                 // stop
@@ -298,8 +298,8 @@ namespace WiremockUI
                 stopMenu.ImageKey = "stop";
                 stopMenu.Click += (a, b) =>
                 {
-                    var defaultMock = proxy.GetDefaultScenario();
-                    StopService(defaultMock);
+                    var defaultScenario = proxy.GetDefaultScenario();
+                    StopService(defaultScenario);
                 };
 
                 nodeProxy.ContextMenuStrip = menu;
@@ -320,17 +320,17 @@ namespace WiremockUI
             return tabForms;
         }
 
-        private void LoadMocks(TreeNode nodeProxy, Proxy proxy)
+        private void LoadScenarios(TreeNode nodeProxy, Proxy proxy)
         {
             var db = new UnitOfWork();
             foreach (var c in proxy.Scenarios)
-                SetMock(nodeProxy, c);
+                SetScenario(nodeProxy, c);
         }
 
-        private void LoadRequestsAndResponses(TreeNode nodeMock, Data.Scenario mock)
+        private void LoadRequestsAndResponses(TreeNode nodeScenario, Data.Scenario scenario)
         {
-            var proxy = (Proxy)nodeMock.Parent.Tag;
-            var path = proxy.GetMappingPath(mock);
+            var proxy = (Proxy)nodeScenario.Parent.Tag;
+            var path = proxy.GetMappingPath(scenario);
             if (!Directory.Exists(path))
                 return;
 
@@ -338,34 +338,34 @@ namespace WiremockUI
             
             foreach(var mapFile in filePaths)
             {
-                AddMappingNode(nodeMock, mock, mapFile);
+                AddMappingNode(nodeScenario, scenario, mapFile);
             }
         }
 
-        internal void SetMock(TreeNode nodeProxy, Data.Scenario mock)
+        internal void SetScenario(TreeNode nodeProxy, Data.Scenario scenario)
         {
             var proxy = (Proxy)nodeProxy.Tag;
-            TreeNode nodeMock = null;
+            TreeNode nodeScenario = null;
             foreach (TreeNode n in nodeProxy.Nodes)
             {
-                if (((Data.Scenario)n.Tag).Id == mock.Id)
+                if (((Data.Scenario)n.Tag).Id == scenario.Id)
                 {
-                    nodeMock = n;
+                    nodeScenario = n;
                     break;
                 }
             }
 
-            if (nodeMock == null)
+            if (nodeScenario == null)
             {
-                nodeMock = new TreeNode();
-                nodeMock.Text = mock.GetFormattedName();
-                nodeMock.Tag = mock;
-                nodeProxy.Nodes.Add(nodeMock);
+                nodeScenario = new TreeNode();
+                nodeScenario.Text = scenario.GetFormattedName();
+                nodeScenario.Tag = scenario;
+                nodeProxy.Nodes.Add(nodeScenario);
 
-                if (mock.IsDefault)
-                    SetNodeMockAsDefault(mock, nodeMock);
+                if (scenario.IsDefault)
+                    SetnodeScenarioAsDefault(scenario, nodeScenario);
 
-                LoadRequestsAndResponses(nodeMock, mock);
+                LoadRequestsAndResponses(nodeScenario, scenario);
 
                 // Create the ContextMenuStrip.
                 var menu = new ContextMenuStrip();
@@ -390,18 +390,18 @@ namespace WiremockUI
                 menu.ImageList = imageList1;
                 menu.Opening += (a, b) =>
                 {
-                    var isRunning = Dashboard.IsRunning(mock);
+                    var isRunning = Dashboard.IsRunning(scenario);
                     //setDefaultMenu.Enabled = !Dashboard.IsAnyRunning();
                     addMenu.Enabled = !isRunning;
                     editMenu.Enabled = !isRunning;
                     removeMenu.Enabled = !isRunning;
 
-                    if (mock.ShowURL)
+                    if (scenario.ShowURL)
                         showUrlMenu.ImageKey = "check";
                     else
                         showUrlMenu.ImageKey = "";
 
-                    if (!proxy.AlreadyRecord(mock))
+                    if (!proxy.AlreadyRecord(scenario))
                     {
                         openFolderMenu.Visible = false;
                     }
@@ -416,7 +416,7 @@ namespace WiremockUI
                 addMenu.ImageKey = "add";
                 addMenu.Click += (a, b) =>
                 {
-                    AddNewMap(nodeMock);
+                    AddNewMap(nodeScenario);
                 };
 
                 // show files
@@ -430,25 +430,25 @@ namespace WiremockUI
                         return;
                     }
 
-                    proxy.SetDefault(mock);
+                    proxy.SetDefault(scenario);
                     SaveProxy(proxy);
-                    SetNodeMockAsDefault(mock, nodeMock);
+                    SetnodeScenarioAsDefault(scenario, nodeScenario);
                 };
 
                 // show files
-                openFolderMenu.Text = "Abrir pasta da mock";
+                openFolderMenu.Text = "Abrir pasta do cenário";
                 openFolderMenu.ImageKey = "folder";
                 openFolderMenu.Click += (a, b) =>
                 {
-                    Process.Start(proxy.GetFullPath(mock));
+                    Process.Start(proxy.GetFullPath(scenario));
                 };
 
-                // edit mock
+                // edit Scenario
                 editMenu.Text = "Editar";
                 editMenu.ImageKey = "edit";
                 editMenu.Click += (a, b) =>
                 {
-                    OpenAddOrEditMock(nodeProxy, mock);
+                    OpenAddOrEditScenario(nodeProxy, scenario);
                 };
 
                 // remove mock
@@ -456,39 +456,39 @@ namespace WiremockUI
                 removeMenu.ImageKey = "remove";
                 removeMenu.Click += (a, b) =>
                 {
-                    RemoveMock(nodeMock, mock);
+                    RemoveScenario(nodeScenario, scenario);
                 };
 
-                // mostra ou esconde a URL do mock
+                // mostra ou esconde a URL do Scenario
 
                 showUrlMenu.Text = "Visualizar URL";
                 showUrlMenu.Click += (a, b) =>
                 {
                     var db = new UnitOfWork();
-                    mock.ShowURL = !mock.ShowURL;
+                    scenario.ShowURL = !scenario.ShowURL;
                     db.Proxies.Update(proxy);
                     db.Save();
 
-                    var nodesMaps = GetAllMappingNodes(mock);
+                    var nodesMaps = GetAllMappingNodes(scenario);
                    
                     foreach(var nodeMap in nodesMaps)
                     {
                         var model = (TreeNodeMappingModel)nodeMap.Tag;
-                        var text = model.Mapping.GetFormattedName(model.File.GetOnlyFileName(), mock.ShowURL);
+                        var text = model.Mapping.GetFormattedName(model.File.GetOnlyFileName(), scenario.ShowURL);
                         nodeMap.Text = text;
                     }
                 };
 
                 // Set the ContextMenuStrip property to the ContextMenuStrip.
-                nodeMock.ContextMenuStrip = menu;
+                nodeScenario.ContextMenuStrip = menu;
             }
             else
             {
-                nodeMock.Text = mock.GetFormattedName();
-                nodeMock.Tag = mock;
+                nodeScenario.Text = scenario.GetFormattedName();
+                nodeScenario.Tag = scenario;
             }
 
-            ChangeTreeNodeImage(nodeMock, "mock");
+            ChangeTreeNodeImage(nodeScenario, "mock");
             nodeProxy.Expand();
         }
 
@@ -499,10 +499,10 @@ namespace WiremockUI
             frmAdd.ShowDialog();
         }
 
-        private void OpenAddOrEditMock(TreeNode nodeProxy, Data.Scenario mockService = null)
+        private void OpenAddOrEditScenario(TreeNode nodeProxy, Data.Scenario scenario = null)
         {
             var proxy = (Proxy)nodeProxy.Tag;
-            if (mockService == null)
+            if (scenario == null)
             {
                 var frmAdd = new FormAddScenario(this, nodeProxy, proxy, null);
                 frmAdd.StartPosition = FormStartPosition.CenterParent;
@@ -510,12 +510,12 @@ namespace WiremockUI
             }
             else
             {
-                var tabExists = TabMaster.GetTabByInternalTag(mockService.Id);
+                var tabExists = TabMaster.GetTabByInternalTag(scenario.Id);
                 if (tabExists == null)
                 { 
-                    var frmEdit = new FormAddScenario(this, nodeProxy, proxy, mockService.Id);
+                    var frmEdit = new FormAddScenario(this, nodeProxy, proxy, scenario.Id);
                     frmEdit.FormBorderStyle = FormBorderStyle.None;
-                    TabMaster.AddTab(frmEdit, mockService.Id, frmEdit.Text);
+                    TabMaster.AddTab(frmEdit, scenario.Id, frmEdit.Text);
                 }
                 else
                 {
@@ -524,10 +524,10 @@ namespace WiremockUI
             }
         }
 
-        private TreeNode AddMappingNode(TreeNode nodeMock, Data.Scenario mock, string mapFile, int index = -1)
+        private TreeNode AddMappingNode(TreeNode nodeScenario, Data.Scenario scenario, string mapFile, int index = -1)
         {
-            var proxy = (Proxy)nodeMock.Parent.Tag;
-            var treeNodeMapping = GetTreeNodeMapping(proxy, mock, mapFile);
+            var proxy = (Proxy)nodeScenario.Parent.Tag;
+            var treeNodeMapping = GetTreeNodeMapping(proxy, scenario, mapFile);
 
             var nodeMapping = new TreeNode(treeNodeMapping.Name);
 
@@ -552,7 +552,7 @@ namespace WiremockUI
                     toggleMapStateMenu.ImageKey = "";
                 }
 
-                var isRunning = Dashboard.IsRunning(mock);
+                var isRunning = Dashboard.IsRunning(scenario);
                 renameMenu.Enabled = !isRunning;
                 deleteMenu.Enabled = !isRunning;
                 toggleMapStateMenu.Enabled = !isRunning;
@@ -625,9 +625,9 @@ namespace WiremockUI
             nodeMapping.Tag = treeNodeMapping;
 
             if (index >= 0)
-                nodeMock.Nodes.Insert(index, nodeMapping);
+                nodeScenario.Nodes.Insert(index, nodeMapping);
             else
-                nodeMock.Nodes.Add(nodeMapping);
+                nodeScenario.Nodes.Add(nodeMapping);
 
             ChangeTreeNodeImage(nodeMapping, "request");
             SetMappingNodeState(mapFile, nodeMapping);
@@ -681,10 +681,10 @@ namespace WiremockUI
             }
 
             File.WriteAllText(newMapFile, content);
-            treeServices.SelectedNode = AddMappingNode(GetNodeMockById(model.Mock.Id), model.Mock, newMapFile, nodeMapping.Index + 1);
+            treeServices.SelectedNode = AddMappingNode(GetnodeScenarioById(model.Scenario.Id), model.Scenario, newMapFile, nodeMapping.Index + 1);
         }
 
-        private void AddNewMap(TreeNode nodeMock)
+        private void AddNewMap(TreeNode nodeScenario)
         {
             var contentMap = "";
             var contentBody = "";
@@ -692,10 +692,10 @@ namespace WiremockUI
             var templateBodyFileName = "Templates/Files/New.txt";
             var mockName = "Mock.json";
             var mockBodyName = "Mock.txt";
-            var mock = (Data.Scenario)nodeMock.Tag;
-            var proxy = (Proxy)nodeMock.Parent.Tag;
-            var newMapFileName = GetNewFileName(Path.Combine(proxy.GetMappingPath(mock), mockName));
-            var newBodyFileName = GetNewFileName(Path.Combine(proxy.GetBodyFilesPath(mock), mockBodyName));
+            var scenario = (Data.Scenario)nodeScenario.Tag;
+            var proxy = (Proxy)nodeScenario.Parent.Tag;
+            var newMapFileName = GetNewFileName(Path.Combine(proxy.GetMappingPath(scenario), mockName));
+            var newBodyFileName = GetNewFileName(Path.Combine(proxy.GetBodyFilesPath(scenario), mockBodyName));
 
             if (File.Exists(templateMapFileName))
             {
@@ -712,7 +712,7 @@ namespace WiremockUI
             File.WriteAllText(newMapFileName, contentMap);
             File.WriteAllText(newBodyFileName, contentBody);
 
-            var nodeMap = AddMappingNode(nodeMock, mock, newMapFileName);
+            var nodeMap = AddMappingNode(nodeScenario, scenario, newMapFileName);
             treeServices.SelectedNode = nodeMap;
         }
 
@@ -851,7 +851,7 @@ namespace WiremockUI
             }
         }
 
-        private TreeNodeMappingModel GetTreeNodeMapping(Proxy proxy, Data.Scenario mock, string mapFile)
+        private TreeNodeMappingModel GetTreeNodeMapping(Proxy proxy, Data.Scenario scenario, string mapFile)
         {
             var fileModelMapping = FileModel.Create(mapFile);
 
@@ -861,10 +861,10 @@ namespace WiremockUI
             Exception exMap = null;
 
             if (content != null)
-                mapping = MappingModel.Create(proxy, mock, content, out exMap);
+                mapping = MappingModel.Create(proxy, scenario, content, out exMap);
 
             if (mapping != null)
-                mapName = mapping.GetFormattedName(mapName, mock.ShowURL);
+                mapName = mapping.GetFormattedName(mapName, scenario.ShowURL);
 
             var treeNodeMapping = new TreeNodeMappingModel
             {
@@ -872,7 +872,7 @@ namespace WiremockUI
                 File = fileModelMapping,
                 Mapping = mapping,
                 Proxy = proxy,
-                Mock = mock
+                Scenario = scenario
             };
 
             if (mapping?.HasBodyFile() == true)
@@ -889,12 +889,12 @@ namespace WiremockUI
             return treeNodeMapping;
         }
 
-        private void StartWatcherFolder(TreeNode nodeMock, Data.Scenario mock)
+        private void StartWatcherFolder(TreeNode nodeScenario, Data.Scenario scenario)
         {
             var watcher = new FileSystemWatcher();
-            var proxy = (Proxy)nodeMock.Parent.Tag;
+            var proxy = (Proxy)nodeScenario.Parent.Tag;
 
-            watcher.Path = proxy.GetMappingPath(mock);
+            watcher.Path = proxy.GetMappingPath(scenario);
             watcher.Filter = "*.*";
             watcher.IncludeSubdirectories = true;
 
@@ -902,8 +902,8 @@ namespace WiremockUI
             {
                 var d = new ActionDelegate(() =>
                 {
-                    AddMappingNode(nodeMock, mock, e.FullPath);
-                    nodeMock.Expand();
+                    AddMappingNode(nodeScenario, scenario, e.FullPath);
+                    nodeScenario.Expand();
                 });
 
                 this.Invoke(d);
@@ -911,12 +911,12 @@ namespace WiremockUI
 
             watcher.EnableRaisingEvents = true;
 
-            Dashboard.AddWatchers(mock, watcher);
+            Dashboard.AddWatchers(scenario, watcher);
         }
 
         private void RemoveProxy(TreeNode nodeProxy)
         {
-            if (MessageBox.Show("Deseja realmente excluir esse proxy de mock?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Deseja realmente excluir esse proxy?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 var proxy = (Proxy)nodeProxy.Tag;
                 var path = proxy.GetFullPath();
@@ -944,13 +944,13 @@ namespace WiremockUI
         }
 
 
-        private void RemoveMock(TreeNode nodeMock, Data.Scenario mock)
+        private void RemoveScenario(TreeNode nodeScenario, Data.Scenario scenario)
         {
-            if (MessageBox.Show("Deseja realmente excluir esse mock?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Deseja realmente excluir esse cenário?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                var nodeProxy = nodeMock.Parent;
-                var proxy = (Proxy)nodeMock.Parent.Tag;
-                var path = proxy.GetFullPath(mock);
+                var nodeProxy = nodeScenario.Parent;
+                var proxy = (Proxy)nodeScenario.Parent.Tag;
+                var path = proxy.GetFullPath(scenario);
 
                 if (Directory.Exists(path))
                 {
@@ -966,29 +966,29 @@ namespace WiremockUI
                     }
                 }
 
-                nodeMock.Parent.Nodes.Remove(nodeMock);
-                proxy.RemoveScenario(mock.Id);
+                nodeScenario.Parent.Nodes.Remove(nodeScenario);
+                proxy.RemoveScenario(scenario.Id);
 
-                if (mock.IsDefault && nodeProxy.Nodes.Count > 0)
+                if (scenario.IsDefault && nodeProxy.Nodes.Count > 0)
                 {
-                    var nodeMockFirst = nodeProxy.Nodes[0];
-                    var mockFirst = (Data.Scenario)nodeMockFirst.Tag;
-                    proxy.SetDefault(mockFirst);
-                    SetNodeMockAsDefault(mockFirst, nodeMockFirst);
+                    var nodeScenarioFirst = nodeProxy.Nodes[0];
+                    var scenarioFirst = (Data.Scenario)nodeScenarioFirst.Tag;
+                    proxy.SetDefault(scenarioFirst);
+                    SetnodeScenarioAsDefault(scenarioFirst, nodeScenarioFirst);
                 }
 
                 SaveProxy(proxy);
             }
         }
 
-        private void SetNodeMockAsDefault(Data.Scenario mock, TreeNode nodeMock)
+        private void SetnodeScenarioAsDefault(Data.Scenario scenario, TreeNode nodeScenario)
         {
             // change front
             var font = new Font(treeServices.Font.FontFamily, treeServices.Font.Size, FontStyle.Bold);
-            nodeMock.NodeFont = font;
+            nodeScenario.NodeFont = font;
 
-            foreach (TreeNode n in nodeMock.Parent.Nodes)
-                if (n != nodeMock)
+            foreach (TreeNode n in nodeScenario.Parent.Nodes)
+                if (n != nodeScenario)
                     n.NodeFont = new Font(treeServices.Font.FontFamily, treeServices.Font.Size, treeServices.Font.Style);
         }
 
@@ -1006,13 +1006,13 @@ namespace WiremockUI
             nodeService.StateImageKey = nodeService.ImageKey;
         }
 
-        private void StartService(Data.Scenario mock, Dashboard.PlayType playType)
+        private void StartService(Data.Scenario scenario, Dashboard.PlayType playType)
         {
-            var nodeMock = GetNodeMockById(mock.Id);
-            var nodeProxy = nodeMock.Parent;
+            var nodeScenario = GetnodeScenarioById(scenario.Id);
+            var nodeProxy = nodeScenario.Parent;
             var proxy = (Proxy)nodeProxy.Tag;
 
-            var frmStart = new FormStartMockService(this, proxy, mock, playType);
+            var frmStart = new FormStartWiremockService(this, proxy, scenario, playType);
             
             try
             {
@@ -1020,7 +1020,7 @@ namespace WiremockUI
             }
             catch (Exception ex)
             {
-                StopService(mock);
+                StopService(scenario);
                 Helper.MessageBoxError($"Ocorreu um erro ao tentar iniciar: {ex.GetType().Name}: {ex.Message}");
                 return;
             }
@@ -1032,10 +1032,10 @@ namespace WiremockUI
             else if (playType == Dashboard.PlayType.PlayAsProxy)
                 recordText = " (Proxy)";
 
-            TabMaster.AddTab(frmStart, mock.Id, mock.Name + recordText)
+            TabMaster.AddTab(frmStart, scenario.Id, scenario.Name + recordText)
                 .CanClose = () => {
                     if (Helper.MessageBoxQuestion("Deseja realmente parar o serviço?") == DialogResult.Yes)
-                        StopService(mock);
+                        StopService(scenario);
 
                     return false;
                 };
@@ -1049,18 +1049,18 @@ namespace WiremockUI
             ChangeTreeNodeImage(nodeProxy, icon);
 
             if (playType == Dashboard.PlayType.PlayAndRecord)
-                StartWatcherFolder(nodeMock, mock);
+                StartWatcherFolder(nodeScenario, scenario);
         }
 
-        private void StopService(Data.Scenario mock)
+        private void StopService(Data.Scenario scenario)
         {
-            var nodeMock = GetNodeMockById(mock.Id);
-            var nodeProxy = nodeMock.Parent;
+            var nodeScenario = GetnodeScenarioById(scenario.Id);
+            var nodeProxy = nodeScenario.Parent;
 
-            Dashboard.Stop(mock);
+            Dashboard.Stop(scenario);
             ChangeTreeNodeImage(nodeProxy, "stop");
 
-            TabMaster.CloseTab(mock.Id);
+            TabMaster.CloseTab(scenario.Id);
         }
 
         private IEnumerable<TreeNode> GetAllProxiesNodes()
@@ -1069,18 +1069,18 @@ namespace WiremockUI
                 yield return nodeProxy;
         }
 
-        private IEnumerable<TreeNode> GetAllMappingNodes(Data.Scenario mock)
+        private IEnumerable<TreeNode> GetAllMappingNodes(Data.Scenario scenario)
         {
             foreach (TreeNode nodeProxy in GetAllProxiesNodes())
             {
-                foreach (TreeNode nodeMock in nodeProxy.Nodes)
-                    if (nodeMock.Tag is Data.Scenario nMock && nMock == mock)
-                        foreach (TreeNode nodeMap in nodeMock.Nodes)
+                foreach (TreeNode nodeScenario in nodeProxy.Nodes)
+                    if (nodeScenario.Tag is Data.Scenario nScenario && nScenario == scenario)
+                        foreach (TreeNode nodeMap in nodeScenario.Nodes)
                             yield return nodeMap;
             }
         }
 
-        private TreeNode GetNodeMockById(Guid id)
+        private TreeNode GetnodeScenarioById(Guid id)
         {
             foreach (TreeNode n in GetAllProxiesNodes())
             {
@@ -1114,15 +1114,15 @@ namespace WiremockUI
                 var proxy = (Proxy)n.Tag;
                 if (proxy.Scenarios.Any())
                 {
-                    var mock = proxy.GetDefaultScenario();
-                    if (Dashboard.IsRunning(mock))
+                    var scenario = proxy.GetDefaultScenario();
+                    if (Dashboard.IsRunning(scenario))
                         continue;
 
                     // inicia gravando caso ainda não tenha sido feito
-                    if (!proxy.AlreadyRecord(mock))
+                    if (!proxy.AlreadyRecord(scenario))
                         playType = Dashboard.PlayType.PlayAsProxy;
 
-                    StartService(mock, playType);
+                    StartService(scenario, playType);
                 }
             }
         }
@@ -1145,7 +1145,7 @@ namespace WiremockUI
             }
             else if (selected.Tag != null && selected.Tag is Data.Scenario)
             {
-                OpenAddOrEditMock(selected.Parent, (Data.Scenario)selected.Tag);
+                OpenAddOrEditScenario(selected.Parent, (Data.Scenario)selected.Tag);
             }
             else if (selected.Tag != null && selected.Tag is TreeNodeMappingModel treeNodeMapping)
             {
@@ -1232,7 +1232,7 @@ namespace WiremockUI
                 var frmStart = new FormJsonFile(this, null, treeNodeMapping.File.FullPath);
                 frmStart.OnSave = () =>
                 {
-                    var newTreeNodeMapping = GetTreeNodeMapping(treeNodeMapping.Proxy, treeNodeMapping.Mock, treeNodeMapping.File.FullPath);
+                    var newTreeNodeMapping = GetTreeNodeMapping(treeNodeMapping.Proxy, treeNodeMapping.Scenario, treeNodeMapping.File.FullPath);
                     UpdateMappingNode(selected, newTreeNodeMapping);
                 };
 
@@ -1398,7 +1398,7 @@ namespace WiremockUI
             }
 
             var oldNodeBody = nodeMap.Nodes.Count > 0 ? nodeMap.Nodes[0] : null;
-            var newModel = GetTreeNodeMapping(model.Proxy, model.Mock, newNameMap);
+            var newModel = GetTreeNodeMapping(model.Proxy, model.Scenario, newNameMap);
             UpdateMappingNode(nodeMap, newModel);
             UpdateMappingTab(nodeMap, oldNodeBody);
         }
@@ -1448,7 +1448,7 @@ namespace WiremockUI
         private void treeServices_KeyDown(object sender, KeyEventArgs e)
         {
             if (treeServices.SelectedNode?.Tag is TreeNodeMappingModel model
-                && !Dashboard.IsRunning(model.Mock))
+                && !Dashboard.IsRunning(model.Scenario))
             {
                 if (e.KeyCode == Keys.Delete)
                 {

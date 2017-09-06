@@ -290,11 +290,11 @@
     <Compile Include="Forms\FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormStartMockService.cs">
+    <Compile Include="Forms\FormStartWiremockService.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormStartMockService.Designer.cs">
-      <DependentUpon>FormStartMockService.cs</DependentUpon>
+    <Compile Include="Forms\FormStartWiremockService.Designer.cs">
+      <DependentUpon>FormStartWiremockService.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Data\Scenario.cs" />
@@ -339,8 +339,8 @@
     <EmbeddedResource Include="Forms\TextViewers\FormJsonViewer.resx">
       <DependentUpon>FormJsonViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormStartMockService.resx">
-      <DependentUpon>FormStartMockService.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormStartWiremockService.resx">
+      <DependentUpon>FormStartWiremockService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormAddScenario.resx">
       <DependentUpon>FormAddScenario.cs</DependentUpon>

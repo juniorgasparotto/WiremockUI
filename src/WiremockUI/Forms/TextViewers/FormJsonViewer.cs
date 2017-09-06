@@ -25,5 +25,10 @@ namespace WiremockUI
             this.ActiveControl = ucJsonView;
             ucJsonView.SetContentFocus();
         }
+
+        private void btnClose_Click(object sender, System.EventArgs e)
+        {
+            FormMaster.Current.TabMaster.CloseTab(this);
+        }
     }
 }

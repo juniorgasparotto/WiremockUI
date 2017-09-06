@@ -33,12 +33,14 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtPath = new WiremockUI.EditorTextBox();
             this.ucJsonView = new WiremockUI.UcJsonView();
+            this.btnClose = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel3.Controls.Add(this.btnClose);
             this.panel3.Controls.Add(this.btnOpen);
             this.panel3.Controls.Add(this.btnSave);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -92,11 +94,23 @@
             this.ucJsonView.Size = new System.Drawing.Size(488, 207);
             this.ucJsonView.TabIndex = 2;
             // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(280, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "Fechar";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // FormJsonFile
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(488, 261);
             this.Controls.Add(this.ucJsonView);
             this.Controls.Add(this.txtPath);
@@ -119,5 +133,6 @@
         private System.Windows.Forms.Button btnSave;
         private EditorTextBox txtPath;
         private UcJsonView ucJsonView;
+        private System.Windows.Forms.Button btnClose;
     }
 }

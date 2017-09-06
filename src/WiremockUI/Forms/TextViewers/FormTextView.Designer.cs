@@ -30,6 +30,7 @@
         {
             this.txtTitle = new WiremockUI.EditorTextBox();
             this.txtContent = new WiremockUI.EditorTextBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -50,21 +51,34 @@
             this.txtContent.AcceptsTab = true;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContent.EnableFormatter = false;
-            this.txtContent.Location = new System.Drawing.Point(0, 20);
+            this.txtContent.Location = new System.Drawing.Point(0, 0);
             this.txtContent.MaxLength = 0;
             this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
             this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtContent.Size = new System.Drawing.Size(284, 241);
+            this.txtContent.Size = new System.Drawing.Size(284, 261);
             this.txtContent.TabIndex = 2;
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(0, 26);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Fechar";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // FormTextView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.txtContent);
             this.Controls.Add(this.txtTitle);
+            this.Controls.Add(this.txtContent);
+            this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "FormTextView";
@@ -78,5 +92,6 @@
         #endregion
         private EditorTextBox txtTitle;
         private EditorTextBox txtContent;
+        private System.Windows.Forms.Button btnClose;
     }
 }

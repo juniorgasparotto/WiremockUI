@@ -9,7 +9,7 @@ namespace WiremockUI
     public partial class FormAddScenario : Form
     {
         private FormMaster master;
-        private Scenario mock;
+        private Scenario scenario;
         private string oldPath;
         private TreeNode parent;
         private Proxy proxy;
@@ -17,22 +17,22 @@ namespace WiremockUI
         public FormAddScenario(FormMaster master, TreeNode parent, Proxy proxy, Guid? id)
         {
             this.master = master;
-            this.mock = proxy.GetScenarioById(id);
+            this.scenario = proxy.GetScenarioById(id);
             this.parent = parent;
             this.proxy = proxy;
             InitializeComponent();
             
-            if (this.mock != null)
+            if (this.scenario != null)
             {
-                this.txtName.Text = mock.Name;
-                this.txtDesc.Text = mock.Description;
+                this.txtName.Text = scenario.Name;
+                this.txtDesc.Text = scenario.Description;
                 this.btnAdd.Text = "Salvar";
-                this.oldPath = proxy.GetFullPath(mock);
+                this.oldPath = proxy.GetFullPath(scenario);
 
-                if (master.Dashboard.IsRunning(mock))
+                if (master.Dashboard.IsRunning(scenario))
                     btnAdd.Enabled = false;
 
-                this.Text = this.mock.Name;
+                this.Text = this.scenario.Name;
             }
 
             ResizeTexts();
@@ -42,18 +42,18 @@ namespace WiremockUI
         {
             if (InTab())
             {
-                var tabPage = (TabPage)this.Parent;
-                var tab = (TabControl)tabPage.Parent;
-                tab.TabPages.Remove(tabPage);
+                FormMaster.Current.TabMaster.CloseTab(this);
             }
-
-            this.Close();
+            else
+            {
+                this.Close();
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var name = txtName.Text.Trim();
-            var idExists = mock?.Id;
+            var idExists = scenario?.Id;
 
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -75,27 +75,27 @@ namespace WiremockUI
                 return;
             }
 
-            if (mock == null)
-                mock = new Scenario();
+            if (scenario == null)
+                scenario = new Scenario();
 
-            mock.Name = name;
-            mock.Description = this.txtDesc.Text;
+            scenario.Name = name;
+            scenario.Description = this.txtDesc.Text;
 
-            var newPath = proxy.GetFullPath(mock);
+            var newPath = proxy.GetFullPath(scenario);
             if (!string.IsNullOrWhiteSpace(this.oldPath) && Directory.Exists(oldPath) && oldPath != newPath)
             {
                 Directory.Move(this.oldPath, newPath);
             }
 
-            if (mock.Id == Guid.Empty)
-                proxy.AddScenario(mock);
+            if (scenario.Id == Guid.Empty)
+                proxy.AddScenario(scenario);
 
             db.Save();
 
             if (!InTab())
                 this.Close();
 
-            master.SetMock(this.parent, mock);
+            master.SetScenario(this.parent, scenario);
         }
 
         private bool InTab()
@@ -103,7 +103,7 @@ namespace WiremockUI
             return this.Parent is TabPage;
         }
 
-        private void FormAddMock_Resize(object sender, EventArgs e)
+        private void FormAddScenario_Resize(object sender, EventArgs e)
         {
             ResizeTexts();
         }
@@ -115,7 +115,7 @@ namespace WiremockUI
             txtDesc.Height = this.ClientSize.Height - 150;
         }
 
-        private void FormAddMock_Load(object sender, EventArgs e)
+        private void FormAddScenario_Load(object sender, EventArgs e)
         {
             this.ActiveControl = txtName;
         }

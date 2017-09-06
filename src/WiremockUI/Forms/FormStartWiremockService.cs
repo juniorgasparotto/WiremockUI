@@ -7,19 +7,19 @@ using System.IO;
 
 namespace WiremockUI
 {
-    public partial class FormStartMockService : Form
+    public partial class FormStartWiremockService : Form
     {
         private RichTextBoxLogWriter logWriter;
         private GridViewLogRequestResponse logTable;
         private FormMaster master;
-        private Scenario mockService;
+        private Scenario scenario;
         private Dashboard.PlayType playType;
         private Proxy proxy;
         private int start;
         private int indexOfSearchText;
         private string labelDiff;
 
-        public FormStartMockService(FormMaster master, Proxy proxy, Scenario mock, Dashboard.PlayType playType)
+        public FormStartWiremockService(FormMaster master, Proxy proxy, Scenario scenario, Dashboard.PlayType playType)
         {
             InitializeComponent();
             this.txtSearchValue.Multiline = false;
@@ -45,7 +45,7 @@ namespace WiremockUI
 
             this.master = master;
             this.proxy = proxy;
-            this.mockService = mock;
+            this.scenario = scenario;
             this.playType = playType;
 
             this.txtFrom.Text = proxy.UrlTarget;
@@ -55,8 +55,8 @@ namespace WiremockUI
             this.txtTo.Text = urlProxy;
             this.lblUrlProxy.Links.Add(0, urlProxy.Length, urlProxy);
 
-            var folderPath = proxy.GetFullPath(mock);
-            if (mock != null && File.Exists(folderPath))
+            var folderPath = proxy.GetFullPath(scenario);
+            if (scenario != null && File.Exists(folderPath))
             {
                 this.lblOpenFolder.Links.Add(0, folderPath.Length, folderPath);
             }
@@ -68,7 +68,7 @@ namespace WiremockUI
         
         public void Play()
         {
-            master.Dashboard.Play(proxy, mockService, playType, logWriter, logTable);
+            master.Dashboard.Play(proxy, scenario, playType, logWriter, logTable);
         }
 
         private void Search()

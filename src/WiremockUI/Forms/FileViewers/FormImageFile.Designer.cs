@@ -32,6 +32,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnOpen = new System.Windows.Forms.Button();
             this.imgFile = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgFile)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +53,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel3.Controls.Add(this.btnClose);
             this.panel3.Controls.Add(this.btnOpen);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 227);
@@ -78,11 +80,23 @@
             this.imgFile.TabIndex = 5;
             this.imgFile.TabStop = false;
             // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(189, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Fechar";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // FormImageFile
             // 
             this.AcceptButton = this.btnOpen;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.imgFile);
             this.Controls.Add(this.panel3);
@@ -104,5 +118,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.PictureBox imgFile;
+        private System.Windows.Forms.Button btnClose;
     }
 }

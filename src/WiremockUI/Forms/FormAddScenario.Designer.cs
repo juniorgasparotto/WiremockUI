@@ -127,8 +127,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormAddMock";
             this.Text = "Novo cenário";
-            this.Load += new System.EventHandler(this.FormAddMock_Load);
-            this.Resize += new System.EventHandler(this.FormAddMock_Resize);
+            this.Load += new System.EventHandler(this.FormAddScenario_Load);
+            this.Resize += new System.EventHandler(this.FormAddScenario_Resize);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

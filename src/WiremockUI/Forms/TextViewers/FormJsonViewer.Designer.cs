@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.ucJsonView = new WiremockUI.UcJsonView();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ucJsonView
@@ -44,12 +45,25 @@
             this.ucJsonView.TabIndex = 0;
             this.ucJsonView.Load += new System.EventHandler(this.ucJsonView_Load);
             // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(95, 131);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "Fechar";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // FormJsonViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.ucJsonView);
+            this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormJsonViewer";
             this.Text = "FormJsonViewer";
@@ -60,5 +74,6 @@
         #endregion
 
         private UcJsonView ucJsonView;
+        private System.Windows.Forms.Button btnClose;
     }
 }

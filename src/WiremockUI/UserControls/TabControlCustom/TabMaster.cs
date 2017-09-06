@@ -50,6 +50,18 @@ namespace WiremockUI
             }
         }
 
+        public void CloseTab(Form form)
+        {
+            if (form.Parent is TabPage)
+            {
+                var tabPage = (TabPage)form.Parent;
+                var tab = (TabControl)tabPage.Parent;
+                tab.TabPages.Remove(tabPage);
+            }
+
+            form.Close();
+        }
+
         public TabPageCustom GetTabByInternalTag(object tag)
         {
             foreach (TabPageCustom t in tabControl.TabPages)

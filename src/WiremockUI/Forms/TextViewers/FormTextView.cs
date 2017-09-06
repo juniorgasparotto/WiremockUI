@@ -24,5 +24,10 @@ namespace WiremockUI
         {
             this.ActiveControl = txtContent;
         }
+
+        private void btnClose_Click(object sender, System.EventArgs e)
+        {
+            FormMaster.Current.TabMaster.CloseTab(this);
+        }
     }
 }
