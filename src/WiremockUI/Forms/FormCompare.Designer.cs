@@ -108,7 +108,7 @@ namespace WiremockUI
             this.txtContent1.MaxLength = 0;
             this.txtContent1.Multiline = true;
             this.txtContent1.Name = "txtContent1";
-            this.txtContent1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            //this.txtContent1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent1.Size = new System.Drawing.Size(372, 166);
             this.txtContent1.TabIndex = 4;
             this.txtContent1.WordWrap = false;
@@ -151,7 +151,7 @@ namespace WiremockUI
             this.txtContent2.MaxLength = 0;
             this.txtContent2.Multiline = true;
             this.txtContent2.Name = "txtContent2";
-            this.txtContent2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            //this.txtContent2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent2.Size = new System.Drawing.Size(368, 166);
             this.txtContent2.TabIndex = 5;
             this.txtContent2.WordWrap = false;

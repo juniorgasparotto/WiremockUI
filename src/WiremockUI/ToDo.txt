@@ -18,7 +18,9 @@ criar uma aba dentro de cada mock com as configs avançados do wiremock - ok
 melhorar visualização de json para valores (criar um form especifico pra json)  - ok
 deixar inserir mais de um url para a mesma api - OK
 criar formatador de json - ok
+criar comparador de json - ok
 
+fechar tab com botao do scroll do meio e ESC com foco na tab - ok
 adicionar "visualizar com xml" no componente de JSON - ok
 criar menu "Ferramentas" com os comparadores e formatadores - ok
 testar request sem body - OK
@@ -30,10 +32,8 @@ criar pesquisar em todos os editorbox
 renomear o mock para cenario
 
 criar mecanismo para visualizar os logs do wiremock em forma de json
-criar comparador de json
 criar comentario por mock
 ao fechar a tab ir para a anterior
-fechar tab com botao do scroll do meio
 criar copiar para area de transferecia
   - url do serviço final
   - url do proxy

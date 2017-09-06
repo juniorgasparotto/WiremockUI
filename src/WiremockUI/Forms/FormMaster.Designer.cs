@@ -46,6 +46,8 @@ namespace WiremockUI
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.webRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compareTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jsonVisualizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.treeServices = new System.Windows.Forms.TreeView();
@@ -54,8 +56,6 @@ namespace WiremockUI
             this.pnlSelectFile = new System.Windows.Forms.Panel();
             this.btnCancelFileSelectiong = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jsonVisualizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -74,7 +74,7 @@ namespace WiremockUI
             this.menuOptions.Location = new System.Drawing.Point(0, 0);
             this.menuOptions.Name = "menuOptions";
             this.menuOptions.Size = new System.Drawing.Size(675, 24);
-            this.menuOptions.TabIndex = 0;
+            this.menuOptions.TabIndex = 3;
             this.menuOptions.Text = "menuStrip1";
             // 
             // menuFile
@@ -85,27 +85,27 @@ namespace WiremockUI
             this.menuClose});
             this.menuFile.Name = "menuFile";
             this.menuFile.Size = new System.Drawing.Size(61, 20);
-            this.menuFile.Text = "Arquivo";
+            this.menuFile.Text = "&Arquivo";
             // 
             // menuRefresh
             // 
             this.menuRefresh.Image = ((System.Drawing.Image)(resources.GetObject("menuRefresh.Image")));
             this.menuRefresh.Name = "menuRefresh";
-            this.menuRefresh.Size = new System.Drawing.Size(120, 22);
-            this.menuRefresh.Text = "Atualizar";
+            this.menuRefresh.Size = new System.Drawing.Size(152, 22);
+            this.menuRefresh.Text = "&Atualizar";
             this.menuRefresh.Click += new System.EventHandler(this.menuRefresh_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(117, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
             // 
             // menuClose
             // 
             this.menuClose.Image = ((System.Drawing.Image)(resources.GetObject("menuClose.Image")));
             this.menuClose.Name = "menuClose";
-            this.menuClose.Size = new System.Drawing.Size(120, 22);
-            this.menuClose.Text = "Sair";
+            this.menuClose.Size = new System.Drawing.Size(152, 22);
+            this.menuClose.Text = "&Sair";
             this.menuClose.Click += new System.EventHandler(this.menuClose_Click);
             // 
             // menuServices
@@ -118,43 +118,43 @@ namespace WiremockUI
             this.menuStopAll});
             this.menuServices.Name = "menuServices";
             this.menuServices.Size = new System.Drawing.Size(62, 20);
-            this.menuServices.Text = "Serviços";
+            this.menuServices.Text = "&Serviços";
             // 
             // menuAddMockService
             // 
             this.menuAddMockService.Image = ((System.Drawing.Image)(resources.GetObject("menuAddMockService.Image")));
             this.menuAddMockService.Name = "menuAddMockService";
-            this.menuAddMockService.Size = new System.Drawing.Size(184, 22);
-            this.menuAddMockService.Text = "Adicionar";
+            this.menuAddMockService.Size = new System.Drawing.Size(185, 22);
+            this.menuAddMockService.Text = "&Adicionar";
             this.menuAddMockService.Click += new System.EventHandler(this.menuAddMockService_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(181, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(182, 6);
             // 
             // menuPlayAll
             // 
             this.menuPlayAll.Image = ((System.Drawing.Image)(resources.GetObject("menuPlayAll.Image")));
             this.menuPlayAll.Name = "menuPlayAll";
-            this.menuPlayAll.Size = new System.Drawing.Size(184, 22);
-            this.menuPlayAll.Text = "Iniciar todos";
+            this.menuPlayAll.Size = new System.Drawing.Size(185, 22);
+            this.menuPlayAll.Text = "&Iniciar todos";
             this.menuPlayAll.Click += new System.EventHandler(this.menuPlayAll_Click);
             // 
             // menuPlayAndRecordAll
             // 
             this.menuPlayAndRecordAll.Image = ((System.Drawing.Image)(resources.GetObject("menuPlayAndRecordAll.Image")));
             this.menuPlayAndRecordAll.Name = "menuPlayAndRecordAll";
-            this.menuPlayAndRecordAll.Size = new System.Drawing.Size(184, 22);
-            this.menuPlayAndRecordAll.Text = "Iniciar e gravar todos";
+            this.menuPlayAndRecordAll.Size = new System.Drawing.Size(185, 22);
+            this.menuPlayAndRecordAll.Text = "Iniciar e &Gravar todos";
             this.menuPlayAndRecordAll.Click += new System.EventHandler(this.menuPlayAndRecordAll_Click);
             // 
             // menuStopAll
             // 
             this.menuStopAll.Image = ((System.Drawing.Image)(resources.GetObject("menuStopAll.Image")));
             this.menuStopAll.Name = "menuStopAll";
-            this.menuStopAll.Size = new System.Drawing.Size(184, 22);
-            this.menuStopAll.Text = "Parar todos";
+            this.menuStopAll.Size = new System.Drawing.Size(185, 22);
+            this.menuStopAll.Text = "&Parar todos";
             this.menuStopAll.Click += new System.EventHandler(this.menuStopAll_Click);
             // 
             // ferramentasToolStripMenuItem
@@ -166,27 +166,41 @@ namespace WiremockUI
             this.jsonVisualizerToolStripMenuItem});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
             this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.ferramentasToolStripMenuItem.Text = "Ferramentas";
+            this.ferramentasToolStripMenuItem.Text = "&Ferramentas";
             // 
             // webRequestToolStripMenuItem
             // 
             this.webRequestToolStripMenuItem.Name = "webRequestToolStripMenuItem";
             this.webRequestToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.webRequestToolStripMenuItem.Text = "Web Request";
+            this.webRequestToolStripMenuItem.Text = "&Web Request";
             this.webRequestToolStripMenuItem.Click += new System.EventHandler(this.webRequestToolStripMenuItem_Click);
             // 
             // compareTextToolStripMenuItem
             // 
             this.compareTextToolStripMenuItem.Name = "compareTextToolStripMenuItem";
             this.compareTextToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.compareTextToolStripMenuItem.Text = "Comparador de texto";
+            this.compareTextToolStripMenuItem.Text = "&Comparador de texto";
             this.compareTextToolStripMenuItem.Click += new System.EventHandler(this.compareTextToolStripMenuItem_Click);
+            // 
+            // textEditorToolStripMenuItem
+            // 
+            this.textEditorToolStripMenuItem.Name = "textEditorToolStripMenuItem";
+            this.textEditorToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.textEditorToolStripMenuItem.Text = "&Editor de texto";
+            this.textEditorToolStripMenuItem.Click += new System.EventHandler(this.textEditorToolStripMenuItem_Click);
+            // 
+            // jsonVisualizerToolStripMenuItem
+            // 
+            this.jsonVisualizerToolStripMenuItem.Name = "jsonVisualizerToolStripMenuItem";
+            this.jsonVisualizerToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.jsonVisualizerToolStripMenuItem.Text = "&Visualizador de JSON";
+            this.jsonVisualizerToolStripMenuItem.Click += new System.EventHandler(this.visualizadorDeJSONToolStripMenuItem_Click);
             // 
             // menuAbout
             // 
             this.menuAbout.Name = "menuAbout";
             this.menuAbout.Size = new System.Drawing.Size(49, 20);
-            this.menuAbout.Text = "Sobre";
+            this.menuAbout.Text = "S&obre";
             this.menuAbout.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
             // splitContainer
@@ -216,7 +230,7 @@ namespace WiremockUI
             this.treeServices.Name = "treeServices";
             this.treeServices.SelectedImageIndex = 0;
             this.treeServices.Size = new System.Drawing.Size(200, 364);
-            this.treeServices.TabIndex = 2;
+            this.treeServices.TabIndex = 1;
             this.treeServices.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_BeforeLabelEdit);
             this.treeServices.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_AfterLabelEdit);
             this.treeServices.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeServices_BeforeCollapse);
@@ -263,15 +277,15 @@ namespace WiremockUI
             this.pnlSelectFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlSelectFile.Controls.Add(this.btnCancelFileSelectiong);
             this.pnlSelectFile.Controls.Add(this.label1);
-            this.pnlSelectFile.Location = new System.Drawing.Point(237, 144);
+            this.pnlSelectFile.Location = new System.Drawing.Point(237, 132);
             this.pnlSelectFile.Name = "pnlSelectFile";
-            this.pnlSelectFile.Size = new System.Drawing.Size(200, 136);
+            this.pnlSelectFile.Size = new System.Drawing.Size(200, 123);
             this.pnlSelectFile.TabIndex = 4;
             this.pnlSelectFile.Visible = false;
             // 
             // btnCancelFileSelectiong
             // 
-            this.btnCancelFileSelectiong.Location = new System.Drawing.Point(62, 102);
+            this.btnCancelFileSelectiong.Location = new System.Drawing.Point(61, 84);
             this.btnCancelFileSelectiong.Name = "btnCancelFileSelectiong";
             this.btnCancelFileSelectiong.Size = new System.Drawing.Size(75, 23);
             this.btnCancelFileSelectiong.TabIndex = 1;
@@ -284,27 +298,13 @@ namespace WiremockUI
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Location = new System.Drawing.Point(27, 19);
+            this.label1.Location = new System.Drawing.Point(29, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 94);
+            this.label1.Size = new System.Drawing.Size(147, 81);
             this.label1.TabIndex = 0;
             this.label1.Text = "Selecione na árvore ao lado  (<) um arquivo para fazer a comparação. Use dois cli" +
     "ques para selecionar.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textEditorToolStripMenuItem
-            // 
-            this.textEditorToolStripMenuItem.Name = "textEditorToolStripMenuItem";
-            this.textEditorToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.textEditorToolStripMenuItem.Text = "Editor de texto";
-            this.textEditorToolStripMenuItem.Click += new System.EventHandler(this.textEditorToolStripMenuItem_Click);
-            // 
-            // jsonVisualizerToolStripMenuItem
-            // 
-            this.jsonVisualizerToolStripMenuItem.Name = "jsonVisualizerToolStripMenuItem";
-            this.jsonVisualizerToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.jsonVisualizerToolStripMenuItem.Text = "Visualizador de JSON";
-            this.jsonVisualizerToolStripMenuItem.Click += new System.EventHandler(this.visualizadorDeJSONToolStripMenuItem_Click);
             // 
             // FormMaster
             // 

@@ -22,6 +22,9 @@ namespace WiremockUI
         public bool InSelectingFile { get => actionSelectionFile != null && pnlSelectFile.Visible; }
         private Action<string> actionSelectionFile;
         private Action<string, string> actionSelectionFileAndContent;
+        private Control activeControlLast;
+        private IButtonControl accessButtonLast;
+        private IButtonControl cancelButtonLast;
 
         public static FormMaster Current { get; set; }
 
@@ -39,6 +42,10 @@ namespace WiremockUI
             // permite renomear os nodes
             treeServices.LabelEdit = true;
             LoadProxies();
+            this.ActiveControl = this.treeServices;
+            this.activeControlLast = this.ActiveControl;
+            this.accessButtonLast = AcceptButton;
+            this.cancelButtonLast = CancelButton;
         }
 
         internal void LoadProxies()
@@ -115,6 +122,8 @@ namespace WiremockUI
             this.actionSelectionFile = action;
             this.actionSelectionFileAndContent = actionAndContent;
             pnlSelectFile.Visible = true;
+            this.ActiveControl = btnCancelFileSelectiong;
+            this.CancelButton = btnCancelFileSelectiong;
         }
 
         private void CancelFileSelection()
@@ -122,6 +131,8 @@ namespace WiremockUI
             Cursor = Cursors.Arrow;
             pnlSelectFile.Visible = false;
             actionSelectionFile = null;
+            this.ActiveControl = this.activeControlLast;
+            this.CancelButton = this.cancelButtonLast;
         }
 
         internal void SetProxy(Proxy proxy, bool expand = true)
@@ -315,7 +326,7 @@ namespace WiremockUI
                 topNode.Expand();
         }
 
-        internal TabControl GetTabControl()
+        internal TabControlCustom GetTabControl()
         {
             return tabForms;
         }

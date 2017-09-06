@@ -14,6 +14,7 @@ namespace WiremockUI
 
         public TabControlCustom()
         {
+            InitializeComponent();
             this.TabPages = new TabPageCollectionCustom(this);
             this.DrawMode = TabDrawMode.OwnerDrawFixed;
             this.DrawItem += OnDrawItemCustom;
@@ -69,9 +70,21 @@ namespace WiremockUI
                 if (imageRect.Contains(e.Location))
                 {
                     if (tabPage.CanClose == null || tabPage.CanClose())
+                    {
                         this.TabPages.RemoveAt(i);
+                        SelectLastTab();
+                    }
                     break;
                 }
+            }
+        }
+
+
+        public void SelectLastTab()
+        {
+            if (this.TabPages.Count > 0)
+            { 
+                this.SelectedTab = this.TabPages[this.TabPages.Count - 1];
             }
         }
 
@@ -82,6 +95,35 @@ namespace WiremockUI
                 drawRectangle.Y,
                 drawRectangle.Width,
                 drawRectangle.Height);
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape && SelectedTab != null)
+            {
+                this.TabPages.Remove((TabPageCustom) SelectedTab);
+                SelectLastTab();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+
+        private void TabControlCustom_MouseClick(object sender, MouseEventArgs e)
+        {
+            var tabControl = sender as TabControl;
+            var tabs = tabControl.TabPages;
+
+            if (e.Button == MouseButtons.Middle)
+            {
+                if (SelectedTab != null)
+                {
+                    tabs.Remove(tabs.Cast<TabPage>()
+                        .Where((t, i) => tabControl.GetTabRect(i).Contains(e.Location))
+                        .First());
+                    SelectLastTab();
+                }
+            }
         }
 
         public class TabPageCollectionCustom : IList<TabPageCustom>
@@ -156,5 +198,16 @@ namespace WiremockUI
                 return tabPages.GetEnumerator();
             }
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // TabControlCustom
+            // 
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TabControlCustom_MouseClick);
+            this.ResumeLayout(false);
+
+        }
+
     }
 }

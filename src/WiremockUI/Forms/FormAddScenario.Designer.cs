@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDesc = new System.Windows.Forms.RichTextBox();
+            this.txtDesc = new WiremockUI.EditorTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
@@ -94,7 +95,11 @@
             // 
             // txtDesc
             // 
+            this.txtDesc.AcceptsTab = true;
+            this.txtDesc.EnableFormatter = true;
+            this.txtDesc.EnableHistory = true;
             this.txtDesc.Location = new System.Drawing.Point(6, 79);
+            this.txtDesc.MaxLength = 0;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(636, 171);
             this.txtDesc.TabIndex = 13;
@@ -116,7 +121,7 @@
             this.txtName.Size = new System.Drawing.Size(304, 20);
             this.txtName.TabIndex = 10;
             // 
-            // FormAddMock
+            // FormAddScenario
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -125,7 +130,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Name = "FormAddMock";
+            this.Name = "FormAddScenario";
             this.Text = "Novo cenário";
             this.Load += new System.EventHandler(this.FormAddScenario_Load);
             this.Resize += new System.EventHandler(this.FormAddScenario_Resize);
@@ -144,7 +149,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox txtDesc;
+        private EditorTextBox txtDesc;
     }
 }
 

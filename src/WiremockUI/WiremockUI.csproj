@@ -376,6 +376,9 @@
     <EmbeddedResource Include="UserControls\JsonViewer\UcJsonView.resx">
       <DependentUpon>UcJsonView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TabControlCustom\TabControlCustom.resx">
+      <DependentUpon>TabControlCustom.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include=".app\db.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -91,7 +91,7 @@
             this.txtContent.MaxLength = 0;
             this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
-            this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            //this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent.Size = new System.Drawing.Size(496, 207);
             this.txtContent.TabIndex = 2;
             // 

@@ -6,7 +6,7 @@ namespace WiremockUI
     public class TabMaster
     {
         private FormMaster master;
-        private TabControl tabControl;
+        private TabControlCustom tabControl;
 
         public class Tag
         {
@@ -38,6 +38,7 @@ namespace WiremockUI
         public void CloseTab(TabPageCustom tab)
         {
             tabControl.TabPages.Remove(tab);
+            tabControl.SelectLastTab();
         }
 
         public void CloseTab(object tag)
@@ -47,6 +48,7 @@ namespace WiremockUI
             {
                 ((Tag)tab.Tag).Form.Close();
                 tabControl.TabPages.Remove(tab);
+                tabControl.SelectLastTab();
             }
         }
 
@@ -57,6 +59,7 @@ namespace WiremockUI
                 var tabPage = (TabPage)form.Parent;
                 var tab = (TabControl)tabPage.Parent;
                 tab.TabPages.Remove(tabPage);
+                tabControl.SelectLastTab();
             }
 
             form.Close();

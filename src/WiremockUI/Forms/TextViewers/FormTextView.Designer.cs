@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.txtTitle = new WiremockUI.EditorTextBox();
-            this.txtContent = new WiremockUI.EditorTextBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.txtContent = new WiremockUI.EditorTextBox();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -38,26 +38,14 @@
             this.txtTitle.AcceptsTab = true;
             this.txtTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtTitle.EnableFormatter = false;
+            this.txtTitle.EnableHistory = true;
             this.txtTitle.Location = new System.Drawing.Point(0, 0);
             this.txtTitle.MaxLength = 0;
-            this.txtTitle.Multiline = true;
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.ReadOnly = true;
             this.txtTitle.Size = new System.Drawing.Size(284, 20);
             this.txtTitle.TabIndex = 1;
-            // 
-            // txtContent
-            // 
-            this.txtContent.AcceptsTab = true;
-            this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.EnableFormatter = false;
-            this.txtContent.Location = new System.Drawing.Point(0, 0);
-            this.txtContent.MaxLength = 0;
-            this.txtContent.Multiline = true;
-            this.txtContent.Name = "txtContent";
-            this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtContent.Size = new System.Drawing.Size(284, 261);
-            this.txtContent.TabIndex = 2;
+            this.txtTitle.Text = "";
             // 
             // btnClose
             // 
@@ -70,14 +58,27 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // txtContent
+            // 
+            this.txtContent.AcceptsTab = true;
+            this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtContent.EnableFormatter = false;
+            this.txtContent.EnableHistory = true;
+            this.txtContent.Location = new System.Drawing.Point(0, 20);
+            this.txtContent.MaxLength = 0;
+            this.txtContent.Name = "txtContent";
+            this.txtContent.Size = new System.Drawing.Size(284, 241);
+            this.txtContent.TabIndex = 4;
+            this.txtContent.Text = "";
+            // 
             // FormTextView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtContent);
+            this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
@@ -85,13 +86,12 @@
             this.Text = "...";
             this.Load += new System.EventHandler(this.FormTextView_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private EditorTextBox txtTitle;
-        private EditorTextBox txtContent;
         private System.Windows.Forms.Button btnClose;
+        private EditorTextBox txtContent;
     }
 }

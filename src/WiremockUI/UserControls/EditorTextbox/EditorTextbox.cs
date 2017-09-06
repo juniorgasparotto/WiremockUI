@@ -4,11 +4,13 @@ using System.Windows.Forms;
 
 namespace WiremockUI
 {
-    public class EditorTextBox : TextBox
+    public class EditorTextBox : RichTextBox
     {
         Stack<Func<object>> undoStack = new Stack<Func<object>>();
         Stack<Func<object>> redoStack = new Stack<Func<object>>();
         private bool enableFormatter;
+
+        public bool EnableHistory { get; set; } = true;
 
         public bool EnableFormatter
         {
@@ -32,20 +34,20 @@ namespace WiremockUI
                     viewJsonMenu.Text = "Formatar para Json";
                     viewJsonMenu.Click += (a, b) =>
                     {
-                        if (SelectedText == null)
+                        if (string.IsNullOrEmpty(SelectedText))
                             Text = Helper.FormatToJson(Text);
-                        else
-                            Paste(Helper.FormatToJson(SelectedText));
+                        //else
+                        //    Paste(Helper.FormatToJson(SelectedText));
                     };
 
                     // xml
                     viewXml.Text = "Formatar para XML";
                     viewXml.Click += (a, b) =>
                     {
-                        if (SelectedText == null)
+                        if (string.IsNullOrEmpty(SelectedText))
                             Text = Helper.FormatToXml(Text);
-                        else
-                            Paste(Helper.FormatToXml(SelectedText));
+                        //else
+                        //    Paste(Helper.FormatToXml(SelectedText));
                     };
 
                     this.ContextMenuStrip = menu;
@@ -72,7 +74,7 @@ namespace WiremockUI
             if (e.KeyCode == Keys.ControlKey && ModifierKeys == Keys.Control) { }
             else if (e.KeyCode == Keys.A && ModifierKeys == Keys.Control)
             {
-                ((TextBox)sender).SelectAll();
+                ((EditorTextBox)sender).SelectAll();
                 e.Handled = true;
             }
             else if (e.KeyCode == Keys.Tab && ModifierKeys == Keys.None)
@@ -111,7 +113,7 @@ namespace WiremockUI
                     this.SelectionStart = posStart;
                 }
             }
-            else if (e.KeyCode == Keys.Z && ModifierKeys == Keys.Control)
+            else if (EnableHistory && e.KeyCode == Keys.Z && ModifierKeys == Keys.Control)
             {
                 if (undoStack.Count > 0)
                 {
@@ -119,7 +121,7 @@ namespace WiremockUI
                     undoStack.Pop()();
                 }
             }
-            else if (e.KeyCode == Keys.Y && ModifierKeys == Keys.Control)
+            else if (EnableHistory && e.KeyCode == Keys.Y && ModifierKeys == Keys.Control)
             {
                 if (redoStack.Count > 0)
                 {
@@ -127,7 +129,7 @@ namespace WiremockUI
                     redoStack.Pop()();
                 }
             }
-            else
+            else if (EnableHistory)
             {
                 redoStack.Clear();
                 StackPush(sender, undoStack);
@@ -136,12 +138,12 @@ namespace WiremockUI
 
         private void StackPush(object sender, Stack<Func<object>> stack)
         {
-            TextBox textBox = (TextBox)sender;
+            var textBox = (RichTextBox)sender;
             var tBT = GetText(textBox, textBox.Text, textBox.SelectionStart);
             stack.Push(tBT);
         }
 
-        private Func<TextBox> GetText(TextBox textBox, string text, int sel)
+        private Func<RichTextBox> GetText(RichTextBox textBox, string text, int sel)
         {
             return () =>
             {

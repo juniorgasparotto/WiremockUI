@@ -378,7 +378,7 @@
             this.txtRequestHeaders.MaxLength = 0;
             this.txtRequestHeaders.Multiline = true;
             this.txtRequestHeaders.Name = "txtRequestHeaders";
-            this.txtRequestHeaders.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            //this.txtRequestHeaders.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtRequestHeaders.Size = new System.Drawing.Size(603, 71);
             this.txtRequestHeaders.TabIndex = 4;
             this.txtRequestHeaders.WordWrap = false;
@@ -392,7 +392,7 @@
             this.txtRequestBody.MaxLength = 0;
             this.txtRequestBody.Multiline = true;
             this.txtRequestBody.Name = "txtRequestBody";
-            this.txtRequestBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            //this.txtRequestBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtRequestBody.Size = new System.Drawing.Size(603, 71);
             this.txtRequestBody.TabIndex = 5;
             this.txtRequestBody.WordWrap = false;
@@ -406,7 +406,7 @@
             this.txtResponseHeadersFinal.MaxLength = 0;
             this.txtResponseHeadersFinal.Multiline = true;
             this.txtResponseHeadersFinal.Name = "txtResponseHeadersFinal";
-            this.txtResponseHeadersFinal.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            //this.txtResponseHeadersFinal.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtResponseHeadersFinal.Size = new System.Drawing.Size(609, 77);
             this.txtResponseHeadersFinal.TabIndex = 1;
             this.txtResponseHeadersFinal.WordWrap = false;
@@ -420,7 +420,7 @@
             this.txtResponseBody.MaxLength = 0;
             this.txtResponseBody.Multiline = true;
             this.txtResponseBody.Name = "txtResponseBody";
-            this.txtResponseBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            //this.txtResponseBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtResponseBody.Size = new System.Drawing.Size(603, 48);
             this.txtResponseBody.TabIndex = 7;
             this.txtResponseBody.WordWrap = false;
@@ -434,7 +434,7 @@
             this.txtResponseHeaders.MaxLength = 0;
             this.txtResponseHeaders.Multiline = true;
             this.txtResponseHeaders.Name = "txtResponseHeaders";
-            this.txtResponseHeaders.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            //this.txtResponseHeaders.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtResponseHeaders.Size = new System.Drawing.Size(603, 48);
             this.txtResponseHeaders.TabIndex = 2;
             this.txtResponseHeaders.WordWrap = false;
