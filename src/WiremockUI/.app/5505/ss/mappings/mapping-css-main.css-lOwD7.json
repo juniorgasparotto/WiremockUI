@@ -1,0 +1,23 @@
+{
+  "id" : "187b4b7c-0268-36eb-8168-8da14de8eb9f",
+  "request" : {
+    "url" : "/assets/css/main.css",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-css-main.css-lOwD7.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 13:28:28 GMT",
+      "Content-Type" : "text/css; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Wed, 06 Sep 2017 13:38:28 GMT",
+      "Cache-Control" : "max-age=600",
+      "X-GitHub-Request-Id" : "CE59:159ED:1C93AB2:291C157:59AFF7FB"
+    }
+  },
+  "uuid" : "187b4b7c-0268-36eb-8168-8da14de8eb9f"
+}

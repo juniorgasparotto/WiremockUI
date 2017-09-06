@@ -1,0 +1,23 @@
+{
+  "id" : "c73a7781-4706-3ead-a5ad-034b08df5c33",
+  "request" : {
+    "url" : "/images/logos/intuit_blue.gif",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-logos-intuit_blue.gif-DjsA9.gif",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 13:28:33 GMT",
+      "Content-Type" : "image/gif",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Wed, 06 Sep 2017 13:38:33 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "CE65:159ED:1C93C76:291C421:59AFF801"
+    }
+  },
+  "uuid" : "c73a7781-4706-3ead-a5ad-034b08df5c33"
+}

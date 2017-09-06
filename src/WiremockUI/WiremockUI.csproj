@@ -285,6 +285,7 @@
     <Compile Include="UserControls\TreeViewCustom.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Utils\DevelopmentHelper.cs" />
     <Compile Include="Utils\DiffMatchPatch.cs" />
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Forms\FormAbout.cs">

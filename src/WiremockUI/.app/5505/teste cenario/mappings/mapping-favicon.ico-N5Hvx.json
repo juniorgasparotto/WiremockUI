@@ -1,0 +1,21 @@
+{
+  "id" : "39718247-e334-3686-afa1-35950a240132",
+  "request" : {
+    "url" : "/favicon.ico",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-favicon.ico-N5Hvx.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 14:10:46 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "CEFF:0E43:2B1AF27:3EFEE99:59B001E6"
+    }
+  },
+  "uuid" : "39718247-e334-3686-afa1-35950a240132"
+}

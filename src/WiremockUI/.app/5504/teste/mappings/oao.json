@@ -1,0 +1,24 @@
+{
+  "id": "5cf0cb1f-a81e-3c75-97af-be1bef09263c",
+  "request": {
+    "url": "/userDefs/css/custom.css",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "oao.txt",
+    "headers": {
+      "Date": "Thu, 03 Aug 2017 12:42:35 GMT",
+      "Server": "Microsoft-IIS/7.5",
+      "Content-Type": "text/css",
+      "Last-Modified": "Sat, 19 Mar 2016 02:19:35 GMT",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"80559cc78581d11:0-gzip\"",
+      "X-Powered-By": "ASP.NET",
+      "Vary": "Accept-Encoding",
+      "Keep-Alive": "timeout=5, max=100",
+      "Connection": "Keep-Alive"
+    }
+  },
+  "uuid": "5cf0cb1f-a81e-3c75-97af-be1bef09263c"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "2308f2f6-8dc9-3dc8-b7d2-b859a850910e",
+  "request": {
+    "url": "/",
+    "method": "TRACE"
+  },
+  "response": {
+    "status": 405,
+    "bodyFileName": "q.txt",
+    "headers": {
+      "Date": "Thu, 24 Aug 2017 21:04:10 GMT",
+      "Content-Type": "text/html",
+      "Connection": "close"
+    }
+  },
+  "uuid": "2308f2f6-8dc9-3dc8-b7d2-b859a850910e"
+}

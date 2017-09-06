@@ -1,0 +1,23 @@
+{
+  "id" : "7baf648b-4eb8-37b2-8500-acb7435e7bea",
+  "request" : {
+    "url" : "/userDefs/images/bandeiraBrasil.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-images-bandeiraBrasil.png-HuPqZ.png",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:43 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Sat, 19 Mar 2016 02:19:38 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"01966c98581d11:0\"",
+      "X-Powered-By" : "ASP.NET",
+      "Keep-Alive" : "timeout=5, max=97",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "7baf648b-4eb8-37b2-8500-acb7435e7bea"
+}

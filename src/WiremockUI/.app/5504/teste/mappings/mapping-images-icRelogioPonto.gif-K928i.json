@@ -1,0 +1,23 @@
+{
+  "id" : "1efda4a3-30d8-3e4d-8331-2b2c216f1fa9",
+  "request" : {
+    "url" : "/images/icRelogioPonto.gif",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-images-icRelogioPonto.gif-K928i.gif",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:45 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "image/gif",
+      "Last-Modified" : "Sat, 19 Mar 2016 02:18:35 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"80fd9a38581d11:0\"",
+      "X-Powered-By" : "ASP.NET",
+      "Keep-Alive" : "timeout=5, max=83",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "1efda4a3-30d8-3e4d-8331-2b2c216f1fa9"
+}

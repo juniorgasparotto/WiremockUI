@@ -1,0 +1,1 @@
+{success: true, deviceInfo: {cdiDispositivoAcesso: 2,oplLiberarFolhaRVirtual: false,oplLiberarCCustoRVirtual: false,dtTimeEvent: new Date(2017,7,3,9,42,43,620),oplLiberarFuncoesRVirtual: false,useUserPwd: true,useCracha: false}}

@@ -1,0 +1,23 @@
+{
+  "id" : "1515ea10-25ed-313b-b2bb-538ad29b76d8",
+  "request" : {
+    "url" : "/images/logos/softwire-logo.jpg",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-logos-softwire-logo.jpg-xMP3x.jpeg",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 13:28:29 GMT",
+      "Content-Type" : "image/jpeg",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Wed, 06 Sep 2017 13:38:29 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "CE65:159ED:1C93B5A:291C2A1:59AFF7FD"
+    }
+  },
+  "uuid" : "1515ea10-25ed-313b-b2bb-538ad29b76d8"
+}

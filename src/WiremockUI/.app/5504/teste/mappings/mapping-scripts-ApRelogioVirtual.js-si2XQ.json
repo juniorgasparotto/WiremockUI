@@ -1,0 +1,24 @@
+{
+  "id" : "e318b968-e024-3c42-8c94-6ca8951cb16d",
+  "request" : {
+    "url" : "/scripts/ApRelogioVirtual.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-scripts-ApRelogioVirtual.js-si2XQ.js",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:35 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "application/x-javascript",
+      "Last-Modified" : "Fri, 29 Apr 2016 17:04:10 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"061b62539a2d11:0-gzip\"",
+      "X-Powered-By" : "ASP.NET",
+      "Vary" : "Accept-Encoding",
+      "Keep-Alive" : "timeout=5, max=98",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "e318b968-e024-3c42-8c94-6ca8951cb16d"
+}

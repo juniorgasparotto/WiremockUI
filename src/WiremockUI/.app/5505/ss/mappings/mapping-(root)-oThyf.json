@@ -1,0 +1,23 @@
+{
+  "id" : "ff94bebf-2284-3638-86ab-869348fd8e1d",
+  "request" : {
+    "url" : "/",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-(root)-oThyf.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 13:28:27 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Wed, 06 Sep 2017 13:38:27 GMT",
+      "Cache-Control" : "max-age=600",
+      "X-GitHub-Request-Id" : "CE59:159ED:1C93A72:291C156:59AFF7FB"
+    }
+  },
+  "uuid" : "ff94bebf-2284-3638-86ab-869348fd8e1d"
+}

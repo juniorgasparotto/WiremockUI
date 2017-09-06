@@ -1,0 +1,23 @@
+{
+  "id" : "02758f7e-5805-371c-91c1-39d44dcd79e3",
+  "request" : {
+    "url" : "/layout/APDATA/ext/qtip/tip-sprite.gif",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-qtip-tip-sprite.gif-CNss4.gif",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:42 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "image/gif",
+      "Last-Modified" : "Mon, 04 Jan 2016 21:02:24 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"0b0ae353347d11:0\"",
+      "X-Powered-By" : "ASP.NET",
+      "Keep-Alive" : "timeout=5, max=100",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "02758f7e-5805-371c-91c1-39d44dcd79e3"
+}

@@ -1,0 +1,23 @@
+{
+  "id" : "d236aea3-74b5-39b6-814d-aaebff22cb29",
+  "request" : {
+    "url" : "/userDefs/images/publicLinks.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-images-publicLinks.png-UBDCO.png",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:45 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Sat, 19 Mar 2016 02:19:46 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"0cd2ace8581d11:0\"",
+      "X-Powered-By" : "ASP.NET",
+      "Keep-Alive" : "timeout=5, max=81",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "d236aea3-74b5-39b6-814d-aaebff22cb29"
+}

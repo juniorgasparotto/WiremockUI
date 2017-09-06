@@ -35,6 +35,7 @@ problema do CTRL + BACKSPACE que adiciona caracter estranho em textbox - OK
 corrigir a usuabilidade dos atalhos dos forms, botoes iniciais e de fechar - ok
 ao renomear deve exibir apenas o nome do arquivo e não a URL - OK
 esta criando pastas "files" e "mapping na raiz do projeto" - OK
+mudar pasta do debug para dentro da .app - OK
 
 -- ToDo
 
@@ -48,7 +49,7 @@ criar copiar para area de transferecia
   - comando java -jar 
   - curl
 
-mudar pasta do debug para dentro da .app
+
 criar visualzar apenas url
 multiplas linguas
 criar mecanismo para copiar como curl

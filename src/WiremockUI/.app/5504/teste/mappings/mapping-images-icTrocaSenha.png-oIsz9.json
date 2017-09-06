@@ -1,0 +1,23 @@
+{
+  "id" : "e7371a87-2ef6-39c0-9132-e5965d3d4c58",
+  "request" : {
+    "url" : "/userDefs/images/icTrocaSenha.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-images-icTrocaSenha.png-oIsz9.png",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:43 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Sat, 19 Mar 2016 02:19:42 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"073c8cb8581d11:0\"",
+      "X-Powered-By" : "ASP.NET",
+      "Keep-Alive" : "timeout=5, max=100",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "e7371a87-2ef6-39c0-9132-e5965d3d4c58"
+}

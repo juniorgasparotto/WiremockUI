@@ -1,0 +1,23 @@
+{
+  "id" : "0b99d1fc-31dc-33a9-8bf1-8be64adc599a",
+  "request" : {
+    "url" : "/standardImg/tool-sprites.gif",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-standardImg-tool-sprites.gif-kYLq5.gif",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:45 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "image/gif",
+      "Last-Modified" : "Mon, 04 Jan 2016 21:04:18 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"0b5a1793347d11:0\"",
+      "X-Powered-By" : "ASP.NET",
+      "Keep-Alive" : "timeout=5, max=82",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "0b99d1fc-31dc-33a9-8bf1-8be64adc599a"
+}

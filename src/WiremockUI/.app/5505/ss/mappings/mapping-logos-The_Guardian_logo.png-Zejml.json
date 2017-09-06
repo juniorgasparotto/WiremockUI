@@ -1,0 +1,23 @@
+{
+  "id" : "b825364a-4af1-397f-b50a-ed7185b2f771",
+  "request" : {
+    "url" : "/images/logos/The_Guardian_logo.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-logos-The_Guardian_logo.png-Zejml.png",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 13:28:32 GMT",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Wed, 06 Sep 2017 13:38:32 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "CE65:159ED:1C93C1D:291C2A2:59AFF7FD"
+    }
+  },
+  "uuid" : "b825364a-4af1-397f-b50a-ed7185b2f771"
+}

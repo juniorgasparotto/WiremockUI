@@ -1,0 +1,23 @@
+{
+  "id" : "288924d8-d549-3eed-8468-0d38097ee9ea",
+  "request" : {
+    "url" : "/userDefs/images/topCxLinks.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-images-topCxLinks.png-GA16T.png",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:44 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Sat, 19 Mar 2016 02:19:47 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"8063c3ce8581d11:0\"",
+      "X-Powered-By" : "ASP.NET",
+      "Keep-Alive" : "timeout=5, max=96",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "288924d8-d549-3eed-8468-0d38097ee9ea"
+}

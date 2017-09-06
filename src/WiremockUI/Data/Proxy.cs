@@ -7,6 +7,8 @@ namespace WiremockUI.Data
 {
     public class Proxy
     {
+        private const string FOLDER = ".app";
+
         public Guid Id { get; set; }
         public string UrlTarget { get; set; }
         public int PortProxy { get; set; }
@@ -33,7 +35,10 @@ namespace WiremockUI.Data
 
         public string GetFullPath()
         {
-            return Path.Combine(Directory.GetCurrentDirectory(), ".app", GetFolderName());
+            if (DevelopmentHelper.IsAttached)
+                return Path.Combine(DevelopmentHelper.GetProjectDirectory(), FOLDER, GetFolderName());
+            else
+                return Path.Combine(Directory.GetCurrentDirectory(), FOLDER, GetFolderName());
         }
 
         public string GetFullPath(Scenario scenario)

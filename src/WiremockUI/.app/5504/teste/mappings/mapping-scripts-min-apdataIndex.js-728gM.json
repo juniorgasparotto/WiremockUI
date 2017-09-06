@@ -1,0 +1,25 @@
+{
+  "id" : "ca36be0d-339a-3afd-8095-2749aa08bebb",
+  "request" : {
+    "url" : "/scripts-min/apdataIndex.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-scripts-min-apdataIndex.js-728gM.js",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:35 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "application/x-javascript",
+      "Last-Modified" : "Fri, 29 Apr 2016 17:04:36 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"0aa353539a2d11:0-gzip\"",
+      "X-Powered-By" : "ASP.NET",
+      "Vary" : "Accept-Encoding",
+      "Keep-Alive" : "timeout=5, max=97",
+      "Connection" : "Keep-Alive",
+      "Transfer-Encoding" : "chunked"
+    }
+  },
+  "uuid" : "ca36be0d-339a-3afd-8095-2749aa08bebb"
+}

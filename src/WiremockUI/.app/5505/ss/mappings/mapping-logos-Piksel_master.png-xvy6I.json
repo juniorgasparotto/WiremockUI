@@ -1,0 +1,23 @@
+{
+  "id" : "2f56e246-7ca4-3074-ba06-fb3a9109d157",
+  "request" : {
+    "url" : "/images/logos/Piksel_master.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-logos-Piksel_master.png-xvy6I.png",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 13:28:33 GMT",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Wed, 06 Sep 2017 13:38:33 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "CE66:159EB:9617D3:D8E93E:59AFF7FF"
+    }
+  },
+  "uuid" : "2f56e246-7ca4-3074-ba06-fb3a9109d157"
+}

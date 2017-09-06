@@ -1,0 +1,23 @@
+{
+  "id" : "f5333a7a-8c81-322d-81b2-db2ea9d6ecc8",
+  "request" : {
+    "url" : "/assets/fonts/fontawesome-webfont.woff2?v=4.6.1",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-fonts-fontawesome-webfont.woff2-VQtzP.woff2",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 13:28:31 GMT",
+      "Content-Type" : "application/font-woff2",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Wed, 06 Sep 2017 13:38:31 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "CE66:159EB:9617A5:D8E907:59AFF7FD"
+    }
+  },
+  "uuid" : "f5333a7a-8c81-322d-81b2-db2ea9d6ecc8"
+}

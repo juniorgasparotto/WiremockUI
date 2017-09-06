@@ -1,0 +1,24 @@
+{
+  "id" : "e2164d4e-faf1-3b42-9891-c497c4cc8ad8",
+  "request" : {
+    "url" : "/userDefs/scripts_Config/userTexts-pt_BR.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-scripts_Config-userTexts-pt_BR.js-MPXmC.js",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:42 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "application/x-javascript",
+      "Last-Modified" : "Sat, 19 Mar 2016 02:19:48 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"0fa5bcf8581d11:0-gzip\"",
+      "X-Powered-By" : "ASP.NET",
+      "Vary" : "Accept-Encoding",
+      "Keep-Alive" : "timeout=5, max=98",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "e2164d4e-faf1-3b42-9891-c497c4cc8ad8"
+}

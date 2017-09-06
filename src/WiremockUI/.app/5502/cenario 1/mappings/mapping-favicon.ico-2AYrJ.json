@@ -1,0 +1,19 @@
+{
+  "id" : "b6567f12-5f47-38cf-9cc9-b560b136ea86",
+  "request" : {
+    "url" : "/favicon.ico",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-favicon.ico-2AYrJ.txt",
+    "headers" : {
+      "Content-Type" : "text/html",
+      "Server" : "Microsoft-IIS/8.0",
+      "X-Powered-By" : "ASP.NET",
+      "Set-Cookie" : "ARRAffinity=0244d255e1da4f529ea274e93fcc9745cba8df53320a8196844c52178872b7e8;Path=/;HttpOnly;Domain=www.newtonsoft.com",
+      "Date" : "Mon, 14 Aug 2017 23:13:46 GMT"
+    }
+  },
+  "uuid" : "b6567f12-5f47-38cf-9cc9-b560b136ea86"
+}

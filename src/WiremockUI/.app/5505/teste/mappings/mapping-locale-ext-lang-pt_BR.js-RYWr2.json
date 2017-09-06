@@ -1,0 +1,24 @@
+{
+  "id" : "56a922de-1f05-398d-988d-77c1809aa047",
+  "request" : {
+    "url" : "/ext/src/locale/ext-lang-pt_BR.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-locale-ext-lang-pt_BR.js-RYWr2.js",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:42 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "application/x-javascript",
+      "Last-Modified" : "Mon, 04 Jan 2016 21:02:20 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"0564c333347d11:0-gzip\"",
+      "X-Powered-By" : "ASP.NET",
+      "Vary" : "Accept-Encoding",
+      "Keep-Alive" : "timeout=5, max=92",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "56a922de-1f05-398d-988d-77c1809aa047"
+}

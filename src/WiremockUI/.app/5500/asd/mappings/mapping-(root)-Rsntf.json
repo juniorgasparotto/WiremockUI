@@ -1,0 +1,31 @@
+{
+  "id" : "a7155ff0-fb66-3223-841f-20e6ae336866",
+  "request" : {
+    "url" : "/",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-(root)-Rsntf.json",
+    "headers" : {
+      "Date" : "Mon, 24 Jul 2017 14:54:56 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "Connection" : "keep-alive",
+      "Set-Cookie" : "__cfduid=d70c98a12c0a37ec9c11a28bcbe73901a1500908096; expires=Tue, 24-Jul-18 14:54:56 GMT; path=/; domain=.typicode.com; HttpOnly",
+      "X-Powered-By" : "Express",
+      "Vary" : "Origin, Accept-Encoding",
+      "Access-Control-Allow-Credentials" : "true",
+      "Cache-Control" : "public, max-age=14400",
+      "Pragma" : "no-cache",
+      "Expires" : "Mon, 24 Jul 2017 18:54:56 GMT",
+      "X-Content-Type-Options" : "nosniff",
+      "Etag" : "W/\"6b80-Ybsq/K6GwwqrYkAsFxqDXGC7DoM\"",
+      "Via" : "1.1 vegur",
+      "CF-Cache-Status" : "HIT",
+      "Server" : "cloudflare-nginx",
+      "CF-RAY" : "3837b7b2c2964a8a-GRU"
+    }
+  },
+  "uuid" : "a7155ff0-fb66-3223-841f-20e6ae336866"
+}

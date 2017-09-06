@@ -1,0 +1,23 @@
+{
+  "id" : "e736c731-1455-3357-acaa-98cd35fb8196",
+  "request" : {
+    "url" : "/images/logos/Pivotal_WhiteOnTeal.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-logos-Pivotal_WhiteOnTeal.png-FmkkN.png",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 13:28:29 GMT",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Wed, 06 Sep 2017 13:38:29 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "CE59:159ED:1C93B4A:291C1AF:59AFF7FC"
+    }
+  },
+  "uuid" : "e736c731-1455-3357-acaa-98cd35fb8196"
+}

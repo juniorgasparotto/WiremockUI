@@ -1,0 +1,33 @@
+{
+  "id" : "1fed3376-1ca5-378d-a4bb-ce2156240ad9",
+  "request" : {
+    "url" : "/",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToXml" : "{\n  \"Prop1\": { \n     \"Value1\": 10\n  }\n}"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "bodyFileName" : "body-(root)-fd46I.json",
+    "headers" : {
+      "Date" : "Mon, 24 Jul 2017 16:58:59 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Connection" : "keep-alive",
+      "Set-Cookie" : "__cfduid=d727cad51af31b00b27a45da50d1af0a11500915539; expires=Tue, 24-Jul-18 16:58:59 GMT; path=/; domain=.typicode.com; HttpOnly",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop",
+      "Vary" : "Origin, X-HTTP-Method-Override, Accept-Encoding",
+      "Access-Control-Allow-Credentials" : "true",
+      "Cache-Control" : "no-cache",
+      "Pragma" : "no-cache",
+      "Expires" : "-1",
+      "X-Content-Type-Options" : "nosniff",
+      "Etag" : "W/\"f-4jjw4Y8q22Yv1PV9m28FczJgjzk\"",
+      "Via" : "1.1 vegur",
+      "Server" : "cloudflare-nginx",
+      "CF-RAY" : "38386d67f5744bc3-GRU"
+    }
+  },
+  "uuid" : "1fed3376-1ca5-378d-a4bb-ce2156240ad9"
+}

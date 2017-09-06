@@ -1,0 +1,32 @@
+{
+  "id" : "c7e7cd1a-29b8-3234-9300-531bf03438be",
+  "request" : {
+    "url" : "/.net/index.ashx/VerifyWindowsAuthentication",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalTo" : "sessionID=0&selectedEmployee=0&selectedCandidate=0&selectedVacancy=0&dtFmt=d%2Fm%2FY&tmFmt=H%3Ai%3As&shTmFmt=H%3Ai&dtTmFmt=d%2Fm%2FY%20H%3Ai%3As&language=0"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-index.ashx-VerifyWindowsAuthentication-Vn7cP.txt",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:42 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Cache-Control" : "no-cache",
+      "Pragma" : "no-cache",
+      "Content-Type" : "text/plain; charset=utf-8",
+      "Expires" : "-1",
+      "X-AspNet-Version" : "4.0.30319",
+      "ApWebDispatcher_in" : "2017-08-03 09:42:43.199",
+      "timeI" : "2017-08-03 09:42:43.199",
+      "timeF" : "2017-08-03 09:42:43.199",
+      "ApWebDispatcher_out" : "2017-08-03 09:42:43.199",
+      "X-Powered-By" : "ASP.NET",
+      "Vary" : "Accept-Encoding",
+      "Keep-Alive" : "timeout=5, max=97",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "c7e7cd1a-29b8-3234-9300-531bf03438be"
+}

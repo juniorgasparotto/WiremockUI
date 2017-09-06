@@ -1,0 +1,20 @@
+{
+  "id" : "7cde0de2-d27b-3296-b6da-ca3330329a42",
+  "request" : {
+    "url" : "/",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 301,
+    "bodyFileName" : "oi.txt",
+    "headers" : {
+      "Content-Type" : "text/html; charset=UTF-8",
+      "Location" : "http://www.newtonsoft.com/json/help/html/SerializationAttributes.htm",
+      "Server" : "Microsoft-IIS/8.0",
+      "X-Powered-By" : "ASP.NET",
+      "Set-Cookie" : "ARRAffinity=c7a2ab525caab9a5c4164ffb60e92071038c00e1a3e48813da175c889018c28f;Path=/;HttpOnly;Domain=www.newtonsoft.com",
+      "Date" : "Wed, 02 Aug 2017 11:34:07 GMT"
+    }
+  },
+  "uuid" : "7cde0de2-d27b-3296-b6da-ca3330329a42"
+}

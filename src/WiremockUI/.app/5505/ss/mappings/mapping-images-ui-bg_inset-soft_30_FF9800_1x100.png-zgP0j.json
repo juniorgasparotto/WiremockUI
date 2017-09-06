@@ -1,0 +1,23 @@
+{
+  "id" : "de520f20-3fb3-3601-b791-7b990623159c",
+  "request" : {
+    "url" : "/images/ui-bg_inset-soft_30_FF9800_1x100.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-images-ui-bg_inset-soft_30_FF9800_1x100.png-zgP0j.png",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 13:28:39 GMT",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Wed, 06 Sep 2017 13:38:39 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "CE5D:159EA:3120DA2:46A9646:59AFF800"
+    }
+  },
+  "uuid" : "de520f20-3fb3-3601-b791-7b990623159c"
+}

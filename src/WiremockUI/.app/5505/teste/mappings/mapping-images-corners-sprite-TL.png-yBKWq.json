@@ -1,0 +1,23 @@
+{
+  "id" : "6aec73bf-8a05-38f4-8837-10178beab99b",
+  "request" : {
+    "url" : "/userDefs/images/corners-sprite-TL.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-images-corners-sprite-TL.png-yBKWq.png",
+    "headers" : {
+      "Date" : "Thu, 03 Aug 2017 12:42:44 GMT",
+      "Server" : "Microsoft-IIS/7.5",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Sat, 19 Mar 2016 02:19:41 GMT",
+      "Accept-Ranges" : "bytes",
+      "ETag" : "\"80dc2fcb8581d11:0\"",
+      "X-Powered-By" : "ASP.NET",
+      "Keep-Alive" : "timeout=5, max=94",
+      "Connection" : "Keep-Alive"
+    }
+  },
+  "uuid" : "6aec73bf-8a05-38f4-8837-10178beab99b"
+}

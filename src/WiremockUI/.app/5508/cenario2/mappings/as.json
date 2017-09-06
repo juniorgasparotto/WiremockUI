@@ -1,0 +1,18 @@
+{
+  "id": "abff1680-d779-3ca8-82d0-f93be0ffb5b3",
+  "request": {
+    "url": "/",
+    "method": "GET"
+  },
+  "response": {
+    "status": 302,
+    "bodyFileName": "as.txt",
+    "headers": {
+      "Connection": "close",
+      "Pragma": "no-cache",
+      "cache-control": "no-cache",
+      "Location": "/"
+    }
+  },
+  "uuid": "abff1680-d779-3ca8-82d0-f93be0ffb5b3"
+}

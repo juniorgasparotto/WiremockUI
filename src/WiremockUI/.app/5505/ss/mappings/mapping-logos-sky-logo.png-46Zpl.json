@@ -1,0 +1,23 @@
+{
+  "id" : "b6b4ac6a-21ec-33b8-ae38-7c2daa75f5ee",
+  "request" : {
+    "url" : "/images/logos/sky-logo.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-logos-sky-logo.png-46Zpl.png",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 06 Sep 2017 13:28:32 GMT",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Wed, 06 Sep 2017 13:38:32 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "CE5D:159EA:3120A4D:46A95BB:59AFF7FF"
+    }
+  },
+  "uuid" : "b6b4ac6a-21ec-33b8-ae38-7c2daa75f5ee"
+}

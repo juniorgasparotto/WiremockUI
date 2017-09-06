@@ -1,0 +1,23 @@
+{
+  "id": "c30ba928-b134-30e4-9702-cf8f5a580a7a",
+  "request": {
+    "url": "/userDefs/images/bandeiraEspanhol.png",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "body-images-bandeiraEspanhol.png-GGNST112.png",
+    "headers": {
+      "Date": "Thu, 03 Aug 2017 12:42:45 GMT",
+      "Server": "Microsoft-IIS/7.5",
+      "Content-Type": "image/png",
+      "Last-Modified": "Sat, 19 Mar 2016 02:19:38 GMT",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"01966c98581d11:0\"",
+      "X-Powered-By": "ASP.NET",
+      "Keep-Alive": "timeout=5, max=90",
+      "Connection": "Keep-Alive"
+    }
+  },
+  "uuid": "c30ba928-b134-30e4-9702-cf8f5a580a7a"
+}
