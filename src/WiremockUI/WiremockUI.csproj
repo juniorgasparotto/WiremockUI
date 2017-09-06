@@ -247,6 +247,16 @@
     <Compile Include="Forms\FileViewers\FormTextFile.Designer.cs">
       <DependentUpon>FormTextFile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Languages\Resource.Designer.cs">
+      <DependentUpon>Resource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Languages\Resource.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.en.resx</DependentUpon>
+    </Compile>
     <Compile Include="Listeners\RequestAndResponseListener.cs" />
     <Compile Include="LogControls\ILogTableRequestResponse.cs" />
     <Compile Include="LogControls\ILogWriter.cs" />
@@ -287,6 +297,7 @@
     </Compile>
     <Compile Include="Utils\DevelopmentHelper.cs" />
     <Compile Include="Utils\DiffMatchPatch.cs" />
+    <Compile Include="Utils\LanguageUtils.cs" />
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Forms\FormAbout.cs">
       <SubType>Form</SubType>
@@ -363,6 +374,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FileViewers\FormXmlFile.resx">
       <DependentUpon>FormXmlFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Resource.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

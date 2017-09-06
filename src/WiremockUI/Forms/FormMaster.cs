@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WiremockUI.Data;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -31,7 +33,8 @@ namespace WiremockUI
         public FormMaster()
         {
             InitializeComponent();
-            Current = this;
+            Current = this;            
+            menuFile.Text = Resource.FileMenu;
         }
 
         private void Master_Load(object sender, EventArgs e)
