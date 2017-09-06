@@ -16,7 +16,7 @@
         {
           "Id": "506d5e80-0dac-44f9-aece-0b0f18d4a41e",
           "Name": "ss",
-          "IsDefault": true,
+          "IsDefault": false,
           "ShowURL": true,
           "Description": ""
         },
@@ -40,6 +40,20 @@
           "IsDefault": false,
           "ShowURL": true,
           "Description": "asdasd"
+        },
+        {
+          "Id": "a92322db-2dad-4e98-b006-31d0f11d64d1",
+          "Name": "as",
+          "IsDefault": false,
+          "ShowURL": true,
+          "Description": "a"
+        },
+        {
+          "Id": "740c70bd-7430-4b8e-af44-eec3cb31c4ec",
+          "Name": "teste cenario",
+          "IsDefault": true,
+          "ShowURL": true,
+          "Description": ""
         }
       ],
       "Arguments": [
@@ -73,7 +87,7 @@
           "Id": "e27b4160-ea24-46b7-bb3c-641643118208",
           "Name": "cenario1",
           "IsDefault": true,
-          "ShowURL": true,
+          "ShowURL": false,
           "Description": null
         }
       ],

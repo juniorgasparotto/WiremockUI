@@ -50,7 +50,7 @@ namespace WiremockUI
             this.jsonVisualizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.treeServices = new System.Windows.Forms.TreeView();
+            this.treeServices = new TreeViewCustom();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabForms = new WiremockUI.TabControlCustom();
             this.pnlSelectFile = new System.Windows.Forms.Panel();
@@ -342,7 +342,7 @@ namespace WiremockUI
         private System.Windows.Forms.ToolStripMenuItem menuServices;
         private System.Windows.Forms.ToolStripMenuItem menuAddMockService;
         private System.Windows.Forms.SplitContainer splitContainer;
-        private System.Windows.Forms.TreeView treeServices;
+        private TreeViewCustom treeServices;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStripMenuItem menuPlayAndRecordAll;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;

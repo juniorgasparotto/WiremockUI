@@ -51,13 +51,22 @@ namespace WiremockUI
             
             var FILES_ROOT = @"__files";
             var MAPPINGS_ROOT = @"mappings";
+            var useFolder = args.Contains("--root-dir");
 
             FileSource fileSource = options.filesRoot();
-            fileSource.createIfNecessary();
+
+            if (useFolder)
+                fileSource.createIfNecessary();
+
             FileSource filesFileSource = fileSource.child(FILES_ROOT);
-            filesFileSource.createIfNecessary();
+
+            if (useFolder)
+                filesFileSource.createIfNecessary();
+
             FileSource mappingsFileSource = fileSource.child(MAPPINGS_ROOT);
-            mappingsFileSource.createIfNecessary();
+
+            if (useFolder)
+                mappingsFileSource.createIfNecessary();
 
             wireMockServer = new com.github.tomakehurst.wiremock.WireMockServer(options);
             wireMockServer.addMockServiceRequestListener(new RequestAndResponseListener(logTableRequestResponse));

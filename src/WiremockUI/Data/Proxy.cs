@@ -33,8 +33,7 @@ namespace WiremockUI.Data
 
         public string GetFullPath()
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), GetFolderName());
-            return Path.Combine(Directory.GetCurrentDirectory(), GetFolderName());
+            return Path.Combine(Directory.GetCurrentDirectory(), ".app", GetFolderName());
         }
 
         public string GetFullPath(Scenario scenario)

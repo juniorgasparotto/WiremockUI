@@ -33,12 +33,14 @@ deixar copiar os textos da tela de start - ok
 criar comparador do request do log do wiremock com os requests existentes - ok
 problema do CTRL + BACKSPACE que adiciona caracter estranho em textbox - OK
 corrigir a usuabilidade dos atalhos dos forms, botoes iniciais e de fechar - ok
+ao renomear deve exibir apenas o nome do arquivo e não a URL - OK
+esta criando pastas "files" e "mapping na raiz do projeto" - OK
 
 -- ToDo
 
-criar mecanismo para copiar como curl
-multiplas linguas
+
 criar pesquisar em todos os editorbox
+criar agrupar por URL
 
 criar copiar para area de transferecia
   - url do serviço final
@@ -46,14 +48,19 @@ criar copiar para area de transferecia
   - comando java -jar 
   - curl
 
-criar delete para cada nivel da treeview (keypress)
 mudar pasta do debug para dentro da .app
+criar visualzar apenas url
+multiplas linguas
+criar mecanismo para copiar como curl
+verificar se wiremock aceita multiplos níveis de mapa
+
+
+criar delete para cada nivel da treeview (keypress)
 adicionar opção para remover o nome da treeview
+
 
 -- bugs
 
-ao renomear deve exibir apenas o nome do arquivo e não a URL
-esta criando pastas "files" e "mapping na raiz do projeto"
 deu um problema de encode no compara ao selecionar um mapa
 
 -- deploy 

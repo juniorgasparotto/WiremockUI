@@ -654,7 +654,7 @@ namespace WiremockUI
 
             return nodeMapping;
         }
-
+        
         private void DeleteMap(TreeNode nodeMapping)
         {
             if (Helper.MessageBoxQuestion("Deseja realmente remover esse arquivo?") == DialogResult.Yes)
@@ -1420,40 +1420,48 @@ namespace WiremockUI
             var directory = Path.GetDirectoryName(file.FullPath);
             return Path.Combine(directory, Path.GetFileNameWithoutExtension(newName) + ext);
         }
-        
+
+
+        private void treeServices_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            if (e.Node.Tag is TreeNodeMappingModel map)
+            {
+                e.Node.Text = map.File.GetOnlyFileName();
+            }
+            else
+            {
+                e.CancelEdit = true;
+            }
+        }
+
         private void treeServices_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
-            if (e.Label != null)
+            var selected = e.Node;
+            if (selected.Tag is TreeNodeMappingModel model)
             {
-                if (e.Label.Length > 0)
+                if (e.Label != null && e.Label.Length > 0)
                 {
                     // cancela a edição, pois o novo nome será renderizado de forma diferente
                     e.CancelEdit = true;
 
                     try
                     {
-                        var selected = e.Node;
-                        if (selected.Tag is TreeNodeMappingModel model)
-                        {
-                            RenameMap(e.Label, null, selected, model);
-                        }
+                        RenameMap(e.Label, null, selected, model);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Helper.MessageBoxError("Erro ao renomear arquivo: " + ex.Message);
                     }
                 }
                 else
-                {                    
-                    e.CancelEdit = true;                    
+                {
+                    var mapName = model.File.GetOnlyFileName();
+                    if (model.Mapping != null)
+                        mapName = model.Mapping.GetFormattedName(mapName, model.Scenario.ShowURL);
+                    e.Node.Text = mapName;
+                    e.CancelEdit = true;
                 }
             }
-        }
-
-        private void treeServices_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
-        {
-            if (!(e.Node.Tag is TreeNodeMappingModel))
-                e.CancelEdit = true;
         }
 
         private void treeServices_KeyDown(object sender, KeyEventArgs e)
@@ -1467,7 +1475,7 @@ namespace WiremockUI
                 }
                 if (e.KeyCode == Keys.F2)
                 {
-                    treeServices.SelectedNode.BeginEdit();
+                    treeServices.BeginEdit();
                 }
                 else if (e.Control && e.KeyCode == Keys.D)
                 {
@@ -1475,6 +1483,14 @@ namespace WiremockUI
                     e.Handled = true;
                     e.SuppressKeyPress = true;
                 }
+                // Isso não funciona por que o código que previne o double click 
+                // de expandir os nodes está influenciando nessa lógica.
+                //else if (e.KeyCode == Keys.Space)
+                //{
+                //    treeServices.SelectedNode.Toggle();
+                //    e.Handled = true;
+                //    e.SuppressKeyPress = true;
+                //}
             }
         }
 

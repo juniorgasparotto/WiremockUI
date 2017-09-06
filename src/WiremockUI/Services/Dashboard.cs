@@ -57,17 +57,18 @@ namespace WiremockUI
             }
         }
 
-        public void Play(Proxy proxy, Scenario mock, PlayType type, ILogWriter textWriter, ILogTableRequestResponse logTableRequestResponse)
+        public void Play(Proxy proxy, Scenario scenario, PlayType type, ILogWriter textWriter, ILogTableRequestResponse logTableRequestResponse)
         {
-            if (Services.ContainsKey(mock.Id))
-                Stop(mock);
+            if (Services.ContainsKey(scenario.Id))
+                Stop(scenario);
 
             var server = new WireMockServer(textWriter, logTableRequestResponse);
-            Services.Add(mock.Id, server);
+            Services.Add(scenario.Id, server);
 
             string[] args;
 
-            var relativeFolder = Path.Combine(proxy.GetFolderName(), mock.GetFolderName());
+            var relativeFolder = proxy.GetFullPath(scenario);
+            
             if (type == PlayType.PlayAndRecord)
             {
                 args = new string[]
