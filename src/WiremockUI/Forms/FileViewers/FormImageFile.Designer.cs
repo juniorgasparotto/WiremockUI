@@ -40,7 +40,9 @@
             // 
             this.txtPath.AcceptsTab = true;
             this.txtPath.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtPath.EnableFormatter = false;
             this.txtPath.Location = new System.Drawing.Point(0, 0);
+            this.txtPath.MaxLength = 0;
             this.txtPath.Multiline = true;
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
@@ -62,7 +64,7 @@
             this.btnOpen.Location = new System.Drawing.Point(12, 6);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(171, 23);
-            this.btnOpen.TabIndex = 1;
+            this.btnOpen.TabIndex = 2;
             this.btnOpen.Text = "Abrir em um visualizador externo";
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
@@ -78,6 +80,7 @@
             // 
             // FormImageFile
             // 
+            this.AcceptButton = this.btnOpen;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
@@ -88,6 +91,7 @@
             this.KeyPreview = true;
             this.Name = "FormImageFile";
             this.Text = "...";
+            this.Load += new System.EventHandler(this.FormImageFile_Load);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgFile)).EndInit();
             this.ResumeLayout(false);

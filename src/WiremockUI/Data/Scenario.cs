@@ -2,7 +2,7 @@
 
 namespace WiremockUI.Data
 {
-    public class Mock
+    public class Scenario
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

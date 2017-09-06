@@ -12,11 +12,8 @@ namespace WiremockUI
     {
         private bool expandAll;
 
-        public Action<string, string, bool> OnJsonVisualizer
-        {
-            get;
-            set;
-        }
+        public Action<string, string, bool> OnJsonVisualizer { get; set; }
+        public Action<string, string, bool> OnTextVisualizer { get; set; }
 
         [Description("The content json"), Category("Data")]
         public string ContentJson
@@ -34,6 +31,7 @@ namespace WiremockUI
 
         public TabPage TabRaw => tabRaw;
         public TabPage TabJsonTree => tabTree;
+
         public TabControl Tabs => tabs;
 
         public UcJsonView()
@@ -157,15 +155,25 @@ namespace WiremockUI
         {
             var menu = new ContextMenuStrip();
             var viewJsonMenu = new ToolStripMenuItem();
+            var viewTextMenu = new ToolStripMenuItem();
             var expandAllMenu = new ToolStripMenuItem();
             var collapseAllMenu = new ToolStripMenuItem();
 
             menu.Items.AddRange(new ToolStripMenuItem[]
             {
+                viewTextMenu,
                 viewJsonMenu,
                 expandAllMenu,
                 collapseAllMenu
             });
+
+            // add files
+            viewTextMenu.Text = "Visualizar no editor de texto";
+            viewTextMenu.Click += (a, b) =>
+            {
+                var name = node.Parent?.Text;
+                OpenText(name, node.Text);
+            };
 
             // add files
             viewJsonMenu.Text = "Visualizar como Json";
@@ -194,7 +202,36 @@ namespace WiremockUI
 
         private void OpenJson(string name, string body)
         {
-            OnJsonVisualizer?.Invoke(name, body, true);            
+            if (OnJsonVisualizer == null)
+            {
+                var _tabName = "json:";
+                if (!string.IsNullOrWhiteSpace(name))
+                    _tabName += "." + name;
+
+                var frm = new FormJsonViewer(FormMaster.Current, _tabName, body, true);
+                FormMaster.Current.TabMaster.AddTab(frm, null, _tabName);
+            }
+            else
+            {
+                OnJsonVisualizer.Invoke(name, body, true);
+            }
+        }
+
+        private void OpenText(string name, string body)
+        {
+            if (OnTextVisualizer == null)
+            {
+                var _tabName = "text:";
+                if (!string.IsNullOrWhiteSpace(name))
+                    _tabName += "." + name;
+
+                var frm = new FormTextView(FormMaster.Current, _tabName, body);
+                FormMaster.Current.TabMaster.AddTab(frm, null, _tabName);
+            }
+            else
+            {
+                OnTextVisualizer.Invoke(name, body, true);
+            }
         }
 
         private void tabs_Click(object sender, EventArgs e)
@@ -233,6 +270,13 @@ namespace WiremockUI
             {
                 return false;
             }
+        }
+
+        public void SetContentFocus()
+        {
+            txtContent.Focus();
+            txtContent.SelectionStart = 0;
+            txtContent.SelectionLength = 0;
         }
     }
 }

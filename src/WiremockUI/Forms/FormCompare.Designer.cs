@@ -75,7 +75,7 @@ namespace WiremockUI
             this.btnCompare.Location = new System.Drawing.Point(328, 3);
             this.btnCompare.Name = "btnCompare";
             this.btnCompare.Size = new System.Drawing.Size(89, 37);
-            this.btnCompare.TabIndex = 1;
+            this.btnCompare.TabIndex = 6;
             this.btnCompare.Text = "Comparar";
             this.btnCompare.UseVisualStyleBackColor = true;
             this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
@@ -105,6 +105,7 @@ namespace WiremockUI
             this.txtContent1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContent1.EnableFormatter = false;
             this.txtContent1.Location = new System.Drawing.Point(0, 20);
+            this.txtContent1.MaxLength = 0;
             this.txtContent1.Multiline = true;
             this.txtContent1.Name = "txtContent1";
             this.txtContent1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -128,7 +129,7 @@ namespace WiremockUI
             this.txtFile1.Location = new System.Drawing.Point(0, 0);
             this.txtFile1.Name = "txtFile1";
             this.txtFile1.Size = new System.Drawing.Size(328, 20);
-            this.txtFile1.TabIndex = 4;
+            this.txtFile1.TabIndex = 0;
             this.txtFile1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFile1_KeyDown);
             // 
             // btnOpen1
@@ -137,7 +138,7 @@ namespace WiremockUI
             this.btnOpen1.Location = new System.Drawing.Point(328, 0);
             this.btnOpen1.Name = "btnOpen1";
             this.btnOpen1.Size = new System.Drawing.Size(44, 20);
-            this.btnOpen1.TabIndex = 3;
+            this.btnOpen1.TabIndex = 1;
             this.btnOpen1.Text = "...";
             this.btnOpen1.UseVisualStyleBackColor = true;
             // 
@@ -147,6 +148,7 @@ namespace WiremockUI
             this.txtContent2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContent2.EnableFormatter = false;
             this.txtContent2.Location = new System.Drawing.Point(0, 20);
+            this.txtContent2.MaxLength = 0;
             this.txtContent2.Multiline = true;
             this.txtContent2.Name = "txtContent2";
             this.txtContent2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -170,7 +172,7 @@ namespace WiremockUI
             this.txtFile2.Location = new System.Drawing.Point(0, 0);
             this.txtFile2.Name = "txtFile2";
             this.txtFile2.Size = new System.Drawing.Size(326, 20);
-            this.txtFile2.TabIndex = 4;
+            this.txtFile2.TabIndex = 2;
             this.txtFile2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFile2_KeyDown);
             // 
             // btnOpen2
@@ -185,6 +187,7 @@ namespace WiremockUI
             // 
             // FormCompare
             // 
+            this.AcceptButton = this.btnCompare;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 261);
@@ -194,6 +197,7 @@ namespace WiremockUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormCompare";
             this.Text = "FormCompare";
+            this.Load += new System.EventHandler(this.FormCompare_Load);
             this.panel2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

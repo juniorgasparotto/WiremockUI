@@ -44,5 +44,10 @@ namespace WiremockUI
         {
             LoadForm(fileName);
         }
+
+        private void FormImageFile_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = btnOpen;
+        }
     }
 }

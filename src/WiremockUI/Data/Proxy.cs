@@ -11,9 +11,9 @@ namespace WiremockUI.Data
         public string UrlTarget { get; set; }
         public int PortProxy { get; set; }
         public string Name { get; set; }
-        private List<Mock> mocks = new List<Mock>();
+        private List<Scenario> scenario = new List<Scenario>();
 
-        public IEnumerable<Mock> Mocks => mocks;
+        public IEnumerable<Scenario> Scenarios => scenario;
         public IEnumerable<Argument> Arguments { get; set; }
 
         public string GetFormattedName()
@@ -37,60 +37,60 @@ namespace WiremockUI.Data
             return Path.Combine(Directory.GetCurrentDirectory(), GetFolderName());
         }
 
-        public string GetFullPath(Mock mock)
+        public string GetFullPath(Scenario scenario)
         {
-            return Path.Combine(GetFullPath(), mock.GetFolderName());
+            return Path.Combine(GetFullPath(), scenario.GetFolderName());
         }
 
-        public string GetMappingPath(Mock mock)
+        public string GetMappingPath(Scenario scenario)
         {
-            return Path.Combine(GetFullPath(mock), "mappings");
+            return Path.Combine(GetFullPath(scenario), "mappings");
         }
 
-        public string GetBodyFilesPath(Mock mock)
+        public string GetBodyFilesPath(Scenario scenario)
         {
-            return Path.Combine(GetFullPath(mock), "__files");
+            return Path.Combine(GetFullPath(scenario), "__files");
         }
 
-        public bool AlreadyRecord(Mock mock)
+        public bool AlreadyRecord(Scenario scenario)
         {
-            if (Directory.Exists(GetMappingPath(mock)))
+            if (Directory.Exists(GetMappingPath(scenario)))
                 return true;
             return false;
         }
 
-        public Mock GetDefaultMock()
+        public Scenario GetDefaultScenario()
         {
-            var d = mocks.FirstOrDefault(f => f.IsDefault);
+            var d = scenario.FirstOrDefault(f => f.IsDefault);
             return d;
         }
 
-        public void SetDefault(Mock mock)
+        public void SetDefault(Scenario scenario)
         {
-            mock.IsDefault = true;
-            foreach (var m in mocks)
-                if (m.Id != mock.Id)
+            scenario.IsDefault = true;
+            foreach (var m in this.scenario)
+                if (m.Id != scenario.Id)
                     m.IsDefault = false;
         }
 
-        public Mock GetMockById(Guid? id)
+        public Scenario GetScenarioById(Guid? id)
         {
-            return mocks.FirstOrDefault(f => f.Id == id);
+            return scenario.FirstOrDefault(f => f.Id == id);
         }
 
-        public void AddMock(Mock mock)
+        public void AddScenario(Scenario scenario)
         {
-            if (mock.Id == Guid.Empty)
-                mock.Id = Guid.NewGuid();
+            if (scenario.Id == Guid.Empty)
+                scenario.Id = Guid.NewGuid();
 
-            if (mocks.Count == 0)
-                mock.IsDefault = true;
-            mocks.Add(mock);
+            if (this.scenario.Count == 0)
+                scenario.IsDefault = true;
+            this.scenario.Add(scenario);
         }
 
-        public void RemoveMock(Guid id)
+        public void RemoveScenario(Guid id)
         {
-            mocks.RemoveAll(f => f.Id == id);
+            scenario.RemoveAll(f => f.Id == id);
         }
 
         public List<string> GetArguments()

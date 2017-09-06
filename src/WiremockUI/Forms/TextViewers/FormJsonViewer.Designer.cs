@@ -38,8 +38,11 @@
             this.ucJsonView.ExpandAll = false;
             this.ucJsonView.Location = new System.Drawing.Point(0, 0);
             this.ucJsonView.Name = "ucJsonView";
+            this.ucJsonView.OnJsonVisualizer = null;
+            this.ucJsonView.OnTextVisualizer = null;
             this.ucJsonView.Size = new System.Drawing.Size(284, 261);
             this.ucJsonView.TabIndex = 0;
+            this.ucJsonView.Load += new System.EventHandler(this.ucJsonView_Load);
             // 
             // FormJsonViewer
             // 

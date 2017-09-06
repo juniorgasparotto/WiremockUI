@@ -8,7 +8,7 @@ namespace WiremockUI.Data
 {
     internal class Schema
     {
-        public List<Mock> MockServices { get; set; }
+        public List<Scenario> MockServices { get; set; }
         public List<Proxy> Proxies { get; set; }
     }
 
@@ -36,15 +36,15 @@ namespace WiremockUI.Data
             this.repositories = new Dictionary<Type, object>();
         }
 
-        public Repository<Mock> MockServices
+        public Repository<Scenario> MockServices
         {
             get
             {
-                Repository<Mock> repository;
-                if (repositories.ContainsKey(typeof(Mock)))
-                    repository = (Repository<Mock>)repositories[typeof(Mock)];
+                Repository<Scenario> repository;
+                if (repositories.ContainsKey(typeof(Scenario)))
+                    repository = (Repository<Scenario>)repositories[typeof(Scenario)];
                 else
-                    repository = new Repository<Mock>(PocFile);
+                    repository = new Repository<Scenario>(PocFile);
 
                 return repository;
             }

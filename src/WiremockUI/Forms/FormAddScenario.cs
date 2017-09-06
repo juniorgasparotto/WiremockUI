@@ -6,18 +6,18 @@ using System.Linq;
 
 namespace WiremockUI
 {
-    public partial class FormAddMock : Form
+    public partial class FormAddScenario : Form
     {
         private FormMaster master;
-        private Mock mock;
+        private Scenario mock;
         private string oldPath;
         private TreeNode parent;
         private Proxy proxy;
 
-        public FormAddMock(FormMaster master, TreeNode parent, Proxy proxy, Guid? id)
+        public FormAddScenario(FormMaster master, TreeNode parent, Proxy proxy, Guid? id)
         {
             this.master = master;
-            this.mock = proxy.GetMockById(id);
+            this.mock = proxy.GetScenarioById(id);
             this.parent = parent;
             this.proxy = proxy;
             InitializeComponent();
@@ -31,6 +31,8 @@ namespace WiremockUI
 
                 if (master.Dashboard.IsRunning(mock))
                     btnAdd.Enabled = false;
+
+                this.Text = this.mock.Name;
             }
 
             ResizeTexts();
@@ -61,7 +63,7 @@ namespace WiremockUI
             }
 
             var db = new UnitOfWork();
-            var existsName = (from s in proxy.Mocks
+            var existsName = (from s in proxy.Scenarios
                               where s.Name.ToLower() == name.ToLower() &&
                                     s.Id != idExists
                               select 1).Any();
@@ -74,7 +76,7 @@ namespace WiremockUI
             }
 
             if (mock == null)
-                mock = new Mock();
+                mock = new Scenario();
 
             mock.Name = name;
             mock.Description = this.txtDesc.Text;
@@ -86,7 +88,7 @@ namespace WiremockUI
             }
 
             if (mock.Id == Guid.Empty)
-                proxy.AddMock(mock);
+                proxy.AddScenario(mock);
 
             db.Save();
 
@@ -111,6 +113,11 @@ namespace WiremockUI
             txtDesc.Width = this.ClientSize.Width - 15;
             txtName.Width = this.ClientSize.Width - 15;
             txtDesc.Height = this.ClientSize.Height - 150;
+        }
+
+        private void FormAddMock_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtName;
         }
     }
 }

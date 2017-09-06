@@ -11,6 +11,6 @@ namespace WiremockUI
         public TreeNodeBodyModel TreeNodeBody { get; set; }
         public string Name { get; set; }
         public Proxy Proxy { get; set; }
-        public Mock Mock { get; set; }
+        public Scenario Mock { get; set; }
     }
 }

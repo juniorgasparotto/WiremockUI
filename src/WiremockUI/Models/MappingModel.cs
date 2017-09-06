@@ -12,7 +12,7 @@ namespace WiremockUI
         [JsonIgnore]
         public Proxy Proxy { get; private set; }
         [JsonIgnore]
-        public Mock Mock { get; private set; }
+        public Scenario Mock { get; private set; }
 
         public string Id { get; set; }
         public string Uuid { get; set; }
@@ -21,7 +21,7 @@ namespace WiremockUI
         
         private MappingModel() { }
 
-        public static MappingModel Create(Proxy proxy, Mock mock, string content, out Exception exception)
+        public static MappingModel Create(Proxy proxy, Scenario mock, string content, out Exception exception)
         {
             exception = null;
             try

@@ -6,7 +6,7 @@
       "UrlTarget": "http://wiremock.org",
       "PortProxy": 5505,
       "Name": "test proxy",
-      "Mocks": [
+      "Scenarios": [
         {
           "Id": "a5aef29d-f93b-41d0-96fb-22da378b1e1f",
           "Name": "f",
@@ -20,6 +20,13 @@
           "IsDefault": true,
           "ShowURL": true,
           "Description": ""
+        },
+        {
+          "Id": "e608c7e4-afd4-481b-bec6-1c5a15462647",
+          "Name": "esfdf",
+          "IsDefault": false,
+          "ShowURL": true,
+          "Description": "sdf"
         }
       ],
       "Arguments": [
@@ -48,7 +55,7 @@
       "UrlTarget": "http://localhost",
       "PortProxy": 5506,
       "Name": "teste2",
-      "Mocks": [
+      "Scenarios": [
         {
           "Id": "e27b4160-ea24-46b7-bb3c-641643118208",
           "Name": "cenario1",
@@ -77,7 +84,7 @@
       "UrlTarget": "http://localhost",
       "PortProxy": 5507,
       "Name": "A",
-      "Mocks": [
+      "Scenarios": [
         {
           "Id": "91a00fa3-a1cd-439c-8ed7-29dcdf81fdc3",
           "Name": "cenario1",
@@ -106,7 +113,7 @@
       "UrlTarget": "http://www.g1.com.br",
       "PortProxy": 5508,
       "Name": "B",
-      "Mocks": [
+      "Scenarios": [
         {
           "Id": "f5716370-96fb-46f8-bec2-55d639988d8e",
           "Name": "cenario2",
@@ -135,7 +142,7 @@
       "UrlTarget": "http://www.webservicex.net",
       "PortProxy": 5509,
       "Name": "teste",
-      "Mocks": [
+      "Scenarios": [
         {
           "Id": "fecb2455-a597-4460-9730-82f4a5743c39",
           "Name": "cenario1",

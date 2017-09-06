@@ -15,7 +15,7 @@ namespace WiremockUI
             InitializeComponent();
             txtUrl.Multiline = false;
             this.txtRequestBody.EnableFormatter = true;
-            this.txtResponseBody.EnableFormatter = true;
+            this.txtResponseBody.EnableFormatter = true;            
         }
 
         public FormWebRequest(string method, string urlAbsolute, Dictionary<string, string> requestHeaders, string requestBody, Dictionary<string, string> responseHeaders, string responseBody)
@@ -185,6 +185,11 @@ namespace WiremockUI
         {
             if (e.KeyCode == Keys.Enter)
                 WebRequest();
+        }
+
+        private void FormWebRequest_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtUrl;
         }
     }
 }

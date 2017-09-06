@@ -107,5 +107,11 @@ namespace WiremockUI
             if (ucJsonView.Tabs.SelectedTab == ucJsonView.TabJsonTree)
                 ucJsonView.GenerateTree();
         }
+
+        private void FormJsonFile_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = ucJsonView;
+            ucJsonView.SetContentFocus();
+        }
     }
 }

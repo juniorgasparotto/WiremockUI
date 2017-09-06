@@ -196,7 +196,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormCompareResult.cs">
+    <Compile Include="Forms\FormCompareResult.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DiffEngine\BinaryFile.cs" />
@@ -204,47 +204,47 @@
     <Compile Include="DiffEngine\Engine.cs" />
     <Compile Include="DiffEngine\Structures.cs" />
     <Compile Include="DiffEngine\TextFile.cs" />
-    <Compile Include="FormCompare.cs">
+    <Compile Include="Forms\FormCompare.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCompare.Designer.cs">
+    <Compile Include="Forms\FormCompare.Designer.cs">
       <DependentUpon>FormCompare.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormWebRequest.cs">
+    <Compile Include="Forms\FormWebRequest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormWebRequest.Designer.cs">
+    <Compile Include="Forms\FormWebRequest.Designer.cs">
       <DependentUpon>FormWebRequest.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Proxy.cs" />
-    <Compile Include="FormAddProxy.cs">
+    <Compile Include="Forms\FormAddProxy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddProxy.Designer.cs">
+    <Compile Include="Forms\FormAddProxy.Designer.cs">
       <DependentUpon>FormAddProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="TextViewers\FormJsonViewer.cs">
+    <Compile Include="Forms\TextViewers\FormJsonViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TextViewers\FormJsonViewer.Designer.cs">
+    <Compile Include="Forms\TextViewers\FormJsonViewer.Designer.cs">
       <DependentUpon>FormJsonViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="FileViewers\FormImageFile.cs">
+    <Compile Include="Forms\FileViewers\FormImageFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FileViewers\FormImageFile.Designer.cs">
+    <Compile Include="Forms\FileViewers\FormImageFile.Designer.cs">
       <DependentUpon>FormImageFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="FileViewers\FormXmlFile.cs">
+    <Compile Include="Forms\FileViewers\FormXmlFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FileViewers\FormXmlFile.Designer.cs">
+    <Compile Include="Forms\FileViewers\FormXmlFile.Designer.cs">
       <DependentUpon>FormXmlFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="FileViewers\FormTextFile.cs">
+    <Compile Include="Forms\FileViewers\FormTextFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FileViewers\FormTextFile.Designer.cs">
+    <Compile Include="Forms\FileViewers\FormTextFile.Designer.cs">
       <DependentUpon>FormTextFile.cs</DependentUpon>
     </Compile>
     <Compile Include="Listeners\RequestAndResponseListener.cs" />
@@ -255,12 +255,12 @@
     <Compile Include="Models\TreeNodeMappingModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\MappingModel.cs" />
-    <Compile Include="FileViewers\IFormFileUpdate.cs" />
+    <Compile Include="Forms\FileViewers\IFormFileUpdate.cs" />
     <Compile Include="LogControls\RichTextBoxLogWriter.cs" />
-    <Compile Include="TextViewers\FormTextView.cs">
+    <Compile Include="Forms\TextViewers\FormTextView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TextViewers\FormTextView.Designer.cs">
+    <Compile Include="Forms\TextViewers\FormTextView.Designer.cs">
       <DependentUpon>FormTextView.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\EditorTextbox\EditorTextBox.cs">
@@ -284,80 +284,80 @@
     </Compile>
     <Compile Include="Utils\DiffMatchPatch.cs" />
     <Compile Include="Utils\Helper.cs" />
-    <Compile Include="FormAbout.cs">
+    <Compile Include="Forms\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAbout.Designer.cs">
+    <Compile Include="Forms\FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStartMockService.cs">
+    <Compile Include="Forms\FormStartMockService.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStartMockService.Designer.cs">
+    <Compile Include="Forms\FormStartMockService.Designer.cs">
       <DependentUpon>FormStartMockService.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Repository.cs" />
-    <Compile Include="Data\Mock.cs" />
-    <Compile Include="FormAddMock.cs">
+    <Compile Include="Data\Scenario.cs" />
+    <Compile Include="Forms\FormAddScenario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddMock.Designer.cs">
-      <DependentUpon>FormAddMock.cs</DependentUpon>
+    <Compile Include="Forms\FormAddScenario.Designer.cs">
+      <DependentUpon>FormAddScenario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMaster.cs">
+    <Compile Include="Forms\FormMaster.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMaster.Designer.cs">
+    <Compile Include="Forms\FormMaster.Designer.cs">
       <DependentUpon>FormMaster.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\Dashboard.cs" />
     <Compile Include="Services\WireMockServer.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="FileViewers\FormJsonFile.cs">
+    <Compile Include="Forms\FileViewers\FormJsonFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FileViewers\FormJsonFile.Designer.cs">
+    <Compile Include="Forms\FileViewers\FormJsonFile.Designer.cs">
       <DependentUpon>FormJsonFile.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
-    <EmbeddedResource Include="FormCompare.resx">
+    <EmbeddedResource Include="Forms\FormCompare.resx">
       <DependentUpon>FormCompare.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCompareResult.resx">
+    <EmbeddedResource Include="Forms\FormCompareResult.resx">
       <DependentUpon>FormCompareResult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormWebRequest.resx">
+    <EmbeddedResource Include="Forms\FormWebRequest.resx">
       <DependentUpon>FormWebRequest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAbout.resx">
+    <EmbeddedResource Include="Forms\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddProxy.resx">
+    <EmbeddedResource Include="Forms\FormAddProxy.resx">
       <DependentUpon>FormAddProxy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TextViewers\FormJsonViewer.resx">
+    <EmbeddedResource Include="Forms\TextViewers\FormJsonViewer.resx">
       <DependentUpon>FormJsonViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStartMockService.resx">
+    <EmbeddedResource Include="Forms\FormStartMockService.resx">
       <DependentUpon>FormStartMockService.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddMock.resx">
-      <DependentUpon>FormAddMock.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormAddScenario.resx">
+      <DependentUpon>FormAddScenario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMaster.resx">
+    <EmbeddedResource Include="Forms\FormMaster.resx">
       <DependentUpon>FormMaster.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FileViewers\FormJsonFile.resx">
+    <EmbeddedResource Include="Forms\FileViewers\FormJsonFile.resx">
       <DependentUpon>FormJsonFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FileViewers\FormImageFile.resx">
+    <EmbeddedResource Include="Forms\FileViewers\FormImageFile.resx">
       <DependentUpon>FormImageFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FileViewers\FormTextFile.resx">
+    <EmbeddedResource Include="Forms\FileViewers\FormTextFile.resx">
       <DependentUpon>FormTextFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FileViewers\FormXmlFile.resx">
+    <EmbeddedResource Include="Forms\FileViewers\FormXmlFile.resx">
       <DependentUpon>FormXmlFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -370,7 +370,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TextViewers\FormTextView.resx">
+    <EmbeddedResource Include="Forms\TextViewers\FormTextView.resx">
       <DependentUpon>FormTextView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\JsonViewer\UcJsonView.resx">
@@ -387,6 +387,26 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Images\add.png" />
+    <Content Include="Images\check.png" />
+    <Content Include="Images\close.png" />
+    <Content Include="Images\default.png" />
+    <Content Include="Images\disable.png" />
+    <Content Include="Images\duplicate.png" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\folder.png" />
+    <Content Include="Images\mock-services.png" />
+    <Content Include="Images\mock.png" />
+    <Content Include="Images\play-proxy.png" />
+    <Content Include="Images\play-record.png" />
+    <Content Include="Images\play.png" />
+    <Content Include="Images\refresh.png" />
+    <Content Include="Images\remove.png" />
+    <Content Include="Images\rename.png" />
+    <Content Include="Images\request.png" />
+    <Content Include="Images\response.png" />
+    <Content Include="Images\stop.png" />
+    <Content Include="Images\wiremock.ico" />
     <Content Include="Jar\wiremock-standalone-2.7.1.jar" />
     <Content Include="Templates\Files\New.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

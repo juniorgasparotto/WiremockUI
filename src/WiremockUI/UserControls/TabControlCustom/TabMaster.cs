@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace WiremockUI
 {
@@ -81,6 +82,11 @@ namespace WiremockUI
         public Form GetForm(TabPageCustom tab)
         {
             return ((TabMaster.Tag)tab.Tag).Form;
+        }
+
+        internal void SelectTab(TabPageCustom tab)
+        {
+            this.tabControl.SelectedTab = tab;
         }
     }
 }

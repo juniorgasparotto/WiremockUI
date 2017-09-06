@@ -56,7 +56,7 @@
             this.txtContent.Name = "txtContent";
             this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent.Size = new System.Drawing.Size(284, 241);
-            this.txtContent.TabIndex = 5;
+            this.txtContent.TabIndex = 2;
             // 
             // FormTextView
             // 
@@ -69,6 +69,7 @@
             this.KeyPreview = true;
             this.Name = "FormTextView";
             this.Text = "...";
+            this.Load += new System.EventHandler(this.FormTextView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

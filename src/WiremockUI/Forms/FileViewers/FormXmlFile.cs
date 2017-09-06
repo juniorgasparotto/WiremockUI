@@ -2,17 +2,19 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml;
+using System.Text;
 
 namespace WiremockUI
 {
-    public partial class FormTextFile : Form, IFormFileUpdate
+    public partial class FormXmlFile : Form, IFormFileUpdate
     {
         private object tabPage;
         private object master;
 
         public Action OnSave { get; set; }
 
-        public FormTextFile(FormMaster master, TabPageCustom tabPage, string fileName)
+        public FormXmlFile(FormMaster master, TabPageCustom tabPage, string fileName)
         {
             InitializeComponent();
 
@@ -20,7 +22,6 @@ namespace WiremockUI
 
             this.tabPage = tabPage;
             this.master = master;
-            this.txtContent.EnableFormatter = true;
             LoadForm(fileName);
         }
 
@@ -78,9 +79,26 @@ namespace WiremockUI
             }
         }
 
+        private void btnFormat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtContent.Text = Helper.FormatToXml(txtContent.Text);
+            }
+            catch(Exception ex)
+            {
+                Helper.MessageBoxError("Esse XML está inválido: " + ex.Message);
+            }
+        }
+
         public void Update(string fileName)
         {
             LoadForm(fileName);
+        }
+
+        private void FormXmlFile_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtContent;
         }
     }
 }

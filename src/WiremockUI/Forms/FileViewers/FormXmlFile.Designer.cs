@@ -68,7 +68,7 @@
             this.btnOpen.Location = new System.Drawing.Point(93, 6);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(171, 23);
-            this.btnOpen.TabIndex = 1;
+            this.btnOpen.TabIndex = 5;
             this.btnOpen.Text = "Abrir em um editor externo";
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
@@ -78,7 +78,7 @@
             this.btnSave.Location = new System.Drawing.Point(7, 6);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Salvar";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -97,7 +97,7 @@
             this.btnFormat.Location = new System.Drawing.Point(0, 10);
             this.btnFormat.Name = "btnFormat";
             this.btnFormat.Size = new System.Drawing.Size(124, 23);
-            this.btnFormat.TabIndex = 0;
+            this.btnFormat.TabIndex = 2;
             this.btnFormat.Text = "Formatar XML";
             this.btnFormat.UseVisualStyleBackColor = true;
             this.btnFormat.Click += new System.EventHandler(this.btnFormat_Click);
@@ -113,10 +113,11 @@
             this.txtContent.Name = "txtContent";
             this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent.Size = new System.Drawing.Size(284, 168);
-            this.txtContent.TabIndex = 12;
+            this.txtContent.TabIndex = 3;
             // 
             // FormXmlFile
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
@@ -128,6 +129,7 @@
             this.KeyPreview = true;
             this.Name = "FormXmlFile";
             this.Text = "...";
+            this.Load += new System.EventHandler(this.FormXmlFile_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormTextFile_KeyDown);
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

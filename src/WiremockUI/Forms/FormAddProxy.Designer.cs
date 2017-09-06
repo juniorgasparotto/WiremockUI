@@ -213,7 +213,9 @@
             // 
             // FormAddProxy
             // 
+            this.AcceptButton = this.btnAdd;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(555, 327);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
@@ -221,6 +223,7 @@
             this.Name = "FormAddProxy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Novo Proxy";
+            this.Load += new System.EventHandler(this.FormAddProxy_Load);
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

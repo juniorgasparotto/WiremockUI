@@ -183,5 +183,10 @@ namespace WiremockUI
                     Helper.MessageBoxError("Arquivo inexistente");
             }
         }
+
+        private void FormCompare_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtContent1;
+        }
     }
 }

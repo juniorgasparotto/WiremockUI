@@ -13,30 +13,22 @@ criar mock/renomear/duplicar/remove - OK
 criar um visualizador generico para a resposta quando não json - OK
 criar um visualizador de xml para a resposta com formatação - OK
 criar um visualizador de imagem para a resposta - OK
-
 limpar log, autoscroll - ok
+criar uma aba dentro de cada mock com as configs avançados do wiremock - ok
+melhorar visualização de json para valores (criar um form especifico pra json)  - ok
+deixar inserir mais de um url para a mesma api - OK
+criar formatador de json - ok
 
-criar mecanismo para copiar como curl 
+adicionar "visualizar com xml" no componente de JSON - ok
+criar menu "Ferramentas" com os comparadores e formatadores - ok
+testar request sem body - OK
+
+criar mecanismo para copiar como curl
 multiplas linguas
-preferencias
-splash
-testar sem java na maquina
-criar uma mock automaticamente após criar um proxy
-criar uma aba dentro de cada mock com as configs avançados do wiremock
-subir no chocolatey
-tentar apt-get com wine ou mono
-criar tutorial
-visualizar json do request e response do mapa de forma amigavel
-adicionar URL do serviço no treeNode para cada proxy
-melhorar visualização de json para valores (criar um form especifico pra json)
-criar tutorial no github
 quando fechar uma tab, deve ir para a tab de tras da fechada
-deixar inserir mais de um url para a mesma api
-criar response especial
-cria request especial
-testar request sem body
-criar pesquisar
-criar formatador de json
+criar pesquisar em todos os editorbox
+renomear o mock para cenario
+
 criar mecanismo para visualizar os logs do wiremock em forma de json
 criar comparador de json
 criar comentario por mock
@@ -51,15 +43,37 @@ criar um iniciar com todas as configs do wiremock e deixar adicionar ou modifica
 criar esquema para subir codigo c# para programar o request e response
 deixar copiar os textos da tela de start
 criar comparador do request do log do wiremock com os requests existentes
-criar menu "Ferramentas" com os comparadores e formatadores
 criar delete para cada nivel da treeview 
-criar open ao apertar enter em cada nivel da treeview
-adicionar atalhos em todos os niveis da treeview
-criar esquema para abrir o url dos mapas no browser ou em um componente de composer
-adicionar varios tipos de mock (json, xml)
+
 mudar pasta do debug para dentro da .app
-deu um problema de encode no compara ao selecionar um mapa
-esta criando pastas "files" e "mapping na raiz do projeto"
-adicionar "visualizar com xml" no componente de JSON
 adicionar opção para remover o nome da treeview
+
+-- bugs
+
 ao renomear deve exibir apenas o nome do arquivo e não a URL
+esta criando pastas "files" e "mapping na raiz do projeto"
+deu um problema de encode no compara ao selecionar um mapa
+problema do CTRL + BACKSPACE que adiciona caracter estranho em textbox
+corrigir a usuabilidade dos atalhos dos forms, botoes iniciais e de fechar
+
+-- deploy 
+
+testar sem java na maquina
+tentar apt-get com wine ou mono
+subir no chocolatey
+criar tutorial
+
+-- despriorizados
+
+criar esquema para abrir o url dos mapas no browser ou em um componente de composer (é possivel, mas sujeito a erros)
+adicionar varios tipos de mock (json, xml)]
+splash
+criar uma mock automaticamente após criar um proxy
+visualizar json do request e response do mapa de forma amigavel (ja não esta feito?)
+criar mecanismo de gerenciamento remoto
+adicionar atalhos em todos os niveis da treeview (atalho do q?)
+criar open ao apertar enter em cada nivel da treeview
+preferencias (que config terá?)
+adicionar URL do serviço no treeNode para cada proxy (já naum tem?)
+criar response especial (??)
+cria request especial (??)

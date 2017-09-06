@@ -32,7 +32,7 @@ namespace WiremockUI
             return false;
         }
 
-        public bool IsRunning(Mock mockService)
+        public bool IsRunning(Scenario mockService)
         {
             if (mockService == null)
                 return false;
@@ -42,7 +42,7 @@ namespace WiremockUI
             return Services[mockService.Id].IsRunning();
         }
 
-        public void Stop(Mock mockService)
+        public void Stop(Scenario mockService)
         {
             if (!Services.ContainsKey(mockService.Id))
                 return;
@@ -57,7 +57,7 @@ namespace WiremockUI
             }
         }
 
-        public void Play(Proxy proxy, Mock mock, PlayType type, ILogWriter textWriter, ILogTableRequestResponse logTableRequestResponse)
+        public void Play(Proxy proxy, Scenario mock, PlayType type, ILogWriter textWriter, ILogTableRequestResponse logTableRequestResponse)
         {
             if (Services.ContainsKey(mock.Id))
                 Stop(mock);
@@ -100,7 +100,7 @@ namespace WiremockUI
             server.run(argsProxy.ToArray());
         }
 
-        internal void AddWatchers(Mock service, FileSystemWatcher watcher)
+        internal void AddWatchers(Scenario service, FileSystemWatcher watcher)
         {
             if (Watchers.ContainsKey(service.Id))
                 Watchers.Remove(service.Id);

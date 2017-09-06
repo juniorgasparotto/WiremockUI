@@ -36,7 +36,7 @@ namespace WiremockUI
                 this.oldPath = this.proxy.GetFullPath();
                 SetProperties(proxy);
 
-                if (master.Dashboard.IsRunning(proxy.GetDefaultMock()))
+                if (master.Dashboard.IsRunning(proxy.GetDefaultScenario()))
                     btnAdd.Enabled = false;
             }
 
@@ -380,6 +380,11 @@ namespace WiremockUI
                     this.ArgName = argName;
                 }
             }
+        }
+
+        private void FormAddProxy_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtName;
         }
     }
 }

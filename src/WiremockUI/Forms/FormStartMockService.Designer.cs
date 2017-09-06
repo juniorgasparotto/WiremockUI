@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabLogs = new System.Windows.Forms.TabControl();
@@ -37,7 +37,17 @@
             this.pnlSearch = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearchValue = new WiremockUI.EditorTextBox();
             this.tabLogTable = new System.Windows.Forms.TabPage();
+            this.gridLog = new System.Windows.Forms.DataGridView();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RequestTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResponseTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Raw = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusCount = new System.Windows.Forms.ToolStripStatusLabel();
@@ -49,30 +59,20 @@
             this.chkDisable = new System.Windows.Forms.CheckBox();
             this.chkAutoScroll = new System.Windows.Forms.CheckBox();
             this.btnClean = new System.Windows.Forms.Button();
+            this.txtTo = new WiremockUI.EditorTextBox();
+            this.txtFrom = new WiremockUI.EditorTextBox();
             this.lblUrlProxy = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtSearchValue = new WiremockUI.EditorTextBox();
-            this.txtTo = new WiremockUI.EditorTextBox();
-            this.txtFrom = new WiremockUI.EditorTextBox();
-            this.gridLog = new System.Windows.Forms.DataGridView();
-            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TypeLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RequestTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResponseTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Raw = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabLogs.SuspendLayout();
             this.tabLogText.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.tabLogTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLog)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLog)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -148,6 +148,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Location = new System.Drawing.Point(310, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 27);
@@ -166,6 +167,17 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // txtSearchValue
+            // 
+            this.txtSearchValue.AcceptsTab = true;
+            this.txtSearchValue.EnableFormatter = false;
+            this.txtSearchValue.Location = new System.Drawing.Point(9, 8);
+            this.txtSearchValue.Multiline = true;
+            this.txtSearchValue.Name = "txtSearchValue";
+            this.txtSearchValue.Size = new System.Drawing.Size(214, 20);
+            this.txtSearchValue.TabIndex = 0;
+            this.txtSearchValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchValue_KeyDown);
+            // 
             // tabLogTable
             // 
             this.tabLogTable.Controls.Add(this.gridLog);
@@ -177,6 +189,99 @@
             this.tabLogTable.TabIndex = 1;
             this.tabLogTable.Text = "Tabela";
             this.tabLogTable.UseVisualStyleBackColor = true;
+            // 
+            // gridLog
+            // 
+            this.gridLog.AllowUserToAddRows = false;
+            this.gridLog.AllowUserToResizeRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.gridLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.gridLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gridLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Number,
+            this.TypeLog,
+            this.Method,
+            this.Url,
+            this.Status,
+            this.RequestTime,
+            this.ResponseTime,
+            this.Raw});
+            this.gridLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridLog.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gridLog.Location = new System.Drawing.Point(3, 3);
+            this.gridLog.Name = "gridLog";
+            this.gridLog.RowHeadersWidth = 30;
+            this.gridLog.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridLog.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridLog.Size = new System.Drawing.Size(570, 92);
+            this.gridLog.TabIndex = 2;
+            this.gridLog.SelectionChanged += new System.EventHandler(this.gridLog_SelectionChanged);
+            // 
+            // Number
+            // 
+            this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Number.HeaderText = "Seq.";
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Number.Width = 54;
+            // 
+            // TypeLog
+            // 
+            this.TypeLog.HeaderText = "Type";
+            this.TypeLog.Name = "TypeLog";
+            this.TypeLog.ReadOnly = true;
+            this.TypeLog.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TypeLog.Width = 70;
+            // 
+            // Method
+            // 
+            this.Method.HeaderText = "Method";
+            this.Method.Name = "Method";
+            this.Method.ReadOnly = true;
+            this.Method.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Method.Width = 50;
+            // 
+            // Url
+            // 
+            this.Url.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Url.HeaderText = "Url";
+            this.Url.Name = "Url";
+            this.Url.ReadOnly = true;
+            this.Url.Width = 45;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Width = 62;
+            // 
+            // RequestTime
+            // 
+            this.RequestTime.HeaderText = "Request Time";
+            this.RequestTime.Name = "RequestTime";
+            this.RequestTime.ReadOnly = true;
+            // 
+            // ResponseTime
+            // 
+            this.ResponseTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ResponseTime.HeaderText = "Response Time";
+            this.ResponseTime.MinimumWidth = 120;
+            this.ResponseTime.Name = "ResponseTime";
+            this.ResponseTime.ReadOnly = true;
+            this.ResponseTime.Width = 120;
+            // 
+            // Raw
+            // 
+            this.Raw.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Raw.HeaderText = "Raw";
+            this.Raw.Name = "Raw";
+            this.Raw.ReadOnly = true;
+            this.Raw.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Raw.Width = 54;
             // 
             // statusStrip1
             // 
@@ -295,6 +400,28 @@
             this.btnClean.UseVisualStyleBackColor = true;
             this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
+            // txtTo
+            // 
+            this.txtTo.AcceptsTab = true;
+            this.txtTo.EnableFormatter = false;
+            this.txtTo.Location = new System.Drawing.Point(91, 51);
+            this.txtTo.Multiline = true;
+            this.txtTo.Name = "txtTo";
+            this.txtTo.ReadOnly = true;
+            this.txtTo.Size = new System.Drawing.Size(440, 20);
+            this.txtTo.TabIndex = 24;
+            // 
+            // txtFrom
+            // 
+            this.txtFrom.AcceptsTab = true;
+            this.txtFrom.EnableFormatter = false;
+            this.txtFrom.Location = new System.Drawing.Point(91, 23);
+            this.txtFrom.Multiline = true;
+            this.txtFrom.Name = "txtFrom";
+            this.txtFrom.ReadOnly = true;
+            this.txtFrom.Size = new System.Drawing.Size(440, 20);
+            this.txtFrom.TabIndex = 24;
+            // 
             // lblUrlProxy
             // 
             this.lblUrlProxy.AutoSize = true;
@@ -326,129 +453,6 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Url destino:";
             // 
-            // txtSearchValue
-            // 
-            this.txtSearchValue.AcceptsTab = true;
-            this.txtSearchValue.Location = new System.Drawing.Point(9, 8);
-            this.txtSearchValue.Multiline = true;
-            this.txtSearchValue.Name = "txtSearchValue";
-            this.txtSearchValue.Size = new System.Drawing.Size(214, 20);
-            this.txtSearchValue.TabIndex = 0;
-            this.txtSearchValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchValue_KeyDown);
-            // 
-            // txtTo
-            // 
-            this.txtTo.AcceptsTab = true;
-            this.txtTo.Location = new System.Drawing.Point(91, 51);
-            this.txtTo.Multiline = true;
-            this.txtTo.Name = "txtTo";
-            this.txtTo.ReadOnly = true;
-            this.txtTo.Size = new System.Drawing.Size(440, 20);
-            this.txtTo.TabIndex = 24;
-            // 
-            // txtFrom
-            // 
-            this.txtFrom.AcceptsTab = true;
-            this.txtFrom.Location = new System.Drawing.Point(91, 23);
-            this.txtFrom.Multiline = true;
-            this.txtFrom.Name = "txtFrom";
-            this.txtFrom.ReadOnly = true;
-            this.txtFrom.Size = new System.Drawing.Size(440, 20);
-            this.txtFrom.TabIndex = 24;
-            // 
-            // gridLog
-            // 
-            this.gridLog.AllowUserToAddRows = false;
-            this.gridLog.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.gridLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.gridLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Number,
-            this.TypeLog,
-            this.Method,
-            this.Url,
-            this.Status,
-            this.RequestTime,
-            this.ResponseTime,
-            this.Raw});
-            this.gridLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridLog.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gridLog.Location = new System.Drawing.Point(3, 3);
-            this.gridLog.Name = "gridLog";
-            this.gridLog.RowHeadersWidth = 30;
-            this.gridLog.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.gridLog.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridLog.Size = new System.Drawing.Size(570, 92);
-            this.gridLog.TabIndex = 2;
-            this.gridLog.SelectionChanged += new System.EventHandler(this.gridLog_SelectionChanged);
-            // 
-            // Number
-            // 
-            this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Number.HeaderText = "Seq.";
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Number.Width = 54;
-            // 
-            // TypeLog
-            // 
-            this.TypeLog.HeaderText = "Type";
-            this.TypeLog.Name = "TypeLog";
-            this.TypeLog.ReadOnly = true;
-            this.TypeLog.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TypeLog.Width = 70;
-            // 
-            // Method
-            // 
-            this.Method.HeaderText = "Method";
-            this.Method.Name = "Method";
-            this.Method.ReadOnly = true;
-            this.Method.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Method.Width = 50;
-            // 
-            // Url
-            // 
-            this.Url.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Url.HeaderText = "Url";
-            this.Url.Name = "Url";
-            this.Url.ReadOnly = true;
-            this.Url.Width = 45;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 62;
-            // 
-            // RequestTime
-            // 
-            this.RequestTime.HeaderText = "Request Time";
-            this.RequestTime.Name = "RequestTime";
-            this.RequestTime.ReadOnly = true;
-            // 
-            // ResponseTime
-            // 
-            this.ResponseTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ResponseTime.HeaderText = "Response Time";
-            this.ResponseTime.MinimumWidth = 120;
-            this.ResponseTime.Name = "ResponseTime";
-            this.ResponseTime.ReadOnly = true;
-            this.ResponseTime.Width = 120;
-            // 
-            // Raw
-            // 
-            this.Raw.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Raw.HeaderText = "Raw";
-            this.Raw.Name = "Raw";
-            this.Raw.ReadOnly = true;
-            this.Raw.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Raw.Width = 54;
-            // 
             // FormStartMockService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -471,11 +475,11 @@
             this.pnlSearch.PerformLayout();
             this.tabLogTable.ResumeLayout(false);
             this.tabLogTable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLog)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLog)).EndInit();
             this.ResumeLayout(false);
 
         }

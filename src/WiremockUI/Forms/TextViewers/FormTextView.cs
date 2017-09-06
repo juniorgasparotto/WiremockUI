@@ -14,6 +14,15 @@ namespace WiremockUI
             this.TabStop = false;
             this.txtTitle.Text = title;
             this.txtContent.Text = Helper.ResolveBreakLineInCompatibility(content);
+            this.txtContent.EnableFormatter = true;
+
+            if (string.IsNullOrWhiteSpace(title))
+                this.txtTitle.Visible = false;
+        }
+
+        private void FormTextView_Load(object sender, System.EventArgs e)
+        {
+            this.ActiveControl = txtContent;
         }
     }
 }

@@ -19,5 +19,11 @@ namespace WiremockUI
                 master.TabMaster.AddTab(frm, null, _tabName);
             };
         }
+
+        private void ucJsonView_Load(object sender, System.EventArgs e)
+        {
+            this.ActiveControl = ucJsonView;
+            ucJsonView.SetContentFocus();
+        }
     }
 }

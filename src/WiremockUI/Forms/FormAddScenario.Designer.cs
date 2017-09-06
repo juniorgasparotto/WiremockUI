@@ -1,6 +1,6 @@
 ﻿namespace WiremockUI
 {
-    partial class FormAddMock
+    partial class FormAddScenario
     {
         /// <summary>
         /// Required designer variable.
@@ -32,10 +32,10 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtDesc = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txtDesc = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +83,23 @@
             this.panel3.Size = new System.Drawing.Size(645, 256);
             this.panel3.TabIndex = 13;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Descrição";
+            // 
+            // txtDesc
+            // 
+            this.txtDesc.Location = new System.Drawing.Point(6, 79);
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.Size = new System.Drawing.Size(636, 171);
+            this.txtDesc.TabIndex = 13;
+            this.txtDesc.Text = "";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -99,32 +116,18 @@
             this.txtName.Size = new System.Drawing.Size(304, 20);
             this.txtName.TabIndex = 10;
             // 
-            // txtDesc
-            // 
-            this.txtDesc.Location = new System.Drawing.Point(6, 79);
-            this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(636, 171);
-            this.txtDesc.TabIndex = 13;
-            this.txtDesc.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 60);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Descrição";
-            // 
             // FormAddMock
             // 
+            this.AcceptButton = this.btnAdd;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(645, 306);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "FormAddMock";
             this.Text = "Novo cenário";
+            this.Load += new System.EventHandler(this.FormAddMock_Load);
             this.Resize += new System.EventHandler(this.FormAddMock_Resize);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

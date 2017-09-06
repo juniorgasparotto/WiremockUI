@@ -12,14 +12,14 @@ namespace WiremockUI
         private RichTextBoxLogWriter logWriter;
         private GridViewLogRequestResponse logTable;
         private FormMaster master;
-        private Mock mockService;
+        private Scenario mockService;
         private Dashboard.PlayType playType;
         private Proxy proxy;
         private int start;
         private int indexOfSearchText;
         private string labelDiff;
 
-        public FormStartMockService(FormMaster master, Proxy proxy, Mock mock, Dashboard.PlayType playType)
+        public FormStartMockService(FormMaster master, Proxy proxy, Scenario mock, Dashboard.PlayType playType)
         {
             InitializeComponent();
             this.txtSearchValue.Multiline = false;
