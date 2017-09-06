@@ -11,49 +11,56 @@
           "Name": "f",
           "IsDefault": false,
           "ShowURL": true,
-          "Description": ""
+          "Description": "",
+          "ShowName": false
         },
         {
           "Id": "506d5e80-0dac-44f9-aece-0b0f18d4a41e",
           "Name": "ss",
           "IsDefault": false,
           "ShowURL": true,
-          "Description": ""
+          "Description": "",
+          "ShowName": false
         },
         {
           "Id": "e608c7e4-afd4-481b-bec6-1c5a15462647",
           "Name": "esfdf",
           "IsDefault": false,
           "ShowURL": true,
-          "Description": "sdf"
+          "Description": "sdf",
+          "ShowName": false
         },
         {
           "Id": "8eb21e48-afaf-4c3c-b764-e27c7fb3ec1c",
           "Name": "asd",
           "IsDefault": false,
           "ShowURL": true,
-          "Description": "asd"
+          "Description": "asd",
+          "ShowName": false
         },
         {
           "Id": "c94cbaa0-0c43-49a6-a466-e815583ec7a6",
           "Name": "asdasd",
           "IsDefault": false,
           "ShowURL": true,
-          "Description": "asdasd"
+          "Description": "asdasd",
+          "ShowName": false
         },
         {
           "Id": "a92322db-2dad-4e98-b006-31d0f11d64d1",
           "Name": "as",
           "IsDefault": false,
           "ShowURL": true,
-          "Description": "a"
+          "Description": "a",
+          "ShowName": false
         },
         {
           "Id": "740c70bd-7430-4b8e-af44-eec3cb31c4ec",
           "Name": "teste cenario",
           "IsDefault": true,
           "ShowURL": true,
-          "Description": ""
+          "Description": "",
+          "ShowName": true
         }
       ],
       "Arguments": [
@@ -88,7 +95,8 @@
           "Name": "cenario1",
           "IsDefault": true,
           "ShowURL": false,
-          "Description": null
+          "Description": null,
+          "ShowName": false
         }
       ],
       "Arguments": [
@@ -117,7 +125,8 @@
           "Name": "cenario1",
           "IsDefault": true,
           "ShowURL": true,
-          "Description": null
+          "Description": null,
+          "ShowName": false
         }
       ],
       "Arguments": [
@@ -146,7 +155,8 @@
           "Name": "cenario2",
           "IsDefault": true,
           "ShowURL": true,
-          "Description": null
+          "Description": null,
+          "ShowName": true
         }
       ],
       "Arguments": [
@@ -175,7 +185,8 @@
           "Name": "cenario1",
           "IsDefault": true,
           "ShowURL": true,
-          "Description": null
+          "Description": null,
+          "ShowName": false
         }
       ],
       "Arguments": [

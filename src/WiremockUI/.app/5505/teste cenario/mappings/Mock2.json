@@ -1,0 +1,13 @@
+{
+  "request": {
+    "url": "/",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "Mock2.txt",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

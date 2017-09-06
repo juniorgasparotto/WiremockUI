@@ -61,12 +61,14 @@ namespace WiremockUI
             return Path.Combine(Proxy.GetFullPath(Scenario), "__files", Response.BodyFileName);
         }
 
-        public string GetFormattedName(string fileName, bool showUrl)
+        public string GetFormattedName(string fileName, bool showUrl, bool showName)
         {
-            if (showUrl)
+            if (showUrl && showName)
                 return Request?.Url + " (" + fileName + ")";
-
-            return fileName;
+            else if (showUrl && !showName)
+                return Request?.Url;
+            else
+                return fileName;
         }
 
         public enum ContentType

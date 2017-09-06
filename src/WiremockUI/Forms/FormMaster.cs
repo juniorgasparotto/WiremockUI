@@ -386,6 +386,7 @@ namespace WiremockUI
                 var editMenu = new ToolStripMenuItem();
                 var removeMenu = new ToolStripMenuItem();
                 var showUrlMenu = new ToolStripMenuItem();
+                var showNameMenu = new ToolStripMenuItem();
 
                 //Add the menu items to the menu.
                 menu.Items.AddRange(new ToolStripMenuItem[]
@@ -395,7 +396,8 @@ namespace WiremockUI
                     openFolderMenu,
                     editMenu,
                     removeMenu,
-                    showUrlMenu
+                    showUrlMenu,
+                    showNameMenu
                 });
 
                 menu.ImageList = imageList1;
@@ -411,6 +413,11 @@ namespace WiremockUI
                         showUrlMenu.ImageKey = "check";
                     else
                         showUrlMenu.ImageKey = "";
+
+                    if (scenario.ShowName)
+                        showNameMenu.ImageKey = "check";
+                    else
+                        showNameMenu.ImageKey = "";
 
                     if (!proxy.AlreadyRecord(scenario))
                     {
@@ -485,7 +492,25 @@ namespace WiremockUI
                     foreach(var nodeMap in nodesMaps)
                     {
                         var model = (TreeNodeMappingModel)nodeMap.Tag;
-                        var text = model.Mapping.GetFormattedName(model.File.GetOnlyFileName(), scenario.ShowURL);
+                        var text = model.Mapping.GetFormattedName(model.File.GetOnlyFileName(), scenario.ShowURL, scenario.ShowName);
+                        nodeMap.Text = text;
+                    }
+                };
+
+                showNameMenu.Text = "Visualizar Nome";
+                showNameMenu.Click += (a, b) =>
+                {
+                    var db = new UnitOfWork();
+                    scenario.ShowName = !scenario.ShowName;
+                    db.Proxies.Update(proxy);
+                    db.Save();
+
+                    var nodesMaps = GetAllMappingNodes(scenario);
+
+                    foreach (var nodeMap in nodesMaps)
+                    {
+                        var model = (TreeNodeMappingModel)nodeMap.Tag;
+                        var text = model.Mapping.GetFormattedName(model.File.GetOnlyFileName(), scenario.ShowURL, scenario.ShowName);
                         nodeMap.Text = text;
                     }
                 };
@@ -875,7 +900,7 @@ namespace WiremockUI
                 mapping = MappingModel.Create(proxy, scenario, content, out exMap);
 
             if (mapping != null)
-                mapName = mapping.GetFormattedName(mapName, scenario.ShowURL);
+                mapName = mapping.GetFormattedName(mapName, scenario.ShowURL, scenario.ShowName);
 
             var treeNodeMapping = new TreeNodeMappingModel
             {
@@ -1457,7 +1482,7 @@ namespace WiremockUI
                 {
                     var mapName = model.File.GetOnlyFileName();
                     if (model.Mapping != null)
-                        mapName = model.Mapping.GetFormattedName(mapName, model.Scenario.ShowURL);
+                        mapName = model.Mapping.GetFormattedName(mapName, model.Scenario.ShowURL, model.Scenario.ShowName);
                     e.Node.Text = mapName;
                     e.CancelEdit = true;
                 }
