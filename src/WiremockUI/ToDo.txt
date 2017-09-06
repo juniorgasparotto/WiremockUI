@@ -30,8 +30,11 @@ criar comentario por cenario - ok
 ao fechar a tab ir para a anterior - ok
 criar um iniciar com todas as configs do wiremock e deixar adicionar ou modificar as configs -  ok
 deixar copiar os textos da tela de start - ok
+criar comparador do request do log do wiremock com os requests existentes - ok
+problema do CTRL + BACKSPACE que adiciona caracter estranho em textbox - OK
+corrigir a usuabilidade dos atalhos dos forms, botoes iniciais e de fechar - ok
 
-----
+-- ToDo
 
 criar mecanismo para copiar como curl
 multiplas linguas
@@ -42,10 +45,8 @@ criar copiar para area de transferecia
   - url do proxy
   - comando java -jar 
   - curl
-criar esquema para subir codigo c# para programar o request e response
-criar comparador do request do log do wiremock com os requests existentes
-criar delete para cada nivel da treeview 
 
+criar delete para cada nivel da treeview (keypress)
 mudar pasta do debug para dentro da .app
 adicionar opção para remover o nome da treeview
 
@@ -54,8 +55,6 @@ adicionar opção para remover o nome da treeview
 ao renomear deve exibir apenas o nome do arquivo e não a URL
 esta criando pastas "files" e "mapping na raiz do projeto"
 deu um problema de encode no compara ao selecionar um mapa
-problema do CTRL + BACKSPACE que adiciona caracter estranho em textbox
-corrigir a usuabilidade dos atalhos dos forms, botoes iniciais e de fechar
 
 -- deploy 
 
@@ -66,6 +65,8 @@ criar tutorial
 
 -- despriorizados
 
+refatorar FormMaster.cs/Maneira de salvar o json/Separa treeview em componente
+criar esquema para subir codigo c# para programar o request e response
 criar esquema para abrir o url dos mapas no browser ou em um componente de composer (é possivel, mas sujeito a erros)
 adicionar varios tipos de mock (json, xml)]
 splash
