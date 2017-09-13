@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using com.github.tomakehurst.wiremock.verification;
 using static WiremockUI.HttpUtils;
 using System.Text;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -237,7 +238,7 @@ namespace WiremockUI
             };
 
             // view request
-            viewRequestMenu.Text = "Visualizar requisição (Formato do wiremock)";
+            viewRequestMenu.Text = Resource.viewRequestMenu;
             viewRequestMenu.Click += (a, b) =>
             {
                 var frmStart = new FormTextView(master, row.UrlAbsolute, row.RequestLog.ToString());
@@ -245,7 +246,7 @@ namespace WiremockUI
             };
 
             // view response
-            viewResponseMenu.Text = "Visualizar resposta  (Formato do wiremock)";
+            viewResponseMenu.Text = Resource.viewResponseMenu;
             viewResponseMenu.Click += (a, b) =>
             {
                 var frmStart = new FormTextView(master, row.UrlAbsolute, row.Response.ToString());
@@ -253,7 +254,7 @@ namespace WiremockUI
             };
 
             // view raw
-            viewRawMenu.Text = "Visualizar conteúdo";
+            viewRawMenu.Text = Resource.viewRawMenu;
             viewRawMenu.Click += (a, b) =>
             {
                 var frmStart = new FormTextView(master, row.UrlAbsolute, row.Raw);
@@ -261,7 +262,7 @@ namespace WiremockUI
             };
 
             // view in composer
-            viewInComposerMenu.Text = "Visualizar com WebRequest";
+            viewInComposerMenu.Text = Resource.viewInComposerMenu;
             viewInComposerMenu.Click += (a, b) =>
             {
                 var requestHeaders = GetHeaders(row.RequestLog);
@@ -274,7 +275,7 @@ namespace WiremockUI
             };
 
             // view in composer
-            compareMenu.Text = "Comparar...";
+            compareMenu.Text = Resource.compareMenu;
             compareMenu.Click += (a, b) =>
             {
                 var strBuilder = new StringBuilder();

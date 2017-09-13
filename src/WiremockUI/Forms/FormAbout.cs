@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -16,6 +10,9 @@ namespace WiremockUI
         public FormAbout()
         {
             InitializeComponent();
+            txtAboutText.Text = Resource.txtAboutText;
+            lblEmail.Text = Resource.email;
+            lblUrl.Text = Resource.gitHubProjectUrl;
         }
 
         private void lblEmail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -32,6 +29,5 @@ namespace WiremockUI
         {
             this.Close();
         }
-
     }
 }

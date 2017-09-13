@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -26,12 +27,12 @@ namespace WiremockUI
 
                     menu.Items.AddRange(new ToolStripMenuItem[]
                     {
-                    viewJsonMenu,
-                    viewXml
+                        viewJsonMenu,
+                        viewXml
                     });
 
                     // json
-                    viewJsonMenu.Text = "Formatar para Json";
+                    viewJsonMenu.Text = Resource.viewJsonMenu;
                     viewJsonMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(SelectedText))
@@ -41,7 +42,7 @@ namespace WiremockUI
                     };
 
                     // xml
-                    viewXml.Text = "Formatar para XML";
+                    viewXml.Text = Resource.viewXml;
                     viewXml.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(SelectedText))

@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -37,6 +38,10 @@ namespace WiremockUI
         public UcJsonView()
         {
             InitializeComponent();
+
+            tabRaw.Text = Resource.tabRaw;
+            tabTree.Text = Resource.tabTree;
+            btnFormat.Text = Resource.btnFormat;
         }
 
         public UcJsonView(string content, bool expandAll = true)
@@ -73,7 +78,7 @@ namespace WiremockUI
             }
             catch (Exception ex)
             {
-                lblError.Text = string.Format("Ocorreu um erro ao tentar carregar o JSON: {0}", ex.Message);
+                lblError.Text = string.Format(Resource.jsonLoadError, ex.Message);
                 lblError.Visible = true;
             }
         }
@@ -168,7 +173,7 @@ namespace WiremockUI
             });
 
             // add files
-            viewTextMenu.Text = "Visualizar no editor de texto";
+            viewTextMenu.Text = Resource.viewTextMenu;
             viewTextMenu.Click += (a, b) =>
             {
                 var name = node.Parent?.Text;
@@ -176,7 +181,7 @@ namespace WiremockUI
             };
 
             // add files
-            viewJsonMenu.Text = "Visualizar como Json";
+            viewJsonMenu.Text = Resource.viewAsJsonMenu;
             viewJsonMenu.Click += (a, b) =>
             {
                 var name = node.Parent?.Text;
@@ -184,14 +189,14 @@ namespace WiremockUI
             };
 
             // expand all
-            expandAllMenu.Text = "Expandir todos";
+            expandAllMenu.Text = Resource.expandAllMenu;
             expandAllMenu.Click += (a, b) =>
             {
                 node.ExpandAll();
             };
 
             // collapse all
-            collapseAllMenu.Text = "Fechar todos";
+            collapseAllMenu.Text = Resource.collapseAllMenu;
             collapseAllMenu.Click += (a, b) =>
             {
                 node.Collapse();

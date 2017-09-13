@@ -2,8 +2,8 @@
 using System.Windows.Forms;
 using System.Diagnostics;
 using WiremockUI.Data;
-using com.github.tomakehurst.wiremock.http;
 using System.IO;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -22,6 +22,20 @@ namespace WiremockUI
         public FormStartWiremockService(FormMaster master, Proxy proxy, Scenario scenario, Dashboard.PlayType playType)
         {
             InitializeComponent();
+
+            lblUrlTarget.Text = Resource.lblUrlTarget;
+            lblUrlProxy.Text = Resource.lblUrlProxy;
+            linkUrlTarget.Text = Resource.viewLink;
+            linkUrlProxy.Text = Resource.viewLink;
+            btnClean.Text = Resource.btnClean;
+            linkOpenFolder.Text = Resource.linkOpenFolder;
+            chkDisable.Text = Resource.chkDisable;
+            chkAutoScroll.Text = Resource.chkAutoScroll;
+            tabLogText.Text = Resource.tabLogText;
+            tabLogTable.Text = Resource.tabLogTable;
+            btnSearch.Text = Resource.btnSearch;
+            btnClose.Text = Resource.btnClose;
+
             this.txtSearchValue.Multiline = false;
 
             // log text
@@ -49,20 +63,20 @@ namespace WiremockUI
             this.playType = playType;
 
             this.txtFrom.Text = proxy.UrlTarget;
-            this.lblUrlTarget.Links.Add(0, proxy.UrlTarget.Length, proxy.UrlTarget);
+            this.linkUrlTarget.Links.Add(0, proxy.UrlTarget.Length, proxy.UrlTarget);
 
             var urlProxy = proxy.GetUrlProxy();
             this.txtTo.Text = urlProxy;
-            this.lblUrlProxy.Links.Add(0, urlProxy.Length, urlProxy);
+            this.linkUrlProxy.Links.Add(0, urlProxy.Length, urlProxy);
 
             var folderPath = proxy.GetFullPath(scenario);
             if (scenario != null && File.Exists(folderPath))
             {
-                this.lblOpenFolder.Links.Add(0, folderPath.Length, folderPath);
+                this.linkOpenFolder.Links.Add(0, folderPath.Length, folderPath);
             }
             else
             {
-                this.lblOpenFolder.Visible = false;
+                this.linkOpenFolder.Visible = false;
             }
         }
         

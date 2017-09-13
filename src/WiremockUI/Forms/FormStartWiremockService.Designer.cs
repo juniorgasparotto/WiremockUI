@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabLogs = new System.Windows.Forms.TabControl();
@@ -53,17 +53,17 @@
             this.toolStripStatusCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusValue = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblOpenFolder = new System.Windows.Forms.LinkLabel();
-            this.lblUrlTarget = new System.Windows.Forms.LinkLabel();
+            this.linkOpenFolder = new System.Windows.Forms.LinkLabel();
+            this.linkUrlTarget = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkDisable = new System.Windows.Forms.CheckBox();
             this.chkAutoScroll = new System.Windows.Forms.CheckBox();
             this.btnClean = new System.Windows.Forms.Button();
             this.txtTo = new WiremockUI.EditorTextBox();
             this.txtFrom = new WiremockUI.EditorTextBox();
-            this.lblUrlProxy = new System.Windows.Forms.LinkLabel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.linkUrlProxy = new System.Windows.Forms.LinkLabel();
+            this.lblUrlProxy = new System.Windows.Forms.Label();
+            this.lblUrlTarget = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabLogs.SuspendLayout();
@@ -171,6 +171,7 @@
             // 
             this.txtSearchValue.AcceptsTab = true;
             this.txtSearchValue.EnableFormatter = false;
+            this.txtSearchValue.EnableHistory = true;
             this.txtSearchValue.Location = new System.Drawing.Point(9, 8);
             this.txtSearchValue.MaxLength = 0;
             this.txtSearchValue.Name = "txtSearchValue";
@@ -195,8 +196,8 @@
             // 
             this.gridLog.AllowUserToAddRows = false;
             this.gridLog.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gridLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -323,27 +324,27 @@
             this.toolStripStatusValue.Size = new System.Drawing.Size(317, 15);
             this.toolStripStatusValue.Text = "(Selecione duas celulas de tempo para calcular a diferença)";
             // 
-            // lblOpenFolder
+            // linkOpenFolder
             // 
-            this.lblOpenFolder.AutoSize = true;
-            this.lblOpenFolder.Location = new System.Drawing.Point(90, 84);
-            this.lblOpenFolder.Name = "lblOpenFolder";
-            this.lblOpenFolder.Size = new System.Drawing.Size(53, 13);
-            this.lblOpenFolder.TabIndex = 23;
-            this.lblOpenFolder.TabStop = true;
-            this.lblOpenFolder.Text = "Abrir local";
-            this.lblOpenFolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblOpenFolder_LinkClicked);
+            this.linkOpenFolder.AutoSize = true;
+            this.linkOpenFolder.Location = new System.Drawing.Point(90, 84);
+            this.linkOpenFolder.Name = "linkOpenFolder";
+            this.linkOpenFolder.Size = new System.Drawing.Size(53, 13);
+            this.linkOpenFolder.TabIndex = 23;
+            this.linkOpenFolder.TabStop = true;
+            this.linkOpenFolder.Text = "Abrir local";
+            this.linkOpenFolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblOpenFolder_LinkClicked);
             // 
-            // lblUrlTarget
+            // linkUrlTarget
             // 
-            this.lblUrlTarget.AutoSize = true;
-            this.lblUrlTarget.Location = new System.Drawing.Point(537, 27);
-            this.lblUrlTarget.Name = "lblUrlTarget";
-            this.lblUrlTarget.Size = new System.Drawing.Size(23, 13);
-            this.lblUrlTarget.TabIndex = 20;
-            this.lblUrlTarget.TabStop = true;
-            this.lblUrlTarget.Text = "Ver";
-            this.lblUrlTarget.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblUrlTarget_LinkClicked);
+            this.linkUrlTarget.AutoSize = true;
+            this.linkUrlTarget.Location = new System.Drawing.Point(537, 27);
+            this.linkUrlTarget.Name = "linkUrlTarget";
+            this.linkUrlTarget.Size = new System.Drawing.Size(23, 13);
+            this.linkUrlTarget.TabIndex = 20;
+            this.linkUrlTarget.TabStop = true;
+            this.linkUrlTarget.Text = "Ver";
+            this.linkUrlTarget.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblUrlTarget_LinkClicked);
             // 
             // panel1
             // 
@@ -354,11 +355,11 @@
             this.panel1.Controls.Add(this.btnClean);
             this.panel1.Controls.Add(this.txtTo);
             this.panel1.Controls.Add(this.txtFrom);
-            this.panel1.Controls.Add(this.lblUrlTarget);
-            this.panel1.Controls.Add(this.lblOpenFolder);
+            this.panel1.Controls.Add(this.linkUrlTarget);
+            this.panel1.Controls.Add(this.linkOpenFolder);
+            this.panel1.Controls.Add(this.linkUrlProxy);
             this.panel1.Controls.Add(this.lblUrlProxy);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lblUrlTarget);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -406,6 +407,7 @@
             this.txtTo.AcceptsTab = true;
             this.txtTo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTo.EnableFormatter = false;
+            this.txtTo.EnableHistory = true;
             this.txtTo.Location = new System.Drawing.Point(91, 56);
             this.txtTo.MaxLength = 0;
             this.txtTo.Name = "txtTo";
@@ -419,6 +421,7 @@
             this.txtFrom.AcceptsTab = true;
             this.txtFrom.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFrom.EnableFormatter = false;
+            this.txtFrom.EnableHistory = true;
             this.txtFrom.Location = new System.Drawing.Point(91, 26);
             this.txtFrom.MaxLength = 0;
             this.txtFrom.Name = "txtFrom";
@@ -427,36 +430,36 @@
             this.txtFrom.TabIndex = 24;
             this.txtFrom.Text = "";
             // 
+            // linkUrlProxy
+            // 
+            this.linkUrlProxy.AutoSize = true;
+            this.linkUrlProxy.Location = new System.Drawing.Point(537, 57);
+            this.linkUrlProxy.Name = "linkUrlProxy";
+            this.linkUrlProxy.Size = new System.Drawing.Size(23, 13);
+            this.linkUrlProxy.TabIndex = 21;
+            this.linkUrlProxy.TabStop = true;
+            this.linkUrlProxy.Text = "Ver";
+            this.linkUrlProxy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblUrlProxy_LinkClicked);
+            // 
             // lblUrlProxy
             // 
             this.lblUrlProxy.AutoSize = true;
-            this.lblUrlProxy.Location = new System.Drawing.Point(537, 57);
+            this.lblUrlProxy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUrlProxy.Location = new System.Drawing.Point(6, 55);
             this.lblUrlProxy.Name = "lblUrlProxy";
-            this.lblUrlProxy.Size = new System.Drawing.Size(23, 13);
-            this.lblUrlProxy.TabIndex = 21;
-            this.lblUrlProxy.TabStop = true;
-            this.lblUrlProxy.Text = "Ver";
-            this.lblUrlProxy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblUrlProxy_LinkClicked);
+            this.lblUrlProxy.Size = new System.Drawing.Size(79, 13);
+            this.lblUrlProxy.TabIndex = 19;
+            this.lblUrlProxy.Text = "Url do proxy:";
             // 
-            // label4
+            // lblUrlTarget
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Url do proxy:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Url destino:";
+            this.lblUrlTarget.AutoSize = true;
+            this.lblUrlTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUrlTarget.Location = new System.Drawing.Point(12, 26);
+            this.lblUrlTarget.Name = "lblUrlTarget";
+            this.lblUrlTarget.Size = new System.Drawing.Size(72, 13);
+            this.lblUrlTarget.TabIndex = 18;
+            this.lblUrlTarget.Text = "Url destino:";
             // 
             // FormStartWiremockService
             // 
@@ -500,17 +503,17 @@
         private System.Windows.Forms.Button btnSearch;
         private EditorTextBox txtSearchValue;
         private System.Windows.Forms.TabPage tabLogTable;
-        private System.Windows.Forms.LinkLabel lblOpenFolder;
-        private System.Windows.Forms.LinkLabel lblUrlTarget;
+        private System.Windows.Forms.LinkLabel linkOpenFolder;
+        private System.Windows.Forms.LinkLabel linkUrlTarget;
         private EditorTextBox txtTo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox chkDisable;
         private System.Windows.Forms.CheckBox chkAutoScroll;
         private System.Windows.Forms.Button btnClean;
         private EditorTextBox txtFrom;
-        private System.Windows.Forms.LinkLabel lblUrlProxy;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.LinkLabel linkUrlProxy;
+        private System.Windows.Forms.Label lblUrlProxy;
+        private System.Windows.Forms.Label lblUrlTarget;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusValue;

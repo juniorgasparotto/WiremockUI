@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -26,7 +27,7 @@ namespace WiremockUI
         public FormCompareResult(TextFileDiff source, TextFileDiff destination, ArrayList DiffLines, double seconds)
         {
             InitializeComponent();
-            this.Text = string.Format("Resultado: {0} secs.", seconds.ToString("#0.00"));
+            this.Text = string.Format(Resource.compareResultTitle, seconds.ToString("#0.00"));
 
             ListViewItem lviS;
             ListViewItem lviD;

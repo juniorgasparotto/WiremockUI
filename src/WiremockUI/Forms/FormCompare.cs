@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using System.Windows.Forms;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -13,6 +14,10 @@ namespace WiremockUI
         public FormCompare(FormMaster master)
         {
             InitializeComponent();
+
+            btnCompare.Text = Resource.btnCompare;
+            Text = Resource.formCompareTitle;
+
             this.txtContent1.EnableFormatter = true;
             this.txtContent2.EnableFormatter = true;
             this.master = master;
@@ -50,7 +55,7 @@ namespace WiremockUI
             });
 
             // open file
-            openFileMenu.Text = "Abrir arquivo";
+            openFileMenu.Text = Resource.openFileMenu;
             openFileMenu.Click += (a, b) =>
             {
                 var openFileDialog1 = new OpenFileDialog();
@@ -61,7 +66,7 @@ namespace WiremockUI
             };
 
             // select file
-            openFileFromTreeViewMenu.Text = "Selecionar na árvore";
+            openFileFromTreeViewMenu.Text = Resource.openFileFromTreeViewMenu;
             openFileFromTreeViewMenu.Click += (a, b) =>
             {
                 master.SelectToCompare((filename) =>
@@ -75,7 +80,7 @@ namespace WiremockUI
             };
 
             // save file
-            saveMenu.Text = "Salvar";
+            saveMenu.Text = Resource.saveMenu;
             saveMenu.Click += (a, b) =>
             {
                 try
@@ -84,7 +89,7 @@ namespace WiremockUI
                 }
                 catch (Exception ex)
                 {
-                    Helper.MessageBoxError("Ocorreu um erro ao tentar salvar o arquivo: " + ex.Message);
+                    Helper.MessageBoxError(string.Format(Resource.saveFileErrorMessage, ex.Message));
                 }
             };
 

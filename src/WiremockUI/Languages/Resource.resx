@@ -117,34 +117,442 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutMenu" xml:space="preserve">
+  <data name="addProxyDuplicateNameMessage" xml:space="preserve">
+    <value>Esse 'Nome' já está em uso</value>
+  </data>
+  <data name="addProxyDuplicatePortMessage" xml:space="preserve">
+    <value>Essa 'Porta' já está em uso</value>
+  </data>
+  <data name="addProxyInvalidPortMessage" xml:space="preserve">
+    <value>O campo 'Porta' está inválido.</value>
+  </data>
+  <data name="addProxyRequiredNameMessage" xml:space="preserve">
+    <value>O campo 'Nome' é obrigatório.</value>
+  </data>
+  <data name="addProxyRequiredPortMessage" xml:space="preserve">
+    <value>O campo 'Porta' é obrigatório.</value>
+  </data>
+  <data name="addProxyRequiredUrlTargetMessage" xml:space="preserve">
+    <value>O campo 'Url destino' é obrigatório.</value>
+  </data>
+  <data name="addProxyScenario" xml:space="preserve">
+    <value>Adicionar cenário</value>
+  </data>
+  <data name="addScenarioDuplicateNameMessage" xml:space="preserve">
+    <value>Esse 'Nome' já está em uso</value>
+  </data>
+  <data name="addScenarioMenu" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="addScenarioRequiredNameMessage" xml:space="preserve">
+    <value>O campo 'Nome' é obrigatório.</value>
+  </data>
+  <data name="btnAdd" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="btnCancelFileSelectiong" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="btnClean" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="btnClose" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="btnCloseTab" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="btnCompare" xml:space="preserve">
+    <value>Comparar</value>
+  </data>
+  <data name="btnEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="btnExecute" xml:space="preserve">
+    <value>Executar</value>
+  </data>
+  <data name="btnFormat" xml:space="preserve">
+    <value>Formatar JSON</value>
+  </data>
+  <data name="btnOpenExplorer" xml:space="preserve">
+    <value>Abrir em um visualizador externo</value>
+  </data>
+  <data name="btnSaveFile" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="btnSearch" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="btnXmlFormat" xml:space="preserve">
+    <value>Formatar XML</value>
+  </data>
+  <data name="chk100Expect" xml:space="preserve">
+    <value>100-expect</value>
+  </data>
+  <data name="chkAutoContentLength" xml:space="preserve">
+    <value>Calcular o "Content-Length" automáticamente</value>
+  </data>
+  <data name="chkAutoScroll" xml:space="preserve">
+    <value>Rolar automáticamente</value>
+  </data>
+  <data name="chkDisable" xml:space="preserve">
+    <value>Desativar log</value>
+  </data>
+  <data name="collapseAllMenu" xml:space="preserve">
+    <value>Fechar todos</value>
+  </data>
+  <data name="compareMenu" xml:space="preserve">
+    <value>Comparar...</value>
+  </data>
+  <data name="compareResultTitle" xml:space="preserve">
+    <value>Resultado: {0} secs.</value>
+  </data>
+  <data name="deleteMappingMenu" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="duplicateMappingMenu" xml:space="preserve">
+    <value>Duplicar</value>
+  </data>
+  <data name="editProxyMenu" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="editScenarioMenu" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>glaubergasparottojr@hotmail.com</value>
+  </data>
+  <data name="expandAllMenu" xml:space="preserve">
+    <value>Expandir todos</value>
+  </data>
+  <data name="fileNotExistsMessage" xml:space="preserve">
+    <value>Arquivo inexistente</value>
+  </data>
+  <data name="formAddProxyInEditModeTitle" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="formAddProxyTitle" xml:space="preserve">
+    <value>Novo Proxy</value>
+  </data>
+  <data name="formAddScenarioInEditModeTitle" xml:space="preserve">
+    <value>Editar cenário</value>
+  </data>
+  <data name="formAddScenarioTitle" xml:space="preserve">
+    <value>Novo cenário</value>
+  </data>
+  <data name="formatJsonErrorMessage" xml:space="preserve">
+    <value>Esse JSON não é válido: {1}</value>
+  </data>
+  <data name="formatXmlErrorMessage" xml:space="preserve">
+    <value>Esse XML não é válido: {0}</value>
+  </data>
+  <data name="formCompareTitle" xml:space="preserve">
+    <value>Comparar textos</value>
+  </data>
+  <data name="FormMasterTitle" xml:space="preserve">
+    <value>Wiremock UI</value>
+  </data>
+  <data name="formWebRequest" xml:space="preserve">
+    <value>Web Request</value>
+  </data>
+  <data name="gitHubProjectUrl" xml:space="preserve">
+    <value>https://github.com/juniorgasparotto/WireMockUI</value>
+  </data>
+  <data name="invalidJsonMessage" xml:space="preserve">
+    <value>Esse JSON não é válido.</value>
+  </data>
+  <data name="jsonLoadError" xml:space="preserve">
+    <value>Ocorreu um erro ao tentar carregar o JSON: {0}</value>
+  </data>
+  <data name="lblMiliseconds" xml:space="preserve">
+    <value>milisegundos</value>
+  </data>
+  <data name="lblProxyNew" xml:space="preserve">
+    <value>Nome do proxy:</value>
+  </data>
+  <data name="lblProxyPort" xml:space="preserve">
+    <value>Porta do proxy:</value>
+  </data>
+  <data name="lblProxyTargetUrl" xml:space="preserve">
+    <value>Url de destino:</value>
+  </data>
+  <data name="lblScenarioDescription" xml:space="preserve">
+    <value>Descrição:</value>
+  </data>
+  <data name="lblScenarioName" xml:space="preserve">
+    <value>Nome:</value>
+  </data>
+  <data name="lblSelectFileCompare" xml:space="preserve">
+    <value>Selecione na árvore ao lado  (&lt;) um arquivo para fazer a comparação. Use dois cliques para selecionar.</value>
+  </data>
+  <data name="lblTimeout" xml:space="preserve">
+    <value>Timeout:</value>
+  </data>
+  <data name="lblUrlProxy" xml:space="preserve">
+    <value>Url do proxy:</value>
+  </data>
+  <data name="lblUrlTarget" xml:space="preserve">
+    <value>Url destino:</value>
+  </data>
+  <data name="linkOpenFolder" xml:space="preserve">
+    <value>Abrir local</value>
+  </data>
+  <data name="mappingBodyFileAlreadExistsMessage" xml:space="preserve">
+    <value>Esse arquivo de resposta já existe</value>
+  </data>
+  <data name="mappingFileAlreadyExistsMessage" xml:space="preserve">
+    <value>Esse arquivo de mapa já existe</value>
+  </data>
+  <data name="menuAbout" xml:space="preserve">
     <value>S&amp;obre</value>
   </data>
-  <data name="AddProxyMenu" xml:space="preserve">
+  <data name="menuAddMockService" xml:space="preserve">
     <value>&amp;Adicionar</value>
   </data>
-  <data name="ExitMenu" xml:space="preserve">
+  <data name="menuClose" xml:space="preserve">
     <value>&amp;Sair</value>
   </data>
-  <data name="FileMenu" xml:space="preserve">
+  <data name="menuFile" xml:space="preserve">
     <value>&amp;Arquivo</value>
   </data>
-  <data name="RefreshMenu" xml:space="preserve">
-    <value>&amp;Refresh</value>
+  <data name="menuJsonVisualizer" xml:space="preserve">
+    <value>&amp;Visualizador de JSON</value>
   </data>
-  <data name="ServiceMenu" xml:space="preserve">
-    <value>&amp;Serviços</value>
+  <data name="menuLanguages" xml:space="preserve">
+    <value>Idiomas</value>
   </data>
-  <data name="StartAllMenu" xml:space="preserve">
+  <data name="menuPlayAll" xml:space="preserve">
     <value>&amp;Iniciar todos</value>
   </data>
-  <data name="StartAndRecordMenu" xml:space="preserve">
+  <data name="menuPlayAndRecordAll" xml:space="preserve">
     <value>Iniciar e &amp;Gravar todos</value>
   </data>
-  <data name="StopAllMenu" xml:space="preserve">
+  <data name="menuRefresh" xml:space="preserve">
+    <value>&amp;Refresh</value>
+  </data>
+  <data name="menuServices" xml:space="preserve">
+    <value>&amp;Serviços</value>
+  </data>
+  <data name="menuStopAll" xml:space="preserve">
     <value>&amp;Parar todos</value>
   </data>
-  <data name="ToolsMenu" xml:space="preserve">
+  <data name="menuTextCompare" xml:space="preserve">
+    <value>&amp;Comparador de texto</value>
+  </data>
+  <data name="menuTextEditor" xml:space="preserve">
+    <value>&amp;Editor de texto</value>
+  </data>
+  <data name="menuTools" xml:space="preserve">
     <value>&amp;Ferramentas</value>
+  </data>
+  <data name="menuWebRequest" xml:space="preserve">
+    <value>&amp;Web Request</value>
+  </data>
+  <data name="messageBoxAlertTitle" xml:space="preserve">
+    <value>Alerta</value>
+  </data>
+  <data name="messageBoxErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="messageBoxQuestionTitle" xml:space="preserve">
+    <value>Pergunta</value>
+  </data>
+  <data name="newBodyFileName" xml:space="preserve">
+    <value>Mock.txt</value>
+  </data>
+  <data name="newMappingFileName" xml:space="preserve">
+    <value>Mock.json</value>
+  </data>
+  <data name="openFileFromTreeViewMenu" xml:space="preserve">
+    <value>Selecionar na árvore</value>
+  </data>
+  <data name="openFileMenu" xml:space="preserve">
+    <value>Abrir arquivo</value>
+  </data>
+  <data name="openProxyFolderMenu" xml:space="preserve">
+    <value>Abrir pasta do proxy</value>
+  </data>
+  <data name="openProxyUrlProxyScenarioMenu" xml:space="preserve">
+    <value>Abrir URL do proxy no browser</value>
+  </data>
+  <data name="openProxyUrlTargetMenu" xml:space="preserve">
+    <value>Abrir URL destino no browser</value>
+  </data>
+  <data name="openScenarioFolderMenu" xml:space="preserve">
+    <value>Abrir pasta do cenário</value>
+  </data>
+  <data name="removeMappingConfirmMessage" xml:space="preserve">
+    <value>Deseja realmente remover esse arquivo?</value>
+  </data>
+  <data name="removeMappingErrorMessage" xml:space="preserve">
+    <value>Ocorreu um erro ao tentar excluir esse arquivo: {0}</value>
+  </data>
+  <data name="removeProxyConfirmMessage" xml:space="preserve">
+    <value>Deseja realmente excluir esse proxy?</value>
+  </data>
+  <data name="removeProxyConfirmTitle" xml:space="preserve">
+    <value>Confirmação</value>
+  </data>
+  <data name="removeProxyError" xml:space="preserve">
+    <value>Ocorreu um problema ao tentar excluir a pasta. Tente fazer esse processo manualmente.</value>
+  </data>
+  <data name="removeProxyMenu" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="removeScenarioMenu" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="renameFileError" xml:space="preserve">
+    <value>Erro ao renomear arquivo: {0}</value>
+  </data>
+  <data name="renameMappingMenu" xml:space="preserve">
+    <value>Renomear</value>
+  </data>
+  <data name="saveFileErrorMessage" xml:space="preserve">
+    <value>Ocorreu um erro ao tentar salvar o arquivo: {0}</value>
+  </data>
+  <data name="saveMenu" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="scenarioConfirmRemoveMessage" xml:space="preserve">
+    <value>Deseja realmente excluir esse cenário?</value>
+  </data>
+  <data name="scenarioConfirmRemoveTitle" xml:space="preserve">
+    <value>Confirmação</value>
+  </data>
+  <data name="scenarioRemoveError" xml:space="preserve">
+    <value>Ocorreu um problema ao tentar excluir a pasta. Tente fazer esse processo manualmente.</value>
+  </data>
+  <data name="scenarioStopMessage" xml:space="preserve">
+    <value>Para continuar é necessário parar a execução desse proxy.</value>
+  </data>
+  <data name="selectTextErrorMessage" xml:space="preserve">
+    <value>Ocorreu um erro ao selecionar o arquivo: {0}</value>
+  </data>
+  <data name="setScenarioDefaultMenu" xml:space="preserve">
+    <value>Definir como padrão</value>
+  </data>
+  <data name="showScenarioNameMenu" xml:space="preserve">
+    <value>Visualizar Nome</value>
+  </data>
+  <data name="showScenarioUrlMenu" xml:space="preserve">
+    <value>Visualizar URL</value>
+  </data>
+  <data name="startProxyAndRecordMenu" xml:space="preserve">
+    <value>Iniciar e Gravar</value>
+  </data>
+  <data name="startProxyAsProxyMenu" xml:space="preserve">
+    <value>Iniciar (Somente Proxy)</value>
+  </data>
+  <data name="startProxyMenu" xml:space="preserve">
+    <value>Iniciar</value>
+  </data>
+  <data name="startServerAsProxyText" xml:space="preserve">
+    <value>(Proxy)</value>
+  </data>
+  <data name="startServerError" xml:space="preserve">
+    <value>Ocorreu um erro ao tentar iniciar: {0}: {1}</value>
+  </data>
+  <data name="startServerRecordText" xml:space="preserve">
+    <value>(Gravando)</value>
+  </data>
+  <data name="stopProxyMenu" xml:space="preserve">
+    <value>Parar</value>
+  </data>
+  <data name="stopServerConfirmMessage" xml:space="preserve">
+    <value>Deseja realmente parar o serviço?</value>
+  </data>
+  <data name="stsStatus" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="stsTime" xml:space="preserve">
+    <value>Tempo:</value>
+  </data>
+  <data name="tabLogTable" xml:space="preserve">
+    <value>Tabela</value>
+  </data>
+  <data name="tabLogText" xml:space="preserve">
+    <value>Log em texto</value>
+  </data>
+  <data name="tabProxyAdvance" xml:space="preserve">
+    <value>Avançado</value>
+  </data>
+  <data name="tabProxyBasic" xml:space="preserve">
+    <value>Básico</value>
+  </data>
+  <data name="tabRaw" xml:space="preserve">
+    <value>Raw</value>
+  </data>
+  <data name="tabRequestBody" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="tabRequestHeaders" xml:space="preserve">
+    <value>Headers</value>
+  </data>
+  <data name="tabRequestHeadersReal" xml:space="preserve">
+    <value>Header (Final)</value>
+  </data>
+  <data name="tabRequestOptions" xml:space="preserve">
+    <value>Opções</value>
+  </data>
+  <data name="tabResponseBody" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="tabResponseHeaders" xml:space="preserve">
+    <value>Headers</value>
+  </data>
+  <data name="tabTree" xml:space="preserve">
+    <value>JSON Viewer</value>
+  </data>
+  <data name="templateBodyFileName" xml:space="preserve">
+    <value>Templates/Files/New.txt</value>
+  </data>
+  <data name="templateMapFileName" xml:space="preserve">
+    <value>Templates/Mappings/New.json</value>
+  </data>
+  <data name="toggleMappingStateMenu" xml:space="preserve">
+    <value>Habilitado</value>
+  </data>
+  <data name="treeviewTopNode" xml:space="preserve">
+    <value>Serviços</value>
+  </data>
+  <data name="txtAboutText" xml:space="preserve">
+    <value>Esse projeto foi feito por Glauber Gasparotto.</value>
+  </data>
+  <data name="viewAsJsonMenu" xml:space="preserve">
+    <value>Visualizar como Json</value>
+  </data>
+  <data name="viewInComposerMenu" xml:space="preserve">
+    <value>Visualizar com WebRequest</value>
+  </data>
+  <data name="viewJsonMenu" xml:space="preserve">
+    <value>Formatar para Json</value>
+  </data>
+  <data name="viewLink" xml:space="preserve">
+    <value>Ver</value>
+  </data>
+  <data name="viewMappingBodyInExplorerResponseMenu" xml:space="preserve">
+    <value>Visualizar no explorer</value>
+  </data>
+  <data name="viewMappingInExplorerMenu" xml:space="preserve">
+    <value>Visualizar no explorer</value>
+  </data>
+  <data name="viewRawMenu" xml:space="preserve">
+    <value>Visualizar conteúdo</value>
+  </data>
+  <data name="viewRequestMenu" xml:space="preserve">
+    <value>Visualizar requisição (Formato do wiremock)</value>
+  </data>
+  <data name="viewResponseMenu" xml:space="preserve">
+    <value>Visualizar resposta  (Formato do wiremock)</value>
+  </data>
+  <data name="viewTextMenu" xml:space="preserve">
+    <value>Visualizar no editor de texto</value>
+  </data>
+  <data name="viewXml" xml:space="preserve">
+    <value>Formatar para XML</value>
   </data>
 </root>

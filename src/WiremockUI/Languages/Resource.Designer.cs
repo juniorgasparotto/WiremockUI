@@ -61,92 +61,1316 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Esse &apos;Nome&apos; já está em uso.
+        /// </summary>
+        internal static string addProxyDuplicateNameMessage {
+            get {
+                return ResourceManager.GetString("addProxyDuplicateNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Essa &apos;Porta&apos; já está em uso.
+        /// </summary>
+        internal static string addProxyDuplicatePortMessage {
+            get {
+                return ResourceManager.GetString("addProxyDuplicatePortMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo &apos;Porta&apos; está inválido..
+        /// </summary>
+        internal static string addProxyInvalidPortMessage {
+            get {
+                return ResourceManager.GetString("addProxyInvalidPortMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo &apos;Nome&apos; é obrigatório..
+        /// </summary>
+        internal static string addProxyRequiredNameMessage {
+            get {
+                return ResourceManager.GetString("addProxyRequiredNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo &apos;Porta&apos; é obrigatório..
+        /// </summary>
+        internal static string addProxyRequiredPortMessage {
+            get {
+                return ResourceManager.GetString("addProxyRequiredPortMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo &apos;Url destino&apos; é obrigatório..
+        /// </summary>
+        internal static string addProxyRequiredUrlTargetMessage {
+            get {
+                return ResourceManager.GetString("addProxyRequiredUrlTargetMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adicionar cenário.
+        /// </summary>
+        internal static string addProxyScenario {
+            get {
+                return ResourceManager.GetString("addProxyScenario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Esse &apos;Nome&apos; já está em uso.
+        /// </summary>
+        internal static string addScenarioDuplicateNameMessage {
+            get {
+                return ResourceManager.GetString("addScenarioDuplicateNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adicionar.
+        /// </summary>
+        internal static string addScenarioMenu {
+            get {
+                return ResourceManager.GetString("addScenarioMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo &apos;Nome&apos; é obrigatório..
+        /// </summary>
+        internal static string addScenarioRequiredNameMessage {
+            get {
+                return ResourceManager.GetString("addScenarioRequiredNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adicionar.
+        /// </summary>
+        internal static string btnAdd {
+            get {
+                return ResourceManager.GetString("btnAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancelar.
+        /// </summary>
+        internal static string btnCancel {
+            get {
+                return ResourceManager.GetString("btnCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancelar.
+        /// </summary>
+        internal static string btnCancelFileSelectiong {
+            get {
+                return ResourceManager.GetString("btnCancelFileSelectiong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limpar.
+        /// </summary>
+        internal static string btnClean {
+            get {
+                return ResourceManager.GetString("btnClean", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fechar.
+        /// </summary>
+        internal static string btnClose {
+            get {
+                return ResourceManager.GetString("btnClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fechar.
+        /// </summary>
+        internal static string btnCloseTab {
+            get {
+                return ResourceManager.GetString("btnCloseTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comparar.
+        /// </summary>
+        internal static string btnCompare {
+            get {
+                return ResourceManager.GetString("btnCompare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar.
+        /// </summary>
+        internal static string btnEdit {
+            get {
+                return ResourceManager.GetString("btnEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executar.
+        /// </summary>
+        internal static string btnExecute {
+            get {
+                return ResourceManager.GetString("btnExecute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formatar JSON.
+        /// </summary>
+        internal static string btnFormat {
+            get {
+                return ResourceManager.GetString("btnFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abrir em um visualizador externo.
+        /// </summary>
+        internal static string btnOpenExplorer {
+            get {
+                return ResourceManager.GetString("btnOpenExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salvar.
+        /// </summary>
+        internal static string btnSaveFile {
+            get {
+                return ResourceManager.GetString("btnSaveFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar.
+        /// </summary>
+        internal static string btnSearch {
+            get {
+                return ResourceManager.GetString("btnSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formatar XML.
+        /// </summary>
+        internal static string btnXmlFormat {
+            get {
+                return ResourceManager.GetString("btnXmlFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 100-expect.
+        /// </summary>
+        internal static string chk100Expect {
+            get {
+                return ResourceManager.GetString("chk100Expect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calcular o &quot;Content-Length&quot; automáticamente.
+        /// </summary>
+        internal static string chkAutoContentLength {
+            get {
+                return ResourceManager.GetString("chkAutoContentLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rolar automáticamente.
+        /// </summary>
+        internal static string chkAutoScroll {
+            get {
+                return ResourceManager.GetString("chkAutoScroll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desativar log.
+        /// </summary>
+        internal static string chkDisable {
+            get {
+                return ResourceManager.GetString("chkDisable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fechar todos.
+        /// </summary>
+        internal static string collapseAllMenu {
+            get {
+                return ResourceManager.GetString("collapseAllMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comparar....
+        /// </summary>
+        internal static string compareMenu {
+            get {
+                return ResourceManager.GetString("compareMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resultado: {0} secs..
+        /// </summary>
+        internal static string compareResultTitle {
+            get {
+                return ResourceManager.GetString("compareResultTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remover.
+        /// </summary>
+        internal static string deleteMappingMenu {
+            get {
+                return ResourceManager.GetString("deleteMappingMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplicar.
+        /// </summary>
+        internal static string duplicateMappingMenu {
+            get {
+                return ResourceManager.GetString("duplicateMappingMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar.
+        /// </summary>
+        internal static string editProxyMenu {
+            get {
+                return ResourceManager.GetString("editProxyMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar.
+        /// </summary>
+        internal static string editScenarioMenu {
+            get {
+                return ResourceManager.GetString("editScenarioMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to glaubergasparottojr@hotmail.com.
+        /// </summary>
+        internal static string email {
+            get {
+                return ResourceManager.GetString("email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expandir todos.
+        /// </summary>
+        internal static string expandAllMenu {
+            get {
+                return ResourceManager.GetString("expandAllMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arquivo inexistente.
+        /// </summary>
+        internal static string fileNotExistsMessage {
+            get {
+                return ResourceManager.GetString("fileNotExistsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar.
+        /// </summary>
+        internal static string formAddProxyInEditModeTitle {
+            get {
+                return ResourceManager.GetString("formAddProxyInEditModeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Novo Proxy.
+        /// </summary>
+        internal static string formAddProxyTitle {
+            get {
+                return ResourceManager.GetString("formAddProxyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar cenário.
+        /// </summary>
+        internal static string formAddScenarioInEditModeTitle {
+            get {
+                return ResourceManager.GetString("formAddScenarioInEditModeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Novo cenário.
+        /// </summary>
+        internal static string formAddScenarioTitle {
+            get {
+                return ResourceManager.GetString("formAddScenarioTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Esse JSON não é válido: {1}.
+        /// </summary>
+        internal static string formatJsonErrorMessage {
+            get {
+                return ResourceManager.GetString("formatJsonErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Esse XML não é válido: {0}.
+        /// </summary>
+        internal static string formatXmlErrorMessage {
+            get {
+                return ResourceManager.GetString("formatXmlErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comparar textos.
+        /// </summary>
+        internal static string formCompareTitle {
+            get {
+                return ResourceManager.GetString("formCompareTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wiremock UI.
+        /// </summary>
+        internal static string FormMasterTitle {
+            get {
+                return ResourceManager.GetString("FormMasterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web Request.
+        /// </summary>
+        internal static string formWebRequest {
+            get {
+                return ResourceManager.GetString("formWebRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/juniorgasparotto/WireMockUI.
+        /// </summary>
+        internal static string gitHubProjectUrl {
+            get {
+                return ResourceManager.GetString("gitHubProjectUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Esse JSON não é válido..
+        /// </summary>
+        internal static string invalidJsonMessage {
+            get {
+                return ResourceManager.GetString("invalidJsonMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocorreu um erro ao tentar carregar o JSON: {0}.
+        /// </summary>
+        internal static string jsonLoadError {
+            get {
+                return ResourceManager.GetString("jsonLoadError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to milisegundos.
+        /// </summary>
+        internal static string lblMiliseconds {
+            get {
+                return ResourceManager.GetString("lblMiliseconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome do proxy:.
+        /// </summary>
+        internal static string lblProxyNew {
+            get {
+                return ResourceManager.GetString("lblProxyNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Porta do proxy:.
+        /// </summary>
+        internal static string lblProxyPort {
+            get {
+                return ResourceManager.GetString("lblProxyPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Url de destino:.
+        /// </summary>
+        internal static string lblProxyTargetUrl {
+            get {
+                return ResourceManager.GetString("lblProxyTargetUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Descrição:.
+        /// </summary>
+        internal static string lblScenarioDescription {
+            get {
+                return ResourceManager.GetString("lblScenarioDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome:.
+        /// </summary>
+        internal static string lblScenarioName {
+            get {
+                return ResourceManager.GetString("lblScenarioName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecione na árvore ao lado  (&lt;) um arquivo para fazer a comparação. Use dois cliques para selecionar..
+        /// </summary>
+        internal static string lblSelectFileCompare {
+            get {
+                return ResourceManager.GetString("lblSelectFileCompare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timeout:.
+        /// </summary>
+        internal static string lblTimeout {
+            get {
+                return ResourceManager.GetString("lblTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Url do proxy:.
+        /// </summary>
+        internal static string lblUrlProxy {
+            get {
+                return ResourceManager.GetString("lblUrlProxy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Url destino:.
+        /// </summary>
+        internal static string lblUrlTarget {
+            get {
+                return ResourceManager.GetString("lblUrlTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abrir local.
+        /// </summary>
+        internal static string linkOpenFolder {
+            get {
+                return ResourceManager.GetString("linkOpenFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Esse arquivo de resposta já existe.
+        /// </summary>
+        internal static string mappingBodyFileAlreadExistsMessage {
+            get {
+                return ResourceManager.GetString("mappingBodyFileAlreadExistsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Esse arquivo de mapa já existe.
+        /// </summary>
+        internal static string mappingFileAlreadyExistsMessage {
+            get {
+                return ResourceManager.GetString("mappingFileAlreadyExistsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to S&amp;obre.
         /// </summary>
-        internal static string AboutMenu {
+        internal static string menuAbout {
             get {
-                return ResourceManager.GetString("AboutMenu", resourceCulture);
+                return ResourceManager.GetString("menuAbout", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &amp;Adicionar.
         /// </summary>
-        internal static string AddProxyMenu {
+        internal static string menuAddMockService {
             get {
-                return ResourceManager.GetString("AddProxyMenu", resourceCulture);
+                return ResourceManager.GetString("menuAddMockService", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &amp;Sair.
         /// </summary>
-        internal static string ExitMenu {
+        internal static string menuClose {
             get {
-                return ResourceManager.GetString("ExitMenu", resourceCulture);
+                return ResourceManager.GetString("menuClose", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &amp;Arquivo.
         /// </summary>
-        internal static string FileMenu {
+        internal static string menuFile {
             get {
-                return ResourceManager.GetString("FileMenu", resourceCulture);
+                return ResourceManager.GetString("menuFile", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Refresh.
+        ///   Looks up a localized string similar to &amp;Visualizador de JSON.
         /// </summary>
-        internal static string RefreshMenu {
+        internal static string menuJsonVisualizer {
             get {
-                return ResourceManager.GetString("RefreshMenu", resourceCulture);
+                return ResourceManager.GetString("menuJsonVisualizer", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Serviços.
+        ///   Looks up a localized string similar to Idiomas.
         /// </summary>
-        internal static string ServiceMenu {
+        internal static string menuLanguages {
             get {
-                return ResourceManager.GetString("ServiceMenu", resourceCulture);
+                return ResourceManager.GetString("menuLanguages", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &amp;Iniciar todos.
         /// </summary>
-        internal static string StartAllMenu {
+        internal static string menuPlayAll {
             get {
-                return ResourceManager.GetString("StartAllMenu", resourceCulture);
+                return ResourceManager.GetString("menuPlayAll", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Iniciar e &amp;Gravar todos.
         /// </summary>
-        internal static string StartAndRecordMenu {
+        internal static string menuPlayAndRecordAll {
             get {
-                return ResourceManager.GetString("StartAndRecordMenu", resourceCulture);
+                return ResourceManager.GetString("menuPlayAndRecordAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Refresh.
+        /// </summary>
+        internal static string menuRefresh {
+            get {
+                return ResourceManager.GetString("menuRefresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Serviços.
+        /// </summary>
+        internal static string menuServices {
+            get {
+                return ResourceManager.GetString("menuServices", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &amp;Parar todos.
         /// </summary>
-        internal static string StopAllMenu {
+        internal static string menuStopAll {
             get {
-                return ResourceManager.GetString("StopAllMenu", resourceCulture);
+                return ResourceManager.GetString("menuStopAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Comparador de texto.
+        /// </summary>
+        internal static string menuTextCompare {
+            get {
+                return ResourceManager.GetString("menuTextCompare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Editor de texto.
+        /// </summary>
+        internal static string menuTextEditor {
+            get {
+                return ResourceManager.GetString("menuTextEditor", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &amp;Ferramentas.
         /// </summary>
-        internal static string ToolsMenu {
+        internal static string menuTools {
             get {
-                return ResourceManager.GetString("ToolsMenu", resourceCulture);
+                return ResourceManager.GetString("menuTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Web Request.
+        /// </summary>
+        internal static string menuWebRequest {
+            get {
+                return ResourceManager.GetString("menuWebRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alerta.
+        /// </summary>
+        internal static string messageBoxAlertTitle {
+            get {
+                return ResourceManager.GetString("messageBoxAlertTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string messageBoxErrorTitle {
+            get {
+                return ResourceManager.GetString("messageBoxErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pergunta.
+        /// </summary>
+        internal static string messageBoxQuestionTitle {
+            get {
+                return ResourceManager.GetString("messageBoxQuestionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mock.txt.
+        /// </summary>
+        internal static string newBodyFileName {
+            get {
+                return ResourceManager.GetString("newBodyFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mock.json.
+        /// </summary>
+        internal static string newMappingFileName {
+            get {
+                return ResourceManager.GetString("newMappingFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecionar na árvore.
+        /// </summary>
+        internal static string openFileFromTreeViewMenu {
+            get {
+                return ResourceManager.GetString("openFileFromTreeViewMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abrir arquivo.
+        /// </summary>
+        internal static string openFileMenu {
+            get {
+                return ResourceManager.GetString("openFileMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abrir pasta do proxy.
+        /// </summary>
+        internal static string openProxyFolderMenu {
+            get {
+                return ResourceManager.GetString("openProxyFolderMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abrir URL do proxy no browser.
+        /// </summary>
+        internal static string openProxyUrlProxyScenarioMenu {
+            get {
+                return ResourceManager.GetString("openProxyUrlProxyScenarioMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abrir URL destino no browser.
+        /// </summary>
+        internal static string openProxyUrlTargetMenu {
+            get {
+                return ResourceManager.GetString("openProxyUrlTargetMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abrir pasta do cenário.
+        /// </summary>
+        internal static string openScenarioFolderMenu {
+            get {
+                return ResourceManager.GetString("openScenarioFolderMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente remover esse arquivo?.
+        /// </summary>
+        internal static string removeMappingConfirmMessage {
+            get {
+                return ResourceManager.GetString("removeMappingConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocorreu um erro ao tentar excluir esse arquivo: {0}.
+        /// </summary>
+        internal static string removeMappingErrorMessage {
+            get {
+                return ResourceManager.GetString("removeMappingErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente excluir esse proxy?.
+        /// </summary>
+        internal static string removeProxyConfirmMessage {
+            get {
+                return ResourceManager.GetString("removeProxyConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmação.
+        /// </summary>
+        internal static string removeProxyConfirmTitle {
+            get {
+                return ResourceManager.GetString("removeProxyConfirmTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocorreu um problema ao tentar excluir a pasta. Tente fazer esse processo manualmente..
+        /// </summary>
+        internal static string removeProxyError {
+            get {
+                return ResourceManager.GetString("removeProxyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remover.
+        /// </summary>
+        internal static string removeProxyMenu {
+            get {
+                return ResourceManager.GetString("removeProxyMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remover.
+        /// </summary>
+        internal static string removeScenarioMenu {
+            get {
+                return ResourceManager.GetString("removeScenarioMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao renomear arquivo: {0}.
+        /// </summary>
+        internal static string renameFileError {
+            get {
+                return ResourceManager.GetString("renameFileError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Renomear.
+        /// </summary>
+        internal static string renameMappingMenu {
+            get {
+                return ResourceManager.GetString("renameMappingMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocorreu um erro ao tentar salvar o arquivo: {0}.
+        /// </summary>
+        internal static string saveFileErrorMessage {
+            get {
+                return ResourceManager.GetString("saveFileErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salvar.
+        /// </summary>
+        internal static string saveMenu {
+            get {
+                return ResourceManager.GetString("saveMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente excluir esse cenário?.
+        /// </summary>
+        internal static string scenarioConfirmRemoveMessage {
+            get {
+                return ResourceManager.GetString("scenarioConfirmRemoveMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmação.
+        /// </summary>
+        internal static string scenarioConfirmRemoveTitle {
+            get {
+                return ResourceManager.GetString("scenarioConfirmRemoveTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocorreu um problema ao tentar excluir a pasta. Tente fazer esse processo manualmente..
+        /// </summary>
+        internal static string scenarioRemoveError {
+            get {
+                return ResourceManager.GetString("scenarioRemoveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Para continuar é necessário parar a execução desse proxy..
+        /// </summary>
+        internal static string scenarioStopMessage {
+            get {
+                return ResourceManager.GetString("scenarioStopMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocorreu um erro ao selecionar o arquivo: {0}.
+        /// </summary>
+        internal static string selectTextErrorMessage {
+            get {
+                return ResourceManager.GetString("selectTextErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Definir como padrão.
+        /// </summary>
+        internal static string setScenarioDefaultMenu {
+            get {
+                return ResourceManager.GetString("setScenarioDefaultMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar Nome.
+        /// </summary>
+        internal static string showScenarioNameMenu {
+            get {
+                return ResourceManager.GetString("showScenarioNameMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar URL.
+        /// </summary>
+        internal static string showScenarioUrlMenu {
+            get {
+                return ResourceManager.GetString("showScenarioUrlMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iniciar e Gravar.
+        /// </summary>
+        internal static string startProxyAndRecordMenu {
+            get {
+                return ResourceManager.GetString("startProxyAndRecordMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iniciar (Somente Proxy).
+        /// </summary>
+        internal static string startProxyAsProxyMenu {
+            get {
+                return ResourceManager.GetString("startProxyAsProxyMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iniciar.
+        /// </summary>
+        internal static string startProxyMenu {
+            get {
+                return ResourceManager.GetString("startProxyMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Proxy).
+        /// </summary>
+        internal static string startServerAsProxyText {
+            get {
+                return ResourceManager.GetString("startServerAsProxyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocorreu um erro ao tentar iniciar: {0}: {1}.
+        /// </summary>
+        internal static string startServerError {
+            get {
+                return ResourceManager.GetString("startServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Gravando).
+        /// </summary>
+        internal static string startServerRecordText {
+            get {
+                return ResourceManager.GetString("startServerRecordText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parar.
+        /// </summary>
+        internal static string stopProxyMenu {
+            get {
+                return ResourceManager.GetString("stopProxyMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente parar o serviço?.
+        /// </summary>
+        internal static string stopServerConfirmMessage {
+            get {
+                return ResourceManager.GetString("stopServerConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status:.
+        /// </summary>
+        internal static string stsStatus {
+            get {
+                return ResourceManager.GetString("stsStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tempo:.
+        /// </summary>
+        internal static string stsTime {
+            get {
+                return ResourceManager.GetString("stsTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabela.
+        /// </summary>
+        internal static string tabLogTable {
+            get {
+                return ResourceManager.GetString("tabLogTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log em texto.
+        /// </summary>
+        internal static string tabLogText {
+            get {
+                return ResourceManager.GetString("tabLogText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Avançado.
+        /// </summary>
+        internal static string tabProxyAdvance {
+            get {
+                return ResourceManager.GetString("tabProxyAdvance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Básico.
+        /// </summary>
+        internal static string tabProxyBasic {
+            get {
+                return ResourceManager.GetString("tabProxyBasic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Raw.
+        /// </summary>
+        internal static string tabRaw {
+            get {
+                return ResourceManager.GetString("tabRaw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Body.
+        /// </summary>
+        internal static string tabRequestBody {
+            get {
+                return ResourceManager.GetString("tabRequestBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Headers.
+        /// </summary>
+        internal static string tabRequestHeaders {
+            get {
+                return ResourceManager.GetString("tabRequestHeaders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Header (Final).
+        /// </summary>
+        internal static string tabRequestHeadersReal {
+            get {
+                return ResourceManager.GetString("tabRequestHeadersReal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opções.
+        /// </summary>
+        internal static string tabRequestOptions {
+            get {
+                return ResourceManager.GetString("tabRequestOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Body.
+        /// </summary>
+        internal static string tabResponseBody {
+            get {
+                return ResourceManager.GetString("tabResponseBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Headers.
+        /// </summary>
+        internal static string tabResponseHeaders {
+            get {
+                return ResourceManager.GetString("tabResponseHeaders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JSON Viewer.
+        /// </summary>
+        internal static string tabTree {
+            get {
+                return ResourceManager.GetString("tabTree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Templates/Files/New.txt.
+        /// </summary>
+        internal static string templateBodyFileName {
+            get {
+                return ResourceManager.GetString("templateBodyFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Templates/Mappings/New.json.
+        /// </summary>
+        internal static string templateMapFileName {
+            get {
+                return ResourceManager.GetString("templateMapFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Habilitado.
+        /// </summary>
+        internal static string toggleMappingStateMenu {
+            get {
+                return ResourceManager.GetString("toggleMappingStateMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serviços.
+        /// </summary>
+        internal static string treeviewTopNode {
+            get {
+                return ResourceManager.GetString("treeviewTopNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Esse projeto foi feito por Glauber Gasparotto..
+        /// </summary>
+        internal static string txtAboutText {
+            get {
+                return ResourceManager.GetString("txtAboutText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar como Json.
+        /// </summary>
+        internal static string viewAsJsonMenu {
+            get {
+                return ResourceManager.GetString("viewAsJsonMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar com WebRequest.
+        /// </summary>
+        internal static string viewInComposerMenu {
+            get {
+                return ResourceManager.GetString("viewInComposerMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formatar para Json.
+        /// </summary>
+        internal static string viewJsonMenu {
+            get {
+                return ResourceManager.GetString("viewJsonMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ver.
+        /// </summary>
+        internal static string viewLink {
+            get {
+                return ResourceManager.GetString("viewLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar no explorer.
+        /// </summary>
+        internal static string viewMappingBodyInExplorerResponseMenu {
+            get {
+                return ResourceManager.GetString("viewMappingBodyInExplorerResponseMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar no explorer.
+        /// </summary>
+        internal static string viewMappingInExplorerMenu {
+            get {
+                return ResourceManager.GetString("viewMappingInExplorerMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar conteúdo.
+        /// </summary>
+        internal static string viewRawMenu {
+            get {
+                return ResourceManager.GetString("viewRawMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar requisição (Formato do wiremock).
+        /// </summary>
+        internal static string viewRequestMenu {
+            get {
+                return ResourceManager.GetString("viewRequestMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar resposta  (Formato do wiremock).
+        /// </summary>
+        internal static string viewResponseMenu {
+            get {
+                return ResourceManager.GetString("viewResponseMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar no editor de texto.
+        /// </summary>
+        internal static string viewTextMenu {
+            get {
+                return ResourceManager.GetString("viewTextMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formatar para XML.
+        /// </summary>
+        internal static string viewXml {
+            get {
+                return ResourceManager.GetString("viewXml", resourceCulture);
             }
         }
     }

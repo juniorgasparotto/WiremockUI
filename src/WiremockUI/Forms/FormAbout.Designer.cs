@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.txtAboutText = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.LinkLabel();
             this.lblUrl = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
@@ -39,8 +39,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.btnClose);
+            this.panel1.Controls.Add(this.txtAboutText);
             this.panel1.Controls.Add(this.lblEmail);
             this.panel1.Controls.Add(this.lblUrl);
             this.panel1.Location = new System.Drawing.Point(2, 2);
@@ -48,32 +48,32 @@
             this.panel1.Size = new System.Drawing.Size(280, 166);
             this.panel1.TabIndex = 7;
             // 
-            // button1
+            // btnClose
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(101, 133);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Fechar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(101, 133);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Text = "Fechar";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // txtAboutText
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Enabled = false;
-            this.textBox1.ForeColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(280, 69);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "\r\nEsse projeto foi feito por Glauber Gasparotto.";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAboutText.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtAboutText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAboutText.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtAboutText.Enabled = false;
+            this.txtAboutText.ForeColor = System.Drawing.SystemColors.Info;
+            this.txtAboutText.Location = new System.Drawing.Point(0, 0);
+            this.txtAboutText.Multiline = true;
+            this.txtAboutText.Name = "txtAboutText";
+            this.txtAboutText.ReadOnly = true;
+            this.txtAboutText.Size = new System.Drawing.Size(280, 69);
+            this.txtAboutText.TabIndex = 6;
+            this.txtAboutText.Text = "\r\nEsse projeto foi feito por Glauber Gasparotto.";
+            this.txtAboutText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblEmail
             // 
@@ -99,11 +99,11 @@
             // 
             // FormAbout
             // 
-            this.AcceptButton = this.button1;
+            this.AcceptButton = this.btnClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.CancelButton = this.button1;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(284, 170);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -119,9 +119,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAboutText;
         private System.Windows.Forms.LinkLabel lblEmail;
         private System.Windows.Forms.LinkLabel lblUrl;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnClose;
     }
 }

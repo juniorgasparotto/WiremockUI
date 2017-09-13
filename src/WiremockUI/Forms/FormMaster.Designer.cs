@@ -43,19 +43,20 @@ namespace WiremockUI
             this.menuPlayAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPlayAndRecordAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStopAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.webRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.compareTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jsonVisualizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuWebRequest = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTextCompare = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTextEditor = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuJsonVisualizer = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.treeServices = new TreeViewCustom();
+            this.treeServices = new WiremockUI.TreeViewCustom();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabForms = new WiremockUI.TabControlCustom();
             this.pnlSelectFile = new System.Windows.Forms.Panel();
             this.btnCancelFileSelectiong = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSelectFileCompare = new System.Windows.Forms.Label();
+            this.mnuLanguages = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -69,7 +70,7 @@ namespace WiremockUI
             this.menuOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
             this.menuServices,
-            this.ferramentasToolStripMenuItem,
+            this.menuTools,
             this.menuAbout});
             this.menuOptions.Location = new System.Drawing.Point(0, 0);
             this.menuOptions.Name = "menuOptions";
@@ -81,6 +82,7 @@ namespace WiremockUI
             // 
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuRefresh,
+            this.mnuLanguages,
             this.toolStripMenuItem3,
             this.menuClose});
             this.menuFile.Name = "menuFile";
@@ -157,44 +159,44 @@ namespace WiremockUI
             this.menuStopAll.Text = "&Parar todos";
             this.menuStopAll.Click += new System.EventHandler(this.menuStopAll_Click);
             // 
-            // ferramentasToolStripMenuItem
+            // menuTools
             // 
-            this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.webRequestToolStripMenuItem,
-            this.compareTextToolStripMenuItem,
-            this.textEditorToolStripMenuItem,
-            this.jsonVisualizerToolStripMenuItem});
-            this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
-            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.ferramentasToolStripMenuItem.Text = "&Ferramentas";
+            this.menuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuWebRequest,
+            this.menuTextCompare,
+            this.menuTextEditor,
+            this.menuJsonVisualizer});
+            this.menuTools.Name = "menuTools";
+            this.menuTools.Size = new System.Drawing.Size(84, 20);
+            this.menuTools.Text = "&Ferramentas";
             // 
-            // webRequestToolStripMenuItem
+            // menuWebRequest
             // 
-            this.webRequestToolStripMenuItem.Name = "webRequestToolStripMenuItem";
-            this.webRequestToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.webRequestToolStripMenuItem.Text = "&Web Request";
-            this.webRequestToolStripMenuItem.Click += new System.EventHandler(this.webRequestToolStripMenuItem_Click);
+            this.menuWebRequest.Name = "menuWebRequest";
+            this.menuWebRequest.Size = new System.Drawing.Size(186, 22);
+            this.menuWebRequest.Text = "&Web Request";
+            this.menuWebRequest.Click += new System.EventHandler(this.webRequestToolStripMenuItem_Click);
             // 
-            // compareTextToolStripMenuItem
+            // menuTextCompare
             // 
-            this.compareTextToolStripMenuItem.Name = "compareTextToolStripMenuItem";
-            this.compareTextToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.compareTextToolStripMenuItem.Text = "&Comparador de texto";
-            this.compareTextToolStripMenuItem.Click += new System.EventHandler(this.compareTextToolStripMenuItem_Click);
+            this.menuTextCompare.Name = "menuTextCompare";
+            this.menuTextCompare.Size = new System.Drawing.Size(186, 22);
+            this.menuTextCompare.Text = "&Comparador de texto";
+            this.menuTextCompare.Click += new System.EventHandler(this.compareTextToolStripMenuItem_Click);
             // 
-            // textEditorToolStripMenuItem
+            // menuTextEditor
             // 
-            this.textEditorToolStripMenuItem.Name = "textEditorToolStripMenuItem";
-            this.textEditorToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.textEditorToolStripMenuItem.Text = "&Editor de texto";
-            this.textEditorToolStripMenuItem.Click += new System.EventHandler(this.textEditorToolStripMenuItem_Click);
+            this.menuTextEditor.Name = "menuTextEditor";
+            this.menuTextEditor.Size = new System.Drawing.Size(186, 22);
+            this.menuTextEditor.Text = "&Editor de texto";
+            this.menuTextEditor.Click += new System.EventHandler(this.textEditorToolStripMenuItem_Click);
             // 
-            // jsonVisualizerToolStripMenuItem
+            // menuJsonVisualizer
             // 
-            this.jsonVisualizerToolStripMenuItem.Name = "jsonVisualizerToolStripMenuItem";
-            this.jsonVisualizerToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.jsonVisualizerToolStripMenuItem.Text = "&Visualizador de JSON";
-            this.jsonVisualizerToolStripMenuItem.Click += new System.EventHandler(this.visualizadorDeJSONToolStripMenuItem_Click);
+            this.menuJsonVisualizer.Name = "menuJsonVisualizer";
+            this.menuJsonVisualizer.Size = new System.Drawing.Size(186, 22);
+            this.menuJsonVisualizer.Text = "&Visualizador de JSON";
+            this.menuJsonVisualizer.Click += new System.EventHandler(this.visualizadorDeJSONToolStripMenuItem_Click);
             // 
             // menuAbout
             // 
@@ -224,6 +226,7 @@ namespace WiremockUI
             // 
             this.treeServices.AllowDrop = true;
             this.treeServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeServices.HideSelection = false;
             this.treeServices.ImageIndex = 0;
             this.treeServices.ImageList = this.imageList1;
             this.treeServices.Location = new System.Drawing.Point(0, 0);
@@ -276,7 +279,7 @@ namespace WiremockUI
             this.pnlSelectFile.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pnlSelectFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlSelectFile.Controls.Add(this.btnCancelFileSelectiong);
-            this.pnlSelectFile.Controls.Add(this.label1);
+            this.pnlSelectFile.Controls.Add(this.lblSelectFileCompare);
             this.pnlSelectFile.Location = new System.Drawing.Point(237, 132);
             this.pnlSelectFile.Name = "pnlSelectFile";
             this.pnlSelectFile.Size = new System.Drawing.Size(200, 123);
@@ -293,18 +296,24 @@ namespace WiremockUI
             this.btnCancelFileSelectiong.UseVisualStyleBackColor = true;
             this.btnCancelFileSelectiong.Click += new System.EventHandler(this.btnCancelFileSelectiong_Click);
             // 
-            // label1
+            // lblSelectFileCompare
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblSelectFileCompare.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Location = new System.Drawing.Point(29, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 81);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Selecione na árvore ao lado  (<) um arquivo para fazer a comparação. Use dois cli" +
+            this.lblSelectFileCompare.Location = new System.Drawing.Point(29, 0);
+            this.lblSelectFileCompare.Name = "lblSelectFileCompare";
+            this.lblSelectFileCompare.Size = new System.Drawing.Size(147, 81);
+            this.lblSelectFileCompare.TabIndex = 0;
+            this.lblSelectFileCompare.Text = "Selecione na árvore ao lado  (<) um arquivo para fazer a comparação. Use dois cli" +
     "ques para selecionar.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSelectFileCompare.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // mnuLanguages
+            // 
+            this.mnuLanguages.Name = "mnuLanguages";
+            this.mnuLanguages.Size = new System.Drawing.Size(152, 22);
+            this.mnuLanguages.Text = "Idiomas";
             // 
             // FormMaster
             // 
@@ -354,13 +363,14 @@ namespace WiremockUI
         private System.Windows.Forms.ToolStripMenuItem menuClose;
         private System.Windows.Forms.ToolStripMenuItem menuAbout;
         private TabControlCustom tabForms;
-        private System.Windows.Forms.ToolStripMenuItem ferramentasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem webRequestToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem compareTextToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuTools;
+        private System.Windows.Forms.ToolStripMenuItem menuWebRequest;
+        private System.Windows.Forms.ToolStripMenuItem menuTextCompare;
         private System.Windows.Forms.Panel pnlSelectFile;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSelectFileCompare;
         private System.Windows.Forms.Button btnCancelFileSelectiong;
-        private System.Windows.Forms.ToolStripMenuItem textEditorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem jsonVisualizerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuTextEditor;
+        private System.Windows.Forms.ToolStripMenuItem menuJsonVisualizer;
+        private System.Windows.Forms.ToolStripMenuItem mnuLanguages;
     }
 }

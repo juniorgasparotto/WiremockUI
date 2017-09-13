@@ -2,8 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using System.Xml;
-using System.Text;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -23,6 +22,11 @@ namespace WiremockUI
             this.tabPage = tabPage;
             this.master = master;
             LoadForm(fileName);
+
+            this.btnOpen.Text = Resource.btnOpenExplorer;
+            this.btnClose.Text = Resource.btnCloseTab;
+            this.btnSave.Text = Resource.btnSaveFile;
+            this.btnFormat.Text = Resource.btnXmlFormat;
         }
 
         private void LoadForm(string fileName)
@@ -55,7 +59,7 @@ namespace WiremockUI
             }
             catch (Exception ex)
             {
-                Helper.MessageBoxError("Ocorreu um erro ao tentar salvar o arquivo: " + ex.Message);
+                Helper.MessageBoxError(string.Format(Resource.saveFileErrorMessage, ex.Message));
             }
         }
 
@@ -87,7 +91,7 @@ namespace WiremockUI
             }
             catch(Exception ex)
             {
-                Helper.MessageBoxError("Esse XML está inválido: " + ex.Message);
+                Helper.MessageBoxError(string.Format(Resource.formatXmlErrorMessage, ex.Message));
             }
         }
 

@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -14,19 +14,19 @@ namespace WiremockUI
     {
         public static DialogResult MessageBoxError(string message, string title = null)
         {
-            title = title ?? "Error";
+            title = title ?? Resource.messageBoxErrorTitle;
             return MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public static DialogResult MessageBoxExclamation(string message, string title = null)
         {
-            title = title ?? "Alerta";
+            title = title ?? Resource.messageBoxAlertTitle;
             return MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         public static DialogResult MessageBoxQuestion(string message, string title = null)
         {
-            title = title ?? "Pergunta";
+            title = title ?? Resource.messageBoxQuestionTitle;
             return MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
@@ -90,7 +90,7 @@ namespace WiremockUI
             }
             catch(Exception ex)
             {
-                Helper.MessageBoxError("Esse XML não é válido: " + ex.Message);
+                Helper.MessageBoxError(string.Format(Resource.formatXmlErrorMessage, ex.Message));
                 return xml;
             }
         }
@@ -162,7 +162,7 @@ namespace WiremockUI
             }
             catch (Exception ex)
             {
-                Helper.MessageBoxError("Esse JSON não é válido: " + ex.Message);
+                Helper.MessageBoxError(string.Format(Resource.formatJsonErrorMessage, ex.Message));
                 return content;
             }
         }

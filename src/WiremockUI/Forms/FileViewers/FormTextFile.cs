@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -22,6 +23,10 @@ namespace WiremockUI
             this.master = master;
             this.txtContent.EnableFormatter = true;
             LoadForm(fileName);
+
+            this.btnOpen.Text = Resource.btnOpenExplorer;
+            this.btnClose.Text = Resource.btnCloseTab;
+            this.btnSave.Text = Resource.btnSaveFile;
         }
 
         private void LoadForm(string fileName)
@@ -54,7 +59,7 @@ namespace WiremockUI
             }
             catch (Exception ex)
             {
-                Helper.MessageBoxError("Ocorreu um erro ao tentar salvar o arquivo: " + ex.Message);
+                Helper.MessageBoxError(string.Format(Resource.saveFileErrorMessage, ex.Message));
             }
         }
 

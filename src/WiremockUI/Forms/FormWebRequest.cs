@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -15,7 +16,22 @@ namespace WiremockUI
             InitializeComponent();
             txtUrl.Multiline = false;
             this.txtRequestBody.EnableFormatter = true;
-            this.txtResponseBody.EnableFormatter = true;            
+            this.txtResponseBody.EnableFormatter = true;
+
+            Text = Resource.formWebRequest;
+            btnExecute.Text = Resource.btnExecute;
+            tabRequestHeaders.Text = Resource.tabRequestHeaders;
+            tabRequestBody.Text = Resource.tabRequestBody;
+            tabRequestHeadersReal.Text = Resource.tabRequestHeadersReal;
+            tabRequestOptions.Text = Resource.tabRequestOptions;
+            tabResponseBody.Text = Resource.tabResponseBody;
+            tabResponseHeaders.Text = Resource.tabResponseHeaders;
+            stsTime.Text = Resource.stsTime;
+            stsStatus.Text = Resource.stsStatus;
+            lblTimeout.Text = Resource.lblTimeout;
+            lblMiliseconds.Text = Resource.lblMiliseconds;
+            chkAutoContentLength.Text = Resource.chkAutoContentLength;
+            chk100Expect.Text = Resource.chk100Expect;
         }
 
         public FormWebRequest(string method, string urlAbsolute, Dictionary<string, string> requestHeaders, string requestBody, Dictionary<string, string> responseHeaders, string responseBody)

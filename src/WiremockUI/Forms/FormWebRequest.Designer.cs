@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.txtUrl = new WiremockUI.EditorTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnExecute = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -37,28 +38,27 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabRequest = new System.Windows.Forms.TabControl();
             this.tabRequestHeaders = new System.Windows.Forms.TabPage();
+            this.txtRequestHeaders = new WiremockUI.EditorTextBox();
             this.tabRequestBody = new System.Windows.Forms.TabPage();
+            this.txtRequestBody = new WiremockUI.EditorTextBox();
             this.tabRequestHeadersReal = new System.Windows.Forms.TabPage();
+            this.txtResponseHeadersFinal = new WiremockUI.EditorTextBox();
             this.tabRequestOptions = new System.Windows.Forms.TabPage();
             this.chk100Expect = new System.Windows.Forms.CheckBox();
             this.chkAutoContentLength = new System.Windows.Forms.CheckBox();
             this.txtTimeout = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMiliseconds = new System.Windows.Forms.Label();
+            this.lblTimeout = new System.Windows.Forms.Label();
             this.tabResponse = new System.Windows.Forms.TabControl();
             this.tabResponseBody = new System.Windows.Forms.TabPage();
+            this.txtResponseBody = new WiremockUI.EditorTextBox();
             this.tabResponseHeaders = new System.Windows.Forms.TabPage();
+            this.txtResponseHeaders = new WiremockUI.EditorTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stsTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsTimeValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsStatusValue = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtRequestHeaders = new WiremockUI.EditorTextBox();
-            this.txtRequestBody = new WiremockUI.EditorTextBox();
-            this.txtResponseHeadersFinal = new WiremockUI.EditorTextBox();
-            this.txtResponseBody = new WiremockUI.EditorTextBox();
-            this.txtResponseHeaders = new WiremockUI.EditorTextBox();
-            this.txtUrl = new WiremockUI.EditorTextBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -101,6 +101,19 @@
             this.panel4.Size = new System.Drawing.Size(429, 35);
             this.panel4.TabIndex = 32;
             this.panel4.Resize += new System.EventHandler(this.panel4_Resize);
+            // 
+            // txtUrl
+            // 
+            this.txtUrl.AcceptsTab = true;
+            this.txtUrl.EnableFormatter = false;
+            this.txtUrl.EnableHistory = true;
+            this.txtUrl.Location = new System.Drawing.Point(0, 5);
+            this.txtUrl.MaxLength = 0;
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(423, 22);
+            this.txtUrl.TabIndex = 0;
+            this.txtUrl.Text = "";
+            this.txtUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUrl_KeyDown);
             // 
             // panel3
             // 
@@ -199,6 +212,20 @@
             this.tabRequestHeaders.Text = "Headers";
             this.tabRequestHeaders.UseVisualStyleBackColor = true;
             // 
+            // txtRequestHeaders
+            // 
+            this.txtRequestHeaders.AcceptsTab = true;
+            this.txtRequestHeaders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtRequestHeaders.EnableFormatter = false;
+            this.txtRequestHeaders.EnableHistory = true;
+            this.txtRequestHeaders.Location = new System.Drawing.Point(3, 3);
+            this.txtRequestHeaders.MaxLength = 0;
+            this.txtRequestHeaders.Name = "txtRequestHeaders";
+            this.txtRequestHeaders.Size = new System.Drawing.Size(603, 71);
+            this.txtRequestHeaders.TabIndex = 4;
+            this.txtRequestHeaders.Text = "";
+            this.txtRequestHeaders.WordWrap = false;
+            // 
             // tabRequestBody
             // 
             this.tabRequestBody.Controls.Add(this.txtRequestBody);
@@ -210,6 +237,20 @@
             this.tabRequestBody.Text = "Body";
             this.tabRequestBody.UseVisualStyleBackColor = true;
             // 
+            // txtRequestBody
+            // 
+            this.txtRequestBody.AcceptsTab = true;
+            this.txtRequestBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtRequestBody.EnableFormatter = false;
+            this.txtRequestBody.EnableHistory = true;
+            this.txtRequestBody.Location = new System.Drawing.Point(3, 3);
+            this.txtRequestBody.MaxLength = 0;
+            this.txtRequestBody.Name = "txtRequestBody";
+            this.txtRequestBody.Size = new System.Drawing.Size(603, 71);
+            this.txtRequestBody.TabIndex = 5;
+            this.txtRequestBody.Text = "";
+            this.txtRequestBody.WordWrap = false;
+            // 
             // tabRequestHeadersReal
             // 
             this.tabRequestHeadersReal.Controls.Add(this.txtResponseHeadersFinal);
@@ -220,13 +261,27 @@
             this.tabRequestHeadersReal.Text = "Header (Final)";
             this.tabRequestHeadersReal.UseVisualStyleBackColor = true;
             // 
+            // txtResponseHeadersFinal
+            // 
+            this.txtResponseHeadersFinal.AcceptsTab = true;
+            this.txtResponseHeadersFinal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtResponseHeadersFinal.EnableFormatter = false;
+            this.txtResponseHeadersFinal.EnableHistory = true;
+            this.txtResponseHeadersFinal.Location = new System.Drawing.Point(0, 0);
+            this.txtResponseHeadersFinal.MaxLength = 0;
+            this.txtResponseHeadersFinal.Name = "txtResponseHeadersFinal";
+            this.txtResponseHeadersFinal.Size = new System.Drawing.Size(609, 77);
+            this.txtResponseHeadersFinal.TabIndex = 1;
+            this.txtResponseHeadersFinal.Text = "";
+            this.txtResponseHeadersFinal.WordWrap = false;
+            // 
             // tabRequestOptions
             // 
             this.tabRequestOptions.Controls.Add(this.chk100Expect);
             this.tabRequestOptions.Controls.Add(this.chkAutoContentLength);
             this.tabRequestOptions.Controls.Add(this.txtTimeout);
-            this.tabRequestOptions.Controls.Add(this.label2);
-            this.tabRequestOptions.Controls.Add(this.label1);
+            this.tabRequestOptions.Controls.Add(this.lblMiliseconds);
+            this.tabRequestOptions.Controls.Add(this.lblTimeout);
             this.tabRequestOptions.Location = new System.Drawing.Point(4, 28);
             this.tabRequestOptions.Name = "tabRequestOptions";
             this.tabRequestOptions.Size = new System.Drawing.Size(609, 77);
@@ -278,23 +333,23 @@
             0,
             0});
             // 
-            // label2
+            // lblMiliseconds
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(130, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "milisegundos";
+            this.lblMiliseconds.AutoSize = true;
+            this.lblMiliseconds.Location = new System.Drawing.Point(130, 8);
+            this.lblMiliseconds.Name = "lblMiliseconds";
+            this.lblMiliseconds.Size = new System.Drawing.Size(67, 13);
+            this.lblMiliseconds.TabIndex = 2;
+            this.lblMiliseconds.Text = "milisegundos";
             // 
-            // label1
+            // lblTimeout
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Timeout:";
+            this.lblTimeout.AutoSize = true;
+            this.lblTimeout.Location = new System.Drawing.Point(3, 8);
+            this.lblTimeout.Name = "lblTimeout";
+            this.lblTimeout.Size = new System.Drawing.Size(48, 13);
+            this.lblTimeout.TabIndex = 0;
+            this.lblTimeout.Text = "Timeout:";
             // 
             // tabResponse
             // 
@@ -319,6 +374,20 @@
             this.tabResponseBody.Text = "Body";
             this.tabResponseBody.UseVisualStyleBackColor = true;
             // 
+            // txtResponseBody
+            // 
+            this.txtResponseBody.AcceptsTab = true;
+            this.txtResponseBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtResponseBody.EnableFormatter = false;
+            this.txtResponseBody.EnableHistory = true;
+            this.txtResponseBody.Location = new System.Drawing.Point(3, 3);
+            this.txtResponseBody.MaxLength = 0;
+            this.txtResponseBody.Name = "txtResponseBody";
+            this.txtResponseBody.Size = new System.Drawing.Size(603, 48);
+            this.txtResponseBody.TabIndex = 7;
+            this.txtResponseBody.Text = "";
+            this.txtResponseBody.WordWrap = false;
+            // 
             // tabResponseHeaders
             // 
             this.tabResponseHeaders.Controls.Add(this.txtResponseHeaders);
@@ -329,6 +398,20 @@
             this.tabResponseHeaders.TabIndex = 0;
             this.tabResponseHeaders.Text = "Headers";
             this.tabResponseHeaders.UseVisualStyleBackColor = true;
+            // 
+            // txtResponseHeaders
+            // 
+            this.txtResponseHeaders.AcceptsTab = true;
+            this.txtResponseHeaders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtResponseHeaders.EnableFormatter = false;
+            this.txtResponseHeaders.EnableHistory = true;
+            this.txtResponseHeaders.Location = new System.Drawing.Point(3, 3);
+            this.txtResponseHeaders.MaxLength = 0;
+            this.txtResponseHeaders.Name = "txtResponseHeaders";
+            this.txtResponseHeaders.Size = new System.Drawing.Size(603, 48);
+            this.txtResponseHeaders.TabIndex = 2;
+            this.txtResponseHeaders.Text = "";
+            this.txtResponseHeaders.WordWrap = false;
             // 
             // statusStrip1
             // 
@@ -369,88 +452,6 @@
             this.stsStatusValue.Size = new System.Drawing.Size(12, 17);
             this.stsStatusValue.Text = "-";
             // 
-            // txtRequestHeaders
-            // 
-            this.txtRequestHeaders.AcceptsTab = true;
-            this.txtRequestHeaders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRequestHeaders.EnableFormatter = false;
-            this.txtRequestHeaders.Location = new System.Drawing.Point(3, 3);
-            this.txtRequestHeaders.MaxLength = 0;
-            this.txtRequestHeaders.Multiline = true;
-            this.txtRequestHeaders.Name = "txtRequestHeaders";
-            //this.txtRequestHeaders.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRequestHeaders.Size = new System.Drawing.Size(603, 71);
-            this.txtRequestHeaders.TabIndex = 4;
-            this.txtRequestHeaders.WordWrap = false;
-            // 
-            // txtRequestBody
-            // 
-            this.txtRequestBody.AcceptsTab = true;
-            this.txtRequestBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRequestBody.EnableFormatter = false;
-            this.txtRequestBody.Location = new System.Drawing.Point(3, 3);
-            this.txtRequestBody.MaxLength = 0;
-            this.txtRequestBody.Multiline = true;
-            this.txtRequestBody.Name = "txtRequestBody";
-            //this.txtRequestBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRequestBody.Size = new System.Drawing.Size(603, 71);
-            this.txtRequestBody.TabIndex = 5;
-            this.txtRequestBody.WordWrap = false;
-            // 
-            // txtResponseHeadersFinal
-            // 
-            this.txtResponseHeadersFinal.AcceptsTab = true;
-            this.txtResponseHeadersFinal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtResponseHeadersFinal.EnableFormatter = false;
-            this.txtResponseHeadersFinal.Location = new System.Drawing.Point(0, 0);
-            this.txtResponseHeadersFinal.MaxLength = 0;
-            this.txtResponseHeadersFinal.Multiline = true;
-            this.txtResponseHeadersFinal.Name = "txtResponseHeadersFinal";
-            //this.txtResponseHeadersFinal.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponseHeadersFinal.Size = new System.Drawing.Size(609, 77);
-            this.txtResponseHeadersFinal.TabIndex = 1;
-            this.txtResponseHeadersFinal.WordWrap = false;
-            // 
-            // txtResponseBody
-            // 
-            this.txtResponseBody.AcceptsTab = true;
-            this.txtResponseBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtResponseBody.EnableFormatter = false;
-            this.txtResponseBody.Location = new System.Drawing.Point(3, 3);
-            this.txtResponseBody.MaxLength = 0;
-            this.txtResponseBody.Multiline = true;
-            this.txtResponseBody.Name = "txtResponseBody";
-            //this.txtResponseBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponseBody.Size = new System.Drawing.Size(603, 48);
-            this.txtResponseBody.TabIndex = 7;
-            this.txtResponseBody.WordWrap = false;
-            // 
-            // txtResponseHeaders
-            // 
-            this.txtResponseHeaders.AcceptsTab = true;
-            this.txtResponseHeaders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtResponseHeaders.EnableFormatter = false;
-            this.txtResponseHeaders.Location = new System.Drawing.Point(3, 3);
-            this.txtResponseHeaders.MaxLength = 0;
-            this.txtResponseHeaders.Multiline = true;
-            this.txtResponseHeaders.Name = "txtResponseHeaders";
-            //this.txtResponseHeaders.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponseHeaders.Size = new System.Drawing.Size(603, 48);
-            this.txtResponseHeaders.TabIndex = 2;
-            this.txtResponseHeaders.WordWrap = false;
-            // 
-            // txtUrl
-            // 
-            this.txtUrl.AcceptsTab = true;
-            this.txtUrl.EnableFormatter = false;
-            this.txtUrl.Location = new System.Drawing.Point(0, 5);
-            this.txtUrl.MaxLength = 0;
-            this.txtUrl.Multiline = true;
-            this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(423, 22);
-            this.txtUrl.TabIndex = 0;
-            this.txtUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUrl_KeyDown);
-            // 
             // FormWebRequest
             // 
             this.AcceptButton = this.btnExecute;
@@ -465,7 +466,6 @@
             this.Load += new System.EventHandler(this.FormWebRequest_Load);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -475,19 +475,14 @@
             this.splitContainer1.ResumeLayout(false);
             this.tabRequest.ResumeLayout(false);
             this.tabRequestHeaders.ResumeLayout(false);
-            this.tabRequestHeaders.PerformLayout();
             this.tabRequestBody.ResumeLayout(false);
-            this.tabRequestBody.PerformLayout();
             this.tabRequestHeadersReal.ResumeLayout(false);
-            this.tabRequestHeadersReal.PerformLayout();
             this.tabRequestOptions.ResumeLayout(false);
             this.tabRequestOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTimeout)).EndInit();
             this.tabResponse.ResumeLayout(false);
             this.tabResponseBody.ResumeLayout(false);
-            this.tabResponseBody.PerformLayout();
             this.tabResponseHeaders.ResumeLayout(false);
-            this.tabResponseHeaders.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -504,8 +499,8 @@
         private EditorTextBox txtRequestHeaders;
         private EditorTextBox txtRequestBody;
         private System.Windows.Forms.TabPage tabRequestOptions;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTimeout;
+        private System.Windows.Forms.Label lblMiliseconds;
         private System.Windows.Forms.NumericUpDown txtTimeout;
         private System.Windows.Forms.Panel panel4;
         private EditorTextBox txtUrl;

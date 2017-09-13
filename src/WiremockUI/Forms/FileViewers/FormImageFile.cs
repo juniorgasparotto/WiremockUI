@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
+using WiremockUI.Languages;
 using System.Windows.Forms;
 
 namespace WiremockUI
@@ -19,6 +19,9 @@ namespace WiremockUI
             this.tabPage = tabPage;
             this.master = master;
             LoadForm(fileName);
+
+            this.btnOpen.Text = Resource.btnOpenExplorer;
+            this.btnClose.Text = Resource.btnCloseTab;
         }
 
         private void LoadForm(string fileName)

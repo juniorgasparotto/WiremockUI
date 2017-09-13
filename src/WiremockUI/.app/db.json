@@ -204,5 +204,15 @@
         }
       ]
     }
+  ],
+  "Settings": [
+    {
+      "Id": "b712d615-d1d1-4f7f-ac1c-c6c72e037c5e",
+      "Languages": {
+        "pt-br": "Portuguese",
+        "en-us": "English"
+      },
+      "DefaultLanguage": "en-us"
+    }
   ]
 }

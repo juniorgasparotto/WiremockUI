@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -29,6 +30,10 @@ namespace WiremockUI
             this.tabPage = tabPage;
             this.master = master;
             LoadForm(fileName);
+
+            this.btnOpen.Text = Resource.btnOpenExplorer;
+            this.btnClose.Text = Resource.btnCloseTab;
+            this.btnSave.Text = Resource.btnSaveFile;
         }
 
         private void LoadForm(string fileName)
@@ -67,7 +72,7 @@ namespace WiremockUI
             {
                 if (!ucJsonView.IsValidJson(ucJsonView.ContentJson))
                 {
-                    Helper.MessageBoxError("Esse JSON não é válido.");
+                    Helper.MessageBoxError(Resource.invalidJsonMessage);
                     return;
                 }
                 
@@ -76,7 +81,7 @@ namespace WiremockUI
             }
             catch (Exception ex)
             {
-                Helper.MessageBoxError("Ocorreu um erro ao tentar salvar o arquivo: " + ex.Message);
+                Helper.MessageBoxError(string.Format(Resource.saveFileErrorMessage, ex.Message));
             }
         }
 

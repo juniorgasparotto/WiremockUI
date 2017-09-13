@@ -5,6 +5,7 @@ using WiremockUI.Data;
 using System.Linq;
 using System.ComponentModel;
 using System.Collections.Generic;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -21,6 +22,15 @@ namespace WiremockUI
             this.proxy = proxy;
             InitializeComponent();
 
+            Text = Resource.formAddProxyTitle;
+            lblProxyNew.Text = Resource.lblProxyNew;
+            lblProxyTargetUrl.Text = Resource.lblProxyTargetUrl;
+            lblProxyPort.Text = Resource.lblProxyPort;
+            btnAdd.Text = Resource.btnAdd;
+            btnCancel.Text = Resource.btnCancel;
+            tabProxyBasic.Text = Resource.tabProxyBasic;
+            tabProxyAdvance.Text = Resource.tabProxyAdvance;
+
             this.properties = new WMProperties();
 
             if (this.proxy == null)
@@ -29,10 +39,12 @@ namespace WiremockUI
             }
             else
             {
+                Text = Resource.formAddProxyInEditModeTitle;
+
                 this.txtName.Text = proxy.Name;
                 this.txtUrlTarget.Text = proxy.UrlTarget;
                 this.txtPort.Text = proxy.PortProxy.ToString();
-                this.btnAdd.Text = "Editar";
+                this.btnAdd.Text = Resource.btnEdit;
                 this.oldPath = this.proxy.GetFullPath();
                 SetProperties(proxy);
 
@@ -97,28 +109,28 @@ namespace WiremockUI
 
             if (string.IsNullOrWhiteSpace(name))
             {
-                Helper.MessageBoxError("O campo 'Nome' é obrigatório.");
+                Helper.MessageBoxError(Resource.addProxyRequiredNameMessage);
                 txtName.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(urlTarget))
             {
-                Helper.MessageBoxError("O campo 'Url destino' é obrigatório.");
+                Helper.MessageBoxError(Resource.addProxyRequiredUrlTargetMessage);
                 txtUrlTarget.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(port))
             {
-                Helper.MessageBoxError("O campo 'Porta' é obrigatório.");
+                Helper.MessageBoxError(Resource.addProxyRequiredPortMessage);
                 txtPort.Focus();
                 return;
             }
 
             if (!int.TryParse(port, out int portNumber))
             {
-                Helper.MessageBoxError("O campo 'Porta' está inválido.");
+                Helper.MessageBoxError(Resource.addProxyInvalidPortMessage);
                 txtPort.Focus();
                 return;
             }
@@ -136,14 +148,14 @@ namespace WiremockUI
 
             if (existsName)
             {
-                Helper.MessageBoxError("Esse 'Nome' já está em uso");
+                Helper.MessageBoxError(Resource.addProxyDuplicateNameMessage);
                 txtName.Focus();
                 return;
             }
 
             if (existsPort)
             {
-                Helper.MessageBoxError("Essa 'Porta' já está em uso");
+                Helper.MessageBoxError(Resource.addProxyDuplicatePortMessage);
                 txtPort.Focus();
                 return;
             }

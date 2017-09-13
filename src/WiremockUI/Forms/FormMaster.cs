@@ -33,8 +33,66 @@ namespace WiremockUI
         public FormMaster()
         {
             InitializeComponent();
-            Current = this;            
-            menuFile.Text = Resource.FileMenu;
+            Current = this;
+
+            // language feature
+            var settings = SettingsUtils.GetSettings();
+            if (settings?.Languages?.Count > 0)
+            {
+                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMaster));
+                SettingsUtils.ChangeUILanguage(settings.DefaultLanguage);
+
+                foreach (var lang in settings.Languages)
+                {
+                    var item = new ToolStripMenuItem()
+                    {
+                        Text = lang.Value,
+                    };
+                    
+                    if (lang.Key == settings.DefaultLanguage)
+                        item.Image = ((System.Drawing.Image)(resources.GetObject("check.Image")));
+
+                    item.Click += (o, s) =>
+                    {
+                        foreach (ToolStripMenuItem m in mnuLanguages.DropDownItems)
+                            m.Image = null;
+                        item.Image = ((System.Drawing.Image)(resources.GetObject("check.Image")));
+                        SettingsUtils.SetLanguage(lang.Key);
+                        RefreshAll();
+                    };
+
+                    this.mnuLanguages.DropDownItems.Add(item);
+                }
+            }
+            else
+            {
+                mnuLanguages.Visible = false;
+            }
+
+            // set labels
+            UpdateLabels();
+        }
+
+        private void UpdateLabels()
+        {
+            Text = Resource.FormMasterTitle;
+            menuFile.Text = Resource.menuFile;
+            mnuLanguages.Text = Resource.menuLanguages;
+            menuAbout.Text = Resource.menuAbout;
+            menuAddMockService.Text = Resource.menuAddMockService;
+            menuClose.Text = Resource.menuClose;
+            menuRefresh.Text = Resource.menuRefresh;
+            menuServices.Text = Resource.menuServices;
+            menuPlayAll.Text = Resource.menuPlayAll;
+            menuPlayAndRecordAll.Text = Resource.menuPlayAndRecordAll;
+            menuStopAll.Text = Resource.menuStopAll;
+            menuTools.Text = Resource.menuTools;
+            menuWebRequest.Text = Resource.menuWebRequest;
+            menuTextCompare.Text = Resource.menuTextCompare;
+            menuTextEditor.Text = Resource.menuTextEditor;
+            menuJsonVisualizer.Text = Resource.menuJsonVisualizer;
+            lblSelectFileCompare.Text = Resource.lblSelectFileCompare;
+            btnCancelFileSelectiong.Text = Resource.btnCancelFileSelectiong;
         }
 
         private void Master_Load(object sender, EventArgs e)
@@ -53,7 +111,7 @@ namespace WiremockUI
 
         internal void LoadProxies()
         {
-            var topNode = new TreeNode("Serviços");
+            var topNode = new TreeNode(Resource.treeviewTopNode);
             ChangeTreeNodeImage(topNode, "services");
             treeServices.Nodes.Add(topNode);
 
@@ -73,8 +131,8 @@ namespace WiremockUI
                 stopAllMenu
             });
 
-            // add files
-            addMenu.Text = "Adicionar";
+            // add proxy
+            addMenu.Text = Resource.menuAddMockService;
             addMenu.ImageKey = "add";
             addMenu.Click += (a, b) =>
             {
@@ -82,7 +140,7 @@ namespace WiremockUI
             };
 
             // start all
-            startAllMenu.Text = "Iniciar todos";
+            startAllMenu.Text = Resource.menuPlayAll;
             startAllMenu.ImageKey = "play";
             startAllMenu.Click += (a, b) =>
             {
@@ -90,7 +148,7 @@ namespace WiremockUI
             };
 
             // start and record all
-            startAndRecordAllMenu.Text = "Iniciar e gravar todos";
+            startAndRecordAllMenu.Text = Resource.menuPlayAndRecordAll;
             startAndRecordAllMenu.ImageKey = "record";
             startAndRecordAllMenu.Click += (a, b) =>
             {
@@ -98,7 +156,7 @@ namespace WiremockUI
             };
 
             // stop all
-            stopAllMenu.Text = "Parar todos";
+            stopAllMenu.Text = Resource.menuStopAll;
             stopAllMenu.ImageKey = "stop";
             stopAllMenu.Click += (a, b) =>
             {
@@ -233,7 +291,7 @@ namespace WiremockUI
                 };
 
                 // add cenary
-                addScenario.Text = "Adicionar cenário";
+                addScenario.Text = Resource.addProxyScenario;
                 addScenario.ImageKey = "add";
                 addScenario.Click += (a, b) =>
                 {
@@ -241,7 +299,7 @@ namespace WiremockUI
                 };
 
                 // show files
-                openFolderMenu.Text = "Abrir pasta do proxy";
+                openFolderMenu.Text = Resource.openProxyFolderMenu;
                 openFolderMenu.ImageKey = "folder";
                 openFolderMenu.Click += (a, b) =>
                 {
@@ -249,7 +307,7 @@ namespace WiremockUI
                 };
 
                 // open url target
-                openUrlTargetMenu.Text = "Abrir URL destino no browser";
+                openUrlTargetMenu.Text = Resource.openProxyUrlTargetMenu;
                 openUrlTargetMenu.ImageKey = "services";
                 openUrlTargetMenu.Click += (a, b) =>
                 {
@@ -257,7 +315,7 @@ namespace WiremockUI
                 };
 
                 // open url Scenario
-                openUrlProxyScenarioMenu.Text = "Abrir URL do proxy no browser";
+                openUrlProxyScenarioMenu.Text = Resource.openProxyUrlProxyScenarioMenu;
                 openUrlProxyScenarioMenu.ImageKey = "services";
                 openUrlProxyScenarioMenu.Click += (a, b) =>
                 {
@@ -265,7 +323,7 @@ namespace WiremockUI
                 };
 
                 // edit Scenario
-                editMenu.Text = "Editar";
+                editMenu.Text = Resource.editProxyMenu;
                 editMenu.ImageKey = "edit";
                 editMenu.Click += (a, b) =>
                 {
@@ -273,7 +331,7 @@ namespace WiremockUI
                 };
 
                 // remove Scenario
-                removeMenu.Text = "Remover";
+                removeMenu.Text = Resource.removeProxyMenu;
                 removeMenu.ImageKey = "remove";
                 removeMenu.Click += (a, b) =>
                 {
@@ -281,7 +339,7 @@ namespace WiremockUI
                 };
 
                 // play
-                startMenu.Text = "Iniciar";
+                startMenu.Text = Resource.startProxyMenu;
                 startMenu.ImageKey = "play";
                 startMenu.Click += (a, b) =>
                 {
@@ -290,7 +348,7 @@ namespace WiremockUI
                 };
 
                 // play and record
-                startAndRecordMenu.Text = "Iniciar e Gravar";
+                startAndRecordMenu.Text = Resource.startProxyAndRecordMenu;
                 startAndRecordMenu.ImageKey = "record";
                 startAndRecordMenu.Click += (a, b) =>
                 {
@@ -299,7 +357,7 @@ namespace WiremockUI
                 };
 
                 // play
-                startAsProxyMenu.Text = "Iniciar (Somente Proxy)";
+                startAsProxyMenu.Text = Resource.startProxyAsProxyMenu;
                 startAsProxyMenu.ImageKey = "play-proxy";
                 startAsProxyMenu.Click += (a, b) =>
                 {
@@ -308,7 +366,7 @@ namespace WiremockUI
                 };
 
                 // stop
-                stopMenu.Text = "Parar";
+                stopMenu.Text = Resource.stopProxyMenu;
                 stopMenu.ImageKey = "stop";
                 stopMenu.Click += (a, b) =>
                 {
@@ -377,7 +435,7 @@ namespace WiremockUI
                 nodeProxy.Nodes.Add(nodeScenario);
 
                 if (scenario.IsDefault)
-                    SetnodeScenarioAsDefault(scenario, nodeScenario);
+                    SetNodeScenarioAsDefault(scenario, nodeScenario);
 
                 LoadRequestsAndResponses(nodeScenario, scenario);
 
@@ -433,7 +491,7 @@ namespace WiremockUI
                 };
 
                 // add menu
-                addMenu.Text = "Adicionar";
+                addMenu.Text = Resource.addScenarioMenu;
                 addMenu.ImageKey = "add";
                 addMenu.Click += (a, b) =>
                 {
@@ -441,23 +499,23 @@ namespace WiremockUI
                 };
 
                 // show files
-                setDefaultMenu.Text = "Definir como padrão";
+                setDefaultMenu.Text = Resource.setScenarioDefaultMenu;
                 setDefaultMenu.ImageKey = "default";
                 setDefaultMenu.Click += (a, b) =>
                 {
                     if (Dashboard.IsRunning(proxy.GetDefaultScenario()))
                     {
-                        Helper.MessageBoxExclamation("Para continuar é necessário parar a execução desse proxy.");
+                        Helper.MessageBoxExclamation(Resource.scenarioStopMessage);
                         return;
                     }
 
                     proxy.SetDefault(scenario);
                     SaveProxy(proxy);
-                    SetnodeScenarioAsDefault(scenario, nodeScenario);
+                    SetNodeScenarioAsDefault(scenario, nodeScenario);
                 };
 
                 // show files
-                openFolderMenu.Text = "Abrir pasta do cenário";
+                openFolderMenu.Text = Resource.openScenarioFolderMenu;
                 openFolderMenu.ImageKey = "folder";
                 openFolderMenu.Click += (a, b) =>
                 {
@@ -465,7 +523,7 @@ namespace WiremockUI
                 };
 
                 // edit Scenario
-                editMenu.Text = "Editar";
+                editMenu.Text = Resource.editScenarioMenu;
                 editMenu.ImageKey = "edit";
                 editMenu.Click += (a, b) =>
                 {
@@ -473,7 +531,7 @@ namespace WiremockUI
                 };
 
                 // remove mock
-                removeMenu.Text = "Remover";
+                removeMenu.Text = Resource.removeScenarioMenu;
                 removeMenu.ImageKey = "remove";
                 removeMenu.Click += (a, b) =>
                 {
@@ -482,7 +540,7 @@ namespace WiremockUI
 
                 // mostra ou esconde a URL do Scenario
 
-                showUrlMenu.Text = "Visualizar URL";
+                showUrlMenu.Text = Resource.showScenarioUrlMenu;
                 showUrlMenu.Click += (a, b) =>
                 {
                     var db = new UnitOfWork();
@@ -500,7 +558,7 @@ namespace WiremockUI
                     }
                 };
 
-                showNameMenu.Text = "Visualizar Nome";
+                showNameMenu.Text = Resource.showScenarioNameMenu;
                 showNameMenu.Click += (a, b) =>
                 {
                     var db = new UnitOfWork();
@@ -608,7 +666,7 @@ namespace WiremockUI
             });
 
             // rename
-            renameMenu.Text = "Renomear";
+            renameMenu.Text = Resource.renameMappingMenu;
             renameMenu.ShortcutKeys = Keys.F2;
             renameMenu.ImageKey = "rename";
             renameMenu.Click += (a, b) =>
@@ -617,7 +675,7 @@ namespace WiremockUI
             };
 
             // delete
-            deleteMenu.Text = "Remover";
+            deleteMenu.Text = Resource.deleteMappingMenu;
             deleteMenu.ImageKey = "remove";
             deleteMenu.ShortcutKeys = Keys.Delete;
             deleteMenu.Click += (a, b) =>
@@ -626,7 +684,7 @@ namespace WiremockUI
             };
 
             // disable
-            toggleMapStateMenu.Text = "Habilitado";
+            toggleMapStateMenu.Text = Resource.toggleMappingStateMenu;
             toggleMapStateMenu.Click += (a, b) =>
             {
                 try
@@ -639,12 +697,12 @@ namespace WiremockUI
                 }
                 catch (Exception ex)
                 {
-                    Helper.MessageBoxError("Ocorreu um erro ao tentar excluir esse arquivo: " + ex.Message);
+                    Helper.MessageBoxError(string.Format(Resource.removeMappingErrorMessage, ex.Message));
                 }
             };
 
             // duplicate
-            duplicateMenu.Text = "Duplicar";
+            duplicateMenu.Text = Resource.duplicateMappingMenu;
             duplicateMenu.ImageKey = "duplicate";
             duplicateMenu.ShortcutKeys = Keys.Control | Keys.D;
             duplicateMenu.Click += (a, b) =>
@@ -653,7 +711,7 @@ namespace WiremockUI
             };
 
             // view in explorer
-            viewInExplorerMenu.Text = "Visualizar no explorer";
+            viewInExplorerMenu.Text = Resource.viewMappingInExplorerMenu;
             viewInExplorerMenu.Click += (a, b) =>
             {
                 var model = (TreeNodeMappingModel)nodeMapping.Tag;
@@ -685,7 +743,7 @@ namespace WiremockUI
         
         private void DeleteMap(TreeNode nodeMapping)
         {
-            if (Helper.MessageBoxQuestion("Deseja realmente remover esse arquivo?") == DialogResult.Yes)
+            if (Helper.MessageBoxQuestion(Resource.removeMappingConfirmMessage) == DialogResult.Yes)
             {
                 try
                 {
@@ -698,7 +756,7 @@ namespace WiremockUI
                 }
                 catch (Exception ex)
                 {
-                    Helper.MessageBoxError("Ocorreu um erro ao tentar excluir esse arquivo: " + ex.Message);
+                    Helper.MessageBoxError(string.Format(Resource.removeMappingErrorMessage, ex.Message));
                 }
             }
         }
@@ -720,17 +778,17 @@ namespace WiremockUI
             }
 
             File.WriteAllText(newMapFile, content);
-            treeServices.SelectedNode = AddMappingNode(GetnodeScenarioById(model.Scenario.Id), model.Scenario, newMapFile, nodeMapping.Index + 1);
+            treeServices.SelectedNode = AddMappingNode(GetNodeScenarioById(model.Scenario.Id), model.Scenario, newMapFile, nodeMapping.Index + 1);
         }
 
         private void AddNewMap(TreeNode nodeScenario)
         {
             var contentMap = "";
             var contentBody = "";
-            var templateMapFileName = "Templates/Mappings/New.json";
-            var templateBodyFileName = "Templates/Files/New.txt";
-            var mockName = "Mock.json";
-            var mockBodyName = "Mock.txt";
+            var templateMapFileName = Resource.templateMapFileName;
+            var templateBodyFileName = Resource.templateBodyFileName;
+            var mockName = Resource.newMappingFileName;
+            var mockBodyName = Resource.newBodyFileName;
             var scenario = (Data.Scenario)nodeScenario.Tag;
             var proxy = (Proxy)nodeScenario.Parent.Tag;
             var newMapFileName = GetNewFileName(Path.Combine(proxy.GetMappingPath(scenario), mockName));
@@ -799,7 +857,7 @@ namespace WiremockUI
             });
 
             // view in explorer
-            viewInExplorerResponseMenu.Text = "Visualizar no explorer";
+            viewInExplorerResponseMenu.Text = Resource.viewMappingBodyInExplorerResponseMenu;
             viewInExplorerResponseMenu.Click += (a, b) =>
             {
                 var treeNodeMappingActual = (TreeNodeMappingModel)nodeMapping.Tag;
@@ -955,7 +1013,7 @@ namespace WiremockUI
 
         private void RemoveProxy(TreeNode nodeProxy)
         {
-            if (MessageBox.Show("Deseja realmente excluir esse proxy?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(Resource.removeProxyConfirmMessage, Resource.removeProxyConfirmTitle, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 var proxy = (Proxy)nodeProxy.Tag;
                 var path = proxy.GetFullPath();
@@ -969,7 +1027,7 @@ namespace WiremockUI
                     }
                     catch
                     {
-                        Helper.MessageBoxError("Ocorreu um problema ao tentar excluir a pasta. Tente fazer esse processo manualmente.");
+                        Helper.MessageBoxError(Resource.removeProxyError);
                         return;
                     }
                 }
@@ -985,7 +1043,7 @@ namespace WiremockUI
 
         private void RemoveScenario(TreeNode nodeScenario, Data.Scenario scenario)
         {
-            if (MessageBox.Show("Deseja realmente excluir esse cenário?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(Resource.scenarioConfirmRemoveMessage, Resource.scenarioConfirmRemoveTitle, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 var nodeProxy = nodeScenario.Parent;
                 var proxy = (Proxy)nodeScenario.Parent.Tag;
@@ -1000,7 +1058,7 @@ namespace WiremockUI
                     }
                     catch
                     {
-                        Helper.MessageBoxError("Ocorreu um problema ao tentar excluir a pasta. Tente fazer esse processo manualmente.");
+                        Helper.MessageBoxError(Resource.scenarioRemoveError);
                         return;
                     }
                 }
@@ -1013,14 +1071,14 @@ namespace WiremockUI
                     var nodeScenarioFirst = nodeProxy.Nodes[0];
                     var scenarioFirst = (Data.Scenario)nodeScenarioFirst.Tag;
                     proxy.SetDefault(scenarioFirst);
-                    SetnodeScenarioAsDefault(scenarioFirst, nodeScenarioFirst);
+                    SetNodeScenarioAsDefault(scenarioFirst, nodeScenarioFirst);
                 }
 
                 SaveProxy(proxy);
             }
         }
 
-        private void SetnodeScenarioAsDefault(Data.Scenario scenario, TreeNode nodeScenario)
+        private void SetNodeScenarioAsDefault(Data.Scenario scenario, TreeNode nodeScenario)
         {
             // change front
             var font = new Font(treeServices.Font.FontFamily, treeServices.Font.Size, FontStyle.Bold);
@@ -1047,7 +1105,7 @@ namespace WiremockUI
 
         private void StartService(Data.Scenario scenario, Dashboard.PlayType playType)
         {
-            var nodeScenario = GetnodeScenarioById(scenario.Id);
+            var nodeScenario = GetNodeScenarioById(scenario.Id);
             var nodeProxy = nodeScenario.Parent;
             var proxy = (Proxy)nodeProxy.Tag;
 
@@ -1060,20 +1118,20 @@ namespace WiremockUI
             catch (Exception ex)
             {
                 StopService(scenario);
-                Helper.MessageBoxError($"Ocorreu um erro ao tentar iniciar: {ex.GetType().Name}: {ex.Message}");
+                Helper.MessageBoxError(string.Format(Resource.startServerError, ex.GetType().Name, ex.Message));
                 return;
             }
 
             var recordText = "";
 
             if (playType == Dashboard.PlayType.PlayAndRecord)
-                recordText = " (Gravando)";
+                recordText = " " + Resource.startServerRecordText;
             else if (playType == Dashboard.PlayType.PlayAsProxy)
-                recordText = " (Proxy)";
+                recordText = " " + Resource.startServerAsProxyText;
 
             TabMaster.AddTab(frmStart, scenario.Id, scenario.Name + recordText)
                 .CanClose = () => {
-                    if (Helper.MessageBoxQuestion("Deseja realmente parar o serviço?") == DialogResult.Yes)
+                    if (Helper.MessageBoxQuestion(Resource.stopServerConfirmMessage) == DialogResult.Yes)
                         StopService(scenario);
 
                     return false;
@@ -1093,7 +1151,7 @@ namespace WiremockUI
 
         private void StopService(Data.Scenario scenario)
         {
-            var nodeScenario = GetnodeScenarioById(scenario.Id);
+            var nodeScenario = GetNodeScenarioById(scenario.Id);
             var nodeProxy = nodeScenario.Parent;
 
             Dashboard.Stop(scenario);
@@ -1119,7 +1177,7 @@ namespace WiremockUI
             }
         }
 
-        private TreeNode GetnodeScenarioById(Guid id)
+        private TreeNode GetNodeScenarioById(Guid id)
         {
             foreach (TreeNode n in GetAllProxiesNodes())
             {
@@ -1164,6 +1222,15 @@ namespace WiremockUI
                     StartService(scenario, playType);
                 }
             }
+        }
+
+        private void RefreshAll()
+        {
+            UpdateLabels();
+            StopAll();
+            treeServices.Nodes.Clear();
+            tabForms.TabPages.Clear();
+            LoadProxies();
         }
 
         private void menuAddMockService_Click(object sender, EventArgs e)
@@ -1251,7 +1318,7 @@ namespace WiremockUI
                     }
                     catch(Exception ex)
                     {
-                        Helper.MessageBoxError("Ocorreu um erro ao selecionar o arquivo: " + ex.Message);
+                        Helper.MessageBoxError(string.Format(Resource.selectTextErrorMessage, ex.Message));
                     }
                     finally
                     {
@@ -1287,7 +1354,7 @@ namespace WiremockUI
                     }
                     catch (Exception ex)
                     {
-                        Helper.MessageBoxError("Ocorreu um erro ao selecionar o arquivo: " + ex.Message);
+                        Helper.MessageBoxError(string.Format(Resource.selectTextErrorMessage, ex.Message));
                     }
                     finally
                     {
@@ -1355,10 +1422,7 @@ namespace WiremockUI
 
         private void menuRefresh_Click(object sender, EventArgs e)
         {
-            StopAll();
-            treeServices.Nodes.Clear();
-            tabForms.TabPages.Clear();
-            LoadProxies();
+            RefreshAll();
         }
 
         private void treeServices_MouseMove(object sender, MouseEventArgs e)
@@ -1409,7 +1473,7 @@ namespace WiremockUI
 
             if (File.Exists(newNameMap))
             {
-                Helper.MessageBoxError("Esse arquivo de mapa já existe");
+                Helper.MessageBoxError(Resource.mappingFileAlreadyExistsMessage);
                 return;
             }
 
@@ -1419,7 +1483,7 @@ namespace WiremockUI
 
                 if (File.Exists(newNameBody))
                 {
-                    Helper.MessageBoxError("Esse arquivo de resposta já existe");
+                    Helper.MessageBoxError(Resource.mappingBodyFileAlreadExistsMessage);
                     return;
                 }
             }
@@ -1478,7 +1542,7 @@ namespace WiremockUI
                     }
                     catch (Exception ex)
                     {
-                        Helper.MessageBoxError("Erro ao renomear arquivo: " + ex.Message);
+                        Helper.MessageBoxError(string.Format(Resource.renameFileError, ex.Message));
                     }
                 }
                 else
@@ -1525,13 +1589,13 @@ namespace WiremockUI
         private void webRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frmComposer = new FormWebRequest();
-            TabMaster.AddTab(frmComposer, null, webRequestToolStripMenuItem.Text);
+            TabMaster.AddTab(frmComposer, null, menuWebRequest.Text);
         }
 
         private void compareTextToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new FormCompare(this);
-            TabMaster.AddTab(frm, null, compareTextToolStripMenuItem.Text);
+            TabMaster.AddTab(frm, null, menuTextCompare.Text);
         }
 
         private void btnCancelFileSelectiong_Click(object sender, EventArgs e)
@@ -1542,13 +1606,13 @@ namespace WiremockUI
         private void textEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new FormTextView(this, null, null);
-            TabMaster.AddTab(frm, null, textEditorToolStripMenuItem.Text);
+            TabMaster.AddTab(frm, null, menuTextEditor.Text);
         }
 
         private void visualizadorDeJSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FormJsonViewer(this, jsonVisualizerToolStripMenuItem.Text, null, true);
-            TabMaster.AddTab(frm, null, jsonVisualizerToolStripMenuItem.Text);
+            var frm = new FormJsonViewer(this, menuJsonVisualizer.Text, null, true);
+            TabMaster.AddTab(frm, null, menuJsonVisualizer.Text);
         }
     }
 }

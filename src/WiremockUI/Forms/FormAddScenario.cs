@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows.Forms;
 using WiremockUI.Data;
 using System.Linq;
+using WiremockUI.Languages;
 
 namespace WiremockUI
 {
@@ -21,12 +22,19 @@ namespace WiremockUI
             this.parent = parent;
             this.proxy = proxy;
             InitializeComponent();
-            
+
+            Text = Resource.formAddScenarioTitle;
+            btnAdd.Text = Resource.btnAdd;
+            btnCancel.Text = Resource.btnCancel;
+            lblScenarioName.Text = Resource.lblScenarioName;
+            lblScenarioDescription.Text = Resource.lblScenarioDescription;
+
             if (this.scenario != null)
             {
+                Text = Resource.formAddScenarioInEditModeTitle;
                 this.txtName.Text = scenario.Name;
                 this.txtDesc.Text = scenario.Description;
-                this.btnAdd.Text = "Salvar";
+                this.btnAdd.Text = Resource.btnEdit;
                 this.oldPath = proxy.GetFullPath(scenario);
 
                 if (master.Dashboard.IsRunning(scenario))
@@ -57,7 +65,7 @@ namespace WiremockUI
 
             if (string.IsNullOrWhiteSpace(name))
             {
-                Helper.MessageBoxError("O campo 'Nome' é obrigatório.");
+                Helper.MessageBoxError(Resource.addScenarioRequiredNameMessage);
                 txtName.Focus();
                 return;
             }
@@ -70,7 +78,7 @@ namespace WiremockUI
 
             if (existsName)
             {
-                Helper.MessageBoxError("Esse 'Nome' já está em uso");
+                Helper.MessageBoxError(Resource.addScenarioDuplicateNameMessage);
                 txtName.Focus();
                 return;
             }

@@ -9,6 +9,7 @@ namespace WiremockUI.Data
     internal class Schema
     {
         public List<Proxy> Proxies { get; set; }
+        public List<Settings> Settings { get; set; }
     }
 
     internal class UnitOfWork
@@ -44,6 +45,20 @@ namespace WiremockUI.Data
                     repository = (Repository<Proxy>)repositories[typeof(Proxy)];
                 else
                     repository = new Repository<Proxy>(PocFile);
+
+                return repository;
+            }
+        }
+
+        public Repository<Settings> Settings
+        {
+            get
+            {
+                Repository<Settings> repository;
+                if (repositories.ContainsKey(typeof(Settings)))
+                    repository = (Repository<Settings>)repositories[typeof(Settings)];
+                else
+                    repository = new Repository<Settings>(PocFile);
 
                 return repository;
             }
