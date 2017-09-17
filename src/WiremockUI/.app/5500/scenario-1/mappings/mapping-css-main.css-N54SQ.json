@@ -1,0 +1,23 @@
+{
+  "id" : "ed3ee0fc-a182-3a16-a28d-3cd2fe0e7696",
+  "request" : {
+    "url" : "/assets/css/main.css",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-css-main.css-N54SQ.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Fri, 15 Sep 2017 19:02:11 GMT",
+      "Content-Type" : "text/css; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Fri, 15 Sep 2017 19:12:11 GMT",
+      "Cache-Control" : "max-age=600",
+      "X-GitHub-Request-Id" : "67B9:069C:16C1535:20F93B9:59BC23B0"
+    }
+  },
+  "uuid" : "ed3ee0fc-a182-3a16-a28d-3cd2fe0e7696"
+}

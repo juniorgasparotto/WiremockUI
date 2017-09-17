@@ -13,6 +13,7 @@ namespace WiremockUI
             txtAboutText.Text = Resource.txtAboutText;
             lblEmail.Text = Resource.email;
             lblUrl.Text = Resource.gitHubProjectUrl;
+            btnClose.Text = Resource.btnClose;
         }
 
         private void lblEmail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

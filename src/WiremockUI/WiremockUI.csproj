@@ -298,6 +298,7 @@
     </Compile>
     <Compile Include="Utils\DevelopmentHelper.cs" />
     <Compile Include="Utils\DiffMatchPatch.cs" />
+    <Compile Include="Utils\CopyUtils.cs" />
     <Compile Include="Utils\SettingsUtils.cs" />
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Forms\FormAbout.cs">
@@ -434,8 +435,9 @@
     <Content Include="Images\response.png" />
     <Content Include="Images\stop.png" />
     <Content Include="Images\wiremock.ico" />
-    <Content Include="Jar\wiremock-standalone-2.7.1.jar" />
-    <None Include="Resources\check.Image.bmp" />
+    <Content Include="Jar\wiremock-standalone-2.7.1.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Files\New.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -13,13 +13,13 @@ namespace WiremockUI
         private GridViewLogRequestResponse logTable;
         private FormMaster master;
         private Scenario scenario;
-        private Dashboard.PlayType playType;
+        private Proxy.PlayType playType;
         private Proxy proxy;
         private int start;
         private int indexOfSearchText;
         private string labelDiff;
 
-        public FormStartWiremockService(FormMaster master, Proxy proxy, Scenario scenario, Dashboard.PlayType playType)
+        public FormStartWiremockService(FormMaster master, Proxy proxy, Scenario scenario, Proxy.PlayType playType)
         {
             InitializeComponent();
 
@@ -35,6 +35,9 @@ namespace WiremockUI
             tabLogTable.Text = Resource.tabLogTable;
             btnSearch.Text = Resource.btnSearch;
             btnClose.Text = Resource.btnClose;
+            toolStripStatusLabelCount.Text = Resource.toolStripStatusLabelCount;
+            toolStripStatusDiff.Text = Resource.toolStripStatusDiff;
+            toolStripStatusValue.Text = Resource.toolStripStatusValue;
 
             this.txtSearchValue.Multiline = false;
 
@@ -61,9 +64,16 @@ namespace WiremockUI
             this.proxy = proxy;
             this.scenario = scenario;
             this.playType = playType;
-
-            this.txtFrom.Text = proxy.UrlTarget;
-            this.linkUrlTarget.Links.Add(0, proxy.UrlTarget.Length, proxy.UrlTarget);
+            
+            if (!string.IsNullOrWhiteSpace(proxy.UrlTarget))
+            {
+                this.txtFrom.Text = proxy.UrlTarget;
+                this.linkUrlTarget.Links.Add(0, proxy.UrlTarget.Length, proxy.UrlTarget);
+            }
+            else
+            {
+                this.linkUrlTarget.Visible = false;
+            }
 
             var urlProxy = proxy.GetUrlProxy();
             this.txtTo.Text = urlProxy;

@@ -1,0 +1,23 @@
+{
+  "id" : "026cf56c-3184-34ce-b58d-d2f8bc7419cd",
+  "request" : {
+    "url" : "/docs/",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-docs-ut3vm.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Fri, 15 Sep 2017 19:03:04 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Fri, 15 Sep 2017 19:13:04 GMT",
+      "Cache-Control" : "max-age=600",
+      "X-GitHub-Request-Id" : "67C9:069A:49A64F:69F4CD:59BC23E8"
+    }
+  },
+  "uuid" : "026cf56c-3184-34ce-b58d-d2f8bc7419cd"
+}

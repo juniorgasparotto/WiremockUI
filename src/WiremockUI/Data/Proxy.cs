@@ -20,7 +20,10 @@ namespace WiremockUI.Data
 
         public string GetFormattedName()
         {
-            return $"{Name} (http://localhost:{PortProxy} <- {UrlTarget})";
+            if (!string.IsNullOrWhiteSpace(UrlTarget))
+                return $"{Name} (http://localhost:{PortProxy} <- {UrlTarget})";
+
+            return $"{Name} (http://localhost:{PortProxy})";
         }
 
         public string GetFolderName()
@@ -97,14 +100,52 @@ namespace WiremockUI.Data
             scenario.RemoveAll(f => f.Id == id);
         }
 
-        public List<string> GetArguments()
+        public string[] GetArguments(Scenario scenario, PlayType type, bool addQuoteInStrings = false)
+        {
+            string[] args;
+            var relativeFolder = GetFullPath(scenario);
+
+            if (type == PlayType.PlayAndRecord)
+            {
+                args = new string[]
+                {
+                    "--port", PortProxy.ToString(),
+                    "--proxy-all", Helper.AddQuote(UrlTarget, addQuoteInStrings),
+                    "--record-mappings",
+                    "--root-dir", Helper.AddQuote(relativeFolder, addQuoteInStrings)
+                };
+            }
+            else if (type == PlayType.PlayAsProxy)
+            {
+                args = new string[]
+                {
+                    "--port", PortProxy.ToString(),
+                    "--proxy-all", Helper.AddQuote(UrlTarget, addQuoteInStrings),
+                };
+            }
+            else
+            {
+                args = new string[]
+                {
+                    "--port", PortProxy.ToString(),
+                    "--root-dir",  Helper.AddQuote(relativeFolder, addQuoteInStrings)
+                };
+            }
+
+            var argsProxy = GetArguments();
+            argsProxy.InsertRange(0, args);
+            return argsProxy.ToArray();
+        }
+
+        public List<string> GetArguments(bool addQuoteInStrings = false)
         {
             var lst = new List<string>();
             foreach (var arg in Arguments)
             {
                 if (!string.IsNullOrWhiteSpace(arg.Value))
                 {
-                    if (arg.Type == "Boolean" && bool.TryParse(arg.Value, out var b))
+                    var type = arg.Type.ToLower();
+                    if (type == "boolean" && bool.TryParse(arg.Value, out var b))
                     {
                         if (b)
                             lst.Add(arg.ArgName);
@@ -113,11 +154,23 @@ namespace WiremockUI.Data
                     {
                         lst.Add(arg.ArgName);
                         if (arg.ArgName != arg.Value)
-                            lst.Add(arg.Value);
+                        {
+                            var value = arg.Value;
+                            if (type == "string")
+                                value = Helper.AddQuote(value, addQuoteInStrings);
+                            lst.Add(value);
+                        }
                     }
                 }
             }
             return lst;
+        }
+
+        public enum PlayType
+        {
+            Play,
+            PlayAsProxy,
+            PlayAndRecord
         }
 
         public class Argument

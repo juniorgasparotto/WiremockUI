@@ -116,9 +116,10 @@ namespace WiremockUI
 
             if (string.IsNullOrWhiteSpace(urlTarget))
             {
-                Helper.MessageBoxError(Resource.addProxyRequiredUrlTargetMessage);
-                txtUrlTarget.Focus();
-                return;
+                urlTarget = null;
+                //Helper.MessageBoxError(Resource.addProxyRequiredUrlTargetMessage);
+                //txtUrlTarget.Focus();
+                //return;
             }
 
             if (string.IsNullOrWhiteSpace(port))

@@ -61,7 +61,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Esse &apos;Nome&apos; já está em uso.
+        ///   Looks up a localized string similar to Esse &quot;Nome&quot;já está em uso.
         /// </summary>
         internal static string addProxyDuplicateNameMessage {
             get {
@@ -70,7 +70,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Essa &apos;Porta&apos; já está em uso.
+        ///   Looks up a localized string similar to Essa &quot;Porta&quot; já está em uso.
         /// </summary>
         internal static string addProxyDuplicatePortMessage {
             get {
@@ -79,7 +79,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O campo &apos;Porta&apos; está inválido..
+        ///   Looks up a localized string similar to O campo &quot;Porta&quot; está inválido..
         /// </summary>
         internal static string addProxyInvalidPortMessage {
             get {
@@ -88,7 +88,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O campo &apos;Nome&apos; é obrigatório..
+        ///   Looks up a localized string similar to O campo &quot;Nome&quot; é obrigatório..
         /// </summary>
         internal static string addProxyRequiredNameMessage {
             get {
@@ -97,7 +97,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O campo &apos;Porta&apos; é obrigatório..
+        ///   Looks up a localized string similar to O campo &quot;Porta&quot; é obrigatório..
         /// </summary>
         internal static string addProxyRequiredPortMessage {
             get {
@@ -106,7 +106,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O campo &apos;Url destino&apos; é obrigatório..
+        ///   Looks up a localized string similar to O campo &quot;Url destino&quot; é obrigatório..
         /// </summary>
         internal static string addProxyRequiredUrlTargetMessage {
             get {
@@ -124,7 +124,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Esse &apos;Nome&apos; já está em uso.
+        ///   Looks up a localized string similar to Esse &quot;Nome&quot; já está em uso.
         /// </summary>
         internal static string addScenarioDuplicateNameMessage {
             get {
@@ -133,7 +133,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adicionar.
+        ///   Looks up a localized string similar to Adicionar mock.
         /// </summary>
         internal static string addScenarioMenu {
             get {
@@ -142,7 +142,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O campo &apos;Nome&apos; é obrigatório..
+        ///   Looks up a localized string similar to O campo &quot;Nome&quot; é obrigatório..
         /// </summary>
         internal static string addScenarioRequiredNameMessage {
             get {
@@ -331,7 +331,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resultado: {0} secs..
+        ///   Looks up a localized string similar to Resultado: {0} segundos.
         /// </summary>
         internal static string compareResultTitle {
             get {
@@ -439,7 +439,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Esse JSON não é válido: {1}.
+        ///   Looks up a localized string similar to Esse JSON não é válido: {0}.
         /// </summary>
         internal static string formatJsonErrorMessage {
             get {
@@ -637,7 +637,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Adicionar.
+        ///   Looks up a localized string similar to &amp;Adicionar Proxy.
         /// </summary>
         internal static string menuAddMockService {
             get {
@@ -700,7 +700,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Refresh.
+        ///   Looks up a localized string similar to &amp;Atualizar.
         /// </summary>
         internal static string menuRefresh {
             get {
@@ -709,7 +709,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Serviços.
+        ///   Looks up a localized string similar to &amp;Executar.
         /// </summary>
         internal static string menuServices {
             get {
@@ -1132,7 +1132,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log em texto.
+        ///   Looks up a localized string similar to Texto.
         /// </summary>
         internal static string tabLogText {
             get {
@@ -1258,7 +1258,34 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Serviços.
+        ///   Looks up a localized string similar to Diferença de tempo:.
+        /// </summary>
+        internal static string toolStripStatusDiff {
+            get {
+                return ResourceManager.GetString("toolStripStatusDiff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total de resultados:.
+        /// </summary>
+        internal static string toolStripStatusLabelCount {
+            get {
+                return ResourceManager.GetString("toolStripStatusLabelCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Selecione duas celulas de tempo para calcular a diferença).
+        /// </summary>
+        internal static string toolStripStatusValue {
+            get {
+                return ResourceManager.GetString("toolStripStatusValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proxies.
         /// </summary>
         internal static string treeviewTopNode {
             get {

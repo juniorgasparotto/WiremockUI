@@ -166,5 +166,12 @@ namespace WiremockUI
                 return content;
             }
         }
+
+        public static string AddQuote(string value, bool addQuoteInStrings)
+        {
+            if (addQuoteInStrings)
+                return "\"" + value + "\"";
+            return value;
+        }
     }
 }

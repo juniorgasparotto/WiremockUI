@@ -51,7 +51,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusCount = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusDiff = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.linkOpenFolder = new System.Windows.Forms.LinkLabel();
             this.linkUrlTarget = new System.Windows.Forms.LinkLabel();
@@ -290,7 +290,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelCount,
             this.toolStripStatusCount,
-            this.toolStripStatusLabel1,
+            this.toolStripStatusDiff,
             this.toolStripStatusValue});
             this.statusStrip1.Location = new System.Drawing.Point(3, 95);
             this.statusStrip1.Name = "statusStrip1";
@@ -311,12 +311,12 @@
             this.toolStripStatusCount.Size = new System.Drawing.Size(13, 17);
             this.toolStripStatusCount.Text = "0";
             // 
-            // toolStripStatusLabel1
+            // toolStripStatusDiff
             // 
-            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(122, 17);
-            this.toolStripStatusLabel1.Text = "Diferença de tempo:";
+            this.toolStripStatusDiff.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusDiff.Name = "toolStripStatusDiff";
+            this.toolStripStatusDiff.Size = new System.Drawing.Size(122, 17);
+            this.toolStripStatusDiff.Text = "Diferença de tempo:";
             // 
             // toolStripStatusValue
             // 
@@ -455,7 +455,7 @@
             // 
             this.lblUrlTarget.AutoSize = true;
             this.lblUrlTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUrlTarget.Location = new System.Drawing.Point(12, 26);
+            this.lblUrlTarget.Location = new System.Drawing.Point(6, 26);
             this.lblUrlTarget.Name = "lblUrlTarget";
             this.lblUrlTarget.Size = new System.Drawing.Size(72, 13);
             this.lblUrlTarget.TabIndex = 18;
@@ -515,7 +515,7 @@
         private System.Windows.Forms.Label lblUrlProxy;
         private System.Windows.Forms.Label lblUrlTarget;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusDiff;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusValue;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCount;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusCount;

@@ -1,0 +1,23 @@
+{
+  "id" : "b7a0fbc7-d29c-3f6f-98f9-019e2d3be66f",
+  "request" : {
+    "url" : "/images/favicon3.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-images-favicon3.png-J56TM.png",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Fri, 15 Sep 2017 19:02:24 GMT",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Fri, 15 Sep 2017 19:12:24 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "67C0:069A:49A3AE:69F04A:59BC23B9"
+    }
+  },
+  "uuid" : "b7a0fbc7-d29c-3f6f-98f9-019e2d3be66f"
+}

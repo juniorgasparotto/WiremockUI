@@ -1,0 +1,23 @@
+{
+  "id" : "6936ed63-0317-37e7-9b5d-9c9fa8f148ef",
+  "request" : {
+    "url" : "/images/logos/Yenlo_logo_trans.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-logos-Yenlo_logo_trans.png-18mOT.png",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Fri, 15 Sep 2017 19:02:13 GMT",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Fri, 15 Sep 2017 19:12:13 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "67C1:0698:D848E5:138B1E2:59BC23B5"
+    }
+  },
+  "uuid" : "6936ed63-0317-37e7-9b5d-9c9fa8f148ef"
+}

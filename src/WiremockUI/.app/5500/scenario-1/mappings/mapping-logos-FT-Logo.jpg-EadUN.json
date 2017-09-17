@@ -1,0 +1,23 @@
+{
+  "id" : "ba9bb865-7fbd-3c3d-ba43-4b3ae0328e1b",
+  "request" : {
+    "url" : "/images/logos/FT-Logo.jpg",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-logos-FT-Logo.jpg-EadUN.jpeg",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Fri, 15 Sep 2017 19:02:15 GMT",
+      "Content-Type" : "image/jpeg",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Fri, 15 Sep 2017 19:12:15 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "67C1:0698:D8494E:138B24A:59BC23B6"
+    }
+  },
+  "uuid" : "ba9bb865-7fbd-3c3d-ba43-4b3ae0328e1b"
+}

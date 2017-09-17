@@ -1,1 +1,0 @@
-{success: true, userWindowsAuthenticated:false, windowsAuthentication:false , userNameAuthenticated:"apdata", SessionID :"ogs3yzsdyae4jp5hcfijhhco", NTLM : false}

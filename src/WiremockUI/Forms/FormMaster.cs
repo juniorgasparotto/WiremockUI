@@ -144,7 +144,7 @@ namespace WiremockUI
             startAllMenu.ImageKey = "play";
             startAllMenu.Click += (a, b) =>
             {
-                PlayAll(Dashboard.PlayType.Play);
+                PlayAll(Proxy.PlayType.Play);
             };
 
             // start and record all
@@ -152,7 +152,7 @@ namespace WiremockUI
             startAndRecordAllMenu.ImageKey = "record";
             startAndRecordAllMenu.Click += (a, b) =>
             {
-                PlayAll(Dashboard.PlayType.PlayAndRecord);
+                PlayAll(Proxy.PlayType.PlayAndRecord);
             };
 
             // stop all
@@ -251,19 +251,23 @@ namespace WiremockUI
                 menu.Opening += (a, b) =>
                 {
                     var hasScenario = proxy.Scenarios.Any();
+                    var hasUrl = !string.IsNullOrWhiteSpace(proxy.UrlTarget);
+                    var hasFolder = Directory.Exists(proxy.GetFullPath());
 
-                    startMenu.Visible = hasScenario;
-                    startAsProxyMenu.Visible = hasScenario;
-                    startAndRecordMenu.Visible = hasScenario;
+                    startMenu.Visible = hasScenario && hasFolder;
+                    startAsProxyMenu.Visible = hasScenario && hasUrl;
+                    startAndRecordMenu.Visible = hasScenario && hasUrl;
                     stopMenu.Visible = hasScenario;
-                    openFolderMenu.Visible = hasScenario;
-                    openUrlTargetMenu.Visible = hasScenario;
+                    openFolderMenu.Visible = hasScenario && hasFolder;
+                    openUrlTargetMenu.Visible = hasScenario && hasUrl;
                     openUrlProxyScenarioMenu.Visible = hasScenario;
 
+                    // Enable control
                     if (hasScenario)
                     {
                         var defaultScenario = proxy.GetDefaultScenario();
                         var isRunning = Dashboard.IsRunning(defaultScenario);
+
                         startAsProxyMenu.Enabled = !isRunning;
                         startMenu.Enabled = !isRunning;
                         startAndRecordMenu.Enabled = !isRunning;
@@ -271,17 +275,6 @@ namespace WiremockUI
                         openUrlProxyScenarioMenu.Visible = isRunning;
                         editMenu.Enabled = !isRunning;
                         removeMenu.Enabled = !isRunning;
-
-                        if (!Directory.Exists(proxy.GetFullPath()))
-                        {
-                            startMenu.Visible = false;
-                            openFolderMenu.Visible = false;
-                        }
-                        else
-                        {
-                            startMenu.Visible = true;
-                            openFolderMenu.Visible = true;
-                        }
                     }
                     else
                     {
@@ -325,6 +318,7 @@ namespace WiremockUI
                 // edit Scenario
                 editMenu.Text = Resource.editProxyMenu;
                 editMenu.ImageKey = "edit";
+                editMenu.ShortcutKeys = Keys.F2;
                 editMenu.Click += (a, b) =>
                 {
                     OpenAddOrEditProxy(proxy);
@@ -333,6 +327,7 @@ namespace WiremockUI
                 // remove Scenario
                 removeMenu.Text = Resource.removeProxyMenu;
                 removeMenu.ImageKey = "remove";
+                removeMenu.ShortcutKeys = Keys.Delete;
                 removeMenu.Click += (a, b) =>
                 {
                     RemoveProxy(nodeProxy);
@@ -344,7 +339,7 @@ namespace WiremockUI
                 startMenu.Click += (a, b) =>
                 {
                     var defaultScenario = proxy.GetDefaultScenario();
-                    StartService(defaultScenario, Dashboard.PlayType.Play);
+                    StartService(defaultScenario, Proxy.PlayType.Play);
                 };
 
                 // play and record
@@ -353,7 +348,7 @@ namespace WiremockUI
                 startAndRecordMenu.Click += (a, b) =>
                 {
                     var defaultScenario = proxy.GetDefaultScenario();
-                    StartService(defaultScenario, Dashboard.PlayType.PlayAndRecord);
+                    StartService(defaultScenario, Proxy.PlayType.PlayAndRecord);
                 };
 
                 // play
@@ -362,7 +357,7 @@ namespace WiremockUI
                 startAsProxyMenu.Click += (a, b) =>
                 {
                     var defaultScenario = proxy.GetDefaultScenario();
-                    StartService(defaultScenario, Dashboard.PlayType.PlayAsProxy);
+                    StartService(defaultScenario, Proxy.PlayType.PlayAsProxy);
                 };
 
                 // stop
@@ -525,6 +520,7 @@ namespace WiremockUI
                 // edit Scenario
                 editMenu.Text = Resource.editScenarioMenu;
                 editMenu.ImageKey = "edit";
+                editMenu.ShortcutKeys = Keys.F2;
                 editMenu.Click += (a, b) =>
                 {
                     OpenAddOrEditScenario(nodeProxy, scenario);
@@ -533,9 +529,10 @@ namespace WiremockUI
                 // remove mock
                 removeMenu.Text = Resource.removeScenarioMenu;
                 removeMenu.ImageKey = "remove";
+                removeMenu.ShortcutKeys = Keys.Delete;
                 removeMenu.Click += (a, b) =>
                 {
-                    RemoveScenario(nodeScenario, scenario);
+                    RemoveScenario(nodeScenario);
                 };
 
                 // mostra ou esconde a URL do Scenario
@@ -671,7 +668,7 @@ namespace WiremockUI
             renameMenu.ImageKey = "rename";
             renameMenu.Click += (a, b) =>
             {
-                nodeMapping.BeginEdit();
+                treeServices.BeginEdit();
             };
 
             // delete
@@ -1013,7 +1010,7 @@ namespace WiremockUI
 
         private void RemoveProxy(TreeNode nodeProxy)
         {
-            if (MessageBox.Show(Resource.removeProxyConfirmMessage, Resource.removeProxyConfirmTitle, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (Helper.MessageBoxQuestion(Resource.removeProxyConfirmMessage) == DialogResult.Yes)
             {
                 var proxy = (Proxy)nodeProxy.Tag;
                 var path = proxy.GetFullPath();
@@ -1041,12 +1038,13 @@ namespace WiremockUI
         }
 
 
-        private void RemoveScenario(TreeNode nodeScenario, Data.Scenario scenario)
+        private void RemoveScenario(TreeNode nodeScenario)
         {
-            if (MessageBox.Show(Resource.scenarioConfirmRemoveMessage, Resource.scenarioConfirmRemoveTitle, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (Helper.MessageBoxQuestion(Resource.scenarioConfirmRemoveMessage) == DialogResult.Yes)
             {
                 var nodeProxy = nodeScenario.Parent;
                 var proxy = (Proxy)nodeScenario.Parent.Tag;
+                var scenario = (Data.Scenario)nodeScenario.Tag;
                 var path = proxy.GetFullPath(scenario);
 
                 if (Directory.Exists(path))
@@ -1103,7 +1101,7 @@ namespace WiremockUI
             nodeService.StateImageKey = nodeService.ImageKey;
         }
 
-        private void StartService(Data.Scenario scenario, Dashboard.PlayType playType)
+        private void StartService(Data.Scenario scenario, Proxy.PlayType playType)
         {
             var nodeScenario = GetNodeScenarioById(scenario.Id);
             var nodeProxy = nodeScenario.Parent;
@@ -1124,9 +1122,9 @@ namespace WiremockUI
 
             var recordText = "";
 
-            if (playType == Dashboard.PlayType.PlayAndRecord)
+            if (playType == Proxy.PlayType.PlayAndRecord)
                 recordText = " " + Resource.startServerRecordText;
-            else if (playType == Dashboard.PlayType.PlayAsProxy)
+            else if (playType == Proxy.PlayType.PlayAsProxy)
                 recordText = " " + Resource.startServerAsProxyText;
 
             TabMaster.AddTab(frmStart, scenario.Id, scenario.Name + recordText)
@@ -1138,14 +1136,14 @@ namespace WiremockUI
                 };
 
             var icon = "start";
-            if (playType == Dashboard.PlayType.PlayAndRecord)
+            if (playType == Proxy.PlayType.PlayAndRecord)
                 icon = "record";
-            else if (playType == Dashboard.PlayType.PlayAsProxy)
+            else if (playType == Proxy.PlayType.PlayAsProxy)
                 icon = "play-proxy";
 
             ChangeTreeNodeImage(nodeProxy, icon);
 
-            if (playType == Dashboard.PlayType.PlayAndRecord)
+            if (playType == Proxy.PlayType.PlayAndRecord)
                 StartWatcherFolder(nodeScenario, scenario);
         }
 
@@ -1204,7 +1202,7 @@ namespace WiremockUI
             Dashboard.Watchers.Clear();
         }
 
-        private void PlayAll(Dashboard.PlayType playType)
+        private void PlayAll(Proxy.PlayType playType)
         {
             foreach (TreeNode n in GetAllProxiesNodes())
             {
@@ -1217,7 +1215,7 @@ namespace WiremockUI
 
                     // inicia gravando caso ainda não tenha sido feito
                     if (!proxy.AlreadyRecord(scenario))
-                        playType = Dashboard.PlayType.PlayAsProxy;
+                        playType = Proxy.PlayType.PlayAsProxy;
 
                     StartService(scenario, playType);
                 }
@@ -1412,12 +1410,12 @@ namespace WiremockUI
 
         private void menuPlayAll_Click(object sender, EventArgs e)
         {
-            PlayAll(Dashboard.PlayType.Play);
+            PlayAll(Proxy.PlayType.Play);
         }
 
         private void menuPlayAndRecordAll_Click(object sender, EventArgs e)
         {
-            PlayAll(Dashboard.PlayType.PlayAndRecord);
+            PlayAll(Proxy.PlayType.PlayAndRecord);
         }
 
         private void menuRefresh_Click(object sender, EventArgs e)
@@ -1554,6 +1552,10 @@ namespace WiremockUI
                     e.CancelEdit = true;
                 }
             }
+            else
+            {
+                e.CancelEdit = true;
+            }
         }
 
         private void treeServices_KeyDown(object sender, KeyEventArgs e)
@@ -1584,18 +1586,44 @@ namespace WiremockUI
                 //    e.SuppressKeyPress = true;
                 //}
             }
+
+            if (treeServices.SelectedNode?.Tag is Proxy proxy
+                && !Dashboard.IsRunning(proxy.GetDefaultScenario()))
+            {
+                if (e.KeyCode == Keys.Delete)
+                {
+                    RemoveProxy(treeServices.SelectedNode);
+                }
+                if (e.KeyCode == Keys.F2)
+                {
+                    OpenAddOrEditProxy(proxy);
+                }
+            }
+
+            if (treeServices.SelectedNode?.Tag is Data.Scenario scenario
+                && !Dashboard.IsRunning(scenario))
+            {
+                if (e.KeyCode == Keys.Delete)
+                {
+                    RemoveScenario(treeServices.SelectedNode);
+                }
+                if (e.KeyCode == Keys.F2)
+                {
+                    OpenAddOrEditScenario(treeServices.SelectedNode.Parent, scenario);
+                }
+            }
         }
 
         private void webRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frmComposer = new FormWebRequest();
-            TabMaster.AddTab(frmComposer, null, menuWebRequest.Text);
+            TabMaster.AddTab(frmComposer, null, GetMenuNameAsTabName(menuWebRequest.Text));
         }
 
         private void compareTextToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new FormCompare(this);
-            TabMaster.AddTab(frm, null, menuTextCompare.Text);
+            TabMaster.AddTab(frm, null, GetMenuNameAsTabName(menuTextCompare.Text));
         }
 
         private void btnCancelFileSelectiong_Click(object sender, EventArgs e)
@@ -1606,13 +1634,19 @@ namespace WiremockUI
         private void textEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new FormTextView(this, null, null);
-            TabMaster.AddTab(frm, null, menuTextEditor.Text);
+            TabMaster.AddTab(frm, null, GetMenuNameAsTabName(menuTextEditor.Text));
         }
 
         private void visualizadorDeJSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FormJsonViewer(this, menuJsonVisualizer.Text, null, true);
-            TabMaster.AddTab(frm, null, menuJsonVisualizer.Text);
+            var title = GetMenuNameAsTabName(menuJsonVisualizer.Text);
+            var frm = new FormJsonViewer(this, title, null, true);
+            TabMaster.AddTab(frm, null, title);
+        }
+
+        private string GetMenuNameAsTabName(string text)
+        {
+            return text.Replace("&", "");
         }
     }
 }

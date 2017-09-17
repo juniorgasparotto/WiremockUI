@@ -1,0 +1,23 @@
+{
+  "id" : "2c0b09e6-efc1-37c5-8e8c-194fdf4de138",
+  "request" : {
+    "url" : "/",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-(root)-A6yS2.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Fri, 15 Sep 2017 19:02:08 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Fri, 15 Sep 2017 19:12:08 GMT",
+      "Cache-Control" : "max-age=600",
+      "X-GitHub-Request-Id" : "67B9:069C:16C1413:20F93B6:59BC23B0"
+    }
+  },
+  "uuid" : "2c0b09e6-efc1-37c5-8e8c-194fdf4de138"
+}

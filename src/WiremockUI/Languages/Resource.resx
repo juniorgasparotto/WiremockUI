@@ -118,34 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="addProxyDuplicateNameMessage" xml:space="preserve">
-    <value>Esse 'Nome' já está em uso</value>
+    <value>Esse "Nome"já está em uso</value>
   </data>
   <data name="addProxyDuplicatePortMessage" xml:space="preserve">
-    <value>Essa 'Porta' já está em uso</value>
+    <value>Essa "Porta" já está em uso</value>
   </data>
   <data name="addProxyInvalidPortMessage" xml:space="preserve">
-    <value>O campo 'Porta' está inválido.</value>
+    <value>O campo "Porta" está inválido.</value>
   </data>
   <data name="addProxyRequiredNameMessage" xml:space="preserve">
-    <value>O campo 'Nome' é obrigatório.</value>
+    <value>O campo "Nome" é obrigatório.</value>
   </data>
   <data name="addProxyRequiredPortMessage" xml:space="preserve">
-    <value>O campo 'Porta' é obrigatório.</value>
+    <value>O campo "Porta" é obrigatório.</value>
   </data>
   <data name="addProxyRequiredUrlTargetMessage" xml:space="preserve">
-    <value>O campo 'Url destino' é obrigatório.</value>
+    <value>O campo "Url destino" é obrigatório.</value>
   </data>
   <data name="addProxyScenario" xml:space="preserve">
     <value>Adicionar cenário</value>
   </data>
   <data name="addScenarioDuplicateNameMessage" xml:space="preserve">
-    <value>Esse 'Nome' já está em uso</value>
+    <value>Esse "Nome" já está em uso</value>
   </data>
   <data name="addScenarioMenu" xml:space="preserve">
-    <value>Adicionar</value>
+    <value>Adicionar mock</value>
   </data>
   <data name="addScenarioRequiredNameMessage" xml:space="preserve">
-    <value>O campo 'Nome' é obrigatório.</value>
+    <value>O campo "Nome" é obrigatório.</value>
   </data>
   <data name="btnAdd" xml:space="preserve">
     <value>Adicionar</value>
@@ -208,7 +208,7 @@
     <value>Comparar...</value>
   </data>
   <data name="compareResultTitle" xml:space="preserve">
-    <value>Resultado: {0} secs.</value>
+    <value>Resultado: {0} segundos</value>
   </data>
   <data name="deleteMappingMenu" xml:space="preserve">
     <value>Remover</value>
@@ -244,7 +244,7 @@
     <value>Novo cenário</value>
   </data>
   <data name="formatJsonErrorMessage" xml:space="preserve">
-    <value>Esse JSON não é válido: {1}</value>
+    <value>Esse JSON não é válido: {0}</value>
   </data>
   <data name="formatXmlErrorMessage" xml:space="preserve">
     <value>Esse XML não é válido: {0}</value>
@@ -310,7 +310,7 @@
     <value>S&amp;obre</value>
   </data>
   <data name="menuAddMockService" xml:space="preserve">
-    <value>&amp;Adicionar</value>
+    <value>&amp;Adicionar Proxy</value>
   </data>
   <data name="menuClose" xml:space="preserve">
     <value>&amp;Sair</value>
@@ -331,10 +331,10 @@
     <value>Iniciar e &amp;Gravar todos</value>
   </data>
   <data name="menuRefresh" xml:space="preserve">
-    <value>&amp;Refresh</value>
+    <value>&amp;Atualizar</value>
   </data>
   <data name="menuServices" xml:space="preserve">
-    <value>&amp;Serviços</value>
+    <value>&amp;Executar</value>
   </data>
   <data name="menuStopAll" xml:space="preserve">
     <value>&amp;Parar todos</value>
@@ -475,7 +475,7 @@
     <value>Tabela</value>
   </data>
   <data name="tabLogText" xml:space="preserve">
-    <value>Log em texto</value>
+    <value>Texto</value>
   </data>
   <data name="tabProxyAdvance" xml:space="preserve">
     <value>Avançado</value>
@@ -517,7 +517,7 @@
     <value>Habilitado</value>
   </data>
   <data name="treeviewTopNode" xml:space="preserve">
-    <value>Serviços</value>
+    <value>Proxies</value>
   </data>
   <data name="txtAboutText" xml:space="preserve">
     <value>Esse projeto foi feito por Glauber Gasparotto.</value>
@@ -554,5 +554,14 @@
   </data>
   <data name="viewXml" xml:space="preserve">
     <value>Formatar para XML</value>
+  </data>
+  <data name="toolStripStatusDiff" xml:space="preserve">
+    <value>Diferença de tempo:</value>
+  </data>
+  <data name="toolStripStatusLabelCount" xml:space="preserve">
+    <value>Total de resultados:</value>
+  </data>
+  <data name="toolStripStatusValue" xml:space="preserve">
+    <value>(Selecione duas celulas de tempo para calcular a diferença)</value>
   </data>
 </root>

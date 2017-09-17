@@ -1,0 +1,23 @@
+{
+  "id" : "ceb543e8-7b93-3130-a8fd-c1d28bc2fe19",
+  "request" : {
+    "url" : "/images/logos/EW-logo.png",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-logos-EW-logo.png-A4gq3.png",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Fri, 15 Sep 2017 19:02:14 GMT",
+      "Content-Type" : "image/png",
+      "Last-Modified" : "Fri, 01 Sep 2017 12:49:59 GMT",
+      "Access-Control-Allow-Origin" : "*",
+      "Expires" : "Fri, 15 Sep 2017 19:12:14 GMT",
+      "Cache-Control" : "max-age=600",
+      "Accept-Ranges" : "bytes",
+      "X-GitHub-Request-Id" : "67BF:069C:16C1655:20F9642:59BC23B5"
+    }
+  },
+  "uuid" : "ceb543e8-7b93-3130-a8fd-c1d28bc2fe19"
+}

@@ -10,13 +10,6 @@ namespace WiremockUI
         public Dictionary<Guid, WireMockServer> Services { get; private set; }
         public Dictionary<Guid, FileSystemWatcher> Watchers { get; private set; }
 
-        public enum PlayType
-        {
-            Play,
-            PlayAsProxy,
-            PlayAndRecord
-        }
-
         public Dashboard()
         {
             this.Services = new Dictionary<Guid, WireMockServer>();
@@ -32,14 +25,14 @@ namespace WiremockUI
             return false;
         }
 
-        public bool IsRunning(Scenario mockService)
+        public bool IsRunning(Scenario scenario)
         {
-            if (mockService == null)
+            if (scenario == null)
                 return false;
 
-            if (!Services.ContainsKey(mockService.Id))
+            if (!Services.ContainsKey(scenario.Id))
                 return false;
-            return Services[mockService.Id].IsRunning();
+            return Services[scenario.Id].IsRunning();
         }
 
         public void Stop(Scenario mockService)
@@ -57,48 +50,16 @@ namespace WiremockUI
             }
         }
 
-        public void Play(Proxy proxy, Scenario scenario, PlayType type, ILogWriter textWriter, ILogTableRequestResponse logTableRequestResponse)
+        public void Play(Proxy proxy, Scenario scenario, Proxy.PlayType type, ILogWriter textWriter, ILogTableRequestResponse logTableRequestResponse)
         {
             if (Services.ContainsKey(scenario.Id))
                 Stop(scenario);
 
             var server = new WireMockServer(textWriter, logTableRequestResponse);
             Services.Add(scenario.Id, server);
-
-            string[] args;
-
-            var relativeFolder = proxy.GetFullPath(scenario);
-            
-            if (type == PlayType.PlayAndRecord)
-            {
-                args = new string[]
-                {
-                    "--port", proxy.PortProxy.ToString(),
-                    "--proxy-all", proxy.UrlTarget,
-                    "--record-mappings",
-                    "--root-dir", relativeFolder
-                };
-            }
-            else if (type == PlayType.PlayAsProxy)
-            {
-                args = new string[]
-                {
-                    "--port", proxy.PortProxy.ToString(),
-                    "--proxy-all", proxy.UrlTarget,
-                };
-            }
-            else
-            {
-                args = new string[]
-                {
-                    "--port", proxy.PortProxy.ToString(),
-                    "--root-dir", relativeFolder
-                };
-            }
-
-            var argsProxy = proxy.GetArguments();
-            argsProxy.InsertRange(0, args);
-            server.run(argsProxy.ToArray());
+            var argsProxy = proxy.GetArguments(scenario, type);
+            textWriter.WriteLine(CopyUtils.GetAsJavaCommand(proxy, scenario, type), System.Drawing.Color.Green, true);
+            server.run(argsProxy);
         }
 
         internal void AddWatchers(Scenario service, FileSystemWatcher watcher)
