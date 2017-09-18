@@ -13,20 +13,20 @@ namespace WiremockUI
         private GridViewLogRequestResponse logTable;
         private FormMaster master;
         private Scenario scenario;
-        private Proxy.PlayType playType;
-        private Proxy proxy;
+        private Server.PlayType playType;
+        private Server server;
         private int start;
         private int indexOfSearchText;
         private string labelDiff;
 
-        public FormStartWiremockService(FormMaster master, Proxy proxy, Scenario scenario, Proxy.PlayType playType)
+        public FormStartWiremockService(FormMaster master, Server server, Scenario scenario, Server.PlayType playType)
         {
             InitializeComponent();
 
             lblUrlTarget.Text = Resource.lblUrlTarget;
-            lblUrlProxy.Text = Resource.lblUrlProxy;
+            lblUrlServer.Text = Resource.lblUrlServer;
             linkUrlTarget.Text = Resource.viewLink;
-            linkUrlProxy.Text = Resource.viewLink;
+            linkUrlServer.Text = Resource.viewLink;
             btnClean.Text = Resource.btnClean;
             linkOpenFolder.Text = Resource.linkOpenFolder;
             chkDisable.Text = Resource.chkDisable;
@@ -61,25 +61,25 @@ namespace WiremockUI
             this.labelDiff = toolStripStatusValue.Text;
 
             this.master = master;
-            this.proxy = proxy;
+            this.server = server;
             this.scenario = scenario;
             this.playType = playType;
             
-            if (!string.IsNullOrWhiteSpace(proxy.UrlTarget))
+            if (!string.IsNullOrWhiteSpace(server.UrlTarget))
             {
-                this.txtFrom.Text = proxy.UrlTarget;
-                this.linkUrlTarget.Links.Add(0, proxy.UrlTarget.Length, proxy.UrlTarget);
+                this.txtFrom.Text = server.UrlTarget;
+                this.linkUrlTarget.Links.Add(0, server.UrlTarget.Length, server.UrlTarget);
             }
             else
             {
                 this.linkUrlTarget.Visible = false;
             }
 
-            var urlProxy = proxy.GetUrlProxy();
-            this.txtTo.Text = urlProxy;
-            this.linkUrlProxy.Links.Add(0, urlProxy.Length, urlProxy);
+            var urlServer = server.GetServerUrl();
+            this.txtTo.Text = urlServer;
+            this.linkUrlServer.Links.Add(0, urlServer.Length, urlServer);
 
-            var folderPath = proxy.GetFullPath(scenario);
+            var folderPath = server.GetFullPath(scenario);
             if (scenario != null && File.Exists(folderPath))
             {
                 this.linkOpenFolder.Links.Add(0, folderPath.Length, folderPath);
@@ -92,7 +92,7 @@ namespace WiremockUI
         
         public void Play()
         {
-            master.Dashboard.Play(proxy, scenario, playType, logWriter, logTable);
+            master.Dashboard.Play(server, scenario, playType, logWriter, logTable);
         }
 
         private void Search()
@@ -162,7 +162,7 @@ namespace WiremockUI
             Process.Start(e.Link.LinkData.ToString());
         }
 
-        private void lblUrlProxy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void lblUrlServer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(e.Link.LinkData.ToString());
         }

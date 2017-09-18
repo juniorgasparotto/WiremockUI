@@ -1,56 +1,18 @@
 {
-  "Proxies": [
+  "Servers": [
     {
-      "Id": "03a0af51-7eba-48f3-a1ce-dc077b2ea811",
-      "UrlTarget": "http://wiremock.org",
-      "PortProxy": 5500,
-      "Name": "MySiteOrAPI",
-      "Scenarios": [
-        {
-          "Id": "1e913b9d-ac05-41d7-990c-3d4d06211837",
-          "Name": "Scenario-1",
-          "IsDefault": false,
-          "ShowURL": true,
-          "Description": "- Open wiremock website\n- Click in \"Docs\"",
-          "ShowName": true
-        },
-        {
-          "Id": "f97c108d-af33-4b37-9280-29203fe2c8b6",
-          "Name": "Scenario-2",
-          "IsDefault": true,
-          "ShowURL": true,
-          "Description": "- Open Wiremock\n- Click in \"About\"",
-          "ShowName": true
-        }
-      ],
-      "Arguments": [
-        {
-          "Name": "Verbose",
-          "Value": "True",
-          "ArgName": "--verbose",
-          "Type": "Boolean"
-        },
-        {
-          "Name": "PrintAllNetworkTraffic",
-          "Value": "False",
-          "ArgName": "--print-all-network-traffic",
-          "Type": "Boolean"
-        }
-      ]
-    },
-    {
-      "Id": "41dc0831-4029-4d32-b052-6e575f12a691",
+      "Id": "8b6078ca-f482-4425-8c57-d2d335f218cf",
       "UrlTarget": null,
-      "PortProxy": 5501,
-      "Name": "NotExistsApi",
+      "Port": 5500,
+      "Name": "server1",
       "Scenarios": [
         {
-          "Id": "c9b825be-815d-47f4-aa55-888431895151",
-          "Name": "Scenario-Hello-World",
+          "Id": "2e9dbb50-f61d-4385-8df6-a579ef713fd8",
+          "Name": "scenario1",
           "IsDefault": true,
           "ShowURL": false,
-          "Description": "",
-          "ShowName": true
+          "Description": "description1",
+          "ShowName": false
         }
       ],
       "Arguments": [

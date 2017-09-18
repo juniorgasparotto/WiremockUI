@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -79,7 +78,7 @@ namespace WiremockUI
             menuFile.Text = Resource.menuFile;
             mnuLanguages.Text = Resource.menuLanguages;
             menuAbout.Text = Resource.menuAbout;
-            menuAddMockService.Text = Resource.menuAddMockService;
+            menuAddServer.Text = Resource.menuAddServer;
             menuClose.Text = Resource.menuClose;
             menuRefresh.Text = Resource.menuRefresh;
             menuServices.Text = Resource.menuServices;
@@ -102,14 +101,14 @@ namespace WiremockUI
 
             // permite renomear os nodes
             treeServices.LabelEdit = true;
-            LoadProxies();
+            LoadServers();
             this.ActiveControl = this.treeServices;
             this.activeControlLast = this.ActiveControl;
             this.accessButtonLast = AcceptButton;
             this.cancelButtonLast = CancelButton;
         }
 
-        internal void LoadProxies()
+        internal void LoadServers()
         {
             var topNode = new TreeNode(Resource.treeviewTopNode);
             ChangeTreeNodeImage(topNode, "services");
@@ -131,12 +130,12 @@ namespace WiremockUI
                 stopAllMenu
             });
 
-            // add proxy
-            addMenu.Text = Resource.menuAddMockService;
+            // add server
+            addMenu.Text = Resource.menuAddServer;
             addMenu.ImageKey = "add";
             addMenu.Click += (a, b) =>
             {
-                OpenAddOrEditProxy();
+                OpenAddOrEditServer();
             };
 
             // start all
@@ -144,7 +143,7 @@ namespace WiremockUI
             startAllMenu.ImageKey = "play";
             startAllMenu.Click += (a, b) =>
             {
-                PlayAll(Proxy.PlayType.Play);
+                PlayAll(Server.PlayType.Play);
             };
 
             // start and record all
@@ -152,7 +151,7 @@ namespace WiremockUI
             startAndRecordAllMenu.ImageKey = "record";
             startAndRecordAllMenu.Click += (a, b) =>
             {
-                PlayAll(Proxy.PlayType.PlayAndRecord);
+                PlayAll(Server.PlayType.PlayAndRecord);
             };
 
             // stop all
@@ -166,9 +165,9 @@ namespace WiremockUI
             topNode.ContextMenuStrip = menu;
 
             var db = new UnitOfWork();
-            var proxies = db.Proxies.GetAll();
-            foreach (var p in proxies)
-                SetProxy(p);
+            var servers = db.Servers.GetAll();
+            foreach (var p in servers)
+                SetServer(p);
             topNode.Expand();
         }
 
@@ -196,28 +195,28 @@ namespace WiremockUI
             this.CancelButton = this.cancelButtonLast;
         }
 
-        internal void SetProxy(Proxy proxy, bool expand = true)
+        internal void SetServer(Server server, bool expand = true)
         {
             var topNode = treeServices.Nodes[0];
 
-            TreeNode nodeProxy = null;
+            TreeNode nodeServer = null;
             foreach (TreeNode n in topNode.Nodes)
             {
-                if (((Proxy)n.Tag).Id == proxy.Id)
+                if (((Server)n.Tag).Id == server.Id)
                 {
-                    nodeProxy = n;
+                    nodeServer = n;
                     break;
                 }
             }
 
-            if (nodeProxy == null)
+            if (nodeServer == null)
             {
-                nodeProxy = new TreeNode();
-                nodeProxy.Text = proxy.GetFormattedName();
-                nodeProxy.Tag = proxy;
-                topNode.Nodes.Add(nodeProxy);
+                nodeServer = new TreeNode();
+                nodeServer.Text = server.GetFormattedName();
+                nodeServer.Tag = server;
+                topNode.Nodes.Add(nodeServer);
 
-                LoadScenarios(nodeProxy, proxy);
+                LoadScenarios(nodeServer, server);
 
                 // Create the ContextMenuStrip.
                 var menu = new ContextMenuStrip();
@@ -228,7 +227,7 @@ namespace WiremockUI
                 var stopMenu = new ToolStripMenuItem();
                 var openFolderMenu = new ToolStripMenuItem();
                 var openUrlTargetMenu = new ToolStripMenuItem();
-                var openUrlProxyScenarioMenu = new ToolStripMenuItem();
+                var openUrlServerScenarioMenu = new ToolStripMenuItem();
                 var editMenu = new ToolStripMenuItem();
                 var removeMenu = new ToolStripMenuItem();
 
@@ -242,7 +241,7 @@ namespace WiremockUI
                     stopMenu,
                     openFolderMenu,
                     openUrlTargetMenu,
-                    openUrlProxyScenarioMenu,
+                    openUrlServerScenarioMenu,
                     editMenu,
                     removeMenu
                 });
@@ -250,9 +249,9 @@ namespace WiremockUI
                 menu.ImageList = imageList1;
                 menu.Opening += (a, b) =>
                 {
-                    var hasScenario = proxy.Scenarios.Any();
-                    var hasUrl = !string.IsNullOrWhiteSpace(proxy.UrlTarget);
-                    var hasFolder = Directory.Exists(proxy.GetFullPath());
+                    var hasScenario = server.Scenarios.Any();
+                    var hasUrl = !string.IsNullOrWhiteSpace(server.UrlTarget);
+                    var hasFolder = Directory.Exists(server.GetFullPath());
 
                     startMenu.Visible = hasScenario && hasFolder;
                     startAsProxyMenu.Visible = hasScenario && hasUrl;
@@ -260,19 +259,19 @@ namespace WiremockUI
                     stopMenu.Visible = hasScenario;
                     openFolderMenu.Visible = hasScenario && hasFolder;
                     openUrlTargetMenu.Visible = hasScenario && hasUrl;
-                    openUrlProxyScenarioMenu.Visible = hasScenario;
+                    openUrlServerScenarioMenu.Visible = hasScenario;
 
                     // Enable control
                     if (hasScenario)
                     {
-                        var defaultScenario = proxy.GetDefaultScenario();
+                        var defaultScenario = server.GetDefaultScenario();
                         var isRunning = Dashboard.IsRunning(defaultScenario);
 
                         startAsProxyMenu.Enabled = !isRunning;
                         startMenu.Enabled = !isRunning;
                         startAndRecordMenu.Enabled = !isRunning;
                         stopMenu.Enabled = isRunning;
-                        openUrlProxyScenarioMenu.Visible = isRunning;
+                        openUrlServerScenarioMenu.Visible = isRunning;
                         editMenu.Enabled = !isRunning;
                         removeMenu.Enabled = !isRunning;
                     }
@@ -284,100 +283,100 @@ namespace WiremockUI
                 };
 
                 // add cenary
-                addScenario.Text = Resource.addProxyScenario;
+                addScenario.Text = Resource.addServerScenario;
                 addScenario.ImageKey = "add";
                 addScenario.Click += (a, b) =>
                 {
-                    OpenAddOrEditScenario(nodeProxy);
+                    OpenAddOrEditScenario(nodeServer);
                 };
 
                 // show files
-                openFolderMenu.Text = Resource.openProxyFolderMenu;
+                openFolderMenu.Text = Resource.openServerFolderMenu;
                 openFolderMenu.ImageKey = "folder";
                 openFolderMenu.Click += (a, b) =>
                 {
-                    Process.Start(proxy.GetFullPath());
+                    Process.Start(server.GetFullPath());
                 };
 
                 // open url target
-                openUrlTargetMenu.Text = Resource.openProxyUrlTargetMenu;
+                openUrlTargetMenu.Text = Resource.openServerUrlTargetMenu;
                 openUrlTargetMenu.ImageKey = "services";
                 openUrlTargetMenu.Click += (a, b) =>
                 {
-                    Process.Start(proxy.UrlTarget);
+                    Process.Start(server.UrlTarget);
                 };
 
                 // open url Scenario
-                openUrlProxyScenarioMenu.Text = Resource.openProxyUrlProxyScenarioMenu;
-                openUrlProxyScenarioMenu.ImageKey = "services";
-                openUrlProxyScenarioMenu.Click += (a, b) =>
+                openUrlServerScenarioMenu.Text = Resource.openServerUrlScenarioMenu;
+                openUrlServerScenarioMenu.ImageKey = "services";
+                openUrlServerScenarioMenu.Click += (a, b) =>
                 {
-                    Process.Start(proxy.GetUrlProxy());
+                    Process.Start(server.GetServerUrl());
                 };
 
                 // edit Scenario
-                editMenu.Text = Resource.editProxyMenu;
+                editMenu.Text = Resource.editServerMenu;
                 editMenu.ImageKey = "edit";
                 editMenu.ShortcutKeys = Keys.F2;
                 editMenu.Click += (a, b) =>
                 {
-                    OpenAddOrEditProxy(proxy);
+                    OpenAddOrEditServer(server);
                 };
 
                 // remove Scenario
-                removeMenu.Text = Resource.removeProxyMenu;
+                removeMenu.Text = Resource.removeServerMenu;
                 removeMenu.ImageKey = "remove";
                 removeMenu.ShortcutKeys = Keys.Delete;
                 removeMenu.Click += (a, b) =>
                 {
-                    RemoveProxy(nodeProxy);
+                    RemoveServer(nodeServer);
                 };
 
                 // play
-                startMenu.Text = Resource.startProxyMenu;
+                startMenu.Text = Resource.startServerMenu;
                 startMenu.ImageKey = "play";
                 startMenu.Click += (a, b) =>
                 {
-                    var defaultScenario = proxy.GetDefaultScenario();
-                    StartService(defaultScenario, Proxy.PlayType.Play);
+                    var defaultScenario = server.GetDefaultScenario();
+                    StartService(defaultScenario, Server.PlayType.Play);
                 };
 
                 // play and record
-                startAndRecordMenu.Text = Resource.startProxyAndRecordMenu;
+                startAndRecordMenu.Text = Resource.startServerAndRecordMenu;
                 startAndRecordMenu.ImageKey = "record";
                 startAndRecordMenu.Click += (a, b) =>
                 {
-                    var defaultScenario = proxy.GetDefaultScenario();
-                    StartService(defaultScenario, Proxy.PlayType.PlayAndRecord);
+                    var defaultScenario = server.GetDefaultScenario();
+                    StartService(defaultScenario, Server.PlayType.PlayAndRecord);
                 };
 
                 // play
-                startAsProxyMenu.Text = Resource.startProxyAsProxyMenu;
+                startAsProxyMenu.Text = Resource.startServerAsProxyMenu;
                 startAsProxyMenu.ImageKey = "play-proxy";
                 startAsProxyMenu.Click += (a, b) =>
                 {
-                    var defaultScenario = proxy.GetDefaultScenario();
-                    StartService(defaultScenario, Proxy.PlayType.PlayAsProxy);
+                    var defaultScenario = server.GetDefaultScenario();
+                    StartService(defaultScenario, Server.PlayType.PlayAsProxy);
                 };
 
                 // stop
-                stopMenu.Text = Resource.stopProxyMenu;
+                stopMenu.Text = Resource.stopServerMenu;
                 stopMenu.ImageKey = "stop";
                 stopMenu.Click += (a, b) =>
                 {
-                    var defaultScenario = proxy.GetDefaultScenario();
+                    var defaultScenario = server.GetDefaultScenario();
                     StopService(defaultScenario);
                 };
 
-                nodeProxy.ContextMenuStrip = menu;
+                nodeServer.ContextMenuStrip = menu;
             }
             else
             {
-                nodeProxy.Text = proxy.GetFormattedName();
-                nodeProxy.Tag = proxy;
+                nodeServer.Text = server.GetFormattedName();
+                nodeServer.Tag = server;
             }
 
-            ChangeTreeNodeImage(nodeProxy, "stop");
+            ChangeTreeNodeImage(nodeServer, "stop");
             if (expand)
                 topNode.Expand();
         }
@@ -387,17 +386,17 @@ namespace WiremockUI
             return tabForms;
         }
 
-        private void LoadScenarios(TreeNode nodeProxy, Proxy proxy)
+        private void LoadScenarios(TreeNode nodeServer, Server server)
         {
             var db = new UnitOfWork();
-            foreach (var c in proxy.Scenarios)
-                SetScenario(nodeProxy, c);
+            foreach (var c in server.Scenarios)
+                SetScenario(nodeServer, c);
         }
 
         private void LoadRequestsAndResponses(TreeNode nodeScenario, Data.Scenario scenario)
         {
-            var proxy = (Proxy)nodeScenario.Parent.Tag;
-            var path = proxy.GetMappingPath(scenario);
+            var server = (Server)nodeScenario.Parent.Tag;
+            var path = server.GetMappingPath(scenario);
             if (!Directory.Exists(path))
                 return;
 
@@ -409,11 +408,11 @@ namespace WiremockUI
             }
         }
 
-        internal void SetScenario(TreeNode nodeProxy, Data.Scenario scenario)
+        internal void SetScenario(TreeNode nodeServer, Data.Scenario scenario)
         {
-            var proxy = (Proxy)nodeProxy.Tag;
+            var server = (Server)nodeServer.Tag;
             TreeNode nodeScenario = null;
-            foreach (TreeNode n in nodeProxy.Nodes)
+            foreach (TreeNode n in nodeServer.Nodes)
             {
                 if (((Data.Scenario)n.Tag).Id == scenario.Id)
                 {
@@ -427,7 +426,7 @@ namespace WiremockUI
                 nodeScenario = new TreeNode();
                 nodeScenario.Text = scenario.GetFormattedName();
                 nodeScenario.Tag = scenario;
-                nodeProxy.Nodes.Add(nodeScenario);
+                nodeServer.Nodes.Add(nodeScenario);
 
                 if (scenario.IsDefault)
                     SetNodeScenarioAsDefault(scenario, nodeScenario);
@@ -475,7 +474,7 @@ namespace WiremockUI
                     else
                         showNameMenu.ImageKey = "";
 
-                    if (!proxy.AlreadyRecord(scenario))
+                    if (!server.AlreadyRecord(scenario))
                     {
                         openFolderMenu.Visible = false;
                     }
@@ -498,14 +497,14 @@ namespace WiremockUI
                 setDefaultMenu.ImageKey = "default";
                 setDefaultMenu.Click += (a, b) =>
                 {
-                    if (Dashboard.IsRunning(proxy.GetDefaultScenario()))
+                    if (Dashboard.IsRunning(server.GetDefaultScenario()))
                     {
                         Helper.MessageBoxExclamation(Resource.scenarioStopMessage);
                         return;
                     }
 
-                    proxy.SetDefault(scenario);
-                    SaveProxy(proxy);
+                    server.SetDefault(scenario);
+                    SaveServer(server);
                     SetNodeScenarioAsDefault(scenario, nodeScenario);
                 };
 
@@ -514,7 +513,7 @@ namespace WiremockUI
                 openFolderMenu.ImageKey = "folder";
                 openFolderMenu.Click += (a, b) =>
                 {
-                    Process.Start(proxy.GetFullPath(scenario));
+                    Process.Start(server.GetFullPath(scenario));
                 };
 
                 // edit Scenario
@@ -523,7 +522,7 @@ namespace WiremockUI
                 editMenu.ShortcutKeys = Keys.F2;
                 editMenu.Click += (a, b) =>
                 {
-                    OpenAddOrEditScenario(nodeProxy, scenario);
+                    OpenAddOrEditScenario(nodeServer, scenario);
                 };
 
                 // remove mock
@@ -542,7 +541,7 @@ namespace WiremockUI
                 {
                     var db = new UnitOfWork();
                     scenario.ShowURL = !scenario.ShowURL;
-                    db.Proxies.Update(proxy);
+                    db.Servers.Update(server);
                     db.Save();
 
                     var nodesMaps = GetAllMappingNodes(scenario);
@@ -560,7 +559,7 @@ namespace WiremockUI
                 {
                     var db = new UnitOfWork();
                     scenario.ShowName = !scenario.ShowName;
-                    db.Proxies.Update(proxy);
+                    db.Servers.Update(server);
                     db.Save();
 
                     var nodesMaps = GetAllMappingNodes(scenario);
@@ -583,22 +582,22 @@ namespace WiremockUI
             }
 
             ChangeTreeNodeImage(nodeScenario, "mock");
-            nodeProxy.Expand();
+            nodeServer.Expand();
         }
 
-        private void OpenAddOrEditProxy(Proxy proxy = null)
+        private void OpenAddOrEditServer(Server server = null)
         {
-            var frmAdd = new FormAddProxy(this, proxy);
+            var frmAdd = new FormServer(this, server);
             frmAdd.StartPosition = FormStartPosition.CenterParent;
             frmAdd.ShowDialog();
         }
 
-        private void OpenAddOrEditScenario(TreeNode nodeProxy, Data.Scenario scenario = null)
+        private void OpenAddOrEditScenario(TreeNode nodeServer, Data.Scenario scenario = null)
         {
-            var proxy = (Proxy)nodeProxy.Tag;
+            var server = (Server)nodeServer.Tag;
             if (scenario == null)
             {
-                var frmAdd = new FormAddScenario(this, nodeProxy, proxy, null);
+                var frmAdd = new FormScenario(this, nodeServer, server, null);
                 frmAdd.StartPosition = FormStartPosition.CenterParent;
                 frmAdd.ShowDialog();
             }
@@ -607,7 +606,7 @@ namespace WiremockUI
                 var tabExists = TabMaster.GetTabByInternalTag(scenario.Id);
                 if (tabExists == null)
                 { 
-                    var frmEdit = new FormAddScenario(this, nodeProxy, proxy, scenario.Id);
+                    var frmEdit = new FormScenario(this, nodeServer, server, scenario.Id);
                     frmEdit.FormBorderStyle = FormBorderStyle.None;
                     TabMaster.AddTab(frmEdit, scenario.Id, frmEdit.Text);
                 }
@@ -620,8 +619,8 @@ namespace WiremockUI
 
         private TreeNode AddMappingNode(TreeNode nodeScenario, Data.Scenario scenario, string mapFile, int index = -1)
         {
-            var proxy = (Proxy)nodeScenario.Parent.Tag;
-            var treeNodeMapping = GetTreeNodeMapping(proxy, scenario, mapFile);
+            var server = (Server)nodeScenario.Parent.Tag;
+            var treeNodeMapping = GetTreeNodeMapping(server, scenario, mapFile);
 
             var nodeMapping = new TreeNode(treeNodeMapping.Name);
 
@@ -787,9 +786,9 @@ namespace WiremockUI
             var mockName = Resource.newMappingFileName;
             var mockBodyName = Resource.newBodyFileName;
             var scenario = (Data.Scenario)nodeScenario.Tag;
-            var proxy = (Proxy)nodeScenario.Parent.Tag;
-            var newMapFileName = GetNewFileName(Path.Combine(proxy.GetMappingPath(scenario), mockName));
-            var newBodyFileName = GetNewFileName(Path.Combine(proxy.GetBodyFilesPath(scenario), mockBodyName));
+            var server = (Server)nodeScenario.Parent.Tag;
+            var newMapFileName = GetNewFileName(Path.Combine(server.GetMappingPath(scenario), mockName));
+            var newBodyFileName = GetNewFileName(Path.Combine(server.GetBodyFilesPath(scenario), mockBodyName));
 
             if (File.Exists(templateMapFileName))
             {
@@ -945,7 +944,7 @@ namespace WiremockUI
             }
         }
 
-        private TreeNodeMappingModel GetTreeNodeMapping(Proxy proxy, Data.Scenario scenario, string mapFile)
+        private TreeNodeMappingModel GetTreeNodeMapping(Server server, Data.Scenario scenario, string mapFile)
         {
             var fileModelMapping = FileModel.Create(mapFile);
 
@@ -955,7 +954,7 @@ namespace WiremockUI
             Exception exMap = null;
 
             if (content != null)
-                mapping = MappingModel.Create(proxy, scenario, content, out exMap);
+                mapping = MappingModel.Create(server, scenario, content, out exMap);
 
             if (mapping != null)
                 mapName = mapping.GetFormattedName(mapName, scenario.ShowURL, scenario.ShowName);
@@ -965,7 +964,7 @@ namespace WiremockUI
                 Name = mapName,
                 File = fileModelMapping,
                 Mapping = mapping,
-                Proxy = proxy,
+                Server = server,
                 Scenario = scenario
             };
 
@@ -986,9 +985,9 @@ namespace WiremockUI
         private void StartWatcherFolder(TreeNode nodeScenario, Data.Scenario scenario)
         {
             var watcher = new FileSystemWatcher();
-            var proxy = (Proxy)nodeScenario.Parent.Tag;
+            var server = (Server)nodeScenario.Parent.Tag;
 
-            watcher.Path = proxy.GetMappingPath(scenario);
+            watcher.Path = server.GetMappingPath(scenario);
             watcher.Filter = "*.*";
             watcher.IncludeSubdirectories = true;
 
@@ -1008,12 +1007,12 @@ namespace WiremockUI
             Dashboard.AddWatchers(scenario, watcher);
         }
 
-        private void RemoveProxy(TreeNode nodeProxy)
+        private void RemoveServer(TreeNode nodeServer)
         {
-            if (Helper.MessageBoxQuestion(Resource.removeProxyConfirmMessage) == DialogResult.Yes)
+            if (Helper.MessageBoxQuestion(Resource.removeServerConfirmMessage) == DialogResult.Yes)
             {
-                var proxy = (Proxy)nodeProxy.Tag;
-                var path = proxy.GetFullPath();
+                var server = (Server)nodeServer.Tag;
+                var path = server.GetFullPath();
 
                 if (Directory.Exists(path))
                 {
@@ -1024,15 +1023,15 @@ namespace WiremockUI
                     }
                     catch
                     {
-                        Helper.MessageBoxError(Resource.removeProxyError);
+                        Helper.MessageBoxError(Resource.removeServerError);
                         return;
                     }
                 }
 
-                nodeProxy.Parent.Nodes.Remove(nodeProxy);
+                nodeServer.Parent.Nodes.Remove(nodeServer);
 
                 var db = new UnitOfWork();
-                db.Proxies.Delete(proxy.Id);
+                db.Servers.Delete(server.Id);
                 db.Save();
             }
         }
@@ -1042,10 +1041,10 @@ namespace WiremockUI
         {
             if (Helper.MessageBoxQuestion(Resource.scenarioConfirmRemoveMessage) == DialogResult.Yes)
             {
-                var nodeProxy = nodeScenario.Parent;
-                var proxy = (Proxy)nodeScenario.Parent.Tag;
+                var nodeServer = nodeScenario.Parent;
+                var server = (Server)nodeServer.Tag;
                 var scenario = (Data.Scenario)nodeScenario.Tag;
-                var path = proxy.GetFullPath(scenario);
+                var path = server.GetFullPath(scenario);
 
                 if (Directory.Exists(path))
                 {
@@ -1062,17 +1061,17 @@ namespace WiremockUI
                 }
 
                 nodeScenario.Parent.Nodes.Remove(nodeScenario);
-                proxy.RemoveScenario(scenario.Id);
+                server.RemoveScenario(scenario.Id);
 
-                if (scenario.IsDefault && nodeProxy.Nodes.Count > 0)
+                if (scenario.IsDefault && nodeServer.Nodes.Count > 0)
                 {
-                    var nodeScenarioFirst = nodeProxy.Nodes[0];
+                    var nodeScenarioFirst = nodeServer.Nodes[0];
                     var scenarioFirst = (Data.Scenario)nodeScenarioFirst.Tag;
-                    proxy.SetDefault(scenarioFirst);
+                    server.SetDefault(scenarioFirst);
                     SetNodeScenarioAsDefault(scenarioFirst, nodeScenarioFirst);
                 }
 
-                SaveProxy(proxy);
+                SaveServer(server);
             }
         }
 
@@ -1087,10 +1086,10 @@ namespace WiremockUI
                     n.NodeFont = new Font(treeServices.Font.FontFamily, treeServices.Font.Size, treeServices.Font.Style);
         }
 
-        private static void SaveProxy(Proxy proxy)
+        private static void SaveServer(Server server)
         {
             var db = new UnitOfWork();
-            db.Proxies.Update(proxy);
+            db.Servers.Update(server);
             db.Save();
         }
 
@@ -1101,13 +1100,13 @@ namespace WiremockUI
             nodeService.StateImageKey = nodeService.ImageKey;
         }
 
-        private void StartService(Data.Scenario scenario, Proxy.PlayType playType)
+        private void StartService(Data.Scenario scenario, Server.PlayType playType)
         {
             var nodeScenario = GetNodeScenarioById(scenario.Id);
-            var nodeProxy = nodeScenario.Parent;
-            var proxy = (Proxy)nodeProxy.Tag;
+            var nodeServer = nodeScenario.Parent;
+            var server = (Server)nodeServer.Tag;
 
-            var frmStart = new FormStartWiremockService(this, proxy, scenario, playType);
+            var frmStart = new FormStartWiremockService(this, server, scenario, playType);
             
             try
             {
@@ -1122,9 +1121,9 @@ namespace WiremockUI
 
             var recordText = "";
 
-            if (playType == Proxy.PlayType.PlayAndRecord)
+            if (playType == Server.PlayType.PlayAndRecord)
                 recordText = " " + Resource.startServerRecordText;
-            else if (playType == Proxy.PlayType.PlayAsProxy)
+            else if (playType == Server.PlayType.PlayAsProxy)
                 recordText = " " + Resource.startServerAsProxyText;
 
             TabMaster.AddTab(frmStart, scenario.Id, scenario.Name + recordText)
@@ -1136,39 +1135,39 @@ namespace WiremockUI
                 };
 
             var icon = "start";
-            if (playType == Proxy.PlayType.PlayAndRecord)
+            if (playType == Server.PlayType.PlayAndRecord)
                 icon = "record";
-            else if (playType == Proxy.PlayType.PlayAsProxy)
+            else if (playType == Server.PlayType.PlayAsProxy)
                 icon = "play-proxy";
 
-            ChangeTreeNodeImage(nodeProxy, icon);
+            ChangeTreeNodeImage(nodeServer, icon);
 
-            if (playType == Proxy.PlayType.PlayAndRecord)
+            if (playType == Server.PlayType.PlayAndRecord)
                 StartWatcherFolder(nodeScenario, scenario);
         }
 
         private void StopService(Data.Scenario scenario)
         {
             var nodeScenario = GetNodeScenarioById(scenario.Id);
-            var nodeProxy = nodeScenario.Parent;
+            var nodeServer = nodeScenario.Parent;
 
             Dashboard.Stop(scenario);
-            ChangeTreeNodeImage(nodeProxy, "stop");
+            ChangeTreeNodeImage(nodeServer, "stop");
 
             TabMaster.CloseTab(scenario.Id);
         }
 
-        private IEnumerable<TreeNode> GetAllProxiesNodes()
+        private IEnumerable<TreeNode> GetAllServersNodes()
         {
-            foreach (TreeNode nodeProxy in treeServices.Nodes[0].Nodes)
-                yield return nodeProxy;
+            foreach (TreeNode nodeServer in treeServices.Nodes[0].Nodes)
+                yield return nodeServer;
         }
 
         private IEnumerable<TreeNode> GetAllMappingNodes(Data.Scenario scenario)
         {
-            foreach (TreeNode nodeProxy in GetAllProxiesNodes())
+            foreach (TreeNode nodeServer in GetAllServersNodes())
             {
-                foreach (TreeNode nodeScenario in nodeProxy.Nodes)
+                foreach (TreeNode nodeScenario in nodeServer.Nodes)
                     if (nodeScenario.Tag is Data.Scenario nScenario && nScenario == scenario)
                         foreach (TreeNode nodeMap in nodeScenario.Nodes)
                             yield return nodeMap;
@@ -1177,7 +1176,7 @@ namespace WiremockUI
 
         private TreeNode GetNodeScenarioById(Guid id)
         {
-            foreach (TreeNode n in GetAllProxiesNodes())
+            foreach (TreeNode n in GetAllServersNodes())
             {
                 foreach (TreeNode m in n.Nodes)
                     if (((Data.Scenario)m.Tag).Id == id)
@@ -1189,11 +1188,11 @@ namespace WiremockUI
 
         private void StopAll()
         {
-            foreach(TreeNode n in GetAllProxiesNodes())
+            foreach(TreeNode n in GetAllServersNodes())
             {
-                var proxy = (Proxy)n.Tag;
-                if (proxy.Scenarios.Any())
-                    StopService(proxy.GetDefaultScenario());
+                var server = (Server)n.Tag;
+                if (server.Scenarios.Any())
+                    StopService(server.GetDefaultScenario());
             }
 
             foreach (var w in Dashboard.Watchers)
@@ -1202,20 +1201,20 @@ namespace WiremockUI
             Dashboard.Watchers.Clear();
         }
 
-        private void PlayAll(Proxy.PlayType playType)
+        private void PlayAll(Server.PlayType playType)
         {
-            foreach (TreeNode n in GetAllProxiesNodes())
+            foreach (TreeNode n in GetAllServersNodes())
             {
-                var proxy = (Proxy)n.Tag;
-                if (proxy.Scenarios.Any())
+                var server = (Server)n.Tag;
+                if (server.Scenarios.Any())
                 {
-                    var scenario = proxy.GetDefaultScenario();
+                    var scenario = server.GetDefaultScenario();
                     if (Dashboard.IsRunning(scenario))
                         continue;
 
                     // inicia gravando caso ainda não tenha sido feito
-                    if (!proxy.AlreadyRecord(scenario))
-                        playType = Proxy.PlayType.PlayAsProxy;
+                    if (!server.AlreadyRecord(scenario))
+                        playType = Server.PlayType.PlayAsProxy;
 
                     StartService(scenario, playType);
                 }
@@ -1228,12 +1227,12 @@ namespace WiremockUI
             StopAll();
             treeServices.Nodes.Clear();
             tabForms.TabPages.Clear();
-            LoadProxies();
+            LoadServers();
         }
 
-        private void menuAddMockService_Click(object sender, EventArgs e)
+        private void menuAddServer_Click(object sender, EventArgs e)
         {
-            OpenAddOrEditProxy();
+            OpenAddOrEditServer();
         }
 
         private void treeServices_DoubleClick(object sender, EventArgs e)
@@ -1243,9 +1242,9 @@ namespace WiremockUI
             if (selected == null)
                 return;
 
-            if (selected.Tag != null && selected.Tag is Proxy)
+            if (selected.Tag != null && selected.Tag is Server)
             {
-                OpenAddOrEditProxy((Proxy)selected.Tag);
+                OpenAddOrEditServer((Server)selected.Tag);
             }
             else if (selected.Tag != null && selected.Tag is Data.Scenario)
             {
@@ -1336,8 +1335,25 @@ namespace WiremockUI
                 var frmStart = new FormJsonFile(this, null, treeNodeMapping.File.FullPath);
                 frmStart.OnSave = () =>
                 {
-                    var newTreeNodeMapping = GetTreeNodeMapping(treeNodeMapping.Proxy, treeNodeMapping.Scenario, treeNodeMapping.File.FullPath);
-                    UpdateMappingNode(selected, newTreeNodeMapping);
+                    TreeNodeMappingModel findMap = null;
+                    var nodes = GetAllMappingNodes(treeNodeMapping.Scenario);
+                    foreach(var n in nodes)
+                    {
+                        if (n.Tag is TreeNodeMappingModel model)
+                        {
+                            if (model.File.FullPath == frmStart.FilePath)
+                            {
+                                findMap = model;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (findMap != null)
+                    {
+                        var newTreeNodeMapping = GetTreeNodeMapping(findMap.Server, findMap.Scenario, findMap.File.FullPath);
+                        UpdateMappingNode(selected, newTreeNodeMapping);
+                    }
                 };
 
                 TabMaster.AddTab(frmStart, selected, treeNodeMapping.File.GetOnlyFileName());
@@ -1410,12 +1426,12 @@ namespace WiremockUI
 
         private void menuPlayAll_Click(object sender, EventArgs e)
         {
-            PlayAll(Proxy.PlayType.Play);
+            PlayAll(Server.PlayType.Play);
         }
 
         private void menuPlayAndRecordAll_Click(object sender, EventArgs e)
         {
-            PlayAll(Proxy.PlayType.PlayAndRecord);
+            PlayAll(Server.PlayType.PlayAndRecord);
         }
 
         private void menuRefresh_Click(object sender, EventArgs e)
@@ -1499,7 +1515,7 @@ namespace WiremockUI
             }
 
             var oldNodeBody = nodeMap.Nodes.Count > 0 ? nodeMap.Nodes[0] : null;
-            var newModel = GetTreeNodeMapping(model.Proxy, model.Scenario, newNameMap);
+            var newModel = GetTreeNodeMapping(model.Server, model.Scenario, newNameMap);
             UpdateMappingNode(nodeMap, newModel);
             UpdateMappingTab(nodeMap, oldNodeBody);
         }
@@ -1587,16 +1603,16 @@ namespace WiremockUI
                 //}
             }
 
-            if (treeServices.SelectedNode?.Tag is Proxy proxy
-                && !Dashboard.IsRunning(proxy.GetDefaultScenario()))
+            if (treeServices.SelectedNode?.Tag is Server server
+                && !Dashboard.IsRunning(server.GetDefaultScenario()))
             {
                 if (e.KeyCode == Keys.Delete)
                 {
-                    RemoveProxy(treeServices.SelectedNode);
+                    RemoveServer(treeServices.SelectedNode);
                 }
                 if (e.KeyCode == Keys.F2)
                 {
-                    OpenAddOrEditProxy(proxy);
+                    OpenAddOrEditServer(server);
                 }
             }
 

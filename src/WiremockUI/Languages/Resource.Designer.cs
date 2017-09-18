@@ -61,69 +61,6 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Esse &quot;Nome&quot;já está em uso.
-        /// </summary>
-        internal static string addProxyDuplicateNameMessage {
-            get {
-                return ResourceManager.GetString("addProxyDuplicateNameMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Essa &quot;Porta&quot; já está em uso.
-        /// </summary>
-        internal static string addProxyDuplicatePortMessage {
-            get {
-                return ResourceManager.GetString("addProxyDuplicatePortMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O campo &quot;Porta&quot; está inválido..
-        /// </summary>
-        internal static string addProxyInvalidPortMessage {
-            get {
-                return ResourceManager.GetString("addProxyInvalidPortMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O campo &quot;Nome&quot; é obrigatório..
-        /// </summary>
-        internal static string addProxyRequiredNameMessage {
-            get {
-                return ResourceManager.GetString("addProxyRequiredNameMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O campo &quot;Porta&quot; é obrigatório..
-        /// </summary>
-        internal static string addProxyRequiredPortMessage {
-            get {
-                return ResourceManager.GetString("addProxyRequiredPortMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O campo &quot;Url destino&quot; é obrigatório..
-        /// </summary>
-        internal static string addProxyRequiredUrlTargetMessage {
-            get {
-                return ResourceManager.GetString("addProxyRequiredUrlTargetMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Adicionar cenário.
-        /// </summary>
-        internal static string addProxyScenario {
-            get {
-                return ResourceManager.GetString("addProxyScenario", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Esse &quot;Nome&quot; já está em uso.
         /// </summary>
         internal static string addScenarioDuplicateNameMessage {
@@ -147,6 +84,69 @@ namespace WiremockUI.Languages {
         internal static string addScenarioRequiredNameMessage {
             get {
                 return ResourceManager.GetString("addScenarioRequiredNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Esse &quot;Nome&quot;já está em uso.
+        /// </summary>
+        internal static string addServerDuplicateNameMessage {
+            get {
+                return ResourceManager.GetString("addServerDuplicateNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Essa &quot;Porta&quot; já está em uso.
+        /// </summary>
+        internal static string addServerDuplicatePortMessage {
+            get {
+                return ResourceManager.GetString("addServerDuplicatePortMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo &quot;Porta&quot; está inválido..
+        /// </summary>
+        internal static string addServerInvalidPortMessage {
+            get {
+                return ResourceManager.GetString("addServerInvalidPortMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo &quot;Nome&quot; é obrigatório..
+        /// </summary>
+        internal static string addServerRequiredNameMessage {
+            get {
+                return ResourceManager.GetString("addServerRequiredNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo &quot;Porta&quot; é obrigatório..
+        /// </summary>
+        internal static string addServerRequiredPortMessage {
+            get {
+                return ResourceManager.GetString("addServerRequiredPortMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo &quot;Url destino&quot; é obrigatório..
+        /// </summary>
+        internal static string addServerRequiredUrlTargetMessage {
+            get {
+                return ResourceManager.GetString("addServerRequiredUrlTargetMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adicionar cenário.
+        /// </summary>
+        internal static string addServerScenario {
+            get {
+                return ResourceManager.GetString("addServerScenario", resourceCulture);
             }
         }
         
@@ -360,18 +360,18 @@ namespace WiremockUI.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Editar.
         /// </summary>
-        internal static string editProxyMenu {
+        internal static string editScenarioMenu {
             get {
-                return ResourceManager.GetString("editProxyMenu", resourceCulture);
+                return ResourceManager.GetString("editScenarioMenu", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Editar.
         /// </summary>
-        internal static string editScenarioMenu {
+        internal static string editServerMenu {
             get {
-                return ResourceManager.GetString("editScenarioMenu", resourceCulture);
+                return ResourceManager.GetString("editServerMenu", resourceCulture);
             }
         }
         
@@ -399,24 +399,6 @@ namespace WiremockUI.Languages {
         internal static string fileNotExistsMessage {
             get {
                 return ResourceManager.GetString("fileNotExistsMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Editar.
-        /// </summary>
-        internal static string formAddProxyInEditModeTitle {
-            get {
-                return ResourceManager.GetString("formAddProxyInEditModeTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Novo Proxy.
-        /// </summary>
-        internal static string formAddProxyTitle {
-            get {
-                return ResourceManager.GetString("formAddProxyTitle", resourceCulture);
             }
         }
         
@@ -475,6 +457,24 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editar.
+        /// </summary>
+        internal static string formServerInEditModeTitle {
+            get {
+                return ResourceManager.GetString("formServerInEditModeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Novo servidor.
+        /// </summary>
+        internal static string formServerTitle {
+            get {
+                return ResourceManager.GetString("formServerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Web Request.
         /// </summary>
         internal static string formWebRequest {
@@ -520,33 +520,6 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nome do proxy:.
-        /// </summary>
-        internal static string lblProxyNew {
-            get {
-                return ResourceManager.GetString("lblProxyNew", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Porta do proxy:.
-        /// </summary>
-        internal static string lblProxyPort {
-            get {
-                return ResourceManager.GetString("lblProxyPort", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Url de destino:.
-        /// </summary>
-        internal static string lblProxyTargetUrl {
-            get {
-                return ResourceManager.GetString("lblProxyTargetUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Descrição:.
         /// </summary>
         internal static string lblScenarioDescription {
@@ -574,6 +547,33 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nome do servidor:.
+        /// </summary>
+        internal static string lblServerNew {
+            get {
+                return ResourceManager.GetString("lblServerNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Porta do servidor:.
+        /// </summary>
+        internal static string lblServerPort {
+            get {
+                return ResourceManager.GetString("lblServerPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Url de destino:.
+        /// </summary>
+        internal static string lblServerTargetUrl {
+            get {
+                return ResourceManager.GetString("lblServerTargetUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Timeout:.
         /// </summary>
         internal static string lblTimeout {
@@ -583,11 +583,11 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Url do proxy:.
+        ///   Looks up a localized string similar to Url do servidor:.
         /// </summary>
-        internal static string lblUrlProxy {
+        internal static string lblUrlServer {
             get {
-                return ResourceManager.GetString("lblUrlProxy", resourceCulture);
+                return ResourceManager.GetString("lblUrlServer", resourceCulture);
             }
         }
         
@@ -637,11 +637,11 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Adicionar Proxy.
+        ///   Looks up a localized string similar to &amp;Adicionar servidor.
         /// </summary>
-        internal static string menuAddMockService {
+        internal static string menuAddServer {
             get {
-                return ResourceManager.GetString("menuAddMockService", resourceCulture);
+                return ResourceManager.GetString("menuAddServer", resourceCulture);
             }
         }
         
@@ -826,38 +826,38 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abrir pasta do proxy.
+        ///   Looks up a localized string similar to Abrir pasta do cenário.
         /// </summary>
-        internal static string openProxyFolderMenu {
+        internal static string openScenarioFolderMenu {
             get {
-                return ResourceManager.GetString("openProxyFolderMenu", resourceCulture);
+                return ResourceManager.GetString("openScenarioFolderMenu", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abrir URL do proxy no browser.
+        ///   Looks up a localized string similar to Abrir pasta do servidor.
         /// </summary>
-        internal static string openProxyUrlProxyScenarioMenu {
+        internal static string openServerFolderMenu {
             get {
-                return ResourceManager.GetString("openProxyUrlProxyScenarioMenu", resourceCulture);
+                return ResourceManager.GetString("openServerFolderMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abrir URL do servidor no browser.
+        /// </summary>
+        internal static string openServerUrlScenarioMenu {
+            get {
+                return ResourceManager.GetString("openServerUrlScenarioMenu", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Abrir URL destino no browser.
         /// </summary>
-        internal static string openProxyUrlTargetMenu {
+        internal static string openServerUrlTargetMenu {
             get {
-                return ResourceManager.GetString("openProxyUrlTargetMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Abrir pasta do cenário.
-        /// </summary>
-        internal static string openScenarioFolderMenu {
-            get {
-                return ResourceManager.GetString("openScenarioFolderMenu", resourceCulture);
+                return ResourceManager.GetString("openServerUrlTargetMenu", resourceCulture);
             }
         }
         
@@ -880,47 +880,47 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deseja realmente excluir esse proxy?.
+        ///   Looks up a localized string similar to Remover.
         /// </summary>
-        internal static string removeProxyConfirmMessage {
+        internal static string removeScenarioMenu {
             get {
-                return ResourceManager.GetString("removeProxyConfirmMessage", resourceCulture);
+                return ResourceManager.GetString("removeScenarioMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente excluir esse servidor?.
+        /// </summary>
+        internal static string removeServerConfirmMessage {
+            get {
+                return ResourceManager.GetString("removeServerConfirmMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Confirmação.
         /// </summary>
-        internal static string removeProxyConfirmTitle {
+        internal static string removeServerConfirmTitle {
             get {
-                return ResourceManager.GetString("removeProxyConfirmTitle", resourceCulture);
+                return ResourceManager.GetString("removeServerConfirmTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Ocorreu um problema ao tentar excluir a pasta. Tente fazer esse processo manualmente..
         /// </summary>
-        internal static string removeProxyError {
+        internal static string removeServerError {
             get {
-                return ResourceManager.GetString("removeProxyError", resourceCulture);
+                return ResourceManager.GetString("removeServerError", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Remover.
         /// </summary>
-        internal static string removeProxyMenu {
+        internal static string removeServerMenu {
             get {
-                return ResourceManager.GetString("removeProxyMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Remover.
-        /// </summary>
-        internal static string removeScenarioMenu {
-            get {
-                return ResourceManager.GetString("removeScenarioMenu", resourceCulture);
+                return ResourceManager.GetString("removeServerMenu", resourceCulture);
             }
         }
         
@@ -988,7 +988,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Para continuar é necessário parar a execução desse proxy..
+        ///   Looks up a localized string similar to Para continuar é necessário parar a execução desse servidor..
         /// </summary>
         internal static string scenarioStopMessage {
             get {
@@ -1035,27 +1035,18 @@ namespace WiremockUI.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Iniciar e Gravar.
         /// </summary>
-        internal static string startProxyAndRecordMenu {
+        internal static string startServerAndRecordMenu {
             get {
-                return ResourceManager.GetString("startProxyAndRecordMenu", resourceCulture);
+                return ResourceManager.GetString("startServerAndRecordMenu", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Iniciar (Somente Proxy).
         /// </summary>
-        internal static string startProxyAsProxyMenu {
+        internal static string startServerAsProxyMenu {
             get {
-                return ResourceManager.GetString("startProxyAsProxyMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Iniciar.
-        /// </summary>
-        internal static string startProxyMenu {
-            get {
-                return ResourceManager.GetString("startProxyMenu", resourceCulture);
+                return ResourceManager.GetString("startServerAsProxyMenu", resourceCulture);
             }
         }
         
@@ -1078,6 +1069,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Iniciar.
+        /// </summary>
+        internal static string startServerMenu {
+            get {
+                return ResourceManager.GetString("startServerMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (Gravando).
         /// </summary>
         internal static string startServerRecordText {
@@ -1087,20 +1087,20 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parar.
-        /// </summary>
-        internal static string stopProxyMenu {
-            get {
-                return ResourceManager.GetString("stopProxyMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Deseja realmente parar o serviço?.
+        ///   Looks up a localized string similar to Deseja realmente parar o servidor?.
         /// </summary>
         internal static string stopServerConfirmMessage {
             get {
                 return ResourceManager.GetString("stopServerConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parar.
+        /// </summary>
+        internal static string stopServerMenu {
+            get {
+                return ResourceManager.GetString("stopServerMenu", resourceCulture);
             }
         }
         
@@ -1137,24 +1137,6 @@ namespace WiremockUI.Languages {
         internal static string tabLogText {
             get {
                 return ResourceManager.GetString("tabLogText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Avançado.
-        /// </summary>
-        internal static string tabProxyAdvance {
-            get {
-                return ResourceManager.GetString("tabProxyAdvance", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Básico.
-        /// </summary>
-        internal static string tabProxyBasic {
-            get {
-                return ResourceManager.GetString("tabProxyBasic", resourceCulture);
             }
         }
         
@@ -1222,6 +1204,24 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Avançado.
+        /// </summary>
+        internal static string tabServerAdvance {
+            get {
+                return ResourceManager.GetString("tabServerAdvance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Básico.
+        /// </summary>
+        internal static string tabServerBasic {
+            get {
+                return ResourceManager.GetString("tabServerBasic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to JSON Viewer.
         /// </summary>
         internal static string tabTree {
@@ -1285,7 +1285,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Proxies.
+        ///   Looks up a localized string similar to Servidores.
         /// </summary>
         internal static string treeviewTopNode {
             get {

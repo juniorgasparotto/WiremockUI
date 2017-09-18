@@ -1,6 +1,6 @@
 ﻿namespace WiremockUI
 {
-    partial class FormAddScenario
+    partial class FormScenario
     {
         /// <summary>
         /// Required designer variable.

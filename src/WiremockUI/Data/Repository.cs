@@ -8,7 +8,7 @@ namespace WiremockUI.Data
 {
     internal class Schema
     {
-        public List<Proxy> Proxies { get; set; }
+        public List<Server> Servers { get; set; }
         public List<Settings> Settings { get; set; }
     }
 
@@ -36,15 +36,15 @@ namespace WiremockUI.Data
             this.repositories = new Dictionary<Type, object>();
         }
         
-        public Repository<Proxy> Proxies
+        public Repository<Server> Servers
         {
             get
             {
-                Repository<Proxy> repository;
-                if (repositories.ContainsKey(typeof(Proxy)))
-                    repository = (Repository<Proxy>)repositories[typeof(Proxy)];
+                Repository<Server> repository;
+                if (repositories.ContainsKey(typeof(Server)))
+                    repository = (Repository<Server>)repositories[typeof(Server)];
                 else
-                    repository = new Repository<Proxy>(PocFile);
+                    repository = new Repository<Server>(PocFile);
 
                 return repository;
             }

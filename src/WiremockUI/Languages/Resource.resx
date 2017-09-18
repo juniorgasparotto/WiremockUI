@@ -117,25 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="addProxyDuplicateNameMessage" xml:space="preserve">
+  <data name="addServerDuplicateNameMessage" xml:space="preserve">
     <value>Esse "Nome"já está em uso</value>
   </data>
-  <data name="addProxyDuplicatePortMessage" xml:space="preserve">
+  <data name="addServerDuplicatePortMessage" xml:space="preserve">
     <value>Essa "Porta" já está em uso</value>
   </data>
-  <data name="addProxyInvalidPortMessage" xml:space="preserve">
+  <data name="addServerInvalidPortMessage" xml:space="preserve">
     <value>O campo "Porta" está inválido.</value>
   </data>
-  <data name="addProxyRequiredNameMessage" xml:space="preserve">
+  <data name="addServerRequiredNameMessage" xml:space="preserve">
     <value>O campo "Nome" é obrigatório.</value>
   </data>
-  <data name="addProxyRequiredPortMessage" xml:space="preserve">
+  <data name="addServerRequiredPortMessage" xml:space="preserve">
     <value>O campo "Porta" é obrigatório.</value>
   </data>
-  <data name="addProxyRequiredUrlTargetMessage" xml:space="preserve">
+  <data name="addServerRequiredUrlTargetMessage" xml:space="preserve">
     <value>O campo "Url destino" é obrigatório.</value>
   </data>
-  <data name="addProxyScenario" xml:space="preserve">
+  <data name="addServerScenario" xml:space="preserve">
     <value>Adicionar cenário</value>
   </data>
   <data name="addScenarioDuplicateNameMessage" xml:space="preserve">
@@ -216,7 +216,7 @@
   <data name="duplicateMappingMenu" xml:space="preserve">
     <value>Duplicar</value>
   </data>
-  <data name="editProxyMenu" xml:space="preserve">
+  <data name="editServerMenu" xml:space="preserve">
     <value>Editar</value>
   </data>
   <data name="editScenarioMenu" xml:space="preserve">
@@ -231,11 +231,11 @@
   <data name="fileNotExistsMessage" xml:space="preserve">
     <value>Arquivo inexistente</value>
   </data>
-  <data name="formAddProxyInEditModeTitle" xml:space="preserve">
+  <data name="formServerInEditModeTitle" xml:space="preserve">
     <value>Editar</value>
   </data>
-  <data name="formAddProxyTitle" xml:space="preserve">
-    <value>Novo Proxy</value>
+  <data name="formServerTitle" xml:space="preserve">
+    <value>Novo servidor</value>
   </data>
   <data name="formAddScenarioInEditModeTitle" xml:space="preserve">
     <value>Editar cenário</value>
@@ -270,13 +270,13 @@
   <data name="lblMiliseconds" xml:space="preserve">
     <value>milisegundos</value>
   </data>
-  <data name="lblProxyNew" xml:space="preserve">
-    <value>Nome do proxy:</value>
+  <data name="lblServerNew" xml:space="preserve">
+    <value>Nome do servidor:</value>
   </data>
-  <data name="lblProxyPort" xml:space="preserve">
-    <value>Porta do proxy:</value>
+  <data name="lblServerPort" xml:space="preserve">
+    <value>Porta do servidor:</value>
   </data>
-  <data name="lblProxyTargetUrl" xml:space="preserve">
+  <data name="lblServerTargetUrl" xml:space="preserve">
     <value>Url de destino:</value>
   </data>
   <data name="lblScenarioDescription" xml:space="preserve">
@@ -291,8 +291,8 @@
   <data name="lblTimeout" xml:space="preserve">
     <value>Timeout:</value>
   </data>
-  <data name="lblUrlProxy" xml:space="preserve">
-    <value>Url do proxy:</value>
+  <data name="lblUrlServer" xml:space="preserve">
+    <value>Url do servidor:</value>
   </data>
   <data name="lblUrlTarget" xml:space="preserve">
     <value>Url destino:</value>
@@ -309,8 +309,8 @@
   <data name="menuAbout" xml:space="preserve">
     <value>S&amp;obre</value>
   </data>
-  <data name="menuAddMockService" xml:space="preserve">
-    <value>&amp;Adicionar Proxy</value>
+  <data name="menuAddServer" xml:space="preserve">
+    <value>&amp;Adicionar servidor</value>
   </data>
   <data name="menuClose" xml:space="preserve">
     <value>&amp;Sair</value>
@@ -372,13 +372,13 @@
   <data name="openFileMenu" xml:space="preserve">
     <value>Abrir arquivo</value>
   </data>
-  <data name="openProxyFolderMenu" xml:space="preserve">
-    <value>Abrir pasta do proxy</value>
+  <data name="openServerFolderMenu" xml:space="preserve">
+    <value>Abrir pasta do servidor</value>
   </data>
-  <data name="openProxyUrlProxyScenarioMenu" xml:space="preserve">
-    <value>Abrir URL do proxy no browser</value>
+  <data name="openServerUrlScenarioMenu" xml:space="preserve">
+    <value>Abrir URL do servidor no browser</value>
   </data>
-  <data name="openProxyUrlTargetMenu" xml:space="preserve">
+  <data name="openServerUrlTargetMenu" xml:space="preserve">
     <value>Abrir URL destino no browser</value>
   </data>
   <data name="openScenarioFolderMenu" xml:space="preserve">
@@ -390,16 +390,16 @@
   <data name="removeMappingErrorMessage" xml:space="preserve">
     <value>Ocorreu um erro ao tentar excluir esse arquivo: {0}</value>
   </data>
-  <data name="removeProxyConfirmMessage" xml:space="preserve">
-    <value>Deseja realmente excluir esse proxy?</value>
+  <data name="removeServerConfirmMessage" xml:space="preserve">
+    <value>Deseja realmente excluir esse servidor?</value>
   </data>
-  <data name="removeProxyConfirmTitle" xml:space="preserve">
+  <data name="removeServerConfirmTitle" xml:space="preserve">
     <value>Confirmação</value>
   </data>
-  <data name="removeProxyError" xml:space="preserve">
+  <data name="removeServerError" xml:space="preserve">
     <value>Ocorreu um problema ao tentar excluir a pasta. Tente fazer esse processo manualmente.</value>
   </data>
-  <data name="removeProxyMenu" xml:space="preserve">
+  <data name="removeServerMenu" xml:space="preserve">
     <value>Remover</value>
   </data>
   <data name="removeScenarioMenu" xml:space="preserve">
@@ -427,7 +427,7 @@
     <value>Ocorreu um problema ao tentar excluir a pasta. Tente fazer esse processo manualmente.</value>
   </data>
   <data name="scenarioStopMessage" xml:space="preserve">
-    <value>Para continuar é necessário parar a execução desse proxy.</value>
+    <value>Para continuar é necessário parar a execução desse servidor.</value>
   </data>
   <data name="selectTextErrorMessage" xml:space="preserve">
     <value>Ocorreu um erro ao selecionar o arquivo: {0}</value>
@@ -441,13 +441,13 @@
   <data name="showScenarioUrlMenu" xml:space="preserve">
     <value>Visualizar URL</value>
   </data>
-  <data name="startProxyAndRecordMenu" xml:space="preserve">
+  <data name="startServerAndRecordMenu" xml:space="preserve">
     <value>Iniciar e Gravar</value>
   </data>
-  <data name="startProxyAsProxyMenu" xml:space="preserve">
+  <data name="startServerAsProxyMenu" xml:space="preserve">
     <value>Iniciar (Somente Proxy)</value>
   </data>
-  <data name="startProxyMenu" xml:space="preserve">
+  <data name="startServerMenu" xml:space="preserve">
     <value>Iniciar</value>
   </data>
   <data name="startServerAsProxyText" xml:space="preserve">
@@ -459,11 +459,11 @@
   <data name="startServerRecordText" xml:space="preserve">
     <value>(Gravando)</value>
   </data>
-  <data name="stopProxyMenu" xml:space="preserve">
+  <data name="stopServerMenu" xml:space="preserve">
     <value>Parar</value>
   </data>
   <data name="stopServerConfirmMessage" xml:space="preserve">
-    <value>Deseja realmente parar o serviço?</value>
+    <value>Deseja realmente parar o servidor?</value>
   </data>
   <data name="stsStatus" xml:space="preserve">
     <value>Status:</value>
@@ -477,10 +477,10 @@
   <data name="tabLogText" xml:space="preserve">
     <value>Texto</value>
   </data>
-  <data name="tabProxyAdvance" xml:space="preserve">
+  <data name="tabServerAdvance" xml:space="preserve">
     <value>Avançado</value>
   </data>
-  <data name="tabProxyBasic" xml:space="preserve">
+  <data name="tabServerBasic" xml:space="preserve">
     <value>Básico</value>
   </data>
   <data name="tabRaw" xml:space="preserve">
@@ -517,7 +517,7 @@
     <value>Habilitado</value>
   </data>
   <data name="treeviewTopNode" xml:space="preserve">
-    <value>Proxies</value>
+    <value>Servidores</value>
   </data>
   <data name="txtAboutText" xml:space="preserve">
     <value>Esse projeto foi feito por Glauber Gasparotto.</value>

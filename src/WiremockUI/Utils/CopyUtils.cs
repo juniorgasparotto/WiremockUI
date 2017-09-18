@@ -24,10 +24,10 @@ namespace WiremockUI
             }
         }
 
-        public static string GetAsJavaCommand(Proxy proxy, Scenario scenario, Proxy.PlayType type)
+        public static string GetAsJavaCommand(Server server, Scenario scenario, Server.PlayType type)
         {
-            var argsProxyWithQuote = proxy.GetArguments(scenario, type, true);
-            return $@"java -jar ""{JarFile}"" {string.Join(" ", argsProxyWithQuote)}";
+            var argsWithQuote = server.GetArguments(scenario, type, true);
+            return $@"java -jar ""{JarFile}"" {string.Join(" ", argsWithQuote)}";
         }
     }
 }

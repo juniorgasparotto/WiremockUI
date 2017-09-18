@@ -217,12 +217,12 @@
     <Compile Include="Forms\FormWebRequest.Designer.cs">
       <DependentUpon>FormWebRequest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Proxy.cs" />
-    <Compile Include="Forms\FormAddProxy.cs">
+    <Compile Include="Data\Server.cs" />
+    <Compile Include="Forms\FormServer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAddProxy.Designer.cs">
-      <DependentUpon>FormAddProxy.cs</DependentUpon>
+    <Compile Include="Forms\FormServer.Designer.cs">
+      <DependentUpon>FormServer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TextViewers\FormJsonViewer.cs">
       <SubType>Form</SubType>
@@ -315,11 +315,11 @@
     </Compile>
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Data\Scenario.cs" />
-    <Compile Include="Forms\FormAddScenario.cs">
+    <Compile Include="Forms\FormScenario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAddScenario.Designer.cs">
-      <DependentUpon>FormAddScenario.cs</DependentUpon>
+    <Compile Include="Forms\FormScenario.Designer.cs">
+      <DependentUpon>FormScenario.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormMaster.cs">
       <SubType>Form</SubType>
@@ -350,8 +350,8 @@
     <EmbeddedResource Include="Forms\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAddProxy.resx">
-      <DependentUpon>FormAddProxy.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormServer.resx">
+      <DependentUpon>FormServer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TextViewers\FormJsonViewer.resx">
       <DependentUpon>FormJsonViewer.cs</DependentUpon>
@@ -359,8 +359,8 @@
     <EmbeddedResource Include="Forms\FormStartWiremockService.resx">
       <DependentUpon>FormStartWiremockService.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAddScenario.resx">
-      <DependentUpon>FormAddScenario.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormScenario.resx">
+      <DependentUpon>FormScenario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMaster.resx">
       <DependentUpon>FormMaster.cs</DependentUpon>

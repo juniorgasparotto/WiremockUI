@@ -7,20 +7,20 @@ using WiremockUI.Languages;
 
 namespace WiremockUI
 {
-    public partial class FormAddScenario : Form
+    public partial class FormScenario : Form
     {
         private FormMaster master;
         private Scenario scenario;
         private string oldPath;
         private TreeNode parent;
-        private Proxy proxy;
+        private Server server;
 
-        public FormAddScenario(FormMaster master, TreeNode parent, Proxy proxy, Guid? id)
+        public FormScenario(FormMaster master, TreeNode parent, Server server, Guid? id)
         {
             this.master = master;
-            this.scenario = proxy.GetScenarioById(id);
+            this.scenario = server.GetScenarioById(id);
             this.parent = parent;
-            this.proxy = proxy;
+            this.server = server;
             InitializeComponent();
 
             Text = Resource.formAddScenarioTitle;
@@ -35,7 +35,7 @@ namespace WiremockUI
                 this.txtName.Text = scenario.Name;
                 this.txtDesc.Text = scenario.Description;
                 this.btnAdd.Text = Resource.btnEdit;
-                this.oldPath = proxy.GetFullPath(scenario);
+                this.oldPath = server.GetFullPath(scenario);
 
                 if (master.Dashboard.IsRunning(scenario))
                     btnAdd.Enabled = false;
@@ -71,7 +71,7 @@ namespace WiremockUI
             }
 
             var db = new UnitOfWork();
-            var existsName = (from s in proxy.Scenarios
+            var existsName = (from s in server.Scenarios
                               where s.Name.ToLower() == name.ToLower() &&
                                     s.Id != idExists
                               select 1).Any();
@@ -89,14 +89,14 @@ namespace WiremockUI
             scenario.Name = name;
             scenario.Description = this.txtDesc.Text;
 
-            var newPath = proxy.GetFullPath(scenario);
+            var newPath = server.GetFullPath(scenario);
             if (!string.IsNullOrWhiteSpace(this.oldPath) && Directory.Exists(oldPath) && oldPath != newPath)
             {
                 Directory.Move(this.oldPath, newPath);
             }
 
             if (scenario.Id == Guid.Empty)
-                proxy.AddScenario(scenario);
+                server.AddScenario(scenario);
 
             db.Save();
 

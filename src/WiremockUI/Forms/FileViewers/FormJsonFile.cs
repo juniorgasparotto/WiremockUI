@@ -19,6 +19,11 @@ namespace WiremockUI
 
         public Action OnSave { get; set; }
 
+        public string FilePath
+        {
+            get => txtPath.Text;
+        }
+
         public FormJsonFile(FormMaster master, TabPageCustom tabPage, string fileName)
         {
             InitializeComponent();

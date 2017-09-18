@@ -10,7 +10,7 @@ namespace WiremockUI
         public MappingModel Mapping { get; set; }
         public TreeNodeBodyModel TreeNodeBody { get; set; }
         public string Name { get; set; }
-        public Proxy Proxy { get; set; }
+        public Server Server { get; set; }
         public Scenario Scenario { get; set; }
     }
 }

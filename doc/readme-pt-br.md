@@ -9,6 +9,7 @@ O WireMock é um poderoso simulador de APIs desenvolvido em Java. Com ele é pos
 3. Criação de um proxy que consegue gravar as requisições e suas respectivas respostas para que sejam utilizadas posteriormente quando o "site/api destino" estiver off-line ou incompleto. 
   * Basta informar os argumentos `--proxy-all` e `--record-mappings` para que ele seja capaz de interceptar as requisições e gravar os mapas com as requisições e respostas.
     * `java -jar "[path-to-jar].jar" --port [number] --proxy-all "[URL]" --record-mappings --root-dir "[folder-to-save]" --verbose`
+  * Para usar o dados gravados, basta parar a gravação e iniciar da mesma forma que é mostrado no passo 2.
 
 Para mais informações, acesse o site oficial da ferramenta: http://wiremock.org/
 
@@ -23,8 +24,6 @@ Para mais informações, acesse o site oficial da ferramenta: http://wiremock.or
 * Logs em forma de texto e tabela
 * Comparar requisições que não deram correspondência com nenhum mapa existente
 * Re-executar as requisições que estão no log
-
-tutorial-01.png
 
 # Como instalar?
 
@@ -63,9 +62,58 @@ Board:
 
 # Tutorial
 
-# Criar um servidor do wiremock - Proxy
+## Criando um servidor do wiremock
 
+Para criar um novo servidor:
 
+1. Clique com o lado direito do mouse sobre o item "Servidores"
+2. Clique em "Adicionar servidor"
+3. Preencha as informações do servidor
+  * Nome do servidor: Indica um nome que represente o seu servidor
+  * Url destino: Utilizado para fazer proxy de um serviço existente
+  * Porta do servidor: Indica qual porta usar, não pode existir dois servidores configurados com a mesma porta
+  * Aba "Avançado": Contém as configurações que um servidor wiremock pode ter, leia a documentação oficial da ferramenta para obter informações sobre cada uma delas: http://wiremock.org/docs/running-standalone/
+
+Para poder iniciar um servidor, é preciso que tenha ao menos um cenário cadastrado:
+
+1. Clique com o lado direito do mouse no servidor
+2. Clique em "Adicionar cenário"
+3. Preencha as informações do cenário
+  * Nome: Nome do cenário
+  * Descrição: Informações detalhadas
+
+Está quase pronto, agora você precisa criar seus "mapas" com suas respectivas requisições e respostas - ou apenas "mocks":
+
+1. Clique com o lado direito do mouse no cenário desejado
+2. Clique em "Adicionar mock"
+3. Clique no arquivo que foi gerado dentro do cenário "Mock1.json"
+4. No item "request"
+  * Defina o "url" da rota desejada, por padrão o uso da "/" significa a raiz do servidor web.
+  * Defina o "method" da rota desejada, por padrão é utilizado o método "GET"
+  * Para mais informações sobre como montar um "mock" mais complexo acesso: http://wiremock.org/docs/request-matching/
+5. No item "response"
+  * Defina o "status", por padrão é 200.
+  * O atributo "bodyFileName" é apenas um indicativo do arquivo que contém a resposta dessa rota
+  * No atributo "headers" está os cabeçalhos que serão usados na resposta, caso você altere o tipo da resposta para XML por exemplo, lembre-se de alterar o "content-type" também.
+6. Expanda na árvore o arquivo "Mock1.json" para visualizar o arquivo de resposta
+7. Clique sobre o arquivo "Mock.txt" para edita-lo
+
+Agora basta iniciar o servidor:
+
+1. Clique com o lado direito do mouse no servidor desejado
+2. Clique em "Iniciar"
+3. Clique no link "View" no campo "Server URL"
+
+GIF AQUI
+
+cena1, cena2 e cena3, cena5
+
+Quando o seu servidor tem o campo "Url destino" configurado, duas novas opções de inicio vão aparecer para o servidor:
+
+* Inicio (Somente Proxy): Utilizado quando você deseja ignorar os mocks e usar a sua API existente.
+* Iniciar e Gravar: Utilizado para interceptar e gravar as requisições e respostas de uma API existente. Com isso você ganha tempo para gerar seus mocks e pode usar/editar/duplicar esses dados conforme a necessidade.
+
+cena4
 
 Adicionar proxy
 --
@@ -218,3 +266,53 @@ tutorial-83.png
 tutorial-84.png
 tutorial-85.png
 tutorial-86.png
+
+--
+
+https://convertio.co/pt/mp4-gif/
+
+-- cena1
+
+cria servidor
+cria cenario
+cria mocks
+  - renomeia
+  GetAllUser
+  - duplica
+  user/1
+  user/2
+  - desativar
+  user/2 (outro)
+  user/insert
+  mostrar json view
+  esconde o nome e deixa a url
+inicia no chrome
+mostra log de texto e tabela
+calcular o tempo de uma requisição
+**** END
+
+-- cena2
+
+mostrar opções de debug do log 
+mostrar web request e fechar
+abrir novamente o web request com os dados para o comparador e mostrar comparador
+
+-- cena3
+
+duplicar cenário
+duplicar servidor
+
+-- cena4
+
+criar nova api com base em uma existente
+executar via CURL para ver os watchers
+pausar
+formatar json de respostas
+executar iniciando e mostrar editando um dado mocado
+executar apenas como proxy e mostrar que o dado editado não voltou e esta indo direto no site oficial
+mostrar views de imagens e texto
+
+-- cena5
+
+menus
+mostrar estrutura de arquivos e pastas .app/db.json

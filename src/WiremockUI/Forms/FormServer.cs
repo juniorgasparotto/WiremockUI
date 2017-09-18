@@ -9,59 +9,59 @@ using WiremockUI.Languages;
 
 namespace WiremockUI
 {
-    public partial class FormAddProxy : Form
+    public partial class FormServer : Form
     {
         private FormMaster master;
-        private Proxy proxy;
+        private Server server;
         private string oldPath;
         private WMProperties properties;
 
-        public FormAddProxy(FormMaster master, Proxy proxy)
+        public FormServer(FormMaster master, Server server)
         {
             this.master = master;
-            this.proxy = proxy;
+            this.server = server;
             InitializeComponent();
 
-            Text = Resource.formAddProxyTitle;
-            lblProxyNew.Text = Resource.lblProxyNew;
-            lblProxyTargetUrl.Text = Resource.lblProxyTargetUrl;
-            lblProxyPort.Text = Resource.lblProxyPort;
+            Text = Resource.formServerTitle;
+            lblServerNew.Text = Resource.lblServerNew;
+            lblServerTargetUrl.Text = Resource.lblServerTargetUrl;
+            lblServerPort.Text = Resource.lblServerPort;
             btnAdd.Text = Resource.btnAdd;
             btnCancel.Text = Resource.btnCancel;
-            tabProxyBasic.Text = Resource.tabProxyBasic;
-            tabProxyAdvance.Text = Resource.tabProxyAdvance;
+            tabServerBasic.Text = Resource.tabServerBasic;
+            tabServerAdvance.Text = Resource.tabServerAdvance;
 
             this.properties = new WMProperties();
 
-            if (this.proxy == null)
+            if (this.server == null)
             {
                 this.txtPort.Text = GetAutoPort().ToString();
             }
             else
             {
-                Text = Resource.formAddProxyInEditModeTitle;
+                Text = Resource.formServerInEditModeTitle;
 
-                this.txtName.Text = proxy.Name;
-                this.txtUrlTarget.Text = proxy.UrlTarget;
-                this.txtPort.Text = proxy.PortProxy.ToString();
+                this.txtName.Text = server.Name;
+                this.txtUrlTarget.Text = server.UrlTarget;
+                this.txtPort.Text = server.Port.ToString();
                 this.btnAdd.Text = Resource.btnEdit;
-                this.oldPath = this.proxy.GetFullPath();
-                SetProperties(proxy);
+                this.oldPath = this.server.GetFullPath();
+                SetProperties(server);
 
-                if (master.Dashboard.IsRunning(proxy.GetDefaultScenario()))
+                if (master.Dashboard.IsRunning(server.GetDefaultScenario()))
                     btnAdd.Enabled = false;
             }
 
             this.propertyGrid1.SelectedObject = properties;
         }
 
-        private void SetProperties(Proxy proxy)
+        private void SetProperties(Server server)
         {
             var type = properties.GetType();
-            if (proxy.Arguments == null)
+            if (server.Arguments == null)
                 return;
 
-            foreach (var arg in proxy.Arguments)
+            foreach (var arg in server.Arguments)
             {
                 var property = type.GetProperty(arg.Name);
                 if (property == null)
@@ -71,7 +71,7 @@ namespace WiremockUI
             }
         }
 
-        private IEnumerable<Proxy.Argument> GetProperties()
+        private IEnumerable<Server.Argument> GetProperties()
         {
             var props = properties.GetType().GetProperties();
             foreach (var prop in props)
@@ -79,7 +79,7 @@ namespace WiremockUI
                 var value = prop.GetValue(properties);
                 if (value != null && value.ToString() != "")
                 {
-                    var arg = new Proxy.Argument()
+                    var arg = new Server.Argument()
                     {
                         Name = prop.Name,
                         Value = value.ToString(),
@@ -105,11 +105,11 @@ namespace WiremockUI
             var name = txtName.Text.Trim();
             var urlTarget = txtUrlTarget.Text.Trim();
             var port = txtPort.Text.Trim();
-            var idExists = proxy?.Id;
+            var idExists = server?.Id;
 
             if (string.IsNullOrWhiteSpace(name))
             {
-                Helper.MessageBoxError(Resource.addProxyRequiredNameMessage);
+                Helper.MessageBoxError(Resource.addServerRequiredNameMessage);
                 txtName.Focus();
                 return;
             }
@@ -117,81 +117,81 @@ namespace WiremockUI
             if (string.IsNullOrWhiteSpace(urlTarget))
             {
                 urlTarget = null;
-                //Helper.MessageBoxError(Resource.addProxyRequiredUrlTargetMessage);
+                //Helper.MessageBoxError(Resource.addServerRequiredUrlTargetMessage);
                 //txtUrlTarget.Focus();
                 //return;
             }
 
             if (string.IsNullOrWhiteSpace(port))
             {
-                Helper.MessageBoxError(Resource.addProxyRequiredPortMessage);
+                Helper.MessageBoxError(Resource.addServerRequiredPortMessage);
                 txtPort.Focus();
                 return;
             }
 
             if (!int.TryParse(port, out int portNumber))
             {
-                Helper.MessageBoxError(Resource.addProxyInvalidPortMessage);
+                Helper.MessageBoxError(Resource.addServerInvalidPortMessage);
                 txtPort.Focus();
                 return;
             }
 
             var db = new UnitOfWork();
-            var existsName = (from s in db.Proxies.AsQueryable()
+            var existsName = (from s in db.Servers.AsQueryable()
                               where s.Name.ToLower() == name.ToLower() &&
                                     s.Id != idExists
                               select 1).Any();
 
-            var existsPort = (from s in db.Proxies.AsQueryable()
-                              where s.PortProxy == portNumber &&
+            var existsPort = (from s in db.Servers.AsQueryable()
+                              where s.Port == portNumber &&
                               s.Id != idExists
                               select 1).Any();
 
             if (existsName)
             {
-                Helper.MessageBoxError(Resource.addProxyDuplicateNameMessage);
+                Helper.MessageBoxError(Resource.addServerDuplicateNameMessage);
                 txtName.Focus();
                 return;
             }
 
             if (existsPort)
             {
-                Helper.MessageBoxError(Resource.addProxyDuplicatePortMessage);
+                Helper.MessageBoxError(Resource.addServerDuplicatePortMessage);
                 txtPort.Focus();
                 return;
             }
 
-            if (proxy == null)
-                proxy = new Proxy();
+            if (server == null)
+                server = new Server();
 
-            proxy.Name = name;
-            proxy.UrlTarget = urlTarget;
-            proxy.PortProxy = portNumber;
-            proxy.Arguments = GetProperties();
+            server.Name = name;
+            server.UrlTarget = urlTarget;
+            server.Port = portNumber;
+            server.Arguments = GetProperties();
 
-            var newPath = proxy.GetFullPath();
+            var newPath = server.GetFullPath();
 
             if (!string.IsNullOrWhiteSpace(this.oldPath) && Directory.Exists(oldPath) && oldPath != newPath)
             {
                 Directory.Move(this.oldPath, newPath);
             }
 
-            if (proxy.Id == Guid.Empty)
-                db.Proxies.Insert(proxy);
+            if (server.Id == Guid.Empty)
+                db.Servers.Insert(server);
             else
-                db.Proxies.Update(proxy);
+                db.Servers.Update(server);
 
-            db.Proxies.Update(proxy);
+            db.Servers.Update(server);
             db.Save();
             this.Close();
 
-            master.SetProxy(proxy);
+            master.SetServer(server);
         }
 
         public int GetAutoPort()
         {
             var db = new UnitOfWork();
-            var maxPort = db.Proxies.AsQueryable().Select(f => f.PortProxy).DefaultIfEmpty().Max();
+            var maxPort = db.Servers.AsQueryable().Select(f => f.Port).DefaultIfEmpty().Max();
             if (maxPort == 0)
                 return 5500;
             return maxPort + 1;
@@ -395,7 +395,7 @@ namespace WiremockUI
             }
         }
 
-        private void FormAddProxy_Load(object sender, EventArgs e)
+        private void FormServer_Load(object sender, EventArgs e)
         {
             this.ActiveControl = txtName;
         }

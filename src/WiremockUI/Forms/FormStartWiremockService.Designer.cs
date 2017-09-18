@@ -61,8 +61,8 @@
             this.btnClean = new System.Windows.Forms.Button();
             this.txtTo = new WiremockUI.EditorTextBox();
             this.txtFrom = new WiremockUI.EditorTextBox();
-            this.linkUrlProxy = new System.Windows.Forms.LinkLabel();
-            this.lblUrlProxy = new System.Windows.Forms.Label();
+            this.linkUrlServer = new System.Windows.Forms.LinkLabel();
+            this.lblUrlServer = new System.Windows.Forms.Label();
             this.lblUrlTarget = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -357,8 +357,8 @@
             this.panel1.Controls.Add(this.txtFrom);
             this.panel1.Controls.Add(this.linkUrlTarget);
             this.panel1.Controls.Add(this.linkOpenFolder);
-            this.panel1.Controls.Add(this.linkUrlProxy);
-            this.panel1.Controls.Add(this.lblUrlProxy);
+            this.panel1.Controls.Add(this.linkUrlServer);
+            this.panel1.Controls.Add(this.lblUrlServer);
             this.panel1.Controls.Add(this.lblUrlTarget);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -430,26 +430,26 @@
             this.txtFrom.TabIndex = 24;
             this.txtFrom.Text = "";
             // 
-            // linkUrlProxy
+            // linkUrlServer
             // 
-            this.linkUrlProxy.AutoSize = true;
-            this.linkUrlProxy.Location = new System.Drawing.Point(537, 57);
-            this.linkUrlProxy.Name = "linkUrlProxy";
-            this.linkUrlProxy.Size = new System.Drawing.Size(23, 13);
-            this.linkUrlProxy.TabIndex = 21;
-            this.linkUrlProxy.TabStop = true;
-            this.linkUrlProxy.Text = "Ver";
-            this.linkUrlProxy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblUrlProxy_LinkClicked);
+            this.linkUrlServer.AutoSize = true;
+            this.linkUrlServer.Location = new System.Drawing.Point(537, 57);
+            this.linkUrlServer.Name = "linkUrlServer";
+            this.linkUrlServer.Size = new System.Drawing.Size(23, 13);
+            this.linkUrlServer.TabIndex = 21;
+            this.linkUrlServer.TabStop = true;
+            this.linkUrlServer.Text = "Ver";
+            this.linkUrlServer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblUrlServer_LinkClicked);
             // 
-            // lblUrlProxy
+            // lblUrlServer
             // 
-            this.lblUrlProxy.AutoSize = true;
-            this.lblUrlProxy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUrlProxy.Location = new System.Drawing.Point(6, 55);
-            this.lblUrlProxy.Name = "lblUrlProxy";
-            this.lblUrlProxy.Size = new System.Drawing.Size(79, 13);
-            this.lblUrlProxy.TabIndex = 19;
-            this.lblUrlProxy.Text = "Url do proxy:";
+            this.lblUrlServer.AutoSize = true;
+            this.lblUrlServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUrlServer.Location = new System.Drawing.Point(6, 55);
+            this.lblUrlServer.Name = "lblUrlServer";
+            this.lblUrlServer.Size = new System.Drawing.Size(79, 13);
+            this.lblUrlServer.TabIndex = 19;
+            this.lblUrlServer.Text = "Url do servidor:";
             // 
             // lblUrlTarget
             // 
@@ -511,8 +511,8 @@
         private System.Windows.Forms.CheckBox chkAutoScroll;
         private System.Windows.Forms.Button btnClean;
         private EditorTextBox txtFrom;
-        private System.Windows.Forms.LinkLabel linkUrlProxy;
-        private System.Windows.Forms.Label lblUrlProxy;
+        private System.Windows.Forms.LinkLabel linkUrlServer;
+        private System.Windows.Forms.Label lblUrlServer;
         private System.Windows.Forms.Label lblUrlTarget;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusDiff;

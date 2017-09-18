@@ -10,7 +10,7 @@ namespace WiremockUI
     public class MappingModel
     {
         [JsonIgnore]
-        public Proxy Proxy { get; private set; }
+        public Server Server { get; private set; }
         [JsonIgnore]
         public Scenario Scenario { get; private set; }
 
@@ -21,7 +21,7 @@ namespace WiremockUI
         
         private MappingModel() { }
 
-        public static MappingModel Create(Proxy proxy, Scenario scenario, string content, out Exception exception)
+        public static MappingModel Create(Server server, Scenario scenario, string content, out Exception exception)
         {
             exception = null;
             try
@@ -29,7 +29,7 @@ namespace WiremockUI
                 var mapping = JsonConvert.DeserializeObject<MappingModel>(content);
                 if (mapping.Request != null)
                 { 
-                    mapping.Proxy = proxy;
+                    mapping.Server = server;
                     mapping.Scenario = scenario;
                     return mapping;
                 }
@@ -58,7 +58,7 @@ namespace WiremockUI
 
         public string GetBodyFullPath()
         {
-            return Path.Combine(Proxy.GetFullPath(Scenario), "__files", Response.BodyFileName);
+            return Path.Combine(Server.GetFullPath(Scenario), "__files", Response.BodyFileName);
         }
 
         public string GetFormattedName(string fileName, bool showUrl, bool showName)

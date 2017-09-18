@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace WiremockUI.Data
 {
-    public class Proxy
+    public class Server
     {
         private const string FOLDER = ".app";
 
         public Guid Id { get; set; }
         public string UrlTarget { get; set; }
-        public int PortProxy { get; set; }
+        public int Port { get; set; }
         public string Name { get; set; }
         private List<Scenario> scenario = new List<Scenario>();
 
@@ -21,19 +21,19 @@ namespace WiremockUI.Data
         public string GetFormattedName()
         {
             if (!string.IsNullOrWhiteSpace(UrlTarget))
-                return $"{Name} (http://localhost:{PortProxy} <- {UrlTarget})";
+                return $"{Name} (http://localhost:{Port} <- {UrlTarget})";
 
-            return $"{Name} (http://localhost:{PortProxy})";
+            return $"{Name} (http://localhost:{Port})";
         }
 
         public string GetFolderName()
         {
-            return PortProxy.ToString();
+            return Port.ToString();
         }
 
-        public string GetUrlProxy()
+        public string GetServerUrl()
         {
-            return $"http://localhost:{PortProxy}";
+            return $"http://localhost:{Port}";
         }
 
         public string GetFullPath()
@@ -109,7 +109,7 @@ namespace WiremockUI.Data
             {
                 args = new string[]
                 {
-                    "--port", PortProxy.ToString(),
+                    "--port", Port.ToString(),
                     "--proxy-all", Helper.AddQuote(UrlTarget, addQuoteInStrings),
                     "--record-mappings",
                     "--root-dir", Helper.AddQuote(relativeFolder, addQuoteInStrings)
@@ -119,7 +119,7 @@ namespace WiremockUI.Data
             {
                 args = new string[]
                 {
-                    "--port", PortProxy.ToString(),
+                    "--port", Port.ToString(),
                     "--proxy-all", Helper.AddQuote(UrlTarget, addQuoteInStrings),
                 };
             }
@@ -127,14 +127,14 @@ namespace WiremockUI.Data
             {
                 args = new string[]
                 {
-                    "--port", PortProxy.ToString(),
+                    "--port", Port.ToString(),
                     "--root-dir",  Helper.AddQuote(relativeFolder, addQuoteInStrings)
                 };
             }
 
-            var argsProxy = GetArguments();
-            argsProxy.InsertRange(0, args);
-            return argsProxy.ToArray();
+            var argsAux = GetArguments();
+            argsAux.InsertRange(0, args);
+            return argsAux.ToArray();
         }
 
         public List<string> GetArguments(bool addQuoteInStrings = false)

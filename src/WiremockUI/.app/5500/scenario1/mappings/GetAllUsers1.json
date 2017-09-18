@@ -1,11 +1,11 @@
 {
   "request": {
-    "url": "/GetUser/2",
+    "url": "/GetUser",
     "method": "GET"
   },
   "response": {
     "status": 200,
-    "bodyFileName": "GetUser2 (With other attribute).txt",
+    "bodyFileName": "GetAllUsers1.txt",
     "headers": {
       "Content-Type": "application/json"
     }

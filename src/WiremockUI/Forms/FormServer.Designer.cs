@@ -1,6 +1,6 @@
 ﻿namespace WiremockUI
 {
-    partial class FormAddProxy
+    partial class FormServer
     {
         /// <summary>
         /// Required designer variable.
@@ -30,15 +30,15 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabProxyBasic = new System.Windows.Forms.TabPage();
-            this.lblProxyNew = new System.Windows.Forms.Label();
+            this.tabServerBasic = new System.Windows.Forms.TabPage();
+            this.lblServerNew = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblProxyPort = new System.Windows.Forms.Label();
+            this.lblServerPort = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
-            this.lblProxyTargetUrl = new System.Windows.Forms.Label();
+            this.lblServerTargetUrl = new System.Windows.Forms.Label();
             this.txtUrlTarget = new System.Windows.Forms.TextBox();
-            this.tabProxyAdvance = new System.Windows.Forms.TabPage();
+            this.tabServerAdvance = new System.Windows.Forms.TabPage();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -46,8 +46,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabProxyBasic.SuspendLayout();
-            this.tabProxyAdvance.SuspendLayout();
+            this.tabServerBasic.SuspendLayout();
+            this.tabServerAdvance.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,8 +63,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabProxyBasic);
-            this.tabControl1.Controls.Add(this.tabProxyAdvance);
+            this.tabControl1.Controls.Add(this.tabServerBasic);
+            this.tabControl1.Controls.Add(this.tabServerAdvance);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 10);
@@ -75,31 +75,31 @@
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 15;
             // 
-            // tabProxyBasic
+            // tabServerBasic
             // 
-            this.tabProxyBasic.Controls.Add(this.lblProxyNew);
-            this.tabProxyBasic.Controls.Add(this.txtName);
-            this.tabProxyBasic.Controls.Add(this.label3);
-            this.tabProxyBasic.Controls.Add(this.lblProxyPort);
-            this.tabProxyBasic.Controls.Add(this.txtPort);
-            this.tabProxyBasic.Controls.Add(this.lblProxyTargetUrl);
-            this.tabProxyBasic.Controls.Add(this.txtUrlTarget);
-            this.tabProxyBasic.Location = new System.Drawing.Point(4, 36);
-            this.tabProxyBasic.Name = "tabProxyBasic";
-            this.tabProxyBasic.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProxyBasic.Size = new System.Drawing.Size(547, 213);
-            this.tabProxyBasic.TabIndex = 0;
-            this.tabProxyBasic.Text = "Básico";
-            this.tabProxyBasic.UseVisualStyleBackColor = true;
+            this.tabServerBasic.Controls.Add(this.lblServerNew);
+            this.tabServerBasic.Controls.Add(this.txtName);
+            this.tabServerBasic.Controls.Add(this.label3);
+            this.tabServerBasic.Controls.Add(this.lblServerPort);
+            this.tabServerBasic.Controls.Add(this.txtPort);
+            this.tabServerBasic.Controls.Add(this.lblServerTargetUrl);
+            this.tabServerBasic.Controls.Add(this.txtUrlTarget);
+            this.tabServerBasic.Location = new System.Drawing.Point(4, 36);
+            this.tabServerBasic.Name = "tabServerBasic";
+            this.tabServerBasic.Padding = new System.Windows.Forms.Padding(3);
+            this.tabServerBasic.Size = new System.Drawing.Size(547, 213);
+            this.tabServerBasic.TabIndex = 0;
+            this.tabServerBasic.Text = "Básico";
+            this.tabServerBasic.UseVisualStyleBackColor = true;
             // 
-            // lblProxyNew
+            // lblServerNew
             // 
-            this.lblProxyNew.AutoSize = true;
-            this.lblProxyNew.Location = new System.Drawing.Point(6, 15);
-            this.lblProxyNew.Name = "lblProxyNew";
-            this.lblProxyNew.Size = new System.Drawing.Size(81, 13);
-            this.lblProxyNew.TabIndex = 23;
-            this.lblProxyNew.Text = "Nome do proxy:";
+            this.lblServerNew.AutoSize = true;
+            this.lblServerNew.Location = new System.Drawing.Point(6, 15);
+            this.lblServerNew.Name = "lblServerNew";
+            this.lblServerNew.Size = new System.Drawing.Size(81, 13);
+            this.lblServerNew.TabIndex = 23;
+            this.lblServerNew.Text = "Nome do servidor:";
             // 
             // txtName
             // 
@@ -118,14 +118,14 @@
             this.label3.TabIndex = 22;
             this.label3.Text = "http://localhost:";
             // 
-            // lblProxyPort
+            // lblServerPort
             // 
-            this.lblProxyPort.AutoSize = true;
-            this.lblProxyPort.Location = new System.Drawing.Point(5, 124);
-            this.lblProxyPort.Name = "lblProxyPort";
-            this.lblProxyPort.Size = new System.Drawing.Size(78, 13);
-            this.lblProxyPort.TabIndex = 21;
-            this.lblProxyPort.Text = "Porta do proxy:";
+            this.lblServerPort.AutoSize = true;
+            this.lblServerPort.Location = new System.Drawing.Point(5, 124);
+            this.lblServerPort.Name = "lblServerPort";
+            this.lblServerPort.Size = new System.Drawing.Size(78, 13);
+            this.lblServerPort.TabIndex = 21;
+            this.lblServerPort.Text = "Porta do servidor:";
             // 
             // txtPort
             // 
@@ -135,14 +135,14 @@
             this.txtPort.TabIndex = 19;
             this.txtPort.Text = "5500";
             // 
-            // lblProxyTargetUrl
+            // lblServerTargetUrl
             // 
-            this.lblProxyTargetUrl.AutoSize = true;
-            this.lblProxyTargetUrl.Location = new System.Drawing.Point(6, 69);
-            this.lblProxyTargetUrl.Name = "lblProxyTargetUrl";
-            this.lblProxyTargetUrl.Size = new System.Drawing.Size(75, 13);
-            this.lblProxyTargetUrl.TabIndex = 20;
-            this.lblProxyTargetUrl.Text = "Url de destino:";
+            this.lblServerTargetUrl.AutoSize = true;
+            this.lblServerTargetUrl.Location = new System.Drawing.Point(6, 69);
+            this.lblServerTargetUrl.Name = "lblServerTargetUrl";
+            this.lblServerTargetUrl.Size = new System.Drawing.Size(75, 13);
+            this.lblServerTargetUrl.TabIndex = 20;
+            this.lblServerTargetUrl.Text = "Url de destino:";
             // 
             // txtUrlTarget
             // 
@@ -151,16 +151,16 @@
             this.txtUrlTarget.Size = new System.Drawing.Size(530, 20);
             this.txtUrlTarget.TabIndex = 18;
             // 
-            // tabProxyAdvance
+            // tabServerAdvance
             // 
-            this.tabProxyAdvance.Controls.Add(this.propertyGrid1);
-            this.tabProxyAdvance.Location = new System.Drawing.Point(4, 36);
-            this.tabProxyAdvance.Name = "tabProxyAdvance";
-            this.tabProxyAdvance.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProxyAdvance.Size = new System.Drawing.Size(547, 213);
-            this.tabProxyAdvance.TabIndex = 1;
-            this.tabProxyAdvance.Text = "Avançado";
-            this.tabProxyAdvance.UseVisualStyleBackColor = true;
+            this.tabServerAdvance.Controls.Add(this.propertyGrid1);
+            this.tabServerAdvance.Location = new System.Drawing.Point(4, 36);
+            this.tabServerAdvance.Name = "tabServerAdvance";
+            this.tabServerAdvance.Padding = new System.Windows.Forms.Padding(3);
+            this.tabServerAdvance.Size = new System.Drawing.Size(547, 213);
+            this.tabServerAdvance.TabIndex = 1;
+            this.tabServerAdvance.Text = "Avançado";
+            this.tabServerAdvance.UseVisualStyleBackColor = true;
             // 
             // propertyGrid1
             // 
@@ -211,7 +211,7 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // FormAddProxy
+            // FormServer
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -220,15 +220,15 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "FormAddProxy";
+            this.Name = "FormServer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Novo Proxy";
-            this.Load += new System.EventHandler(this.FormAddProxy_Load);
+            this.Text = "Novo Server";
+            this.Load += new System.EventHandler(this.FormServer_Load);
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabProxyBasic.ResumeLayout(false);
-            this.tabProxyBasic.PerformLayout();
-            this.tabProxyAdvance.ResumeLayout(false);
+            this.tabServerBasic.ResumeLayout(false);
+            this.tabServerBasic.PerformLayout();
+            this.tabServerAdvance.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -241,15 +241,15 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabProxyBasic;
-        private System.Windows.Forms.Label lblProxyNew;
+        private System.Windows.Forms.TabPage tabServerBasic;
+        private System.Windows.Forms.Label lblServerNew;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblProxyPort;
+        private System.Windows.Forms.Label lblServerPort;
         private System.Windows.Forms.TextBox txtPort;
-        private System.Windows.Forms.Label lblProxyTargetUrl;
+        private System.Windows.Forms.Label lblServerTargetUrl;
         private System.Windows.Forms.TextBox txtUrlTarget;
-        private System.Windows.Forms.TabPage tabProxyAdvance;
+        private System.Windows.Forms.TabPage tabServerAdvance;
         private System.Windows.Forms.PropertyGrid propertyGrid1;
         private System.Windows.Forms.Panel panel3;
     }

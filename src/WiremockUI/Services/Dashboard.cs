@@ -50,16 +50,17 @@ namespace WiremockUI
             }
         }
 
-        public void Play(Proxy proxy, Scenario scenario, Proxy.PlayType type, ILogWriter textWriter, ILogTableRequestResponse logTableRequestResponse)
+        public void Play(Server server, Scenario scenario, Server.PlayType type, ILogWriter textWriter, ILogTableRequestResponse logTableRequestResponse)
         {
             if (Services.ContainsKey(scenario.Id))
                 Stop(scenario);
 
-            var server = new WireMockServer(textWriter, logTableRequestResponse);
-            Services.Add(scenario.Id, server);
-            var argsProxy = proxy.GetArguments(scenario, type);
-            textWriter.WriteLine(CopyUtils.GetAsJavaCommand(proxy, scenario, type), System.Drawing.Color.Green, true);
-            server.run(argsProxy);
+            var wiremockServer = new WireMockServer(textWriter, logTableRequestResponse);
+            Services.Add(scenario.Id, wiremockServer);
+            textWriter.WriteLine(CopyUtils.GetAsJavaCommand(server, scenario, type), System.Drawing.Color.Green, true);
+
+            var args = server.GetArguments(scenario, type);
+            wiremockServer.run(args);
         }
 
         internal void AddWatchers(Scenario service, FileSystemWatcher watcher)

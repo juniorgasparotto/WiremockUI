@@ -38,7 +38,7 @@ namespace WiremockUI
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.menuServices = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuAddMockService = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAddServer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuPlayAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPlayAndRecordAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +113,7 @@ namespace WiremockUI
             // menuServices
             // 
             this.menuServices.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuAddMockService,
+            this.menuAddServer,
             this.toolStripMenuItem2,
             this.menuPlayAll,
             this.menuPlayAndRecordAll,
@@ -122,13 +122,13 @@ namespace WiremockUI
             this.menuServices.Size = new System.Drawing.Size(62, 20);
             this.menuServices.Text = "&Serviços";
             // 
-            // menuAddMockService
+            // menuAddServer
             // 
-            this.menuAddMockService.Image = ((System.Drawing.Image)(resources.GetObject("menuAddMockService.Image")));
-            this.menuAddMockService.Name = "menuAddMockService";
-            this.menuAddMockService.Size = new System.Drawing.Size(185, 22);
-            this.menuAddMockService.Text = "&Adicionar";
-            this.menuAddMockService.Click += new System.EventHandler(this.menuAddMockService_Click);
+            this.menuAddServer.Image = ((System.Drawing.Image)(resources.GetObject("menuAddServer.Image")));
+            this.menuAddServer.Name = "menuAddServer";
+            this.menuAddServer.Size = new System.Drawing.Size(185, 22);
+            this.menuAddServer.Text = "&Adicionar";
+            this.menuAddServer.Click += new System.EventHandler(this.menuAddServer_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -349,7 +349,7 @@ namespace WiremockUI
 
         private System.Windows.Forms.MenuStrip menuOptions;
         private System.Windows.Forms.ToolStripMenuItem menuServices;
-        private System.Windows.Forms.ToolStripMenuItem menuAddMockService;
+        private System.Windows.Forms.ToolStripMenuItem menuAddServer;
         private System.Windows.Forms.SplitContainer splitContainer;
         private TreeViewCustom treeServices;
         private System.Windows.Forms.ImageList imageList1;
