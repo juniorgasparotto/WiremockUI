@@ -25,7 +25,14 @@ Para mais informações, acesse o site oficial da ferramenta: http://wiremock.or
 * Comparar requisições que não deram correspondência com nenhum mapa existente
 * Re-executar as requisições que estão no log
 
-# Como instalar?
+# Download
+
+LINK
+
+1. Descompacte em qualquer local
+2. Abra o arquivo "Wiremock.exe"
+
+# Requisitos
 
 ## Windows
 
@@ -35,30 +42,10 @@ Para mais informações, acesse o site oficial da ferramenta: http://wiremock.or
 2. Instale o "Java"
   * chocolatey: `choco install jre8`
   * oracle: http://www.oracle.com/technetwork/pt/indexes/downloads/index.html
-3. Baixe o .zip no link abaixo
-  * 
-4. Descompacte em qualquer local
-5. Abra o arquivo "Wiremock.exe"
 
 ## Linux
 
 Utilize o projeto "Mono.Forms" para executar no linux, contudo, não é garantido que todas as funcionalidades funcionem da mesma maneira que ocorre no Windows.
-
-# Como funciona e como contribuir
-
-1. O Wiremock não é executado usando processos, o .JAR da última versão do Wiremock foi convertido em .NET usando a ferramenta "IKVM". Com isso, foi possível potencializar o uso da ferramenta, tendo acesso direto as principais classes.
-
-2. O projeto usa como camada de persistência o framework "PocDataBase" que salva todas as configurações em apenas um arquivo JSON. Isso ajuda a não gastar tempo com soluções complexas.
-
-3. No momento, não vou adicionar novas features devido a falta de tempo, ficarei a disposição apenas para bugs e pequenas melhorias. Caso queiram contribuir com novas ideias ou correções, basta apenas entrar em contato ou acessar o board do projeto.
-  1. Vejo que o principal ponto de melhoria seria no formulário "FormMaster" que está com muitas linhas e pouco componentizado.
-  2. Um outro ponto que considero importante é melhorar a camada de persistência, no momento, as chamadas não estão centralizadas deixando a situação perigosa para futuras melhorias e isso agrava por ser tratar de um banco de dados em forma de um único arquivo.
-
-4. Links
-
-IKVM: https://www.ikvm.net/
-PocDatabase: https://github.com/juniorgasparotto/PocDatabase
-Board: 
 
 # Tutorial
 
@@ -114,6 +101,23 @@ Quando o seu servidor tem o campo "Url destino" configurado, duas novas opções
 * Iniciar e Gravar: Utilizado para interceptar e gravar as requisições e respostas de uma API existente. Com isso você ganha tempo para gerar seus mocks e pode usar/editar/duplicar esses dados conforme a necessidade.
 
 cena4
+
+# Como funciona e como contribuir
+
+1. O Wiremock não é executado usando processos, o .JAR da última versão do Wiremock foi convertido em .NET usando a ferramenta "IKVM". Com isso, foi possível potencializar o uso da ferramenta, tendo acesso direto as principais classes.
+
+2. O projeto usa como camada de persistência o framework "PocDataBase" que salva todas as configurações em apenas um arquivo JSON. Isso ajuda a não gastar tempo com soluções complexas.
+
+3. No momento, não vou adicionar novas features devido a falta de tempo, ficarei a disposição apenas para bugs e pequenas melhorias. Caso queiram contribuir com novas ideias ou correções, basta apenas entrar em contato ou acessar o board do projeto.
+  1. Vejo que o principal ponto de melhoria seria no formulário "FormMaster" que está com muitas linhas e pouco componentizado.
+  2. Um outro ponto que considero importante é melhorar a camada de persistência, no momento, as chamadas não estão centralizadas deixando a situação perigosa para futuras melhorias e isso agrava por ser tratar de um banco de dados em forma de um único arquivo.
+
+4. Links
+
+IKVM: https://www.ikvm.net/
+PocDatabase: https://github.com/juniorgasparotto/PocDatabase
+Board: 
+
 
 Adicionar proxy
 --
