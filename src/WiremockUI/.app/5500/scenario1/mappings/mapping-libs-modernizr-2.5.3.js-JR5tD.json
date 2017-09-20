@@ -1,0 +1,21 @@
+{
+  "id" : "9722d451-534e-3e04-b289-471cf9c7aa20",
+  "request" : {
+    "url" : "/portal/layout/js/libs/modernizr-2.5.3.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-libs-modernizr-2.5.3.js-JR5tD.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:16 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6975:35E7:2231A57:2F79EC3:59C1FE8B"
+    }
+  },
+  "uuid" : "9722d451-534e-3e04-b289-471cf9c7aa20"
+}

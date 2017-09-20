@@ -1,0 +1,21 @@
+{
+  "id" : "76bddb90-7789-3826-be73-693c6dbb7264",
+  "request" : {
+    "url" : "/portal/layout/css/combo.custom.css",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-css-combo.custom.css-Li1B4.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:13 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6977:35E8:383CC44:4E6D15E:59C1FE89"
+    }
+  },
+  "uuid" : "76bddb90-7789-3826-be73-693c6dbb7264"
+}

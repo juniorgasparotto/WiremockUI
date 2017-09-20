@@ -64,6 +64,7 @@ namespace WiremockUI
                 var headers = HttpUtils.GetHeaders(txtRequestHeaders.Text, false, false);
                 webRequest = (HttpWebRequest)System.Net.WebRequest.Create(txtUrl.Text);
                 webRequest.AllowAutoRedirect = this.chkAutoRedirect.Checked;
+                webRequest.KeepAlive = this.chkKeepAlive.Checked;
 
                 headers.Remove("method");
                 headers.Remove("url");
@@ -143,6 +144,7 @@ namespace WiremockUI
                     }
 
                     start = DateTime.Now;
+                    txtRequestHeadersFinal.Text = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(webRequest));
                     var response = await webRequest.GetResponseAsync();
                     ShowResponse(start, DateTime.Now, webRequest, (HttpWebResponse)response);
                 }
@@ -175,7 +177,7 @@ namespace WiremockUI
 
             stsTimeValue.Text = (t2 - t1).ToString();
             stsStatusValue.Text = $"{(int)response.StatusCode} ({response.StatusDescription})";
-            txtResponseHeadersFinal.Text = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(request));
+            txtRequestHeadersFinal.Text = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(request));
             txtResponseHeaders.Text = $"{(int)response.StatusCode} {response.StatusDescription}\r\n";
             txtResponseHeaders.Text += HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(response));
             btnExecute.Enabled = true;

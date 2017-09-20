@@ -1,0 +1,15 @@
+{
+    "scenarioName": "To do list",
+    "requiredScenarioState": "Started",
+    "newScenarioState": "Cancel newspaper item added",
+    "request": {
+        "method": "POST",
+        "url": "/todo/items",
+        "bodyPatterns": [
+            { "contains": "Cancel newspaper subscription" }
+         ]
+    },
+    "response": {
+        "status": 201
+    }
+}

@@ -2,7 +2,7 @@
   "Servers": [
     {
       "Id": "eebf4cae-628d-459a-bd2a-8541c98c7c5e",
-      "UrlTarget": "1",
+      "UrlTarget": "http://wiremock.org/about/",
       "Port": 5500,
       "Name": "1",
       "Scenarios": [

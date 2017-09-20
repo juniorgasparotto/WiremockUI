@@ -1,0 +1,21 @@
+{
+  "id" : "72fec867-fd3d-3a12-95c8-697f1021f558",
+  "request" : {
+    "url" : "/portal/analytics/conversion.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-analytics-conversion.js-K7DdW.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:25 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6977:35E8:383D0B8:4E6D761:59C1FE94"
+    }
+  },
+  "uuid" : "72fec867-fd3d-3a12-95c8-697f1021f558"
+}

@@ -1,0 +1,21 @@
+{
+  "id" : "e05e1184-289a-30eb-a76e-5f52157eec2d",
+  "request" : {
+    "url" : "/portal/layout/js/valida_agenciaconta.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-js-valida_agenciaconta.js-p7CsU.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:18 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6973:35E7:2231AAB:2F79F85:59C1FE8E"
+    }
+  },
+  "uuid" : "e05e1184-289a-30eb-a76e-5f52157eec2d"
+}

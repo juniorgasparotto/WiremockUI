@@ -355,6 +355,7 @@ namespace WiremockUI
                 // play
                 startMenu.Text = Resource.startServerMenu;
                 startMenu.ImageKey = "play";
+                startMenu.ShortcutKeys = Keys.Control | Keys.S;
                 startMenu.Click += (a, b) =>
                 {
                     var defaultScenario = server.GetDefaultScenario();
@@ -364,6 +365,7 @@ namespace WiremockUI
                 // play and record
                 startAndRecordMenu.Text = Resource.startServerAndRecordMenu;
                 startAndRecordMenu.ImageKey = "record";
+                startAndRecordMenu.ShortcutKeys = Keys.Control | Keys.W;
                 startAndRecordMenu.Click += (a, b) =>
                 {
                     var defaultScenario = server.GetDefaultScenario();
@@ -373,6 +375,7 @@ namespace WiremockUI
                 // play
                 startAsProxyMenu.Text = Resource.startServerAsProxyMenu;
                 startAsProxyMenu.ImageKey = "play-proxy";
+                startAsProxyMenu.ShortcutKeys = Keys.Control | Keys.P;
                 startAsProxyMenu.Click += (a, b) =>
                 {
                     var defaultScenario = server.GetDefaultScenario();
@@ -382,19 +385,17 @@ namespace WiremockUI
                 // stop
                 restartMenu.Text = Resource.restartServerMenu;
                 restartMenu.ImageKey = "refresh";
+                restartMenu.ShortcutKeys = Keys.Control | Keys.R;
                 restartMenu.Click += (a, b) =>
                 {
                     var defaultScenario = server.GetDefaultScenario();
-                    var wiremockServer = Dashboard.GetWireMockServer(defaultScenario);
-
-                    StopService(defaultScenario);
-                    if (wiremockServer != null)
-                        StartService(defaultScenario, wiremockServer.PlayType);
+                    RestartService(defaultScenario);
                 };
 
                 // stop
                 stopMenu.Text = Resource.stopServerMenu;
                 stopMenu.ImageKey = "stop";
+                stopMenu.ShortcutKeys = Keys.Control | Keys.C;
                 stopMenu.Click += (a, b) =>
                 {
                     var defaultScenario = server.GetDefaultScenario();
@@ -753,6 +754,7 @@ namespace WiremockUI
             var treeNodeMapping = GetTreeNodeMapping(server, scenario, mapFile);
 
             var nodeMapping = new TreeNode(treeNodeMapping.Name);
+            nodeMapping.ForeColor = treeServices.ForeColor;
 
             // context menu
             var menu = new ContextMenuStrip();
@@ -885,6 +887,14 @@ namespace WiremockUI
                 nodeMapping.Nodes.Add(nodeResponse);
                 nodeResponse.Tag = treeNodeMapping.TreeNodeBody;
                 ChangeTreeNodeImage(nodeResponse, "response");
+            }
+            else if (treeNodeMapping.Error != null)
+            {
+                var nodeMapError = new TreeNode(treeNodeMapping.Error.Message);
+                ChangeTreeNodeImage(nodeMapError, "response");
+                nodeMapping.Nodes.Add(nodeMapError);
+                nodeMapping.ForeColor = Color.Red;
+                nodeMapError.ForeColor = Color.Red;
             }
 
             return nodeMapping;
@@ -1085,6 +1095,8 @@ namespace WiremockUI
 
         private void UpdateMappingNode(TreeNode nodeMapping, TreeNodeMappingModel newTreeNodeMapping)
         {
+            nodeMapping.ForeColor = treeServices.ForeColor;
+
             nodeMapping.Text = newTreeNodeMapping.Name;
             nodeMapping.Tag = newTreeNodeMapping;
             nodeMapping.Nodes.Clear();
@@ -1098,6 +1110,14 @@ namespace WiremockUI
                 nodeMapping.Nodes.Add(nodeResponse);
                 nodeResponse.Tag = newTreeNodeMapping.TreeNodeBody;
                 ChangeTreeNodeImage(nodeResponse, "response");
+            }
+            else if (newTreeNodeMapping.Error != null)
+            {
+                var nodeMapError = new TreeNode(newTreeNodeMapping.Error.Message);
+                ChangeTreeNodeImage(nodeMapError, "response");
+                nodeMapping.Nodes.Add(nodeMapError);
+                nodeMapping.ForeColor = Color.Red;
+                nodeMapError.ForeColor = Color.Red;
             }
         }
 
@@ -1122,7 +1142,8 @@ namespace WiremockUI
                 File = fileModelMapping,
                 Mapping = mapping,
                 Server = server,
-                Scenario = scenario
+                Scenario = scenario,
+                Error = exMap
             };
 
             if (mapping?.HasBodyFile() == true)
@@ -1152,8 +1173,12 @@ namespace WiremockUI
             {
                 var d = new ActionDelegate(() =>
                 {
-                    AddMappingNode(nodeScenario, scenario, e.FullPath);
-                    nodeScenario.Expand();
+                    var exists = GetAllMappingNodes(scenario);
+                    if (!exists.Any(f => ((TreeNodeMappingModel)f.Tag).File.FullPath == e.FullPath))
+                    {
+                        AddMappingNode(nodeScenario, scenario, e.FullPath);
+                        nodeScenario.Expand();
+                    }
                 });
 
                 this.Invoke(d);
@@ -1346,6 +1371,15 @@ namespace WiremockUI
             }
 
             return null;
+        }
+
+        private void RestartService(Data.Scenario defaultScenario)
+        {
+            var wiremockServer = Dashboard.GetWireMockServer(defaultScenario);
+
+            StopService(defaultScenario);
+            if (wiremockServer != null)
+                StartService(defaultScenario, wiremockServer.PlayType);
         }
 
         private void StopAll()
@@ -1740,7 +1774,8 @@ namespace WiremockUI
 
             if (treeServices.SelectedNode?.Tag is Server server)
             {
-                var isRunning = Dashboard.IsRunning(server.GetDefaultScenario());
+                var defaultScenario = server.GetDefaultScenario();
+                var isRunning = Dashboard.IsRunning(defaultScenario);
                 if (e.KeyCode == Keys.Delete && !isRunning)
                 {
                     RemoveServer(treeServices.SelectedNode);
@@ -1754,6 +1789,26 @@ namespace WiremockUI
                     DuplicateServer(treeServices.SelectedNode);
                     e.Handled = true;
                     e.SuppressKeyPress = true;
+                }
+                else if (e.Control && e.KeyCode == Keys.S && !isRunning)
+                {
+                    StartService(defaultScenario, Server.PlayType.Play);
+                }
+                else if (e.Control && e.KeyCode == Keys.W && !isRunning)
+                {
+                    StartService(defaultScenario, Server.PlayType.PlayAndRecord);
+                }
+                else if (e.Control && e.KeyCode == Keys.P && !isRunning)
+                {
+                    StartService(defaultScenario, Server.PlayType.PlayAsProxy);
+                }
+                else if (e.Control && e.KeyCode == Keys.R && isRunning)
+                {
+                    RestartService(defaultScenario);
+                }
+                else if (e.Control && e.KeyCode == Keys.C && isRunning)
+                {
+                    StopService(defaultScenario);
                 }
             }
 

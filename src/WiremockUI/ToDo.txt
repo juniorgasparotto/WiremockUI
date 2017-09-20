@@ -51,7 +51,9 @@ preferencias (que config terá?) - ok
 
 criar pesquisar em todos os editorbox
 criar agrupar por URL
-
+criar copiar especial: JSON Encode, Json decode, JSON compact
+criar copiar especial: XML Encode, XML decode, XML compact
+problema da formatação por seleção de texto
 criar copiar para area de transferecia
   - url do serviço final
   - url do proxy
@@ -74,6 +76,7 @@ testar sem java na maquina
 tentar apt-get com wine ou mono
 subir no chocolatey
 criar tutorial
+compactar o projeto em apenas um .exe
 
 -- despriorizados
 

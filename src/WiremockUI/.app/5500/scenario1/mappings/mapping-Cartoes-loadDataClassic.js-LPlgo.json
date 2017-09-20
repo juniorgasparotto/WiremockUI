@@ -1,0 +1,21 @@
+{
+  "id" : "bd873584-a91c-3213-bef2-1aa249111b29",
+  "request" : {
+    "url" : "/portal/layout/js/Cartoes/loadDataClassic.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-Cartoes-loadDataClassic.js-LPlgo.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:40:51 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "69BB:35E6:DFED3F:1341FDD:59C1FF62"
+    }
+  },
+  "uuid" : "bd873584-a91c-3213-bef2-1aa249111b29"
+}

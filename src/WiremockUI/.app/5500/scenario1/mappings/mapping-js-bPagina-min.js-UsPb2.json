@@ -1,0 +1,21 @@
+{
+  "id" : "aee45706-77cf-3e65-942b-5333cafc9ce6",
+  "request" : {
+    "url" : "/portal/layout/js/bPagina-min.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-js-bPagina-min.js-UsPb2.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:20 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6973:35E7:2231AFE:2F79FFF:59C1FE90"
+    }
+  },
+  "uuid" : "aee45706-77cf-3e65-942b-5333cafc9ce6"
+}

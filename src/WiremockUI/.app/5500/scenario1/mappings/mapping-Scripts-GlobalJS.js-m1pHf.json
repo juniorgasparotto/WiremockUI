@@ -1,0 +1,21 @@
+{
+  "id" : "2cd83ea0-f3ca-343b-8f2d-5ec632cde736",
+  "request" : {
+    "url" : "/Scripts/GlobalJS.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-Scripts-GlobalJS.js-m1pHf.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:18 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6974:35E7:2231AA6:2F79E37:59C1FE89"
+    }
+  },
+  "uuid" : "2cd83ea0-f3ca-343b-8f2d-5ec632cde736"
+}

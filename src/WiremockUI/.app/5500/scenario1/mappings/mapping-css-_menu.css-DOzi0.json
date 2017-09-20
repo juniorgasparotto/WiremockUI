@@ -1,0 +1,21 @@
+{
+  "id" : "4f8a6d7e-52d1-3572-bc0d-ae41e3964fa5",
+  "request" : {
+    "url" : "/portal/layout/css/_menu.css",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-css-_menu.css-DOzi0.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:13 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6973:35E7:22319C5:2F79E38:59C1FE89"
+    }
+  },
+  "uuid" : "4f8a6d7e-52d1-3572-bc0d-ae41e3964fa5"
+}

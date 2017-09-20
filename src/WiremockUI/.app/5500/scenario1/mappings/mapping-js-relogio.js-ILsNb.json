@@ -1,0 +1,21 @@
+{
+  "id" : "ecdbb328-d7ae-3ed1-af8f-c2bfb7b9226d",
+  "request" : {
+    "url" : "/portal/layout/js/relogio.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-js-relogio.js-ILsNb.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:20 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6973:35E7:2231AF6:2F79F97:59C1FE8E"
+    }
+  },
+  "uuid" : "ecdbb328-d7ae-3ed1-af8f-c2bfb7b9226d"
+}

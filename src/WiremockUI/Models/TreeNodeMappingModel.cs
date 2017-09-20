@@ -12,5 +12,6 @@ namespace WiremockUI
         public string Name { get; set; }
         public Server Server { get; set; }
         public Scenario Scenario { get; set; }
+        public Exception Error { get; internal set; }
     }
 }

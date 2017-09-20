@@ -51,7 +51,7 @@ namespace WiremockUI
 
         public bool HasBodyFile()
         {
-            if (!string.IsNullOrWhiteSpace(Response.BodyFileName) && File.Exists(GetBodyFullPath()))
+            if (Response != null && !string.IsNullOrWhiteSpace(Response.BodyFileName) && File.Exists(GetBodyFullPath()))
                 return true;
             return false;
         }
@@ -89,7 +89,7 @@ namespace WiremockUI
         {
             public int Status { get; set; }
             public string BodyFileName { get; set; }
-            public Dictionary<string, string> Headers { get; set; }
+            public Dictionary<string, object> Headers { get; set; }
 
             public bool IsJson()
             {
@@ -131,7 +131,7 @@ namespace WiremockUI
                 {
                     foreach (var header in Headers)
                         if (header.Key.ToLower().Trim() == "content-type")
-                            return header.Value;
+                            return header.Value.ToString();
                 }
 
                 return null;

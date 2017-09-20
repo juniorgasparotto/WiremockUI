@@ -1,0 +1,21 @@
+{
+  "id" : "ec24312c-00a5-3def-a0cb-74217941ec8b",
+  "request" : {
+    "url" : "/assets/css/main.css",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-css-main.css-SERWR.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:26 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6977:35E8:383D105:4E6D7A0:59C1FE95"
+    }
+  },
+  "uuid" : "ec24312c-00a5-3def-a0cb-74217941ec8b"
+}

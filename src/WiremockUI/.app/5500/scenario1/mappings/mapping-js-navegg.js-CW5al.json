@@ -1,0 +1,21 @@
+{
+  "id" : "97174200-77f8-3f17-848d-1f237d121313",
+  "request" : {
+    "url" : "/assets/common/js/navegg.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-js-navegg.js-CW5al.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:18 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6977:35E8:383CDF9:4E6D326:59C1FE8D"
+    }
+  },
+  "uuid" : "97174200-77f8-3f17-848d-1f237d121313"
+}

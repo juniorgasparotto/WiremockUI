@@ -1,0 +1,21 @@
+{
+  "id" : "5f3a14c1-b180-322c-951b-5ee0a93f8789",
+  "request" : {
+    "url" : "/html/classic/resultado-busca/index.shtm?q=&s=Classic",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-resultado-busca-index.shtm-31F2y.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:24 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6977:35E8:383D08A:4E6D715:59C1FE94"
+    }
+  },
+  "uuid" : "5f3a14c1-b180-322c-951b-5ee0a93f8789"
+}

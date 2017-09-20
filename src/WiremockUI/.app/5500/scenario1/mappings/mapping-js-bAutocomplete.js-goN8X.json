@@ -1,0 +1,21 @@
+{
+  "id" : "c7e1b0df-d023-3bcf-9c61-09ddf938e440",
+  "request" : {
+    "url" : "/portal/layout/js/bAutocomplete.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-js-bAutocomplete.js-goN8X.txt",
+    "headers" : {
+      "Server" : "GitHub.com",
+      "Date" : "Wed, 20 Sep 2017 05:37:21 GMT",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Transfer-Encoding" : "chunked",
+      "ETag" : "W/\"59a95777-1cab\"",
+      "Access-Control-Allow-Origin" : "*",
+      "X-GitHub-Request-Id" : "6973:35E7:2231B30:2F7A008:59C1FE90"
+    }
+  },
+  "uuid" : "c7e1b0df-d023-3bcf-9c61-09ddf938e440"
+}
