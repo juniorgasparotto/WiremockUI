@@ -298,7 +298,7 @@
     </Compile>
     <Compile Include="Utils\DevelopmentHelper.cs" />
     <Compile Include="Utils\DiffMatchPatch.cs" />
-    <Compile Include="Utils\CopyUtils.cs" />
+    <Compile Include="Utils\TransformUtils.cs" />
     <Compile Include="Utils\SettingsUtils.cs" />
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Forms\FormAbout.cs">
@@ -380,10 +380,12 @@
     <EmbeddedResource Include="Languages\Resource.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -415,26 +417,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Images\add.png" />
-    <Content Include="Images\check.png" />
-    <Content Include="Images\close.png" />
-    <Content Include="Images\default.png" />
-    <Content Include="Images\disable.png" />
-    <Content Include="Images\duplicate.png" />
-    <Content Include="Images\edit.png" />
-    <Content Include="Images\folder.png" />
-    <Content Include="Images\mock-services.png" />
-    <Content Include="Images\mock.png" />
-    <Content Include="Images\play-proxy.png" />
-    <Content Include="Images\play-record.png" />
-    <Content Include="Images\play.png" />
-    <Content Include="Images\refresh.png" />
-    <Content Include="Images\remove.png" />
-    <Content Include="Images\rename.png" />
-    <Content Include="Images\request.png" />
-    <Content Include="Images\response.png" />
-    <Content Include="Images\stop.png" />
-    <Content Include="Images\wiremock.ico" />
     <Content Include="Jar\wiremock-standalone-2.7.1.jar">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -449,7 +431,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\tab-close.png" />
     <Content Include="ToDo.txt" />
     <Content Include="wiremock.ico" />
   </ItemGroup>

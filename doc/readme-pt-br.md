@@ -20,10 +20,18 @@ Para mais informações, acesse o site oficial da ferramenta: http://wiremock.or
 * Facilidade para criar e executar um servidor Wiremock
 * Criar e gerenciar mais de um servidor Wiremock em apenas um lugar
 * Criar multiplos cenários para a mesma API ou Site com a intenção de alterna-los conforme a necessidade de uso.
+* Visualização dos mapas com sua respectiva resposta em forma de TreeView
 * Gerenciar os mapas do Wiremock com as opções: criar, editar, remover, duplicar, desabilitar e visualização em forma de JSON
-* Logs em forma de texto e tabela
-* Comparar requisições que não deram correspondência com nenhum mapa existente
-* Re-executar as requisições que estão no log
+* O gerenciamento dos mapas (dentro da ferramenta) dispensa o restart do servidor.
+* Logs em forma de texto e tabela com as opções:
+  * Análise de tempo
+  * Re-executar a requisição com a ferramenta interna "Web Request"
+  * Comparar requisições que não deram correspondência com qualquer mapa da TreeView.
+* Ferramentas internas:
+  * Web Request: É um simples executador de chamadas HTTP que pode ajudar a depurar
+  * Text Compare: É um simples comparador de texto
+  * Text editor: Editor de texto com as opções de formatação para JSON ou XML
+  * JSON Viwer: Visualizador de JSON com opções de formatação e visualização em forma de árvore
 
 # Download
 

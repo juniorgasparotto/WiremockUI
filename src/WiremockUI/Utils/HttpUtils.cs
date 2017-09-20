@@ -130,6 +130,8 @@ namespace WiremockUI
 
         public static string GetHeadersAsString(Dictionary<string, string> dic)
         {
+            if (dic == null)
+                return null;
             return string.Join("\r\n", dic.Select(x => x.Key + ": " + x.Value).ToArray());
         }
 

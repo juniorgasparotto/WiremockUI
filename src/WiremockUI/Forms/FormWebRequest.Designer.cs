@@ -59,6 +59,7 @@
             this.stsTimeValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsStatusValue = new System.Windows.Forms.ToolStripStatusLabel();
+            this.chkAutoRedirect = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -184,7 +185,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.tabResponse);
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Size = new System.Drawing.Size(617, 221);
-            this.splitContainer1.SplitterDistance = 109;
+            this.splitContainer1.SplitterDistance = 149;
             this.splitContainer1.TabIndex = 1;
             // 
             // tabRequest
@@ -198,7 +199,7 @@
             this.tabRequest.Name = "tabRequest";
             this.tabRequest.Padding = new System.Drawing.Point(9, 6);
             this.tabRequest.SelectedIndex = 0;
-            this.tabRequest.Size = new System.Drawing.Size(617, 109);
+            this.tabRequest.Size = new System.Drawing.Size(617, 149);
             this.tabRequest.TabIndex = 3;
             // 
             // tabRequestHeaders
@@ -277,6 +278,7 @@
             // 
             // tabRequestOptions
             // 
+            this.tabRequestOptions.Controls.Add(this.chkAutoRedirect);
             this.tabRequestOptions.Controls.Add(this.chk100Expect);
             this.tabRequestOptions.Controls.Add(this.chkAutoContentLength);
             this.tabRequestOptions.Controls.Add(this.txtTimeout);
@@ -284,7 +286,7 @@
             this.tabRequestOptions.Controls.Add(this.lblTimeout);
             this.tabRequestOptions.Location = new System.Drawing.Point(4, 28);
             this.tabRequestOptions.Name = "tabRequestOptions";
-            this.tabRequestOptions.Size = new System.Drawing.Size(609, 77);
+            this.tabRequestOptions.Size = new System.Drawing.Size(609, 117);
             this.tabRequestOptions.TabIndex = 2;
             this.tabRequestOptions.Text = "Opções";
             this.tabRequestOptions.UseVisualStyleBackColor = true;
@@ -360,7 +362,7 @@
             this.tabResponse.Name = "tabResponse";
             this.tabResponse.Padding = new System.Drawing.Point(9, 6);
             this.tabResponse.SelectedIndex = 0;
-            this.tabResponse.Size = new System.Drawing.Size(617, 86);
+            this.tabResponse.Size = new System.Drawing.Size(617, 46);
             this.tabResponse.TabIndex = 6;
             // 
             // tabResponseBody
@@ -369,7 +371,7 @@
             this.tabResponseBody.Location = new System.Drawing.Point(4, 28);
             this.tabResponseBody.Name = "tabResponseBody";
             this.tabResponseBody.Padding = new System.Windows.Forms.Padding(3);
-            this.tabResponseBody.Size = new System.Drawing.Size(609, 54);
+            this.tabResponseBody.Size = new System.Drawing.Size(609, 14);
             this.tabResponseBody.TabIndex = 1;
             this.tabResponseBody.Text = "Body";
             this.tabResponseBody.UseVisualStyleBackColor = true;
@@ -383,7 +385,7 @@
             this.txtResponseBody.Location = new System.Drawing.Point(3, 3);
             this.txtResponseBody.MaxLength = 0;
             this.txtResponseBody.Name = "txtResponseBody";
-            this.txtResponseBody.Size = new System.Drawing.Size(603, 48);
+            this.txtResponseBody.Size = new System.Drawing.Size(603, 8);
             this.txtResponseBody.TabIndex = 7;
             this.txtResponseBody.Text = "";
             this.txtResponseBody.WordWrap = false;
@@ -420,7 +422,7 @@
             this.stsTimeValue,
             this.stsStatus,
             this.stsStatusValue});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 86);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 46);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(617, 22);
             this.statusStrip1.TabIndex = 0;
@@ -451,6 +453,16 @@
             this.stsStatusValue.Name = "stsStatusValue";
             this.stsStatusValue.Size = new System.Drawing.Size(12, 17);
             this.stsStatusValue.Text = "-";
+            // 
+            // chkAutoRedirect
+            // 
+            this.chkAutoRedirect.AutoSize = true;
+            this.chkAutoRedirect.Location = new System.Drawing.Point(9, 83);
+            this.chkAutoRedirect.Name = "chkAutoRedirect";
+            this.chkAutoRedirect.Size = new System.Drawing.Size(170, 17);
+            this.chkAutoRedirect.TabIndex = 6;
+            this.chkAutoRedirect.Text = "Redirecionar automáticamente";
+            this.chkAutoRedirect.UseVisualStyleBackColor = true;
             // 
             // FormWebRequest
             // 
@@ -522,5 +534,6 @@
         private System.Windows.Forms.ToolStripStatusLabel stsStatusValue;
         private System.Windows.Forms.ToolStripStatusLabel stsTime;
         private System.Windows.Forms.ToolStripStatusLabel stsTimeValue;
+        private System.Windows.Forms.CheckBox chkAutoRedirect;
     }
 }

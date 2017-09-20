@@ -1,18 +1,18 @@
 {
   "Servers": [
     {
-      "Id": "8b6078ca-f482-4425-8c57-d2d335f218cf",
-      "UrlTarget": null,
+      "Id": "eebf4cae-628d-459a-bd2a-8541c98c7c5e",
+      "UrlTarget": "1",
       "Port": 5500,
-      "Name": "server1",
+      "Name": "1",
       "Scenarios": [
         {
-          "Id": "2e9dbb50-f61d-4385-8df6-a579ef713fd8",
-          "Name": "scenario1",
+          "Id": "a9463062-fd72-442d-8afa-9386e6361ab4",
+          "Name": "Scenario1",
           "IsDefault": true,
-          "ShowURL": false,
-          "Description": "description1",
-          "ShowName": false
+          "ShowURL": true,
+          "Description": null,
+          "ShowName": true
         }
       ],
       "Arguments": [
@@ -38,7 +38,7 @@
         "pt-br": "Portuguese",
         "en-us": "English"
       },
-      "DefaultLanguage": "en-us"
+      "DefaultLanguage": "pt-br"
     }
   ]
 }

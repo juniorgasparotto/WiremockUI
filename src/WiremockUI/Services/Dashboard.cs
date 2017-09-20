@@ -35,18 +35,18 @@ namespace WiremockUI
             return Services[scenario.Id].IsRunning();
         }
 
-        public void Stop(Scenario mockService)
+        public void Stop(Scenario scenario)
         {
-            if (!Services.ContainsKey(mockService.Id))
+            if (!Services.ContainsKey(scenario.Id))
                 return;
-            Services[mockService.Id].Stop();
-            Services[mockService.Id].ShutDown();
-            Services.Remove(mockService.Id);
+            Services[scenario.Id].Stop();
+            Services[scenario.Id].ShutDown();
+            Services.Remove(scenario.Id);
 
-            if (Watchers.ContainsKey(mockService.Id))
+            if (Watchers.ContainsKey(scenario.Id))
             {
-                Watchers[mockService.Id].EnableRaisingEvents = false;
-                Watchers.Remove(mockService.Id);
+                Watchers[scenario.Id].EnableRaisingEvents = false;
+                Watchers.Remove(scenario.Id);
             }
         }
 
@@ -55,19 +55,34 @@ namespace WiremockUI
             if (Services.ContainsKey(scenario.Id))
                 Stop(scenario);
 
-            var wiremockServer = new WireMockServer(textWriter, logTableRequestResponse);
+            var wiremockServer = new WireMockServer(textWriter, logTableRequestResponse, type);
             Services.Add(scenario.Id, wiremockServer);
-            textWriter.WriteLine(CopyUtils.GetAsJavaCommand(server, scenario, type), System.Drawing.Color.Green, true);
+            textWriter.WriteLine(TransformUtils.GetAsJavaCommand(server, scenario, type), System.Drawing.Color.Green, true);
 
             var args = server.GetArguments(scenario, type);
             wiremockServer.run(args);
+            
         }
 
-        internal void AddWatchers(Scenario service, FileSystemWatcher watcher)
+        public void AddWatchers(Scenario service, FileSystemWatcher watcher)
         {
             if (Watchers.ContainsKey(service.Id))
                 Watchers.Remove(service.Id);
             Watchers.Add(service.Id, watcher);
+        }
+
+        public void Refresh(Scenario scenario)
+        {
+            if (!Services.ContainsKey(scenario.Id))
+                return;
+            Services[scenario.Id].Refresh();
+        }
+
+        public WireMockServer GetWireMockServer(Scenario scenario)
+        {
+            if (!Services.ContainsKey(scenario.Id))
+                return null;
+            return Services[scenario.Id];
         }
     }
 }

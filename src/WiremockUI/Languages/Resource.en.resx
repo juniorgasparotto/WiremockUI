@@ -142,7 +142,7 @@
     <value>This "Name" is already in use</value>
   </data>
   <data name="addScenarioMenu" xml:space="preserve">
-    <value>Add mock</value>
+    <value>Add map</value>
   </data>
   <data name="addScenarioRequiredNameMessage" xml:space="preserve">
     <value>The "Name" field is required.</value>
@@ -361,10 +361,10 @@
     <value>Question</value>
   </data>
   <data name="newBodyFileName" xml:space="preserve">
-    <value>Mock.txt</value>
+    <value>Map.txt</value>
   </data>
   <data name="newMappingFileName" xml:space="preserve">
-    <value>Mock.json</value>
+    <value>Map.json</value>
   </data>
   <data name="openFileFromTreeViewMenu" xml:space="preserve">
     <value>Select in the tree</value>
@@ -563,5 +563,29 @@
   </data>
   <data name="toolStripStatusValue" xml:space="preserve">
     <value>(Select two time cells to calculate the difference)</value>
+  </data>
+  <data name="chkAutoRedirect" xml:space="preserve">
+    <value>Auto Redirect</value>
+  </data>
+  <data name="restartServerMenu" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="serverWithoutScenarioError" xml:space="preserve">
+    <value>The server "{0}" does not contain scenario to start.</value>
+  </data>
+  <data name="defaultScenarioName" xml:space="preserve">
+    <value>Scenario1</value>
+  </data>
+  <data name="menuOpenFilesFolder" xml:space="preserve">
+    <value>Open files folder</value>
+  </data>
+  <data name="startServerText" xml:space="preserve">
+    <value>(Started)</value>
+  </data>
+  <data name="viewMappingInWebRequestMenu" xml:space="preserve">
+    <value>View in Web Request</value>
+  </data>
+  <data name="confirmRefreshAll" xml:space="preserve">
+    <value>To continue, do I have to stop all servers?</value>
   </data>
 </root>

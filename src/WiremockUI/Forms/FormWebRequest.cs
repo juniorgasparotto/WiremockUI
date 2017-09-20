@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WiremockUI.Languages;
 
@@ -32,6 +33,7 @@ namespace WiremockUI
             lblMiliseconds.Text = Resource.lblMiliseconds;
             chkAutoContentLength.Text = Resource.chkAutoContentLength;
             chk100Expect.Text = Resource.chk100Expect;
+            chkAutoRedirect.Text = Resource.chkAutoRedirect;
         }
 
         public FormWebRequest(string method, string urlAbsolute, Dictionary<string, string> requestHeaders, string requestBody, Dictionary<string, string> responseHeaders, string responseBody)
@@ -61,6 +63,7 @@ namespace WiremockUI
             {
                 var headers = HttpUtils.GetHeaders(txtRequestHeaders.Text, false, false);
                 webRequest = (HttpWebRequest)System.Net.WebRequest.Create(txtUrl.Text);
+                webRequest.AllowAutoRedirect = this.chkAutoRedirect.Checked;
 
                 headers.Remove("method");
                 headers.Remove("url");
@@ -150,25 +153,17 @@ namespace WiremockUI
                     ShowResponse(start, DateTime.Now, webRequest, (HttpWebResponse)ex.Response);
                 else
                     Helper.MessageBoxError(ex.Message);
+                btnExecute.Enabled = true;
             }
             catch (Exception ex)
             {
                 Helper.MessageBoxError(ex.Message);
-            }
-            finally
-            {
                 btnExecute.Enabled = true;
             }
         }
 
         private async void ShowResponse(DateTime t1, DateTime t2, HttpWebRequest request, HttpWebResponse response)
         {
-            stsTimeValue.Text = (t2 - t1).ToString();
-            stsStatusValue.Text = $"{(int)response.StatusCode} ({response.StatusDescription})";
-            txtResponseHeadersFinal.Text = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(request));
-            txtResponseHeaders.Text = $"{(int)response.StatusCode} {response.StatusDescription}\r\n";
-            txtResponseHeaders.Text += HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(response));
-
             using (var s = response.GetResponseStream())
             {
                 using (var sr = new StreamReader(s, Encoding.UTF8))
@@ -177,6 +172,13 @@ namespace WiremockUI
                     txtResponseBody.Text = Helper.ResolveBreakLineInCompatibility(content);
                 }
             }
+
+            stsTimeValue.Text = (t2 - t1).ToString();
+            stsStatusValue.Text = $"{(int)response.StatusCode} ({response.StatusDescription})";
+            txtResponseHeadersFinal.Text = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(request));
+            txtResponseHeaders.Text = $"{(int)response.StatusCode} {response.StatusDescription}\r\n";
+            txtResponseHeaders.Text += HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(response));
+            btnExecute.Enabled = true;
         }
 
         private void CleanResponses()
@@ -206,6 +208,13 @@ namespace WiremockUI
         private void FormWebRequest_Load(object sender, EventArgs e)
         {
             this.ActiveControl = txtUrl;
+            SetFocus();
+        }
+
+        public async void SetFocus()
+        {
+            await Task.Delay(200);
+            txtUrl.Focus();
         }
     }
 }

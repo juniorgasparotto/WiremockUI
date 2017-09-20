@@ -49,15 +49,18 @@ namespace WiremockUI
                     };
                     
                     if (lang.Key == settings.DefaultLanguage)
-                        item.Image = ((System.Drawing.Image)(resources.GetObject("check.Image")));
+                        item.Image = imageList1.Images["check"];
 
                     item.Click += (o, s) =>
                     {
-                        foreach (ToolStripMenuItem m in mnuLanguages.DropDownItems)
-                            m.Image = null;
-                        item.Image = ((System.Drawing.Image)(resources.GetObject("check.Image")));
-                        SettingsUtils.SetLanguage(lang.Key);
-                        RefreshAll();
+                        if (Helper.MessageBoxQuestion(Resource.confirmRefreshAll) == DialogResult.Yes)
+                        {
+                            foreach (ToolStripMenuItem m in mnuLanguages.DropDownItems)
+                                m.Image = null;
+                            item.Image = imageList1.Images["check"];
+                            SettingsUtils.SetLanguage(lang.Key);
+                            RefreshAll();
+                        }
                     };
 
                     this.mnuLanguages.DropDownItems.Add(item);
@@ -90,6 +93,7 @@ namespace WiremockUI
             menuTextCompare.Text = Resource.menuTextCompare;
             menuTextEditor.Text = Resource.menuTextEditor;
             menuJsonVisualizer.Text = Resource.menuJsonVisualizer;
+            menuOpenFilesFolder.Text = Resource.menuOpenFilesFolder;
             lblSelectFileCompare.Text = Resource.lblSelectFileCompare;
             btnCancelFileSelectiong.Text = Resource.btnCancelFileSelectiong;
         }
@@ -116,12 +120,12 @@ namespace WiremockUI
 
             // context menu
             var menu = new ContextMenuStrip();
-            menu.ImageList = imageList1;
             var addMenu = new ToolStripMenuItem();
             var startAllMenu = new ToolStripMenuItem();
             var startAndRecordAllMenu = new ToolStripMenuItem();
             var stopAllMenu = new ToolStripMenuItem();
 
+            menu.ImageList = imageList1;
             menu.Items.AddRange(new ToolStripMenuItem[]
             {
                 addMenu,
@@ -195,7 +199,7 @@ namespace WiremockUI
             this.CancelButton = this.cancelButtonLast;
         }
 
-        internal void SetServer(Server server, bool expand = true)
+        internal TreeNode SetServer(Server server, bool expand = true)
         {
             var topNode = treeServices.Nodes[0];
 
@@ -221,9 +225,11 @@ namespace WiremockUI
                 // Create the ContextMenuStrip.
                 var menu = new ContextMenuStrip();
                 var addScenario = new ToolStripMenuItem();
+                var duplicateMenu = new ToolStripMenuItem();
                 var startAsProxyMenu = new ToolStripMenuItem();
                 var startMenu = new ToolStripMenuItem();
                 var startAndRecordMenu = new ToolStripMenuItem();
+                var restartMenu = new ToolStripMenuItem();
                 var stopMenu = new ToolStripMenuItem();
                 var openFolderMenu = new ToolStripMenuItem();
                 var openUrlTargetMenu = new ToolStripMenuItem();
@@ -238,10 +244,12 @@ namespace WiremockUI
                     startMenu,
                     startAsProxyMenu,
                     startAndRecordMenu,
+                    restartMenu,
                     stopMenu,
                     openFolderMenu,
                     openUrlTargetMenu,
                     openUrlServerScenarioMenu,
+                    duplicateMenu,
                     editMenu,
                     removeMenu
                 });
@@ -257,6 +265,7 @@ namespace WiremockUI
                     startAsProxyMenu.Visible = hasScenario && hasUrl;
                     startAndRecordMenu.Visible = hasScenario && hasUrl;
                     stopMenu.Visible = hasScenario;
+                    restartMenu.Visible = hasScenario;
                     openFolderMenu.Visible = hasScenario && hasFolder;
                     openUrlTargetMenu.Visible = hasScenario && hasUrl;
                     openUrlServerScenarioMenu.Visible = hasScenario;
@@ -270,10 +279,12 @@ namespace WiremockUI
                         startAsProxyMenu.Enabled = !isRunning;
                         startMenu.Enabled = !isRunning;
                         startAndRecordMenu.Enabled = !isRunning;
-                        stopMenu.Enabled = isRunning;
                         openUrlServerScenarioMenu.Visible = isRunning;
                         editMenu.Enabled = !isRunning;
                         removeMenu.Enabled = !isRunning;
+
+                        stopMenu.Enabled = isRunning;
+                        restartMenu.Enabled = isRunning;
                     }
                     else
                     {
@@ -288,6 +299,15 @@ namespace WiremockUI
                 addScenario.Click += (a, b) =>
                 {
                     OpenAddOrEditScenario(nodeServer);
+                };
+
+                // duplicate
+                duplicateMenu.Text = Resource.duplicateMappingMenu;
+                duplicateMenu.ImageKey = "duplicate";
+                duplicateMenu.ShortcutKeys = Keys.Control | Keys.D;
+                duplicateMenu.Click += (a, b) =>
+                {
+                    DuplicateServer(nodeServer);
                 };
 
                 // show files
@@ -360,6 +380,19 @@ namespace WiremockUI
                 };
 
                 // stop
+                restartMenu.Text = Resource.restartServerMenu;
+                restartMenu.ImageKey = "refresh";
+                restartMenu.Click += (a, b) =>
+                {
+                    var defaultScenario = server.GetDefaultScenario();
+                    var wiremockServer = Dashboard.GetWireMockServer(defaultScenario);
+
+                    StopService(defaultScenario);
+                    if (wiremockServer != null)
+                        StartService(defaultScenario, wiremockServer.PlayType);
+                };
+
+                // stop
                 stopMenu.Text = Resource.stopServerMenu;
                 stopMenu.ImageKey = "stop";
                 stopMenu.Click += (a, b) =>
@@ -379,6 +412,90 @@ namespace WiremockUI
             ChangeTreeNodeImage(nodeServer, "stop");
             if (expand)
                 topNode.Expand();
+            
+            return nodeServer;
+        }
+
+        private void DuplicateServer(TreeNode nodeServer)
+        {
+            try
+            {
+                int sameNameCount = 0;
+                var from = (Server)nodeServer.Tag;
+                var newServer = from.Copy();
+
+                var db = new UnitOfWork();
+                var allServers = db.Servers.GetAll();
+                var serverName = Regex.Replace(newServer.Name, @"\d+$", (resut) =>
+                {
+                    sameNameCount = int.Parse(resut.Value);
+                    return "";
+                });
+
+                do
+                {
+                    newServer.Name = serverName + (++sameNameCount);
+                }
+                while (allServers.Any(f => f.Name == newServer.Name));
+
+                if (from.Scenarios.Any())
+                {
+                    foreach (var s in from.Scenarios)
+                        newServer.AddScenario(s.Copy());
+                }
+
+                var fromDir = new DirectoryInfo(from.GetFullPath());
+                fromDir.CopyTo(newServer.GetFullPath(), false);
+
+                treeServices.SelectedNode = SetServer(newServer, false);
+                treeServices.SelectedNode.Collapse();
+
+                db.Servers.Insert(newServer);
+                db.Save();
+            }
+            catch (Exception ex)
+            {
+                Helper.MessageBoxError(ex.Message);
+            }
+        }
+
+        private void DuplicateScenario(TreeNode nodeScenario)
+        {
+            try
+            {
+                int sameNameCount = 0;
+                var from = (Data.Scenario)nodeScenario.Tag;
+                var server = (Server)nodeScenario.Parent.Tag;
+                var to = from.Copy();
+                to.IsDefault = false;
+
+                var db = new UnitOfWork();
+                var all = server.Scenarios;
+                var nameWithoutNumber = Regex.Replace(to.Name, @"\d+$", (resut) =>
+                {
+                    sameNameCount = int.Parse(resut.Value);
+                    return "";
+                });
+
+                do
+                {
+                    to.Name = nameWithoutNumber + (++sameNameCount);
+                }
+                while (all.Any(f => f.Name == to.Name));
+
+                var fromDir = new DirectoryInfo(server.GetFullPath(from));
+                fromDir.CopyTo(server.GetFullPath(to), false);
+                server.AddScenario(to);
+                db.Servers.Update(server);
+                db.Save();
+
+                
+                treeServices.SelectedNode = SetScenario(nodeScenario.Parent, to);
+            }
+            catch (Exception ex)
+            {
+                Helper.MessageBoxError(ex.Message);
+            }
         }
 
         internal TabControlCustom GetTabControl()
@@ -408,7 +525,7 @@ namespace WiremockUI
             }
         }
 
-        internal void SetScenario(TreeNode nodeServer, Data.Scenario scenario)
+        internal TreeNode SetScenario(TreeNode nodeServer, Data.Scenario scenario)
         {
             var server = (Server)nodeServer.Tag;
             TreeNode nodeScenario = null;
@@ -436,6 +553,7 @@ namespace WiremockUI
                 // Create the ContextMenuStrip.
                 var menu = new ContextMenuStrip();
                 var addMenu = new ToolStripMenuItem();
+                var duplicateMenu = new ToolStripMenuItem();
                 var setDefaultMenu = new ToolStripMenuItem();
                 var openFolderMenu = new ToolStripMenuItem();
                 var editMenu = new ToolStripMenuItem();
@@ -449,6 +567,7 @@ namespace WiremockUI
                     addMenu,
                     setDefaultMenu,
                     openFolderMenu,
+                    duplicateMenu,
                     editMenu,
                     removeMenu,
                     showUrlMenu,
@@ -460,7 +579,7 @@ namespace WiremockUI
                 {
                     var isRunning = Dashboard.IsRunning(scenario);
                     //setDefaultMenu.Enabled = !Dashboard.IsAnyRunning();
-                    addMenu.Enabled = !isRunning;
+                    //addMenu.Enabled = !isRunning;
                     editMenu.Enabled = !isRunning;
                     removeMenu.Enabled = !isRunning;
 
@@ -490,6 +609,15 @@ namespace WiremockUI
                 addMenu.Click += (a, b) =>
                 {
                     AddNewMap(nodeScenario);
+                };
+
+                // duplicate
+                duplicateMenu.Text = Resource.duplicateMappingMenu;
+                duplicateMenu.ImageKey = "duplicate";
+                duplicateMenu.ShortcutKeys = Keys.Control | Keys.D;
+                duplicateMenu.Click += (a, b) =>
+                {
+                    DuplicateScenario(nodeScenario);
                 };
 
                 // show files
@@ -581,8 +709,10 @@ namespace WiremockUI
                 nodeScenario.Tag = scenario;
             }
 
-            ChangeTreeNodeImage(nodeScenario, "mock");
+            ChangeTreeNodeImage(nodeScenario, "scenario");
             nodeServer.Expand();
+
+            return nodeScenario;
         }
 
         private void OpenAddOrEditServer(Server server = null)
@@ -632,6 +762,7 @@ namespace WiremockUI
             var toggleMapStateMenu = new ToolStripMenuItem();
             var duplicateMenu = new ToolStripMenuItem();
             var viewInExplorerMenu = new ToolStripMenuItem();
+            var viewInWebRequest = new ToolStripMenuItem();
 
             menu.Opening += (a, b) =>
             {
@@ -645,19 +776,20 @@ namespace WiremockUI
                     toggleMapStateMenu.ImageKey = "";
                 }
 
-                var isRunning = Dashboard.IsRunning(scenario);
-                renameMenu.Enabled = !isRunning;
-                deleteMenu.Enabled = !isRunning;
-                toggleMapStateMenu.Enabled = !isRunning;
-                duplicateMenu.Enabled = !isRunning;
+                //var isRunning = Dashboard.IsRunning(scenario);
+                //renameMenu.Enabled = !isRunning;
+                //deleteMenu.Enabled = !isRunning;
+                //toggleMapStateMenu.Enabled = !isRunning;
+                //duplicateMenu.Enabled = !isRunning;
             };
 
             menu.Items.AddRange(new ToolStripMenuItem[]
             {
                 renameMenu,
                 duplicateMenu,
-                toggleMapStateMenu,
                 deleteMenu,
+                toggleMapStateMenu,
+                viewInWebRequest,
                 viewInExplorerMenu
             });
 
@@ -714,6 +846,27 @@ namespace WiremockUI
                 ViewFileInExplorer(model.File.FullPath);
             };
 
+            // view in explorer
+            viewInWebRequest.Text = Resource.viewMappingInWebRequestMenu;
+            viewInWebRequest.Click += (a, b) =>
+            {
+                try
+                {
+                    var model = (TreeNodeMappingModel)nodeMapping.Tag;
+
+                    Dictionary<string, string> headers;
+                    string body, method, url;
+                    TransformUtils.GetRequestElementsByMap(model.Server.GetServerUrl(), model.File.FullPath, out headers, out body, out method, out url);
+
+                    var frmComposer = new FormWebRequest(method, url, headers, body, null, null);
+                    TabMaster.AddTab(frmComposer, model, model.File.GetOnlyFileName());
+                }
+                catch (Exception ex)
+                {
+                    Helper.MessageBoxError(ex.Message);
+                }
+            };
+
             nodeMapping.ContextMenuStrip = menu;
             nodeMapping.Tag = treeNodeMapping;
 
@@ -736,6 +889,7 @@ namespace WiremockUI
 
             return nodeMapping;
         }
+
         
         private void DeleteMap(TreeNode nodeMapping)
         {
@@ -749,6 +903,7 @@ namespace WiremockUI
                     File.Delete(treeNodeMappingActual.File.FullPath);
                     nodeMapping.Parent.Nodes.Remove(nodeMapping);
                     DeleteMappingTab(nodeMapping);
+                    Dashboard.Refresh(treeNodeMappingActual.Scenario);
                 }
                 catch (Exception ex)
                 {
@@ -775,6 +930,7 @@ namespace WiremockUI
 
             File.WriteAllText(newMapFile, content);
             treeServices.SelectedNode = AddMappingNode(GetNodeScenarioById(model.Scenario.Id), model.Scenario, newMapFile, nodeMapping.Index + 1);
+            Dashboard.Refresh(model.Scenario);
         }
 
         private void AddNewMap(TreeNode nodeScenario)
@@ -783,12 +939,12 @@ namespace WiremockUI
             var contentBody = "";
             var templateMapFileName = Resource.templateMapFileName;
             var templateBodyFileName = Resource.templateBodyFileName;
-            var mockName = Resource.newMappingFileName;
-            var mockBodyName = Resource.newBodyFileName;
+            var mapName = Resource.newMappingFileName;
+            var mapBodyName = Resource.newBodyFileName;
             var scenario = (Data.Scenario)nodeScenario.Tag;
             var server = (Server)nodeScenario.Parent.Tag;
-            var newMapFileName = GetNewFileName(Path.Combine(server.GetMappingPath(scenario), mockName));
-            var newBodyFileName = GetNewFileName(Path.Combine(server.GetBodyFilesPath(scenario), mockBodyName));
+            var newMapFileName = GetNewFileName(Path.Combine(server.GetMappingPath(scenario), mapName));
+            var newBodyFileName = GetNewFileName(Path.Combine(server.GetBodyFilesPath(scenario), mapBodyName));
 
             if (File.Exists(templateMapFileName))
             {
@@ -807,6 +963,7 @@ namespace WiremockUI
 
             var nodeMap = AddMappingNode(nodeScenario, scenario, newMapFileName);
             treeServices.SelectedNode = nodeMap;
+            Dashboard.Refresh(scenario);
         }
 
         private string GetNewFileName(string fileName)
@@ -816,15 +973,15 @@ namespace WiremockUI
             var directory = Path.GetDirectoryName(fileName);
 
             var fileCount = 0;
+            fileNameWithoutExt = Regex.Replace(fileNameWithoutExt, @"\d+$", (resut) =>
+            {
+                fileCount = int.Parse(resut.Value);
+                return "";
+            });
+
             var newFileName = fileName;
             while (File.Exists(newFileName))
             {
-                fileNameWithoutExt = Regex.Replace(fileNameWithoutExt, @"\d+$", (resut) =>
-                {
-                    fileCount = int.Parse(resut.Value);
-                    return "";
-                });
-
                 fileCount++;
                 newFileName = Path.Combine(directory, fileNameWithoutExt + fileCount + ext);
             }
@@ -1081,6 +1238,9 @@ namespace WiremockUI
             var font = new Font(treeServices.Font.FontFamily, treeServices.Font.Size, FontStyle.Bold);
             nodeScenario.NodeFont = font;
 
+            // FIX: Added to fix the treenode size that is cut when changed to bold
+            nodeScenario.Text = nodeScenario.Text;
+
             foreach (TreeNode n in nodeScenario.Parent.Nodes)
                 if (n != nodeScenario)
                     n.NodeFont = new Font(treeServices.Font.FontFamily, treeServices.Font.Size, treeServices.Font.Style);
@@ -1125,6 +1285,8 @@ namespace WiremockUI
                 recordText = " " + Resource.startServerRecordText;
             else if (playType == Server.PlayType.PlayAsProxy)
                 recordText = " " + Resource.startServerAsProxyText;
+            else
+                recordText = " " + Resource.startServerText;
 
             TabMaster.AddTab(frmStart, scenario.Id, scenario.Name + recordText)
                 .CanClose = () => {
@@ -1218,6 +1380,10 @@ namespace WiremockUI
 
                     StartService(scenario, playType);
                 }
+                else
+                {
+                    Helper.MessageBoxError(string.Format(Resource.serverWithoutScenarioError, server.Name));
+                }
             }
         }
 
@@ -1256,46 +1422,11 @@ namespace WiremockUI
                 {
                     try
                     {
+                        Dictionary<string, string> headers;
+                        string body, method, url;
+                        TransformUtils.GetRequestElementsByMap(treeNodeMapping.Server.GetServerUrl(), treeNodeMapping.File.FullPath, out headers, out body, out method, out url);
+
                         var strBuilder = new StringBuilder();
-                        var headers = new Dictionary<string, string>();
-                        string body = null;
-
-                        var fileContent = File.ReadAllText(treeNodeMapping.File.FullPath);
-                        var stub = StubMapping.buildFrom(fileContent);
-                        var method = stub.getRequest().getMethod().ToString();
-                        var url = stub.getRequest().getUrl();
-
-                        var iterator = stub.getRequest().getHeaders()?.keySet()?.iterator();
-                        if (iterator != null)
-                        {
-                            while (iterator.hasNext())
-                            {
-                                var name = (string)iterator.next();
-                                var value = (com.github.tomakehurst.wiremock.matching.MultiValuePattern)stub.getRequest().getHeaders().get(name);
-                                var compareName = value.getName();
-                                headers[name] = value.getExpected();
-                            }
-                        }
-
-                        var iteratorCookie = stub.getRequest().getCookies()?.keySet()?.iterator();
-                        if (iteratorCookie != null && !headers.Any((KeyValuePair<string, string> f) => f.Key.ToLower() == "cookies"))
-                        {
-                            headers["Cookies"] = stub.getRequest().getCookies().ToString();
-                        }
-
-                        var bodyPatterns = stub.getRequest().getBodyPatterns()?.toArray();
-                        if (bodyPatterns != null)
-                        {
-                            foreach (var bodyPattern in bodyPatterns)
-                            {
-                                if (bodyPattern is com.github.tomakehurst.wiremock.matching.StringValuePattern converted)
-                                {
-                                    body = converted.getExpected();
-                                    break;
-                                }
-                            }
-                        }
-
                         strBuilder.Append($"{method} {url}");
                         if (headers.Count > 0)
                         {
@@ -1353,6 +1484,7 @@ namespace WiremockUI
                     {
                         var newTreeNodeMapping = GetTreeNodeMapping(findMap.Server, findMap.Scenario, findMap.File.FullPath);
                         UpdateMappingNode(selected, newTreeNodeMapping);
+                        Dashboard.Refresh(findMap.Scenario);
                     }
                 };
 
@@ -1436,7 +1568,8 @@ namespace WiremockUI
 
         private void menuRefresh_Click(object sender, EventArgs e)
         {
-            RefreshAll();
+            if (Helper.MessageBoxQuestion(Resource.confirmRefreshAll) == DialogResult.Yes)
+                RefreshAll();
         }
 
         private void treeServices_MouseMove(object sender, MouseEventArgs e)
@@ -1466,6 +1599,7 @@ namespace WiremockUI
             {
                 var filaName = Path.GetFileName(model.File.FullPath).Split('.').First();
                 RenameMap(filaName, "", nodeMap, model, false);
+                Dashboard.Refresh(model.Scenario);
             }
         }
 
@@ -1475,6 +1609,7 @@ namespace WiremockUI
             {
                 var filaName = Path.GetFileName(model.File.FullPath).Split('.').First();
                 RenameMap(filaName, ".json", nodeMap, model, false);
+                Dashboard.Refresh(model.Scenario);
             }
         }
 
@@ -1518,6 +1653,7 @@ namespace WiremockUI
             var newModel = GetTreeNodeMapping(model.Server, model.Scenario, newNameMap);
             UpdateMappingNode(nodeMap, newModel);
             UpdateMappingTab(nodeMap, oldNodeBody);
+            Dashboard.Refresh(model.Scenario);
         }
 
         private string GetNewName(string newName, FileModel file, string extension)
@@ -1576,8 +1712,7 @@ namespace WiremockUI
 
         private void treeServices_KeyDown(object sender, KeyEventArgs e)
         {
-            if (treeServices.SelectedNode?.Tag is TreeNodeMappingModel model
-                && !Dashboard.IsRunning(model.Scenario))
+            if (treeServices.SelectedNode?.Tag is TreeNodeMappingModel model)
             {
                 if (e.KeyCode == Keys.Delete)
                 {
@@ -1603,29 +1738,41 @@ namespace WiremockUI
                 //}
             }
 
-            if (treeServices.SelectedNode?.Tag is Server server
-                && !Dashboard.IsRunning(server.GetDefaultScenario()))
+            if (treeServices.SelectedNode?.Tag is Server server)
             {
-                if (e.KeyCode == Keys.Delete)
+                var isRunning = Dashboard.IsRunning(server.GetDefaultScenario());
+                if (e.KeyCode == Keys.Delete && !isRunning)
                 {
                     RemoveServer(treeServices.SelectedNode);
                 }
-                if (e.KeyCode == Keys.F2)
+                if (e.KeyCode == Keys.F2 && !isRunning)
                 {
                     OpenAddOrEditServer(server);
                 }
+                else if (e.Control && e.KeyCode == Keys.D)
+                {
+                    DuplicateServer(treeServices.SelectedNode);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+                }
             }
 
-            if (treeServices.SelectedNode?.Tag is Data.Scenario scenario
-                && !Dashboard.IsRunning(scenario))
+            if (treeServices.SelectedNode?.Tag is Data.Scenario scenario)
             {
-                if (e.KeyCode == Keys.Delete)
+                var isRunning = Dashboard.IsRunning(scenario);
+                if (e.KeyCode == Keys.Delete && !isRunning)
                 {
                     RemoveScenario(treeServices.SelectedNode);
                 }
-                if (e.KeyCode == Keys.F2)
+                if (e.KeyCode == Keys.F2 && !isRunning)
                 {
                     OpenAddOrEditScenario(treeServices.SelectedNode.Parent, scenario);
+                }
+                else if (e.Control && e.KeyCode == Keys.D)
+                {
+                    DuplicateScenario(treeServices.SelectedNode);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
                 }
             }
         }
@@ -1663,6 +1810,11 @@ namespace WiremockUI
         private string GetMenuNameAsTabName(string text)
         {
             return text.Replace("&", "");
+        }
+
+        private void menuOpenFilesFolder_Click(object sender, EventArgs e)
+        {
+            ViewFileInExplorer(Helper.GetDbFilePath());
         }
     }
 }

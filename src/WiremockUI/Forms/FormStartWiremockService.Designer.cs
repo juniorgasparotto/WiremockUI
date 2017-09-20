@@ -170,6 +170,7 @@
             // txtSearchValue
             // 
             this.txtSearchValue.AcceptsTab = true;
+            this.txtSearchValue.DetectUrls = false;
             this.txtSearchValue.EnableFormatter = false;
             this.txtSearchValue.EnableHistory = true;
             this.txtSearchValue.Location = new System.Drawing.Point(9, 8);
@@ -338,7 +339,7 @@
             // linkUrlTarget
             // 
             this.linkUrlTarget.AutoSize = true;
-            this.linkUrlTarget.Location = new System.Drawing.Point(537, 27);
+            this.linkUrlTarget.Location = new System.Drawing.Point(543, 27);
             this.linkUrlTarget.Name = "linkUrlTarget";
             this.linkUrlTarget.Size = new System.Drawing.Size(23, 13);
             this.linkUrlTarget.TabIndex = 20;
@@ -370,7 +371,7 @@
             // 
             this.chkDisable.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.chkDisable.AutoSize = true;
-            this.chkDisable.Location = new System.Drawing.Point(319, 83);
+            this.chkDisable.Location = new System.Drawing.Point(329, 83);
             this.chkDisable.Name = "chkDisable";
             this.chkDisable.Size = new System.Drawing.Size(88, 17);
             this.chkDisable.TabIndex = 27;
@@ -408,7 +409,8 @@
             this.txtTo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTo.EnableFormatter = false;
             this.txtTo.EnableHistory = true;
-            this.txtTo.Location = new System.Drawing.Point(91, 56);
+            this.txtTo.DetectUrls = true;
+            this.txtTo.Location = new System.Drawing.Point(102, 56);
             this.txtTo.MaxLength = 0;
             this.txtTo.Name = "txtTo";
             this.txtTo.ReadOnly = true;
@@ -422,7 +424,8 @@
             this.txtFrom.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFrom.EnableFormatter = false;
             this.txtFrom.EnableHistory = true;
-            this.txtFrom.Location = new System.Drawing.Point(91, 26);
+            this.txtFrom.DetectUrls = true;
+            this.txtFrom.Location = new System.Drawing.Point(102, 26);
             this.txtFrom.MaxLength = 0;
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.ReadOnly = true;
@@ -433,7 +436,7 @@
             // linkUrlServer
             // 
             this.linkUrlServer.AutoSize = true;
-            this.linkUrlServer.Location = new System.Drawing.Point(537, 57);
+            this.linkUrlServer.Location = new System.Drawing.Point(543, 57);
             this.linkUrlServer.Name = "linkUrlServer";
             this.linkUrlServer.Size = new System.Drawing.Size(23, 13);
             this.linkUrlServer.TabIndex = 21;
@@ -447,7 +450,7 @@
             this.lblUrlServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUrlServer.Location = new System.Drawing.Point(6, 55);
             this.lblUrlServer.Name = "lblUrlServer";
-            this.lblUrlServer.Size = new System.Drawing.Size(79, 13);
+            this.lblUrlServer.Size = new System.Drawing.Size(94, 13);
             this.lblUrlServer.TabIndex = 19;
             this.lblUrlServer.Text = "Url do servidor:";
             // 

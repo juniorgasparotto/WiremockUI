@@ -35,7 +35,7 @@ namespace WiremockUI
 
             if (this.server == null)
             {
-                this.txtPort.Text = GetAutoPort().ToString();
+                this.txtPort.Text = Server.GetAutoPort().ToString();
             }
             else
             {
@@ -177,9 +177,18 @@ namespace WiremockUI
             }
 
             if (server.Id == Guid.Empty)
+            {
+                server.AddScenario(new Scenario()
+                {
+                    IsDefault = true,
+                    Name = Resource.defaultScenarioName
+                });
                 db.Servers.Insert(server);
+            }
             else
+            {
                 db.Servers.Update(server);
+            }
 
             db.Servers.Update(server);
             db.Save();
@@ -187,16 +196,7 @@ namespace WiremockUI
 
             master.SetServer(server);
         }
-
-        public int GetAutoPort()
-        {
-            var db = new UnitOfWork();
-            var maxPort = db.Servers.AsQueryable().Select(f => f.Port).DefaultIfEmpty().Max();
-            if (maxPort == 0)
-                return 5500;
-            return maxPort + 1;
-        }
-
+        
         public class WMProperties
         {
             [Description("If specified, enables HTTPS on the supplied port.")]

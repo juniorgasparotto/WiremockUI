@@ -20,5 +20,18 @@ namespace WiremockUI.Data
         {
             return Name.Trim().ToLower();
         }
+
+        public Scenario Copy()
+        {
+            return new Scenario()
+            {
+                Id = Guid.NewGuid(),
+                Description = Description,
+                IsDefault = IsDefault,
+                Name = Name,
+                ShowName = ShowName,
+                ShowURL = ShowURL
+            };
+        }
     }
 }

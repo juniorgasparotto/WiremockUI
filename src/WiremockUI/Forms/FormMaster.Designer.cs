@@ -35,6 +35,7 @@ namespace WiremockUI
             this.menuOptions = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuRefresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLanguages = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.menuServices = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +57,7 @@ namespace WiremockUI
             this.pnlSelectFile = new System.Windows.Forms.Panel();
             this.btnCancelFileSelectiong = new System.Windows.Forms.Button();
             this.lblSelectFileCompare = new System.Windows.Forms.Label();
-            this.mnuLanguages = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOpenFilesFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -82,6 +83,7 @@ namespace WiremockUI
             // 
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuRefresh,
+            this.menuOpenFilesFolder,
             this.mnuLanguages,
             this.toolStripMenuItem3,
             this.menuClose});
@@ -93,20 +95,26 @@ namespace WiremockUI
             // 
             this.menuRefresh.Image = ((System.Drawing.Image)(resources.GetObject("menuRefresh.Image")));
             this.menuRefresh.Name = "menuRefresh";
-            this.menuRefresh.Size = new System.Drawing.Size(152, 22);
+            this.menuRefresh.Size = new System.Drawing.Size(201, 22);
             this.menuRefresh.Text = "&Atualizar";
             this.menuRefresh.Click += new System.EventHandler(this.menuRefresh_Click);
+            // 
+            // mnuLanguages
+            // 
+            this.mnuLanguages.Name = "mnuLanguages";
+            this.mnuLanguages.Size = new System.Drawing.Size(201, 22);
+            this.mnuLanguages.Text = "Idiomas";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(198, 6);
             // 
             // menuClose
             // 
             this.menuClose.Image = ((System.Drawing.Image)(resources.GetObject("menuClose.Image")));
             this.menuClose.Name = "menuClose";
-            this.menuClose.Size = new System.Drawing.Size(152, 22);
+            this.menuClose.Size = new System.Drawing.Size(201, 22);
             this.menuClose.Text = "&Sair";
             this.menuClose.Click += new System.EventHandler(this.menuClose_Click);
             // 
@@ -256,12 +264,13 @@ namespace WiremockUI
             this.imageList1.Images.SetKeyName(8, "request");
             this.imageList1.Images.SetKeyName(9, "response");
             this.imageList1.Images.SetKeyName(10, "default");
-            this.imageList1.Images.SetKeyName(11, "mock");
-            this.imageList1.Images.SetKeyName(12, "check");
-            this.imageList1.Images.SetKeyName(13, "disable");
-            this.imageList1.Images.SetKeyName(14, "duplicate");
-            this.imageList1.Images.SetKeyName(15, "rename");
-            this.imageList1.Images.SetKeyName(16, "play-proxy");
+            this.imageList1.Images.SetKeyName(11, "check");
+            this.imageList1.Images.SetKeyName(12, "disable");
+            this.imageList1.Images.SetKeyName(13, "duplicate");
+            this.imageList1.Images.SetKeyName(14, "rename");
+            this.imageList1.Images.SetKeyName(15, "play-proxy");
+            this.imageList1.Images.SetKeyName(16, "check");
+            this.imageList1.Images.SetKeyName(17, "scenario");
             // 
             // tabForms
             // 
@@ -309,11 +318,12 @@ namespace WiremockUI
     "ques para selecionar.";
             this.lblSelectFileCompare.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // mnuLanguages
+            // menuOpenFilesFolder
             // 
-            this.mnuLanguages.Name = "mnuLanguages";
-            this.mnuLanguages.Size = new System.Drawing.Size(152, 22);
-            this.mnuLanguages.Text = "Idiomas";
+            this.menuOpenFilesFolder.Name = "menuOpenFilesFolder";
+            this.menuOpenFilesFolder.Size = new System.Drawing.Size(201, 22);
+            this.menuOpenFilesFolder.Text = "Abrir pasta dos arquivos";
+            this.menuOpenFilesFolder.Click += new System.EventHandler(this.menuOpenFilesFolder_Click);
             // 
             // FormMaster
             // 
@@ -372,5 +382,6 @@ namespace WiremockUI
         private System.Windows.Forms.ToolStripMenuItem menuTextEditor;
         private System.Windows.Forms.ToolStripMenuItem menuJsonVisualizer;
         private System.Windows.Forms.ToolStripMenuItem mnuLanguages;
+        private System.Windows.Forms.ToolStripMenuItem menuOpenFilesFolder;
     }
 }

@@ -142,7 +142,7 @@
     <value>Esse "Nome" já está em uso</value>
   </data>
   <data name="addScenarioMenu" xml:space="preserve">
-    <value>Adicionar mock</value>
+    <value>Adicionar mapa</value>
   </data>
   <data name="addScenarioRequiredNameMessage" xml:space="preserve">
     <value>O campo "Nome" é obrigatório.</value>
@@ -361,10 +361,10 @@
     <value>Pergunta</value>
   </data>
   <data name="newBodyFileName" xml:space="preserve">
-    <value>Mock.txt</value>
+    <value>Map.txt</value>
   </data>
   <data name="newMappingFileName" xml:space="preserve">
-    <value>Mock.json</value>
+    <value>Map.json</value>
   </data>
   <data name="openFileFromTreeViewMenu" xml:space="preserve">
     <value>Selecionar na árvore</value>
@@ -563,5 +563,29 @@
   </data>
   <data name="toolStripStatusValue" xml:space="preserve">
     <value>(Selecione duas celulas de tempo para calcular a diferença)</value>
+  </data>
+  <data name="chkAutoRedirect" xml:space="preserve">
+    <value>Redirecionar automáticamente</value>
+  </data>
+  <data name="restartServerMenu" xml:space="preserve">
+    <value>Reiniciar</value>
+  </data>
+  <data name="serverWithoutScenarioError" xml:space="preserve">
+    <value>O cenário "{0}"não contém nenhum cenário para ser iniciado</value>
+  </data>
+  <data name="defaultScenarioName" xml:space="preserve">
+    <value>Cenário1</value>
+  </data>
+  <data name="menuOpenFilesFolder" xml:space="preserve">
+    <value>Abrir pasta dos arquivos</value>
+  </data>
+  <data name="startServerText" xml:space="preserve">
+    <value>(Iniciado)</value>
+  </data>
+  <data name="viewMappingInWebRequestMenu" xml:space="preserve">
+    <value>Visualizar com Web Request</value>
+  </data>
+  <data name="confirmRefreshAll" xml:space="preserve">
+    <value>Para continuar será necessário parar todos os servidores, deseja continuar?</value>
   </data>
 </root>

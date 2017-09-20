@@ -1,11 +1,11 @@
 {
   "request": {
-    "url": "/GetUser",
+    "url": "/?a=2&e=2",
     "method": "GET"
   },
   "response": {
     "status": 200,
-    "bodyFileName": "GetAllUsers1.txt",
+    "bodyFileName": "Map.txt",
     "headers": {
       "Content-Type": "application/json"
     }

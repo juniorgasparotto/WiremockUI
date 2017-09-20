@@ -65,7 +65,8 @@ namespace WiremockUI
             this.AcceptsTab = true;
             this.Multiline = true;
             this.KeyDown += HistoryTextBox_KeyDown;
-            this.MaxLength = 0; 
+            this.MaxLength = 0;
+            this.DetectUrls = false;
         }
 
         private void HistoryTextBox_KeyDown(object sender, KeyEventArgs e)

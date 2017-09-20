@@ -70,7 +70,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adicionar mock.
+        ///   Looks up a localized string similar to Adicionar mapa.
         /// </summary>
         internal static string addScenarioMenu {
             get {
@@ -295,6 +295,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Redirecionar automáticamente.
+        /// </summary>
+        internal static string chkAutoRedirect {
+            get {
+                return ResourceManager.GetString("chkAutoRedirect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rolar automáticamente.
         /// </summary>
         internal static string chkAutoScroll {
@@ -336,6 +345,24 @@ namespace WiremockUI.Languages {
         internal static string compareResultTitle {
             get {
                 return ResourceManager.GetString("compareResultTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Para continuar será necessário parar todos os servidores, deseja continuar?.
+        /// </summary>
+        internal static string confirmRefreshAll {
+            get {
+                return ResourceManager.GetString("confirmRefreshAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cenário1.
+        /// </summary>
+        internal static string defaultScenarioName {
+            get {
+                return ResourceManager.GetString("defaultScenarioName", resourceCulture);
             }
         }
         
@@ -682,6 +709,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Abrir pasta dos arquivos.
+        /// </summary>
+        internal static string menuOpenFilesFolder {
+            get {
+                return ResourceManager.GetString("menuOpenFilesFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Iniciar todos.
         /// </summary>
         internal static string menuPlayAll {
@@ -790,7 +826,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mock.txt.
+        ///   Looks up a localized string similar to Map.txt.
         /// </summary>
         internal static string newBodyFileName {
             get {
@@ -799,7 +835,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mock.json.
+        ///   Looks up a localized string similar to Map.json.
         /// </summary>
         internal static string newMappingFileName {
             get {
@@ -943,6 +979,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reiniciar.
+        /// </summary>
+        internal static string restartServerMenu {
+            get {
+                return ResourceManager.GetString("restartServerMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ocorreu um erro ao tentar salvar o arquivo: {0}.
         /// </summary>
         internal static string saveFileErrorMessage {
@@ -1002,6 +1047,15 @@ namespace WiremockUI.Languages {
         internal static string selectTextErrorMessage {
             get {
                 return ResourceManager.GetString("selectTextErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O cenário &quot;{0}&quot;não contém nenhum cenário para ser iniciado.
+        /// </summary>
+        internal static string serverWithoutScenarioError {
+            get {
+                return ResourceManager.GetString("serverWithoutScenarioError", resourceCulture);
             }
         }
         
@@ -1083,6 +1137,15 @@ namespace WiremockUI.Languages {
         internal static string startServerRecordText {
             get {
                 return ResourceManager.GetString("startServerRecordText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Iniciado).
+        /// </summary>
+        internal static string startServerText {
+            get {
+                return ResourceManager.GetString("startServerText", resourceCulture);
             }
         }
         
@@ -1353,6 +1416,15 @@ namespace WiremockUI.Languages {
         internal static string viewMappingInExplorerMenu {
             get {
                 return ResourceManager.GetString("viewMappingInExplorerMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar com Web Request.
+        /// </summary>
+        internal static string viewMappingInWebRequestMenu {
+            get {
+                return ResourceManager.GetString("viewMappingInWebRequestMenu", resourceCulture);
             }
         }
         

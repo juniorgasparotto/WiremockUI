@@ -38,6 +38,14 @@ esta criando pastas "files" e "mapping na raiz do projeto" - OK
 mudar pasta do debug para dentro da .app - OK
 criar visualzar apenas url - OK
 adicionar opção para remover o nome da treeview - OK
+multiplas linguas - ok
+criar delete para cada nivel da treeview (keypress) - ok
+criar duplicar para todos os niveis - ok
+bug do texto que corta quando troca pra bold - ok
+criar refresh dos mapas quando salva-los - OK
+criar uma mock automaticamente após criar um proxy - OK
+adicionar atalhos em todos os niveis da treeview (atalho do q?) - oK
+preferencias (que config terá?) - ok
 
 -- ToDo
 
@@ -50,13 +58,15 @@ criar copiar para area de transferecia
   - comando java -jar 
   - curl
 
-multiplas linguas
 verificar se wiremock aceita multiplos níveis de pasta para os mapas
-criar delete para cada nivel da treeview (keypress)
+formatar selecao no editortextbox
+ao mudar o cenário default, fazer auto play
+criar rename para os responses, incluindo seu tipo
 
 -- bugs
 
 deu um problema de encode no compara ao selecionar um mapa
+
 
 -- deploy 
 
@@ -70,14 +80,8 @@ criar tutorial
 refatorar FormMaster.cs/Maneira de salvar o json/Separa treeview em componente
 criar esquema para subir codigo c# para programar o request e response
 criar esquema para abrir o url dos mapas no browser ou em um componente de composer (é possivel, mas sujeito a erros)
-adicionar varios tipos de mock (json, xml)]
+adicionar varios tipos de mock (json, xml)
 splash
-criar uma mock automaticamente após criar um proxy
-visualizar json do request e response do mapa de forma amigavel (ja não esta feito?)
-criar mecanismo de gerenciamento remoto
-adicionar atalhos em todos os niveis da treeview (atalho do q?)
-criar open ao apertar enter em cada nivel da treeview
-preferencias (que config terá?)
-adicionar URL do serviço no treeNode para cada proxy (já naum tem?)
+criar mecanismo de gerenciamento remoto (criar versao web)
 criar response especial (??)
 cria request especial (??)

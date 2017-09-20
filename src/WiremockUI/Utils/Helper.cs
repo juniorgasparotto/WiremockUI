@@ -12,6 +12,22 @@ namespace WiremockUI
 {
     public static class Helper
     {
+        private const string FOLDER = ".app";
+        public const string DBFILE = "db.json";
+
+        public static string GetBasePath()
+        {
+            if (DevelopmentHelper.IsAttached)
+                return Path.Combine(DevelopmentHelper.GetProjectDirectory(), FOLDER);
+            else
+                return Path.Combine(Directory.GetCurrentDirectory(), FOLDER);
+        }
+
+        public static string GetDbFilePath()
+        {
+            return Path.Combine(GetBasePath(), DBFILE);
+        }
+
         public static DialogResult MessageBoxError(string message, string title = null)
         {
             title = title ?? Resource.messageBoxErrorTitle;
@@ -172,6 +188,24 @@ namespace WiremockUI
             if (addQuoteInStrings)
                 return "\"" + value + "\"";
             return value;
+        }
+
+        public static void CopyTo(this DirectoryInfo source, DirectoryInfo target, bool overwiteFiles = true)
+        {
+            if (!source.Exists) return;
+            if (!target.Exists)
+                target.Create();
+
+            foreach (var sourceChildDirectory in source.GetDirectories())
+                CopyTo(sourceChildDirectory, new DirectoryInfo(Path.Combine(target.FullName, sourceChildDirectory.Name)));
+
+            foreach (var sourceFile in source.GetFiles())
+                sourceFile.CopyTo(Path.Combine(target.FullName, sourceFile.Name), overwiteFiles);
+        }
+
+        public static void CopyTo(this DirectoryInfo source, string target, bool overwiteFiles = true)
+        {
+            CopyTo(source, new DirectoryInfo(target), overwiteFiles);
         }
     }
 }

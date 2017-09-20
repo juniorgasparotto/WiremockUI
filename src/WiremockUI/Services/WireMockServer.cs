@@ -12,6 +12,7 @@ using java.net;
 using java.nio;
 using java.nio.charset;
 using System.Linq;
+using WiremockUI.Data;
 
 namespace WiremockUI
 {
@@ -22,14 +23,17 @@ namespace WiremockUI
         private ILogTableRequestResponse logTableRequestResponse;
         private bool useLogStdout;
 
+        public Server.PlayType PlayType { get; }
+
         static WireMockServer()
         {
             java.lang.System.setProperty("wiremock.org.mortbay.log.class", "com.github.tomakehurst.wiremock.jetty.LoggerAdapter");
         }
 
-        public WireMockServer(ILogWriter writer, ILogTableRequestResponse logTableRequestResponse, bool useLogStdout = false)
+        public WireMockServer(ILogWriter writer, ILogTableRequestResponse logTableRequestResponse, Data.Server.PlayType playType, bool useLogStdout = false)
         {
             this.useLogStdout = useLogStdout;
+            this.PlayType = playType;
             this.logText = writer;
             this.logTableRequestResponse = logTableRequestResponse;
         }
@@ -70,7 +74,7 @@ namespace WiremockUI
 
             wireMockServer = new com.github.tomakehurst.wiremock.WireMockServer(options);
             wireMockServer.addMockServiceRequestListener(new RequestAndResponseListener(logTableRequestResponse));
-
+            
             if (options.recordMappingsEnabled())
             {
                 wireMockServer.enableRecordMappings(mappingsFileSource, filesFileSource);
@@ -92,6 +96,11 @@ namespace WiremockUI
             {
                 logText.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true);
             }
+        }
+
+        internal void Refresh()
+        {
+            wireMockServer.resetAll();
         }
 
         private void addProxyMapping(string baseUrl)

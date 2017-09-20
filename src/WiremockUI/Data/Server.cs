@@ -7,8 +7,6 @@ namespace WiremockUI.Data
 {
     public class Server
     {
-        private const string FOLDER = ".app";
-
         public Guid Id { get; set; }
         public string UrlTarget { get; set; }
         public int Port { get; set; }
@@ -38,10 +36,7 @@ namespace WiremockUI.Data
 
         public string GetFullPath()
         {
-            if (DevelopmentHelper.IsAttached)
-                return Path.Combine(DevelopmentHelper.GetProjectDirectory(), FOLDER, GetFolderName());
-            else
-                return Path.Combine(Directory.GetCurrentDirectory(), FOLDER, GetFolderName());
+            return Path.Combine(Helper.GetBasePath(), GetFolderName());
         }
 
         public string GetFullPath(Scenario scenario)
@@ -164,6 +159,27 @@ namespace WiremockUI.Data
                 }
             }
             return lst;
+        }
+
+        public Server Copy()
+        {
+            return new Server()
+            {
+                Id = Guid.NewGuid(),
+                Arguments = Arguments,
+                Name = Name,
+                Port = GetAutoPort(),
+                UrlTarget = UrlTarget
+            };
+        }
+
+        public static int GetAutoPort()
+        {
+            var db = new UnitOfWork();
+            var maxPort = db.Servers.AsQueryable().Select(f => f.Port).DefaultIfEmpty().Max();
+            if (maxPort == 0)
+                return 5500;
+            return maxPort + 1;
         }
 
         public enum PlayType
