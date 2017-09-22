@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabRaw = new System.Windows.Forms.TabPage();
             this.txtContent = new WiremockUI.EditorTextBox();
@@ -69,15 +70,16 @@
             // txtContent
             // 
             this.txtContent.AcceptsTab = true;
+            this.txtContent.DetectUrls = false;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.EnableFormatter = false;
+            this.txtContent.EnableFormatter = true;
+            this.txtContent.EnableHistory = true;
             this.txtContent.Location = new System.Drawing.Point(3, 42);
             this.txtContent.MaxLength = 0;
-            this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
-            //this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent.Size = new System.Drawing.Size(136, 79);
             this.txtContent.TabIndex = 11;
+            this.txtContent.Text = "";
             // 
             // panel1
             // 
@@ -141,7 +143,6 @@
             this.Name = "UcJsonView";
             this.tabs.ResumeLayout(false);
             this.tabRaw.ResumeLayout(false);
-            this.tabRaw.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tabTree.ResumeLayout(false);
             this.tabTree.PerformLayout();

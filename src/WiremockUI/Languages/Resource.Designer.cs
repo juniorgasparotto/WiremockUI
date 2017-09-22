@@ -250,6 +250,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Substituir.
+        /// </summary>
+        internal static string btnReplace {
+            get {
+                return ResourceManager.GetString("btnReplace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Salvar.
         /// </summary>
         internal static string btnSaveFile {
@@ -403,6 +412,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editar valor.
+        /// </summary>
+        internal static string editValueMenu {
+            get {
+                return ResourceManager.GetString("editValueMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to glaubergasparottojr@hotmail.com.
         /// </summary>
         internal static string email {
@@ -457,6 +475,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Formatar.
+        /// </summary>
+        internal static string formatJsonMenu {
+            get {
+                return ResourceManager.GetString("formatJsonMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Esse XML não é válido: {0}.
         /// </summary>
         internal static string formatXmlErrorMessage {
@@ -466,11 +493,29 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Formatar.
+        /// </summary>
+        internal static string formatXmlMenu {
+            get {
+                return ResourceManager.GetString("formatXmlMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comparar textos.
         /// </summary>
         internal static string formCompareTitle {
             get {
                 return ResourceManager.GetString("formCompareTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar valor.
+        /// </summary>
+        internal static string formEditValue {
+            get {
+                return ResourceManager.GetString("formEditValue", resourceCulture);
             }
         }
         
@@ -529,11 +574,38 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Escape.
+        /// </summary>
+        internal static string jsonEscapeMenu {
+            get {
+                return ResourceManager.GetString("jsonEscapeMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ocorreu um erro ao tentar carregar o JSON: {0}.
         /// </summary>
         internal static string jsonLoadError {
             get {
                 return ResourceManager.GetString("jsonLoadError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Json.
+        /// </summary>
+        internal static string jsonText {
+            get {
+                return ResourceManager.GetString("jsonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unescape.
+        /// </summary>
+        internal static string jsonUnescapeMenu {
+            get {
+                return ResourceManager.GetString("jsonUnescapeMenu", resourceCulture);
             }
         }
         
@@ -822,6 +894,15 @@ namespace WiremockUI.Languages {
         internal static string messageBoxQuestionTitle {
             get {
                 return ResourceManager.GetString("messageBoxQuestionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minify.
+        /// </summary>
+        internal static string minifyMenu {
+            get {
+                return ResourceManager.GetString("minifyMenu", resourceCulture);
             }
         }
         
@@ -1384,15 +1465,6 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Formatar para Json.
-        /// </summary>
-        internal static string viewJsonMenu {
-            get {
-                return ResourceManager.GetString("viewJsonMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Ver.
         /// </summary>
         internal static string viewLink {
@@ -1465,11 +1537,29 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Formatar para XML.
+        ///   Looks up a localized string similar to Escape.
         /// </summary>
-        internal static string viewXml {
+        internal static string xmlEscapeMenu {
             get {
-                return ResourceManager.GetString("viewXml", resourceCulture);
+                return ResourceManager.GetString("xmlEscapeMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xml.
+        /// </summary>
+        internal static string xmlText {
+            get {
+                return ResourceManager.GetString("xmlText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unescape.
+        /// </summary>
+        internal static string xmlUnescapeMenu {
+            get {
+                return ResourceManager.GetString("xmlUnescapeMenu", resourceCulture);
             }
         }
     }

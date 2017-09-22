@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -111,6 +112,178 @@ namespace WiremockUI
             }
         }
 
+        public static string JsonEscape(string text)
+        {
+            string json = text;
+            if (text?.Length > 0)
+            {
+                try
+                {
+                    json = JsonConvert.SerializeObject(text);
+                    json = json.Remove(0, 1);
+                    json = json.Remove(json.Length - 1);
+                }
+                catch(Exception ex)
+                {
+                    Helper.MessageBoxError(ex.Message);
+                }
+            }
+            return json;
+        }
+        
+        public static string JsonUnescape(string text)
+        {
+            string json = text;
+            if (text?.Length > 0)
+            {
+                try
+                {
+                    var obj = (JToken)JsonConvert.DeserializeObject("{ value: \"" + text + "\" }");
+                    json = obj["value"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    Helper.MessageBoxError(ex.Message);
+                }
+            }
+            return json;
+        }
+
+        public static string JsonMinify(string text)
+        {
+            string json = text;
+            if (text?.Length > 0)
+            {
+                try
+                {
+                    var obj = (JToken)JsonConvert.DeserializeObject(text);
+                    json = obj.ToString(Newtonsoft.Json.Formatting.None);
+                }
+                catch (Exception ex)
+                {
+                    Helper.MessageBoxError(ex.Message);
+                }
+            }
+            return json;
+        }
+
+        public static string GetJsonValue(string text, out bool hasQuote, out bool hasError)
+        {
+            string json = text;
+            hasQuote = false;
+            hasError = false;
+            if (text?.Length > 0)
+            {
+                try
+                {
+                    var jsonTrim = text.Trim();
+                    if (jsonTrim.StartsWith("\"") && jsonTrim.EndsWith("\""))
+                    {
+                        json = jsonTrim.Remove(0, 1);
+                        json = json.Remove(json.Length - 1);
+                        hasQuote = true;
+                    }
+
+                    var obj = (JToken)JsonConvert.DeserializeObject("{ value: \"" + json + "\" }");
+                    json = obj["value"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    hasError = true;
+                    Helper.MessageBoxError(ex.Message);
+                }
+            }
+            return json;
+        }
+
+        public static string XmlEscape(string text)
+        {
+            string xml = text;
+            if (text?.Length > 0)
+            {
+                try
+                {
+                    XmlDocument doc = new XmlDocument();
+                    XmlNode node = doc.CreateElement("root");
+                    node.InnerText = text;
+                    xml = node.InnerXml;
+                }
+                catch (Exception ex)
+                {
+                    Helper.MessageBoxError(ex.Message);
+                }
+            }
+            return xml;
+        }
+
+        public static string XmlUnescape(string text)
+        {
+            string xml = text;
+            if (text?.Length > 0)
+            {
+                try
+                {
+                    XmlDocument doc = new XmlDocument();
+                    XmlNode node = doc.CreateElement("root");
+                    node.InnerXml = text;
+                    xml = node.InnerText;
+                }
+                catch (Exception ex)
+                {
+                    Helper.MessageBoxError(ex.Message);
+                }
+            }
+            return xml;
+        }
+
+        public static string XmlMinify(string text)
+        {
+            string xml = text;
+            if (text?.Length > 0)
+            {
+                try
+                {
+                    xml = new XMLMinifier(XMLMinifierSettings.Aggressive).Minify(text);
+                }
+                catch (Exception ex)
+                {
+                    Helper.MessageBoxError(ex.Message);
+                }
+            }
+            return xml;
+        }
+
+        public static string GetXmlValue(string text, out bool hasTagInSelection, out bool hasError)
+        {
+            string xml = text;
+            hasTagInSelection = false;
+            hasError = false;
+            if (text?.Length > 0)
+            {
+                try
+                {
+                    var xmlTrim = text.Trim();
+                    if (xmlTrim.StartsWith(">") && xmlTrim.EndsWith("</"))
+                    {
+                        xml = xmlTrim.Remove(0, 1);
+                        xml = xml.Remove(xml.Length - 1);
+                        xml = xml.Remove(xml.Length - 1);
+                        hasTagInSelection = true;
+                    }
+
+                    XmlDocument doc = new XmlDocument();
+                    XmlNode node = doc.CreateElement("root");
+                    node.InnerXml = xml;
+                    xml = node.InnerText;
+                }
+                catch (Exception ex)
+                {
+                    hasError = true;
+                    Helper.MessageBoxError(ex.Message);
+                }
+            }
+            return xml;
+        }
 
         public static string ResolveBreakLineInCompatibility(string text)
         {

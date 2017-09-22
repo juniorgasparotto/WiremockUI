@@ -528,8 +528,8 @@
   <data name="viewInComposerMenu" xml:space="preserve">
     <value>Open in WebRequest</value>
   </data>
-  <data name="viewJsonMenu" xml:space="preserve">
-    <value>Format to JSON</value>
+  <data name="formatJsonMenu" xml:space="preserve">
+    <value>Format</value>
   </data>
   <data name="viewLink" xml:space="preserve">
     <value>View</value>
@@ -552,8 +552,8 @@
   <data name="viewTextMenu" xml:space="preserve">
     <value>View in text editor</value>
   </data>
-  <data name="viewXml" xml:space="preserve">
-    <value>Format to XML</value>
+  <data name="formatXmlMenu" xml:space="preserve">
+    <value>Format</value>
   </data>
   <data name="toolStripStatusDiff" xml:space="preserve">
     <value>Difference of time:</value>
@@ -587,5 +587,35 @@
   </data>
   <data name="confirmRefreshAll" xml:space="preserve">
     <value>To continue, do I have to stop all servers?</value>
+  </data>
+  <data name="editValueMenu" xml:space="preserve">
+    <value>Edit value</value>
+  </data>
+  <data name="jsonEscapeMenu" xml:space="preserve">
+    <value>Escape</value>
+  </data>
+  <data name="jsonText" xml:space="preserve">
+    <value>Json</value>
+  </data>
+  <data name="jsonUnescapeMenu" xml:space="preserve">
+    <value>Unescape</value>
+  </data>
+  <data name="minifyMenu" xml:space="preserve">
+    <value>Minify</value>
+  </data>
+  <data name="xmlEscapeMenu" xml:space="preserve">
+    <value>Escape</value>
+  </data>
+  <data name="xmlText" xml:space="preserve">
+    <value>Xml</value>
+  </data>
+  <data name="xmlUnescapeMenu" xml:space="preserve">
+    <value>Unescape</value>
+  </data>
+  <data name="btnReplace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="formEditValue" xml:space="preserve">
+    <value>Edit value</value>
   </data>
 </root>

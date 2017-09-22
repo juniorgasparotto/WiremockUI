@@ -259,15 +259,21 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Listeners\RequestAndResponseListener.cs" />
-    <Compile Include="LogControls\ILogTableRequestResponse.cs" />
-    <Compile Include="LogControls\ILogWriter.cs" />
-    <Compile Include="LogControls\GridViewLogRequestResponse.cs" />
+    <Compile Include="UserControls\EditorTextbox\FormEditValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\EditorTextbox\FormEditValue.Designer.cs">
+      <DependentUpon>FormEditValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LogControls\ILogTableRequestResponse.cs" />
+    <Compile Include="UserControls\LogControls\ILogWriter.cs" />
+    <Compile Include="UserControls\LogControls\GridViewLogRequestResponse.cs" />
     <Compile Include="Models\TreeNodeBodyModel.cs" />
     <Compile Include="Models\TreeNodeMappingModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\MappingModel.cs" />
     <Compile Include="Forms\FileViewers\IFormFileUpdate.cs" />
-    <Compile Include="LogControls\RichTextBoxLogWriter.cs" />
+    <Compile Include="UserControls\LogControls\RichTextBoxLogWriter.cs" />
     <Compile Include="Forms\TextViewers\FormTextView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -338,6 +344,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
+    <Compile Include="Utils\XmlMinify.cs" />
     <EmbeddedResource Include="Forms\FormCompare.resx">
       <DependentUpon>FormCompare.cs</DependentUpon>
     </EmbeddedResource>
@@ -399,6 +406,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\TextViewers\FormTextView.resx">
       <DependentUpon>FormTextView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\EditorTextbox\FormEditValue.resx">
+      <DependentUpon>FormEditValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\JsonViewer\UcJsonView.resx">
       <DependentUpon>UcJsonView.cs</DependentUpon>

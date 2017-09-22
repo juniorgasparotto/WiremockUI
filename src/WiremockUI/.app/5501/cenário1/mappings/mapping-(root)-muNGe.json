@@ -1,0 +1,25 @@
+{
+  "id": "bfae95fb-7899-30dd-a7d3-0be4ba796c31",
+  "request": {
+    "url": "/",
+    "method": "POST",
+    "bodyPatterns": [
+      {
+        "equalToXml": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <Add xmlns=\"http://tempuri.org/\">\n      <intA>1</intA>\n      <intB>2555</intB>\n    </Add>\n  </soap:Body>\n</soap:Envelope>"
+      }
+    ]
+  },
+  "response": {
+    "status": 500,
+    "bodyFileName": "body-(root)-muNGe.txt",
+    "headers": {
+      "Cache-Control": "private",
+      "Content-Type": "text/html; charset=utf-8",
+      "Server": "Microsoft-IIS/7.5",
+      "X-AspNet-Version": "2.0.50727",
+      "X-Powered-By": "ASP.NET",
+      "Date": "Fri, 22 Sep 2017 03:49:18 GMT"
+    }
+  },
+  "uuid": "bfae95fb-7899-30dd-a7d3-0be4ba796c31"
+}

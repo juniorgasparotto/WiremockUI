@@ -22,34 +22,177 @@ namespace WiremockUI
                 if (value)
                 {
                     var menu = new ContextMenuStrip();
-                    var viewJsonMenu = new ToolStripMenuItem();
-                    var viewXml = new ToolStripMenuItem();
+                    var jsonMenu = new ToolStripMenuItem(Resource.jsonText);
+                    var xmlMenu = new ToolStripMenuItem(Resource.xmlText);
+
+                    var formatJsonMenu = new ToolStripMenuItem();
+                    var jsonEscapeMenu = new ToolStripMenuItem();
+                    var jsonUnescapeMenu = new ToolStripMenuItem();
+                    var minifyJsonMenu = new ToolStripMenuItem();
+                    var editJsonValueMenu = new ToolStripMenuItem();
+
+                    var formatXmlMenu = new ToolStripMenuItem();
+                    var xmlEscapeMenu = new ToolStripMenuItem();
+                    var xmlUnescapeMenu = new ToolStripMenuItem();
+                    var minifyXmlMenu = new ToolStripMenuItem();
+                    var editXmlValueMenu = new ToolStripMenuItem();
 
                     menu.Items.AddRange(new ToolStripMenuItem[]
                     {
-                        viewJsonMenu,
-                        viewXml
+                        jsonMenu,
+                        xmlMenu
                     });
 
+
+                    jsonMenu.DropDownItems.AddRange(new ToolStripMenuItem[]
+                    {
+                        formatJsonMenu,
+                        jsonEscapeMenu,
+                        jsonUnescapeMenu,
+                        minifyJsonMenu,
+                        editJsonValueMenu
+                    });
+
+                    jsonMenu.DropDownOpening += (o, s) =>
+                    {
+                        editJsonValueMenu.Visible = !string.IsNullOrEmpty(SelectedText);
+                    };
+
+                    xmlMenu.DropDownItems.AddRange(new ToolStripMenuItem[]
+                    {
+                        formatXmlMenu,
+                        xmlEscapeMenu,
+                        xmlUnescapeMenu,
+                        minifyXmlMenu,
+                        editXmlValueMenu
+                    });
+
+                    xmlMenu.DropDownOpening += (o, s) =>
+                    {
+                        editXmlValueMenu.Visible = !string.IsNullOrEmpty(SelectedText);
+                    };
+
                     // json
-                    viewJsonMenu.Text = Resource.viewJsonMenu;
-                    viewJsonMenu.Click += (a, b) =>
+                    formatJsonMenu.Text = Resource.formatJsonMenu;
+                    formatJsonMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(SelectedText))
                             Text = Helper.FormatToJson(Text);
-                        //else
-                        //    Paste(Helper.FormatToJson(SelectedText));
+                        else
+                            SelectedText = Helper.FormatToJson(SelectedText);
                     };
 
                     // xml
-                    viewXml.Text = Resource.viewXml;
-                    viewXml.Click += (a, b) =>
+                    formatXmlMenu.Text = Resource.formatXmlMenu;
+                    formatXmlMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(SelectedText))
                             Text = Helper.FormatToXml(Text);
-                        //else
-                        //    Paste(Helper.FormatToXml(SelectedText));
+                        else
+                            SelectedText = Helper.FormatToXml(SelectedText);
                     };
+
+                    // encode json
+                    jsonEscapeMenu.Text = Resource.jsonEscapeMenu;
+                    jsonEscapeMenu.Click += (a, b) =>
+                    {
+                        if (string.IsNullOrEmpty(SelectedText))
+                            Text = Helper.JsonEscape(Text);
+                        else
+                            SelectedText = Helper.JsonEscape(SelectedText);
+                    };
+
+                    // decode json
+                    jsonUnescapeMenu.Text = Resource.jsonUnescapeMenu;
+                    jsonUnescapeMenu.Click += (a, b) =>
+                    {
+                        if (string.IsNullOrEmpty(SelectedText))
+                            Text = Helper.JsonUnescape(Text);
+                        else
+                            SelectedText = Helper.JsonUnescape(SelectedText);
+                    };
+
+                    // minify json
+                    minifyJsonMenu.Text = Resource.minifyMenu;
+                    minifyJsonMenu.Click += (a, b) =>
+                    {
+                        if (string.IsNullOrEmpty(SelectedText))
+                            Text = Helper.JsonMinify(Text);
+                        else
+                            SelectedText = Helper.JsonMinify(SelectedText);
+                    };
+
+                    // edit value json
+                    editJsonValueMenu.Text = Resource.editValueMenu;
+                    editJsonValueMenu.Click += (a, b) =>
+                    {
+                        var selectedValue = Helper.GetJsonValue(SelectedText, out var hasQuote, out var hasError);
+
+                        if (!hasError)
+                        {
+                            var frmEdit = new FormEditValue(selectedValue, result =>
+                            {
+                                if (hasQuote)
+                                    SelectedText = "\"" + Helper.JsonEscape(result) + "\"";
+                                else
+                                    SelectedText = Helper.JsonEscape(result);
+                            });
+
+                            frmEdit.StartPosition = FormStartPosition.CenterParent;
+                            frmEdit.ShowDialog();
+                        }
+                    };
+
+                    // encode xml
+                    xmlEscapeMenu.Text = Resource.xmlEscapeMenu;
+                    xmlEscapeMenu.Click += (a, b) =>
+                    {
+                        if (string.IsNullOrEmpty(SelectedText))
+                            Text = Helper.XmlEscape(Text);
+                        else
+                            SelectedText = Helper.XmlEscape(SelectedText);
+                    };
+
+                    // decode xml
+                    xmlUnescapeMenu.Text = Resource.jsonUnescapeMenu;
+                    xmlUnescapeMenu.Click += (a, b) =>
+                    {
+                        if (string.IsNullOrEmpty(SelectedText))
+                            Text = Helper.XmlUnescape(Text);
+                        else
+                            SelectedText = Helper.XmlUnescape(SelectedText);
+                    };
+
+                    // minify xml
+                    minifyXmlMenu.Text = Resource.minifyMenu;
+                    minifyXmlMenu.Click += (a, b) =>
+                    {
+                        if (string.IsNullOrEmpty(SelectedText))
+                            Text = Helper.XmlMinify(Text);
+                        else
+                            SelectedText = Helper.XmlMinify(SelectedText);
+                    };
+
+                    // edit value json
+                    editXmlValueMenu.Text = Resource.editValueMenu;
+                    editXmlValueMenu.Click += (a, b) =>
+                    {
+                        var selectedValue = Helper.GetXmlValue(SelectedText, out var hasTagInSelection, out var hasError);
+                        if (!hasError)
+                        {
+                            var frmEdit = new FormEditValue(selectedValue, result =>
+                            {
+                                if (hasTagInSelection)
+                                    SelectedText = ">" + Helper.XmlEscape(result) + "</";
+                                else
+                                    SelectedText = Helper.XmlEscape(result);
+                            });
+
+                            frmEdit.StartPosition = FormStartPosition.CenterParent;
+                            frmEdit.ShowDialog();
+                        }
+                    };
+
 
                     this.ContextMenuStrip = menu;
                 }
