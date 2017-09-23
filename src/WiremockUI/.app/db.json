@@ -1,13 +1,43 @@
 {
   "Servers": [
     {
-      "Id": "5bb14f93-b626-49a2-ae93-5df2a77feac2",
+      "Id": "4589b8f2-a95a-444a-aa57-dfa43afd7935",
       "UrlTarget": "http://www.g1.com.br",
       "Port": 5500,
       "Name": "server1",
       "Scenarios": [
         {
-          "Id": "e75355c8-faf3-44cb-8b27-068200066087",
+          "Id": "239f6e08-c608-4867-be00-5016920eacc9",
+          "Name": "Scenario1",
+          "IsDefault": true,
+          "ShowURL": true,
+          "Description": null,
+          "ShowName": true
+        }
+      ],
+      "Arguments": [
+        {
+          "Name": "Verbose",
+          "Value": "True",
+          "ArgName": "--verbose",
+          "Type": "Boolean"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "False",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
+        }
+      ]
+    },
+    {
+      "Id": "e2d48356-7557-4ef8-9019-d89af6999f2a",
+      "UrlTarget": "http://www.dneonline.com/calculator.asmx",
+      "Port": 5501,
+      "Name": "a",
+      "Scenarios": [
+        {
+          "Id": "f098a090-d2bc-477b-9364-3a7f140350ec",
           "Name": "Scenario1",
           "IsDefault": true,
           "ShowURL": true,

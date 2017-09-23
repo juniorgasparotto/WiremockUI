@@ -109,20 +109,75 @@
     <span class="skw">rightClick</span>(Location(<span class="dig">581</span>, <span class="dig">207</span>))
     <span class="skw">click</span>(<img src="menuJson.png" />)
     <span class="skw">click</span>(<img src="jsonFormat.png" />)
+    <span class="skw">click</span>(<img src="btnSave.png" />)
+    <span class="skw">click</span>(<img src="btnClose.png" />)
+
+<span class="kw">def</span> duplicateMap(mapFrom, mapTo, fileResponse, mapName, content):
+    <span class="skw">rightClick</span>(mapFrom)
+    <span class="skw">click</span>(<img src="DuplicateCtr.png" />)
+    <span class="skw">rightClick</span>(mapTo)
+    <span class="skw">click</span>(<img src="menuRename.png" />)
+    <span class="skw">type</span>(mapName)
+    <span class="skw">type</span>(Key.ENTER)
+    <span class="skw">doubleClick</span>(mapTo)
+    <span class="skw">doubleClick</span>(fileResponse)
+    <span class="skw">click</span>(Location(<span class="dig">563</span>, <span class="dig">226</span>))
+    <span class="skw">type</span>(<span class="str">"a"</span>, KeyModifier.CTRL)
+    paste(content)
+    <span class="skw">rightClick</span>(Location(<span class="dig">581</span>, <span class="dig">207</span>))
+    <span class="skw">click</span>(<img src="menuJson.png" />)
+    <span class="skw">click</span>(<img src="jsonFormat.png" />)
+    <span class="skw">click</span>(<img src="btnSave.png" />)
+    <span class="skw">click</span>(<img src="btnClose.png" />)
+
+<span class="kw">def</span> startInChrome(url, server, view, chromeUrl):
+    <span class="skw">rightClick</span>(server)
+    <span class="skw">click</span>(<img src="start.png" />)
+    <span class="skw">click</span>(view)
+    <span class="skw">click</span>(chromeUrl)
+    paste(url)
+    <span class="skw">type</span>(Key.ENTER)
+    <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="skw">click</span>(<img src="close.png" />)
+
+<span class="kw">def</span> logViewContent():
+    <span class="skw">rightClick</span>(<img src="NETIN.png" />)
+    <span class="skw">click</span>(<img src="ViewContent.png" />)
+    <span class="skw">click</span>(Pattern(<img src="closeViewContent.png" />).targetOffset(<span class="dig">24</span>,<span class="dig">0</span>))
+
+<span class="kw">def</span> logWebRequest():
+    <span class="skw">rightClick</span>(<img src="listener.png" />)
+    <span class="skw">click</span>(<img src="OpeninWebReq.png" />)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">click</span>(<img src="execute.png" />)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">click</span>(Pattern(<img src="webRequestClose.png" />).targetOffset(<span class="dig">29</span>,-<span class="dig">3</span>))
+
+
+<span class="kw">def</span> callInWebRequest(map):
+    <span class="kw">if</span> (map):
+        <span class="skw">rightClick</span>(map)
+        <span class="skw">click</span>(<img src="ViewinWebReq.png" />)
+    <span class="skw">click</span>(<img src="execute.png" />)
+    <span class="skw">wait</span>(<span class="dig">2</span>)
+
+<span class="kw">def</span> toggleMap(map):
+    <span class="skw">rightClick</span>(map)
+    <span class="skw">click</span>(<img src="Enable.png" />)
 
 addServer(<span class="str">"server1"</span>, <span class="str">"http://www.g1.com.br"</span>)
 addMap(<span class="str">"GetAllUser"</span>, <span class="str">"user/all"</span>, True, <img src="responseGetAllUser.png" />, <span class="str">'[{"Name":"User1","Age":20},{"Name":"User2","Age":21}]'</span>)
 addMap(<span class="str">"GetUser1"</span>, <span class="str">"user/1"</span>, False, <img src="itemGetUser1.png" />, <span class="str">'{"Name":"User1","Age":20}'</span>)
 addMap(<span class="str">"GetUser2"</span>, <span class="str">"user/2"</span>, False, <img src="itemGetUser2.png" />, <span class="str">'{"Name":"User2","Age":50}'</span>)
-addMap(<span class="str">"GetUser2-alternative"</span>, <span class="str">"user/2"</span>, False, <img src="itemGetUserAlternative.png" />, <span class="str">'{"Name":"User2","Age":50, "otherAttribute": 10}'</span>)
+<span class="cmt">#addMap("GetUser2-alternative", "user/2", False, "itemGetUserAlternative.png", '{"Name":"User2","Age":50, "otherAttribute": 10}')</span>
+duplicateMap(<img src="user2GetUser-1.png" />, <img src="user2GetUser-2.png" />, <img src="GetUser2aite.png" />, <span class="str">"GetUser2-alternative"</span>, <span class="str">'{"Name":"User2","Age":50, "otherAttribute": 10}'</span>)
+startInChrome(<span class="str">"http://localhost:5500/user/all"</span>, <img src="server1.png" />, Pattern(<img src="view.png" />).targetOffset(<span class="dig">268</span>,<span class="dig">4</span>), Pattern(<img src="chromeUrl.png" />).targetOffset(<span class="dig">47</span>,-<span class="dig">2</span>))
+logViewContent()
+logWebRequest()
+callInWebRequest(<img src="user2GetUser.png" />)
+toggleMap(<img src="user2GetUser.png" />)
+callInWebRequest(None)
 
-<span class="cmt">#doubleClick("responseGetAllUser.png")</span>
-<span class="cmt">#click("txtResponseContent.png")</span>
-<span class="cmt">#type("a", KeyModifier.CTRL)</span>
-<span class="cmt">#paste('[{"Name":"User1","Age":20},{"Name":"User2","Age":21}]')</span>
-<span class="cmt">#rightClick(Location(581, 207))</span>
-<span class="cmt">#click("menuJson.png")</span>
-<span class="cmt">#click("jsonFormat.png")</span>
 <span class="skw">wait</span>(<span class="dig">4</span>)
 </pre>
 </body>
