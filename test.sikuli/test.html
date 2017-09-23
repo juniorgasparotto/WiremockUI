@@ -1,0 +1,129 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>test.sikuli</h2> <a href="test.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">def</span> addServer(serverName, url, showAdvanced=False):
+    <span class="skw">rightClick</span>(<img src="menuServer.png" />)
+    <span class="skw">click</span>(<img src="menuAddServer.png" />)
+    <span class="skw">type</span>(<img src="txtServerName.png" />, serverName)
+    paste(Pattern(<img src="txtTargetUrl.png" />).exact().targetOffset(-<span class="dig">6</span>,<span class="dig">11</span>), url)
+
+    <span class="kw">if</span> (showAdvanced):
+        <span class="skw">click</span>(<img src="tabAdvanced.png" />)
+        <span class="skw">click</span>(<img src="rowBindAddress.png" />)
+        <span class="skw">type</span>(Key.PAGE_DOWN)
+        <span class="skw">type</span>(Key.PAGE_DOWN)
+        <span class="skw">type</span>(Key.PAGE_DOWN)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">click</span>(<img src="tabBasic.png" />)
+
+    <span class="skw">click</span>(<img src="btnAdd.png" />)
+
+<span class="kw">def</span> addMap(mapName, url, showJsonView, fileResponse, content):
+    <span class="skw">rightClick</span>(<img src="itemServer1.png" />)
+    <span class="skw">click</span>(<img src="menuAddMap.png" />)
+    <span class="skw">rightClick</span>(<img src="menuMap.png" />)
+    <span class="skw">click</span>(<img src="menuRename.png" />)
+    <span class="skw">type</span>(mapName)
+    <span class="skw">type</span>(Key.ENTER)
+    <span class="skw">doubleClick</span>(<img src="itemGetAllUser.png" />)
+    <span class="skw">click</span>(Pattern(<img src="jsonRequestUrl.png" />).targetOffset(<span class="dig">8</span>,<span class="dig">1</span>))
+    paste(url)
+    <span class="kw">if</span> (showJsonView):
+        <span class="skw">click</span>(<img src="tabJsonView.png" />)
+        <span class="skw">click</span>(<img src="tabRaw.png" />)
+    <span class="skw">click</span>(<img src="btnSave.png" />)
+    <span class="skw">click</span>(<img src="btnClose.png" />)
+    <span class="skw">doubleClick</span>(fileResponse)
+    <span class="skw">click</span>(<img src="txtResponseContent.png" />)
+    <span class="skw">type</span>(<span class="str">"a"</span>, KeyModifier.CTRL)
+    paste(content)
+    <span class="skw">rightClick</span>(Location(<span class="dig">581</span>, <span class="dig">207</span>))
+    <span class="skw">click</span>(<img src="menuJson.png" />)
+    <span class="skw">click</span>(<img src="jsonFormat.png" />)
+
+addServer(<span class="str">"server1"</span>, <span class="str">"http://www.g1.com.br"</span>)
+addMap(<span class="str">"GetAllUser"</span>, <span class="str">"user/all"</span>, True, <img src="responseGetAllUser.png" />, <span class="str">'[{"Name":"User1","Age":20},{"Name":"User2","Age":21}]'</span>)
+addMap(<span class="str">"GetUser1"</span>, <span class="str">"user/1"</span>, False, <img src="itemGetUser1.png" />, <span class="str">'{"Name":"User1","Age":20}'</span>)
+addMap(<span class="str">"GetUser2"</span>, <span class="str">"user/2"</span>, False, <img src="itemGetUser2.png" />, <span class="str">'{"Name":"User2","Age":50}'</span>)
+addMap(<span class="str">"GetUser2-alternative"</span>, <span class="str">"user/2"</span>, False, <img src="itemGetUserAlternative.png" />, <span class="str">'{"Name":"User2","Age":50, "otherAttribute": 10}'</span>)
+
+<span class="cmt">#doubleClick("responseGetAllUser.png")</span>
+<span class="cmt">#click("txtResponseContent.png")</span>
+<span class="cmt">#type("a", KeyModifier.CTRL)</span>
+<span class="cmt">#paste('[{"Name":"User1","Age":20},{"Name":"User2","Age":21}]')</span>
+<span class="cmt">#rightClick(Location(581, 207))</span>
+<span class="cmt">#click("menuJson.png")</span>
+<span class="cmt">#click("jsonFormat.png")</span>
+<span class="skw">wait</span>(<span class="dig">4</span>)
+</pre>
+</body>
+</html>

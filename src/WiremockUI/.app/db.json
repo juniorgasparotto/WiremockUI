@@ -1,44 +1,14 @@
 {
   "Servers": [
     {
-      "Id": "eebf4cae-628d-459a-bd2a-8541c98c7c5e",
-      "UrlTarget": "http://wiremock.org/about/",
+      "Id": "5bb14f93-b626-49a2-ae93-5df2a77feac2",
+      "UrlTarget": "http://www.g1.com.br",
       "Port": 5500,
-      "Name": "1",
+      "Name": "server1",
       "Scenarios": [
         {
-          "Id": "a9463062-fd72-442d-8afa-9386e6361ab4",
+          "Id": "e75355c8-faf3-44cb-8b27-068200066087",
           "Name": "Scenario1",
-          "IsDefault": true,
-          "ShowURL": true,
-          "Description": null,
-          "ShowName": true
-        }
-      ],
-      "Arguments": [
-        {
-          "Name": "Verbose",
-          "Value": "True",
-          "ArgName": "--verbose",
-          "Type": "Boolean"
-        },
-        {
-          "Name": "PrintAllNetworkTraffic",
-          "Value": "False",
-          "ArgName": "--print-all-network-traffic",
-          "Type": "Boolean"
-        }
-      ]
-    },
-    {
-      "Id": "fb6937d7-6611-4e10-bdc8-99a076d9e7ca",
-      "UrlTarget": "http://www.dneonline.com/calculator.asmx",
-      "Port": 5501,
-      "Name": "Calculator",
-      "Scenarios": [
-        {
-          "Id": "7891a6e4-e4d8-4465-a2cd-edfe53f4c8ad",
-          "Name": "Cenário1",
           "IsDefault": true,
           "ShowURL": true,
           "Description": null,
@@ -68,7 +38,7 @@
         "pt-br": "Portuguese",
         "en-us": "English"
       },
-      "DefaultLanguage": "pt-br"
+      "DefaultLanguage": "en-us"
     }
   ]
 }
