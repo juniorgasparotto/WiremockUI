@@ -61,7 +61,7 @@ namespace WiremockUI
             }
         }
 
-        public static string FormatToXml(String xml)
+        public static string FormatToXml(string xml, bool showErrorMessage = true)
         {
             try
             {
@@ -107,7 +107,8 @@ namespace WiremockUI
             }
             catch(Exception ex)
             {
-                Helper.MessageBoxError(string.Format(Resource.formatXmlErrorMessage, ex.Message));
+                if (showErrorMessage)
+                    MessageBoxError(string.Format(Resource.formatXmlErrorMessage, ex.Message));
                 return xml;
             }
         }
@@ -125,7 +126,7 @@ namespace WiremockUI
                 }
                 catch(Exception ex)
                 {
-                    Helper.MessageBoxError(ex.Message);
+                    MessageBoxError(ex.Message);
                 }
             }
             return json;
@@ -143,7 +144,7 @@ namespace WiremockUI
                 }
                 catch (Exception ex)
                 {
-                    Helper.MessageBoxError(ex.Message);
+                    MessageBoxError(ex.Message);
                 }
             }
             return json;
@@ -161,7 +162,7 @@ namespace WiremockUI
                 }
                 catch (Exception ex)
                 {
-                    Helper.MessageBoxError(ex.Message);
+                    MessageBoxError(ex.Message);
                 }
             }
             return json;
@@ -190,7 +191,7 @@ namespace WiremockUI
                 catch (Exception ex)
                 {
                     hasError = true;
-                    Helper.MessageBoxError(ex.Message);
+                    MessageBoxError(ex.Message);
                 }
             }
             return json;
@@ -210,7 +211,7 @@ namespace WiremockUI
                 }
                 catch (Exception ex)
                 {
-                    Helper.MessageBoxError(ex.Message);
+                    MessageBoxError(ex.Message);
                 }
             }
             return xml;
@@ -230,7 +231,7 @@ namespace WiremockUI
                 }
                 catch (Exception ex)
                 {
-                    Helper.MessageBoxError(ex.Message);
+                    MessageBoxError(ex.Message);
                 }
             }
             return xml;
@@ -247,7 +248,7 @@ namespace WiremockUI
                 }
                 catch (Exception ex)
                 {
-                    Helper.MessageBoxError(ex.Message);
+                    MessageBoxError(ex.Message);
                 }
             }
             return xml;
@@ -279,7 +280,7 @@ namespace WiremockUI
                 catch (Exception ex)
                 {
                     hasError = true;
-                    Helper.MessageBoxError(ex.Message);
+                    MessageBoxError(ex.Message);
                 }
             }
             return xml;
@@ -343,7 +344,7 @@ namespace WiremockUI
             button.Text = text;
         }
 
-        public static string FormatToJson(string content)
+        public static string FormatToJson(string content, bool showErrorMessage = true)
         {
             try
             {
@@ -351,7 +352,8 @@ namespace WiremockUI
             }
             catch (Exception ex)
             {
-                Helper.MessageBoxError(string.Format(Resource.formatJsonErrorMessage, ex.Message));
+                if (showErrorMessage)
+                    MessageBoxError(string.Format(Resource.formatJsonErrorMessage, ex.Message));
                 return content;
             }
         }

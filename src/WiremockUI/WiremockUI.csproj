@@ -416,7 +416,9 @@
     <EmbeddedResource Include="UserControls\TabControlCustom\TabControlCustom.resx">
       <DependentUpon>TabControlCustom.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include=".app\db.json" />
+    <None Include=".app\db.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -27,6 +27,7 @@ namespace WiremockUI
             this.btnClose.Text = Resource.btnCloseTab;
             this.btnSave.Text = Resource.btnSaveFile;
             this.btnFormat.Text = Resource.btnXmlFormat;
+            this.txtContent.EnableFormatter = true;
         }
 
         private void LoadForm(string fileName)

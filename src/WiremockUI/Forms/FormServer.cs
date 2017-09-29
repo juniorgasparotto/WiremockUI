@@ -270,7 +270,7 @@ namespace WiremockUI
             public string MatchHeaders
             {
                 get; set;
-            }
+            } = "Content-Type,SOAPAction";
 
             //[Description("Proxy all requests through to another base URL e.g. --proxy-all='http://api.someservice.com' Typically used in conjunction with --record-mappings such that a session on another service can be recorded.")]
             //[Category("Argumentos")]

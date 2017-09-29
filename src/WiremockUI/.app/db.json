@@ -1,13 +1,13 @@
 {
   "Servers": [
     {
-      "Id": "4589b8f2-a95a-444a-aa57-dfa43afd7935",
+      "Id": "097e188e-e468-4a20-a331-3e17e7d2182f",
       "UrlTarget": "http://www.g1.com.br",
       "Port": 5500,
       "Name": "server1",
       "Scenarios": [
         {
-          "Id": "239f6e08-c608-4867-be00-5016920eacc9",
+          "Id": "43e0537c-4043-4681-b07c-1ca70d3f77b6",
           "Name": "Scenario1",
           "IsDefault": true,
           "ShowURL": true,
@@ -31,13 +31,13 @@
       ]
     },
     {
-      "Id": "e2d48356-7557-4ef8-9019-d89af6999f2a",
-      "UrlTarget": "http://www.dneonline.com/calculator.asmx",
+      "Id": "2ad862da-48a6-4d2e-af1e-5e33acac4b0a",
+      "UrlTarget": "http://localhost:21930",
       "Port": 5501,
-      "Name": "a",
+      "Name": "teste",
       "Scenarios": [
         {
-          "Id": "f098a090-d2bc-477b-9364-3a7f140350ec",
+          "Id": "bb26428c-d806-4b46-995f-969fd8f78f8c",
           "Name": "Scenario1",
           "IsDefault": true,
           "ShowURL": true,
@@ -51,6 +51,18 @@
           "Value": "True",
           "ArgName": "--verbose",
           "Type": "Boolean"
+        },
+        {
+          "Name": "MatchHeaders",
+          "Value": "Content-Type,SoaPAction",
+          "ArgName": "--match-headers",
+          "Type": "String"
+        },
+        {
+          "Name": "PreserveHostHeader",
+          "Value": "--preserve-host-header",
+          "ArgName": "--preserve-host-header",
+          "Type": "String"
         },
         {
           "Name": "PrintAllNetworkTraffic",

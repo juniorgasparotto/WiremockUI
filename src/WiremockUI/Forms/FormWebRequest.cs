@@ -39,6 +39,7 @@ namespace WiremockUI
         public FormWebRequest(string method, string urlAbsolute, Dictionary<string, string> requestHeaders, string requestBody, Dictionary<string, string> responseHeaders, string responseBody)
             : this()
         {
+            this.cmbVerb.Text = method;
             this.txtUrl.Text = urlAbsolute;
             this.txtRequestHeaders.Text = HttpUtils.GetHeadersAsString(requestHeaders);
             this.txtRequestBody.Text = Helper.ResolveBreakLineInCompatibility(requestBody);
@@ -84,16 +85,7 @@ namespace WiremockUI
 
                     webRequest.ServicePoint.Expect100Continue = chk100Expect.Checked;
 
-                    if (!string.IsNullOrWhiteSpace(this.txtRequestBody.Text))
-                    {
-                        var data = Encoding.ASCII.GetBytes(this.txtRequestBody.Text);
-                        if (this.chkAutoContentLength.Checked)
-                            webRequest.ContentLength = data.Length;
-                        var newStream = webRequest.GetRequestStream();
-                        newStream.Write(data, 0, data.Length);
-                        newStream.Close();
-                    }
-
+                    // Obrigatory before body
                     foreach (var h in headers)
                     {
                         try
@@ -141,6 +133,17 @@ namespace WiremockUI
                         {
                             Helper.MessageBoxError(ex.Message);
                         }
+                    }
+
+                    // Obrigatory after headers
+                    if (!string.IsNullOrWhiteSpace(this.txtRequestBody.Text))
+                    {
+                        var data = Encoding.ASCII.GetBytes(this.txtRequestBody.Text);
+                        if (this.chkAutoContentLength.Checked)
+                            webRequest.ContentLength = data.Length;
+                        var newStream = webRequest.GetRequestStream();
+                        newStream.Write(data, 0, data.Length);
+                        newStream.Close();
                     }
 
                     start = DateTime.Now;

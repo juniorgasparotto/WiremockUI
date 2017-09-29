@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiremockUI", "WiremockUI\WiremockUI.csproj", "{4D3BB0B9-246D-493E-8B2F-6C56F00DD69F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiremockUI.WCFSample", "WiremockUI.WCFSample\WiremockUI.WCFSample.csproj", "{3E6DD988-97D0-42DC-9D0B-E1714DE2038A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{4D3BB0B9-246D-493E-8B2F-6C56F00DD69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D3BB0B9-246D-493E-8B2F-6C56F00DD69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D3BB0B9-246D-493E-8B2F-6C56F00DD69F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E6DD988-97D0-42DC-9D0B-E1714DE2038A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E6DD988-97D0-42DC-9D0B-E1714DE2038A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E6DD988-97D0-42DC-9D0B-E1714DE2038A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E6DD988-97D0-42DC-9D0B-E1714DE2038A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2106407-1704-443F-AF6B-8911B3ED4C46}
 	EndGlobalSection
 EndGlobal

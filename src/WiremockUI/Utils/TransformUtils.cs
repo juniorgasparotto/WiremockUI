@@ -70,7 +70,12 @@ namespace WiremockUI
                 {
                     if (bodyPattern is com.github.tomakehurst.wiremock.matching.StringValuePattern converted)
                     {
-                        body = converted.getExpected();
+                        if (converted.getName()?.ToLower() == "equaltojson")
+                            body = Helper.FormatToJson(converted.getExpected(), false);
+                        else if (converted.getName()?.ToLower() == "equaltoxml")
+                            body = Helper.FormatToXml(converted.getExpected(), false);
+                        else
+                            body = converted.getExpected();
                         break;
                     }
                 }
