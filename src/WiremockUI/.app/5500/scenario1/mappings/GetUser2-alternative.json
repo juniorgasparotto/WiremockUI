@@ -1,0 +1,13 @@
+{
+  "request": {
+    "url": "/user/2",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "GetUser2-alternative.txt",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

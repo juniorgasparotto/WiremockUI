@@ -1,5 +1,114 @@
 {
-  "Servers": [],
+  "Servers": [
+    {
+      "Id": "fc11801c-b12d-409f-8967-bf02afa950ae",
+      "UrlTarget": null,
+      "Port": 5500,
+      "Name": "server1",
+      "Scenarios": [
+        {
+          "Id": "c476503f-ec82-4bb0-9413-f352ff2f58fc",
+          "Name": "Scenario1",
+          "IsDefault": true,
+          "ShowURL": true,
+          "Description": null,
+          "ShowName": true
+        }
+      ],
+      "Arguments": [
+        {
+          "Name": "Verbose",
+          "Value": "True",
+          "ArgName": "--verbose",
+          "Type": "Boolean"
+        },
+        {
+          "Name": "MatchHeaders",
+          "Value": "Content-Type,SOAPAction",
+          "ArgName": "--match-headers",
+          "Type": "String"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "False",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
+        }
+      ]
+    },
+    {
+      "Id": "792e0b25-6980-4401-8395-c8850fdd979b",
+      "UrlTarget": "https://www.w3schools.com/",
+      "Port": 5501,
+      "Name": "server2",
+      "Scenarios": [
+        {
+          "Id": "69955c60-ce87-43c5-8e13-016c19b60ed7",
+          "Name": "Scenario1",
+          "IsDefault": true,
+          "ShowURL": true,
+          "Description": null,
+          "ShowName": false
+        }
+      ],
+      "Arguments": [
+        {
+          "Name": "Verbose",
+          "Value": "True",
+          "ArgName": "--verbose",
+          "Type": "Boolean"
+        },
+        {
+          "Name": "MatchHeaders",
+          "Value": "Content-Type,SOAPAction",
+          "ArgName": "--match-headers",
+          "Type": "String"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "False",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
+        }
+      ]
+    },
+    {
+      "Id": "cc76f07e-ebe1-45aa-b1f7-1826ecb783aa",
+      "UrlTarget": "http://wiremock.org/",
+      "Port": 5502,
+      "Name": "server3",
+      "Scenarios": [
+        {
+          "Id": "1022b951-2f9e-4d20-ad4a-4e68b034fa65",
+          "Name": "Scenario1",
+          "IsDefault": true,
+          "ShowURL": true,
+          "Description": null,
+          "ShowName": true
+        }
+      ],
+      "Arguments": [
+        {
+          "Name": "Verbose",
+          "Value": "True",
+          "ArgName": "--verbose",
+          "Type": "Boolean"
+        },
+        {
+          "Name": "MatchHeaders",
+          "Value": "Content-Type,SOAPAction",
+          "ArgName": "--match-headers",
+          "Type": "String"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "False",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
+        }
+      ]
+    }
+  ],
   "Settings": [
     {
       "Id": "b712d615-d1d1-4f7f-ac1c-c6c72e037c5e",

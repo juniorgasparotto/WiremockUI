@@ -1,0 +1,13 @@
+{
+  "request": {
+    "url": "/user/all",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "GetAllUser.txt",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

@@ -71,11 +71,13 @@
 </div>
 <pre class="sikuli-code">
 <span class="kw">def</span> doubleClick2(img):
-    <span class="skw">find</span>(img)
+    <span class="kw">if</span> isinstance(img, str):
+        <span class="skw">find</span>(img)
     <span class="skw">doubleClick</span>(img)
 
 <span class="kw">def</span> click2(img):
-    <span class="skw">find</span>(img)
+    <span class="kw">if</span> isinstance(img, str):
+        <span class="skw">find</span>(img)
     <span class="skw">click</span>(img)
 
 <span class="cmt"># fix error: the "/" char not working with type</span>
@@ -88,7 +90,9 @@
         <span class="skw">type</span>(value)
 
 <span class="kw">def</span> rightClick2(img):
-    <span class="skw">find</span>(img)
+    <span class="kw">if</span> isinstance(img, str):
+        <span class="kw">print</span> <span class="dig">1</span>
+        <span class="skw">find</span>(img)
     <span class="skw">rightClick</span>(img)
 
 <span class="cmt">#click("aa.png")</span>
@@ -108,7 +112,7 @@
     <span class="skw">wait</span>(<span class="dig">1</span>)
     type2(serverName)
     <span class="skw">type</span>(Key.TAB)
-    paste2(url)
+    type2(url)
     <span class="skw">wait</span>(<span class="dig">1</span>)
 
     <span class="kw">if</span> (showAdvanced):
@@ -131,7 +135,7 @@
     <span class="skw">type</span>(Key.ENTER)
     doubleClick2(<img src="itemGetAllUser.png" />)
     click2(Pattern(<img src="jsonRequestUrl.png" />).targetOffset(<span class="dig">8</span>,<span class="dig">1</span>))
-    paste2(url)
+    type2(url)
     <span class="kw">if</span> (showJsonView):
         click2(<img src="tabJsonView.png" />)
         click2(<img src="tabRaw.png" />)
@@ -140,7 +144,7 @@
     doubleClick2(fileResponse)
     click2(<img src="txtResponseContent.png" />)
     <span class="skw">type</span>(<span class="str">"a"</span>, KeyModifier.CTRL)
-    paste2(content)
+    type2(content)
     rightClick2(Location(<span class="dig">581</span>, <span class="dig">207</span>))
     click2(<img src="menuJson.png" />)
     click2(<img src="jsonFormat.png" />)
@@ -168,9 +172,10 @@
 <span class="kw">def</span> startInChrome(url, server, view, chromeUrl):
     rightClick2(server)
     click2(<img src="start.png" />)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
     click2(view)
     click2(chromeUrl)
-    paste2(url)
+    type2(url)
     <span class="skw">type</span>(Key.ENTER)
     <span class="skw">wait</span>(<span class="dig">2</span>)
     click2(<img src="close.png" />)
@@ -208,7 +213,7 @@
     <span class="skw">type</span>(Key.ENTER)
     doubleClick2(<img src="itemGetAllUser.png" />)
     click2(Pattern(<img src="jsonRequestUrl.png" />).targetOffset(<span class="dig">8</span>,<span class="dig">1</span>))
-    paste2(url)
+    type2(url)
     click2(Pattern(<img src="methodGET.png" />).targetOffset(<span class="dig">13</span>,<span class="dig">3</span>))
     <span class="skw">type</span>(Key.DELETE)
     <span class="skw">type</span>(Key.DELETE)
@@ -242,7 +247,7 @@
     doubleClick2(fileResponse)
     click2(<img src="txtResponseContent.png" />)
     <span class="skw">type</span>(<span class="str">"a"</span>, KeyModifier.CTRL)
-    paste2(content)
+    type2(content)
     rightClick2(Location(<span class="dig">581</span>, <span class="dig">207</span>))
     click2(<img src="menuJson.png" />)
     click2(<img src="jsonFormat.png" />)
@@ -254,11 +259,11 @@
     click2(<img src="ebRequest.png" />)
     click2(Location(<span class="dig">505</span>, <span class="dig">94</span>))
     click2(<img src="POST.png" />)
-    click2(Pattern(<img src="urlWR.png" />).targetOffset(<span class="dig">20</span>,-<span class="dig">2</span>))
-    paste2(<span class="str">"http://localhost:5500/user/insert"</span>)
+    click2(Pattern(<img src="urlWR.png" />).targetOffset(-<span class="dig">285</span>,-<span class="dig">1</span>))
+    type2(<span class="str">"http://localhost:5500/user/insert"</span>)
     click2(Pattern(<img src="BodyHeaderFi.png" />).targetOffset(-<span class="dig">49</span>,<span class="dig">2</span>))
-    click2(Pattern(<img src="bodyWR.png" />).targetOffset(-<span class="dig">20</span>,<span class="dig">21</span>))
-    paste2(<span class="str">'{"Name":"User3","Age":60}'</span>)
+    click2(Pattern(<img src="HeadersBdYHe.png" />).targetOffset(-<span class="dig">75</span>,<span class="dig">3</span>))
+    type2(<span class="str">'{"Name":"User3","Age":60}'</span>)
     rightClick2(Location(<span class="dig">524</span>, <span class="dig">169</span>))
     click2(<img src="menuJson.png" />)
     click2(<img src="jsonFormat.png" />)
@@ -272,14 +277,14 @@
     doubleClick2(Pattern(<img src="userInsertns.png" />).targetOffset(-<span class="dig">45</span>,-<span class="dig">5</span>))
     click2(<img src="compare-1.png" />)
     <span class="skw">wait</span>(<span class="dig">4</span>)
-    click2(<img src="D0009Age60.png" />)
+    click2(<img src="00009Age60.png" />)
     <span class="skw">wait</span>(<span class="dig">1</span>)
-    click2(<img src="closeCompare.png" />)
-    click2(Pattern(<img src="closecomapre.png" />).targetOffset(<span class="dig">33</span>,-<span class="dig">4</span>))
+    click2(Pattern(<img src="closeCompare.png" />).targetOffset(-<span class="dig">5</span>,-<span class="dig">8</span>))
+    click2(Pattern(<img src="usernsert.png" />).targetOffset(<span class="dig">31</span>,-<span class="dig">3</span>))
     click2(<img src="Scenario1Sta.png" />)
     click2(<img src="btnClean.png" />)
     click2(<img src="WebRequest.png" />)
-    click2(Pattern(<img src="HAgeH.png" />).targetOffset(<span class="dig">6</span>,<span class="dig">1</span>))
+    click2(Pattern(<img src="HAgeH.png" />).targetOffset(<span class="dig">10</span>,<span class="dig">1</span>))
     <span class="skw">type</span>(Key.DELETE)
     <span class="skw">type</span>(Key.DELETE)
     type2(<span class="str">"100"</span>)
@@ -293,9 +298,9 @@
     doubleClick2(Pattern(<img src="userInsertns.png" />).targetOffset(-<span class="dig">45</span>,-<span class="dig">5</span>))
     click2(<img src="compare-1.png" />)
     <span class="skw">wait</span>(<span class="dig">2</span>)
-    click2(<img src="closeCompare.png" />)
-    click2(Pattern(<img src="closecomapre.png" />).targetOffset(<span class="dig">33</span>,-<span class="dig">4</span>))
-    click2(Pattern(<img src="WebRequest.png" />).targetOffset(<span class="dig">43</span>,-<span class="dig">1</span>))
+    click2(Pattern(<img src="closeCompare.png" />).targetOffset(-<span class="dig">5</span>,-<span class="dig">8</span>))
+    click2(Pattern(<img src="usernsert.png" />).targetOffset(<span class="dig">31</span>,-<span class="dig">3</span>))
+    click2(Pattern(<img src="WebRequest.png" />).targetOffset(<span class="dig">41</span>,-<span class="dig">2</span>))
 
 <span class="kw">def</span> testCreateNotExistsAPI():
     addServer(<span class="str">"server1"</span>, <span class="str">""</span>)
@@ -317,19 +322,19 @@
     rightClick2(<img src="server2.png" />)
     click2(<img src="StartandReco.png" />)
     <span class="skw">wait</span>(<span class="dig">2</span>)
-    click2(Pattern(<img src="ServerUrIhtt-1.png" />).targetOffset(<span class="dig">265</span>,<span class="dig">0</span>))
+    click2(Pattern(<img src="ServerUrIhtt.png" />).targetOffset(<span class="dig">271</span>,<span class="dig">1</span>))
     <span class="skw">wait</span>(<span class="dig">5</span>)
     click2(<img src="close.png" />)
-    click2(Pattern(<img src="rmagescolorp.png" />).targetOffset(-<span class="dig">74</span>,-<span class="dig">1</span>))
+    click2(Pattern(<img src="Imagescolorp.png" />).targetOffset(-<span class="dig">71</span>,<span class="dig">1</span>))
     doubleClick2(<img src="bodyimagesco.png" />)
-    click2(Pattern(<img src="bodyimagesco-1.png" />).targetOffset(<span class="dig">105</span>,<span class="dig">0</span>))
+    click2(Pattern(<img src="D99.png" />).targetOffset(<span class="dig">11</span>,<span class="dig">0</span>))
     rightClick2(<img src="server2-1.png" />)
     click2(<img src="StOP.png" />)
     rightClick2(<img src="server2.png" />)
     click2(<img src="start.png" />)
-    click2(Pattern(<img src="mapp1ngno01.png" />).targetOffset(-<span class="dig">55</span>,<span class="dig">0</span>))
-    doubleClick2(<img src="bodyro0f.png" />)
-    click2(Pattern(<img src="titleW3Schoo.png" />).targetOffset(-<span class="dig">81</span>,-<span class="dig">1</span>))
+    click2(Pattern(<img src="mappingroOI.png" />).targetOffset(-<span class="dig">51</span>,<span class="dig">1</span>))
+    doubleClick2(<img src="mmrml.png" />)
+    click2(Pattern(<img src="drteW3Schoos.png" />).targetOffset(-<span class="dig">81</span>,<span class="dig">1</span>))
     <span class="skw">type</span>(Key.END, KeyModifier.SHIFT)
     <span class="kw">for</span> num <span class="kw">in</span> range(<span class="dig">1</span>,<span class="dig">10</span>):
         <span class="skw">type</span>(Key.LEFT, KeyModifier.SHIFT)
@@ -338,32 +343,53 @@
     click2(<img src="btnSave.png" />)
     click2(<img src="btnClose.png" />)
     click2(<img src="Scenario1Sta-1.png" />)
-    click2(Pattern(<img src="ServerUrIhtt-1.png" />).targetOffset(<span class="dig">265</span>,<span class="dig">0</span>))
+    click2(Pattern(<img src="ServerUrIhtt.png" />).targetOffset(<span class="dig">271</span>,<span class="dig">1</span>))
     <span class="skw">wait</span>(<span class="dig">4</span>)
     <span class="skw">type</span>(Key.DELETE, KeyModifier.CTRL + KeyModifier.SHIFT)
     <span class="skw">wait</span>(<span class="dig">4</span>)
     click2(<img src="LIMPARDADOSD.png" />)
-    click2(Pattern(<img src="QCongurages.png" />).targetOffset(<span class="dig">82</span>,<span class="dig">0</span>))
+    click2(Pattern(<img src="Jragoes.png" />).targetOffset(<span class="dig">47</span>,-<span class="dig">2</span>))
     <span class="skw">type</span>(Key.F5)
     <span class="skw">wait</span>(<span class="dig">3</span>)
     click2(<img src="close.png" />)
     testShowInfo()
 
 <span class="kw">def</span> testShowInfo():
-    rightClick2(Pattern(<img src="server2httpo.png" />).targetOffset(<span class="dig">17</span>,<span class="dig">10</span>))
+    rightClick2(Pattern(<img src="server2httpI.png" />).targetOffset(<span class="dig">11</span>,<span class="dig">9</span>))
     click2(<img src="ShowName.png" />)
     <span class="skw">wait</span>(<span class="dig">2</span>)
 
-
 <span class="kw">def</span> testProxy():
+
     addServer(<span class="str">"server3"</span>, <span class="str">"http://wiremock.org/"</span>)
     rightClick2(<img src="server3.png" />)
     click2(<img src="StartOnlyPro.png" />)
     <span class="skw">wait</span>(<span class="dig">2</span>)
-    click2(Pattern(<img src="ServerUrIhtt-1.png" />).targetOffset(<span class="dig">265</span>,<span class="dig">0</span>))
+    click2(Pattern(<img src="ServerUrIhtt-1.png" />).targetOffset(<span class="dig">271</span>,<span class="dig">1</span>))
     <span class="skw">wait</span>(<span class="dig">5</span>)
     click2(<img src="close.png" />)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
 
+    <span class="skw">click</span>(<img src="scroll.png" />)
+    <span class="skw">type</span>(Key.PAGE_UP)
+    <span class="skw">type</span>(Key.PAGE_UP)
+    <span class="skw">type</span>(Key.PAGE_UP)
+    <span class="skw">type</span>(Key.PAGE_UP)
+    <span class="skw">click</span>(Pattern(<img src="NETNGET-1.png" />).targetOffset(<span class="dig">259</span>,<span class="dig">1</span>))
+    keyDown(Key.CTRL)
+    <span class="skw">click</span>(Pattern(<img src="LISTENERlGET.png" />).targetOffset(<span class="dig">268</span>,<span class="dig">2</span>))
+    <span class="skw">click</span>(<img src="Differenceof.png" />)
+    <span class="skw">wait</span>(<span class="dig">4</span>)
+
+<span class="kw">def</span> cleanChromeCache():
+    <span class="skw">click</span>(<img src="chrome.png" />)
+    <span class="skw">click</span>(Pattern(<img src="om.png" />).targetOffset(<span class="dig">14</span>,-<span class="dig">3</span>))
+    <span class="skw">type</span>(Key.DELETE, KeyModifier.CTRL + KeyModifier.SHIFT)
+    <span class="skw">wait</span>(<span class="dig">4</span>)
+    click2(<img src="LIMPARDADOSD.png" />)
+    click2(Pattern(<img src="Jragoes.png" />).targetOffset(<span class="dig">47</span>,-<span class="dig">2</span>))
+
+cleanChromeCache()
 testCreateNotExistsAPI()
 testRecord()
 testProxy()
