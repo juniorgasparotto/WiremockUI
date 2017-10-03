@@ -1,1 +1,0 @@
-<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><GetDataResponse xmlns="http://tempuri.org/"><GetDataResult>You entered: 0</GetDataResult></GetDataResponse></s:Body></s:Envelope>

@@ -1,5 +1,0 @@
-{
-  "Name": "User2",
-  "Age": 50,
-  "otherAttribute": 10
-}
