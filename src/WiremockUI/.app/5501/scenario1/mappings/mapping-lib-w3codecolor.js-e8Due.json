@@ -1,0 +1,24 @@
+{
+  "id" : "7fd23570-7016-3897-9e7e-9f71e85f1b2c",
+  "request" : {
+    "url" : "/lib/w3codecolor.js",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-lib-w3codecolor.js-e8Due.js",
+    "headers" : {
+      "Cache-Control" : "public,max-age=14400,public",
+      "Content-Type" : "application/x-javascript",
+      "Date" : "Tue, 03 Oct 2017 04:02:24 GMT",
+      "Etag" : "\"0532bccf54ad21:0+ident+gzip\"",
+      "Last-Modified" : "Wed, 30 Nov 2016 10:37:50 GMT",
+      "Server" : "ECS (fll/073E)",
+      "Vary" : "Accept-Encoding",
+      "X-Cache" : "HIT",
+      "X-Frame-Options" : "SAMEORIGIN",
+      "X-Powered-By" : "ASP.NET"
+    }
+  },
+  "uuid" : "7fd23570-7016-3897-9e7e-9f71e85f1b2c"
+}

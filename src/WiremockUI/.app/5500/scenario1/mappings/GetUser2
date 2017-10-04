@@ -5,7 +5,7 @@
   },
   "response": {
     "status": 200,
-    "bodyFileName": "GetUser3.txt",
+    "bodyFileName": "GetUser2.txt",
     "headers": {
       "Content-Type": "application/json"
     }

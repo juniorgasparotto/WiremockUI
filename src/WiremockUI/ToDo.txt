@@ -46,29 +46,29 @@ criar refresh dos mapas quando salva-los - OK
 criar uma mock automaticamente após criar um proxy - OK
 adicionar atalhos em todos os niveis da treeview (atalho do q?) - oK
 preferencias (que config terá?) - ok
+problema da formatação por seleção de texto - ok
+criar copiar especial: XML Encode, XML decode, XML compact - ok
+criar copiar especial: JSON Encode, Json decode, JSON compact - ok
+formatar selecao no editortextbox - ok
+criar esquema para abrir o url dos mapas no browser ou em um componente de composer (é possivel, mas sujeito a erros) - ok
 
 -- ToDo
 
 criar pesquisar em todos os editorbox
 criar agrupar por URL
-criar copiar especial: JSON Encode, Json decode, JSON compact
-criar copiar especial: XML Encode, XML decode, XML compact
-problema da formatação por seleção de texto
 criar copiar para area de transferecia
   - url do serviço final
   - url do proxy
   - comando java -jar 
   - curl
 
-verificar se wiremock aceita multiplos níveis de pasta para os mapas
-formatar selecao no editortextbox
+verificar se wiremock aceita multiplos níveis de pasta para os mapas - aceita
 ao mudar o cenário default, fazer auto play
 criar rename para os responses, incluindo seu tipo
 
 -- bugs
 
 deu um problema de encode no compara ao selecionar um mapa
-
 
 -- deploy 
 
@@ -82,9 +82,8 @@ compactar o projeto em apenas um .exe
 
 refatorar FormMaster.cs/Maneira de salvar o json/Separa treeview em componente
 criar esquema para subir codigo c# para programar o request e response
-criar esquema para abrir o url dos mapas no browser ou em um componente de composer (é possivel, mas sujeito a erros)
 adicionar varios tipos de mock (json, xml)
-splash
 criar mecanismo de gerenciamento remoto (criar versao web)
+splash
 criar response especial (??)
 cria request especial (??)
