@@ -101,14 +101,10 @@ namespace WiremockUI
             // 
             // txtContent1
             // 
-            this.txtContent1.AcceptsTab = true;
+            this.txtContent1.BackColor = System.Drawing.SystemColors.Control;
             this.txtContent1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent1.EnableOptions = false;
             this.txtContent1.Location = new System.Drawing.Point(0, 20);
-            this.txtContent1.MaxLength = 0;
-            this.txtContent1.Multiline = true;
             this.txtContent1.Name = "txtContent1";
-            //this.txtContent1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent1.Size = new System.Drawing.Size(372, 166);
             this.txtContent1.TabIndex = 4;
             this.txtContent1.WordWrap = false;
@@ -144,14 +140,10 @@ namespace WiremockUI
             // 
             // txtContent2
             // 
-            this.txtContent2.AcceptsTab = true;
+            this.txtContent2.BackColor = System.Drawing.SystemColors.Control;
             this.txtContent2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent2.EnableOptions = false;
             this.txtContent2.Location = new System.Drawing.Point(0, 20);
-            this.txtContent2.MaxLength = 0;
-            this.txtContent2.Multiline = true;
             this.txtContent2.Name = "txtContent2";
-            //this.txtContent2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent2.Size = new System.Drawing.Size(368, 166);
             this.txtContent2.TabIndex = 5;
             this.txtContent2.WordWrap = false;
@@ -200,9 +192,7 @@ namespace WiremockUI
             this.Load += new System.EventHandler(this.FormCompare_Load);
             this.panel2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

@@ -35,17 +35,17 @@
             // 
             // txtTitle
             // 
-            this.txtTitle.AcceptsTab = true;
+            this.txtTitle.BackColor = System.Drawing.SystemColors.Control;
             this.txtTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtTitle.EnableFormatters = false;
+            this.txtTitle.EnableHistory = false;
             this.txtTitle.EnableOptions = false;
-            this.txtTitle.EnableHistory = true;
+            this.txtTitle.EnableSearch = false;
             this.txtTitle.Location = new System.Drawing.Point(0, 0);
-            this.txtTitle.MaxLength = 0;
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.ReadOnly = true;
             this.txtTitle.Size = new System.Drawing.Size(284, 20);
             this.txtTitle.TabIndex = 1;
-            this.txtTitle.TextValue = "";
             // 
             // btnClose
             // 
@@ -60,16 +60,13 @@
             // 
             // txtContent
             // 
-            this.txtContent.AcceptsTab = true;
+            this.txtContent.BackColor = System.Drawing.SystemColors.Control;
+            this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.EnableOptions = false;
-            this.txtContent.EnableHistory = true;
             this.txtContent.Location = new System.Drawing.Point(0, 20);
-            this.txtContent.MaxLength = 0;
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(284, 241);
             this.txtContent.TabIndex = 4;
-            this.txtContent.TextValue = "";
             // 
             // FormTextView
             // 

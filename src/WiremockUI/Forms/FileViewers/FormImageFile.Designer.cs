@@ -30,21 +30,22 @@
         {
             this.txtPath = new WiremockUI.EditorTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.imgFile = new System.Windows.Forms.PictureBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgFile)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPath
             // 
-            this.txtPath.AcceptsTab = true;
+            this.txtPath.BackColor = System.Drawing.SystemColors.Control;
             this.txtPath.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtPath.EnableFormatters = false;
+            this.txtPath.EnableHistory = false;
             this.txtPath.EnableOptions = false;
+            this.txtPath.EnableSearch = false;
             this.txtPath.Location = new System.Drawing.Point(0, 0);
-            this.txtPath.MaxLength = 0;
-            this.txtPath.Multiline = true;
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
             this.txtPath.Size = new System.Drawing.Size(284, 20);
@@ -60,6 +61,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(284, 34);
             this.panel3.TabIndex = 4;
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(189, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Fechar";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnOpen
             // 
@@ -80,17 +92,6 @@
             this.imgFile.TabIndex = 5;
             this.imgFile.TabStop = false;
             // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(189, 6);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "Fechar";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // FormImageFile
             // 
             this.AcceptButton = this.btnOpen;
@@ -109,7 +110,6 @@
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgFile)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

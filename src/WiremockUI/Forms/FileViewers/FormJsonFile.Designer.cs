@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtPath = new WiremockUI.EditorTextBox();
             this.ucJsonView = new WiremockUI.UcJsonView();
-            this.btnClose = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +48,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(488, 34);
             this.panel3.TabIndex = 3;
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(280, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "Fechar";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnOpen
             // 
@@ -71,12 +82,13 @@
             // 
             // txtPath
             // 
-            this.txtPath.AcceptsTab = true;
+            this.txtPath.BackColor = System.Drawing.SystemColors.Control;
             this.txtPath.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtPath.EnableFormatters = false;
+            this.txtPath.EnableHistory = false;
             this.txtPath.EnableOptions = false;
+            this.txtPath.EnableSearch = false;
             this.txtPath.Location = new System.Drawing.Point(0, 0);
-            this.txtPath.MaxLength = 0;
-            this.txtPath.Multiline = true;
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
             this.txtPath.Size = new System.Drawing.Size(488, 20);
@@ -93,17 +105,6 @@
             this.ucJsonView.OnTextVisualizer = null;
             this.ucJsonView.Size = new System.Drawing.Size(488, 207);
             this.ucJsonView.TabIndex = 2;
-            // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(280, 6);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 5;
-            this.btnClose.Text = "Fechar";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // FormJsonFile
             // 
@@ -122,7 +123,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormJsonFile_KeyDown);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
