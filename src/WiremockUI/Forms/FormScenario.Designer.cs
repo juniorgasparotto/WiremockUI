@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -95,15 +94,11 @@
             // 
             // txtDesc
             // 
-            this.txtDesc.AcceptsTab = true;
-            this.txtDesc.EnableOptions = true;
-            this.txtDesc.EnableHistory = true;
+            this.txtDesc.BackColor = System.Drawing.SystemColors.Control;
             this.txtDesc.Location = new System.Drawing.Point(6, 79);
-            this.txtDesc.MaxLength = 0;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(636, 171);
             this.txtDesc.TabIndex = 13;
-            this.txtDesc.TextValue = "";
             // 
             // lblScenarioName
             // 
@@ -121,7 +116,7 @@
             this.txtName.Size = new System.Drawing.Size(304, 20);
             this.txtName.TabIndex = 10;
             // 
-            // FormAddScenario
+            // FormScenario
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -130,7 +125,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Name = "FormAddScenario";
+            this.Name = "FormScenario";
             this.Text = "Novo cenário";
             this.Load += new System.EventHandler(this.FormAddScenario_Load);
             this.Resize += new System.EventHandler(this.FormAddScenario_Resize);

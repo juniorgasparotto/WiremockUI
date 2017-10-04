@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabRaw = new System.Windows.Forms.TabPage();
             this.txtContent = new WiremockUI.EditorTextBox();
@@ -69,17 +68,12 @@
             // 
             // txtContent
             // 
-            this.txtContent.AcceptsTab = true;
-            this.txtContent.DetectUrls = false;
+            this.txtContent.BackColor = System.Drawing.SystemColors.Control;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.EnableOptions = true;
-            this.txtContent.EnableHistory = true;
             this.txtContent.Location = new System.Drawing.Point(3, 42);
-            this.txtContent.MaxLength = 0;
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(136, 79);
             this.txtContent.TabIndex = 11;
-            this.txtContent.TextValue = "";
             // 
             // panel1
             // 

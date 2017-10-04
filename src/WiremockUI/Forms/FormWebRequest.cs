@@ -16,8 +16,6 @@ namespace WiremockUI
         {
             InitializeComponent();
             txtUrl.Multiline = false;
-            this.txtRequestBody.EnableOptions = true;
-            this.txtResponseBody.EnableOptions = true;
 
             Text = Resource.formWebRequest;
             btnExecute.Text = Resource.btnExecute;

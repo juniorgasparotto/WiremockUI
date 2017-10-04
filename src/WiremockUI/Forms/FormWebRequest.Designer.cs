@@ -40,7 +40,9 @@
             this.tabRequestHeaders = new System.Windows.Forms.TabPage();
             this.txtRequestHeaders = new WiremockUI.EditorTextBox();
             this.tabRequestBody = new System.Windows.Forms.TabPage();
+            this.txtRequestBody = new WiremockUI.EditorTextBox();
             this.tabRequestHeadersReal = new System.Windows.Forms.TabPage();
+            this.txtRequestHeadersFinal = new WiremockUI.EditorTextBox();
             this.tabRequestOptions = new System.Windows.Forms.TabPage();
             this.chkKeepAlive = new System.Windows.Forms.CheckBox();
             this.chkAutoRedirect = new System.Windows.Forms.CheckBox();
@@ -59,8 +61,6 @@
             this.stsTimeValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsStatusValue = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtRequestHeadersFinal = new WiremockUI.EditorTextBox();
-            this.txtRequestBody = new WiremockUI.EditorTextBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -106,28 +106,12 @@
             // 
             // txtUrl
             // 
-            this.txtUrl.AcceptsTab = true;
             this.txtUrl.BackColor = System.Drawing.SystemColors.Control;
-            this.txtUrl.DetectUrls = false;
-            this.txtUrl.EnableFormatters = true;
-            this.txtUrl.EnableHistory = true;
             this.txtUrl.EnableOptions = false;
-            this.txtUrl.EnableSearch = true;
-            this.txtUrl.HideSelection = false;
             this.txtUrl.Location = new System.Drawing.Point(0, 5);
-            this.txtUrl.MaxLength = 0;
-            this.txtUrl.Multiline = true;
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.ReadOnly = false;
-            this.txtUrl.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
-            this.txtUrl.SelectionColor = System.Drawing.Color.Black;
-            this.txtUrl.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUrl.SelectionLength = 0;
-            this.txtUrl.SelectionStart = 0;
-            this.txtUrl.ShowSelectionMargin = false;
             this.txtUrl.Size = new System.Drawing.Size(423, 22);
             this.txtUrl.TabIndex = 0;
-            this.txtUrl.WordWrap = true;
             this.txtUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUrl_KeyDown);
             // 
             // panel3
@@ -228,26 +212,11 @@
             // 
             // txtRequestHeaders
             // 
-            this.txtRequestHeaders.AcceptsTab = true;
             this.txtRequestHeaders.BackColor = System.Drawing.SystemColors.Control;
-            this.txtRequestHeaders.DetectUrls = false;
             this.txtRequestHeaders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtRequestHeaders.EnableFormatters = false;
-            this.txtRequestHeaders.EnableHistory = true;
-            this.txtRequestHeaders.EnableOptions = true;
-            this.txtRequestHeaders.EnableSearch = true;
-            this.txtRequestHeaders.HideSelection = false;
             this.txtRequestHeaders.Location = new System.Drawing.Point(0, 0);
-            this.txtRequestHeaders.MaxLength = 0;
-            this.txtRequestHeaders.Multiline = true;
             this.txtRequestHeaders.Name = "txtRequestHeaders";
-            this.txtRequestHeaders.ReadOnly = false;
-            this.txtRequestHeaders.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
-            this.txtRequestHeaders.SelectionColor = System.Drawing.Color.Black;
-            this.txtRequestHeaders.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRequestHeaders.SelectionLength = 0;
-            this.txtRequestHeaders.SelectionStart = 0;
-            this.txtRequestHeaders.ShowSelectionMargin = false;
             this.txtRequestHeaders.Size = new System.Drawing.Size(666, 176);
             this.txtRequestHeaders.TabIndex = 4;
             this.txtRequestHeaders.WordWrap = false;
@@ -262,6 +231,16 @@
             this.tabRequestBody.Text = "Body";
             this.tabRequestBody.UseVisualStyleBackColor = true;
             // 
+            // txtRequestBody
+            // 
+            this.txtRequestBody.BackColor = System.Drawing.SystemColors.Control;
+            this.txtRequestBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtRequestBody.Location = new System.Drawing.Point(0, 0);
+            this.txtRequestBody.Name = "txtRequestBody";
+            this.txtRequestBody.Size = new System.Drawing.Size(666, 176);
+            this.txtRequestBody.TabIndex = 6;
+            this.txtRequestBody.WordWrap = false;
+            // 
             // tabRequestHeadersReal
             // 
             this.tabRequestHeadersReal.Controls.Add(this.txtRequestHeadersFinal);
@@ -271,6 +250,17 @@
             this.tabRequestHeadersReal.TabIndex = 3;
             this.tabRequestHeadersReal.Text = "Header (Final)";
             this.tabRequestHeadersReal.UseVisualStyleBackColor = true;
+            // 
+            // txtRequestHeadersFinal
+            // 
+            this.txtRequestHeadersFinal.BackColor = System.Drawing.SystemColors.Control;
+            this.txtRequestHeadersFinal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtRequestHeadersFinal.EnableFormatters = false;
+            this.txtRequestHeadersFinal.Location = new System.Drawing.Point(0, 0);
+            this.txtRequestHeadersFinal.Name = "txtRequestHeadersFinal";
+            this.txtRequestHeadersFinal.Size = new System.Drawing.Size(666, 176);
+            this.txtRequestHeadersFinal.TabIndex = 2;
+            this.txtRequestHeadersFinal.WordWrap = false;
             // 
             // tabRequestOptions
             // 
@@ -394,26 +384,10 @@
             // 
             // txtResponseBody
             // 
-            this.txtResponseBody.AcceptsTab = true;
             this.txtResponseBody.BackColor = System.Drawing.SystemColors.Control;
-            this.txtResponseBody.DetectUrls = false;
             this.txtResponseBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtResponseBody.EnableFormatters = true;
-            this.txtResponseBody.EnableHistory = true;
-            this.txtResponseBody.EnableOptions = true;
-            this.txtResponseBody.EnableSearch = true;
-            this.txtResponseBody.HideSelection = false;
             this.txtResponseBody.Location = new System.Drawing.Point(0, 0);
-            this.txtResponseBody.MaxLength = 0;
-            this.txtResponseBody.Multiline = true;
             this.txtResponseBody.Name = "txtResponseBody";
-            this.txtResponseBody.ReadOnly = false;
-            this.txtResponseBody.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
-            this.txtResponseBody.SelectionColor = System.Drawing.Color.Black;
-            this.txtResponseBody.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResponseBody.SelectionLength = 0;
-            this.txtResponseBody.SelectionStart = 0;
-            this.txtResponseBody.ShowSelectionMargin = false;
             this.txtResponseBody.Size = new System.Drawing.Size(666, 208);
             this.txtResponseBody.TabIndex = 7;
             this.txtResponseBody.WordWrap = false;
@@ -430,26 +404,11 @@
             // 
             // txtResponseHeaders
             // 
-            this.txtResponseHeaders.AcceptsTab = true;
             this.txtResponseHeaders.BackColor = System.Drawing.SystemColors.Control;
-            this.txtResponseHeaders.DetectUrls = false;
             this.txtResponseHeaders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtResponseHeaders.EnableFormatters = false;
-            this.txtResponseHeaders.EnableHistory = true;
-            this.txtResponseHeaders.EnableOptions = true;
-            this.txtResponseHeaders.EnableSearch = true;
-            this.txtResponseHeaders.HideSelection = false;
             this.txtResponseHeaders.Location = new System.Drawing.Point(0, 0);
-            this.txtResponseHeaders.MaxLength = 0;
-            this.txtResponseHeaders.Multiline = true;
             this.txtResponseHeaders.Name = "txtResponseHeaders";
-            this.txtResponseHeaders.ReadOnly = false;
-            this.txtResponseHeaders.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
-            this.txtResponseHeaders.SelectionColor = System.Drawing.Color.Black;
-            this.txtResponseHeaders.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResponseHeaders.SelectionLength = 0;
-            this.txtResponseHeaders.SelectionStart = 0;
-            this.txtResponseHeaders.ShowSelectionMargin = false;
             this.txtResponseHeaders.Size = new System.Drawing.Size(666, 208);
             this.txtResponseHeaders.TabIndex = 2;
             this.txtResponseHeaders.WordWrap = false;
@@ -492,58 +451,6 @@
             this.stsStatusValue.Name = "stsStatusValue";
             this.stsStatusValue.Size = new System.Drawing.Size(12, 17);
             this.stsStatusValue.Text = "-";
-            // 
-            // txtRequestHeadersFinal
-            // 
-            this.txtRequestHeadersFinal.AcceptsTab = true;
-            this.txtRequestHeadersFinal.BackColor = System.Drawing.SystemColors.Control;
-            this.txtRequestHeadersFinal.DetectUrls = false;
-            this.txtRequestHeadersFinal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRequestHeadersFinal.EnableFormatters = false;
-            this.txtRequestHeadersFinal.EnableHistory = true;
-            this.txtRequestHeadersFinal.EnableOptions = true;
-            this.txtRequestHeadersFinal.EnableSearch = true;
-            this.txtRequestHeadersFinal.HideSelection = false;
-            this.txtRequestHeadersFinal.Location = new System.Drawing.Point(0, 0);
-            this.txtRequestHeadersFinal.MaxLength = 0;
-            this.txtRequestHeadersFinal.Multiline = true;
-            this.txtRequestHeadersFinal.Name = "txtRequestHeadersFinal";
-            this.txtRequestHeadersFinal.ReadOnly = false;
-            this.txtRequestHeadersFinal.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
-            this.txtRequestHeadersFinal.SelectionColor = System.Drawing.Color.Black;
-            this.txtRequestHeadersFinal.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRequestHeadersFinal.SelectionLength = 0;
-            this.txtRequestHeadersFinal.SelectionStart = 0;
-            this.txtRequestHeadersFinal.ShowSelectionMargin = false;
-            this.txtRequestHeadersFinal.Size = new System.Drawing.Size(666, 176);
-            this.txtRequestHeadersFinal.TabIndex = 2;
-            this.txtRequestHeadersFinal.WordWrap = false;
-            // 
-            // txtRequestBody
-            // 
-            this.txtRequestBody.AcceptsTab = true;
-            this.txtRequestBody.BackColor = System.Drawing.SystemColors.Control;
-            this.txtRequestBody.DetectUrls = false;
-            this.txtRequestBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRequestBody.EnableFormatters = true;
-            this.txtRequestBody.EnableHistory = true;
-            this.txtRequestBody.EnableOptions = true;
-            this.txtRequestBody.EnableSearch = true;
-            this.txtRequestBody.HideSelection = false;
-            this.txtRequestBody.Location = new System.Drawing.Point(0, 0);
-            this.txtRequestBody.MaxLength = 0;
-            this.txtRequestBody.Multiline = true;
-            this.txtRequestBody.Name = "txtRequestBody";
-            this.txtRequestBody.ReadOnly = false;
-            this.txtRequestBody.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
-            this.txtRequestBody.SelectionColor = System.Drawing.Color.Black;
-            this.txtRequestBody.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRequestBody.SelectionLength = 0;
-            this.txtRequestBody.SelectionStart = 0;
-            this.txtRequestBody.ShowSelectionMargin = false;
-            this.txtRequestBody.Size = new System.Drawing.Size(666, 176);
-            this.txtRequestBody.TabIndex = 6;
-            this.txtRequestBody.WordWrap = false;
             // 
             // FormWebRequest
             // 

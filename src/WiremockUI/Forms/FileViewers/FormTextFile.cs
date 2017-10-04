@@ -21,7 +21,6 @@ namespace WiremockUI
 
             this.tabPage = tabPage;
             this.master = master;
-            this.txtContent.EnableOptions = true;
             LoadForm(fileName);
 
             this.btnOpen.Text = Resource.btnOpenExplorer;
