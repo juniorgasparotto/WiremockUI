@@ -28,7 +28,7 @@ namespace WiremockUI
         {
             if (fileName != null)
             {
-                txtPath.Text = fileName;
+                txtPath.TextValue = fileName;
                 imgFile.ImageLocation = fileName;
             }
             else
@@ -40,7 +40,7 @@ namespace WiremockUI
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            Process.Start(txtPath.Text);
+            Process.Start(txtPath.TextValue);
         }
 
         public void Update(string fileName)

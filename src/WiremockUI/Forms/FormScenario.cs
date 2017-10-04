@@ -33,7 +33,7 @@ namespace WiremockUI
             {
                 Text = Resource.formAddScenarioInEditModeTitle;
                 this.txtName.Text = scenario.Name;
-                this.txtDesc.Text = scenario.Description;
+                this.txtDesc.TextValue = scenario.Description;
                 this.btnAdd.Text = Resource.btnEdit;
                 this.oldPath = server.GetFullPath(scenario);
 
@@ -87,7 +87,7 @@ namespace WiremockUI
                 scenario = new Scenario();
 
             scenario.Name = name;
-            scenario.Description = this.txtDesc.Text;
+            scenario.Description = this.txtDesc.TextValue;
 
             var newPath = server.GetFullPath(scenario);
             if (!string.IsNullOrWhiteSpace(this.oldPath) && Directory.Exists(oldPath) && oldPath != newPath)

@@ -19,8 +19,8 @@ namespace WiremockUI
         [Description("The content json"), Category("Data")]
         public string ContentJson
         {
-            get => txtContent.Text;
-            set => txtContent.Text = value;
+            get => txtContent.TextValue;
+            set => txtContent.TextValue = value;
         }
 
         [Description("If true all nodes are expanded"), Category("Data")]

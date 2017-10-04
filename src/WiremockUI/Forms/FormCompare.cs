@@ -28,7 +28,7 @@ namespace WiremockUI
         public FormCompare(FormMaster master, string content1)
             : this(master)
         {
-            this.txtContent1.Text = content1;
+            this.txtContent1.TextValue = content1;
         }
 
         private ContextMenuStrip GetOptionsMenu(TextBox txtFile, EditorTextBox txtContent)
@@ -85,7 +85,7 @@ namespace WiremockUI
             {
                 try
                 {
-                    File.WriteAllText(txtFile.Text, txtContent.Text);
+                    File.WriteAllText(txtFile.Text, txtContent.TextValue);
                 }
                 catch (Exception ex)
                 {
@@ -115,7 +115,7 @@ namespace WiremockUI
         private void OpenFile(TextBox txtFile, EditorTextBox txtContent, string fileName, string content)
         {
             txtFile.Text = fileName;
-            txtContent.Text = content;
+            txtContent.TextValue = content;
         }
 
         private void TextDiff(ArrayList lines1, ArrayList lines2)
@@ -162,8 +162,8 @@ namespace WiremockUI
 
         private void btnCompare_Click(object sender, EventArgs e)
         {
-            var lines1 = TextFileDiff.GetByText(this.txtContent1.Text);
-            var lines2 = TextFileDiff.GetByText(this.txtContent2.Text);
+            var lines1 = TextFileDiff.GetByText(this.txtContent1.TextValue);
+            var lines2 = TextFileDiff.GetByText(this.txtContent2.TextValue);
             TextDiff(lines1, lines2);
         }
 
@@ -172,7 +172,7 @@ namespace WiremockUI
             if (e.KeyCode == Keys.Enter)
             {
                 if (File.Exists(txtFile1.Text))
-                    txtContent1.Text = File.ReadAllText(txtFile1.Text);
+                    txtContent1.TextValue = File.ReadAllText(txtFile1.Text);
                 else
                     Helper.MessageBoxError("Arquivo inexistente");
             }
@@ -183,7 +183,7 @@ namespace WiremockUI
             if (e.KeyCode == Keys.Enter)
             {
                 if (File.Exists(txtFile2.Text))
-                    txtContent2.Text = File.ReadAllText(txtFile2.Text);
+                    txtContent2.TextValue = File.ReadAllText(txtFile2.Text);
                 else
                     Helper.MessageBoxError("Arquivo inexistente");
             }

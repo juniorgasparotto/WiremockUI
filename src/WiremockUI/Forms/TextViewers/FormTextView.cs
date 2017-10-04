@@ -12,8 +12,8 @@ namespace WiremockUI
 
             this.master = master;
             this.TabStop = false;
-            this.txtTitle.Text = title;
-            this.txtContent.Text = Helper.ResolveBreakLineInCompatibility(content);
+            this.txtTitle.TextValue = title;
+            this.txtContent.TextValue = Helper.ResolveBreakLineInCompatibility(content);
             this.txtContent.EnableOptions = true;
 
             if (string.IsNullOrWhiteSpace(title))

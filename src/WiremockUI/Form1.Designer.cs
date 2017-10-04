@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             this.editorTextBox1 = new WiremockUI.EditorTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // editorTextBox1
             // 
             this.editorTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.editorTextBox1.EnableHistory = false;
-            this.editorTextBox1.Location = new System.Drawing.Point(30, 3);
+            this.editorTextBox1.Location = new System.Drawing.Point(12, 12);
             this.editorTextBox1.Name = "editorTextBox1";
-            this.editorTextBox1.ReadOnly = false;
-            this.editorTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
-            this.editorTextBox1.SelectedText = "";
-            this.editorTextBox1.SelectionColor = System.Drawing.Color.Black;
-            this.editorTextBox1.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editorTextBox1.SelectionLength = 0;
-            this.editorTextBox1.SelectionStart = 0;
-            this.editorTextBox1.ShowSelectionMargin = false;
             this.editorTextBox1.Size = new System.Drawing.Size(629, 287);
             this.editorTextBox1.TabIndex = 0;
-            this.editorTextBox1.WordWrap = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(88, 96);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(100, 96);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.editorTextBox1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -64,5 +64,6 @@
         #endregion
 
         private EditorTextBox editorTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

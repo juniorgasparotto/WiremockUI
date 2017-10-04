@@ -40,15 +40,15 @@ namespace WiremockUI
             : this()
         {
             this.cmbVerb.Text = method;
-            this.txtUrl.Text = urlAbsolute;
-            this.txtRequestHeaders.Text = HttpUtils.GetHeadersAsString(requestHeaders);
-            this.txtRequestBody.Text = Helper.ResolveBreakLineInCompatibility(requestBody);
-            this.txtResponseHeaders.Text = HttpUtils.GetHeadersAsString(responseHeaders);
-            this.txtResponseBody.Text = Helper.ResolveBreakLineInCompatibility(responseBody);
-            if (string.IsNullOrWhiteSpace(requestBody) && !string.IsNullOrWhiteSpace(this.txtRequestHeaders.Text))
+            this.txtUrl.TextValue = urlAbsolute;
+            this.txtRequestHeaders.TextValue = HttpUtils.GetHeadersAsString(requestHeaders);
+            this.txtRequestBody.TextValue = Helper.ResolveBreakLineInCompatibility(requestBody);
+            this.txtResponseHeaders.TextValue = HttpUtils.GetHeadersAsString(responseHeaders);
+            this.txtResponseBody.TextValue = Helper.ResolveBreakLineInCompatibility(responseBody);
+            if (string.IsNullOrWhiteSpace(requestBody) && !string.IsNullOrWhiteSpace(this.txtRequestHeaders.TextValue))
                 tabRequest.SelectedTab = tabRequestHeaders;
 
-            if (string.IsNullOrWhiteSpace(responseBody) && !string.IsNullOrWhiteSpace(this.txtResponseHeaders.Text))
+            if (string.IsNullOrWhiteSpace(responseBody) && !string.IsNullOrWhiteSpace(this.txtResponseHeaders.TextValue))
                 tabResponse.SelectedTab = tabResponseHeaders;
         }
 
@@ -62,8 +62,8 @@ namespace WiremockUI
 
             try
             {
-                var headers = HttpUtils.GetHeaders(txtRequestHeaders.Text, false, false);
-                webRequest = (HttpWebRequest)System.Net.WebRequest.Create(txtUrl.Text);
+                var headers = HttpUtils.GetHeaders(txtRequestHeaders.TextValue, false, false);
+                webRequest = (HttpWebRequest)System.Net.WebRequest.Create(txtUrl.TextValue);
                 webRequest.AllowAutoRedirect = this.chkAutoRedirect.Checked;
                 webRequest.KeepAlive = this.chkKeepAlive.Checked;
 
@@ -136,9 +136,9 @@ namespace WiremockUI
                     }
 
                     // Obrigatory after headers
-                    if (!string.IsNullOrWhiteSpace(this.txtRequestBody.Text))
+                    if (!string.IsNullOrWhiteSpace(this.txtRequestBody.TextValue))
                     {
-                        var data = Encoding.ASCII.GetBytes(this.txtRequestBody.Text);
+                        var data = Encoding.ASCII.GetBytes(this.txtRequestBody.TextValue);
                         if (this.chkAutoContentLength.Checked)
                             webRequest.ContentLength = data.Length;
                         var newStream = webRequest.GetRequestStream();
@@ -147,7 +147,7 @@ namespace WiremockUI
                     }
 
                     start = DateTime.Now;
-                    txtRequestHeadersFinal.Text = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(webRequest));
+                    txtRequestHeadersFinal.TextValue = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(webRequest));
                     var response = await webRequest.GetResponseAsync();
                     ShowResponse(start, DateTime.Now, webRequest, (HttpWebResponse)response);
                 }
@@ -174,22 +174,22 @@ namespace WiremockUI
                 using (var sr = new StreamReader(s, Encoding.UTF8))
                 {
                     var content = await sr.ReadToEndAsync();
-                    txtResponseBody.Text = Helper.ResolveBreakLineInCompatibility(content);
+                    txtResponseBody.TextValue = Helper.ResolveBreakLineInCompatibility(content);
                 }
             }
 
             stsTimeValue.Text = (t2 - t1).ToString();
             stsStatusValue.Text = $"{(int)response.StatusCode} ({response.StatusDescription})";
-            txtRequestHeadersFinal.Text = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(request));
-            txtResponseHeaders.Text = $"{(int)response.StatusCode} {response.StatusDescription}\r\n";
-            txtResponseHeaders.Text += HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(response));
+            txtRequestHeadersFinal.TextValue = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(request));
+            txtResponseHeaders.TextValue = $"{(int)response.StatusCode} {response.StatusDescription}\r\n";
+            txtResponseHeaders.TextValue += HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(response));
             btnExecute.Enabled = true;
         }
 
         private void CleanResponses()
         {
-            txtResponseBody.Text = "";
-            txtResponseHeaders.Text = "";
+            txtResponseBody.TextValue = "";
+            txtResponseHeaders.TextValue = "";
             stsStatusValue.Text = "-";
             stsTimeValue.Text = "-";
         }

@@ -21,7 +21,7 @@ namespace WiremockUI
 
         public string FilePath
         {
-            get => txtPath.Text;
+            get => txtPath.TextValue;
         }
 
         public FormJsonFile(FormMaster master, TabPageCustom tabPage, string fileName)
@@ -46,7 +46,7 @@ namespace WiremockUI
             var content = "";
             if (fileName != null)
             {
-                txtPath.Text = fileName;
+                txtPath.TextValue = fileName;
                 content = File.ReadAllText(fileName);
             }
             else
@@ -81,7 +81,7 @@ namespace WiremockUI
                     return;
                 }
                 
-                File.WriteAllText(txtPath.Text, ucJsonView.ContentJson);
+                File.WriteAllText(txtPath.TextValue, ucJsonView.ContentJson);
                 OnSave?.Invoke();
             }
             catch (Exception ex)
@@ -97,7 +97,7 @@ namespace WiremockUI
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            Process.Start(txtPath.Text);
+            Process.Start(txtPath.TextValue);
         }
 
         private void FormJsonFile_KeyDown(object sender, KeyEventArgs e)

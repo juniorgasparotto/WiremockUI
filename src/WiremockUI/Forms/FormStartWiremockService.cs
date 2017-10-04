@@ -62,7 +62,7 @@ namespace WiremockUI
             
             if (!string.IsNullOrWhiteSpace(server.UrlTarget))
             {
-                this.txtFrom.Text = server.UrlTarget;
+                this.txtFrom.TextValue = server.UrlTarget;
                 this.linkUrlTarget.Links.Add(0, server.UrlTarget.Length, server.UrlTarget);
             }
             else
@@ -71,7 +71,7 @@ namespace WiremockUI
             }
 
             var urlServer = server.GetServerUrl();
-            this.txtTo.Text = urlServer;
+            this.txtTo.TextValue = urlServer;
             this.linkUrlServer.Links.Add(0, urlServer.Length, urlServer);
 
             var folderPath = server.GetFullPath(scenario);

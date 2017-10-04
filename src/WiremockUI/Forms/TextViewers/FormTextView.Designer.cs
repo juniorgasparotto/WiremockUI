@@ -45,7 +45,7 @@
             this.txtTitle.ReadOnly = true;
             this.txtTitle.Size = new System.Drawing.Size(284, 20);
             this.txtTitle.TabIndex = 1;
-            this.txtTitle.Text = "";
+            this.txtTitle.TextValue = "";
             // 
             // btnClose
             // 
@@ -69,7 +69,7 @@
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(284, 241);
             this.txtContent.TabIndex = 4;
-            this.txtContent.Text = "";
+            this.txtContent.TextValue = "";
             // 
             // FormTextView
             // 

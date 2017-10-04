@@ -20,13 +20,13 @@ namespace WiremockUI
         public FormEditValue(string content, Action<string> onReplace) :
             this()
         {
-            this.txtContent.Text = content;
+            this.txtContent.TextValue = content;
             this.onReplace = onReplace;
         }
 
         private void btnReplace_Click(object sender, System.EventArgs e)
         {
-            onReplace(txtContent.Text);
+            onReplace(txtContent.TextValue);
             Close();
         }
 

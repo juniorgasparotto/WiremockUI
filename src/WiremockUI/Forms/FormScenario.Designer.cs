@@ -103,7 +103,7 @@
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(636, 171);
             this.txtDesc.TabIndex = 13;
-            this.txtDesc.Text = "";
+            this.txtDesc.TextValue = "";
             // 
             // lblScenarioName
             // 

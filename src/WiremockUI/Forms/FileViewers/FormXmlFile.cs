@@ -35,7 +35,7 @@ namespace WiremockUI
             var content = "";
             if (fileName != null)
             {
-                txtPath.Text = fileName;
+                txtPath.TextValue = fileName;
                 content = File.ReadAllText(fileName);
             }
             else
@@ -47,7 +47,7 @@ namespace WiremockUI
             var text = Helper.ResolveBreakLineInCompatibility(content);
             if (text != null)
             {
-                txtContent.Text = content;
+                txtContent.TextValue = content;
             }
         }
 
@@ -55,7 +55,7 @@ namespace WiremockUI
         {
             try
             {
-                File.WriteAllText(txtPath.Text, txtContent.Text);
+                File.WriteAllText(txtPath.TextValue, txtContent.TextValue);
                 OnSave?.Invoke();
             }
             catch (Exception ex)
@@ -71,7 +71,7 @@ namespace WiremockUI
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            Process.Start(txtPath.Text);
+            Process.Start(txtPath.TextValue);
         }
 
         private void FormTextFile_KeyDown(object sender, KeyEventArgs e)
@@ -88,7 +88,7 @@ namespace WiremockUI
         {
             try
             {
-                txtContent.Text = Helper.FormatToXml(txtContent.Text);
+                txtContent.TextValue = Helper.FormatToXml(txtContent.TextValue);
             }
             catch(Exception ex)
             {

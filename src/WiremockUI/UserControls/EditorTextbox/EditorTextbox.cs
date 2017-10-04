@@ -93,7 +93,7 @@ namespace WiremockUI
                     formatJsonMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
-                            Text = Helper.FormatToJson(Text);
+                            TextValue = Helper.FormatToJson(TextValue);
                         else
                             txtContent.SelectedText = Helper.FormatToJson(txtContent.SelectedText);
                     };
@@ -103,7 +103,7 @@ namespace WiremockUI
                     formatXmlMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
-                            txtContent.Text = Helper.FormatToXml(Text);
+                            txtContent.Text = Helper.FormatToXml(TextValue);
                         else
                             txtContent.SelectedText = Helper.FormatToXml(txtContent.SelectedText);
                     };
@@ -113,7 +113,7 @@ namespace WiremockUI
                     jsonEscapeMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
-                            Text = Helper.JsonEscape(Text);
+                            TextValue = Helper.JsonEscape(TextValue);
                         else
                             txtContent.SelectedText = Helper.JsonEscape(txtContent.SelectedText);
                     };
@@ -123,7 +123,7 @@ namespace WiremockUI
                     jsonUnescapeMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
-                            txtContent.Text = Helper.JsonUnescape(Text);
+                            txtContent.Text = Helper.JsonUnescape(TextValue);
                         else
                             txtContent.SelectedText = Helper.JsonUnescape(txtContent.SelectedText);
                     };
@@ -133,7 +133,7 @@ namespace WiremockUI
                     minifyJsonMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
-                            Text = Helper.JsonMinify(Text);
+                            TextValue = Helper.JsonMinify(TextValue);
                         else
                             txtContent.SelectedText = Helper.JsonMinify(txtContent.SelectedText);
                     };
@@ -164,7 +164,7 @@ namespace WiremockUI
                     xmlEscapeMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
-                            Text = Helper.XmlEscape(Text);
+                            TextValue = Helper.XmlEscape(TextValue);
                         else
                             txtContent.SelectedText = Helper.XmlEscape(txtContent.SelectedText);
                     };
@@ -174,7 +174,7 @@ namespace WiremockUI
                     xmlUnescapeMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
-                            Text = Helper.XmlUnescape(Text);
+                            TextValue = Helper.XmlUnescape(TextValue);
                         else
                             txtContent.SelectedText = Helper.XmlUnescape(txtContent.SelectedText);
                     };
@@ -184,7 +184,7 @@ namespace WiremockUI
                     minifyXmlMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
-                            Text = Helper.XmlMinify(Text);
+                            TextValue = Helper.XmlMinify(TextValue);
                         else
                             txtContent.SelectedText = Helper.XmlMinify(txtContent.SelectedText);
                     };
@@ -235,30 +235,40 @@ namespace WiremockUI
 
         #region RithTextBox Wrapper
 
-        public new string Text
+        [Localizable(true)]
+        [RefreshProperties(RefreshProperties.All)]
+        [DefaultValue("")]
+        public string TextValue
         {
             get => txtContent.Text;
             set => txtContent.Text = value;
         }
 
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int SelectionStart
         {
             get => txtContent.SelectionStart;
             set => txtContent.SelectionStart = value;
         }
 
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int SelectionLength
         {
             get => txtContent.SelectionLength;
             set => txtContent.SelectionLength = value;
         }
 
+        [DefaultValue(RichTextBoxScrollBars.Both)]
+        [Localizable(true)]
         public RichTextBoxScrollBars ScrollBars
         {
             get => txtContent.ScrollBars;
             set => txtContent.ScrollBars = value;
         }
 
+        [DefaultValue(false)]
         public bool ShowSelectionMargin
         {
             get => txtContent.ShowSelectionMargin;
@@ -272,23 +282,31 @@ namespace WiremockUI
             set => txtContent.HideSelection = value;
         }
 
+        [Browsable(false)]
         public int TextLength
         {
             get => txtContent.TextLength;
         }
 
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color SelectionColor
         {
             get => txtContent.SelectionColor;
             set => txtContent.SelectionColor = value;
         }
 
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Font SelectionFont
         {
             get => txtContent.SelectionFont;
             set => txtContent.SelectionFont = value;
         }
 
+        [Browsable(false)]
+        [DefaultValue("")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string SelectedText
         {
             get => txtContent.SelectedText;
@@ -323,13 +341,16 @@ namespace WiremockUI
             set => txtContent.DetectUrls = value;
         }
 
-        [DefaultValue(false)]
+        [DefaultValue(true)]
+        [Localizable(true)]
         public bool WordWrap
         {
             get => txtContent.WordWrap;
             set => txtContent.WordWrap = value;
         }
 
+        [DefaultValue(false)]
+        [RefreshProperties(RefreshProperties.Repaint)]
         public bool ReadOnly
         {
             get => txtContent.ReadOnly;
@@ -357,6 +378,7 @@ namespace WiremockUI
             MaxLength = 0;
             DetectUrls = false;
             HideSelection = false;
+            EnableHistory = true;
             EnableOptions = true;
             EnableSearch = true;
             EnableFormatters = true;
