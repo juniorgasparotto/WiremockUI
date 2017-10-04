@@ -28,16 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabLogs = new System.Windows.Forms.TabControl();
             this.tabLogText = new System.Windows.Forms.TabPage();
-            this.rtxtLog = new System.Windows.Forms.RichTextBox();
-            this.pnlSearch = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtSearchValue = new WiremockUI.EditorTextBox();
             this.tabLogTable = new System.Windows.Forms.TabPage();
             this.gridLog = new System.Windows.Forms.DataGridView();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,16 +54,16 @@
             this.chkDisable = new System.Windows.Forms.CheckBox();
             this.chkAutoScroll = new System.Windows.Forms.CheckBox();
             this.btnClean = new System.Windows.Forms.Button();
-            this.txtTo = new WiremockUI.EditorTextBox();
-            this.txtFrom = new WiremockUI.EditorTextBox();
             this.linkUrlServer = new System.Windows.Forms.LinkLabel();
             this.lblUrlServer = new System.Windows.Forms.Label();
             this.lblUrlTarget = new System.Windows.Forms.Label();
+            this.rtxtLog = new WiremockUI.EditorTextBox();
+            this.txtTo = new WiremockUI.EditorTextBox();
+            this.txtFrom = new WiremockUI.EditorTextBox();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabLogs.SuspendLayout();
             this.tabLogText.SuspendLayout();
-            this.pnlSearch.SuspendLayout();
             this.tabLogTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLog)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -110,7 +105,6 @@
             // tabLogText
             // 
             this.tabLogText.Controls.Add(this.rtxtLog);
-            this.tabLogText.Controls.Add(this.pnlSearch);
             this.tabLogText.Location = new System.Drawing.Point(4, 29);
             this.tabLogText.Name = "tabLogText";
             this.tabLogText.Padding = new System.Windows.Forms.Padding(3);
@@ -118,68 +112,6 @@
             this.tabLogText.TabIndex = 0;
             this.tabLogText.Text = "Log em texto";
             this.tabLogText.UseVisualStyleBackColor = true;
-            // 
-            // rtxtLog
-            // 
-            this.rtxtLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtxtLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtLog.HideSelection = false;
-            this.rtxtLog.Location = new System.Drawing.Point(3, 39);
-            this.rtxtLog.Name = "rtxtLog";
-            this.rtxtLog.ReadOnly = true;
-            this.rtxtLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtxtLog.ShowSelectionMargin = true;
-            this.rtxtLog.Size = new System.Drawing.Size(570, 78);
-            this.rtxtLog.TabIndex = 31;
-            this.rtxtLog.Text = "";
-            // 
-            // pnlSearch
-            // 
-            this.pnlSearch.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pnlSearch.Controls.Add(this.btnClose);
-            this.pnlSearch.Controls.Add(this.btnSearch);
-            this.pnlSearch.Controls.Add(this.txtSearchValue);
-            this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSearch.Location = new System.Drawing.Point(3, 3);
-            this.pnlSearch.Name = "pnlSearch";
-            this.pnlSearch.Size = new System.Drawing.Size(570, 36);
-            this.pnlSearch.TabIndex = 30;
-            this.pnlSearch.Visible = false;
-            // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(310, 5);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 27);
-            this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "Fechar";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(229, 5);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 27);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Buscar";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // txtSearchValue
-            // 
-            this.txtSearchValue.AcceptsTab = true;
-            this.txtSearchValue.DetectUrls = false;
-            this.txtSearchValue.EnableFormatter = false;
-            this.txtSearchValue.EnableHistory = true;
-            this.txtSearchValue.Location = new System.Drawing.Point(9, 8);
-            this.txtSearchValue.MaxLength = 0;
-            this.txtSearchValue.Name = "txtSearchValue";
-            this.txtSearchValue.Size = new System.Drawing.Size(214, 20);
-            this.txtSearchValue.TabIndex = 0;
-            this.txtSearchValue.Text = "";
-            this.txtSearchValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchValue_KeyDown);
             // 
             // tabLogTable
             // 
@@ -197,8 +129,8 @@
             // 
             this.gridLog.AllowUserToAddRows = false;
             this.gridLog.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.gridLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gridLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -403,36 +335,6 @@
             this.btnClean.UseVisualStyleBackColor = true;
             this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
-            // txtTo
-            // 
-            this.txtTo.AcceptsTab = true;
-            this.txtTo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTo.EnableFormatter = false;
-            this.txtTo.EnableHistory = true;
-            this.txtTo.DetectUrls = true;
-            this.txtTo.Location = new System.Drawing.Point(102, 56);
-            this.txtTo.MaxLength = 0;
-            this.txtTo.Name = "txtTo";
-            this.txtTo.ReadOnly = true;
-            this.txtTo.Size = new System.Drawing.Size(440, 15);
-            this.txtTo.TabIndex = 24;
-            this.txtTo.Text = "";
-            // 
-            // txtFrom
-            // 
-            this.txtFrom.AcceptsTab = true;
-            this.txtFrom.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtFrom.EnableFormatter = false;
-            this.txtFrom.EnableHistory = true;
-            this.txtFrom.DetectUrls = true;
-            this.txtFrom.Location = new System.Drawing.Point(102, 26);
-            this.txtFrom.MaxLength = 0;
-            this.txtFrom.Name = "txtFrom";
-            this.txtFrom.ReadOnly = true;
-            this.txtFrom.Size = new System.Drawing.Size(440, 15);
-            this.txtFrom.TabIndex = 24;
-            this.txtFrom.Text = "";
-            // 
             // linkUrlServer
             // 
             this.linkUrlServer.AutoSize = true;
@@ -464,6 +366,82 @@
             this.lblUrlTarget.TabIndex = 18;
             this.lblUrlTarget.Text = "Url destino:";
             // 
+            // rtxtLog
+            // 
+            this.rtxtLog.AcceptsTab = true;
+            this.rtxtLog.BackColor = System.Drawing.SystemColors.Control;
+            this.rtxtLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtxtLog.DetectUrls = false;
+            this.rtxtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtLog.EnableFormatter = false;
+            this.rtxtLog.EnableHistory = true;
+            this.rtxtLog.HideSelection = false;
+            this.rtxtLog.Location = new System.Drawing.Point(3, 3);
+            this.rtxtLog.MaxLength = 0;
+            this.rtxtLog.Multiline = true;
+            this.rtxtLog.Name = "rtxtLog";
+            this.rtxtLog.ReadOnly = true;
+            this.rtxtLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
+            this.rtxtLog.SelectedText = "";
+            this.rtxtLog.SelectionColor = System.Drawing.Color.Black;
+            this.rtxtLog.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtLog.SelectionLength = 0;
+            this.rtxtLog.SelectionStart = 0;
+            this.rtxtLog.ShowSelectionMargin = false;
+            this.rtxtLog.Size = new System.Drawing.Size(570, 114);
+            this.rtxtLog.TabIndex = 1;
+            this.rtxtLog.WordWrap = true;
+            // 
+            // txtTo
+            // 
+            this.txtTo.AcceptsTab = true;
+            this.txtTo.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTo.DetectUrls = true;
+            this.txtTo.EnableFormatter = false;
+            this.txtTo.EnableHistory = true;
+            this.txtTo.HideSelection = false;
+            this.txtTo.Location = new System.Drawing.Point(102, 54);
+            this.txtTo.MaxLength = 0;
+            this.txtTo.Multiline = false;
+            this.txtTo.Name = "txtTo";
+            this.txtTo.ReadOnly = true;
+            this.txtTo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
+            this.txtTo.SelectedText = "";
+            this.txtTo.SelectionColor = System.Drawing.Color.Black;
+            this.txtTo.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTo.SelectionLength = 0;
+            this.txtTo.SelectionStart = 0;
+            this.txtTo.ShowSelectionMargin = false;
+            this.txtTo.Size = new System.Drawing.Size(440, 22);
+            this.txtTo.TabIndex = 24;
+            this.txtTo.WordWrap = false;
+            // 
+            // txtFrom
+            // 
+            this.txtFrom.AcceptsTab = true;
+            this.txtFrom.BackColor = System.Drawing.SystemColors.Control;
+            this.txtFrom.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtFrom.DetectUrls = true;
+            this.txtFrom.EnableFormatter = false;
+            this.txtFrom.EnableHistory = true;
+            this.txtFrom.HideSelection = false;
+            this.txtFrom.Location = new System.Drawing.Point(102, 23);
+            this.txtFrom.MaxLength = 0;
+            this.txtFrom.Multiline = false;
+            this.txtFrom.Name = "txtFrom";
+            this.txtFrom.ReadOnly = true;
+            this.txtFrom.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
+            this.txtFrom.SelectedText = "";
+            this.txtFrom.SelectionColor = System.Drawing.Color.Black;
+            this.txtFrom.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFrom.SelectionLength = 0;
+            this.txtFrom.SelectionStart = 0;
+            this.txtFrom.ShowSelectionMargin = false;
+            this.txtFrom.Size = new System.Drawing.Size(440, 22);
+            this.txtFrom.TabIndex = 24;
+            this.txtFrom.WordWrap = false;
+            // 
             // FormStartWiremockService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,12 +455,10 @@
             this.KeyPreview = true;
             this.Name = "FormStartWiremockService";
             this.Text = "Form1";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormStartMockService_KeyDown);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tabLogs.ResumeLayout(false);
             this.tabLogText.ResumeLayout(false);
-            this.pnlSearch.ResumeLayout(false);
             this.tabLogTable.ResumeLayout(false);
             this.tabLogTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLog)).EndInit();
@@ -500,11 +476,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TabControl tabLogs;
         private System.Windows.Forms.TabPage tabLogText;
-        private System.Windows.Forms.RichTextBox rtxtLog;
-        private System.Windows.Forms.Panel pnlSearch;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnSearch;
-        private EditorTextBox txtSearchValue;
         private System.Windows.Forms.TabPage tabLogTable;
         private System.Windows.Forms.LinkLabel linkOpenFolder;
         private System.Windows.Forms.LinkLabel linkUrlTarget;
@@ -531,5 +502,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RequestTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResponseTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Raw;
+        private EditorTextBox rtxtLog;
     }
 }

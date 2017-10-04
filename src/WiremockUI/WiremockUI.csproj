@@ -259,6 +259,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Listeners\RequestAndResponseListener.cs" />
+    <Compile Include="UserControls\EditorTextbox\EditorTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\EditorTextbox\EditorTextBox.Designer.cs">
+      <DependentUpon>EditorTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EditorTextbox\FormEditValue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,9 +285,6 @@
     </Compile>
     <Compile Include="Forms\TextViewers\FormTextView.Designer.cs">
       <DependentUpon>FormTextView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\EditorTextbox\EditorTextBox.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\MenuButton.cs">
       <SubType>Component</SubType>
@@ -406,6 +409,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\TextViewers\FormTextView.resx">
       <DependentUpon>FormTextView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\EditorTextbox\EditorTextBox.resx">
+      <DependentUpon>EditorTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\EditorTextbox\FormEditValue.resx">
       <DependentUpon>FormEditValue.cs</DependentUpon>

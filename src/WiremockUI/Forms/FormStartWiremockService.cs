@@ -14,9 +14,7 @@ namespace WiremockUI
         private FormMaster master;
         private Scenario scenario;
         private Server.PlayType playType;
-        private Server server;
-        private int start;
-        private int indexOfSearchText;
+        private Server server;        
         private string labelDiff;
 
         public FormStartWiremockService(FormMaster master, Server server, Scenario scenario, Server.PlayType playType)
@@ -33,14 +31,11 @@ namespace WiremockUI
             chkAutoScroll.Text = Resource.chkAutoScroll;
             tabLogText.Text = Resource.tabLogText;
             tabLogTable.Text = Resource.tabLogTable;
-            btnSearch.Text = Resource.btnSearch;
-            btnClose.Text = Resource.btnClose;
+            
             toolStripStatusLabelCount.Text = Resource.toolStripStatusLabelCount;
             toolStripStatusDiff.Text = Resource.toolStripStatusDiff;
             toolStripStatusValue.Text = Resource.toolStripStatusValue;
-
-            this.txtSearchValue.Multiline = false;
-
+            
             // log text
             this.logWriter = new RichTextBoxLogWriter(rtxtLog);
             this.logWriter.EnableAutoScroll = chkAutoScroll.Checked;
@@ -94,69 +89,7 @@ namespace WiremockUI
         {
             master.Dashboard.Play(server, scenario, playType, logWriter, logTable);
         }
-
-        private void Search()
-        {
-            int startindex = 0;
-
-            if (txtSearchValue.Text.Length > 0)
-            {
-                startindex = FindMyText(txtSearchValue.Text.Trim(), start, rtxtLog.Text.Length);
-
-                if (startindex == -1 && start >= 0) // Not found string and not searching from beginning
-                {
-                    // Wrap search
-                    // int oldStart = start;
-                    start = 0;
-                    startindex = FindMyText(txtSearchValue.Text.Trim(), start, rtxtLog.Text.Length);
-                }
-            }
-
-            // If string was found in the RichTextBox, highlight it
-            if (startindex >= 0)
-            {
-                int endindex = txtSearchValue.Text.Length;
-                rtxtLog.Select(startindex, endindex);
-                start = startindex + endindex;
-            }
-        }
-
-        public int FindMyText(string txtToSearch, int searchStart, int searchEnd)
-        {
-            // Unselect the previously searched string
-            if (searchStart > 0 && searchEnd > 0 && indexOfSearchText >= 0)
-            {
-                rtxtLog.Undo();
-            }
-
-            // Set the return value to -1 by default.
-            int retVal = -1;
-
-            // A valid starting index should be specified.
-            // if indexOfSearchText = -1, the end of search
-            if (searchStart >= 0 && indexOfSearchText >= 0)
-            {
-                // A valid ending index
-                if (searchEnd > searchStart || searchEnd == -1)
-                {
-                    // Find the position of search string in RichTextBox
-                    indexOfSearchText = rtxtLog.Find(txtToSearch, searchStart, searchEnd, RichTextBoxFinds.None);
-                    // Determine whether the text was found in richTextBox1.
-                    if (indexOfSearchText != -1)
-                    {
-                        // Return the index to the specified search text.
-                        retVal = indexOfSearchText;
-                    }
-                    else
-                    {
-                        start = 0;
-                        indexOfSearchText = 0;
-                    }
-                }
-            }
-            return retVal;
-        }
-
+        
         private void lblUrlTarget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(e.Link.LinkData.ToString());
@@ -191,34 +124,7 @@ namespace WiremockUI
             this.logWriter.Enabled = !chkDisable.Checked;
             this.logTable.Enabled = !chkDisable.Checked;
         }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            Search();
-        }
-
-        private void txtSearchValue_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                Search();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            pnlSearch.Visible = false;
-            rtxtLog.DeselectAll();
-        }
-
-        private void FormStartMockService_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.F)
-            {
-                pnlSearch.Visible = !pnlSearch.Visible;
-                rtxtLog.DeselectAll();
-                txtSearchValue.Focus();
-            }
-        }
-
+        
         private void gridLog_SelectionChanged(object sender, EventArgs e)
         {
             toolStripStatusValue.Text = this.labelDiff;
