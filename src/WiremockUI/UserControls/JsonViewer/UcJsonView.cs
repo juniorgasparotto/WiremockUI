@@ -54,6 +54,8 @@ namespace WiremockUI
         public void GenerateTree()
         {
             treeRaw.Nodes.Clear();
+            this.lblError.Visible = false;
+
             string rootName = "root", nodeName = "node";
 
             JContainer json;

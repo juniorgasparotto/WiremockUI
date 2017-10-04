@@ -73,7 +73,7 @@
             // 
             this.txtPath.AcceptsTab = true;
             this.txtPath.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtPath.EnableFormatter = false;
+            this.txtPath.EnableOptions = false;
             this.txtPath.Location = new System.Drawing.Point(0, 0);
             this.txtPath.MaxLength = 0;
             this.txtPath.Multiline = true;

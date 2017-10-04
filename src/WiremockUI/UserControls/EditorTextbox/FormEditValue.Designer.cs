@@ -72,7 +72,7 @@
             this.txtContent.AcceptsTab = true;
             this.txtContent.DetectUrls = false;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.EnableFormatter = true;
+            this.txtContent.EnableOptions = true;
             this.txtContent.EnableHistory = true;
             this.txtContent.Location = new System.Drawing.Point(0, 0);
             this.txtContent.MaxLength = 0;

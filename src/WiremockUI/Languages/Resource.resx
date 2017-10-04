@@ -618,4 +618,7 @@
   <data name="formEditValue" xml:space="preserve">
     <value>Editar valor</value>
   </data>
+  <data name="searchMenu" xml:space="preserve">
+    <value>Localizar</value>
+  </data>
 </root>

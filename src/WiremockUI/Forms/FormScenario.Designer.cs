@@ -96,7 +96,7 @@
             // txtDesc
             // 
             this.txtDesc.AcceptsTab = true;
-            this.txtDesc.EnableFormatter = true;
+            this.txtDesc.EnableOptions = true;
             this.txtDesc.EnableHistory = true;
             this.txtDesc.Location = new System.Drawing.Point(6, 79);
             this.txtDesc.MaxLength = 0;

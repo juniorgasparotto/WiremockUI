@@ -18,8 +18,8 @@ namespace WiremockUI
             btnCompare.Text = Resource.btnCompare;
             Text = Resource.formCompareTitle;
 
-            this.txtContent1.EnableFormatter = true;
-            this.txtContent2.EnableFormatter = true;
+            this.txtContent1.EnableOptions = true;
+            this.txtContent2.EnableOptions = true;
             this.master = master;
             btnOpen1.ContextMenuStrip = GetOptionsMenu(txtFile1, txtContent1);
             btnOpen2.ContextMenuStrip = GetOptionsMenu(txtFile2, txtContent2);

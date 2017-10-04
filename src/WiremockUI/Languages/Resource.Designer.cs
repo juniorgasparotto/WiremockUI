@@ -1123,6 +1123,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Localizar.
+        /// </summary>
+        internal static string searchMenu {
+            get {
+                return ResourceManager.GetString("searchMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ocorreu um erro ao selecionar o arquivo: {0}.
         /// </summary>
         internal static string selectTextErrorMessage {

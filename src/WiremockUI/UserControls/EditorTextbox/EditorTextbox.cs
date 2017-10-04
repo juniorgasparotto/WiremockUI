@@ -14,22 +14,29 @@ namespace WiremockUI
         private int start;
         #endregion
 
-        Stack<Func<object>> undoStack = new Stack<Func<object>>();
-        Stack<Func<object>> redoStack = new Stack<Func<object>>();
-        private bool enableFormatter;
-        private bool enableSearch;
+        private Stack<Func<object>> undoStack = new Stack<Func<object>>();
+        private Stack<Func<object>> redoStack = new Stack<Func<object>>();
+        private bool enableOptions;
 
-        public bool EnableHistory { get; set; } = true;
+        [DefaultValue(true)]
+        public bool EnableSearch { get; set; }
 
-        public bool EnableFormatter
+        [DefaultValue(true)]
+        public bool EnableFormatters { get; set; }
+
+        [DefaultValue(true)]
+        public bool EnableHistory { get; set; }
+
+        [DefaultValue(true)]
+        public bool EnableOptions
         {
-            get => enableFormatter;
+            get => enableOptions;
             set
             {
-                this.enableFormatter = value;
+                this.enableOptions = value;
                 if (value)
                 {
-                    var menu = txtContent.ContextMenuStrip ?? new ContextMenuStrip();
+                    var menu = new ContextMenuStrip();
                     var jsonMenu = new ToolStripMenuItem(Resource.jsonText);
                     var xmlMenu = new ToolStripMenuItem(Resource.xmlText);
 
@@ -44,13 +51,14 @@ namespace WiremockUI
                     var xmlUnescapeMenu = new ToolStripMenuItem();
                     var minifyXmlMenu = new ToolStripMenuItem();
                     var editXmlValueMenu = new ToolStripMenuItem();
+                    var searchMenu = new ToolStripMenuItem();
 
                     menu.Items.AddRange(new ToolStripMenuItem[]
                     {
                         jsonMenu,
-                        xmlMenu
+                        xmlMenu,
+                        searchMenu
                     });
-
 
                     jsonMenu.DropDownItems.AddRange(new ToolStripMenuItem[]
                     {
@@ -201,44 +209,26 @@ namespace WiremockUI
                         }
                     };
 
-
-                    txtContent.ContextMenuStrip = menu;
-                }
-                else
-                {
-                    // ToDo
-                }
-            }
-        }
-
-        public bool EnableSearch
-        {
-            get => enableSearch;
-            set
-            {
-                this.enableSearch = value;
-                if (value)
-                {
-                    var menu = txtContent.ContextMenuStrip ?? new ContextMenuStrip();
-                    var searchMenu = new ToolStripMenuItem();
-                    menu.Items.AddRange(new ToolStripMenuItem[]
-                    {
-                        searchMenu,
-                    });
-
                     // search
-                    searchMenu.Text = Resource.formatJsonMenu;
+                    searchMenu.Text = Resource.searchMenu;
                     searchMenu.ShortcutKeys = Keys.Control | Keys.F;
                     searchMenu.Click += (a, b) =>
                     {
-                        Search();
+                        OpenSearch();
+                    };
+
+                    menu.Opened += (o, e) =>
+                    {
+                        jsonMenu.Visible = EnableFormatters;
+                        xmlMenu.Visible = EnableFormatters;
+                        searchMenu.Visible = EnableSearch;
                     };
 
                     txtContent.ContextMenuStrip = menu;
                 }
                 else
                 {
-                    // ToDo
+                    txtContent.ContextMenuStrip = null;
                 }
             }
         }
@@ -275,6 +265,7 @@ namespace WiremockUI
             set => txtContent.ShowSelectionMargin = value;
         }
 
+        [DefaultValue(false)]
         public bool HideSelection
         {
             get => txtContent.HideSelection;
@@ -304,30 +295,35 @@ namespace WiremockUI
             set => txtContent.SelectedText = value;
         }
 
+        [DefaultValue(true)]
         public bool AcceptsTab
         {
             get => txtContent.AcceptsTab;
             set => txtContent.AcceptsTab = value;
         }
 
+        [DefaultValue(true)]
         public bool Multiline
         {
             get => txtContent.Multiline;
             set => txtContent.Multiline = value;
         }
-        
+
+        [DefaultValue(0)]
         public int MaxLength
         {
             get => txtContent.MaxLength;
             set => txtContent.MaxLength = value;
         }
 
+        [DefaultValue(false)]
         public bool DetectUrls
         {
             get => txtContent.DetectUrls;
             set => txtContent.DetectUrls = value;
         }
 
+        [DefaultValue(false)]
         public bool WordWrap
         {
             get => txtContent.WordWrap;
@@ -355,11 +351,16 @@ namespace WiremockUI
         public EditorTextBox()
         {
             InitializeComponent();
-            txtContent.AcceptsTab = true;
-            txtContent.Multiline = true;
-            txtContent.MaxLength = 0;
-            txtContent.DetectUrls = false;
-            txtContent.HideSelection = false;
+
+            AcceptsTab = true;
+            Multiline = true;
+            MaxLength = 0;
+            DetectUrls = false;
+            HideSelection = false;
+            EnableOptions = true;
+            EnableSearch = true;
+            EnableFormatters = true;
+
             this.txtSearchValue.Multiline = false;
             this.btnSearch.Text = Resource.btnSearch;
             this.btnClose.Text = Resource.btnClose;
@@ -413,9 +414,7 @@ namespace WiremockUI
             }
             else if (EnableSearch && e.Control && e.KeyCode == Keys.F)
             {
-                pnlSearch.Visible = !pnlSearch.Visible;
-                txtContent.DeselectAll();
-                txtSearchValue.Focus();
+                OpenSearch();
             }
             else if (EnableHistory && e.KeyCode == Keys.Z && ModifierKeys == Keys.Control)
             {
@@ -469,6 +468,13 @@ namespace WiremockUI
         }
 
         #region Search
+
+        private void OpenSearch()
+        {
+            pnlSearch.Visible = !pnlSearch.Visible;
+            txtContent.DeselectAll();
+            txtSearchValue.Focus();
+        }
 
         private void Search()
         {

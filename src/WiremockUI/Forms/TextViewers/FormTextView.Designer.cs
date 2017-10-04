@@ -37,7 +37,7 @@
             // 
             this.txtTitle.AcceptsTab = true;
             this.txtTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtTitle.EnableFormatter = false;
+            this.txtTitle.EnableOptions = false;
             this.txtTitle.EnableHistory = true;
             this.txtTitle.Location = new System.Drawing.Point(0, 0);
             this.txtTitle.MaxLength = 0;
@@ -62,7 +62,7 @@
             // 
             this.txtContent.AcceptsTab = true;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.EnableFormatter = false;
+            this.txtContent.EnableOptions = false;
             this.txtContent.EnableHistory = true;
             this.txtContent.Location = new System.Drawing.Point(0, 20);
             this.txtContent.MaxLength = 0;

@@ -103,7 +103,7 @@ namespace WiremockUI
             // 
             this.txtContent1.AcceptsTab = true;
             this.txtContent1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent1.EnableFormatter = false;
+            this.txtContent1.EnableOptions = false;
             this.txtContent1.Location = new System.Drawing.Point(0, 20);
             this.txtContent1.MaxLength = 0;
             this.txtContent1.Multiline = true;
@@ -146,7 +146,7 @@ namespace WiremockUI
             // 
             this.txtContent2.AcceptsTab = true;
             this.txtContent2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent2.EnableFormatter = false;
+            this.txtContent2.EnableOptions = false;
             this.txtContent2.Location = new System.Drawing.Point(0, 20);
             this.txtContent2.MaxLength = 0;
             this.txtContent2.Multiline = true;

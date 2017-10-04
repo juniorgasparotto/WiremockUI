@@ -41,7 +41,7 @@
             // 
             this.txtPath.AcceptsTab = true;
             this.txtPath.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtPath.EnableFormatter = false;
+            this.txtPath.EnableOptions = false;
             this.txtPath.Location = new System.Drawing.Point(0, 0);
             this.txtPath.MaxLength = 0;
             this.txtPath.Multiline = true;
@@ -86,7 +86,7 @@
             // 
             this.txtContent.AcceptsTab = true;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.EnableFormatter = false;
+            this.txtContent.EnableOptions = false;
             this.txtContent.Location = new System.Drawing.Point(0, 20);
             this.txtContent.MaxLength = 0;
             this.txtContent.Multiline = true;
