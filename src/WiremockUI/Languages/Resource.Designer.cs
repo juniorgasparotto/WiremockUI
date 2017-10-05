@@ -376,6 +376,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente substituir &quot;{0}&quot; ocorrências? Esse processo é irreversível..
+        /// </summary>
+        internal static string confirmReplaceMessage {
+            get {
+                return ResourceManager.GetString("confirmReplaceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copiar.
         /// </summary>
         internal static string copyMenu {
@@ -637,6 +646,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buscar na pasta:.
+        /// </summary>
+        internal static string lblFolder {
+            get {
+                return ResourceManager.GetString("lblFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to milisegundos.
         /// </summary>
         internal static string lblMiliseconds {
@@ -790,6 +808,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Localizar na pasta....
+        /// </summary>
+        internal static string menuFindInFiles {
+            get {
+                return ResourceManager.GetString("menuFindInFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Visualizador de JSON.
         /// </summary>
         internal static string menuJsonVisualizer {
@@ -799,7 +826,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Idiomas.
+        ///   Looks up a localized string similar to &amp;Idiomas.
         /// </summary>
         internal static string menuLanguages {
             get {
@@ -808,7 +835,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abrir pasta dos arquivos.
+        ///   Looks up a localized string similar to A&amp;brir pasta dos arquivos.
         /// </summary>
         internal static string menuOpenFilesFolder {
             get {
@@ -948,6 +975,15 @@ namespace WiremockUI.Languages {
         internal static string newMappingFileName {
             get {
                 return ResourceManager.GetString("newMappingFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nenhum arquivo com esse texto foi localizado.
+        /// </summary>
+        internal static string noFilesFoundMessage {
+            get {
+                return ResourceManager.GetString("noFilesFoundMessage", resourceCulture);
             }
         }
         

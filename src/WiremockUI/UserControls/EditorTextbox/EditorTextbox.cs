@@ -496,7 +496,6 @@ namespace WiremockUI
             this.btnReplace.Text = Resource.btnReplace;
             this.btnReplaceAll.Text = Resource.btnReplaceAll;
             this.pnlSearch.BackColor = Color.FromArgb(207, 214, 229);
-            txtContent.ShortcutsEnabled = false;
         }
 
         private void txtContent_KeyDown(object sender, KeyEventArgs e)

@@ -577,7 +577,7 @@
     <value>Scenario1</value>
   </data>
   <data name="menuOpenFilesFolder" xml:space="preserve">
-    <value>Open files folder</value>
+    <value>&amp;Open files folder</value>
   </data>
   <data name="startServerText" xml:space="preserve">
     <value>(Started)</value>
@@ -644,5 +644,17 @@
   </data>
   <data name="undoMenu" xml:space="preserve">
     <value>Undo</value>
+  </data>
+  <data name="menuFindInFiles" xml:space="preserve">
+    <value>&amp;Find in files...</value>
+  </data>
+  <data name="confirmReplaceMessage" xml:space="preserve">
+    <value>Do you really want to replace "{0}" occurrences? This process is irreversible.</value>
+  </data>
+  <data name="lblFolder" xml:space="preserve">
+    <value>Find in folder:</value>
+  </data>
+  <data name="noFilesFoundMessage" xml:space="preserve">
+    <value>No files with this text were found</value>
   </data>
 </root>

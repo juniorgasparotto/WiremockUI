@@ -93,6 +93,7 @@ namespace WiremockUI
             menuTextEditor.Text = Resource.menuTextEditor;
             menuJsonVisualizer.Text = Resource.menuJsonVisualizer;
             menuOpenFilesFolder.Text = Resource.menuOpenFilesFolder;
+            menuFindInFiles.Text = Resource.menuFindInFiles;
             lblSelectFileCompare.Text = Resource.lblSelectFileCompare;
             btnCancelFileSelectiong.Text = Resource.btnCancelFileSelectiong;
         }
@@ -1869,6 +1870,13 @@ namespace WiremockUI
         private void menuOpenFilesFolder_Click(object sender, EventArgs e)
         {
             ViewFileInExplorer(Helper.GetDbFilePath());
+        }
+
+        private void menuFindInFiles_Click(object sender, EventArgs e)
+        {
+            var title = GetMenuNameAsTabName(menuFindInFiles.Text);
+            var frm = new FormFindInFiles(this, Helper.GetDbFilePath());
+            TabMaster.AddTab(frm, null, title);
         }
     }
 }

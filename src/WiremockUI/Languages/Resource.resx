@@ -322,7 +322,7 @@
     <value>&amp;Visualizador de JSON</value>
   </data>
   <data name="menuLanguages" xml:space="preserve">
-    <value>Idiomas</value>
+    <value>&amp;Idiomas</value>
   </data>
   <data name="menuPlayAll" xml:space="preserve">
     <value>&amp;Iniciar todos</value>
@@ -577,7 +577,7 @@
     <value>Cenário1</value>
   </data>
   <data name="menuOpenFilesFolder" xml:space="preserve">
-    <value>Abrir pasta dos arquivos</value>
+    <value>A&amp;brir pasta dos arquivos</value>
   </data>
   <data name="startServerText" xml:space="preserve">
     <value>(Iniciado)</value>
@@ -630,6 +630,9 @@
   <data name="cutMenu" xml:space="preserve">
     <value>Recortar</value>
   </data>
+  <data name="menuFindInFiles" xml:space="preserve">
+    <value>&amp;Localizar na pasta...</value>
+  </data>
   <data name="pasteMenu" xml:space="preserve">
     <value>Colar</value>
   </data>
@@ -644,5 +647,14 @@
   </data>
   <data name="undoMenu" xml:space="preserve">
     <value>Desfazer</value>
+  </data>
+  <data name="confirmReplaceMessage" xml:space="preserve">
+    <value>Deseja realmente substituir "{0}" ocorrências? Esse processo é irreversível.</value>
+  </data>
+  <data name="lblFolder" xml:space="preserve">
+    <value>Buscar na pasta:</value>
+  </data>
+  <data name="noFilesFoundMessage" xml:space="preserve">
+    <value>Nenhum arquivo com esse texto foi localizado</value>
   </data>
 </root>
