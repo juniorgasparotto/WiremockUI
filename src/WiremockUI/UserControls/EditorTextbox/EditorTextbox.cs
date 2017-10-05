@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WiremockUI.Languages;
 
@@ -12,6 +13,8 @@ namespace WiremockUI
         #region Search
         private int indexOfSearchText;
         private int start;
+        private int searchPanelHeight;
+        private int replacePanelHeight;
         #endregion
 
         private Stack<Func<object>> undoStack = new Stack<Func<object>>();
@@ -40,6 +43,14 @@ namespace WiremockUI
                     var jsonMenu = new ToolStripMenuItem(Resource.jsonText);
                     var xmlMenu = new ToolStripMenuItem(Resource.xmlText);
 
+                    var copyMenu = new ToolStripMenuItem();
+                    var cutMenu = new ToolStripMenuItem();
+                    var pasteMenu = new ToolStripMenuItem();
+                    var undoMenu = new ToolStripMenuItem();
+                    var redoMenu = new ToolStripMenuItem();
+                    var selectAllMenu = new ToolStripMenuItem();
+                    var removeMenu = new ToolStripMenuItem();
+
                     var formatJsonMenu = new ToolStripMenuItem();
                     var jsonEscapeMenu = new ToolStripMenuItem();
                     var jsonUnescapeMenu = new ToolStripMenuItem();
@@ -53,11 +64,21 @@ namespace WiremockUI
                     var editXmlValueMenu = new ToolStripMenuItem();
                     var searchMenu = new ToolStripMenuItem();
 
-                    menu.Items.AddRange(new ToolStripMenuItem[]
+                    menu.Items.AddRange(new ToolStripItem[]
                     {
+                        undoMenu,
+                        redoMenu,
+                        new ToolStripSeparator(),
+                        selectAllMenu,
+                        copyMenu,
+                        cutMenu,
+                        pasteMenu,
+                        removeMenu,
+                        new ToolStripSeparator(),
+                        searchMenu,
+                        new ToolStripSeparator(),
                         jsonMenu,
                         xmlMenu,
-                        searchMenu
                     });
 
                     jsonMenu.DropDownItems.AddRange(new ToolStripMenuItem[]
@@ -217,11 +238,68 @@ namespace WiremockUI
                         OpenSearch();
                     };
 
+                    // copy menu
+                    copyMenu.Text = Resource.copyMenu;
+                    copyMenu.ShortcutKeys = Keys.Control | Keys.C;
+                    copyMenu.Click += (a, b) =>
+                    {
+                        txtContent.Copy();
+                    };
+
+                    // cut menu 
+                    cutMenu.Text = Resource.cutMenu;
+                    cutMenu.ShortcutKeys = Keys.Control | Keys.X;
+                    cutMenu.Click += (a, b) =>
+                    {
+                        txtContent.Cut();
+                    };
+
+                    // paste menu 
+                    pasteMenu.Text = Resource.pasteMenu;
+                    pasteMenu.ShortcutKeys = Keys.Control | Keys.V;
+                    pasteMenu.Click += (a, b) =>
+                    {
+                        txtContent.Paste();
+                    };
+
+                    // undo menu 
+                    undoMenu.Text = Resource.undoMenu;
+                    undoMenu.ShortcutKeys = Keys.Control | Keys.Z;
+                    undoMenu.Click += (a, b) =>
+                    {
+                        txtContent.Undo();
+                    };
+
+                    // retro menu 
+                    redoMenu.Text = Resource.redoMenu;
+                    redoMenu.ShortcutKeys = Keys.Control | Keys.Y;
+                    redoMenu.Click += (a, b) =>
+                    {
+                        txtContent.Redo();
+                    };
+
+                    // select all menu 
+                    selectAllMenu.Text = Resource.selectAllMenu;
+                    selectAllMenu.ShortcutKeys = Keys.Control | Keys.A;
+                    selectAllMenu.Click += (a, b) =>
+                    {
+                        txtContent.SelectAll();
+                    };
+
+                    // remove menu 
+                    removeMenu.Text = Resource.removeMenu;
+                    removeMenu.ShortcutKeys = Keys.Delete;
+                    removeMenu.Click += (a, b) =>
+                    {
+                        if (!string.IsNullOrEmpty(txtContent.SelectedText))
+                            txtContent.SelectedText = "";
+                    };
+
                     menu.Opened += (o, e) =>
                     {
-                        jsonMenu.Visible = EnableFormatters;
-                        xmlMenu.Visible = EnableFormatters;
-                        searchMenu.Visible = EnableSearch;
+                        jsonMenu.Enabled = EnableFormatters;
+                        xmlMenu.Enabled = EnableFormatters;
+                        searchMenu.Enabled = EnableSearch;
                     };
 
                     txtContent.ContextMenuStrip = menu;
@@ -229,6 +307,32 @@ namespace WiremockUI
                 else
                 {
                     txtContent.ContextMenuStrip = null;
+                }
+            }
+        }
+
+        [DefaultValue(false)]
+        public bool EnableReplace
+        {
+            get
+            {
+                return pnlReplace.Visible;
+            }
+            set
+            {
+                var down = Properties.Resources.arrow_down;
+                var up = Properties.Resources.arrow_up;
+                pnlReplace.Visible = value;
+
+                if (value)
+                {
+                    this.imgToggleReplace.Image = up;
+                    this.pnlSearch.Height = this.replacePanelHeight;
+                }
+                else
+                {
+                    this.imgToggleReplace.Image = down;
+                    this.pnlSearch.Height = this.searchPanelHeight;
                 }
             }
         }
@@ -373,6 +477,9 @@ namespace WiremockUI
         {
             InitializeComponent();
 
+            this.searchPanelHeight = this.pnlSearch.Height - this.pnlReplace.Height;
+            this.replacePanelHeight = this.pnlSearch.Height;
+
             AcceptsTab = true;
             Multiline = true;
             MaxLength = 0;
@@ -382,18 +489,22 @@ namespace WiremockUI
             EnableOptions = true;
             EnableSearch = true;
             EnableFormatters = true;
+            EnableReplace = false;
 
             this.txtSearchValue.Multiline = false;
             this.btnSearch.Text = Resource.btnSearch;
-            this.btnClose.Text = Resource.btnClose;
+            this.btnReplace.Text = Resource.btnReplace;
+            this.btnReplaceAll.Text = Resource.btnReplaceAll;
+            this.pnlSearch.BackColor = Color.FromArgb(207, 214, 229);
+            txtContent.ShortcutsEnabled = false;
         }
 
         private void txtContent_KeyDown(object sender, KeyEventArgs e)
         {
             var spaces = "    ";
 
-            if (e.KeyCode == Keys.ControlKey && ModifierKeys == Keys.Control) { }
-            else if (e.KeyCode == Keys.A && ModifierKeys == Keys.Control)
+            //if (e.KeyCode == Keys.ControlKey && ModifierKeys == Keys.Control) { }
+            if (e.KeyCode == Keys.A && ModifierKeys == Keys.Control)
             {
                 ((RichTextBox)sender).SelectAll();
                 e.Handled = true;
@@ -438,27 +549,28 @@ namespace WiremockUI
             {
                 OpenSearch();
             }
-            else if (EnableHistory && e.KeyCode == Keys.Z && ModifierKeys == Keys.Control)
-            {
-                if (undoStack.Count > 0)
-                {
-                    StackPush(sender, redoStack);
-                    undoStack.Pop()();
-                }
-            }
-            else if (EnableHistory && e.KeyCode == Keys.Y && ModifierKeys == Keys.Control)
-            {
-                if (redoStack.Count > 0)
-                {
-                    StackPush(sender, undoStack);
-                    redoStack.Pop()();
-                }
-            }
-            else if (EnableHistory)
-            {
-                redoStack.Clear();
-                StackPush(sender, undoStack);
-            }
+            // The CONTROL + Z dont is captured by this event. Need more investigation
+            //else if (EnableHistory && e.KeyCode == Keys.Z && ModifierKeys == Keys.Control)
+            //{
+            //    if (undoStack.Count > 0)
+            //    {
+            //        StackPush(sender, redoStack);
+            //        undoStack.Pop()();
+            //    }
+            //}
+            //else if (EnableHistory && e.Modifiers == Keys.Control && e.KeyCode == Keys.Z)
+            //{
+            //    if (redoStack.Count > 0)
+            //    {
+            //        StackPush(sender, undoStack);
+            //        redoStack.Pop()();
+            //    }
+            //}
+            //else if (EnableHistory)
+            //{
+            //    redoStack.Clear();
+            //    StackPush(sender, undoStack);
+            //}
         }
 
         private void StackPush(object sender, Stack<Func<object>> stack)
@@ -477,7 +589,6 @@ namespace WiremockUI
                 return textBox;
             };
         }
-
 
         public void ScrollToCaret()
         {
@@ -498,9 +609,8 @@ namespace WiremockUI
             txtSearchValue.Focus();
         }
 
-        private void Search()
+        private void Search(string replaceText = null)
         {
-
             int startindex = 0;
 
             if (txtSearchValue.Text.Length > 0)
@@ -521,6 +631,7 @@ namespace WiremockUI
             {
                 int endindex = txtSearchValue.Text.Length;
                 txtContent.Select(startindex, endindex);
+
                 start = startindex + endindex;
             }
         }
@@ -561,10 +672,52 @@ namespace WiremockUI
             return retVal;
         }
 
+        private void CloseSearch()
+        {
+            pnlSearch.Visible = false;
+            txtContent.DeselectAll();
+            EnableReplace = false;
+        }
+
+        private void ReplaceAll(string word, string replacement)
+        {
+            int i = 0;
+            int n = 0;
+            int a = replacement.Length - word.Length;
+            foreach (Match m in Regex.Matches(this.txtContent.Text, word))
+            {
+                this.txtContent.Select(m.Index + i, word.Length);
+                i += a;
+                this.txtContent.SelectedText = replacement;
+                n++;
+            }
+
+            if (i > 0)
+                start = 0;
+        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             Search();
+        }
+
+        private void btnReplace_Click(object sender, EventArgs e)
+        {
+            if (this.SelectedText == this.txtSearchValue.Text)
+            {
+                this.SelectedText = this.txtReplaceText.Text;
+                start = 0;
+            }
+            else
+            {
+                Search();
+            }
+        }
+
+        private void btnReplaceAll_Click(object sender, EventArgs e)
+        {
+            //this.txtContent.Text = this.txtContent.Text.Replace(this.txtSearchValue.Text, this.txtReplaceText.Text);
+            ReplaceAll(this.txtSearchValue.Text, this.txtReplaceText.Text);
         }
 
         private void txtSearchValue_KeyDown(object sender, KeyEventArgs e)
@@ -573,12 +726,16 @@ namespace WiremockUI
                 Search();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void imgClose_Click(object sender, EventArgs e)
         {
-            pnlSearch.Visible = false;
-            txtContent.DeselectAll();
+            CloseSearch();
         }
 
-        #endregion        
+        private void imgToggleReplace_Click(object sender, EventArgs e)
+        {
+            EnableReplace = !EnableReplace;
+        }
+        
+        #endregion
     }
 }

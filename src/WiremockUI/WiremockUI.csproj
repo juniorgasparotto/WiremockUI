@@ -435,6 +435,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Images\arrow-down.png" />
+    <None Include="Images\arrow-up.png" />
+    <None Include="Images\close-2.png" />
     <Content Include="Jar\wiremock-standalone-2.7.1.jar">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

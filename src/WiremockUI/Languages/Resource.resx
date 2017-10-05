@@ -621,4 +621,28 @@
   <data name="searchMenu" xml:space="preserve">
     <value>Localizar</value>
   </data>
+  <data name="btnReplaceAll" xml:space="preserve">
+    <value>Substituir todos</value>
+  </data>
+  <data name="copyMenu" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="cutMenu" xml:space="preserve">
+    <value>Recortar</value>
+  </data>
+  <data name="pasteMenu" xml:space="preserve">
+    <value>Colar</value>
+  </data>
+  <data name="redoMenu" xml:space="preserve">
+    <value>Refazer</value>
+  </data>
+  <data name="removeMenu" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="selectAllMenu" xml:space="preserve">
+    <value>Selecionar tudo</value>
+  </data>
+  <data name="undoMenu" xml:space="preserve">
+    <value>Desfazer</value>
+  </data>
 </root>

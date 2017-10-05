@@ -259,6 +259,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Substituir todos.
+        /// </summary>
+        internal static string btnReplaceAll {
+            get {
+                return ResourceManager.GetString("btnReplaceAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Salvar.
         /// </summary>
         internal static string btnSaveFile {
@@ -363,6 +372,24 @@ namespace WiremockUI.Languages {
         internal static string confirmRefreshAll {
             get {
                 return ResourceManager.GetString("confirmRefreshAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copiar.
+        /// </summary>
+        internal static string copyMenu {
+            get {
+                return ResourceManager.GetString("copyMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recortar.
+        /// </summary>
+        internal static string cutMenu {
+            get {
+                return ResourceManager.GetString("cutMenu", resourceCulture);
             }
         }
         
@@ -979,6 +1006,24 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Colar.
+        /// </summary>
+        internal static string pasteMenu {
+            get {
+                return ResourceManager.GetString("pasteMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refazer.
+        /// </summary>
+        internal static string redoMenu {
+            get {
+                return ResourceManager.GetString("redoMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deseja realmente remover esse arquivo?.
         /// </summary>
         internal static string removeMappingConfirmMessage {
@@ -993,6 +1038,15 @@ namespace WiremockUI.Languages {
         internal static string removeMappingErrorMessage {
             get {
                 return ResourceManager.GetString("removeMappingErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excluir.
+        /// </summary>
+        internal static string removeMenu {
+            get {
+                return ResourceManager.GetString("removeMenu", resourceCulture);
             }
         }
         
@@ -1128,6 +1182,15 @@ namespace WiremockUI.Languages {
         internal static string searchMenu {
             get {
                 return ResourceManager.GetString("searchMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecionar tudo.
+        /// </summary>
+        internal static string selectAllMenu {
+            get {
+                return ResourceManager.GetString("selectAllMenu", resourceCulture);
             }
         }
         
@@ -1452,6 +1515,15 @@ namespace WiremockUI.Languages {
         internal static string txtAboutText {
             get {
                 return ResourceManager.GetString("txtAboutText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desfazer.
+        /// </summary>
+        internal static string undoMenu {
+            get {
+                return ResourceManager.GetString("undoMenu", resourceCulture);
             }
         }
         

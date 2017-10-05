@@ -190,7 +190,7 @@ def compareTest():
     click2(Pattern("urlWR.png").targetOffset(-285,-1))
     type2("http://localhost:5500/user/insert")
     click2(Pattern("BodyHeaderFi.png").targetOffset(-49,2))
-    click2(Pattern("HeadersBdYHe.png").targetOffset(-75,3))
+    click2(Pattern("BodHeaderFin.png").targetOffset(-34,-7))
     type2('{"Name":"User3","Age":60}')
     rightClick2(Location(524, 169))
     click2("menuJson.png")
