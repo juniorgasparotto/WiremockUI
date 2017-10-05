@@ -51,23 +51,23 @@ criar copiar especial: XML Encode, XML decode, XML compact - ok
 criar copiar especial: JSON Encode, Json decode, JSON compact - ok
 formatar selecao no editortextbox - ok
 criar esquema para abrir o url dos mapas no browser ou em um componente de composer (é possivel, mas sujeito a erros) - ok
+criar pesquisar em todos os editorbox - OK
+criar replace em todos os editorbox - ok
+criar find all e replace all - ok
 
 -- ToDo
 
 melhorar CONTROL + Z do editor
-criar pesquisar em todos os editorbox - OK
-criar replace em todos os editorbox
-criar find all e replace all
 criar agrupar por URL
 criar copiar para area de transferecia
   - url do serviço final
   - url do proxy
   - comando java -jar 
   - curl
-criar mecanismo para criar um novo mapa usando o Webrequest
 fazer um jeito de nao fechar se existir alteração na janela, perguntar antes
 melhorar tamanho das abas para ter tamanho fixo, adicinoar "..."
 
+criar mecanismo para criar um novo mapa usando o Webrequest
 verificar se wiremock aceita multiplos níveis de pasta para os mapas - aceita
 ao mudar o cenário default, fazer auto play
 criar rename para os responses, incluindo seu tipo
