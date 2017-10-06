@@ -4,14 +4,14 @@ namespace WiremockUI
 {
     public interface ILogWriter
     {
-        void Write(string value);
-        void Write(string value, Color color, bool bold = false);
+        void Write(string value, bool force = false);
+        void Write(string value, Color color, bool bold = false, bool force = false);
 
-        void WriteLine();
-        void WriteLine(string value);
-        void WriteLine(string value, Color color, bool bold = false);
+        void WriteLine(bool force = false);
+        void WriteLine(string value, bool force = false);
+        void WriteLine(string value, Color color, bool bold = false, bool force = false);
 
-        void Error(string value, bool bold = false);
-        void Info(string value, bool bold = false);
+        void Error(string value, bool bold = false, bool force = false);
+        void Info(string value, bool bold = false, bool force = false);
     }
 }

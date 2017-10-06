@@ -1314,10 +1314,13 @@ namespace WiremockUI
                 recordText = " " + Resource.startServerText;
 
             TabMaster.AddTab(frmStart, scenario.Id, scenario.Name + recordText)
-                .CanClose = () => {
-                    if (Helper.MessageBoxQuestion(Resource.stopServerConfirmMessage) == DialogResult.Yes)
+                .CanClose = () => 
+                {
+                    if (Helper.MessageBoxQuestion(string.Format(Resource.stopServerConfirmMessage, server.Name)) == DialogResult.Yes)
+                    { 
                         StopService(scenario);
-
+                        return true;
+                    }
                     return false;
                 };
 
@@ -1423,10 +1426,12 @@ namespace WiremockUI
 
         private void RefreshAll()
         {
+            if (!tabForms.TabPages.CloseAll())
+                return;
+
             UpdateLabels();
             StopAll();
             treeServices.Nodes.Clear();
-            tabForms.TabPages.Clear();
             LoadServers();
         }
 
@@ -1582,7 +1587,11 @@ namespace WiremockUI
 
         private void FormMaster_FormClosing(object sender, FormClosingEventArgs e)
         {
-            StopAll();
+            if (!tabForms.TabPages.CloseAll())
+                e.Cancel = true;
+            else
+                // only to clean any trash
+                StopAll();
         }
 
         private void menuStopAll_Click(object sender, EventArgs e)
@@ -1602,8 +1611,8 @@ namespace WiremockUI
 
         private void menuRefresh_Click(object sender, EventArgs e)
         {
-            if (Helper.MessageBoxQuestion(Resource.confirmRefreshAll) == DialogResult.Yes)
-                RefreshAll();
+            //if (Helper.MessageBoxQuestion(Resource.confirmRefreshAll) == DialogResult.Yes)
+            RefreshAll();
         }
 
         private void treeServices_MouseMove(object sender, MouseEventArgs e)

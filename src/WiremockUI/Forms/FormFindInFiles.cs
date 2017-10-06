@@ -68,7 +68,7 @@ namespace WiremockUI
             this.EnableReplace = false;
         }
 
-        private List<FileFound> Search(string text)
+        private List<FileFound> Search(string text, bool caseSensitive)
         {
             var files = new List<FileFound>();
 
@@ -77,7 +77,7 @@ namespace WiremockUI
 
             gridFiles.Rows.Clear();
 
-            DirSearch(this.txtFolder.Text, text, files);
+            DirSearch(this.txtFolder.Text, text, files, caseSensitive);
             if (files.Count > 0)
             {
                 foreach (var f in files)
@@ -91,9 +91,9 @@ namespace WiremockUI
             return files;
         }
 
-        private void Replace(string search, string replace)
+        private void Replace(string search, string replace, bool caseSensitive)
         {
-            var files = Search(search);
+            var files = Search(search, caseSensitive);
             if (files.Count > 0)
             {
                 if (Helper.MessageBoxQuestion(string.Format(Resource.confirmReplaceMessage, files.Count)) == DialogResult.Yes)
@@ -103,7 +103,13 @@ namespace WiremockUI
                         try
                         {
                             var content = File.ReadAllText(f.Path);
-                            string result = Regex.Replace(content, search, replace, RegexOptions.IgnoreCase);
+                            string result;
+                            
+                            if (caseSensitive)
+                                result = Regex.Replace(content, search, replace, RegexOptions.None);
+                            else
+                                result = Regex.Replace(content, search, replace, RegexOptions.IgnoreCase);
+
                             File.WriteAllText(f.Path, result);
                         }
                         catch (Exception ex)
@@ -115,35 +121,35 @@ namespace WiremockUI
             }
         }
 
-        private void DirSearch(string sDir, string searchText, List<FileFound> filesFound)
+        private void DirSearch(string sDir, string searchText, List<FileFound> filesFound, bool caseSensitive)
         {
             try
             {
                 var maxGetContent = 309;
                 var i = 1;
-                foreach (var directory in Directory.GetDirectories(sDir))
+                var directory = new DirectoryInfo(sDir);
+                
+                foreach (var filename in directory.GetFiles())
                 {
-                    foreach (var filename in Directory.GetFiles(directory))
+                    using (var streamReader = new StreamReader(filename.FullName))
                     {
-                        using (var streamReader = new StreamReader(filename))
+                        var contents = caseSensitive ? streamReader.ReadToEnd() : streamReader.ReadToEnd().ToLower();
+                        var index = caseSensitive ? contents.IndexOf(searchText) : contents.IndexOf(searchText.ToLower());
+                        if (index != -1)
                         {
-                            var contents = streamReader.ReadToEnd().ToLower();
-                            var index = contents.IndexOf(searchText.ToLower());
-                            if (index != -1)
+                            var maxGet = (index + maxGetContent > contents.Length) ? contents.Length - index : maxGetContent;
+                            filesFound.Add(new FileFound
                             {
-                                var maxGet = (index + maxGetContent > contents.Length) ? contents.Length - index : maxGetContent;
-                                filesFound.Add(new FileFound
-                                {
-                                    Sequence = i++,
-                                    Content = SafeSubstring(contents, index, maxGetContent),
-                                    Path = filename
-                                });
-                            }
+                                Sequence = i++,
+                                Content = SafeSubstring(contents, index, maxGetContent),
+                                Path = filename.FullName
+                            });
                         }
                     }
-
-                    DirSearch(directory, searchText, filesFound);
                 }
+
+                foreach (var subDir in directory.GetDirectories())
+                    DirSearch(subDir.FullName, searchText, filesFound, caseSensitive);
             }
             catch (Exception ex)
             {
@@ -198,12 +204,12 @@ namespace WiremockUI
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            Search(this.txtSearchValue.Text);
+            Search(this.txtSearchValue.Text, this.chkCaseSensitive.Checked);
         }
 
         private void btnReplaceAll_Click(object sender, EventArgs e)
         {
-            Replace(this.txtSearchValue.Text, this.txtReplaceText.Text);
+            Replace(this.txtSearchValue.Text, this.txtReplaceText.Text, this.chkCaseSensitive.Checked);
         }
 
         private void FormFindInFiles_Resize(object sender, EventArgs e)

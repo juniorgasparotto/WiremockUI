@@ -160,6 +160,20 @@ namespace WiremockUI
                 this.tabPages.Add(item);
             }
 
+            public bool CloseAll()
+            {
+                while (this.tabControl.SelectedTab != null)
+                {
+                    var selectedTab = this.tabControl.SelectedTab as TabPageCustom;
+                    if (selectedTab.CanClose != null && !selectedTab.CanClose())
+                        return false;
+                    else
+                        Remove(selectedTab);
+                }
+
+                return true;
+            }
+
             public void Clear()
             {
                 this.tabPages.Clear();
@@ -198,7 +212,8 @@ namespace WiremockUI
 
             public void RemoveAt(int index)
             {
-                tabPages.RemoveAt(index);
+                if (tabPages.Count > index)
+                    tabPages.RemoveAt(index);
             }
 
             IEnumerator IEnumerable.GetEnumerator()

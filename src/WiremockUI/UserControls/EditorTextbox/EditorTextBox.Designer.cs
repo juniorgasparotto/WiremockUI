@@ -31,10 +31,6 @@ namespace WiremockUI
         private void InitializeComponent()
         {
             this.pnlSearch = new System.Windows.Forms.Panel();
-            this.pnlReplace = new System.Windows.Forms.Panel();
-            this.btnReplaceAll = new System.Windows.Forms.Button();
-            this.btnReplace = new System.Windows.Forms.Button();
-            this.txtReplaceText = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imgClose = new System.Windows.Forms.PictureBox();
             this.imgToggleReplace = new System.Windows.Forms.PictureBox();
@@ -42,12 +38,16 @@ namespace WiremockUI
             this.txtSearchValue = new System.Windows.Forms.TextBox();
             this.txtContent = new System.Windows.Forms.RichTextBox();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.pnlReplace = new System.Windows.Forms.Panel();
+            this.btnReplaceAll = new System.Windows.Forms.Button();
+            this.btnReplace = new System.Windows.Forms.Button();
+            this.txtReplaceText = new System.Windows.Forms.TextBox();
             this.pnlSearch.SuspendLayout();
-            this.pnlReplace.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgToggleReplace)).BeginInit();
             this.pnlContent.SuspendLayout();
+            this.pnlReplace.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSearch
@@ -64,46 +64,6 @@ namespace WiremockUI
             this.pnlSearch.Size = new System.Drawing.Size(629, 67);
             this.pnlSearch.TabIndex = 31;
             this.pnlSearch.Visible = false;
-            // 
-            // pnlReplace
-            // 
-            this.pnlReplace.Controls.Add(this.btnReplaceAll);
-            this.pnlReplace.Controls.Add(this.btnReplace);
-            this.pnlReplace.Controls.Add(this.txtReplaceText);
-            this.pnlReplace.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlReplace.Location = new System.Drawing.Point(0, 36);
-            this.pnlReplace.Name = "pnlReplace";
-            this.pnlReplace.Size = new System.Drawing.Size(604, 31);
-            this.pnlReplace.TabIndex = 9;
-            // 
-            // btnReplaceAll
-            // 
-            this.btnReplaceAll.Location = new System.Drawing.Point(331, 1);
-            this.btnReplaceAll.Name = "btnReplaceAll";
-            this.btnReplaceAll.Size = new System.Drawing.Size(95, 22);
-            this.btnReplaceAll.TabIndex = 9;
-            this.btnReplaceAll.Text = "Substituir todos";
-            this.btnReplaceAll.UseVisualStyleBackColor = true;
-            this.btnReplaceAll.Click += new System.EventHandler(this.btnReplaceAll_Click);
-            // 
-            // btnReplace
-            // 
-            this.btnReplace.Location = new System.Drawing.Point(250, 1);
-            this.btnReplace.Name = "btnReplace";
-            this.btnReplace.Size = new System.Drawing.Size(75, 22);
-            this.btnReplace.TabIndex = 8;
-            this.btnReplace.Text = "Substituir";
-            this.btnReplace.UseVisualStyleBackColor = true;
-            this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
-            // 
-            // txtReplaceText
-            // 
-            this.txtReplaceText.AcceptsTab = true;
-            this.txtReplaceText.Location = new System.Drawing.Point(30, 2);
-            this.txtReplaceText.MaxLength = 0;
-            this.txtReplaceText.Name = "txtReplaceText";
-            this.txtReplaceText.Size = new System.Drawing.Size(214, 20);
-            this.txtReplaceText.TabIndex = 7;
             // 
             // panel1
             // 
@@ -178,6 +138,44 @@ namespace WiremockUI
             this.pnlContent.Size = new System.Drawing.Size(629, 220);
             this.pnlContent.TabIndex = 33;
             // 
+            // pnlReplace
+            // 
+            this.pnlReplace.Controls.Add(this.btnReplaceAll);
+            this.pnlReplace.Controls.Add(this.btnReplace);
+            this.pnlReplace.Controls.Add(this.txtReplaceText);
+            this.pnlReplace.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlReplace.Location = new System.Drawing.Point(0, 36);
+            this.pnlReplace.Name = "pnlReplace";
+            this.pnlReplace.Size = new System.Drawing.Size(604, 31);
+            this.pnlReplace.TabIndex = 9;
+            // 
+            // btnReplaceAll
+            // 
+            this.btnReplaceAll.Location = new System.Drawing.Point(331, 1);
+            this.btnReplaceAll.Name = "btnReplaceAll";
+            this.btnReplaceAll.Size = new System.Drawing.Size(95, 22);
+            this.btnReplaceAll.TabIndex = 9;
+            this.btnReplaceAll.Text = "Substituir todos";
+            this.btnReplaceAll.UseVisualStyleBackColor = true;
+            // 
+            // btnReplace
+            // 
+            this.btnReplace.Location = new System.Drawing.Point(250, 1);
+            this.btnReplace.Name = "btnReplace";
+            this.btnReplace.Size = new System.Drawing.Size(75, 22);
+            this.btnReplace.TabIndex = 8;
+            this.btnReplace.Text = "Substituir";
+            this.btnReplace.UseVisualStyleBackColor = true;
+            // 
+            // txtReplaceText
+            // 
+            this.txtReplaceText.AcceptsTab = true;
+            this.txtReplaceText.Location = new System.Drawing.Point(30, 2);
+            this.txtReplaceText.MaxLength = 0;
+            this.txtReplaceText.Name = "txtReplaceText";
+            this.txtReplaceText.Size = new System.Drawing.Size(214, 20);
+            this.txtReplaceText.TabIndex = 7;
+            // 
             // EditorTextBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,13 +187,13 @@ namespace WiremockUI
             this.Size = new System.Drawing.Size(629, 287);
             this.pnlSearch.ResumeLayout(false);
             this.pnlSearch.PerformLayout();
-            this.pnlReplace.ResumeLayout(false);
-            this.pnlReplace.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgToggleReplace)).EndInit();
             this.pnlContent.ResumeLayout(false);
+            this.pnlReplace.ResumeLayout(false);
+            this.pnlReplace.PerformLayout();
             this.ResumeLayout(false);
 
         }

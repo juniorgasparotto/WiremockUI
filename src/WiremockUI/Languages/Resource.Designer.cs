@@ -331,11 +331,20 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desativar log.
+        ///   Looks up a localized string similar to Desativar log da tabela.
         /// </summary>
-        internal static string chkDisable {
+        internal static string chkDisableLogTable {
             get {
-                return ResourceManager.GetString("chkDisable", resourceCulture);
+                return ResourceManager.GetString("chkDisableLogTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desativar log de texto.
+        /// </summary>
+        internal static string chkDisableLogText {
+            get {
+                return ResourceManager.GetString("chkDisableLogText", resourceCulture);
             }
         }
         
@@ -1339,7 +1348,7 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deseja realmente parar o servidor?.
+        ///   Looks up a localized string similar to Deseja realmente parar o servidor &quot;{0}&quot;?.
         /// </summary>
         internal static string stopServerConfirmMessage {
             get {
@@ -1560,6 +1569,15 @@ namespace WiremockUI.Languages {
         internal static string undoMenu {
             get {
                 return ResourceManager.GetString("undoMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente fechar o arquivo &quot;{0}&quot; sem salvar as alterações?.
+        /// </summary>
+        internal static string unsavedFileMessage {
+            get {
+                return ResourceManager.GetString("unsavedFileMessage", resourceCulture);
             }
         }
         

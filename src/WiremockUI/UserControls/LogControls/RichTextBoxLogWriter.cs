@@ -18,9 +18,9 @@ namespace WiremockUI
             _output = output;
         }
 
-        public void Write(string value, Color color, bool bold = false)
+        public void Write(string value, Color color, bool bold = false, bool force = false)
         {
-            if (!Enabled)
+            if (!Enabled && !force)
                 return;
 
             if (_output.InvokeRequired)
@@ -34,37 +34,37 @@ namespace WiremockUI
             }
         }
 
-        public void WriteLine(string value, Color color, bool bold = false)
+        public void WriteLine(string value, Color color, bool bold = false, bool force = false)
         {
-            Write(value, color, bold);
-            Write("\r\n");
-            Write("\r\n");
+            Write(value, color, bold, force: force);
+            Write("\r\n", force: force);
+            Write("\r\n", force: force);
         }
 
-        public void Error(string value, bool bold = false)
+        public void Error(string value, bool bold = false, bool force = false)
         {
-            WriteLine(value, Color.Red, bold);
+            WriteLine(value, Color.Red, bold, force: force);
         }
 
-        public void Info(string value, bool bold = false)
+        public void Info(string value, bool bold = false, bool force = false)
         {
-            WriteLine(value, Color.Black, bold);
+            WriteLine(value, Color.Black, bold, force: force);
         }
 
-        public void Write(string value)
+        public void Write(string value, bool force = false)
         {
-            Write(value, Color.Black);
+            Write(value, Color.Black, force: force);
         }
 
-        public void WriteLine()
+        public void WriteLine(bool force = false)
         {
-            Write("\r\n");
+            Write("\r\n", force: force);
         }
 
-        public void WriteLine(string value)
+        public void WriteLine(string value, bool force = false)
         {
-            Write(value);
-            Write("\r\n");
+            Write(value, force: force);
+            Write("\r\n", force: force);
         }
 
         private void AppendText(string text, Color color, bool bold)

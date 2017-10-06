@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSearch = new System.Windows.Forms.Panel();
+            this.lblFolder = new System.Windows.Forms.Label();
+            this.txtFolder = new System.Windows.Forms.TextBox();
             this.pnlReplace = new System.Windows.Forms.Panel();
             this.btnReplaceAll = new System.Windows.Forms.Button();
             this.txtReplaceText = new System.Windows.Forms.TextBox();
@@ -37,8 +39,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchValue = new System.Windows.Forms.TextBox();
             this.gridFiles = new System.Windows.Forms.DataGridView();
-            this.lblFolder = new System.Windows.Forms.Label();
-            this.txtFolder = new System.Windows.Forms.TextBox();
+            this.chkCaseSensitive = new System.Windows.Forms.CheckBox();
             this.colSequence = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +52,7 @@
             // pnlSearch
             // 
             this.pnlSearch.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlSearch.Controls.Add(this.chkCaseSensitive);
             this.pnlSearch.Controls.Add(this.lblFolder);
             this.pnlSearch.Controls.Add(this.txtFolder);
             this.pnlSearch.Controls.Add(this.pnlReplace);
@@ -60,15 +62,35 @@
             this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSearch.Location = new System.Drawing.Point(0, 0);
             this.pnlSearch.Name = "pnlSearch";
-            this.pnlSearch.Size = new System.Drawing.Size(496, 113);
+            this.pnlSearch.Size = new System.Drawing.Size(496, 125);
             this.pnlSearch.TabIndex = 32;
+            // 
+            // lblFolder
+            // 
+            this.lblFolder.AutoSize = true;
+            this.lblFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFolder.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblFolder.Location = new System.Drawing.Point(27, 9);
+            this.lblFolder.Name = "lblFolder";
+            this.lblFolder.Size = new System.Drawing.Size(103, 13);
+            this.lblFolder.TabIndex = 11;
+            this.lblFolder.Text = "Buscar na pasta:";
+            // 
+            // txtFolder
+            // 
+            this.txtFolder.AcceptsTab = true;
+            this.txtFolder.Location = new System.Drawing.Point(30, 25);
+            this.txtFolder.MaxLength = 0;
+            this.txtFolder.Name = "txtFolder";
+            this.txtFolder.Size = new System.Drawing.Size(225, 20);
+            this.txtFolder.TabIndex = 10;
             // 
             // pnlReplace
             // 
             this.pnlReplace.Controls.Add(this.btnReplaceAll);
             this.pnlReplace.Controls.Add(this.txtReplaceText);
             this.pnlReplace.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlReplace.Location = new System.Drawing.Point(0, 82);
+            this.pnlReplace.Location = new System.Drawing.Point(0, 94);
             this.pnlReplace.Name = "pnlReplace";
             this.pnlReplace.Size = new System.Drawing.Size(496, 31);
             this.pnlReplace.TabIndex = 9;
@@ -126,65 +148,57 @@
             // gridFiles
             // 
             this.gridFiles.AllowUserToAddRows = false;
+            this.gridFiles.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gridFiles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridFiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.gridFiles.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.gridFiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridFiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSequence,
             this.colFilePath,
             this.colContent});
             this.gridFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridFiles.Location = new System.Drawing.Point(0, 113);
+            this.gridFiles.Location = new System.Drawing.Point(0, 125);
             this.gridFiles.Name = "gridFiles";
-            this.gridFiles.Size = new System.Drawing.Size(496, 148);
+            this.gridFiles.Size = new System.Drawing.Size(496, 136);
             this.gridFiles.TabIndex = 33;
             this.gridFiles.DoubleClick += new System.EventHandler(this.gridFiles_DoubleClick);
             // 
-            // lblFolder
+            // chkCaseSensitive
             // 
-            this.lblFolder.AutoSize = true;
-            this.lblFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFolder.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblFolder.Location = new System.Drawing.Point(27, 9);
-            this.lblFolder.Name = "lblFolder";
-            this.lblFolder.Size = new System.Drawing.Size(103, 13);
-            this.lblFolder.TabIndex = 11;
-            this.lblFolder.Text = "Buscar na pasta:";
-            // 
-            // txtFolder
-            // 
-            this.txtFolder.AcceptsTab = true;
-            this.txtFolder.Location = new System.Drawing.Point(30, 25);
-            this.txtFolder.MaxLength = 0;
-            this.txtFolder.Name = "txtFolder";
-            this.txtFolder.Size = new System.Drawing.Size(225, 20);
-            this.txtFolder.TabIndex = 10;
+            this.chkCaseSensitive.AutoSize = true;
+            this.chkCaseSensitive.Location = new System.Drawing.Point(30, 73);
+            this.chkCaseSensitive.Name = "chkCaseSensitive";
+            this.chkCaseSensitive.Size = new System.Drawing.Size(94, 17);
+            this.chkCaseSensitive.TabIndex = 12;
+            this.chkCaseSensitive.Text = "Case sensitive";
+            this.chkCaseSensitive.UseVisualStyleBackColor = true;
             // 
             // colSequence
             // 
-            this.colSequence.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.colSequence.Frozen = true;
             this.colSequence.HeaderText = "Seq.";
             this.colSequence.Name = "colSequence";
             this.colSequence.ReadOnly = true;
-            this.colSequence.Width = 54;
+            this.colSequence.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colSequence.Width = 35;
             // 
             // colFilePath
             // 
-            this.colFilePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colFilePath.Frozen = true;
+            this.colFilePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.colFilePath.HeaderText = "File";
             this.colFilePath.Name = "colFilePath";
             this.colFilePath.ReadOnly = true;
-            this.colFilePath.Width = 48;
+            this.colFilePath.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colFilePath.Width = 29;
             // 
             // colContent
             // 
-            this.colContent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colContent.HeaderText = "Content";
             this.colContent.Name = "colContent";
             this.colContent.ReadOnly = true;
+            this.colContent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colContent.Width = 50;
             // 
             // FormFindInFiles
             // 
@@ -220,6 +234,7 @@
         private System.Windows.Forms.DataGridView gridFiles;
         private System.Windows.Forms.Label lblFolder;
         private System.Windows.Forms.TextBox txtFolder;
+        private System.Windows.Forms.CheckBox chkCaseSensitive;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSequence;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFilePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn colContent;

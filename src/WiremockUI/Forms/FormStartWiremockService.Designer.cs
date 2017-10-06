@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabLogs = new System.Windows.Forms.TabControl();
@@ -52,7 +52,8 @@
             this.linkOpenFolder = new System.Windows.Forms.LinkLabel();
             this.linkUrlTarget = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chkDisable = new System.Windows.Forms.CheckBox();
+            this.chkDisableTextLog = new System.Windows.Forms.CheckBox();
+            this.chkDisableTableLog = new System.Windows.Forms.CheckBox();
             this.chkAutoScroll = new System.Windows.Forms.CheckBox();
             this.btnClean = new System.Windows.Forms.Button();
             this.txtTo = new WiremockUI.EditorTextBox();
@@ -101,6 +102,7 @@
             this.tabLogs.SelectedIndex = 0;
             this.tabLogs.Size = new System.Drawing.Size(584, 153);
             this.tabLogs.TabIndex = 0;
+            this.tabLogs.TabIndexChanged += new System.EventHandler(this.gridLog_SelectionChanged);
             // 
             // tabLogText
             // 
@@ -142,8 +144,8 @@
             // 
             this.gridLog.AllowUserToAddRows = false;
             this.gridLog.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.gridLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gridLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -296,7 +298,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.chkDisable);
+            this.panel1.Controls.Add(this.chkDisableTextLog);
+            this.panel1.Controls.Add(this.chkDisableTableLog);
             this.panel1.Controls.Add(this.chkAutoScroll);
             this.panel1.Controls.Add(this.btnClean);
             this.panel1.Controls.Add(this.txtTo);
@@ -312,17 +315,29 @@
             this.panel1.Size = new System.Drawing.Size(584, 108);
             this.panel1.TabIndex = 0;
             // 
-            // chkDisable
+            // chkDisableTextLog
             // 
-            this.chkDisable.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.chkDisable.AutoSize = true;
-            this.chkDisable.Location = new System.Drawing.Point(329, 83);
-            this.chkDisable.Name = "chkDisable";
-            this.chkDisable.Size = new System.Drawing.Size(88, 17);
-            this.chkDisable.TabIndex = 27;
-            this.chkDisable.Text = "Desativar log";
-            this.chkDisable.UseVisualStyleBackColor = true;
-            this.chkDisable.CheckedChanged += new System.EventHandler(this.chkDisable_CheckedChanged);
+            this.chkDisableTextLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.chkDisableTextLog.AutoSize = true;
+            this.chkDisableTextLog.Location = new System.Drawing.Point(149, 84);
+            this.chkDisableTextLog.Name = "chkDisableTextLog";
+            this.chkDisableTextLog.Size = new System.Drawing.Size(129, 17);
+            this.chkDisableTextLog.TabIndex = 28;
+            this.chkDisableTextLog.Text = "Desativar log de texto";
+            this.chkDisableTextLog.UseVisualStyleBackColor = true;
+            this.chkDisableTextLog.CheckedChanged += new System.EventHandler(this.chkDisableTextLog_CheckedChanged);
+            // 
+            // chkDisableTableLog
+            // 
+            this.chkDisableTableLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.chkDisableTableLog.AutoSize = true;
+            this.chkDisableTableLog.Location = new System.Drawing.Point(284, 84);
+            this.chkDisableTableLog.Name = "chkDisableTableLog";
+            this.chkDisableTableLog.Size = new System.Drawing.Size(135, 17);
+            this.chkDisableTableLog.TabIndex = 27;
+            this.chkDisableTableLog.Text = "Desativar log de tabela";
+            this.chkDisableTableLog.UseVisualStyleBackColor = true;
+            this.chkDisableTableLog.CheckedChanged += new System.EventHandler(this.chkDisableTableLog_CheckedChanged);
             // 
             // chkAutoScroll
             // 
@@ -452,7 +467,7 @@
         private System.Windows.Forms.LinkLabel linkUrlTarget;
         private EditorTextBox txtTo;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox chkDisable;
+        private System.Windows.Forms.CheckBox chkDisableTableLog;
         private System.Windows.Forms.CheckBox chkAutoScroll;
         private System.Windows.Forms.Button btnClean;
         private EditorTextBox txtFrom;
@@ -474,5 +489,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ResponseTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Raw;
         private EditorTextBox rtxtLog;
+        private System.Windows.Forms.CheckBox chkDisableTextLog;
     }
 }

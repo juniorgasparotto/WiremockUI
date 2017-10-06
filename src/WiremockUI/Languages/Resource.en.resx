@@ -198,8 +198,8 @@
   <data name="chkAutoScroll" xml:space="preserve">
     <value>Auto scroll</value>
   </data>
-  <data name="chkDisable" xml:space="preserve">
-    <value>Disable log</value>
+  <data name="chkDisableLogText" xml:space="preserve">
+    <value>Disable log text</value>
   </data>
   <data name="collapseAllMenu" xml:space="preserve">
     <value>Close all</value>
@@ -648,6 +648,9 @@
   <data name="menuFindInFiles" xml:space="preserve">
     <value>&amp;Find in files...</value>
   </data>
+  <data name="chkDisableLogTable" xml:space="preserve">
+    <value>Disable log table</value>
+  </data>
   <data name="confirmReplaceMessage" xml:space="preserve">
     <value>Do you really want to replace "{0}" occurrences? This process is irreversible.</value>
   </data>
@@ -656,5 +659,8 @@
   </data>
   <data name="noFilesFoundMessage" xml:space="preserve">
     <value>No files with this text were found</value>
+  </data>
+  <data name="unsavedFileMessage" xml:space="preserve">
+    <value>Do you really want to close the file "{0}" without saving the changes?</value>
   </data>
 </root>

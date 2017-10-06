@@ -27,7 +27,10 @@ namespace WiremockUI
             linkUrlServer.Text = Resource.viewLink;
             btnClean.Text = Resource.btnClean;
             linkOpenFolder.Text = Resource.linkOpenFolder;
-            chkDisable.Text = Resource.chkDisable;
+
+            chkDisableTextLog.Text = Resource.chkDisableLogText;
+            chkDisableTableLog.Text = Resource.chkDisableLogTable;
+
             chkAutoScroll.Text = Resource.chkAutoScroll;
             tabLogText.Text = Resource.tabLogText;
             tabLogTable.Text = Resource.tabLogTable;
@@ -39,7 +42,7 @@ namespace WiremockUI
             // log text
             this.logWriter = new RichTextBoxLogWriter(rtxtLog);
             this.logWriter.EnableAutoScroll = chkAutoScroll.Checked;
-            this.logWriter.Enabled = !chkDisable.Checked;
+            this.logWriter.Enabled = !chkDisableTextLog.Checked;
 
             // log table
             this.logTable = new GridViewLogRequestResponse(gridLog, master, (row) =>
@@ -50,7 +53,7 @@ namespace WiremockUI
             });
 
             this.logTable.EnableAutoScroll = chkAutoScroll.Checked;
-            this.logTable.Enabled = !chkDisable.Checked;
+            this.logTable.Enabled = !chkDisableTableLog.Checked;
 
             gridLog.Columns[gridLog.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.labelDiff = toolStripStatusValue.Text;
@@ -92,17 +95,38 @@ namespace WiremockUI
         
         private void lblUrlTarget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(e.Link.LinkData.ToString());
+            try
+            {
+                Process.Start(e.Link.LinkData.ToString());
+            }
+            catch (Exception ex)
+            {
+                Helper.MessageBoxError(ex.Message);
+            }
         }
 
         private void lblUrlServer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(e.Link.LinkData.ToString());
+            try
+            {
+                Process.Start(e.Link.LinkData.ToString());
+            }
+            catch (Exception ex)
+            {
+                Helper.MessageBoxError(ex.Message);
+            }
         }
 
         private void lblOpenFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(e.Link.LinkData.ToString());
+            try
+            {
+                Process.Start(e.Link.LinkData.ToString());
+            }
+            catch (Exception ex)
+            {
+                Helper.MessageBoxError(ex.Message);
+            }
         }
 
         private void btnClean_Click(object sender, EventArgs e)
@@ -118,12 +142,6 @@ namespace WiremockUI
             this.logWriter.EnableAutoScroll = chkAutoScroll.Checked;
             this.logTable.EnableAutoScroll = chkAutoScroll.Checked;
         }
-
-        private void chkDisable_CheckedChanged(object sender, EventArgs e)
-        {
-            this.logWriter.Enabled = !chkDisable.Checked;
-            this.logTable.Enabled = !chkDisable.Checked;
-        }
         
         private void gridLog_SelectionChanged(object sender, EventArgs e)
         {
@@ -137,6 +155,16 @@ namespace WiremockUI
                     toolStripStatusValue.Text = (t1 - t2).ToString();
                 }
             }
+        }
+
+        private void chkDisableTextLog_CheckedChanged(object sender, EventArgs e)
+        {
+            this.logWriter.Enabled = !chkDisableTextLog.Checked;
+        }
+
+        private void chkDisableTableLog_CheckedChanged(object sender, EventArgs e)
+        {
+            this.logTable.Enabled = !chkDisableTableLog.Checked;
         }
     }
 }

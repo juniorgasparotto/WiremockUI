@@ -55,6 +55,7 @@ namespace WiremockUI
             try
             {
                 File.WriteAllText(txtPath.TextValue, txtContent.TextValue);
+                this.txtContent.IsEdited = false;
                 OnSave?.Invoke();
             }
             catch (Exception ex)
@@ -95,10 +96,25 @@ namespace WiremockUI
             }
         }
 
+        #region IFormFileUpdate
+
         public void Update(string fileName)
         {
             LoadForm(fileName);
         }
+
+        public bool CanClose()
+        {
+            if (this.txtContent.IsEdited
+                && Helper.MessageBoxQuestion(string.Format(Resource.unsavedFileMessage, Path.GetFileName(txtPath.TextValue))) == DialogResult.No)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        #endregion
 
         private void FormXmlFile_Load(object sender, EventArgs e)
         {
@@ -109,5 +125,6 @@ namespace WiremockUI
         {
             FormMaster.Current.TabMaster.CloseTab(this);
         }
+
     }
 }

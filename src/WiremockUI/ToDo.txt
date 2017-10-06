@@ -55,20 +55,22 @@ criar pesquisar em todos os editorbox - OK
 criar replace em todos os editorbox - ok
 criar find all e replace all - ok
 a pesquisa não esta funcionando corretamente - ok
+o delete parou de funcionar nos campos de textos - OK
+melhorar CONTROL + Z do editor - ok
+fazer um jeito de nao fechar se existir alteração na janela, perguntar antes - OK
+esta ficando sem apresentar o content no find in files quando o path eh muito grande - ok
 
 -- ToDo
 
-o delete parou de funcionar nos campos de textos
-esta ficando sem apresentar o content no find in files quando o path eh muito grande
+criar botão para atualizar arquivo nos editores de json, text e xml e img tb.
+
 o log de texto esta demorando muito para voltar as requisições, criar forma de desabilar apenas ele. talvez deixar o verbose como false na criação do server
-melhorar CONTROL + Z do editor
 criar agrupar por URL
 criar copiar para area de transferecia
   - url do serviço final
   - url do proxy
   - comando java -jar 
   - curl
-fazer um jeito de nao fechar se existir alteração na janela, perguntar antes
 melhorar tamanho das abas para ter tamanho fixo, adicinoar "..."
 
 criar mecanismo para criar um novo mapa usando o Webrequest

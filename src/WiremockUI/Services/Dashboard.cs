@@ -57,7 +57,7 @@ namespace WiremockUI
 
             var wiremockServer = new WireMockServer(textWriter, logTableRequestResponse, type);
             Services.Add(scenario.Id, wiremockServer);
-            textWriter.WriteLine(TransformUtils.GetAsJavaCommand(server, scenario, type), System.Drawing.Color.Green, true);
+            textWriter.WriteLine(TransformUtils.GetAsJavaCommand(server, scenario, type), System.Drawing.Color.Green, true, true);
 
             var args = server.GetArguments(scenario, type);
             wiremockServer.run(args);

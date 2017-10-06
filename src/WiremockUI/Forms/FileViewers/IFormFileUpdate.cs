@@ -3,5 +3,6 @@
     public interface IFormFileUpdate
     {
         void Update(string fileName);
+        bool CanClose();
     }
 }

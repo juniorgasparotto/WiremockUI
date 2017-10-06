@@ -198,8 +198,8 @@
   <data name="chkAutoScroll" xml:space="preserve">
     <value>Rolar automáticamente</value>
   </data>
-  <data name="chkDisable" xml:space="preserve">
-    <value>Desativar log</value>
+  <data name="chkDisableLogText" xml:space="preserve">
+    <value>Desativar log de texto</value>
   </data>
   <data name="collapseAllMenu" xml:space="preserve">
     <value>Fechar todos</value>
@@ -463,7 +463,7 @@
     <value>Parar</value>
   </data>
   <data name="stopServerConfirmMessage" xml:space="preserve">
-    <value>Deseja realmente parar o servidor?</value>
+    <value>Deseja realmente parar o servidor "{0}"?</value>
   </data>
   <data name="stsStatus" xml:space="preserve">
     <value>Status:</value>
@@ -648,6 +648,9 @@
   <data name="undoMenu" xml:space="preserve">
     <value>Desfazer</value>
   </data>
+  <data name="chkDisableLogTable" xml:space="preserve">
+    <value>Desativar log da tabela</value>
+  </data>
   <data name="confirmReplaceMessage" xml:space="preserve">
     <value>Deseja realmente substituir "{0}" ocorrências? Esse processo é irreversível.</value>
   </data>
@@ -656,5 +659,8 @@
   </data>
   <data name="noFilesFoundMessage" xml:space="preserve">
     <value>Nenhum arquivo com esse texto foi localizado</value>
+  </data>
+  <data name="unsavedFileMessage" xml:space="preserve">
+    <value>Deseja realmente fechar o arquivo "{0}" sem salvar as alterações?</value>
   </data>
 </root>

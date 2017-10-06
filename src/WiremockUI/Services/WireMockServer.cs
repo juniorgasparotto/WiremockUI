@@ -94,7 +94,7 @@ namespace WiremockUI
             }
             else
             {
-                logText.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true);
+                logText.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true, true);
             }
         }
 

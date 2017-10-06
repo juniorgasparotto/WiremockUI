@@ -35,6 +35,12 @@ namespace WiremockUI
 
         public TabControl Tabs => tabs;
 
+        public bool IsEdited
+        {
+            get => txtContent.IsEdited;
+            set => txtContent.IsEdited = value;
+        }
+
         public UcJsonView()
         {
             InitializeComponent();

@@ -43,10 +43,19 @@ namespace WiremockUI
             Process.Start(txtPath.TextValue);
         }
 
+        #region IFormFileUpdate
+
         public void Update(string fileName)
         {
             LoadForm(fileName);
         }
+
+        public bool CanClose()
+        {
+            return true;
+        }
+
+        #endregion
 
         private void FormImageFile_Load(object sender, EventArgs e)
         {

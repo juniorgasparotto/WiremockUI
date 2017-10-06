@@ -32,6 +32,8 @@ namespace WiremockUI
             form.Show();
             form.Dock = DockStyle.Fill;
             tabControl.SelectedTab = tabpage;
+            if (form is IFormFileUpdate formFile)
+                tabpage.CanClose = formFile.CanClose;
             return tabpage;
         }
 

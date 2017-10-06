@@ -82,6 +82,7 @@ namespace WiremockUI
                 }
                 
                 File.WriteAllText(txtPath.TextValue, ucJsonView.ContentJson);
+                this.ucJsonView.IsEdited = false;
                 OnSave?.Invoke();
             }
             catch (Exception ex)
@@ -110,6 +111,8 @@ namespace WiremockUI
             }
         }
 
+        #region IFormFileUpdate
+
         public void Update(string fileName)
         {
             LoadForm(fileName);
@@ -117,6 +120,19 @@ namespace WiremockUI
             if (ucJsonView.Tabs.SelectedTab == ucJsonView.TabJsonTree)
                 ucJsonView.GenerateTree();
         }
+
+        public bool CanClose()
+        {
+            if (this.ucJsonView.IsEdited
+                && Helper.MessageBoxQuestion(string.Format(Resource.unsavedFileMessage, Path.GetFileName(txtPath.TextValue))) == DialogResult.No)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        #endregion
 
         private void FormJsonFile_Load(object sender, EventArgs e)
         {
