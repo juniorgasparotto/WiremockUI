@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabLogs = new System.Windows.Forms.TabControl();
@@ -144,8 +144,8 @@
             // 
             this.gridLog.AllowUserToAddRows = false;
             this.gridLog.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gridLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -319,6 +319,8 @@
             // 
             this.chkDisableTextLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.chkDisableTextLog.AutoSize = true;
+            this.chkDisableTextLog.Checked = true;
+            this.chkDisableTextLog.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDisableTextLog.Location = new System.Drawing.Point(149, 84);
             this.chkDisableTextLog.Name = "chkDisableTextLog";
             this.chkDisableTextLog.Size = new System.Drawing.Size(129, 17);

@@ -8,25 +8,10 @@ namespace WiremockUI
 {
     public class HttpUtils
     {
-        public static Dictionary<string, string> GetHeaders(Request request)
+        public static Dictionary<string, string> GetHeaders(HttpHeaders headers)
         {
             var dic = new Dictionary<string, string>();
-            var all = request.getHeaders().all().iterator();
-            HttpHeader header;
-            
-            while (all.hasNext())
-            {
-                header = (HttpHeader) all.next();
-                dic.Add(header.key(), string.Join("\r\n", header.values().toArray()));
-            }
-
-            return dic;
-        }
-
-        public static Dictionary<string, string> GetHeaders(Response response)
-        {
-            var dic = new Dictionary<string, string>();
-            var all = response.getHeaders().all().iterator();
+            var all = headers.all().iterator();
             HttpHeader header;
 
             while (all.hasNext())
@@ -36,6 +21,16 @@ namespace WiremockUI
             }
 
             return dic;
+        }
+
+        public static Dictionary<string, string> GetHeaders(Request request)
+        {
+            return GetHeaders(request.getHeaders());
+        }
+
+        public static Dictionary<string, string> GetHeaders(Response response)
+        {
+            return GetHeaders(response.getHeaders());
         }
 
         public static Dictionary<string, string> GetHeaders(WebResponse response)
@@ -54,7 +49,7 @@ namespace WiremockUI
             return dic;
         }
 
-        public static Dictionary<string, string> GetHeaders(string headers, bool response = false, bool useLowerCaseInName = true)
+        public static Dictionary<string, string> GetHeaders(string headers, bool isResponse = false, bool useLowerCaseInName = true)
         {
             var dic = new Dictionary<string, string>();
             if (headers == null)
@@ -66,7 +61,7 @@ namespace WiremockUI
             foreach (var line in lines)
             {
                 var isNameValue = System.Text.RegularExpressions.Regex.IsMatch(line, @"^[^\s]*:.*$");
-                if (count == 0 && !isNameValue && !response)
+                if (count == 0 && !isNameValue && !isResponse)
                 {
                     var split2 = line.Split(' ');
                     if (split2.Length > 0)
@@ -89,7 +84,7 @@ namespace WiremockUI
                         }
                     }
                 }
-                else if (count == 0 && !isNameValue && response)
+                else if (count == 0 && !isNameValue && isResponse)
                 {
                     var split2 = line.Split(' ');
                     if (split2.Length > 0)
@@ -137,9 +132,7 @@ namespace WiremockUI
 
         public static string GetHeaderValue(Dictionary<string, string> headers, string name)
         {
-            if (headers.ContainsKey(name))
-                return headers[name];
-            return null;
+            return headers?.FirstOrDefault(f => f.Key.ToLower() == name.ToLower()).Value;
         }
 
         public static string GetUrlAbsolute(Dictionary<string, string> headers)

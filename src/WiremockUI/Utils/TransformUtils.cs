@@ -33,10 +33,11 @@ namespace WiremockUI
             return $@"java -jar ""{JarFile}"" {string.Join(" ", argsWithQuote)}";
         }
 
-        public static void GetRequestElementsByMap(string baseUrl, string mapFile, out Dictionary<string, string> headers, out string body, out string method, out string url)
+        public static void GetRequestElementsByMap(string baseUrl, string mapFile, out Dictionary<string, string> headers, out string body, out string bodyFormatted, out string method, out string url)
         {
             headers = new Dictionary<string, string>();
             body = null;
+            bodyFormatted = null;
             var fileContent = File.ReadAllText(mapFile);
             var stub = StubMapping.buildFrom(fileContent);
             method = stub.getRequest().getMethod().ToString();
@@ -70,12 +71,13 @@ namespace WiremockUI
                 {
                     if (bodyPattern is com.github.tomakehurst.wiremock.matching.StringValuePattern converted)
                     {
+                        body = converted.getExpected();
+
                         if (converted.getName()?.ToLower() == "equaltojson")
-                            body = Helper.FormatToJson(converted.getExpected(), false);
+                            bodyFormatted = Helper.FormatToJson(body, false);
                         else if (converted.getName()?.ToLower() == "equaltoxml")
-                            body = Helper.FormatToXml(converted.getExpected(), false);
-                        else
-                            body = converted.getExpected();
+                            bodyFormatted = Helper.FormatToXml(body, false);
+                        
                         break;
                     }
                 }

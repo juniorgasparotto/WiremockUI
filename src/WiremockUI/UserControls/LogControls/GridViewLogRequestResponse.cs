@@ -5,6 +5,7 @@ using com.github.tomakehurst.wiremock.verification;
 using static WiremockUI.HttpUtils;
 using System.Text;
 using WiremockUI.Languages;
+using System.Collections.Generic;
 
 namespace WiremockUI
 {
@@ -100,6 +101,7 @@ namespace WiremockUI
                     Number = count,
                     Type = "LISTENER",
                     TypeDesc = "WIREMOCK LISTENER",
+                    Headers = HttpUtils.GetHeaders(request.getHeaders()),
                     Raw = Helper.ResolveBreakLineInCompatibility(request.getHeaders().ToString()),
                     Method = request.getMethod().ToString(),
                     Url = request.getUrl(),
@@ -279,6 +281,7 @@ namespace WiremockUI
             compareMenu.Click += (a, b) =>
             {
                 var strBuilder = new StringBuilder();
+                StringBuilder strBuilderFormatted = null;
                 var requestHeaders = GetHeaders(row.RequestLog);
                 var requestBody = row.RequestLog.getBodyAsString();
 
@@ -290,12 +293,30 @@ namespace WiremockUI
                 }
                 else
                 {
-                    strBuilder.AppendLine(GetHeadersAsString(requestHeaders));
+                    var strHeaders = GetHeadersAsString(requestHeaders);
+
+                    strBuilder.AppendLine(strHeaders);
                     strBuilder.AppendLine();
                     strBuilder.Append(requestBody);
+
+                    // formatted body
+                    var contentType = HttpUtils.GetHeaderValue(row.Headers, "content-type");
+                    string requestBodyFormatted = null;
+                    if (contentType?.ToLower().Contains("json") == true)
+                        requestBodyFormatted = Helper.FormatToJson(requestBody, false);
+                    else if (contentType?.ToLower().Contains("xml") == true)
+                        requestBodyFormatted = Helper.FormatToXml(requestBody, false);
+
+                    if (requestBodyFormatted != null)
+                    {
+                        strBuilderFormatted = new StringBuilder();
+                        strBuilderFormatted.AppendLine(strHeaders);
+                        strBuilderFormatted.AppendLine();
+                        strBuilderFormatted.Append(requestBodyFormatted);
+                    }
                 }
 
-                var frmCompare = new FormCompare(this.master, strBuilder.ToString());
+                var frmCompare = new FormCompare(this.master, strBuilderFormatted?.ToString() ?? strBuilder.ToString());
                 master.TabMaster.AddTab(frmCompare, row, row.Url);
             };
 
@@ -328,6 +349,7 @@ namespace WiremockUI
             public string StatusMessage { get; set; }
             public string TypeDesc { get; set; }
             public string Raw { get; set; }
+            public Dictionary<string, string> Headers { get; internal set; }
         }
     }
 }

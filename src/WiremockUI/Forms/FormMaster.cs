@@ -857,10 +857,10 @@ namespace WiremockUI
                     var model = (TreeNodeMappingModel)nodeMapping.Tag;
 
                     Dictionary<string, string> headers;
-                    string body, method, url;
-                    TransformUtils.GetRequestElementsByMap(model.Server.GetServerUrl(), model.File.FullPath, out headers, out body, out method, out url);
+                    string body, bodyFormatted, method, url;
+                    TransformUtils.GetRequestElementsByMap(model.Server.GetServerUrl(), model.File.FullPath, out headers, out body, out bodyFormatted, out method, out url);
 
-                    var frmComposer = new FormWebRequest(method, url, headers, body, null, null);
+                    var frmComposer = new FormWebRequest(method, url, headers, bodyFormatted ?? body, null, null);
                     TabMaster.AddTab(frmComposer, model, model.File.GetOnlyFileName());
                 }
                 catch (Exception ex)
@@ -1462,8 +1462,8 @@ namespace WiremockUI
                     try
                     {
                         Dictionary<string, string> headers;
-                        string body, method, url;
-                        TransformUtils.GetRequestElementsByMap(treeNodeMapping.Server.GetServerUrl(), treeNodeMapping.File.FullPath, out headers, out body, out method, out url);
+                        string body, bodyFormatted, method, url;
+                        TransformUtils.GetRequestElementsByMap(treeNodeMapping.Server.GetServerUrl(), treeNodeMapping.File.FullPath, out headers, out body, out bodyFormatted, out method, out url);
 
                         var strBuilder = new StringBuilder();
                         strBuilder.Append($"{method} {url}");
@@ -1478,7 +1478,7 @@ namespace WiremockUI
                         {
                             strBuilder.AppendLine();
                             strBuilder.AppendLine();
-                            strBuilder.Append(body);
+                            strBuilder.Append(bodyFormatted ?? body);
                         }
 
                         actionSelectionFileAndContent("", strBuilder.ToString());
@@ -1632,16 +1632,15 @@ namespace WiremockUI
 
         private bool IsMapEnable(string fileNameWithExtension)
         {
-            var ext = Path.GetExtension(fileNameWithExtension);
-            return !string.IsNullOrEmpty(ext);
+            return Path.GetFileName(fileNameWithExtension).Split('.').Last() == "json";
         }
 
         private void DisableMap(TreeNode nodeMap, TreeNodeMappingModel model)
         {
             if (IsMapEnable(model.File.FullPath))
             {
-                var filaName = Path.GetFileName(model.File.FullPath).Split('.').First();
-                RenameMap(filaName, "", nodeMap, model, false);
+                var fileName = Path.GetFileNameWithoutExtension(model.File.FullPath);
+                RenameMap(fileName, nodeMap, model, false);
                 Dashboard.Refresh(model.Scenario);
             }
         }
@@ -1650,20 +1649,20 @@ namespace WiremockUI
         {
             if (!IsMapEnable(model.File.FullPath))
             {
-                var filaName = Path.GetFileName(model.File.FullPath).Split('.').First();
-                RenameMap(filaName, ".json", nodeMap, model, false);
+                var fileName = Path.GetFileName(model.File.FullPath);
+                RenameMap(fileName + ".json", nodeMap, model, false);
                 Dashboard.Refresh(model.Scenario);
             }
         }
 
-        private void RenameMap(string newName, string extension, TreeNode nodeMap, TreeNodeMappingModel model, bool renameResponse = true)
+        private void RenameMap(string newName, TreeNode nodeMap, TreeNodeMappingModel model, bool renameResponse = true)
         {
             string newNameMap = null;
             string newNameBody = null;
             
-            newNameMap = GetNewName(newName, model.File, extension);
+            newNameMap = GetNewName(newName, model.File);
 
-            if (File.Exists(newNameMap))
+            if (File.Exists(newNameMap) && newNameMap != model.File.FullPath)
             {
                 Helper.MessageBoxError(Resource.mappingFileAlreadyExistsMessage);
                 return;
@@ -1671,9 +1670,11 @@ namespace WiremockUI
 
             if (renameResponse && model.Mapping != null && model.Mapping.HasBodyFile())
             {
-                newNameBody = GetNewName(newName, model.TreeNodeBody.File, null);
+                var ext = Path.GetExtension(model.TreeNodeBody.File.FullPath);
+                var responseFileName = Path.GetFileNameWithoutExtension(newName) + ext;
+                newNameBody = GetNewName(responseFileName, model.TreeNodeBody.File);
 
-                if (File.Exists(newNameBody))
+                if (File.Exists(newNameBody) && newNameBody != model.TreeNodeBody.File.FullPath)
                 {
                     Helper.MessageBoxError(Resource.mappingBodyFileAlreadExistsMessage);
                     return;
@@ -1699,13 +1700,12 @@ namespace WiremockUI
             Dashboard.Refresh(model.Scenario);
         }
 
-        private string GetNewName(string newName, FileModel file, string extension)
+        private string GetNewName(string newName, FileModel file)
         {
-            var ext = extension ?? Path.GetExtension(file.FullPath);
+            //var ext = extension ?? Path.GetExtension(file.FullPath);
             var directory = Path.GetDirectoryName(file.FullPath);
-            return Path.Combine(directory, Path.GetFileNameWithoutExtension(newName) + ext);
+            return Path.Combine(directory, newName);
         }
-
 
         private void treeServices_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
@@ -1731,7 +1731,7 @@ namespace WiremockUI
 
                     try
                     {
-                        RenameMap(e.Label, null, selected, model);
+                        RenameMap(e.Label, selected, model);
                     }
                     catch (Exception ex)
                     {

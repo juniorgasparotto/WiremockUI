@@ -1,0 +1,35 @@
+{
+  "id": "af26ae87-70fa-3deb-b5f6-10048b0b4cb1",
+  "request": {
+    "url": "/J700055X.svc",
+    "method": "POST",
+    "headers": {
+      "SOAPAction": {
+        "equalTo": "\"http://tempuri.org/IJ700055X/Processar\""
+      },
+      "Content-Type": {
+        "equalTo": "text/xml; charset=UTF-8"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "equalToXml": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:wcf=\"http://schemas.datacontract.org/2004/07/WCF\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <tem:Processar>\r\n         <tem:dadosEnvio>\r\n         \t<wcf:Agencia>1500</wcf:Agencia>\r\n         \t<wcf:CampoRandom>1507324451</wcf:CampoRandom>\r\n            <wcf:Conta>31530</wcf:Conta>\r\n            <wcf:Dac>1</wcf:Dac>\r\n         </tem:dadosEnvio>\r\n      </tem:Processar>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "1500-31530-1 (Fundos).xml",
+    "headers": {
+      "Cache-Control": "private",
+      "Content-Type": "text/xml; charset=utf-8",
+      "Vary": "Accept-Encoding",
+      "Server": "Microsoft-IIS/10.0",
+      "X-AspNet-Version": "4.0.30319",
+      "X-SourceFiles": "=?UTF-8?B?RDpcd21cd2NmXFdpcmVtb2NrLldDRlNhbXBwbGVcV0NGXEo3MDAwNTVYLnN2Yw==?=",
+      "X-Powered-By": "ASP.NET",
+      "Date": "Fri, 06 Oct 2017 21:14:11 GMT"
+    }
+  },
+  "uuid": "af26ae87-70fa-3deb-b5f6-10048b0b4cb1"
+}

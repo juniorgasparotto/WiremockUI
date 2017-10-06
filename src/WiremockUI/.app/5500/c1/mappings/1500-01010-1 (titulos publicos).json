@@ -1,0 +1,39 @@
+{
+  "id": "2e2e48a4-a108-35c7-a1fb-0f53147cc47f",
+  "request": {
+    "url": "/J700055X.svc",
+    "method": "POST",
+    "headers": {
+      "SOAPAction": {
+        "equalTo": "\"http://tempuri.org/IJ700055X/Processar\""
+      },
+      "Content-Type": {
+        "equalTo": "text/xml"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "matchesXPath": "/tem:Processar",
+        "xPathNamespaces": {
+          "tem": "http://tempuri.org/",
+          "wcf": "http://schemas.datacontract.org/2004/07/WCF"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "1500-01010-1 (titulos publicos).xml",
+    "headers": {
+      "Cache-Control": "private",
+      "Content-Type": "text/xml; charset=utf-8",
+      "Vary": "Accept-Encoding",
+      "Server": "Microsoft-IIS/10.0",
+      "X-AspNet-Version": "4.0.30319",
+      "X-SourceFiles": "=?UTF-8?B?RDpcd21cd2NmXFdpcmVtb2NrLldDRlNhbXBwbGVcV0NGXEo3MDAwNTVYLnN2Yw==?=",
+      "X-Powered-By": "ASP.NET",
+      "Date": "Fri, 06 Oct 2017 21:14:06 GMT"
+    }
+  },
+  "uuid": "2e2e48a4-a108-35c7-a1fb-0f53147cc47f"
+}

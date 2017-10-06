@@ -1,5 +1,42 @@
 {
-  "Servers": [],
+  "Servers": [
+    {
+      "Id": "9990064a-d5e0-42c0-bdf1-57d362c7b99f",
+      "UrlTarget": "http://localhost:58105",
+      "Port": 5500,
+      "Name": "CMC",
+      "Scenarios": [
+        {
+          "Id": "f2258dc7-4fb7-44ca-83d7-83b3b2b2f047",
+          "Name": "c1",
+          "IsDefault": true,
+          "ShowURL": false,
+          "Description": "",
+          "ShowName": true
+        }
+      ],
+      "Arguments": [
+        {
+          "Name": "Verbose",
+          "Value": "True",
+          "ArgName": "--verbose",
+          "Type": "Boolean"
+        },
+        {
+          "Name": "MatchHeaders",
+          "Value": "Content-Type,SOAPAction",
+          "ArgName": "--match-headers",
+          "Type": "String"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "False",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
+        }
+      ]
+    }
+  ],
   "Settings": [
     {
       "Id": "b712d615-d1d1-4f7f-ac1c-c6c72e037c5e",

@@ -115,6 +115,7 @@ namespace WiremockUI
 
                     // json
                     formatJsonMenu.Text = Resource.formatJsonMenu;
+                    formatJsonMenu.ShortcutKeys = Keys.Control | Keys.D1;
                     formatJsonMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
@@ -123,18 +124,9 @@ namespace WiremockUI
                             txtContent.SelectedText = Helper.FormatToJson(txtContent.SelectedText);
                     };
 
-                    // xml
-                    formatXmlMenu.Text = Resource.formatXmlMenu;
-                    formatXmlMenu.Click += (a, b) =>
-                    {
-                        if (string.IsNullOrEmpty(txtContent.SelectedText))
-                            txtContent.Text = Helper.FormatToXml(TextValue);
-                        else
-                            txtContent.SelectedText = Helper.FormatToXml(txtContent.SelectedText);
-                    };
-
                     // encode json
                     jsonEscapeMenu.Text = Resource.jsonEscapeMenu;
+                    jsonEscapeMenu.ShortcutKeys = Keys.Control | Keys.D2;
                     jsonEscapeMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
@@ -145,6 +137,7 @@ namespace WiremockUI
 
                     // decode json
                     jsonUnescapeMenu.Text = Resource.jsonUnescapeMenu;
+                    jsonUnescapeMenu.ShortcutKeys = Keys.Control | Keys.D3;
                     jsonUnescapeMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
@@ -155,6 +148,7 @@ namespace WiremockUI
 
                     // minify json
                     minifyJsonMenu.Text = Resource.minifyMenu;
+                    minifyJsonMenu.ShortcutKeys = Keys.Control | Keys.D4;
                     minifyJsonMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
@@ -165,6 +159,7 @@ namespace WiremockUI
 
                     // edit value json
                     editJsonValueMenu.Text = Resource.editValueMenu;
+                    editJsonValueMenu.ShortcutKeys = Keys.Control | Keys.D5;
                     editJsonValueMenu.Click += (a, b) =>
                     {
                         var selectedValue = Helper.GetJsonValue(txtContent.SelectedText, out var hasQuote, out var hasError);
@@ -184,8 +179,21 @@ namespace WiremockUI
                         }
                     };
 
+                    // xml
+                    formatXmlMenu.Text = Resource.formatXmlMenu;
+                    formatXmlMenu.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D1;
+                    formatXmlMenu.Click += (a, b) =>
+                    {
+                        if (string.IsNullOrEmpty(txtContent.SelectedText))
+                            txtContent.Text = Helper.FormatToXml(TextValue);
+                        else
+                            txtContent.SelectedText = Helper.FormatToXml(txtContent.SelectedText);
+                    };
+
+                    
                     // encode xml
                     xmlEscapeMenu.Text = Resource.xmlEscapeMenu;
+                    xmlEscapeMenu.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D2;
                     xmlEscapeMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
@@ -196,6 +204,7 @@ namespace WiremockUI
 
                     // decode xml
                     xmlUnescapeMenu.Text = Resource.jsonUnescapeMenu;
+                    xmlUnescapeMenu.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D3;
                     xmlUnescapeMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
@@ -206,6 +215,7 @@ namespace WiremockUI
 
                     // minify xml
                     minifyXmlMenu.Text = Resource.minifyMenu;
+                    minifyXmlMenu.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D4;
                     minifyXmlMenu.Click += (a, b) =>
                     {
                         if (string.IsNullOrEmpty(txtContent.SelectedText))
@@ -216,6 +226,7 @@ namespace WiremockUI
 
                     // edit value json
                     editXmlValueMenu.Text = Resource.editValueMenu;
+                    editXmlValueMenu.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D5;
                     editXmlValueMenu.Click += (a, b) =>
                     {
                         var selectedValue = Helper.GetXmlValue(txtContent.SelectedText, out var hasTagInSelection, out var hasError);
