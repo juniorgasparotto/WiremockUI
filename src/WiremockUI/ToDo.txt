@@ -54,9 +54,13 @@ criar esquema para abrir o url dos mapas no browser ou em um componente de compo
 criar pesquisar em todos os editorbox - OK
 criar replace em todos os editorbox - ok
 criar find all e replace all - ok
+a pesquisa não esta funcionando corretamente - ok
 
 -- ToDo
 
+o delete parou de funcionar nos campos de textos
+esta ficando sem apresentar o content no find in files quando o path eh muito grande
+o log de texto esta demorando muito para voltar as requisições, criar forma de desabilar apenas ele. talvez deixar o verbose como false na criação do server
 melhorar CONTROL + Z do editor
 criar agrupar por URL
 criar copiar para area de transferecia

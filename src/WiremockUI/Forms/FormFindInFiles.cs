@@ -128,7 +128,7 @@ namespace WiremockUI
                         using (var streamReader = new StreamReader(filename))
                         {
                             var contents = streamReader.ReadToEnd().ToLower();
-                            var index = contents.IndexOf(searchText);
+                            var index = contents.IndexOf(searchText.ToLower());
                             if (index != -1)
                             {
                                 var maxGet = (index + maxGetContent > contents.Length) ? contents.Length - index : maxGetContent;
