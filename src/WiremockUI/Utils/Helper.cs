@@ -348,7 +348,20 @@ namespace WiremockUI
         {
             try
             {
-                return JToken.Parse(content).ToString();
+                using (var stringReader = new StringReader(content))
+                using (var stringWriter = new StringWriter())
+                {
+                    var jsonReader = new JsonTextReader(stringReader);
+                    var jsonWriter = new JsonTextWriter(stringWriter)
+                    {
+                        Formatting = Newtonsoft.Json.Formatting.Indented,
+                        Indentation = 4
+                    };
+                    jsonWriter.WriteToken(jsonReader);
+                    return stringWriter.ToString();
+                }
+
+                //return JToken.Parse(content).ToString();
             }
             catch (Exception ex)
             {

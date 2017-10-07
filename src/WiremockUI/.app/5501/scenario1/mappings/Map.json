@@ -1,13 +1,13 @@
-﻿{
+{
     "request": {
         "url": "/",
         "method": "GET"
     },
     "response": {
         "status": 200,
-        "bodyFileName": "",
+        "bodyFileName": "Map.txt",
         "headers": {
-        "Content-Type": "application/json"
-      }
+            "Content-Type": "application/json"
+        }
     }
 }

@@ -40,7 +40,7 @@
             this.tabRequestHeaders = new System.Windows.Forms.TabPage();
             this.txtRequestHeaders = new WiremockUI.EditorTextBox();
             this.tabRequestBody = new System.Windows.Forms.TabPage();
-            this.txtRequestBody = new WiremockUI.EditorTextBox();
+            this.txtRequestBody = new WiremockUI.FCTBTextBox();
             this.tabRequestHeadersReal = new System.Windows.Forms.TabPage();
             this.txtRequestHeadersFinal = new WiremockUI.EditorTextBox();
             this.tabRequestOptions = new System.Windows.Forms.TabPage();
@@ -53,7 +53,7 @@
             this.lblTimeout = new System.Windows.Forms.Label();
             this.tabResponse = new System.Windows.Forms.TabControl();
             this.tabResponseBody = new System.Windows.Forms.TabPage();
-            this.txtResponseBody = new WiremockUI.EditorTextBox();
+            this.txtResponseBody = new WiremockUI.FCTBTextBox();
             this.tabResponseHeaders = new System.Windows.Forms.TabPage();
             this.txtResponseHeaders = new WiremockUI.EditorTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -107,7 +107,9 @@
             // txtUrl
             // 
             this.txtUrl.BackColor = System.Drawing.SystemColors.Control;
+            this.txtUrl.EnableFormatters = false;
             this.txtUrl.EnableOptions = false;
+            this.txtUrl.EnableSearch = false;
             this.txtUrl.Location = new System.Drawing.Point(0, 5);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(423, 22);
@@ -234,12 +236,13 @@
             // txtRequestBody
             // 
             this.txtRequestBody.BackColor = System.Drawing.SystemColors.Control;
+            this.txtRequestBody.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRequestBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtRequestBody.Location = new System.Drawing.Point(0, 0);
             this.txtRequestBody.Name = "txtRequestBody";
+            this.txtRequestBody.ShowLanguages = true;
             this.txtRequestBody.Size = new System.Drawing.Size(666, 176);
             this.txtRequestBody.TabIndex = 6;
-            this.txtRequestBody.WordWrap = false;
             // 
             // tabRequestHeadersReal
             // 
@@ -385,12 +388,13 @@
             // txtResponseBody
             // 
             this.txtResponseBody.BackColor = System.Drawing.SystemColors.Control;
+            this.txtResponseBody.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtResponseBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtResponseBody.Location = new System.Drawing.Point(0, 0);
             this.txtResponseBody.Name = "txtResponseBody";
+            this.txtResponseBody.ShowLanguages = true;
             this.txtResponseBody.Size = new System.Drawing.Size(666, 208);
             this.txtResponseBody.TabIndex = 7;
-            this.txtResponseBody.WordWrap = false;
             // 
             // tabResponseHeaders
             // 
@@ -512,7 +516,7 @@
         private System.Windows.Forms.TabPage tabRequestHeadersReal;
         private System.Windows.Forms.TabControl tabResponse;
         private System.Windows.Forms.TabPage tabResponseBody;
-        private EditorTextBox txtResponseBody;
+        private FCTBTextBox txtResponseBody;
         private System.Windows.Forms.TabPage tabResponseHeaders;
         private EditorTextBox txtResponseHeaders;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -522,7 +526,7 @@
         private System.Windows.Forms.ToolStripStatusLabel stsTimeValue;
         private System.Windows.Forms.CheckBox chkAutoRedirect;
         private System.Windows.Forms.CheckBox chkKeepAlive;
-        private EditorTextBox txtRequestBody;
+        private FCTBTextBox txtRequestBody;
         private EditorTextBox txtRequestHeadersFinal;
     }
 }

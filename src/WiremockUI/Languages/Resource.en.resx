@@ -663,4 +663,13 @@
   <data name="unsavedFileMessage" xml:space="preserve">
     <value>Do you really want to close the file "{0}" without saving the changes?</value>
   </data>
+  <data name="editMenu" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="languagesMenu" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="wordWrapMenu" xml:space="preserve">
+    <value>Word Wrap</value>
+  </data>
 </root>

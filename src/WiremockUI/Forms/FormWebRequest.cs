@@ -48,6 +48,18 @@ namespace WiremockUI
 
             if (string.IsNullOrWhiteSpace(responseBody) && !string.IsNullOrWhiteSpace(this.txtResponseHeaders.TextValue))
                 tabResponse.SelectedTab = tabResponseHeaders;
+
+            var contentType = HttpUtils.GetHeaderValue(requestHeaders, "content-type");
+            if (contentType != null)
+            {
+                if (contentType.Contains("xml"))
+                    txtRequestBody.Language = FastColoredTextBoxNS.Language.XML;
+                else if (contentType.Contains("json") || contentType.Contains("javascript"))
+                    txtRequestBody.Language = FastColoredTextBoxNS.Language.JS;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.txtRequestBody.TextValue))
+                tabRequest.SelectedTab = tabRequestBody;
         }
 
         private async void WebRequest()
@@ -176,12 +188,22 @@ namespace WiremockUI
                 }
             }
 
+            var headers = HttpUtils.GetHeaders(response);
             stsTimeValue.Text = (t2 - t1).ToString();
             stsStatusValue.Text = $"{(int)response.StatusCode} ({response.StatusDescription})";
-            txtRequestHeadersFinal.TextValue = HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(request));
+            txtRequestHeadersFinal.TextValue = HttpUtils.GetHeadersAsString(headers);
             txtResponseHeaders.TextValue = $"{(int)response.StatusCode} {response.StatusDescription}\r\n";
             txtResponseHeaders.TextValue += HttpUtils.GetHeadersAsString(HttpUtils.GetHeaders(response));
             btnExecute.Enabled = true;
+
+            var contentType = HttpUtils.GetHeaderValue(headers, "content-type");
+            if (contentType != null)
+            {
+                if (contentType.Contains("xml"))
+                    txtResponseBody.Language = FastColoredTextBoxNS.Language.XML;
+                else if (contentType.Contains("json") || contentType.Contains("javascript"))
+                    txtResponseBody.Language = FastColoredTextBoxNS.Language.JS;
+            }
         }
 
         private void CleanResponses()

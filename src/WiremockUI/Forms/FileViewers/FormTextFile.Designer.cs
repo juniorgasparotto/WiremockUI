@@ -32,7 +32,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtContent = new WiremockUI.EditorTextBox();
+            this.txtContent = new WiremockUI.FCTBTextBox();
             this.txtPath = new WiremockUI.EditorTextBox();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -129,7 +129,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnSave;
-        private EditorTextBox txtContent;
+        private FCTBTextBox txtContent;
         private System.Windows.Forms.Button btnClose;
     }
 }

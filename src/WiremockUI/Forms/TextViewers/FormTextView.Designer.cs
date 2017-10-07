@@ -30,7 +30,7 @@
         {
             this.txtTitle = new WiremockUI.EditorTextBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.txtContent = new WiremockUI.EditorTextBox();
+            this.txtContent = new WiremockUI.FCTBTextBox();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -65,6 +65,7 @@
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContent.Location = new System.Drawing.Point(0, 20);
             this.txtContent.Name = "txtContent";
+            this.txtContent.ShowLanguages = true;
             this.txtContent.Size = new System.Drawing.Size(284, 241);
             this.txtContent.TabIndex = 4;
             // 
@@ -89,6 +90,6 @@
         #endregion
         private EditorTextBox txtTitle;
         private System.Windows.Forms.Button btnClose;
-        private EditorTextBox txtContent;
+        private FCTBTextBox txtContent;
     }
 }

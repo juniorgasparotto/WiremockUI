@@ -34,7 +34,6 @@
             // 
             // ucJsonView
             // 
-            this.ucJsonView.ContentJson = "";
             this.ucJsonView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucJsonView.ExpandAll = false;
             this.ucJsonView.Location = new System.Drawing.Point(0, 0);

@@ -46,7 +46,7 @@ namespace WiremockUI
         {
             var mapping = JsonConvert.DeserializeObject<JObject>(content);
             mapping.SelectToken("response")["bodyFileName"] = Path.GetFileName(bodyFileName);
-            return mapping.ToString();
+            return Helper.FormatToJson(mapping.ToString(), false);
         }
 
         public bool HasBodyFile()

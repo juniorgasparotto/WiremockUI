@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabRaw = new System.Windows.Forms.TabPage();
-            this.txtContent = new WiremockUI.EditorTextBox();
+            this.txtContent = new WiremockUI.FCTBTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFormat = new System.Windows.Forms.Button();
             this.tabTree = new System.Windows.Forms.TabPage();
@@ -69,17 +68,15 @@
             // 
             // txtContent
             // 
-            this.txtContent.AcceptsTab = true;
-            this.txtContent.DetectUrls = false;
+            this.txtContent.BackColor = System.Drawing.SystemColors.Control;
+            this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.EnableOptions = true;
-            this.txtContent.EnableHistory = true;
+            this.txtContent.Language = FastColoredTextBoxNS.Language.JS;
             this.txtContent.Location = new System.Drawing.Point(3, 42);
-            this.txtContent.MaxLength = 0;
             this.txtContent.Name = "txtContent";
+            this.txtContent.ShowLanguages = true;
             this.txtContent.Size = new System.Drawing.Size(136, 79);
             this.txtContent.TabIndex = 11;
-            this.txtContent.TextValue = "";
             // 
             // panel1
             // 
@@ -158,6 +155,6 @@
         private System.Windows.Forms.TreeView treeRaw;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnFormat;
-        private EditorTextBox txtContent;
+        private FCTBTextBox txtContent;
     }
 }

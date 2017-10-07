@@ -441,6 +441,15 @@ namespace WiremockUI.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Editar.
         /// </summary>
+        internal static string editMenu {
+            get {
+                return ResourceManager.GetString("editMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar.
+        /// </summary>
         internal static string editScenarioMenu {
             get {
                 return ResourceManager.GetString("editScenarioMenu", resourceCulture);
@@ -651,6 +660,15 @@ namespace WiremockUI.Languages {
         internal static string jsonUnescapeMenu {
             get {
                 return ResourceManager.GetString("jsonUnescapeMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linguagens.
+        /// </summary>
+        internal static string languagesMenu {
+            get {
+                return ResourceManager.GetString("languagesMenu", resourceCulture);
             }
         }
         
@@ -1668,6 +1686,15 @@ namespace WiremockUI.Languages {
         internal static string viewTextMenu {
             get {
                 return ResourceManager.GetString("viewTextMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quebrar linhas automaticamente.
+        /// </summary>
+        internal static string wordWrapMenu {
+            get {
+                return ResourceManager.GetString("wordWrapMenu", resourceCulture);
             }
         }
         

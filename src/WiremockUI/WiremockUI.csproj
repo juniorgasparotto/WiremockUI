@@ -268,16 +268,22 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Listeners\RequestAndResponseListener.cs" />
-    <Compile Include="UserControls\EditorTextbox\EditorTextBox.cs">
+    <Compile Include="UserControls\FCTBTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\EditorTextbox\EditorTextBox.Designer.cs">
+    <Compile Include="UserControls\FCTBTextBox.Designer.cs">
+      <DependentUpon>FCTBTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EditorTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\EditorTextBox.Designer.cs">
       <DependentUpon>EditorTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\EditorTextbox\FormEditValue.cs">
+    <Compile Include="Forms\TextViewers\FormEditValue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserControls\EditorTextbox\FormEditValue.Designer.cs">
+    <Compile Include="Forms\TextViewers\FormEditValue.Designer.cs">
       <DependentUpon>FormEditValue.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\LogControls\ILogTableRequestResponse.cs" />
@@ -305,10 +311,10 @@
     <Compile Include="UserControls\TabControlCustom\TabControlCustom.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserControls\JsonViewer\UcJsonView.cs">
+    <Compile Include="UserControls\UcJsonView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\JsonViewer\UcJsonView.Designer.cs">
+    <Compile Include="UserControls\UcJsonView.Designer.cs">
       <DependentUpon>UcJsonView.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\TreeViewCustom.cs">
@@ -422,13 +428,16 @@
     <EmbeddedResource Include="Forms\TextViewers\FormTextView.resx">
       <DependentUpon>FormTextView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\EditorTextbox\EditorTextBox.resx">
+    <EmbeddedResource Include="UserControls\FCTBTextBox.resx">
+      <DependentUpon>FCTBTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\EditorTextBox.resx">
       <DependentUpon>EditorTextBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\EditorTextbox\FormEditValue.resx">
+    <EmbeddedResource Include="Forms\TextViewers\FormEditValue.resx">
       <DependentUpon>FormEditValue.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\JsonViewer\UcJsonView.resx">
+    <EmbeddedResource Include="UserControls\UcJsonView.resx">
       <DependentUpon>UcJsonView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TabControlCustom\TabControlCustom.resx">
@@ -450,6 +459,7 @@
     <None Include="Images\arrow-down.png" />
     <None Include="Images\arrow-up.png" />
     <None Include="Images\close-2.png" />
+    <None Include="Images\check.png" />
     <Content Include="Jar\wiremock-standalone-2.7.1.jar">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

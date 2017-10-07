@@ -32,7 +32,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnReplace = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtContent = new WiremockUI.EditorTextBox();
+            this.txtContent = new WiremockUI.FCTBTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -80,9 +80,11 @@
             // txtContent
             // 
             this.txtContent.BackColor = System.Drawing.SystemColors.Control;
+            this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContent.Location = new System.Drawing.Point(0, 0);
             this.txtContent.Name = "txtContent";
+            this.txtContent.ShowLanguages = true;
             this.txtContent.Size = new System.Drawing.Size(682, 342);
             this.txtContent.TabIndex = 1;
             // 
@@ -108,7 +110,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private EditorTextBox txtContent;
+        private FCTBTextBox txtContent;
         private System.Windows.Forms.Button btnReplace;
         private System.Windows.Forms.Button btnCancel;
     }

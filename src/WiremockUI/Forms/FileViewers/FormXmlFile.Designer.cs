@@ -35,7 +35,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFormat = new System.Windows.Forms.Button();
-            this.txtContent = new WiremockUI.EditorTextBox();
+            this.txtContent = new WiremockUI.FCTBTextBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -119,7 +119,9 @@
             // txtContent
             // 
             this.txtContent.BackColor = System.Drawing.SystemColors.Control;
+            this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtContent.Language = FastColoredTextBoxNS.Language.XML;
             this.txtContent.Location = new System.Drawing.Point(0, 59);
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(507, 168);
@@ -155,7 +157,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnFormat;
-        private EditorTextBox txtContent;
+        private FCTBTextBox txtContent;
         private System.Windows.Forms.Button btnClose;
     }
 }
