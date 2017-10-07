@@ -34,11 +34,11 @@ namespace WiremockUI
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCompare = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.txtContent1 = new WiremockUI.EditorTextBox();
+            this.txtContent1 = new WiremockUI.SimpleEditor();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtFile1 = new System.Windows.Forms.TextBox();
             this.btnOpen1 = new WiremockUI.MenuButton();
-            this.txtContent2 = new WiremockUI.EditorTextBox();
+            this.txtContent2 = new WiremockUI.SimpleEditor();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtFile2 = new System.Windows.Forms.TextBox();
             this.btnOpen2 = new WiremockUI.MenuButton();
@@ -208,11 +208,11 @@ namespace WiremockUI
         private Panel panel1;
         private Panel panel2;
         private SplitContainer splitContainer1;
-        private EditorTextBox txtContent1;
+        private SimpleEditor txtContent1;
         private Panel panel3;
         private TextBox txtFile1;
         private MenuButton btnOpen1;
-        private EditorTextBox txtContent2;
+        private SimpleEditor txtContent2;
         private Panel panel4;
         private TextBox txtFile2;
         private MenuButton btnOpen2;

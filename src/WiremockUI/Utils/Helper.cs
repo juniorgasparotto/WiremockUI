@@ -131,7 +131,12 @@ namespace WiremockUI
             }
             return json;
         }
-        
+
+        internal static object FormatToJson(object textValue)
+        {
+            throw new NotImplementedException();
+        }
+
         public static string JsonUnescape(string text)
         {
             string json = text;

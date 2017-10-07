@@ -9,11 +9,11 @@ namespace WiremockUI
     public class RichTextBoxLogWriter : ILogWriter
     {
         delegate void SetTextCallback(string text);
-        private EditorTextBox _output = null;
+        private SimpleEditor _output = null;
         public bool EnableAutoScroll { get; set; } = true;
         public bool Enabled { get; internal set; } = true;
 
-        public RichTextBoxLogWriter(EditorTextBox output)
+        public RichTextBoxLogWriter(SimpleEditor output)
         {
             _output = output;
         }

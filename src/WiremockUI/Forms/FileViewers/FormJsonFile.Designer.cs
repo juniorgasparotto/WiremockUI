@@ -32,7 +32,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtPath = new WiremockUI.EditorTextBox();
+            this.txtPath = new WiremockUI.SimpleEditor();
             this.ucJsonView = new WiremockUI.UcJsonView();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -130,7 +130,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnSave;
-        private EditorTextBox txtPath;
+        private SimpleEditor txtPath;
         private UcJsonView ucJsonView;
         private System.Windows.Forms.Button btnClose;
     }

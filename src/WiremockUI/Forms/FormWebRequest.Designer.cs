@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.txtUrl = new WiremockUI.EditorTextBox();
+            this.txtUrl = new WiremockUI.SimpleEditor();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnExecute = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -38,11 +38,11 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabRequest = new System.Windows.Forms.TabControl();
             this.tabRequestHeaders = new System.Windows.Forms.TabPage();
-            this.txtRequestHeaders = new WiremockUI.EditorTextBox();
+            this.txtRequestHeaders = new WiremockUI.SimpleEditor();
             this.tabRequestBody = new System.Windows.Forms.TabPage();
-            this.txtRequestBody = new WiremockUI.FCTBTextBox();
+            this.txtRequestBody = new WiremockUI.AdvancedEditor();
             this.tabRequestHeadersReal = new System.Windows.Forms.TabPage();
-            this.txtRequestHeadersFinal = new WiremockUI.EditorTextBox();
+            this.txtRequestHeadersFinal = new WiremockUI.SimpleEditor();
             this.tabRequestOptions = new System.Windows.Forms.TabPage();
             this.chkKeepAlive = new System.Windows.Forms.CheckBox();
             this.chkAutoRedirect = new System.Windows.Forms.CheckBox();
@@ -53,9 +53,9 @@
             this.lblTimeout = new System.Windows.Forms.Label();
             this.tabResponse = new System.Windows.Forms.TabControl();
             this.tabResponseBody = new System.Windows.Forms.TabPage();
-            this.txtResponseBody = new WiremockUI.FCTBTextBox();
+            this.txtResponseBody = new WiremockUI.AdvancedEditor();
             this.tabResponseHeaders = new System.Windows.Forms.TabPage();
-            this.txtResponseHeaders = new WiremockUI.EditorTextBox();
+            this.txtResponseHeaders = new WiremockUI.SimpleEditor();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stsTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsTimeValue = new System.Windows.Forms.ToolStripStatusLabel();
@@ -500,13 +500,13 @@
         private System.Windows.Forms.TabControl tabRequest;
         private System.Windows.Forms.TabPage tabRequestHeaders;
         private System.Windows.Forms.TabPage tabRequestBody;
-        private EditorTextBox txtRequestHeaders;
+        private SimpleEditor txtRequestHeaders;
         private System.Windows.Forms.TabPage tabRequestOptions;
         private System.Windows.Forms.Label lblTimeout;
         private System.Windows.Forms.Label lblMiliseconds;
         private System.Windows.Forms.NumericUpDown txtTimeout;
         private System.Windows.Forms.Panel panel4;
-        private EditorTextBox txtUrl;
+        private SimpleEditor txtUrl;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnExecute;
         private System.Windows.Forms.Panel panel2;
@@ -516,9 +516,9 @@
         private System.Windows.Forms.TabPage tabRequestHeadersReal;
         private System.Windows.Forms.TabControl tabResponse;
         private System.Windows.Forms.TabPage tabResponseBody;
-        private FCTBTextBox txtResponseBody;
+        private AdvancedEditor txtResponseBody;
         private System.Windows.Forms.TabPage tabResponseHeaders;
-        private EditorTextBox txtResponseHeaders;
+        private SimpleEditor txtResponseHeaders;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel stsStatus;
         private System.Windows.Forms.ToolStripStatusLabel stsStatusValue;
@@ -526,7 +526,7 @@
         private System.Windows.Forms.ToolStripStatusLabel stsTimeValue;
         private System.Windows.Forms.CheckBox chkAutoRedirect;
         private System.Windows.Forms.CheckBox chkKeepAlive;
-        private FCTBTextBox txtRequestBody;
-        private EditorTextBox txtRequestHeadersFinal;
+        private AdvancedEditor txtRequestBody;
+        private SimpleEditor txtRequestHeadersFinal;
     }
 }

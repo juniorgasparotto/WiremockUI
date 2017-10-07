@@ -30,7 +30,7 @@
         {
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabRaw = new System.Windows.Forms.TabPage();
-            this.txtContent = new WiremockUI.FCTBTextBox();
+            this.txtContent = new WiremockUI.AdvancedEditor();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFormat = new System.Windows.Forms.Button();
             this.tabTree = new System.Windows.Forms.TabPage();
@@ -71,7 +71,7 @@
             this.txtContent.BackColor = System.Drawing.SystemColors.Control;
             this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.Language = WiremockUI.FCTBTextBox.LanguageSupported.Json;
+            this.txtContent.Language = WiremockUI.AdvancedEditor.LanguageSupported.Json;
             this.txtContent.Location = new System.Drawing.Point(3, 42);
             this.txtContent.Name = "txtContent";
             this.txtContent.ShowLanguages = true;
@@ -155,6 +155,6 @@
         private System.Windows.Forms.TreeView treeRaw;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnFormat;
-        private FCTBTextBox txtContent;
+        private AdvancedEditor txtContent;
     }
 }

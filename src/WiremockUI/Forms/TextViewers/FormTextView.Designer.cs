@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtTitle = new WiremockUI.EditorTextBox();
+            this.txtTitle = new WiremockUI.SimpleEditor();
             this.btnClose = new System.Windows.Forms.Button();
-            this.txtContent = new WiremockUI.FCTBTextBox();
+            this.txtContent = new WiremockUI.AdvancedEditor();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -88,8 +88,8 @@
         }
 
         #endregion
-        private EditorTextBox txtTitle;
+        private SimpleEditor txtTitle;
         private System.Windows.Forms.Button btnClose;
-        private FCTBTextBox txtContent;
+        private AdvancedEditor txtContent;
     }
 }

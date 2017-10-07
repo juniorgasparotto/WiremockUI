@@ -268,17 +268,19 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Listeners\RequestAndResponseListener.cs" />
-    <Compile Include="UserControls\FCTBTextBox.cs">
+    <Compile Include="UserControls\Editors\AdvancedEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\FCTBTextBox.Designer.cs">
-      <DependentUpon>FCTBTextBox.cs</DependentUpon>
+    <Compile Include="UserControls\Editors\AdvancedEditor.Designer.cs">
+      <DependentUpon>AdvancedEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\EditorTextBox.cs">
+    <Compile Include="UserControls\Editors\IBaseEditor.cs" />
+    <Compile Include="UserControls\Editors\EditorUtils.cs" />
+    <Compile Include="UserControls\Editors\SimpleEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\EditorTextBox.Designer.cs">
-      <DependentUpon>EditorTextBox.cs</DependentUpon>
+    <Compile Include="UserControls\Editors\SimpleEditor.Designer.cs">
+      <DependentUpon>SimpleEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TextViewers\FormEditValue.cs">
       <SubType>Form</SubType>
@@ -428,11 +430,11 @@
     <EmbeddedResource Include="Forms\TextViewers\FormTextView.resx">
       <DependentUpon>FormTextView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\FCTBTextBox.resx">
-      <DependentUpon>FCTBTextBox.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\Editors\AdvancedEditor.resx">
+      <DependentUpon>AdvancedEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\EditorTextBox.resx">
-      <DependentUpon>EditorTextBox.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\Editors\SimpleEditor.resx">
+      <DependentUpon>SimpleEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TextViewers\FormEditValue.resx">
       <DependentUpon>FormEditValue.cs</DependentUpon>

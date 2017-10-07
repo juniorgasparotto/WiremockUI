@@ -8,7 +8,7 @@
         "equalTo": "\"http://tempuri.org/IJ700055X/Processar\""
       },
       "Content-Type": {
-        "equalTo": "text/xml; charset=UTF-8"
+      "equalTo": "text/text; charset=UTF-8"
       }
     },
     "bodyPatterns": [

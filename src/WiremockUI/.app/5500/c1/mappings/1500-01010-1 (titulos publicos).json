@@ -23,10 +23,10 @@
     },
     "response": {
         "status": 200,
-        "bodyFileName": "1500-01010-1 (titulos publicos).xml",
+        "bodyFileName": "1500-01010-1 (titulos publicos).json",
         "headers": {
             "Cache-Control": "private",
-            "Content-Type": "text/xml; charset=utf-8",
+            "Content-Type": "text/text; charset=utf-8",
             "Vary": "Accept-Encoding",
             "Server": "Microsoft-IIS/10.0",
             "X-AspNet-Version": "4.0.30319",

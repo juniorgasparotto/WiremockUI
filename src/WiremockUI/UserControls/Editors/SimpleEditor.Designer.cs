@@ -2,7 +2,7 @@
 
 namespace WiremockUI
 {
-    partial class EditorTextBox : UserControl
+    partial class SimpleEditor : UserControl
     {
         /// <summary> 
         /// Required designer variable.

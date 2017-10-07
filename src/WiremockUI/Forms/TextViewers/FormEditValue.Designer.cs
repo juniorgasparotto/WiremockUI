@@ -32,7 +32,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnReplace = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtContent = new WiremockUI.FCTBTextBox();
+            this.txtContent = new WiremockUI.AdvancedEditor();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -110,7 +110,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private FCTBTextBox txtContent;
+        private AdvancedEditor txtContent;
         private System.Windows.Forms.Button btnReplace;
         private System.Windows.Forms.Button btnCancel;
     }

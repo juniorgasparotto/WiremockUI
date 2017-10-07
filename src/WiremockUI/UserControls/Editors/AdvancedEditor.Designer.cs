@@ -2,7 +2,7 @@
 
 namespace WiremockUI
 {
-    partial class FCTBTextBox : UserControl
+    partial class AdvancedEditor : UserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace WiremockUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCTBTextBox));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdvancedEditor));
             this.txtContent = new FastColoredTextBoxNS.FastColoredTextBox();
             this.pnlContent = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.txtContent)).BeginInit();

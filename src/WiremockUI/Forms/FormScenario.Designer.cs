@@ -33,7 +33,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblScenarioDescription = new System.Windows.Forms.Label();
-            this.txtDesc = new WiremockUI.EditorTextBox();
+            this.txtDesc = new WiremockUI.SimpleEditor();
             this.lblScenarioName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
@@ -144,7 +144,7 @@
         private System.Windows.Forms.Label lblScenarioName;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblScenarioDescription;
-        private EditorTextBox txtDesc;
+        private SimpleEditor txtDesc;
     }
 }
 

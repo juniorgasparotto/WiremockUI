@@ -33,7 +33,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabLogs = new System.Windows.Forms.TabControl();
             this.tabLogText = new System.Windows.Forms.TabPage();
-            this.rtxtLog = new WiremockUI.EditorTextBox();
+            this.rtxtLog = new WiremockUI.SimpleEditor();
             this.tabLogTable = new System.Windows.Forms.TabPage();
             this.gridLog = new System.Windows.Forms.DataGridView();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,8 +56,8 @@
             this.chkDisableTableLog = new System.Windows.Forms.CheckBox();
             this.chkAutoScroll = new System.Windows.Forms.CheckBox();
             this.btnClean = new System.Windows.Forms.Button();
-            this.txtTo = new WiremockUI.EditorTextBox();
-            this.txtFrom = new WiremockUI.EditorTextBox();
+            this.txtTo = new WiremockUI.SimpleEditor();
+            this.txtFrom = new WiremockUI.SimpleEditor();
             this.linkUrlServer = new System.Windows.Forms.LinkLabel();
             this.lblUrlServer = new System.Windows.Forms.Label();
             this.lblUrlTarget = new System.Windows.Forms.Label();
@@ -464,12 +464,12 @@
         private System.Windows.Forms.TabPage tabLogTable;
         private System.Windows.Forms.LinkLabel linkOpenFolder;
         private System.Windows.Forms.LinkLabel linkUrlTarget;
-        private EditorTextBox txtTo;
+        private SimpleEditor txtTo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox chkDisableTableLog;
         private System.Windows.Forms.CheckBox chkAutoScroll;
         private System.Windows.Forms.Button btnClean;
-        private EditorTextBox txtFrom;
+        private SimpleEditor txtFrom;
         private System.Windows.Forms.LinkLabel linkUrlServer;
         private System.Windows.Forms.Label lblUrlServer;
         private System.Windows.Forms.Label lblUrlTarget;
@@ -487,7 +487,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RequestTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResponseTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Raw;
-        private EditorTextBox rtxtLog;
+        private SimpleEditor rtxtLog;
         private System.Windows.Forms.CheckBox chkDisableTextLog;
     }
 }

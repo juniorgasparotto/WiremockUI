@@ -53,11 +53,11 @@ namespace WiremockUI
             if (contentType != null)
             {
                 if (contentType.Contains("xml"))
-                    txtRequestBody.Language = FCTBTextBox.LanguageSupported.XML;
+                    txtRequestBody.Language = AdvancedEditor.LanguageSupported.XML;
                 else if (contentType.Contains("json"))
-                    txtRequestBody.Language = FCTBTextBox.LanguageSupported.Json;
+                    txtRequestBody.Language = AdvancedEditor.LanguageSupported.Json;
                 else if (contentType.Contains("javascript"))
-                    txtRequestBody.Language = FCTBTextBox.LanguageSupported.JS;
+                    txtRequestBody.Language = AdvancedEditor.LanguageSupported.JS;
             }
 
             if (!string.IsNullOrWhiteSpace(this.txtRequestBody.TextValue))
@@ -202,11 +202,11 @@ namespace WiremockUI
             if (contentType != null)
             {
                 if (contentType.Contains("xml"))
-                    txtResponseBody.Language = FCTBTextBox.LanguageSupported.XML;
+                    txtResponseBody.Language = AdvancedEditor.LanguageSupported.XML;
                 else if (contentType.Contains("json"))
-                    txtResponseBody.Language = FCTBTextBox.LanguageSupported.Json;
+                    txtResponseBody.Language = AdvancedEditor.LanguageSupported.Json;
                 else if (contentType.Contains("javascript"))
-                    txtResponseBody.Language = FCTBTextBox.LanguageSupported.JS;
+                    txtResponseBody.Language = AdvancedEditor.LanguageSupported.JS;
             }
         }
 

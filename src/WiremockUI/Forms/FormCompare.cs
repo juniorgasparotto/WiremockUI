@@ -29,7 +29,7 @@ namespace WiremockUI
             this.txtContent1.TextValue = content1;
         }
 
-        private ContextMenuStrip GetOptionsMenu(TextBox txtFile, EditorTextBox txtContent)
+        private ContextMenuStrip GetOptionsMenu(TextBox txtFile, SimpleEditor txtContent)
         {
             // context menu
             var menu = new ContextMenuStrip();
@@ -94,12 +94,12 @@ namespace WiremockUI
             return menu;
         }
 
-        private void OpenFile(TextBox txtFile, EditorTextBox txtContent, string fileName)
+        private void OpenFile(TextBox txtFile, SimpleEditor txtContent, string fileName)
         {
             OpenFile(txtFile, txtContent, fileName, new FileStream(fileName, FileMode.Open));
         }
 
-        private void OpenFile(TextBox txtFile, EditorTextBox txtContent, string fileName, Stream stream)
+        private void OpenFile(TextBox txtFile, SimpleEditor txtContent, string fileName, Stream stream)
         {
             using (stream)
             {
@@ -110,7 +110,7 @@ namespace WiremockUI
             }
         }
 
-        private void OpenFile(TextBox txtFile, EditorTextBox txtContent, string fileName, string content)
+        private void OpenFile(TextBox txtFile, SimpleEditor txtContent, string fileName, string content)
         {
             txtFile.Text = fileName;
             txtContent.TextValue = content;
