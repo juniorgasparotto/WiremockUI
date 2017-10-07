@@ -53,9 +53,11 @@ namespace WiremockUI
             if (contentType != null)
             {
                 if (contentType.Contains("xml"))
-                    txtRequestBody.Language = FastColoredTextBoxNS.Language.XML;
-                else if (contentType.Contains("json") || contentType.Contains("javascript"))
-                    txtRequestBody.Language = FastColoredTextBoxNS.Language.JS;
+                    txtRequestBody.Language = FCTBTextBox.LanguageSupported.XML;
+                else if (contentType.Contains("json"))
+                    txtRequestBody.Language = FCTBTextBox.LanguageSupported.Json;
+                else if (contentType.Contains("javascript"))
+                    txtRequestBody.Language = FCTBTextBox.LanguageSupported.JS;
             }
 
             if (!string.IsNullOrWhiteSpace(this.txtRequestBody.TextValue))
@@ -200,9 +202,11 @@ namespace WiremockUI
             if (contentType != null)
             {
                 if (contentType.Contains("xml"))
-                    txtResponseBody.Language = FastColoredTextBoxNS.Language.XML;
-                else if (contentType.Contains("json") || contentType.Contains("javascript"))
-                    txtResponseBody.Language = FastColoredTextBoxNS.Language.JS;
+                    txtResponseBody.Language = FCTBTextBox.LanguageSupported.XML;
+                else if (contentType.Contains("json"))
+                    txtResponseBody.Language = FCTBTextBox.LanguageSupported.Json;
+                else if (contentType.Contains("javascript"))
+                    txtResponseBody.Language = FCTBTextBox.LanguageSupported.JS;
             }
         }
 

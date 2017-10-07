@@ -15,20 +15,83 @@ namespace WiremockUI
         private bool enableOptions;
         private bool firstInput = true;
 
+        #region JSON formatter
+        
+        private readonly Regex jsonKeyRegex = new Regex(@""".+""\:", SyntaxHighlighter.RegexCompiledOption);
+        private readonly Regex jsonNumberRegex = new Regex(@"\b\d+[\.]?\d*([eE]\-?\d+)?[lLdDfF]?\b|\b0x[a-fA-F\d]+\b", SyntaxHighlighter.RegexCompiledOption);
+        private readonly Regex jsonStringRegex = new Regex(@"""""|''|"".*?[^\\]""|'.*?[^\\]'", SyntaxHighlighter.RegexCompiledOption);
+        private readonly Regex jsonKeywordRegex = new Regex(@"\b(true|false|null)\b", SyntaxHighlighter.RegexCompiledOption);
+
+        private Style jsonKeyStyle = new TextStyle(Brushes.Blue, null, FontStyle.Bold);
+        public readonly Style jsonNumberStyle = new TextStyle(Brushes.Magenta, null, FontStyle.Regular);
+        public readonly Style jsonStringStyle = new TextStyle(Brushes.Black, null, FontStyle.Italic);
+        public readonly Style jsonKeywordStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
+
+        #endregion
+
+
+        private LanguageSupported language;
+
+        public enum LanguageSupported
+        {
+            Custom = 0,
+            CSharp = 1,
+            VB = 2,
+            HTML = 3,
+            XML = 4,
+            SQL = 5,
+            PHP = 6,
+            JS = 7,
+            Lua = 8,
+            Json = 9
+        }
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsEdited { get; set; }
 
-        [DefaultValue(Language.Custom)]
-        public Language Language
+        [DefaultValue(LanguageSupported.Custom)]
+        public LanguageSupported Language
         {
-            get => txtContent.Language;
+            get
+            {
+                return this.language;
+            }
             set
             {
+                this.language = value;
                 txtContent.ClearStyle(StyleIndex.All);
-                txtContent.Language = value;
+                txtContent.ClearStylesBuffer();
+
+                if (this.language == LanguageSupported.Json)
+                {
+                    // txtContent.Language = FastColoredTextBoxNS.Language.Custom;
+                    this.txtContent.TextChangedDelayed += this.txtContent_IsJson_TextChangedDelayed;
+                    SetJsonStyle();
+                }
+                else
+                {
+                    this.txtContent.TextChangedDelayed -= this.txtContent_IsJson_TextChangedDelayed;
+                    txtContent.Language = GetLanguageFCTB(value);
+                }
+
                 txtContent.OnSyntaxHighlight(new TextChangedEventArgs(txtContent.Range));
             }
-}
+        }
+
+        private void SetJsonStyle()
+        {
+            txtContent.Range.SetStyle(jsonKeyStyle, jsonKeyRegex);
+            txtContent.Range.SetStyle(jsonStringStyle, jsonStringRegex);
+            txtContent.Range.SetStyle(jsonNumberStyle, jsonNumberRegex);
+            txtContent.Range.SetStyle(jsonKeywordStyle, jsonKeywordRegex);
+        }
+
+        private void txtContent_IsJson_TextChangedDelayed(object sender, TextChangedEventArgs e)
+        {
+            //clear styles
+            //txtContent.Range.ClearStyle(KeywordsJsonStyle, FunctionNameStyle);
+            SetJsonStyle();
+        }
 
         [DefaultValue(false)]
         public bool ShowLanguages { get; set; }
@@ -74,6 +137,7 @@ namespace WiremockUI
                     var langCustomMenu = new ToolStripMenuItem("Custom");
                     var langHTMLMenu = new ToolStripMenuItem("HTML");
                     var langJSMenu = new ToolStripMenuItem("JavaScript");
+                    var langJsonMenu = new ToolStripMenuItem("JSON");
                     var langLuaMenu = new ToolStripMenuItem("Lua");
                     var langPHPMenu = new ToolStripMenuItem("PHP");
                     var langSQLMenu = new ToolStripMenuItem("SQL");
@@ -138,6 +202,7 @@ namespace WiremockUI
                         langCustomMenu,
                         langHTMLMenu,
                         langJSMenu,
+                        langJsonMenu,
                         langLuaMenu,
                         langPHPMenu,
                         langSQLMenu,
@@ -350,15 +415,16 @@ namespace WiremockUI
                     };
 
                     // languages
-                    langCSharpMenu.Click += (a, b) => Language = Language.CSharp;
-                    langCustomMenu.Click += (a, b) => Language = Language.Custom;
-                    langHTMLMenu.Click += (a, b) => Language = Language.HTML;
-                    langJSMenu.Click += (a, b) => Language = Language.JS;
-                    langLuaMenu.Click += (a, b) => Language = Language.Lua;
-                    langPHPMenu.Click += (a, b) => Language = Language.PHP;
-                    langSQLMenu.Click += (a, b) => Language = Language.SQL;
-                    langVBMenu.Click += (a, b) => Language = Language.VB;
-                    langXMLMenu.Click += (a, b) => Language = Language.XML;
+                    langCSharpMenu.Click += (a, b) => Language = LanguageSupported.CSharp;
+                    langCustomMenu.Click += (a, b) => Language = LanguageSupported.Custom;
+                    langHTMLMenu.Click += (a, b) => Language = LanguageSupported.HTML;
+                    langJSMenu.Click += (a, b) => Language = LanguageSupported.JS;
+                    langJsonMenu.Click += (a, b) => Language = LanguageSupported.Json;
+                    langLuaMenu.Click += (a, b) => Language = LanguageSupported.Lua;
+                    langPHPMenu.Click += (a, b) => Language = LanguageSupported.PHP;
+                    langSQLMenu.Click += (a, b) => Language = LanguageSupported.SQL;
+                    langVBMenu.Click += (a, b) => Language = LanguageSupported.VB;
+                    langXMLMenu.Click += (a, b) => Language = LanguageSupported.XML;
 
                     menu.Opened += (o, e) =>
                     {
@@ -368,6 +434,43 @@ namespace WiremockUI
                             wordWrapMenu.Image = Properties.Resources.check;
                         else
                             wordWrapMenu.Image = null;
+
+                        foreach (ToolStripItem l in languagesMenu.DropDownItems)
+                            l.Image = null;
+
+                        switch (language)
+                        {
+                            case LanguageSupported.CSharp:
+                                langCSharpMenu.Image = Properties.Resources.check;
+                                break;
+                            case LanguageSupported.HTML:
+                                langHTMLMenu.Image = Properties.Resources.check;
+                                break;
+                            case LanguageSupported.JS:
+                                langJSMenu.Image = Properties.Resources.check;
+                                break;
+                            case LanguageSupported.Lua:
+                                langLuaMenu.Image = Properties.Resources.check;
+                                break;
+                            case LanguageSupported.PHP:
+                                langPHPMenu.Image = Properties.Resources.check;
+                                break;
+                            case LanguageSupported.SQL:
+                                langSQLMenu.Image = Properties.Resources.check;
+                                break;
+                            case LanguageSupported.VB:
+                                langVBMenu.Image = Properties.Resources.check;
+                                break;
+                            case LanguageSupported.XML:
+                                langXMLMenu.Image = Properties.Resources.check;
+                                break;
+                            case LanguageSupported.Json:
+                                langJsonMenu.Image = Properties.Resources.check;
+                                break;
+                            default:
+                                langCustomMenu.Image = Properties.Resources.check;
+                                break;
+                        }
                     };
 
                     txtContent.ContextMenuStrip = menu;
@@ -483,7 +586,31 @@ namespace WiremockUI
         {
             InitializeComponent();
             EnableOptions = true;
-            this.Language = Language.Custom;
+        }
+
+        public Language GetLanguageFCTB(LanguageSupported language)
+        {
+            switch (language)
+            {
+                case LanguageSupported.CSharp:
+                    return FastColoredTextBoxNS.Language.CSharp;
+                case LanguageSupported.HTML:
+                    return FastColoredTextBoxNS.Language.HTML;
+                case LanguageSupported.JS:
+                    return FastColoredTextBoxNS.Language.JS;
+                case LanguageSupported.Lua:
+                    return FastColoredTextBoxNS.Language.Lua;
+                case LanguageSupported.PHP:
+                    return FastColoredTextBoxNS.Language.PHP;
+                case LanguageSupported.SQL:
+                    return FastColoredTextBoxNS.Language.SQL;
+                case LanguageSupported.VB:
+                    return FastColoredTextBoxNS.Language.VB;
+                case LanguageSupported.XML:
+                    return FastColoredTextBoxNS.Language.XML;
+                default:
+                    return FastColoredTextBoxNS.Language.Custom;
+            }
         }
 
         private void txtContent_KeyDown(object sender, KeyEventArgs e)

@@ -108,7 +108,7 @@
             // 
             // btnFormat
             // 
-            this.btnFormat.Location = new System.Drawing.Point(0, 10);
+            this.btnFormat.Location = new System.Drawing.Point(22, 10);
             this.btnFormat.Name = "btnFormat";
             this.btnFormat.Size = new System.Drawing.Size(124, 23);
             this.btnFormat.TabIndex = 2;
@@ -121,7 +121,7 @@
             this.txtContent.BackColor = System.Drawing.SystemColors.Control;
             this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.Language = FastColoredTextBoxNS.Language.XML;
+            this.txtContent.Language = WiremockUI.FCTBTextBox.LanguageSupported.XML;
             this.txtContent.Location = new System.Drawing.Point(0, 59);
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(507, 168);
