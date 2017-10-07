@@ -319,15 +319,12 @@
             // 
             this.chkDisableTextLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.chkDisableTextLog.AutoSize = true;
-            this.chkDisableTextLog.Checked = true;
-            this.chkDisableTextLog.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDisableTextLog.Location = new System.Drawing.Point(149, 84);
             this.chkDisableTextLog.Name = "chkDisableTextLog";
             this.chkDisableTextLog.Size = new System.Drawing.Size(129, 17);
             this.chkDisableTextLog.TabIndex = 28;
             this.chkDisableTextLog.Text = "Desativar log de texto";
             this.chkDisableTextLog.UseVisualStyleBackColor = true;
-            this.chkDisableTextLog.CheckedChanged += new System.EventHandler(this.chkDisableTextLog_CheckedChanged);
             // 
             // chkDisableTableLog
             // 

@@ -17,6 +17,8 @@ namespace WiremockUI
         private Server server;        
         private string labelDiff;
 
+        private Server.WiremockProperties wiremockProperties;
+
         public FormStartWiremockService(FormMaster master, Server server, Scenario scenario, Server.PlayType playType)
         {
             InitializeComponent();
@@ -38,11 +40,18 @@ namespace WiremockUI
             toolStripStatusLabelCount.Text = Resource.toolStripStatusLabelCount;
             toolStripStatusDiff.Text = Resource.toolStripStatusDiff;
             toolStripStatusValue.Text = Resource.toolStripStatusValue;
-            
+
+            this.wiremockProperties = server.GetWiremockProperties();
+            chkDisableTextLog.Checked = !wiremockProperties.Verbose;
+
             // log text
             this.logWriter = new RichTextBoxLogWriter(rtxtLog);
             this.logWriter.EnableAutoScroll = chkAutoScroll.Checked;
             this.logWriter.Enabled = !chkDisableTextLog.Checked;
+
+            // need add this event after checked because the event is called when checkbox 
+            // is checked in the code
+            this.chkDisableTextLog.CheckedChanged += this.chkDisableTextLog_CheckedChanged;
 
             // log table
             this.logTable = new GridViewLogRequestResponse(gridLog, master, (row) =>
@@ -160,6 +169,9 @@ namespace WiremockUI
         private void chkDisableTextLog_CheckedChanged(object sender, EventArgs e)
         {
             this.logWriter.Enabled = !chkDisableTextLog.Checked;
+
+            this.wiremockProperties.Verbose = this.logWriter.Enabled;
+            server.Save(this.wiremockProperties);
         }
 
         private void chkDisableTableLog_CheckedChanged(object sender, EventArgs e)
