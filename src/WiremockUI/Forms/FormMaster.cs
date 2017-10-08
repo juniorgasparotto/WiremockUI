@@ -52,14 +52,17 @@ namespace WiremockUI
 
                     item.Click += (o, s) =>
                     {
-                        if (Helper.MessageBoxQuestion(Resource.confirmRefreshAll) == DialogResult.Yes)
+                        //if (Helper.MessageBoxQuestion(Resource.confirmRefreshAll) == DialogResult.Yes)
+                        //{
+                        if (RefreshAll(lang.Key))
                         {
                             foreach (ToolStripMenuItem m in mnuLanguages.DropDownItems)
                                 m.Image = null;
                             item.Image = imageList1.Images["check"];
-                            SettingsUtils.SetLanguage(lang.Key);
-                            RefreshAll();
+
+                            Helper.MessageBoxExclamation(Resource.infoChangeLanguageAll);
                         }
+                        //}
                     };
 
                     this.mnuLanguages.DropDownItems.Add(item);
@@ -1424,15 +1427,19 @@ namespace WiremockUI
             }
         }
 
-        private void RefreshAll()
+        private bool RefreshAll(string lang = null)
         {
             if (!tabForms.TabPages.CloseAll())
-                return;
+                return false;
+
+            if (lang != null)
+                SettingsUtils.SetLanguage(lang);
 
             UpdateLabels();
             StopAll();
             treeServices.Nodes.Clear();
             LoadServers();
+            return true;
         }
 
         private void menuAddServer_Click(object sender, EventArgs e)
@@ -1611,7 +1618,6 @@ namespace WiremockUI
 
         private void menuRefresh_Click(object sender, EventArgs e)
         {
-            //if (Helper.MessageBoxQuestion(Resource.confirmRefreshAll) == DialogResult.Yes)
             RefreshAll();
         }
 

@@ -101,17 +101,22 @@ namespace WiremockUI
         {
             if (keyData == Keys.Escape && SelectedTab != null)
             {
+                var tabTagInfo = (this.SelectedTab.Tag as TabMaster.Tag);
                 var tab = (TabPageCustom)SelectedTab;
+
                 if (tab.CanClose == null || tab.CanClose())
                 {
+                    tabTagInfo?.Form.Close();
                     this.TabPages.Remove(tab);
                     SelectLastTab();
-                    return true;
                 }
+
+                // prevent trigger "CancelButton" clicked inside form when scape is pressed
+                return true;
             }
+
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
 
         private void TabControlCustom_MouseClick(object sender, MouseEventArgs e)
         {

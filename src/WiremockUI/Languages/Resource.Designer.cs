@@ -376,15 +376,6 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Para continuar será necessário parar todos os servidores, deseja continuar?.
-        /// </summary>
-        internal static string confirmRefreshAll {
-            get {
-                return ResourceManager.GetString("confirmRefreshAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Deseja realmente substituir &quot;{0}&quot; ocorrências? Esse processo é irreversível..
         /// </summary>
         internal static string confirmReplaceMessage {
@@ -615,6 +606,15 @@ namespace WiremockUI.Languages {
         internal static string gitHubProjectUrl {
             get {
                 return ResourceManager.GetString("gitHubProjectUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Para a alteração fazer efeito é necessário fechar e abrir novamente..
+        /// </summary>
+        internal static string infoChangeLanguageAll {
+            get {
+                return ResourceManager.GetString("infoChangeLanguageAll", resourceCulture);
             }
         }
         

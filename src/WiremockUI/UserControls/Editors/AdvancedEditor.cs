@@ -15,7 +15,7 @@ namespace WiremockUI
 
         #region JSON formatter
         
-        private readonly Regex jsonKeyRegex = new Regex(@""".+""\s*?\:", SyntaxHighlighter.RegexCompiledOption);
+        private readonly Regex jsonKeyRegex = new Regex(@"(""[^\\""]+?""\s*?:)", SyntaxHighlighter.RegexCompiledOption);
         private readonly Regex jsonNumberRegex = new Regex(@"\b\d+[\.]?\d*([eE]\-?\d+)?[lLdDfF]?\b|\b0x[a-fA-F\d]+\b", SyntaxHighlighter.RegexCompiledOption);
         private readonly Regex jsonStringRegex = new Regex(@"""""|''|"".*?[^\\]""|'.*?[^\\]'", SyntaxHighlighter.RegexCompiledOption);
         private readonly Regex jsonKeywordRegex = new Regex(@"\b(true|false|null)\b", SyntaxHighlighter.RegexCompiledOption);
@@ -61,7 +61,7 @@ namespace WiremockUI
 
                 if (this.language == LanguageSupported.Json)
                 {
-                    // txtContent.Language = FastColoredTextBoxNS.Language.Custom;
+                    txtContent.Language = FastColoredTextBoxNS.Language.JS;
                     this.txtContent.TextChangedDelayed += this.txtContent_IsJson_TextChangedDelayed;
                     SetJsonStyle();
                 }
@@ -335,7 +335,9 @@ namespace WiremockUI
 
         private void txtContent_IsJson_TextChangedDelayed(object sender, TextChangedEventArgs e)
         {
+            txtContent.ClearStyle(StyleIndex.All);
             SetJsonStyle();
+            txtContent.OnSyntaxHighlight(new TextChangedEventArgs(txtContent.Range));
         }
 
         #region IEditorBase

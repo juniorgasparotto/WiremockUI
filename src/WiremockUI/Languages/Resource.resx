@@ -585,8 +585,8 @@
   <data name="viewMappingInWebRequestMenu" xml:space="preserve">
     <value>Visualizar com Web Request</value>
   </data>
-  <data name="confirmRefreshAll" xml:space="preserve">
-    <value>Para continuar será necessário parar todos os servidores, deseja continuar?</value>
+  <data name="infoChangeLanguageAll" xml:space="preserve">
+    <value>Para a alteração fazer efeito é necessário fechar e abrir novamente.</value>
   </data>
   <data name="editValueMenu" xml:space="preserve">
     <value>Editar valor</value>

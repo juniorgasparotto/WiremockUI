@@ -103,8 +103,6 @@ namespace WiremockUI
 
         #endregion
 
-        
-
         private void FormTextFile_Load(object sender, EventArgs e)
         {
             this.ActiveControl = txtContent;

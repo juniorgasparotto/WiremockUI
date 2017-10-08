@@ -7,10 +7,10 @@
       "Name": "CMC",
       "Scenarios": [
         {
-          "Id": "f2258dc7-4fb7-44ca-83d7-83b3b2b2f047",
+          "Id": "c3391e2d-ef22-4898-bd12-cb58a102d53c",
           "Name": "c1",
           "IsDefault": true,
-          "ShowURL": false,
+          "ShowURL": true,
           "Description": "",
           "ShowName": true
         }
@@ -80,7 +80,7 @@
         "pt-br": "Portuguese",
         "en-us": "English"
       },
-      "DefaultLanguage": "pt-br"
+      "DefaultLanguage": "en-us"
     }
   ]
 }
