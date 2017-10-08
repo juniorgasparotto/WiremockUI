@@ -10,6 +10,7 @@ namespace WiremockUI
     {
         private object tabPage;
         private object master;
+        private string originalText;
 
         public Action OnSave { get; set; }
 
@@ -27,6 +28,8 @@ namespace WiremockUI
             this.btnClose.Text = Resource.btnCloseTab;
             this.btnSave.Text = Resource.btnSaveFile;
             this.btnFormat.Text = Resource.btnXmlFormat;
+
+            this.originalText = this.btnSave.Text;
         }
 
         private void LoadForm(string fileName)
@@ -79,7 +82,7 @@ namespace WiremockUI
             if (e.Control && e.KeyCode == Keys.S)
             {
                 Save();
-                Helper.AnimateSaveButton(btnSave);
+                Helper.AnimateSaveButton(btnSave, this.originalText);
                 e.SuppressKeyPress = true;
             }
         }

@@ -44,7 +44,11 @@ namespace WiremockUI
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool IsEdited { get; set; }
+        public bool IsEdited
+        {
+            get => txtContent.IsChanged;
+            set => txtContent.IsChanged = value;
+        }
 
         [DefaultValue(LanguageSupported.Custom)]
         public LanguageSupported Language
@@ -192,6 +196,7 @@ namespace WiremockUI
                 if (firstInput)
                 {
                     txtContent.ClearUndo();
+                    IsEdited = false;
                     firstInput = false;
                 }
             }
@@ -326,8 +331,8 @@ namespace WiremockUI
 
         private void txtContent_KeyDown(object sender, KeyEventArgs e)
         {
-            if (EditorUtils.KeyIsWritable(e.KeyCode))
-                IsEdited = true;
+            //if (EditorUtils.KeyIsWritable(e.KeyCode))
+            //    IsEdited = true;
 
             OnKeyDown(e);
         }

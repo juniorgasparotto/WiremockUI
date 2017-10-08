@@ -1850,13 +1850,13 @@ namespace WiremockUI
         private void webRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frmComposer = new FormWebRequest();
-            TabMaster.AddTab(frmComposer, null, GetMenuNameAsTabName(menuWebRequest.Text));
+            TabMaster.AddTab(frmComposer, null, null);
         }
 
         private void compareTextToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new FormCompare(this);
-            TabMaster.AddTab(frm, null, GetMenuNameAsTabName(menuTextCompare.Text));
+            TabMaster.AddTab(frm, null, null);
         }
 
         private void btnCancelFileSelectiong_Click(object sender, EventArgs e)
@@ -1867,14 +1867,14 @@ namespace WiremockUI
         private void textEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new FormTextView(this, null, null);
-            TabMaster.AddTab(frm, null, GetMenuNameAsTabName(menuTextEditor.Text));
+            TabMaster.AddTab(frm, null, null);
         }
 
         private void visualizadorDeJSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var title = GetMenuNameAsTabName(menuJsonVisualizer.Text);
             var frm = new FormJsonViewer(this, title, null, true);
-            TabMaster.AddTab(frm, null, title);
+            TabMaster.AddTab(frm, null, null);
         }
 
         private string GetMenuNameAsTabName(string text)

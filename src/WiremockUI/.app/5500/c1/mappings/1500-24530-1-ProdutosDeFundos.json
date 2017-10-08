@@ -1,0 +1,53 @@
+{
+    "id": "62f5da26-6c4a-3dd8-9815-e2ef4af979c6",
+    "request": {
+        "url": "/J700055X.svc",
+        "method": "POST",
+        "headers": {
+            "SOAPAction": {
+                "equalTo": "\"http://tempuri.org/IJ700055X/Processar\""
+            },
+            "Content-Type": {
+                "equalTo": "text/xml; charset=UTF-8"
+            }
+        },
+        "bodyPatterns": [
+            {
+                "matchesXPath": "//wcf:Agencia[text()='1500']",
+                "xPathNamespaces": {
+                    "tem": "http://tempuri.org/",
+                    "wcf": "http://schemas.datacontract.org/2004/07/WCF"
+                }
+            },
+            {
+                "matchesXPath": "//wcf:Conta[text()='31530']",
+                "xPathNamespaces": {
+                    "tem": "http://tempuri.org/",
+                    "wcf": "http://schemas.datacontract.org/2004/07/WCF"
+                }
+            },
+            {
+                "matchesXPath": "//wcf:Dac[text()='1']",
+                "xPathNamespaces": {
+                    "tem": "http://tempuri.org/",
+                    "wcf": "http://schemas.datacontract.org/2004/07/WCF"
+                }
+            }
+        ]
+    },
+    "response": {
+        "status": 200,
+        "bodyFileName": "1500-24530-1-ProdutosDeFundos.xml",
+        "headers": {
+            "Cache-Control": "private",
+            "Content-Type": "text/xml; charset=utf-8",
+            "Vary": "Accept-Encoding",
+            "Server": "Microsoft-IIS/10.0",
+            "X-AspNet-Version": "4.0.30319",
+            "X-SourceFiles": "=?UTF-8?B?RDpcSnVuaW9yXFByb2pldG9zXEdJVEhVQi5DT01canVuaW9yZ2FzcGFyb3R0b1xXaXJlbW9ja1VJXHNyY1xXaXJlbW9ja1VJLldDRlNhbXBsZVxKNzAwMDU1WC5zdmM=?=",
+            "X-Powered-By": "ASP.NET",
+            "Date": "Sun, 08 Oct 2017 16:59:42 GMT"
+        }
+    },
+    "uuid": "62f5da26-6c4a-3dd8-9815-e2ef4af979c6"
+}

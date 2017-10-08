@@ -341,12 +341,12 @@ namespace WiremockUI
             return false;
         }
 
-        public static async void AnimateSaveButton(Button button)
+        public static async void AnimateSaveButton(Button button, string originalText)
         {
             var text = button.Text;
             button.Text = "*";
             await Task.Delay(300);
-            button.Text = text;
+            button.Text = originalText;
         }
 
         public static string FormatToJson(string content, bool showErrorMessage = true)

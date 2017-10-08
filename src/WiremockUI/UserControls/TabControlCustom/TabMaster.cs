@@ -22,6 +22,16 @@ namespace WiremockUI
 
         public TabPageCustom AddTab(Form form, object tag, string text)
         {
+            var textSuffix = (text == null ? "" : ": " + text);
+            if (form is FormWebRequest)
+                text = "WebRequest" + textSuffix;
+            else if (form is FormCompare)
+                text = "Compare" + textSuffix;
+            else if (form is FormTextView)
+                text = "Editor" + textSuffix;
+            else if (form is FormJsonViewer)
+                text = "JSON" + textSuffix;
+
             var tabpage = new TabPageCustom { Text = text };
             tabpage.Tag = new Tag { Form = form, InternalTag = tag };
 

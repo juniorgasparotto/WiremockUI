@@ -51,6 +51,7 @@ namespace WiremockUI
         '\"',
         '\'',
         '\''};
+            this.txtContent.AutoIndentExistingLines = false;
             this.txtContent.AutoScrollMinSize = new System.Drawing.Size(0, 14);
             this.txtContent.BackBrush = null;
             this.txtContent.CharHeight = 14;
@@ -82,13 +83,13 @@ namespace WiremockUI
             this.pnlContent.Size = new System.Drawing.Size(629, 287);
             this.pnlContent.TabIndex = 33;
             // 
-            // FCTBTextBox
+            // AdvancedEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.pnlContent);
-            this.Name = "FCTBTextBox";
+            this.Name = "AdvancedEditor";
             this.Size = new System.Drawing.Size(629, 287);
             ((System.ComponentModel.ISupportInitialize)(this.txtContent)).EndInit();
             this.pnlContent.ResumeLayout(false);

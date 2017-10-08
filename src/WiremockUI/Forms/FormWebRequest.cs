@@ -52,8 +52,11 @@ namespace WiremockUI
             var contentType = HttpUtils.GetHeaderValue(requestHeaders, "content-type");
             if (contentType != null)
             {
+                contentType = contentType.ToLower();
                 if (contentType.Contains("xml"))
                     txtRequestBody.Language = AdvancedEditor.LanguageSupported.XML;
+                else if (contentType.Contains("html"))
+                    txtRequestBody.Language = AdvancedEditor.LanguageSupported.HTML;
                 else if (contentType.Contains("json"))
                     txtRequestBody.Language = AdvancedEditor.LanguageSupported.Json;
                 else if (contentType.Contains("javascript"))
@@ -201,8 +204,11 @@ namespace WiremockUI
             var contentType = HttpUtils.GetHeaderValue(headers, "content-type");
             if (contentType != null)
             {
+                contentType = contentType.ToLower();
                 if (contentType.Contains("xml"))
                     txtResponseBody.Language = AdvancedEditor.LanguageSupported.XML;
+                else if (contentType.Contains("html"))
+                    txtResponseBody.Language = AdvancedEditor.LanguageSupported.HTML;
                 else if (contentType.Contains("json"))
                     txtResponseBody.Language = AdvancedEditor.LanguageSupported.Json;
                 else if (contentType.Contains("javascript"))

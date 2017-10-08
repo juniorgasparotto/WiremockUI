@@ -10,9 +10,9 @@
           "Id": "c3391e2d-ef22-4898-bd12-cb58a102d53c",
           "Name": "c1",
           "IsDefault": true,
-          "ShowURL": true,
+          "ShowURL": false,
           "Description": "",
-          "ShowName": true
+          "ShowName": false
         }
       ],
       "Arguments": [
