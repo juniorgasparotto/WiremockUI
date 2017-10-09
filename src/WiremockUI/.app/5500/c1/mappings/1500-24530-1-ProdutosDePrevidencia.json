@@ -13,21 +13,30 @@
         },
         "bodyPatterns": [
             {
-                "matchesXPath": "//wcf:Agencia[text()='1500']",
+                "matchesXPath": {
+                    "expression": "//wcf:Agencia/text()",
+                    "contains": "1500"
+                },
                 "xPathNamespaces": {
                     "tem": "http://tempuri.org/",
                     "wcf": "http://schemas.datacontract.org/2004/07/WCF"
                 }
             },
             {
-                "matchesXPath": "//wcf:Conta[text()='24530']",
+                "matchesXPath": {
+                    "expression": "//wcf:Conta/text()",
+                    "contains": "24530"
+                },
                 "xPathNamespaces": {
                     "tem": "http://tempuri.org/",
                     "wcf": "http://schemas.datacontract.org/2004/07/WCF"
                 }
             },
             {
-                "matchesXPath": "//wcf:Dac[text()='1']",
+                "matchesXPath": {
+                    "expression": "//wcf:Dac/text()",
+                    "contains": "1"
+                },
                 "xPathNamespaces": {
                     "tem": "http://tempuri.org/",
                     "wcf": "http://schemas.datacontract.org/2004/07/WCF"

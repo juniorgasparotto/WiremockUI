@@ -30,43 +30,7 @@
         },
         {
           "Name": "PrintAllNetworkTraffic",
-          "Value": "True",
-          "ArgName": "--print-all-network-traffic",
-          "Type": "Boolean"
-        }
-      ]
-    },
-    {
-      "Id": "70aae668-9e85-43d5-983c-8539fc21a652",
-      "UrlTarget": "http://g1.coms",
-      "Port": 5501,
-      "Name": "ds",
-      "Scenarios": [
-        {
-          "Id": "5b58c521-6386-4244-944c-2870c5534136",
-          "Name": "Scenario1",
-          "IsDefault": true,
-          "ShowURL": true,
-          "Description": null,
-          "ShowName": true
-        }
-      ],
-      "Arguments": [
-        {
-          "Name": "Verbose",
-          "Value": "True",
-          "ArgName": "--verbose",
-          "Type": "Boolean"
-        },
-        {
-          "Name": "MatchHeaders",
-          "Value": "Content-Type,SOAPAction",
-          "ArgName": "--match-headers",
-          "Type": "String"
-        },
-        {
-          "Name": "PrintAllNetworkTraffic",
-          "Value": "True",
+          "Value": "False",
           "ArgName": "--print-all-network-traffic",
           "Type": "Boolean"
         }

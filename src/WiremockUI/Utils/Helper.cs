@@ -41,6 +41,19 @@ namespace WiremockUI
             return MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
+        public static string ReadFileAsString(string fileName)
+        {
+            try
+            {
+                return File.ReadAllText(fileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBoxError(ex.Message);
+                return null;
+            }
+        }
+
         public static DialogResult MessageBoxQuestion(string message, string title = null)
         {
             title = title ?? Resource.messageBoxQuestionTitle;

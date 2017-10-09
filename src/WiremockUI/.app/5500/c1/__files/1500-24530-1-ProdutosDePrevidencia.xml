@@ -4,7 +4,7 @@
         <ProcessarResponse xmlns="http://tempuri.org/">
             <ProcessarResult xmlns:a="http://schemas.datacontract.org/2004/07/WCF" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
                 <a:Produtos xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                    <b:string>Previdencia</b:string>
+                    <b:string>Previdencia2</b:string>
                 </a:Produtos>
             </ProcessarResult>
         </ProcessarResponse>

@@ -37,7 +37,7 @@ namespace WiremockUI
             if (fileName != null)
             {
                 txtPath.TextValue = fileName;
-                content = File.ReadAllText(fileName);
+                content = Helper.ReadFileAsString(fileName);
             }
             else
             {
