@@ -32,9 +32,8 @@ Ele não precisa de instalação, basta apenas:
 2. Descompactar o .zip em qualquer local
 2. Abrir o arquivo `Wiremock.exe`
 
-```
-https://github.com/juniorgasparotto/WiremockUI/blob/master/download/release-2.0.0.zip
-```
+<a href="https://github.com/juniorgasparotto/WiremockUI/blob/master/download/release-2.0.0.zip">
+https://github.com/juniorgasparotto/WiremockUI/blob/master/download/release-2.0.0.zip</a>
 
 **Requisitos - Windows**
 
