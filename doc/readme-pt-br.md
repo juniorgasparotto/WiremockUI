@@ -35,135 +35,21 @@ Ele não precisa de instalação, basta apenas:
 <a href="https://github.com/juniorgasparotto/WiremockUI/blob/master/download/release-2.0.0.zip">
 https://github.com/juniorgasparotto/WiremockUI/blob/master/download/release-2.0.0.zip</a>
 
+
 **Requisitos - Windows**
 
-1. Instale o ".NET Framework 4.5"
+* Instale o ".NET Framework 4.5"
   * chocolatey: `choco install dotnet4.5`
   * microsoft: https://www.microsoft.com/en-us/download/details.aspx?id=30653
-2. Instale o "Java"
+* Instale o "Java"
   * chocolatey: `choco install jre8`
   * oracle: http://www.oracle.com/technetwork/pt/indexes/downloads/index.html
 
 **Requisitos - Linux**
 
-Utilize o projeto "Mono.Forms" para executar no linux, contudo, não é garantido que todas as funcionalidades funcionem da mesma maneira que ocorre no Windows.
+Utilize o projeto `Mono.Forms` para executar no linux, contudo, não é garantido que todas as funcionalidades funcionem da mesma maneira que ocorre no Windows.
 
-# Wiremock - Overview
-
-É um projeto feito em java que simula um serviço web. Tecnicamente ele foi projetado para trabalhar de de duas formas:
-  * **Modo Standalone**: É quando ele é executado no prompt de comando com a finalidade de criar servidores web armazenando os request e responses em forma de arquivos. Ele pode trabalhar com 3 tipos de servidores.
-    * Executar como servidor de mock
-    * Executar como proxy, mas gravando os dados que são trafegados (útil para a carga inicial)
-    * Executar apenas como proxy
-  * **Framework de testes**: Está fora do nosso escopo, mas ele pode ser usado como framework de mock de API em forma de código. Em .NET temos o `mock4net` que tem como inspiração o Wiremock.
-
-Para mais informações, acesse o site oficial da ferramenta: http://wiremock.org/
-
-## Tipos de servidores - Executar como servidor de mock
-
-Dentro do contexto de testes ele é útil para mocar APIs ou qualquer coisa sobre o protocolo HTTP. O servidor utiliza, basicamente, de duas pastas para trabalhar: 
-  * **mappings**: Essa pasta contém os arquivos `.json`, onde cada arquivo representa uma rota com sua respectiva resposta. Existe uma porção de configurações dentro de cada mapa, todas estão disponíveis na documentação do wiremock.
-  * **__files**: Nessa pasta ficam os arquivos de resposta que são configurados no mapa.
-
-**Exemplo mapa - GET**
-
-Esse mapa cria uma rota que ficará ouvindo a rota `http://[SERVER]:5500/user/all` utilizando o verbo `GET`. Quando uma requisição estiver dentro dessas regras o conteúdo do arquivo `response.txt` será retornado:
-
-```json
-{
-  "request": {
-    "url": "/user/all",
-    "method": "GET"
-  },
-  "response": {
-    "status": 200,
-    "bodyFileName": "response.txt",
-    "headers": {
-      "Content-Type": "application/json"
-    }
-  }
-}
-```
-
-**Exemplo mapa - POST**
-
-Esse mapa cria uma rota que ficará ouvindo a rota `http://[SERVER]:5500/user/insert”all` utilizando o verbo `POST` e quando o corpo da requisição for igual á `{\"Name\":\"User3\",\"Age\":100}`. Quando uma requisição estiver dentro dessas regras o conteúdo do arquivo `response.txt` será retornado:
-
-```json
-{
-  "request": {
-    "url": "/user/insert",
-    "method": "POST",
-    "bodyPatterns" : [
-      {
-        "equalToJson" : "{\"Name\":\"User3\",\"Age\":100}"
-      }
-    ]
-  },
-  "response": {
-    "status": 200,
-    "bodyFileName": "response.txt",
-    "headers": {
-      "Content-Type": "application/json"
-    }
-  }
-}
-```
-
-**Resposta:** `response.txt`:
-
-A resposta é sempre "crua", sem nenhum encapsulamento. Como nos mapas anteriores, vimos que o arquivo de resposta é um `application/json`, então esse arquivo terá o conteúdo JSON, se fosse uma imagem, esse arquivo de resposta teria a extensão da imagem, exemplo: `response.jpg` e seu conteúdo seria um binário.
-
-{
-  "key1": "value"
-}
-
-**Testando:**
-
-* Subir o servidor
-  * `java -jar "D:\wm\wiremock-standalone-2.8.0.jar" --port 5500 --root-dir "D:\wm\server1" --verbose`
-* Cenário de GET:
-  * **Url**: `http://localhost:5500/user/all`
-  * **Method**: `GET`
-* Cenário de POST:
-*   **Url**: `http://localhost:5500/user/insert`
-  * **Method**: `POST`
-  * **Body**: `{ "Name": "User3", "Age": 100}`
-
-## Tipos de servidores - Executar como proxy, mas gravando os dados que são trafegados
-
-É muito útil para dar a primeira carga de arquivos de mapas e respostas, depois disso, você pode editar os arquivos gerados podendo criar diversos cenários. Para usar os arquivos gerados é preciso mudar a forma de execução para: Servidor de arquivos estáticos.
-
-**Executando:**
-
-* Subir o servidor em modo de gravação:
-  * `java -jar "D:\wm\wiremock-standalone-2.8.0.jar" --port 5502 --proxy-all "https://www.w3schools.com/" --record-mappings --root-dir "D:\wm\server2" --verbose --match-headers Content-Type`
-* Abrir a URL no browser: `http://localhost:5502`
-* Parar o servidor
-* Editar qualquer arquivo
-* Reiniciar o servidor para utilizar os arquivos salvos
-  * `java -jar "D:\wm\wiremock-standalone-2.8.0.jar" --port 5502 --root-dir "D:\wm\server2" --verbose`
-* Limpar o cache do browser
-* Executar novamente: `http://localhost:5502`
-
-## Tipos de servidores - Executar apenas como proxy
-
-Dentro do nosso contexto de testes, ele pode ser útil quando precisamos utilizar o serviço original sem precisar alterar a URL no cliente.
-
-**Executando:**
-
-  * Subir o servidor em modo de proxy (ignorando os mapas salvos):
-    * `java -jar "D:\wm\wiremock-standalone-2.8.0.jar" --port 5502 --proxy-all "https://www.w3schools.com/" --verbose`
-  * Abrir a URL no browser: `http://localhost:5502`
-
-# WiremockUI - Tutorial
-
-##  Como funciona?
-
-O .JAR do Wiremock não é executado usando processos, o .JAR da última versão do Wiremock foi convertido em .NET usando a ferramenta "IKVM". Com isso, foi possível potencializar o uso da ferramenta, tendo acesso direto às principais classes.
-
-* Ele utiliza WindowsForms como paradigma, então é preciso ter o .NET Framework 4.5 instalado.
-* Todos os arquivos salvos serão salvos em uma pasta chamada `.app` que fica na raiz de onde está o `.exe`.
+# Tutorial
 
 ## Criando um servidor de mock
 
@@ -401,6 +287,125 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 * `About`: Abre a tela de sobre.
 
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/menus.png" />
+
+
+# Wiremock - Overview
+
+É um projeto feito em java que simula um serviço web. Tecnicamente ele foi projetado para trabalhar de de duas formas:
+  * **Modo Standalone**: É quando ele é executado no prompt de comando com a finalidade de criar servidores web armazenando os request e responses em forma de arquivos. Ele pode trabalhar com 3 tipos de servidores.
+    * Executar como servidor de mock
+    * Executar como proxy, mas gravando os dados que são trafegados (útil para a carga inicial)
+    * Executar apenas como proxy
+  * **Framework de testes**: Está fora do nosso escopo, mas ele pode ser usado como framework de mock de API em forma de código. Em .NET temos o `mock4net` que tem como inspiração o Wiremock.
+
+Para mais informações, acesse o site oficial da ferramenta: http://wiremock.org/
+
+## Tipos de servidores - Executar como servidor de mock
+
+Dentro do contexto de testes ele é útil para mocar APIs ou qualquer coisa sobre o protocolo HTTP. O servidor utiliza, basicamente, de duas pastas para trabalhar: 
+  * **mappings**: Essa pasta contém os arquivos `.json`, onde cada arquivo representa uma rota com sua respectiva resposta. Existe uma porção de configurações dentro de cada mapa, todas estão disponíveis na documentação do wiremock.
+  * **__files**: Nessa pasta ficam os arquivos de resposta que são configurados no mapa.
+
+**Exemplo de mapa - GET**
+
+Esse mapa cria uma rota que ficará ouvindo a rota `http://[SERVER]:5500/user/all` utilizando o verbo `GET`. Quando uma requisição estiver dentro dessas regras o conteúdo do arquivo `response.txt` será retornado:
+
+```json
+{
+  "request": {
+    "url": "/user/all",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "response.txt",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
+```
+
+**Exemplo de mapa - POST**
+
+Esse mapa cria uma rota que ficará ouvindo a rota `http://[SERVER]:5500/user/insert”all` utilizando o verbo `POST` e quando o corpo da requisição for igual á `{\"Name\":\"User3\",\"Age\":100}`. Quando uma requisição estiver dentro dessas regras o conteúdo do arquivo `response.txt` será retornado:
+
+```json
+{
+  "request": {
+    "url": "/user/insert",
+    "method": "POST",
+    "bodyPatterns" : [
+      {
+        "equalToJson" : "{\"Name\":\"User3\",\"Age\":100}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "response.txt",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
+```
+
+**Resposta:**
+
+A resposta é sempre "crua", sem nenhum encapsulamento. Como nos mapas anteriores, vimos que o arquivo de resposta é um `application/json`, então esse arquivo terá o conteúdo JSON, se fosse uma imagem, esse arquivo de resposta teria a extensão da imagem, exemplo: `response.jpg` e seu conteúdo seria um binário.
+
+```json
+{
+  "key1": "value"
+}
+```
+
+**Testando:**
+
+* Subir o servidor
+  * `java -jar "D:\wm\wiremock-standalone-2.8.0.jar" --port 5500 --root-dir "D:\wm\server1" --verbose`
+* Cenário de GET:
+  * **Url**: `http://localhost:5500/user/all`
+  * **Method**: `GET`
+* Cenário de POST:
+  * **Url**: `http://localhost:5500/user/insert`
+  * **Method**: `POST`
+  * **Body**: `{ "Name": "User3", "Age": 100}`
+
+## Tipos de servidores - Executar como proxy, mas gravando os dados que são trafegados
+
+É muito útil para dar a primeira carga de arquivos de mapas e respostas, depois disso, você pode editar os arquivos gerados podendo criar diversos cenários. Para usar os arquivos gerados é preciso mudar a forma de execução para servidor de mock.
+
+**Executando:**
+
+* Subir o servidor em modo de gravação:
+  * `java -jar "D:\wm\wiremock-standalone-2.8.0.jar" --port 5502 --proxy-all "https://www.w3schools.com/" --record-mappings --root-dir "D:\wm\server2" --verbose --match-headers Content-Type`
+* Abrir a URL no browser: `http://localhost:5502`
+* Parar o servidor
+* Editar qualquer arquivo
+* Reiniciar o servidor para utilizar os arquivos salvos
+  * `java -jar "D:\wm\wiremock-standalone-2.8.0.jar" --port 5502 --root-dir "D:\wm\server2" --verbose`
+* Limpar o cache do browser
+* Executar novamente: `http://localhost:5502`
+
+## Tipos de servidores - Executar apenas como proxy
+
+Dentro do nosso contexto de testes, ele pode ser útil quando precisamos utilizar o serviço original sem precisar alterar a URL no cliente.
+
+**Executando:**
+
+  * Subir o servidor em modo de proxy (ignorando os mapas salvos):
+    * `java -jar "D:\wm\wiremock-standalone-2.8.0.jar" --port 5502 --proxy-all "https://www.w3schools.com/" --verbose`
+  * Abrir a URL no browser: `http://localhost:5502`
+
+
+#  Como funciona?
+
+O .JAR do Wiremock não é executado usando processos, o .JAR da última versão do Wiremock foi convertido em .NET usando a ferramenta "IKVM". Com isso, foi possível potencializar o uso da ferramenta, tendo acesso direto às principais classes.
+
+* Ele utiliza WindowsForms como paradigma, então é preciso ter o .NET Framework 4.5 instalado.
+* Todos os arquivos salvos serão salvos em uma pasta chamada `.app` que fica na raiz de onde está o `.exe`.
 
 # Como contribuir
 
