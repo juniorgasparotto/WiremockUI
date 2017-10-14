@@ -1,42 +1,5 @@
 {
-  "Servers": [
-    {
-      "Id": "4c3172b1-e93b-42f5-ab67-90f328cf5747",
-      "UrlTarget": null,
-      "Port": 5500,
-      "Name": "server1",
-      "Scenarios": [
-        {
-          "Id": "107cecb0-00ad-4c78-8086-646187484202",
-          "Name": "Scenario1",
-          "IsDefault": true,
-          "ShowURL": true,
-          "Description": null,
-          "ShowName": true
-        }
-      ],
-      "Arguments": [
-        {
-          "Name": "Verbose",
-          "Value": "False",
-          "ArgName": "--verbose",
-          "Type": "Boolean"
-        },
-        {
-          "Name": "MatchHeaders",
-          "Value": "Content-Type,SOAPAction",
-          "ArgName": "--match-headers",
-          "Type": "String"
-        },
-        {
-          "Name": "PrintAllNetworkTraffic",
-          "Value": "False",
-          "ArgName": "--print-all-network-traffic",
-          "Type": "Boolean"
-        }
-      ]
-    }
-  ],
+  "Servers": [],
   "Settings": [
     {
       "Id": "b712d615-d1d1-4f7f-ac1c-c6c72e037c5e",

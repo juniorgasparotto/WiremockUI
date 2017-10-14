@@ -59,6 +59,7 @@ o delete parou de funcionar nos campos de textos - OK
 melhorar CONTROL + Z do editor - ok
 fazer um jeito de nao fechar se existir alteração na janela, perguntar antes - OK
 esta ficando sem apresentar o content no find in files quando o path eh muito grande - ok
+compactar o projeto em apenas um .exe - OK
 
 -- ToDo
 
@@ -88,7 +89,7 @@ testar sem java na maquina
 tentar apt-get com wine ou mono
 subir no chocolatey
 criar tutorial
-compactar o projeto em apenas um .exe
+
 
 -- despriorizados
 
