@@ -28,8 +28,7 @@
 
 Ele não precisa de instalação, basta baixar o .zip no link abaixo:
 
-<a href="https://github.com/juniorgasparotto/WiremockUI/blob/master/download/release-2.0.0.zip">
-https://github.com/juniorgasparotto/WiremockUI/blob/master/download/release-2.0.0.zip</a>
+https://github.com/juniorgasparotto/WiremockUI/blob/master/download/release-2.0.0.zip
 
 1. Fazer o download do .zip
 2. Descompactar o .zip em qualquer local
