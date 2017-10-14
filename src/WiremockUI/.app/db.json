@@ -1,24 +1,24 @@
 {
   "Servers": [
     {
-      "Id": "9990064a-d5e0-42c0-bdf1-57d362c7b99f",
-      "UrlTarget": "http://localhost:58105",
+      "Id": "4c3172b1-e93b-42f5-ab67-90f328cf5747",
+      "UrlTarget": null,
       "Port": 5500,
-      "Name": "CMC",
+      "Name": "server1",
       "Scenarios": [
         {
-          "Id": "c3391e2d-ef22-4898-bd12-cb58a102d53c",
-          "Name": "c1",
+          "Id": "107cecb0-00ad-4c78-8086-646187484202",
+          "Name": "Scenario1",
           "IsDefault": true,
-          "ShowURL": false,
-          "Description": "",
-          "ShowName": false
+          "ShowURL": true,
+          "Description": null,
+          "ShowName": true
         }
       ],
       "Arguments": [
         {
           "Name": "Verbose",
-          "Value": "True",
+          "Value": "False",
           "ArgName": "--verbose",
           "Type": "Boolean"
         },
