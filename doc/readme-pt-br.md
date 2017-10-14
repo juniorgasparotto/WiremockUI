@@ -35,6 +35,7 @@ Ele não precisa de instalação, basta apenas:
 <a href="https://github.com/juniorgasparotto/WiremockUI/blob/master/download/release-2.0.0.zip">
 https://github.com/juniorgasparotto/WiremockUI/blob/master/download/release-2.0.0.zip</a>
 
+<br/>
 
 **Requisitos - Windows**
 
