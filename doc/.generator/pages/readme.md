@@ -102,6 +102,7 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 * `Show URL`: Quando ativo, exibe a URL dos mapas na árvore
 * `Show Name`: Quando ativo, exibe o nome do arquivo na árvore
 
+<br/>
 <img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/scenario-menu.png" />
 
 ## Criando um novo mapa <header-set anchor-name="new-map" />

@@ -118,6 +118,7 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 * `Remove`: Remove o cenário
 * `Show URL`: Quando ativo, exibe a URL dos mapas na árvore
 * `Show Name`: Quando ativo, exibe o nome do arquivo na árvore
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/scenario-menu.png)
 
 ## <a name="new-map" />Criando um novo mapa
