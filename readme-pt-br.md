@@ -125,6 +125,7 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 
 * Para adicionar um novo mapa, clique com o lado direto do mouse sobre o item `Scenario1`.
 * Será criado um arquivo de mapa com o básico das configurações do Wiremock. Para obter mais informações sobre como configurar um mapa acesse: http://wiremock.org/docs/request-matching/.
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/add-map.png)
 
 **Menu de Opções do mapa**
@@ -191,6 +192,7 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 
 * Clique com o botão direito do mouse sobre o servidor desejado
 * Clique em `Start`
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/start-server.png)
 * Ao iniciar o servidor, uma janela contendo os logs em forma de texto e tabela serão exibidos.
 * No log de texto é exibido um texto contento (em verde) da linha de comando que seria equivalente ao usar via console.
@@ -229,6 +231,7 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 * Para ter uma precisão maior sobre o tempo da chamada, compare os tempos do tipo `NET.IN` (coluna `RequestTime`) com o tipo `NET.OUT` (Coluna `ResponseTime`) da URL desejada. Infelizmente, não existe uma maneira mais precisa para obter essa informação, seria um desejo para as próximas versões do Wiremock.
 * O tipo `NET.OUT` não retorna a URL no campo esperado, sendo assim, a localização dessa linha deve ser manual, ou seja, limpe os logs e faça a chamada apenas da URL que deseja medir o tempo.
 * Essa opção só faz sentido quando esta sendo executado como proxy, não faz sentido medir o tempo de um servidor mocado.
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-time.png)
 
 ## <a name="create-server-recording" />Criando um servidor para o modo de gravação
@@ -257,6 +260,7 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 
 * Clique com o lado direito do mouse sobre o servidor
 * Clique na opção `Start (Only Proxy)`
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-proxy-menu.png)
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-started-proxy.png)
 
@@ -279,6 +283,7 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
   * `Text Editor`: Abre a ferramenta de edição de texto. A ferramenta é muito simples e foi desenvolvida para ajudar a formatar algum valor no formato JSON ou XML.
   * `JSON Viewer`: Abre a ferramenta JSON Viewer que ajuda na visualização do JSON exibindo-o em forma de TreeView
 * `About`: Abre a tela de sobre.
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/menus.png)
 
 # <a name="wiremock" />Wiremock - Overview
@@ -409,10 +414,21 @@ No momento, não vou adicionar novas features devido a falta de tempo, ficarei a
 
 **Links importantes para o projeto:**
 
-**IKVM**: Ferramenta que converte o Wiremock em Java para .NET.
+**IKVM**:
 
-* https://www.ikvm.net/ **PocDatabase**: Framework para facilitar a persistência dos dados
-* https://github.com/juniorgasparotto/PocDatabase **Board**: https://github.com/juniorgasparotto/WiremockUI/projects/1?fullscreen=true
+Ferramenta que converte o Wiremock em Java para .NET.
+
+https://www.ikvm.net/
+
+**PocDatabase**:
+
+Framework para facilitar a persistência dos dados
+
+https://github.com/juniorgasparotto/PocDatabase
+
+**Board**:
+
+https://github.com/juniorgasparotto/WiremockUI/projects/1?fullscreen=true
 
 # <a name="license" />Licença
 
