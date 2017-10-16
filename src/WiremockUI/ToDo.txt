@@ -60,12 +60,11 @@ melhorar CONTROL + Z do editor - ok
 fazer um jeito de nao fechar se existir alteração na janela, perguntar antes - OK
 esta ficando sem apresentar o content no find in files quando o path eh muito grande - ok
 compactar o projeto em apenas um .exe - OK
+o log de texto esta demorando muito para voltar as requisições, criar forma de desabilar apenas ele. talvez deixar o verbose como false na criação do server - OK
 
 -- ToDo
 
-criar botão para atualizar arquivo nos editores de json, text e xml e img tb.
-
-o log de texto esta demorando muito para voltar as requisições, criar forma de desabilar apenas ele. talvez deixar o verbose como false na criação do server
+criar botão para atualizar arquivo nos editores de json, text e xml e img.
 criar agrupar por URL
 criar copiar para area de transferecia
   - url do serviço final

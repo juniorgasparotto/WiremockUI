@@ -36,20 +36,17 @@ https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zi
 2. Descompactar o .zip em qualquer local
 2. Abrir o arquivo `Wiremock.exe`
 
-**Requisitos - Windows**
+**Windows**
 
-* Instale o ".NET Framework 4.5"
+* .NET Framework 4.5
   * chocolatey: `choco install dotnet4.5`
   * microsoft: https://www.microsoft.com/en-us/download/details.aspx?id=30653
-* Instale o "Java"
-  * chocolatey: `choco install jre8`
-  * oracle: http://www.oracle.com/technetwork/pt/indexes/downloads/index.html
 
-**Requisitos - Linux**
+**Linux**
 
 Utilize o projeto `Mono.Forms` para executar no linux, contudo, não é garantido que todas as funcionalidades funcionem da mesma maneira que ocorre no Windows.
 
-# Tutorial
+<table-of-contents/>
 
 ## Criando um servidor de mock
 
@@ -107,7 +104,7 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/scenario-menu.png" />
 
-# Criando um novo mapa
+## Criando um novo mapa
 
 * Para adicionar um novo mapa, clique com o lado direto do mouse sobre o item `Scenario1`.
 * Será criado um arquivo de mapa com o básico das configurações do Wiremock. Para obter mais informações sobre como configurar um mapa acesse: http://wiremock.org/docs/request-matching/
@@ -300,7 +297,7 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 
 Para mais informações, acesse o site oficial da ferramenta: http://wiremock.org/
 
-## Tipos de servidores - Executar como servidor de mock
+## Executar como servidor de mock
 
 Dentro do contexto de testes ele é útil para mocar APIs ou qualquer coisa sobre o protocolo HTTP. O servidor utiliza, basicamente, de duas pastas para trabalhar: 
   * **mappings**: Essa pasta contém os arquivos `.json`, onde cada arquivo representa uma rota com sua respectiva resposta. Existe uma porção de configurações dentro de cada mapa, todas estão disponíveis na documentação do wiremock.
@@ -373,7 +370,7 @@ A resposta é sempre "crua", sem nenhum encapsulamento. Como nos mapas anteriore
   * **Method**: `POST`
   * **Body**: `{ "Name": "User3", "Age": 100}`
 
-## Tipos de servidores - Executar como proxy, mas gravando os dados que são trafegados
+## Executar como proxy, mas gravando os dados que são trafegados
 
 É muito útil para dar a primeira carga de arquivos de mapas e respostas, depois disso, você pode editar os arquivos gerados podendo criar diversos cenários. Para usar os arquivos gerados é preciso mudar a forma de execução para servidor de mock.
 
@@ -389,7 +386,7 @@ A resposta é sempre "crua", sem nenhum encapsulamento. Como nos mapas anteriore
 * Limpar o cache do browser
 * Executar novamente: `http://localhost:5502`
 
-## Tipos de servidores - Executar apenas como proxy
+## Executar apenas como proxy
 
 Dentro do nosso contexto de testes, ele pode ser útil quando precisamos utilizar o serviço original sem precisar alterar a URL no cliente.
 
@@ -412,9 +409,11 @@ O .JAR do Wiremock não é executado usando processos, o .JAR da última versão
 No momento, não vou adicionar novas features devido a falta de tempo, ficarei a disposição apenas para bugs e pequenas melhorias. Caso queiram contribuir com novas ideias ou correções, basta apenas entrar em contato ou acessar o board do projeto.
   1. Vejo que o principal ponto de melhoria seria no formulário "FormMaster" que está com muitas linhas e pouco componentizado.
   2. Um outro ponto que considero importante é melhorar a camada de persistência, no momento, as chamadas não estão centralizadas deixando a situação perigosa para futuras melhorias e isso agrava por ser tratar de um banco de dados em forma de um único arquivo.
-2. Links importantes para o projeto:
-  * **IKVM**: Ferramenta que converte o Wiremock em Java para .NET.
-    * https://www.ikvm.net/
-  **PocDatabase**: Framework para facilitar a persistência dos dados
-    * https://github.com/juniorgasparotto/PocDatabase
-  **Board**: 
+
+**Links importantes para o projeto:**
+
+**IKVM**: Ferramenta que converte o Wiremock em Java para .NET.
+  * https://www.ikvm.net/
+**PocDatabase**: Framework para facilitar a persistência dos dados
+  * https://github.com/juniorgasparotto/PocDatabase
+**Board**: https://github.com/juniorgasparotto/WiremockUI/projects/1?fullscreen=true

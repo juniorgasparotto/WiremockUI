@@ -1,5 +1,0 @@
-switch_to("Wiremock UI")
-rightclick("Servers", 200)
-click("Add Server")
-write("server1")
-click("Add")

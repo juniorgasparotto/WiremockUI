@@ -1,0 +1,33 @@
+﻿<documentation>
+  <page url-base="https://github.com/juniorgasparotto/WiremockUI">
+    <languages>
+      <language name="pt-br" output="readme-pt-br.md" default="true" />
+      <!-- <language name="en-us" output="readme.md" /> -->
+    </languages>
+    <content>
+      <a href="https://github.com/juniorgasparotto/WiremockUI" rel="Inglês">
+        <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/en-us.png" />
+      </a>
+
+      <a href="https://github.com/juniorgasparotto/WiremockUI/blob/master/readme-pt-br.md" rel="Português">
+        <img alt="Português" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/pt-br.png" />
+      </a>
+
+      <include href="doc/.generator/pages/readme.md" />
+      <include href="doc/.generator/pages/license.md" />
+      
+      <custom-translation>
+        <default>
+          
+        </default>
+
+        <language name="en-us">
+          ---
+          <sub>This text was translated by a machine</sub>
+
+          https://github.com/juniorgasparotto/MarkdownGenerator
+        </language>
+      </custom-translation>
+    </content>
+  </page>
+</documentation>
