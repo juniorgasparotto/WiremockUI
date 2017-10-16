@@ -48,22 +48,22 @@ https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zi
 * .NET Framework 4.5
   * chocolatey: `choco install dotnet4.5`
   * microsoft: https://www.microsoft.com/en-us/download/details.aspx?id=30653
-  * [Criando um servidor de mock](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#create-server)
-  * [Criando um novo cenário](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#new-scenario)
-  * [Criando um novo mapa](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#new-map)
-  * [Edição de texto](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#text-editor)
-  * [Iniciando o servidor](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#start-mock-server)
-  * [Logs/Debugging](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#log)
-  * [Criando um servidor para o modo de gravação](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#create-server-recording)
-  * [Executar apenas como proxy](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#start-as-proxy)
-  * [Menu](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#menu)
-* [Wiremock - Overview](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#wiremock)
-  * [Executar como servidor de mock](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#wiremock-start-as-mock)
-  * [Executar como proxy, mas gravando os dados que são trafegados](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#wiremock-start-as-record)
-  * [Executar apenas como proxy](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#wiremock-start-as-proxy)
-* [Como funciona?](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#wiremock-how-work)
-* [Como contribuir](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#how-to-contribute)
-* [Licença](https://github.com/juniorgasparotto/WiremockUI/readme-pt-br.md#license)
+  * [Criando um servidor de mock](#create-server)
+  * [Criando um novo cenário](#new-scenario)
+  * [Criando um novo mapa](#new-map)
+  * [Edição de texto](#text-editor)
+  * [Iniciando o servidor](#start-mock-server)
+  * [Logs/Debugging](#log)
+  * [Criando um servidor para o modo de gravação](#create-server-recording)
+  * [Executar apenas como proxy](#start-as-proxy)
+  * [Menu](#menu)
+* [Wiremock - Overview](#wiremock)
+  * [Executar como servidor de mock](#wiremock-start-as-mock)
+  * [Executar como proxy, mas gravando os dados que são trafegados](#wiremock-start-as-record)
+  * [Executar apenas como proxy](#wiremock-start-as-proxy)
+* [Como funciona?](#wiremock-how-work)
+* [Como contribuir](#how-to-contribute)
+* [Licença](#license)
 
 ## <a name="create-server" />Criando um servidor de mock
 
