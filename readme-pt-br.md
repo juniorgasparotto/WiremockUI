@@ -48,6 +48,7 @@ https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zi
 * .NET Framework 4.5
   * chocolatey: `choco install dotnet4.5`
   * microsoft: https://www.microsoft.com/en-us/download/details.aspx?id=30653
+* [Documentação](#doc)
   * [Criando um servidor de mock](#create-server)
   * [Criando um novo cenário](#new-scenario)
   * [Criando um novo mapa](#new-map)
@@ -65,7 +66,7 @@ https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zi
 * [Como contribuir](#how-to-contribute)
 * [Licença](#license)
 
-# Documentação
+# <a name="doc" />Documentação
 
 ## <a name="create-server" />Criando um servidor de mock
 
