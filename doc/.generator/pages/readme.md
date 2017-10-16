@@ -36,19 +36,15 @@ https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zi
 2. Descompactar o .zip em qualquer local
 2. Abrir o arquivo `Wiremock.exe`
 
-**Windows**
+**Requisitos:**
 
 * .NET Framework 4.5
   * chocolatey: `choco install dotnet4.5`
   * microsoft: https://www.microsoft.com/en-us/download/details.aspx?id=30653
 
-**Linux**
-
-Utilize o projeto `Mono.Forms` para executar no linux, contudo, não é garantido que todas as funcionalidades funcionem da mesma maneira que ocorre no Windows.
-
 <table-of-contents/>
 
-## Criando um servidor de mock
+## Criando um servidor de mock <header-set anchor-name="create-server" />
 
 Ao criar um novo servidor, um cenário também será criado, você pode ter mais de um cenário para um mesmo servidor, alternando-os quando necessário usando a opção `Set as Default` que existe nas opções dos cenários.
 
@@ -83,7 +79,7 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-menu.png" />
 
 
-## Criando um novo cenário
+## Criando um novo cenário <header-set anchor-name="new-scenario" />
 
 * Clique com o lado direito do mouse sobre o servidor desejado e clique em `Add scenario`
 * Você pode ter mais de um cenário para um mesmo servidor, isso é útil para situações onde você não quer perder tempo de criar correspondências avançadas usando as opções de match do wiremock.
@@ -104,7 +100,7 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/scenario-menu.png" />
 
-## Criando um novo mapa
+## Criando um novo mapa <header-set anchor-name="new-map" />
 
 * Para adicionar um novo mapa, clique com o lado direto do mouse sobre o item `Scenario1`.
 * Será criado um arquivo de mapa com o básico das configurações do Wiremock. Para obter mais informações sobre como configurar um mapa acesse: http://wiremock.org/docs/request-matching/
@@ -148,7 +144,7 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/response-editor.png" />
 
-## Edição de texto
+## Edição de texto <header-set anchor-name="text-editor" />
 
 Para abrir as opções de edição de texto, clique com o lado direito do mouse sobre o campo desejado. As seguintes opções serão exibidas:
 
@@ -176,7 +172,7 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/editor-edit-value-window.png" />
 
-## Iniciando o servidor
+## Iniciando o servidor <header-set anchor-name="start-mock-server" />
 
 * Clique com o botão direito do mouse sobre o servidor desejado 
 * Clique em `Start`
@@ -193,7 +189,7 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/open-server-in-browser.png" />
 
-## Logs/Debugging
+## Logs/Debugging <header-set anchor-name="log" />
 
 * O log em forma de grid é mais completo que o log em forma de texto, além de mostrar as chamadas de uma forma mais fácil, ainda existe algumas opções de debug, como:
   * Re-executar as chamadas
@@ -229,7 +225,7 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-time.png" />
 
-## Criando um servidor para o modo de gravação
+## Criando um servidor para o modo de gravação <header-set anchor-name="create-server-recording" />
 
 Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções de execução de gravação e proxy serão exibidas no menu do servidor.
 
@@ -248,7 +244,7 @@ Ao executar em modo de gravação, você verá no log as opções `match-headers
 
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-recorded-files.png" />
 
-## Executar apenas como proxy
+## Executar apenas como proxy <header-set anchor-name="start-as-proxy" />
 
 Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções de execução de gravação e proxy serão exibidas no menu do servidor.
 
@@ -263,7 +259,7 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-started-proxy.png" />
 
-## Menu
+## Menu <header-set anchor-name="menu" />
 
 * `File` 
   * `Refresh`: Atualiza a tela para voltar ao estado de inicio.
@@ -286,7 +282,7 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 <img alt="Inglês" src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/menus.png" />
 
 
-# Wiremock - Overview
+# Wiremock - Overview <header-set anchor-name="wiremock" />
 
 É um projeto feito em java que simula um serviço web. Tecnicamente ele foi projetado para trabalhar de de duas formas:
   * **Modo Standalone**: É quando ele é executado no prompt de comando com a finalidade de criar servidores web armazenando os request e responses em forma de arquivos. Ele pode trabalhar com 3 tipos de servidores.
@@ -297,7 +293,7 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 
 Para mais informações, acesse o site oficial da ferramenta: http://wiremock.org/
 
-## Executar como servidor de mock
+## Executar como servidor de mock <header-set anchor-name="wiremock-start-as-mock" />
 
 Dentro do contexto de testes ele é útil para mocar APIs ou qualquer coisa sobre o protocolo HTTP. O servidor utiliza, basicamente, de duas pastas para trabalhar: 
   * **mappings**: Essa pasta contém os arquivos `.json`, onde cada arquivo representa uma rota com sua respectiva resposta. Existe uma porção de configurações dentro de cada mapa, todas estão disponíveis na documentação do wiremock.
@@ -370,7 +366,7 @@ A resposta é sempre "crua", sem nenhum encapsulamento. Como nos mapas anteriore
   * **Method**: `POST`
   * **Body**: `{ "Name": "User3", "Age": 100}`
 
-## Executar como proxy, mas gravando os dados que são trafegados
+## Executar como proxy, mas gravando os dados que são trafegados <header-set anchor-name="wiremock-start-as-record" />
 
 É muito útil para dar a primeira carga de arquivos de mapas e respostas, depois disso, você pode editar os arquivos gerados podendo criar diversos cenários. Para usar os arquivos gerados é preciso mudar a forma de execução para servidor de mock.
 
@@ -386,7 +382,7 @@ A resposta é sempre "crua", sem nenhum encapsulamento. Como nos mapas anteriore
 * Limpar o cache do browser
 * Executar novamente: `http://localhost:5502`
 
-## Executar apenas como proxy
+## Executar apenas como proxy <header-set anchor-name="wiremock-start-as-proxy" />
 
 Dentro do nosso contexto de testes, ele pode ser útil quando precisamos utilizar o serviço original sem precisar alterar a URL no cliente.
 
@@ -397,14 +393,14 @@ Dentro do nosso contexto de testes, ele pode ser útil quando precisamos utiliza
   * Abrir a URL no browser: `http://localhost:5502`
 
 
-#  Como funciona?
+#  Como funciona? <header-set anchor-name="wiremock-how-work" />
 
 O .JAR do Wiremock não é executado usando processos, o .JAR da última versão do Wiremock foi convertido em .NET usando a ferramenta "IKVM". Com isso, foi possível potencializar o uso da ferramenta, tendo acesso direto às principais classes.
 
 * Ele utiliza WindowsForms como paradigma, então é preciso ter o .NET Framework 4.5 instalado.
 * Todos os arquivos salvos serão salvos em uma pasta chamada `.app` que fica na raiz de onde está o `.exe`.
 
-# Como contribuir
+# Como contribuir <header-set anchor-name="how-to-contribute" />
 
 No momento, não vou adicionar novas features devido a falta de tempo, ficarei a disposição apenas para bugs e pequenas melhorias. Caso queiram contribuir com novas ideias ou correções, basta apenas entrar em contato ou acessar o board do projeto.
   1. Vejo que o principal ponto de melhoria seria no formulário "FormMaster" que está com muitas linhas e pouco componentizado.
