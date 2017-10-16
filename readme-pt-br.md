@@ -78,12 +78,14 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 * Clique com o lado direito do mouse sobre o item `Servers` e clique em `Add Server`
 * A porta será gerada automaticamente, mas pode ser alterada a qualquer momento.
 * Você não precisa preencher o campo `Target URL`, pois a ideia é criar um servidor do zero. Se você quiser gerar uma massa inicial com uma API existente, utilize esse campo e execute o servidor em modo de gravação `Start and Record`.
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/add-server.png)
 
 **Configurações avançadas**
 
 * Na criação do servidor, é possível configurar a execução do wiremock. Clique na aba `Advanced`
 * Para obter mais informações sobre cada uma: http://wiremock.org/docs/running-standalone/
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/add-server-advanced.png)
 
 **Menu de Opções**
@@ -100,12 +102,14 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 * `Duplicate`: Duplica todo o servidor, incluindo os cenários e todos os arquivos
 * `Edit`: Edita os dados do servidor
 * `Remove`: Remove o servidor
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-menu.png)
 
 ## <a name="new-scenario" />Criando um novo cenário
 
 * Clique com o lado direito do mouse sobre o servidor desejado e clique em `Add scenario`
 * Você pode ter mais de um cenário para um mesmo servidor, isso é útil para situações onde você não quer perder tempo de criar correspondências avançadas usando as opções de match do wiremock.
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/add-scenario.png)
 
 **Menu de Opções**
@@ -136,6 +140,7 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 * `Enable`: Quando desativado, esse mapa será ignorado
 * `View in Web Request`: Abre o mapa no `WebRequest` permitindo executa-lo.
 * `View in explorer`: Abre o gerenciador de arquivos do sistema operacional com o arquivo selecionado.
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/map-menu.png)
 
 **Arquivo de Mapa no editor**
@@ -151,11 +156,13 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
   * `Expand all`: Abre todos os filhos do nó
   * `Close all`: Fecha todos os filhos do nó
 * Esse visualizador também está disponível em `Tools -> JSON Viewer`
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/map-json.png)
 
 **Menu de Opções da resposta**
 
 * `View in explorer`: Abre o gerenciador de arquivos do sistema operacional com o arquivo selecionado.
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/response-menu.png)
 
 **Arquivo de resposta no editor**
@@ -185,7 +192,9 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 * `XML`: Tem as mesmas opções do JSON, porém para o formato XML
 * `Languages`: Altera o `Highlight` do arquivo que está sendo editado de acordo com a linguagem selecionada.
 * Um novo editor de texto também está disponível em `Tools -> Text Editor`
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/editor-edit-value.png)
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/editor-edit-value-window.png)
 
 ## <a name="start-mock-server" />Iniciando o servidor
@@ -197,6 +206,7 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 * Ao iniciar o servidor, uma janela contendo os logs em forma de texto e tabela serão exibidos.
 * No log de texto é exibido um texto contento (em verde) da linha de comando que seria equivalente ao usar via console.
 * Umas das vantagens de usar o WiremockUI é que você pode editar os arquivos de mapa e suas respostas sem a necessidade de reiniciar o serviço.
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-started.png)
 
 **Abrir o servidor no browser**
@@ -209,13 +219,16 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
   * Re-executar as chamadas
   * Comparar chamadas com mapas existentes.
 * Essas opções de debug só funcionam com o tipo `LISTENER`, os tipos `NET.IN` e `NET.OUT` são chamadas de baixo nível feitas pelo wiremock e que também são exibidas aqui.
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid.png)
 
 **Re-executar chamadas**
 
 * Ao clicar com o botão direito sobre o tipo `LISTENER`, clique na opção `Open in WebRequest`.
 * A ferramenta permite editar os dados de request e exibe na barra de status o código de retorno com o tempo que a chamada demorou. Essa ferramenta também está disponível pelo menu `Tools -> Web Request`
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-webrequest.png)
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-webrequest-window.png)
 
 **Comparar chamadas com mapas existentes**
@@ -223,7 +236,9 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 * Ao clicar com o botão direito sobre o tipo `LISTENER`, clique na opção `Compare`.
 * Na lado esquerdo será aberto o conteúdo da chamada do log. Selecione o arquivo que deseja comparar usando o botão com a seta para baixo no lado direito do comparador.
 * Essa ferramenta também está disponível no menu `Tools -> Text Compare`
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-compare.png)
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-compare-window.png)
 
 **Verificar o tempo de uma chamada**
@@ -245,9 +260,11 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 Ao executar em modo de gravação, você verá no log as opções `match-headers`, isso significa que ao gerar o mapa da rota, os headers `Content-Type` e `SOAPAction` devem fazer parte do filtro se existirem, ou seja, a `URL`, o `BODY` e esses `headers` devem ser iguais para obter a resposta.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/start-server-record.png)
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-started-record.png)
 * Após a gravação, os mapas serão exibidos na árvore e suas respostas estarão disponíveis ao clicar no `+` de cada mapa.
 * Para usar os arquivos salvos, pare o servidor com a opção `Stop` e inicie com a opção `Start`.
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-recorded-files.png)
 
 ## <a name="start-as-proxy" />Executar apenas como proxy
@@ -262,6 +279,7 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 * Clique na opção `Start (Only Proxy)`
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-proxy-menu.png)
+
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-started-proxy.png)
 
 ## <a name="menu" />Menu
@@ -414,19 +432,19 @@ No momento, não vou adicionar novas features devido a falta de tempo, ficarei a
 
 **Links importantes para o projeto:**
 
-**IKVM**:
+_IKVM_:
 
 Ferramenta que converte o Wiremock em Java para .NET.
 
 https://www.ikvm.net/
 
-**PocDatabase**:
+_PocDatabase_:
 
 Framework para facilitar a persistência dos dados
 
 https://github.com/juniorgasparotto/PocDatabase
 
-**Board**:
+_Board_:
 
 https://github.com/juniorgasparotto/WiremockUI/projects/1?fullscreen=true
 
