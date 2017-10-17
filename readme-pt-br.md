@@ -37,7 +37,7 @@
 2. Descompactar o .zip em qualquer local
 3. Abrir o arquivo `Wiremock.exe`.
 
-**Não precisa de instalação**
+** _Não precisa de instalação_
 
 **Requisitos:**
 
