@@ -13,7 +13,7 @@
 * Criar e gerenciar mais de um servidor Wiremock em apenas um lugar
 * Criar múltiplos cenários para a mesma API ou Site com a intenção de alterna-los conforme a necessidade de uso.
 * Visualização dos mapas com sua respectiva resposta em forma de `TreeView`
-* Gerenciar os mapas do Wiremock com as opções: criar, editar, remover, duplicar, desabilitar e visualização em forma de JSON
+* Gerenciar os mapas do Wiremock com as opções: _criar_, _editar_, _remover_, _duplicar_, _desabilitar_ e _visualização em forma de JSON_
 * Editor avançado de texto com os seguintes suportes:
   * Highlight para as linguages: `JSON`, `XML`, `HTML`, `JavaScript`, `C#`, `PHP`, `LUA`, `VB.NET`
   * Formatores de XML e JSON
@@ -33,15 +33,11 @@
 
 ## Instalação
 
-Ele não precisa de instalação, basta baixar o .zip no link abaixo:
-
-https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zip
-
-**Passos:**
-
 1. Fazer o download do .zip
 2. Descompactar o .zip em qualquer local
 3. Abrir o arquivo `Wiremock.exe`
+
+https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zip
 
 **Requisitos:**
 
