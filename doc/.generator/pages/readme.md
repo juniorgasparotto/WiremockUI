@@ -26,11 +26,9 @@
 
 ## Instalação
 
-1. Fazer o download do .zip
+1. Fazer o download do .zip clicando <a href="https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zip">aqui</a>
 2. Descompactar o .zip em qualquer local
 2. Abrir o arquivo `Wiremock.exe`
-
-https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zip
 
 **Requisitos:**
 
