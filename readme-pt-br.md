@@ -65,7 +65,7 @@
     * [Comparar chamadas com mapas existentes](#compare-request)
     * [Verificar o tempo de uma chamada](#compare-time)
   * [Criando um servidor para o modo de gravação](#create-server-recording)
-  * [Executar apenas como proxy](#start-as-proxy)
+  * [Criando um servidor apenas como proxy](#start-as-proxy)
   * [Menu](#menu)
 * [Wiremock - Overview](#wiremock)
   * [Executar como servidor de mock](#wiremock-start-as-mock)
@@ -273,7 +273,7 @@ Ao executar em modo de gravação, você verá no log as opções `match-headers
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-recorded-files.png)
 
-## <a name="start-as-proxy" />Executar apenas como proxy
+## <a name="start-as-proxy" />Criando um servidor apenas como proxy
 
 Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções de execução de gravação e proxy serão exibidas no menu do servidor.
 

@@ -268,7 +268,7 @@ Ao executar em modo de gravação, você verá no log as opções `match-headers
 <br />
 <img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-recorded-files.png" />
 
-## Executar apenas como proxy <header-set anchor-name="start-as-proxy" />
+## Criando um servidor apenas como proxy <header-set anchor-name="start-as-proxy" />
 
 Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções de execução de gravação e proxy serão exibidas no menu do servidor.
 
