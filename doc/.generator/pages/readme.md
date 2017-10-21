@@ -10,9 +10,9 @@ A ferramenta é totalmente visual e diversos recursos do Wiremock foram potencia
 * Visualização dos mapas com sua respectiva resposta em forma de `TreeView`
 * Gerenciar os mapas do Wiremock com as opções: _criar_, _editar_, _remover_, _duplicar_, _desabilitar_ e _visualização em forma de JSON_
 * Editor avançado de texto com as seguintes opções:
-  * Highlight para as linguages: `JSON` `XML` `HTML` `JavaScript` `C#` `PHP` `LUA` `VB.NET`
+  * Highlight para as linguages: `JSON` / `XML` / `HTML` / `JavaScript` / `C#` / `PHP` / `LUA` / `VB.NET`
   * Formatadores de XML e JSON
-  * WordWrap: Quebra de linha automática
+  * Quebra de linha automática
   * Busca e substituição
   * Ir para a linha
 * O gerenciamento dos mapas (dentro da ferramenta) dispensa o reinicio do servidor.
@@ -201,7 +201,7 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 <img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/start-server.png" />
 
 * Ao iniciar o servidor, uma janela contendo os logs em forma de texto e tabela serão exibidos. 
-* O primeiro texto do "log" exibe a linha de comando (em verde) que seria o equivalente ao comando Java para aquela determinada ação.
+* O primeiro texto do "log" exibe a linha de comando (em verde) que seria o equivalente ao comando Java para a opção selecionada.
 * Umas das vantagens de usar o WiremockUI é que você pode editar os arquivos de mapa e suas respostas sem a necessidade de reiniciar o serviço.
 
 <br />
@@ -309,7 +309,7 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
   * `Start and record all`: Inicia todos os servidores em modo de gravação
   * `Stop all`: Parar todos os servidores
 * `Tools`: 
-  * `Web Request`: Abre a ferramenta `WebRequest` que faz requisições web. Essa ferramenta é muito simples, diversas configurações do protocolo HTTP não foram implementadas, ela foi criada para re-executar requisições ou mapas.
+  * `Web Request`: Abre a ferramenta `WebRequest` que faz requisições web. Essa ferramenta é muito simples, diversas configurações do protocolo HTTP não foram implementadas, ela foi criada para reexecutar requisições ou mapas.
   * `Text Compare`: Abre a ferramenta que compara texto. Essa ferramenta é muito simples, é apenas para ajudar na comparação básica de requisições com mapas que não deram match.
   * `Text Editor`: Abre a ferramenta de edição de texto. A ferramenta é muito simples e foi desenvolvida para ajudar a formatar algum valor no formato JSON ou XML.
   * `JSON Viewer`: Abre a ferramenta JSON Viewer que ajuda na visualização do JSON exibindo-o em forma de TreeView

@@ -17,9 +17,9 @@ The tool is completely visual and features of Wiremock have been enhanced:
 * Viewing the maps with your corresponding answer in the form of`TreeView`
 * Manage maps from Wiremock with the options: _create_, _Edit_, _Remove_, _duplicate_, _disable_ and _visualization in the form of JSON_
 * Advanced text editor with the following options:
-  * Highlight to the object: `JSON` `HTML` `JavaScript` `C#` `XML` `PHP` `LUA``VB.NET`
+  * Highlight to the object: `JSON` / `XML` / `HTML` / `JavaScript` / `C#` / `PHP` / `LUA` /`VB.NET`
   * JSON and XML formatters
-  * WordWrap: AutoWrap
+  * AutoWrap
   * Search and replacement
   * Go to line
 * The management of maps (inside the tool) dispenses with the restart of the server.
@@ -219,7 +219,7 @@ To open the text edit options, click with the right side of the mouse over the d
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/start-server.png)
 * To start the server, a window containing the logs in the form of text and table are displayed.
-* The first text of the "log" displays the command line (in green) that would be the equivalent to the Java command for that particular stock.
+* The first text of the "log" displays the command line (in green) that would be the equivalent to the Java command for the selected option.
 * One of the advantages of using WiremockUI is that you can edit the map files and your responses without the need to restart the service.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-started.png)
