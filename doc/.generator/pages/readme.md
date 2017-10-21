@@ -24,7 +24,7 @@
   * `Text editor`: Editor de texto com as opções de formatação para JSON ou XML
   * `JSON Viewer`: Visualizador de JSON com opções de formatação e visualização em forma de árvore
 
-**Veja um vídeo de exemplo:**
+# Demo
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=6d7QQqbNKhk">
