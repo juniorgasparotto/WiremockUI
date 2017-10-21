@@ -36,12 +36,13 @@
 
 1. Fazer o download do .zip <a href="https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zip">clicando aqui</a>
 2. Descompactar o .zip em qualquer local
-2. Abrir o arquivo `Wiremock.exe`.
+2. Abrir o arquivo `Wiremock.exe`
 
-** _Não precisa de instalação_
+_Não precisa de instalação_
 
 **Requisitos:**
 
+* Windows
 * .NET Framework 4.5
   * chocolatey: `choco install dotnet4.5`
   * microsoft: https://www.microsoft.com/en-us/download/details.aspx?id=30653

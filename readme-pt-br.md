@@ -31,16 +31,21 @@
   * `Text editor`: Editor de texto com as opções de formatação para JSON ou XML
   * `JSON Viewer`: Visualizador de JSON com opções de formatação e visualização em forma de árvore
 
+# Demo
+
+ [ ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png) ](https://www.youtube.com/watch?v=6d7QQqbNKhk) 
+
 ## Instalação
 
 1. Fazer o download do .zip [clicando aqui](https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zip)
 2. Descompactar o .zip em qualquer local
-3. Abrir o arquivo `Wiremock.exe`.
+3. Abrir o arquivo `Wiremock.exe`
 
-** _Não precisa de instalação_
+_Não precisa de instalação_
 
 **Requisitos:**
 
+* Windows
 * .NET Framework 4.5
   * chocolatey: `choco install dotnet4.5`
   * microsoft: https://www.microsoft.com/en-us/download/details.aspx?id=30653

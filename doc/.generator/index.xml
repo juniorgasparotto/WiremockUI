@@ -2,7 +2,7 @@
   <page url-base="">
     <languages>
       <language name="pt-br" output="readme-pt-br.md" default="true" />
-      <!-- <language name="en-us" output="readme.md" /> -->
+      <language name="en-us" output="readme.md" />
     </languages>
     <content>
       <a href="https://github.com/juniorgasparotto/WiremockUI" rel="Inglês">
