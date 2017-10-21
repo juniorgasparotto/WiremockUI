@@ -27,7 +27,9 @@
 **Veja um vídeo de exemplo:**
 
 <p align="center">
-  [![YouTube - WiremockUI](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png)](https://www.youtube.com/watch?v=6d7QQqbNKhk)
+  <a href="https://www.youtube.com/watch?v=6d7QQqbNKhk">
+    <img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png" />
+  </a>
 </p>
 
 ## Instalação
