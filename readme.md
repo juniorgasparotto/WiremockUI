@@ -17,7 +17,7 @@ The tool is completely visual and features of Wiremock have been enhanced:
 * Viewing the maps with your corresponding answer in the form of`TreeView`
 * Manage maps from Wiremock with the options: _create_, _Edit_, _Remove_, _duplicate_, _disable_ and _visualization in the form of JSON_
 * Advanced text editor with the following options:
-  * Highlight to the object: `JSON` / `XML` / `HTML` / `JavaScript` / `C#` / `PHP` / `LUA` /`VB.NET`
+  * Highlight for the languages: `JSON` / `XML` / `HTML` / `JavaScript` / `C#` / `PHP` / `LUA` /`VB.NET`
   * JSON and XML formatters
   * AutoWrap
   * Search and replacement

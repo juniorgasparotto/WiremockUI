@@ -10,7 +10,7 @@ A ferramenta é totalmente visual e diversos recursos do Wiremock foram potencia
 * Visualização dos mapas com sua respectiva resposta em forma de `TreeView`
 * Gerenciar os mapas do Wiremock com as opções: _criar_, _editar_, _remover_, _duplicar_, _desabilitar_ e _visualização em forma de JSON_
 * Editor avançado de texto com as seguintes opções:
-  * Highlight para as linguages: `JSON` / `XML` / `HTML` / `JavaScript` / `C#` / `PHP` / `LUA` / `VB.NET`
+  * Highlight para as linguagens: `JSON` / `XML` / `HTML` / `JavaScript` / `C#` / `PHP` / `LUA` / `VB.NET`
   * Formatadores de XML e JSON
   * Quebra de linha automática
   * Busca e substituição
