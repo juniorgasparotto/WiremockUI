@@ -26,7 +26,9 @@
 
 **Veja um vídeo de exemplo:**
 
-[![YouTube - WiremockUI](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png)](https://www.youtube.com/watch?v=6d7QQqbNKhk)
+<p align="center">
+  [![YouTube - WiremockUI](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png)](https://www.youtube.com/watch?v=6d7QQqbNKhk)
+</p>
 
 ## Instalação
 
