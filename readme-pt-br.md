@@ -7,38 +7,42 @@
 
 # Wiremock UI
 
-É um software desenvolvido em ".NET Framework 4.5" (paradigma: "Windows Forms") que tenta representar de forma gráfica os recursos `standalone` do wiremock. Por ser uma interface gráfica, alguns recursos foram potencializados:
+É um projeto feito em `.NET Framework 4.5` que cria servidores de mock usando o famoso `Wiremock` (http://wiremock.org).
+
+A ferramenta é totalmente visual e diversos recursos do Wiremock foram potencializados:
 
 * Facilidade para criar e executar um servidor Wiremock
 * Criar e gerenciar mais de um servidor Wiremock em apenas um lugar
 * Criar múltiplos cenários para a mesma API ou Site com a intenção de alterna-los conforme a necessidade de uso.
 * Visualização dos mapas com sua respectiva resposta em forma de `TreeView`
 * Gerenciar os mapas do Wiremock com as opções: _criar_, _editar_, _remover_, _duplicar_, _desabilitar_ e _visualização em forma de JSON_
-* Editor avançado de texto com os seguintes suportes:
-  * Highlight para as linguages: `JSON`, `XML`, `HTML`, `JavaScript`, `C#`, `PHP`, `LUA`, `VB.NET`
-  * Formatores de XML e JSON
-  * Quebra de linha automática
+* Editor avançado de texto com as seguintes opções:
+  * Highlight para as linguages: `JSON` `XML` `HTML` `JavaScript` `C#` `PHP` `LUA` `VB.NET`
+  * Formatadores de XML e JSON
+  * WordWrap: Quebra de linha automática
   * Busca e substituição
-  * Recurso de "Ir para a linha"
+  * Ir para a linha
 * O gerenciamento dos mapas (dentro da ferramenta) dispensa o reinicio do servidor.
-* Logs em forma de texto e tabela com as opções:
+* Logs nas visualizações de texto e tabela com as opções:
   * Análise de tempo
   * Re-executar a requisição com a ferramenta interna `Web Request`
   * Comparar requisições que não deram correspondência com qualquer mapa da `TreeView`.
 * Ferramentas internas:
-  * `Web Request`: É um simples executador de chamadas HTTP que pode ajudar a depurar
+  * `Web Request`: É um simples executor de chamadas HTTP que pode ajudar a depurar
   * `Text Compare`: É um simples comparador de texto
   * `Text editor`: Editor de texto com as opções de formatação para JSON ou XML
-  * `JSON Viewer`: Visualizador de JSON com opções de formatação e visualização em forma de árvore
+  * `JSON Viewer`: Visualizador de JSON em forma de árvore.
 
 # Demo
 
- [ ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png) ](https://www.youtube.com/watch?v=6d7QQqbNKhk) 
+[
+  ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png)
+](https://www.youtube.com/watch?v=6d7QQqbNKhk)
 
 ## Instalação
 
 1. Fazer o download do .zip [clicando aqui](https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zip)
-2. Descompactar o .zip em qualquer local
+2. Extrair o .zip em qualquer local
 3. Abrir o arquivo `Wiremock.exe`
 
 _Não precisa de instalação_
@@ -66,15 +70,15 @@ _Não precisa de instalação_
     * [Arquivo de resposta no editor](#response-editor)
   * [Edição de texto](#text-editor)
   * [Logs/Debugging](#log)
-    * [Re-executar chamadas](#reexecute-request)
-    * [Comparar chamadas com mapas existentes](#compare-request)
-    * [Verificar o tempo de uma chamada](#compare-time)
+    * [Re-executar requests](#reexecute-request)
+    * [Comparar requests com mapas existentes](#compare-request)
+    * [Verificar o tempo de um request](#compare-time)
   * [Criando um servidor para o modo de gravação](#create-server-recording)
   * [Criando um servidor apenas como proxy](#start-as-proxy)
   * [Menu](#menu)
 * [Wiremock - Overview](#wiremock)
   * [Executar como servidor de mock](#wiremock-start-as-mock)
-  * [Executar como proxy, mas gravando os dados que são trafegados](#wiremock-start-as-record)
+  * [Executar como proxy, mas gravando os dados](#wiremock-start-as-record)
   * [Executar apenas como proxy](#wiremock-start-as-proxy)
 * [Como funciona?](#wiremock-how-work)
 * [Como contribuir](#how-to-contribute)
@@ -87,7 +91,7 @@ _Não precisa de instalação_
 Ao criar um novo servidor, um cenário também será criado, você pode ter mais de um cenário para um mesmo servidor, alternando-os quando necessário usando a opção `Set as Default` que existe nas opções dos cenários.
 
 * Clique com o lado direito do mouse sobre o item `Servers` e clique em `Add Server`
-* A porta será gerada automaticamente, mas pode ser alterada a qualquer momento.
+* O campo `Server Port` será gerado automaticamente, mas pode ser alterada a qualquer momento.
 * Você não precisa preencher o campo `Target URL`, pois a ideia é criar um servidor do zero. Se você quiser gerar uma massa inicial com uma API existente, utilize esse campo e execute o servidor em modo de gravação `Start and Record`.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/add-server.png)
@@ -101,17 +105,17 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 
 ### <a name="server-menu" />Menu de opções
 
-* `Add scenario`: Adiciona um novo cenário, apenas um cenário pode estar ativo por vez.
+* `Add scenario`: Adiciona um novo cenário. Apenas um cenário pode estar ativo por vez.
 * `Start`: Inicia um servidor usando os dados físicos das pastas `mappings` e `__files`
 * `Start (Only Proxy)`: Inicia um servidor apenas como proxy ignorando os arquivos salvos se existerem.
 * `Start and Record`: Inicia um servidor como proxy em modo de gravação
 * `Restart`: Reinicia o servidor mantendo o tipo de execução que foi iniciado
-* `Stop`: Para o servidor
+* `Stop`: Parar o servidor
 * `Open Server folder`: Abre a pasta onde estão todos os cenários
 * `Open Targer URL in browser`: Abre a URL original no Browser
 * `Open Server URL in browser`: Abre a URL do servidor wiremock no Browser
 * `Duplicate`: Duplica todo o servidor, incluindo os cenários e todos os arquivos
-* `Edit`: Edita os dados do servidor
+* `Edit`: Edita as informações do servidor
 * `Remove`: Remove o servidor
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-menu.png)
@@ -160,7 +164,7 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 
 ### <a name="map-jsonview" />Arquivo de mapa no JSON Viewer
 
-* Ao abrir um arquivo de mapa ou qualquer outro arquivo JSON, será possível ter uma visão melhorada do JSON clicando na aba `JSON Viewer`.
+* Ao abrir um arquivo de mapa ou qualquer outro arquivo JSON, será possível visualiza-lo com a ferramenta `JSON Viewer`.
 * Clique com o lado direito do mouse sobre o atributo desejado para obter mais opções:
   * `View text editor`: Visualiza o conteúdo em uma nova janela
   * `View as Json`: Visualiza o conteúdo em uma nova janela JSON Viewer
@@ -172,7 +176,7 @@ Ao criar um novo servidor, um cenário também será criado, você pode ter mais
 
 ### <a name="response-menu" />Menu de opções da resposta
 
-* `View in explorer`: Abre o gerenciador de arquivos do sistema operacional com o arquivo selecionado.
+* `View in explorer`: Abre o gerenciador de arquivos com o arquivo selecionado.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/response-menu.png)
 
@@ -193,11 +197,11 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
   * `Cut`: Recorta o texto selecionado
   * `Paste`: Copia o que estiver na área de transferência para o campo de texto
   * `Remove`: Remove o texto selecionado
-* `Find`: Localiza um texto. Abre uma janela para busca ou troca de texto.
-* `Json`: Formata o texto considerando que o mesmo seja um JSON
+* `Find`: Abre uma nova janela com as opções de busca ou substituição do texto.
+* `Json`: Opções de formatação de JSON
   * `Format`: Deixa o JSON em uma forma mais legível
   * `Escape`: "Escapa" o JSON para ele poder ser usado como valor de outro JSON
-  * `Unescape`: Volta o JSON para o estado normal quando ele esta "escapado"
+  * `Unescape`: Volta o JSON para o estado normal quando esta "escapado"
   * `Minify`: Remove os espaços desnecessários do JSON
   * `Edit value`: Essa opção só aparece quando um texto estiver selecionado, ele é usada para editar (em outra janela) um valor de um atributo que contenha um "JSON escapado".
 * `XML`: Tem as mesmas opções do JSON, porém para o formato XML
@@ -215,7 +219,7 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/start-server.png)
 * Ao iniciar o servidor, uma janela contendo os logs em forma de texto e tabela serão exibidos.
-* No log de texto é exibido um texto contento (em verde) da linha de comando que seria equivalente ao usar via console.
+* O primeiro texto do "log" exibe a linha de comando (em verde) que seria o equivalente ao comando Java para aquela determinada ação.
 * Umas das vantagens de usar o WiremockUI é que você pode editar os arquivos de mapa e suas respostas sem a necessidade de reiniciar o serviço.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-started.png)
@@ -226,14 +230,14 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 
 ## <a name="log" />Logs/Debugging
 
-* O log em forma de grid é mais completo que o log em forma de texto, além de mostrar as chamadas de uma forma mais fácil, ainda existe algumas opções de debug, como:
-  * Re-executar as chamadas
-  * Comparar chamadas com mapas existentes.
+* O log da grid é mais completo que o log em forma de texto, além de mostrar as chamadas de uma forma mais fácil, ainda existe algumas opções de debug, como:
+  * Re-executar os requests.
+  * Comparar os requests com os mapas existentes.
 * Essas opções de debug só funcionam com o tipo `LISTENER`, os tipos `NET.IN` e `NET.OUT` são chamadas de baixo nível feitas pelo wiremock e que também são exibidas aqui.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid.png)
 
-### <a name="reexecute-request" />Re-executar chamadas
+### <a name="reexecute-request" />Re-executar requests
 
 * Ao clicar com o botão direito sobre o tipo `LISTENER`, clique na opção `Open in WebRequest`.
 * A ferramenta permite editar os dados de request e exibe na barra de status o código de retorno com o tempo que a chamada demorou. Essa ferramenta também está disponível pelo menu `Tools -> Web Request`
@@ -242,7 +246,7 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-webrequest-window.png)
 
-### <a name="compare-request" />Comparar chamadas com mapas existentes
+### <a name="compare-request" />Comparar requests com mapas existentes
 
 * Ao clicar com o botão direito sobre o tipo `LISTENER`, clique na opção `Compare`.
 * Na lado esquerdo será aberto o conteúdo da chamada do log. Selecione o arquivo que deseja comparar usando o botão com a seta para baixo no lado direito do comparador.
@@ -252,11 +256,11 @@ Para abrir as opções de edição de texto, clique com o lado direito do mouse 
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-compare-window.png)
 
-### <a name="compare-time" />Verificar o tempo de uma chamada
+### <a name="compare-time" />Verificar o tempo de um request
 
-* Para ter uma precisão maior sobre o tempo da chamada, compare os tempos do tipo `NET.IN` (coluna `RequestTime`) com o tipo `NET.OUT` (Coluna `ResponseTime`) da URL desejada. Infelizmente, não existe uma maneira mais precisa para obter essa informação, seria um desejo para as próximas versões do Wiremock.
+* Para ter uma precisão maior sobre o tempo da chamada, compare os tempos do tipo `NET.IN` (coluna `RequestTime`) com o tipo `NET.OUT` (Coluna `ResponseTime`) da URL desejada. Infelizmente, não existe uma opção precisa para obter essa informação, seria um desejo para as próximas versões do Wiremock (em Java).
 * O tipo `NET.OUT` não retorna a URL no campo esperado, sendo assim, a localização dessa linha deve ser manual, ou seja, limpe os logs e faça a chamada apenas da URL que deseja medir o tempo.
-* Essa opção só faz sentido quando esta sendo executado como proxy, não faz sentido medir o tempo de um servidor mocado.
+* Essa opção só faz sentido quando esta sendo executado como proxy, não faz sentido medir o tempo de um servidor de mock.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-time.png)
 
@@ -268,7 +272,7 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 
 **Iniciando o servidor**
 
-Ao executar em modo de gravação, você verá no log as opções `match-headers`, isso significa que ao gerar o mapa da rota, os headers `Content-Type` e `SOAPAction` devem fazer parte do filtro se existirem, ou seja, a `URL`, o `BODY` e esses `headers` devem ser iguais para obter a resposta.
+Ao executar em modo de gravação, você verá no log as opções `match-headers`, isso significa que ao gerar o mapa da rota, os headers `Content-Type` e `SOAPAction` devem fazer parte do filtro se existirem, ou seja, a `URL`, o `BODY` e esses `headers` devem ser iguais para haver uma resposta.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/start-server-record.png)
 
@@ -296,7 +300,7 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 ## <a name="menu" />Menu
 
 * `File`
-  * `Refresh`: Atualiza a tela para voltar ao estado de inicio.
+  * `Refresh`: Atualiza a tela para voltar ao estado inicial.
   * `Open files folder`: Abre a pasta onde estão todos os arquivos.
   * `Find in Files`: Abre a ferramenta de pesquisa em arquivos.
   * `Languages`: Suporta duas línguas: inglês e português
@@ -305,9 +309,9 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
   * `Add Server`: Adiciona um novo servidor
   * `Start All`: Inicia todos os servidores
   * `Start and record all`: Inicia todos os servidores em modo de gravação
-  * `Stop all`: Para todos os servidores
+  * `Stop all`: Parar todos os servidores
 * `Tools`:
-  * `Web Request`: Abre a ferramenta `WebRequest` que faz requisições web. . Essa ferramenta é muito simples, diversas configurações de chamadas HTTP não foram implementadas, ela foi criada para re-executar requisições ou mapas.
+  * `Web Request`: Abre a ferramenta `WebRequest` que faz requisições web. Essa ferramenta é muito simples, diversas configurações do protocolo HTTP não foram implementadas, ela foi criada para re-executar requisições ou mapas.
   * `Text Compare`: Abre a ferramenta que compara texto. Essa ferramenta é muito simples, é apenas para ajudar na comparação básica de requisições com mapas que não deram match.
   * `Text Editor`: Abre a ferramenta de edição de texto. A ferramenta é muito simples e foi desenvolvida para ajudar a formatar algum valor no formato JSON ou XML.
   * `JSON Viewer`: Abre a ferramenta JSON Viewer que ajuda na visualização do JSON exibindo-o em forma de TreeView
@@ -317,19 +321,19 @@ Adicione um novo servidor preenchendo a opção `Target URL`, assim as opções 
 
 # <a name="wiremock" />Wiremock - Overview
 
-É um projeto feito em java que simula um serviço web. Tecnicamente ele foi projetado para trabalhar de de duas formas:
+É um projeto construído em java que simula um serviço web. Tecnicamente ele foi projetado para trabalhar de de duas formas:
 
 * **Modo Standalone**: É quando ele é executado no prompt de comando com a finalidade de criar servidores web armazenando os request e responses em forma de arquivos. Ele pode trabalhar com 3 tipos de servidores.
   * Executar como servidor de mock
-  * Executar como proxy, mas gravando os dados que são trafegados (útil para a carga inicial)
+  * Executar como proxy, mas gravando os dados (útil para a carga inicial)
   * Executar apenas como proxy
-* **Framework de testes**: Está fora do nosso escopo, mas ele pode ser usado como framework de mock de API em forma de código. Em .NET temos o `mock4net` que tem como inspiração o Wiremock.
+* **Framework de testes**: Está fora do nosso escopo, mas ele também pode ser usado como framework de mock de API para testes de unidades em Java. Em .NET temos o `mock4net` que tem como inspiração o Wiremock.
 
 Para mais informações, acesse o site oficial da ferramenta: http://wiremock.org/
 
 ## <a name="wiremock-start-as-mock" />Executar como servidor de mock
 
-Dentro do contexto de testes ele é útil para mocar APIs ou qualquer coisa sobre o protocolo HTTP. O servidor utiliza, basicamente, de duas pastas para trabalhar:
+Dentro do contexto de testes ele é útil para simular APIs ou qualquer coisa sobre o protocolo HTTP. O servidor utiliza, basicamente, de duas pastas para trabalhar:
 
 * **mappings**: Essa pasta contém os arquivos `.json`, onde cada arquivo representa uma rota com sua respectiva resposta. Existe uma porção de configurações dentro de cada mapa, todas estão disponíveis na documentação do wiremock.
 * **__files**: Nessa pasta ficam os arquivos de resposta que são configurados no mapa.
@@ -379,7 +383,7 @@ Esse mapa cria uma rota que ficará ouvindo a rota `http://[SERVER]:5500/user/in
 }
 ```
 
-**Resposta:**
+**Response:**
 
 A resposta é sempre "crua", sem nenhum encapsulamento. Como nos mapas anteriores, vimos que o arquivo de resposta é um `application/json`, então esse arquivo terá o conteúdo JSON, se fosse uma imagem, esse arquivo de resposta teria a extensão da imagem, exemplo: `response.jpg` e seu conteúdo seria um binário.
 
@@ -401,11 +405,11 @@ A resposta é sempre "crua", sem nenhum encapsulamento. Como nos mapas anteriore
   * **Method**: `POST`
   * **Body**: `{ "Name": "User3", "Age": 100}`
 
-## <a name="wiremock-start-as-record" />Executar como proxy, mas gravando os dados que são trafegados
+## <a name="wiremock-start-as-record" />Executar como proxy, mas gravando os dados
 
-É muito útil para dar a primeira carga de arquivos de mapas e respostas, depois disso, você pode editar os arquivos gerados podendo criar diversos cenários. Para usar os arquivos gerados é preciso mudar a forma de execução para servidor de mock.
+É muito útil para carregar a primeira massa de dado, depois disso, você pode editar os arquivos gerados podendo criar diversos cenários. Para usar os arquivos gerados é preciso mudar a forma de execução para servidor de mock.
 
-**Executando:**
+**Testando:**
 
 * Subir o servidor em modo de gravação:
   * `java -jar "D:\wm\wiremock-standalone-2.8.0.jar" --port 5502 --proxy-all "https://www.w3schools.com/" --record-mappings --root-dir "D:\wm\server2" --verbose --match-headers Content-Type`
@@ -429,7 +433,7 @@ Dentro do nosso contexto de testes, ele pode ser útil quando precisamos utiliza
 
 # <a name="wiremock-how-work" />Como funciona?
 
-O .JAR do Wiremock não é executado usando processos, o .JAR da última versão do Wiremock foi convertido em .NET usando a ferramenta "IKVM". Com isso, foi possível potencializar o uso da ferramenta, tendo acesso direto às principais classes.
+O `.JAR` do Wiremock NÃO é executado usando processos. O `.JAR` da última versão do Wiremock foi convertido em .NET usando a ferramenta "IKVM". Com isso, foi possível potencializar o uso da ferramenta, tendo acesso direto às principais classes.
 
 * Ele utiliza WindowsForms como paradigma, então é preciso ter o .NET Framework 4.5 instalado.
 * Todos os arquivos salvos serão salvos em uma pasta chamada `.app` que fica na raiz de onde está o `.exe`.
@@ -438,7 +442,7 @@ O .JAR do Wiremock não é executado usando processos, o .JAR da última versão
 
 No momento, não vou adicionar novas features devido a falta de tempo, ficarei a disposição apenas para bugs e pequenas melhorias. Caso queiram contribuir com novas ideias ou correções, basta apenas entrar em contato ou acessar o board do projeto.
 
-1. Vejo que o principal ponto de melhoria seria no formulário "FormMaster" que está com muitas linhas e pouco componentizado.
+1. Vejo que o principal ponto de melhoria seria no formulário "FormMaster". Ele está com muitas linhas e pouco componentizado.
 2. Um outro ponto que considero importante é melhorar a camada de persistência, no momento, as chamadas não estão centralizadas deixando a situação perigosa para futuras melhorias e isso agrava por ser tratar de um banco de dados em forma de um único arquivo.
 
 **Links importantes para o projeto:**

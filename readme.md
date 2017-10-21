@@ -7,38 +7,42 @@
 
 # Wiremock UI
 
-Is a software developed in .NET Framework 4.5 "" (paradigm: "Windows Forms") who tries to represent graphically the `standalone` resources of wiremock. By being a graphical interface, some features have been enhanced:
+Is a project done in `.NET Framework 4.5` that creates mock servers using the famous `Wiremock` (http://wiremock.org).
+
+The tool is completely visual and features of Wiremock have been enhanced:
 
 * Easy to create and run a server Wiremock
 * Create and manage more than one server Wiremock in one place
 * Create multiple scenarios for the same API or website with the intention of switching them as needed.
 * Viewing the maps with your corresponding answer in the form of`TreeView`
 * Manage maps from Wiremock with the options: _create_, _Edit_, _Remove_, _duplicate_, _disable_ and _visualization in the form of JSON_
-* Advanced text editor with the following surfaces:
-  * Highlight to the object: `JSON` `XML` , `HTML` ,, `JavaScript` , `C#` , `PHP` , `LUA` ,`VB.NET`
-  * Formatores of XML and JSON
-  * AutoWrap
+* Advanced text editor with the following options:
+  * Highlight to the object: `JSON` `HTML` `JavaScript` `C#` `XML` `PHP` `LUA``VB.NET`
+  * JSON and XML formatters
+  * WordWrap: AutoWrap
   * Search and replacement
-  * "Go to line"
+  * Go to line
 * The management of maps (inside the tool) dispenses with the restart of the server.
-* Logs in text form and table with the options:
+* Logs in text and table views with the options:
   * Analysis of time
   * Re-run the request with the internal tool`Web Request`
   * Compare requests that did not match with any `TreeView` map.
 * Built-in tools:
-  * `Web Request`: Is a simple executioner HTTP calls that can help debug
+  * `Web Request`: Is a simple executor of HTTP calls that can help debug
   * `Text Compare`: Is a simple text comparer
   * `Text editor`: Text Editor with formatting options to JSON or XML
-  * `JSON Viewer`: JSON Viewer with formatting options and tree-shaped display
+  * `JSON Viewer`: JSON Viewer in the form of a tree.
 
 # Demo
 
- [ ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png) ](https://www.youtube.com/watch?v=6d7QQqbNKhk) 
+[
+  ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png)
+](https://www.youtube.com/watch?v=6d7QQqbNKhk)
 
 ## Installation
 
 1. Download the .zip file [by clicking here](https://github.com/juniorgasparotto/WiremockUI/raw/master/download/WiremockUI.zip)
-2. Unpack the .zip anywhere
+2. Extract the .zip anywhere
 3. Open the file`Wiremock.exe`
 
 _No need for installation_
@@ -66,15 +70,15 @@ _No need for installation_
     * [File in the editor](#response-editor)
   * [Text editing](#text-editor)
   * [Logs/Debugging](#log)
-    * [Rerun calls](#reexecute-request)
-    * [Compare calls with existing maps](#compare-request)
-    * [Check the time of a call](#compare-time)
+    * [Re-run requests](#reexecute-request)
+    * [Compare requests with existing maps](#compare-request)
+    * [Check the time of a request](#compare-time)
   * [Creating a server to write mode](#create-server-recording)
   * [Creating a server just as a proxy](#start-as-proxy)
   * [Menu](#menu)
 * [Wiremock-Overview](#wiremock)
   * [Run as mock server](#wiremock-start-as-mock)
-  * [Execute as a proxy, but recording the data that is exchanged](#wiremock-start-as-record)
+  * [Execute as a proxy, but recording the data](#wiremock-start-as-record)
   * [Run only as a proxy](#wiremock-start-as-proxy)
 * [How does it work?](#wiremock-how-work)
 * [How to contribute](#how-to-contribute)
@@ -87,7 +91,7 @@ _No need for installation_
 When creating a new server, a scenario will also be created, you can have more than one scenario for a same server, switching them as needed using the option `Set as Default` that exists in the options of the scenarios.
 
 * Click with the right side of the mouse over the item `Servers` and click`Add Server`
-* The door will be generated automatically, but can be changed at any time.
+* The `Server Port` field will be automatically generated, but you can change it at any time.
 * You do not need to fill in the `Target URL` field, because the idea is to create a server from scratch. If you want to generate an initial mass with an existing API, use this field and run the server in write mode `Start and Record` .
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/add-server.png)
@@ -101,17 +105,17 @@ When creating a new server, a scenario will also be created, you can have more t
 
 ### <a name="server-menu" />Options menu
 
-* `Add scenario`: Adds a new scenario, a scenario can be active at a time.
+* `Add scenario`: Adds a new scenario. Only one scenario may be active at a time.
 * `Start`: Starts a server using the physical `mappings` folders and data`__files`
 * `Start (Only Proxy)`: Starts a server just as proxy bypassing the saved files if any.
 * `Start and Record`: Starts a server as a proxy in write mode
 * `Restart`: Restarts the server while maintaining the kind of execution that was started
-* `Stop`: For the server
+* `Stop`: Stop the server
 * `Open Server folder`: Opens the folder where are all the scenarios
 * `Open Targer URL in browser`: Opens the original URL in the Browser
 * `Open Server URL in browser`: Open the wiremock server URL in the Browser
 * `Duplicate`: Duplicates the entire server, including the scenarios and all files
-* `Edit`: Edit the data server
+* `Edit`: Edit Server information
 * `Remove`: Removes the server
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-menu.png)
@@ -160,7 +164,7 @@ When creating a new server, a scenario will also be created, you can have more t
 
 ### <a name="map-jsonview" />Map file in JSON Viewer
 
-* When opening a map file or any other file JSON, you can have an improved vision of the JSON `JSON Viewer` tab clicking.
+* When opening a map file or any other file JSON, you can view it with the `JSON Viewer` tool.
 * Click with the right side of the mouse over the desired attribute for more options:
   * `View text editor`: Displays the content in a new window
   * `View as Json`: Displays the content in a new window JSON Viewer
@@ -172,7 +176,7 @@ When creating a new server, a scenario will also be created, you can have more t
 
 ### <a name="response-menu" />Response options menu
 
-* `View in explorer`: Opens the operating system file manager with the selected file.
+* `View in explorer`: Opens the file manager with the selected file.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/response-menu.png)
 
@@ -193,11 +197,11 @@ To open the text edit options, click with the right side of the mouse over the d
   * `Cut`: Cut selected text
   * `Paste`: Copy what is on the Clipboard to the text field
   * `Remove`: Removes the selected text
-* `Find`: Finds one text. Opens a window for searching or exchanging text.
-* `Json`: Formats the text whereas it is a JSON
+* `Find`: Opens a new window with the search options or text replacement.
+* `Json`: JSON formatting options
   * `Format`: Let the JSON in a more readable form
   * `Escape`: "Escapes" the JSON so that he can be used as the value of other JSON
-  * `Unescape`: Back to normal state JSON when he "escaped"
+  * `Unescape`: Back to normal state when JSON this "escaped"
   * `Minify`: Remove the unnecessary spaces from JSON
   * `Edit value`: This option only appears when a text is selected, it is used to edit (in separate window) a value of an attribute that contains a "JSON escaped".
 * `XML`: Has the same options from JSON, however for the XML format
@@ -215,7 +219,7 @@ To open the text edit options, click with the right side of the mouse over the d
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/start-server.png)
 * To start the server, a window containing the logs in the form of text and table are displayed.
-* In the event log text is displayed containing text (in green) the command line that would be equivalent to use via console.
+* The first text of the "log" displays the command line (in green) that would be the equivalent to the Java command for that particular stock.
 * One of the advantages of using WiremockUI is that you can edit the map files and your responses without the need to restart the service.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/server-started.png)
@@ -226,14 +230,14 @@ To open the text edit options, click with the right side of the mouse over the d
 
 ## <a name="log" />Logs/Debugging
 
-* The log in form of grid is more complete than the log in text form, in addition to showing the a more easy, there's still some debug options, such as:
-  * Re-run the calls
-  * Compare calls with existing maps.
+* The log of the grid is more complete than the log in text form, in addition to showing the a more easy, there's still some debug options, such as:
+  * Re-run the requests.
+  * Compare the requests with the existing maps.
 * These debug options only work with `LISTENER` type, `NET.IN` and types `NET.OUT` are low level calls made by wiremock and that are also displayed here.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid.png)
 
-### <a name="reexecute-request" />Rerun calls
+### <a name="reexecute-request" />Re-run requests
 
 * By clicking with the right button on the `LISTENER` type, click the `Open in WebRequest` option.
 * The tool allows you to edit the request data and displays in the status bar the return code with the time that the call took. This tool is also available through the menu`Tools -> Web Request`
@@ -242,7 +246,7 @@ To open the text edit options, click with the right side of the mouse over the d
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-webrequest-window.png)
 
-### <a name="compare-request" />Compare calls with existing maps
+### <a name="compare-request" />Compare requests with existing maps
 
 * By clicking with the right button on the `LISTENER` type, click the `Compare` option.
 * On the left side will open the contents of the log. Select the file you want to compare by using the button with the downward arrow on the right side of the comparator.
@@ -252,11 +256,11 @@ To open the text edit options, click with the right side of the mouse over the d
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-compare-window.png)
 
-### <a name="compare-time" />Check the time of a call
+### <a name="compare-time" />Check the time of a request
 
-* To have a higher accuracy over time, compare the time `NET.IN` type (column `RequestTime` ) with the `NET.OUT` type (column `ResponseTime` ) of the desired URL. Unfortunately, there is no more need for this information, it would be a desire for the next versions of Wiremock.
+* To have a higher accuracy over time, compare the time `NET.IN` type (column `RequestTime` ) with the `NET.OUT` type (column `ResponseTime` ) of the desired URL. Unfortunately, there is no option needs to get this information, it would be a desire for the next versions of Wiremock (in Java).
 * The `NET.OUT` type does not return the URL in the field waited, therefore, the location of this line must be manual, i.e. clean the logs and make the call only the URL that you want to measure the time.
-* This option only makes sense when this running as a proxy, it makes no sense to measure the time from a server high.
+* This option only makes sense when this running as a proxy, it makes no sense to measure the time a mock server.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/log-grid-time.png)
 
@@ -268,7 +272,7 @@ Add a new server by filling out the option `Target URL` , so the execution optio
 
 **Starting the server**
 
-When running in record mode, you will see the log `match-headers` Options, this means that when generating a map of the route, the headers `Content-Type` and `SOAPAction` should be part of the filter if any, i.e. `URL` , `BODY` and these `headers` must be the same for the answer.
+When running in record mode, you will see the log `match-headers` Options, this means that when generating a map of the route, the headers `Content-Type` and `SOAPAction` should be part of the filter if any, i.e. `URL` , `BODY` and these `headers` must be the same to be an answer.
 
 ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/start-server-record.png)
 
@@ -296,7 +300,7 @@ Add a new server by filling out the option `Target URL` , so the execution optio
 ## <a name="menu" />Menu
 
 * `File`
-  * `Refresh`: Refreshes the screen to return to the State.
+  * `Refresh`: Refreshes the screen to return to the initial state.
   * `Open files folder`: Opens the folder where are all the files.
   * `Find in Files`: Opens the search tool.
   * `Languages`: Supports two languages: English and Portuguese
@@ -305,9 +309,9 @@ Add a new server by filling out the option `Target URL` , so the execution optio
   * `Add Server`: Adds a new server
   * `Start All`: Start all servers
   * `Start and record all`: Start all servers in write mode
-  * `Stop all`: For all servers
+  * `Stop all`: Stop all servers
 * `Tools`:
-  * `Web Request`: Opens the `WebRequest` tool that makes web requests. This tool is very simple, many HTTP calls settings have not been implemented, it was created for rerun requests or maps.
+  * `Web Request`: Opens the `WebRequest` tool that makes web requests. This tool is very simple, several settings of the HTTP protocol has not been implemented, it was created for rerun requests or maps.
   * `Text Compare`: Opens the tool that compares text. This tool is very simple, it is only to assist in the comparison of requests with maps that did not match.
   * `Text Editor`: Opens the text editing tool. The tool is very simple and is designed to help you format some value in JSON or XML format.
   * `JSON Viewer`: Opens the JSON Viewer tool which helps in viewing the JSON display in form of TreeView
@@ -317,19 +321,19 @@ Add a new server by filling out the option `Target URL` , so the execution optio
 
 # <a name="wiremock" />Wiremock-Overview
 
-Is a project done in java that simulates a web service. Technically it was designed to work in two ways:
+Is a project built in java that simulates a web service. Technically it was designed to work in two ways:
 
 * **Standalone Mode**: is when it is run from the command prompt with the purpose of creating web servers storing the request and responses in the form of files. It can work with 3 types of servers.
   * Run as mock server
-  * Execute as a proxy, but recording the data that is exchanged (useful for initial load)
+  * Execute as a proxy, but recording the data (useful for initial load)
   * Run only as a proxy
-* **Testing Framework**: is out of our scope, but it can be used as mock framework shaped API code. In .NET we have `mock4net` that has inspired Wiremock.
+* **Testing Framework**: is out of our scope, but it can also be used as mock framework API to Java unit tests. In .NET we have `mock4net` that has inspired Wiremock.
 
 For more information, visit the official website of the tool: http://wiremock.org/
 
 ## <a name="wiremock-start-as-mock" />Run as mock server
 
-Within the context of tests it is useful for hooking APIs or anything about the HTTP protocol. The server uses, basically, of two folders to work:
+Within the context of tests it is useful to simulate APIs or anything about the HTTP protocol. The server uses, basically, of two folders to work:
 
 * **mappings**: this folder contains the files `.json` , where each file represents a route with your respective answer. There is a lot of settings within each map, all are available in the documentation of the wiremock.
 * **__ files**: in this folder are the answer files that are configured on a map.
@@ -379,7 +383,7 @@ This map creates a route that will be hearing the `http://[SERVER]:5500/user/ins
 }
 ```
 
-**Reply:**
+**Response:**
 
 The answer is always "raw", without any encapsulation. As in earlier maps, we saw that the response is a file `application/json` , then that file will have the JSON content, if it was an image, this answer file would have the image extension, example: `response.jpg` and your content would be a binary.
 
@@ -401,11 +405,11 @@ The answer is always "raw", without any encapsulation. As in earlier maps, we sa
   * **Method**:`POST`
   * **Body**:`{ "Name": "User3", "Age": 100}`
 
-## <a name="wiremock-start-as-record" />Execute as a proxy, but recording the data that is exchanged
+## <a name="wiremock-start-as-record" />Execute as a proxy, but recording the data
 
-It is very useful to give the first files load maps and answers, after that, you can edit the generated files and can create several scenarios. To use the generated files need to change the form of execution for mock server.
+It is very useful to load the first mass, after that, you can edit the generated files and can create several scenarios. To use the generated files need to change the form of execution for mock server.
 
-**Running:**
+**Testing:**
 
 * Up the server in write mode:
   * `java -jar "D:\wm\wiremock-standalone-2.8.0.jar" --port 5502 --proxy-all "https://www.w3schools.com/" --record-mappings --root-dir "D:\wm\server2" --verbose --match-headers Content-Type`
@@ -429,7 +433,7 @@ In our context, it can be useful when you need to use the original service witho
 
 # <a name="wiremock-how-work" />How does it work?
 
-The. Wiremock's jar runs using the process. JAR of latest version of Wiremock was converted to .NET using the "IKVM". With this, it was possible to increase the use of the tool, having direct access to the main classes.
+The `.JAR` of Wiremock does not run using processes. The `.JAR` last version of Wiremock was converted to .NET using the "IKVM". With this, it was possible to increase the use of the tool, having direct access to the main classes.
 
 * It uses Windows Forms as a paradigm, so you need to have the .NET Framework 4.5 installed.
 * All saved files will be saved in a folder named `.app` which is at the root of where's the `.exe` .
@@ -438,7 +442,7 @@ The. Wiremock's jar runs using the process. JAR of latest version of Wiremock wa
 
 At the moment, I will not add new features due to lack of time, I will be available only for bugs and minor improvements. If you want to contribute with new ideas or fixes, just contact us or access the board of the project.
 
-1. I see that the main point of improvement would be in the form "FormMaster" that is with many lines and little componentised.
+1. I see that the main point of improvement would be in the form "FormMaster". He's in a lot of lines and little componentised.
 2. Another important point is to improve the persistence layer, at the moment, the calls are not centered leaving the dangerous situation for future improvements and this aggravates by being on a database in the form of a single file.
 
 **Important links for the project:**
