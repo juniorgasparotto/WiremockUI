@@ -94,15 +94,21 @@ namespace WiremockUI
                 throw;
             }
             finally
-            { 
+            {
+                var httpSettings = options.httpsSettings()?.ToString();
+                
                 if (useLogStdout)
                 {
                     java.lang.System.@out.println();
                     java.lang.System.@out.println(options);
+                    if (httpSettings != null)
+                        java.lang.System.@out.println(httpSettings);
                 }
                 else
                 {
                     logText.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true, true);
+                    if (httpSettings != null)
+                        logText.Info(httpSettings, true, true);
                 }
             }
         }
