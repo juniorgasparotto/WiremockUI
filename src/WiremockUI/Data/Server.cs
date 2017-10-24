@@ -188,7 +188,8 @@ namespace WiremockUI.Data
         {
             Play,
             PlayAsProxy,
-            PlayAndRecord
+            PlayAndRecord,
+            Stopped
         }
 
         public class Argument

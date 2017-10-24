@@ -19,6 +19,8 @@ namespace WiremockUI
 
         private Server.WiremockProperties wiremockProperties;
 
+        public RichTextBoxLogWriter LogWriter { get => logWriter; set => logWriter = value; }
+
         public FormStartWiremockService(FormMaster master, Server server, Scenario scenario, Server.PlayType playType)
         {
             InitializeComponent();
@@ -45,9 +47,9 @@ namespace WiremockUI
             chkDisableTextLog.Checked = !wiremockProperties.Verbose;
 
             // log text
-            this.logWriter = new RichTextBoxLogWriter(rtxtLog);
-            this.logWriter.EnableAutoScroll = chkAutoScroll.Checked;
-            this.logWriter.Enabled = !chkDisableTextLog.Checked;
+            this.LogWriter = new RichTextBoxLogWriter(rtxtLog);
+            this.LogWriter.EnableAutoScroll = chkAutoScroll.Checked;
+            this.LogWriter.Enabled = !chkDisableTextLog.Checked;
 
             // need add this event after checked because the event is called when checkbox 
             // is checked in the code
@@ -99,7 +101,7 @@ namespace WiremockUI
         
         public void Play()
         {
-            master.Dashboard.Play(server, scenario, playType, logWriter, logTable);
+            master.Dashboard.Play(server, scenario, playType, LogWriter, logTable);
         }
         
         private void lblUrlTarget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -148,7 +150,7 @@ namespace WiremockUI
 
         private void chkAutoScroll_CheckedChanged(object sender, EventArgs e)
         {
-            this.logWriter.EnableAutoScroll = chkAutoScroll.Checked;
+            this.LogWriter.EnableAutoScroll = chkAutoScroll.Checked;
             this.logTable.EnableAutoScroll = chkAutoScroll.Checked;
         }
         
@@ -168,9 +170,9 @@ namespace WiremockUI
 
         private void chkDisableTextLog_CheckedChanged(object sender, EventArgs e)
         {
-            this.logWriter.Enabled = !chkDisableTextLog.Checked;
+            this.LogWriter.Enabled = !chkDisableTextLog.Checked;
 
-            this.wiremockProperties.Verbose = this.logWriter.Enabled;
+            this.wiremockProperties.Verbose = this.LogWriter.Enabled;
             server.Save(this.wiremockProperties);
         }
 

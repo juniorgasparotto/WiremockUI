@@ -1366,6 +1366,15 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  (Parado).
+        /// </summary>
+        internal static string stoppedServerText {
+            get {
+                return ResourceManager.GetString("stoppedServerText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deseja realmente parar o servidor &quot;{0}&quot;?.
         /// </summary>
         internal static string stopServerConfirmMessage {

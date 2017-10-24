@@ -64,6 +64,7 @@ o log de texto esta demorando muito para voltar as requisições, criar forma de
 
 -- ToDo
 
+criar debug 
 criar botão para atualizar arquivo nos editores de json, text e xml e img.
 criar agrupar por URL
 criar copiar para area de transferecia

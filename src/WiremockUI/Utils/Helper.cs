@@ -413,5 +413,36 @@ namespace WiremockUI
         {
             CopyTo(source, new DirectoryInfo(target), overwiteFiles);
         }
+
+        public static string GetExceptionDetails(Exception ex)
+        {
+            var strBuilder = new StringBuilder();
+
+            strBuilder.AppendLine("--- Exception: " + ex.Message);
+            strBuilder.AppendLine("--- StackTrace:");
+            strBuilder.AppendLine(ex.StackTrace);
+
+            if (ex.InnerException != null)
+            {
+                strBuilder.AppendLine("--- Inner exception: " + ex.InnerException.Message);
+                strBuilder.AppendLine("--- StackTrace:");
+                strBuilder.AppendLine(ex.InnerException.StackTrace);
+            }
+            
+            if (ex.InnerException != null)
+            {
+                if (ex.InnerException is AggregateException list)
+                {
+                    foreach (var exInner in list.InnerExceptions)
+                    {
+                        strBuilder.AppendLine("--- Inner exception: " + exInner.Message);
+                        strBuilder.AppendLine("--- StackTrace:" );
+                        strBuilder.AppendLine(ex.InnerException.StackTrace);
+                    }
+                }
+            }
+
+            return strBuilder.ToString();
+        }
     }
 }

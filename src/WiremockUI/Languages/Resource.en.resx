@@ -672,4 +672,7 @@
   <data name="wordWrapMenu" xml:space="preserve">
     <value>Word Wrap</value>
   </data>
+  <data name="stoppedServerText" xml:space="preserve">
+    <value> (Stopped)</value>
+  </data>
 </root>

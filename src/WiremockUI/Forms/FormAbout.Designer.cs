@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtAboutText = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblEmail = new System.Windows.Forms.LinkLabel();
             this.lblUrl = new System.Windows.Forms.LinkLabel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtAboutText = new System.Windows.Forms.Label();
+            this.btnDebug = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -41,6 +42,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.btnDebug);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.lblEmail);
@@ -50,10 +52,31 @@
             this.panel1.Size = new System.Drawing.Size(280, 166);
             this.panel1.TabIndex = 7;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.txtAboutText);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(280, 82);
+            this.panel2.TabIndex = 9;
+            // 
+            // txtAboutText
+            // 
+            this.txtAboutText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtAboutText.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtAboutText.Location = new System.Drawing.Point(0, 0);
+            this.txtAboutText.Name = "txtAboutText";
+            this.txtAboutText.Size = new System.Drawing.Size(280, 82);
+            this.txtAboutText.TabIndex = 10;
+            this.txtAboutText.Text = "Esse projeto foi desenvolvido por Glauber Gasparotto";
+            this.txtAboutText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(101, 138);
+            this.btnClose.Location = new System.Drawing.Point(58, 137);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 8;
@@ -83,26 +106,15 @@
             this.lblUrl.Text = "https://github.com/juniorgasparotto/WireMockUI";
             this.lblUrl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblUrl_LinkClicked);
             // 
-            // panel2
+            // btnDebug
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel2.Controls.Add(this.txtAboutText);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(280, 82);
-            this.panel2.TabIndex = 9;
-            // 
-            // txtAboutText
-            // 
-            this.txtAboutText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAboutText.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtAboutText.Location = new System.Drawing.Point(0, 0);
-            this.txtAboutText.Name = "txtAboutText";
-            this.txtAboutText.Size = new System.Drawing.Size(280, 82);
-            this.txtAboutText.TabIndex = 10;
-            this.txtAboutText.Text = "Esse projeto foi desenvolvido por Glauber Gasparotto";
-            this.txtAboutText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDebug.Location = new System.Drawing.Point(136, 137);
+            this.btnDebug.Name = "btnDebug";
+            this.btnDebug.Size = new System.Drawing.Size(76, 23);
+            this.btnDebug.TabIndex = 11;
+            this.btnDebug.Text = "DevTools";
+            this.btnDebug.UseVisualStyleBackColor = true;
+            this.btnDebug.Click += new System.EventHandler(this.btnDebug_Click);
             // 
             // FormAbout
             // 
@@ -132,5 +144,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label txtAboutText;
+        private System.Windows.Forms.Button btnDebug;
     }
 }

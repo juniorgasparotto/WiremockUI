@@ -72,29 +72,38 @@ namespace WiremockUI
             if (useFolder)
                 mappingsFileSource.createIfNecessary();
 
-            wireMockServer = new com.github.tomakehurst.wiremock.WireMockServer(options);
-            wireMockServer.addMockServiceRequestListener(new RequestAndResponseListener(logTableRequestResponse));
-            
-            if (options.recordMappingsEnabled())
+            try
             {
-                wireMockServer.enableRecordMappings(mappingsFileSource, filesFileSource);
-            }
+                wireMockServer = new com.github.tomakehurst.wiremock.WireMockServer(options);
+                wireMockServer.addMockServiceRequestListener(new RequestAndResponseListener(logTableRequestResponse));
 
-            if (options.specifiesProxyUrl())
-            {
-                addProxyMapping(options.proxyUrl());
-            }
+                if (options.recordMappingsEnabled())
+                {
+                    wireMockServer.enableRecordMappings(mappingsFileSource, filesFileSource);
+                }
 
-            wireMockServer.start();
+                if (options.specifiesProxyUrl())
+                {
+                    addProxyMapping(options.proxyUrl());
+                }
 
-            if (useLogStdout)
-            {
-                java.lang.System.@out.println();
-                java.lang.System.@out.println(options);
+                wireMockServer.start();
             }
-            else
+            catch
             {
-                logText.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true, true);
+                throw;
+            }
+            finally
+            { 
+                if (useLogStdout)
+                {
+                    java.lang.System.@out.println();
+                    java.lang.System.@out.println(options);
+                }
+                else
+                {
+                    logText.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true, true);
+                }
             }
         }
 

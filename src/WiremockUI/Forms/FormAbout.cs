@@ -30,5 +30,11 @@ namespace WiremockUI
         {
             this.Close();
         }
+
+        private void btnDebug_Click(object sender, EventArgs e)
+        {
+            var form = new FormDevTools();
+            form.ShowDialog();
+        }
     }
 }

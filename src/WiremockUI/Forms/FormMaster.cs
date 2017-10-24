@@ -1303,8 +1303,10 @@ namespace WiremockUI
             catch (Exception ex)
             {
                 StopService(scenario);
+                playType = Server.PlayType.Stopped;
+                string details = Helper.GetExceptionDetails(ex);
+                frmStart.LogWriter.Error(details, false, true);
                 Helper.MessageBoxError(string.Format(Resource.startServerError, ex.GetType().Name, ex.Message));
-                return;
             }
 
             var recordText = "";
@@ -1313,12 +1315,17 @@ namespace WiremockUI
                 recordText = " " + Resource.startServerRecordText;
             else if (playType == Server.PlayType.PlayAsProxy)
                 recordText = " " + Resource.startServerAsProxyText;
-            else
+            else if (playType == Server.PlayType.Play)
                 recordText = " " + Resource.startServerText;
+            else if (playType == Server.PlayType.Stopped)
+                recordText = " " + Resource.stoppedServerText;
 
             TabMaster.AddTab(frmStart, scenario.Id, scenario.Name + recordText)
                 .CanClose = () => 
                 {
+                    if (playType == Server.PlayType.Stopped)
+                        return true;
+
                     if (Helper.MessageBoxQuestion(string.Format(Resource.stopServerConfirmMessage, server.Name)) == DialogResult.Yes)
                     { 
                         StopService(scenario);
@@ -1332,6 +1339,8 @@ namespace WiremockUI
                 icon = "record";
             else if (playType == Server.PlayType.PlayAsProxy)
                 icon = "play-proxy";
+            else if (playType == Server.PlayType.Stopped)
+                icon = "stop";
 
             ChangeTreeNodeImage(nodeServer, icon);
 
