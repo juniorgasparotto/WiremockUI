@@ -32,7 +32,7 @@ namespace WiremockUI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdvancedEditor));
-            this.txtContent = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.txtContent = new CrossFastColoredTextBox();
             this.pnlContent = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.txtContent)).BeginInit();
             this.pnlContent.SuspendLayout();
@@ -98,7 +98,7 @@ namespace WiremockUI
         }
 
         #endregion
-        private FastColoredTextBoxNS.FastColoredTextBox txtContent;
+        private CrossFastColoredTextBox txtContent;
         private Panel pnlContent;
     }
 }

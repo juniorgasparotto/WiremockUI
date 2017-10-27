@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtUrl = new WiremockUI.SimpleEditor();
@@ -236,7 +237,6 @@
             // txtRequestBody
             // 
             this.txtRequestBody.BackColor = System.Drawing.SystemColors.Control;
-            this.txtRequestBody.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRequestBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtRequestBody.Location = new System.Drawing.Point(0, 0);
             this.txtRequestBody.Name = "txtRequestBody";
@@ -388,7 +388,6 @@
             // txtResponseBody
             // 
             this.txtResponseBody.BackColor = System.Drawing.SystemColors.Control;
-            this.txtResponseBody.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtResponseBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtResponseBody.Location = new System.Drawing.Point(0, 0);
             this.txtResponseBody.Name = "txtResponseBody";

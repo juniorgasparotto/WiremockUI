@@ -74,6 +74,12 @@ namespace WiremockUI
             }
         }
 
+        public new ContextMenuStrip ContextMenuStrip
+        {
+            get => txtContent.ContextMenuStrip;
+            set => txtContent.ContextMenuStrip = value;
+        }
+
         #region RithTextBox Wrapper
 
         [Localizable(true)]
