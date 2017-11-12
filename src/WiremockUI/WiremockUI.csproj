@@ -245,6 +245,12 @@
     <Compile Include="Forms\FormCompare.Designer.cs">
       <DependentUpon>FormCompare.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormSslSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSslSettings.Designer.cs">
+      <DependentUpon>FormSslSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormWebRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,8 +354,15 @@
     <Compile Include="UserControls\TreeViewCustom.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\UcKeyStoreView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcKeyStoreView.Designer.cs">
+      <DependentUpon>UcKeyStoreView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\DevelopmentHelper.cs" />
     <Compile Include="Utils\DiffMatchPatch.cs" />
+    <Compile Include="Utils\SslHelper.cs" />
     <Compile Include="Utils\TransformUtils.cs" />
     <Compile Include="Utils\SettingsUtils.cs" />
     <Compile Include="Utils\Helper.cs" />
@@ -402,6 +415,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCompareResult.resx">
       <DependentUpon>FormCompareResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSslSettings.resx">
+      <DependentUpon>FormSslSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWebRequest.resx">
       <DependentUpon>FormWebRequest.cs</DependentUpon>
@@ -473,6 +489,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TabControlCustom\TabControlCustom.resx">
       <DependentUpon>TabControlCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcKeyStoreView.resx">
+      <DependentUpon>UcKeyStoreView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".app\db.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

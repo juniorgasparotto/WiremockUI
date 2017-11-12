@@ -83,11 +83,7 @@ namespace WiremockUI
                 }
 
                 wireMockServer.start();
-            }
-            catch
-            {
-                throw;
-            }
+            }            
             finally
             {
                 var httpSettings = options.httpsSettings()?.ToString();
