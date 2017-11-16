@@ -1,4 +1,5 @@
-﻿using System;
+﻿using java.security;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -30,7 +31,7 @@ namespace WiremockUI
 
         public FormMaster()
         {
-            InitializeComponent();
+            InitializeComponent();            
             Current = this;
 
             // language feature
@@ -1296,6 +1297,8 @@ namespace WiremockUI
 
             var frmStart = new FormStartWiremockService(this, server, scenario, playType);
             
+            Play:
+
             try
             {
                 frmStart.Play();
@@ -1306,7 +1309,31 @@ namespace WiremockUI
                 playType = Server.PlayType.Stopped;
                 string details = Helper.GetExceptionDetails(ex);
                 frmStart.LogWriter.Error(details, false, true);
-                Helper.MessageBoxError(string.Format(Resource.startServerError, ex.GetType().Name, ex.Message));
+
+                if (ex is KeyStoreException)
+                {
+                    var frm = new FormSslFix(ex);
+                    frm.ShowDialog();
+                    var result = frm.Result;
+
+                    switch(result)
+                    {
+                        case FormSslFix.UserFixOption.DisableSSLTrustStore:
+                            goto Play;
+                        case FormSslFix.UserFixOption.OpenServerSettings:
+                            frmStart.Close();
+                            OpenAddOrEditServer(server);
+                            return;
+                        case FormSslFix.UserFixOption.OpenSSLTrustStoreSettings:
+                            frmStart.Close();
+                            OpenAddOrEditServer(server);
+                            return;
+                    }
+                }
+                else
+                {
+                    Helper.MessageBoxError(string.Format(Resource.startServerError, ex.GetType().Name, ex.Message));
+                }
             }
 
             var recordText = "";

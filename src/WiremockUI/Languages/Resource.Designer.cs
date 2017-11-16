@@ -493,6 +493,69 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancelar.
+        /// </summary>
+        internal static string fixSslBtnCancel {
+            get {
+                return ResourceManager.GetString("fixSslBtnCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continuar.
+        /// </summary>
+        internal static string fixSslBtnFix {
+            get {
+                return ResourceManager.GetString("fixSslBtnFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Escolha uma das opções abaixo para tentar resolver o erro:.
+        /// </summary>
+        internal static string fixSslGroupFixOptions {
+            get {
+                return ResourceManager.GetString("fixSslGroupFixOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocorreu um erro ao tentar carregar os certificados:.
+        /// </summary>
+        internal static string fixSslLblError {
+            get {
+                return ResourceManager.GetString("fixSslLblError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desativar &quot;SSL TrustStore Global&quot;.
+        /// </summary>
+        internal static string fixSslOptDisableCacerts {
+            get {
+                return ResourceManager.GetString("fixSslOptDisableCacerts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verifique se as configurações &quot;HttpsTrustSore&quot;, &quot;HttpsKeyStore&quot; estão preenchidas e se essas KeyStore são válidas.
+        /// </summary>
+        internal static string fixSslOptOpenServerSettings {
+            get {
+                return ResourceManager.GetString("fixSslOptOpenServerSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verificar se existe algum certificado inválido nas configurações de &quot;SSL TrustStore Global&quot;.
+        /// </summary>
+        internal static string fixSslOptOpenSslSettings {
+            get {
+                return ResourceManager.GetString("fixSslOptOpenSslSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editar cenário.
         /// </summary>
         internal static string formAddScenarioInEditModeTitle {

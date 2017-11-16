@@ -675,4 +675,25 @@
   <data name="stoppedServerText" xml:space="preserve">
     <value> (Parado)</value>
   </data>
+  <data name="fixSslBtnCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="fixSslBtnFix" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="fixSslGroupFixOptions" xml:space="preserve">
+    <value>Escolha uma das opções abaixo para tentar resolver o erro:</value>
+  </data>
+  <data name="fixSslLblError" xml:space="preserve">
+    <value>Ocorreu um erro ao tentar carregar os certificados:</value>
+  </data>
+  <data name="fixSslOptDisableCacerts" xml:space="preserve">
+    <value>Desativar "SSL TrustStore Global"</value>
+  </data>
+  <data name="fixSslOptOpenServerSettings" xml:space="preserve">
+    <value>Verifique se as configurações "HttpsTrustSore", "HttpsKeyStore" estão preenchidas e se essas KeyStore são válidas</value>
+  </data>
+  <data name="fixSslOptOpenSslSettings" xml:space="preserve">
+    <value>Verificar se existe algum certificado inválido nas configurações de "SSL TrustStore Global"</value>
+  </data>
 </root>
