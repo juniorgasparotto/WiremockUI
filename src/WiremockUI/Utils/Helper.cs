@@ -416,6 +416,9 @@ namespace WiremockUI
 
         public static string GetExceptionDetails(Exception ex)
         {
+            if (ex == null)
+                return null;
+
             var strBuilder = new StringBuilder();
 
             strBuilder.AppendLine("--- Exception: " + ex.Message);

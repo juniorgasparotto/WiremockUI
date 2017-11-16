@@ -65,6 +65,16 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Linux|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Linux\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;Linux</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Costura, Version=1.6.2.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.1.6.2\lib\dotnet\Costura.dll</HintPath>
@@ -189,6 +199,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -232,11 +245,18 @@
     <Compile Include="Forms\FormCompare.Designer.cs">
       <DependentUpon>FormCompare.cs</DependentUpon>
     </Compile>
+
     <Compile Include="Forms\FormSslFix.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormSslFix.Designer.cs">
       <DependentUpon>FormSslFix.cs</DependentUpon>
+	</Compile>
+    <Compile Include="Forms\FormSslSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSslSettings.Designer.cs">
+      <DependentUpon>FormSslSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormWebRequest.cs">
       <SubType>Form</SubType>
@@ -292,6 +312,7 @@
     <Compile Include="UserControls\Editors\AdvancedEditor.Designer.cs">
       <DependentUpon>AdvancedEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Editors\CrossFastColoredTextBox.cs" />
     <Compile Include="UserControls\Editors\IBaseEditor.cs" />
     <Compile Include="UserControls\Editors\EditorUtils.cs" />
     <Compile Include="UserControls\Editors\SimpleEditor.cs">
@@ -340,8 +361,15 @@
     <Compile Include="UserControls\TreeViewCustom.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\UcKeyStoreView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcKeyStoreView.Designer.cs">
+      <DependentUpon>UcKeyStoreView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\DevelopmentHelper.cs" />
     <Compile Include="Utils\DiffMatchPatch.cs" />
+    <Compile Include="Utils\SslHelper.cs" />
     <Compile Include="Utils\TransformUtils.cs" />
     <Compile Include="Utils\SettingsUtils.cs" />
     <Compile Include="Utils\Helper.cs" />
@@ -395,8 +423,12 @@
     <EmbeddedResource Include="Forms\FormCompareResult.resx">
       <DependentUpon>FormCompareResult.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="Forms\FormSslFix.resx">
       <DependentUpon>FormSslFix.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSslSettings.resx">
+      <DependentUpon>FormSslSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWebRequest.resx">
       <DependentUpon>FormWebRequest.cs</DependentUpon>
@@ -468,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TabControlCustom\TabControlCustom.resx">
       <DependentUpon>TabControlCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcKeyStoreView.resx">
+      <DependentUpon>UcKeyStoreView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".app\db.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

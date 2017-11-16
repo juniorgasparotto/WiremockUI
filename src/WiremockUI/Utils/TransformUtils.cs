@@ -4,6 +4,7 @@ using WiremockUI.Data;
 using com.github.tomakehurst.wiremock.stubbing;
 using System.Collections.Generic;
 using System;
+using System.Windows.Forms;
 
 namespace WiremockUI
 {
@@ -16,7 +17,8 @@ namespace WiremockUI
             {
                 if (jarFile == null)
                 {
-                    var dir = Path.Combine(Directory.GetCurrentDirectory(), "Jar");
+                    string currentDir = Path.GetDirectoryName(Application.ExecutablePath);
+                    var dir = Path.Combine(currentDir, "Jar");
                     DirectoryInfo di = new DirectoryInfo(dir);
                     FileInfo[] files = di.GetFiles("*.jar");
                     if (files.Length > 0)

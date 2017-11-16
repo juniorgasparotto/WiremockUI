@@ -21,7 +21,6 @@ namespace WiremockUI
         private com.github.tomakehurst.wiremock.WireMockServer wireMockServer;
         private ILogWriter logText;
         private ILogTableRequestResponse logTableRequestResponse;
-        private bool useLogStdout;
 
         public Server.PlayType PlayType { get; }
 
@@ -30,9 +29,8 @@ namespace WiremockUI
             java.lang.System.setProperty("wiremock.org.mortbay.log.class", "com.github.tomakehurst.wiremock.jetty.LoggerAdapter");
         }
 
-        public WireMockServer(ILogWriter writer, ILogTableRequestResponse logTableRequestResponse, Data.Server.PlayType playType, bool useLogStdout = false)
+        public WireMockServer(ILogWriter writer, ILogTableRequestResponse logTableRequestResponse, Data.Server.PlayType playType)
         {
-            this.useLogStdout = useLogStdout;
             this.PlayType = playType;
             this.logText = writer;
             this.logTableRequestResponse = logTableRequestResponse;
@@ -40,19 +38,16 @@ namespace WiremockUI
 
         public void run(params string[] args)
         {
-            CommandLineOptions options;
-            if (useLogStdout)
+            var options = new CommandLineOptionsWithLog(logText, logTableRequestResponse, args);
+
+            // redirect java out to TextArea
+            if (options.verboseLoggingEnabled())
             {
                 var debug = new InternalOutput(logText);
                 var print = new java.io.PrintStream(debug);
                 java.lang.System.setOut(print);
-                options = new CommandLineOptions(args);
             }
-            else
-            {
-                options = new CommandLineOptionsWithLog(logText, logTableRequestResponse, args);
-            }
-            
+
             var FILES_ROOT = @"__files";
             var MAPPINGS_ROOT = @"mappings";
             var useFolder = args.Contains("--root-dir");
@@ -88,28 +83,13 @@ namespace WiremockUI
                 }
 
                 wireMockServer.start();
-            }
-            catch
-            {
-                throw;
-            }
+            }            
             finally
             {
                 var httpSettings = options.httpsSettings()?.ToString();
-                
-                if (useLogStdout)
-                {
-                    java.lang.System.@out.println();
-                    java.lang.System.@out.println(options);
-                    if (httpSettings != null)
-                        java.lang.System.@out.println(httpSettings);
-                }
-                else
-                {
-                    logText.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true, true);
-                    if (httpSettings != null)
-                        logText.Info(httpSettings, true, true);
-                }
+                logText.Info(Helper.ResolveBreakLineInCompatibility(options.ToString()), true, true);
+                if (httpSettings != null && options.verboseLoggingEnabled())
+                    logText.Info(httpSettings, true, true);
             }
         }
 

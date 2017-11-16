@@ -61,7 +61,6 @@ namespace WiremockUI
 
             var args = server.GetArguments(scenario, type);
             wiremockServer.run(args);
-            
         }
 
         public void AddWatchers(Scenario service, FileSystemWatcher watcher)

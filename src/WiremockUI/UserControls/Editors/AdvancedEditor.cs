@@ -1,7 +1,6 @@
 ﻿using FastColoredTextBoxNS;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WiremockUI.Languages;
@@ -15,10 +14,10 @@ namespace WiremockUI
 
         #region JSON formatter
         
-        private readonly Regex jsonKeyRegex = new Regex(@"(""[^\\""]+?""\s*?:)", SyntaxHighlighter.RegexCompiledOption);
-        private readonly Regex jsonNumberRegex = new Regex(@"\b\d+[\.]?\d*([eE]\-?\d+)?[lLdDfF]?\b|\b0x[a-fA-F\d]+\b", SyntaxHighlighter.RegexCompiledOption);
-        private readonly Regex jsonStringRegex = new Regex(@"""""|''|"".*?[^\\]""|'.*?[^\\]'", SyntaxHighlighter.RegexCompiledOption);
-        private readonly Regex jsonKeywordRegex = new Regex(@"\b(true|false|null)\b", SyntaxHighlighter.RegexCompiledOption);
+        private readonly Regex jsonKeyRegex = new Regex(@"(""[^\\""]+?""\s*?:)", CrossSyntaxHighlighter.RegexCompiledOption);
+        private readonly Regex jsonNumberRegex = new Regex(@"\b\d+[\.]?\d*([eE]\-?\d+)?[lLdDfF]?\b|\b0x[a-fA-F\d]+\b", CrossSyntaxHighlighter.RegexCompiledOption);
+        private readonly Regex jsonStringRegex = new Regex(@"""""|''|"".*?[^\\]""|'.*?[^\\]'", CrossSyntaxHighlighter.RegexCompiledOption);
+        private readonly Regex jsonKeywordRegex = new Regex(@"\b(true|false|null)\b", CrossSyntaxHighlighter.RegexCompiledOption);
 
         private Style jsonKeyStyle = new TextStyle(Brushes.Blue, null, FontStyle.Bold);
         public readonly Style jsonNumberStyle = new TextStyle(Brushes.Magenta, null, FontStyle.Regular);
@@ -75,7 +74,7 @@ namespace WiremockUI
                     txtContent.Language = GetLanguageFCTB(value);
                 }
 
-                txtContent.OnSyntaxHighlight(new TextChangedEventArgs(txtContent.Range));
+                txtContent.OnSyntaxHighlight(new CrossTextChangedEventArgs(txtContent.Range));
             }
         }
         
@@ -342,7 +341,7 @@ namespace WiremockUI
         {
             txtContent.ClearStyle(StyleIndex.All);
             SetJsonStyle();
-            txtContent.OnSyntaxHighlight(new TextChangedEventArgs(txtContent.Range));
+            txtContent.OnSyntaxHighlight(new CrossTextChangedEventArgs(txtContent.Range));
         }
 
         #region IEditorBase

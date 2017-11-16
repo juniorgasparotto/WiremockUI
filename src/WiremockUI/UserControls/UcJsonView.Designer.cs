@@ -69,7 +69,6 @@
             // txtContent
             // 
             this.txtContent.BackColor = System.Drawing.SystemColors.Control;
-            this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContent.Language = WiremockUI.AdvancedEditor.LanguageSupported.Json;
             this.txtContent.Location = new System.Drawing.Point(3, 42);
