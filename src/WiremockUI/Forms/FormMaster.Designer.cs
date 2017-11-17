@@ -59,6 +59,7 @@ namespace WiremockUI
             this.pnlSelectFile = new System.Windows.Forms.Panel();
             this.btnCancelFileSelectiong = new System.Windows.Forms.Button();
             this.lblSelectFileCompare = new System.Windows.Forms.Label();
+            this.menuCertificates = new System.Windows.Forms.ToolStripMenuItem();
             this.treeServices = new WiremockUI.TreeViewCustom();
             this.tabForms = new WiremockUI.TabControlCustom();
             this.menuOptions.SuspendLayout();
@@ -180,7 +181,7 @@ namespace WiremockUI
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(182, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(259, 6);
             // 
             // menuPlayAll
             // 
@@ -188,7 +189,7 @@ namespace WiremockUI
             this.menuPlayAll.Name = "menuPlayAll";
             this.menuPlayAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.menuPlayAll.Size = new System.Drawing.Size(258, 22);
+            this.menuPlayAll.Size = new System.Drawing.Size(262, 22);
             this.menuPlayAll.Text = "&Iniciar todos";
             this.menuPlayAll.Click += new System.EventHandler(this.menuPlayAll_Click);
             // 
@@ -208,7 +209,7 @@ namespace WiremockUI
             this.menuStopAll.Name = "menuStopAll";
             this.menuStopAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
-            this.menuStopAll.Size = new System.Drawing.Size(258, 22);
+            this.menuStopAll.Size = new System.Drawing.Size(262, 22);
             this.menuStopAll.Text = "&Parar todos";
             this.menuStopAll.Click += new System.EventHandler(this.menuStopAll_Click);
             // 
@@ -218,7 +219,8 @@ namespace WiremockUI
             this.menuWebRequest,
             this.menuTextCompare,
             this.menuTextEditor,
-            this.menuJsonVisualizer});
+            this.menuJsonVisualizer,
+            this.menuCertificates});
             this.menuTools.Name = "menuTools";
             this.menuTools.Size = new System.Drawing.Size(84, 20);
             this.menuTools.Text = "&Ferramentas";
@@ -341,6 +343,15 @@ namespace WiremockUI
     "ques para selecionar.";
             this.lblSelectFileCompare.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // menuCertificates
+            // 
+            this.menuCertificates.Name = "menuCertificates";
+            this.menuCertificates.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.S)));
+            this.menuCertificates.Size = new System.Drawing.Size(251, 22);
+            this.menuCertificates.Text = "SSL (Global)";
+            this.menuCertificates.Click += new System.EventHandler(this.certificateSettingsToolStripMenuItem_Click);
+            // 
             // treeServices
             // 
             this.treeServices.AllowDrop = true;
@@ -432,5 +443,6 @@ namespace WiremockUI
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem menuFindInFiles;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem menuCertificates;
     }
 }

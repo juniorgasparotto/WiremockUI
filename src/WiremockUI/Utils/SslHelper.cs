@@ -4,6 +4,7 @@ using java.security;
 using java.util;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using System;
 
 namespace WiremockUI
 {
@@ -15,7 +16,7 @@ namespace WiremockUI
         /**
         * Check if cacerts has a invalid certificate
         */
-        public static Dictionary<X509Certificate2, System.Exception> CheckInvalidCertificateInCacertsKeyStore()
+        public static string GetCurrentJavaProperty()
         {
             File storeFile = null;
             FileInputStream fis = null;
@@ -41,20 +42,25 @@ namespace WiremockUI
             if (storeFileName == null)
             {
                 string javaHome = props["javaHome"];
-                storeFile = new File(javaHome + sep + "lib" + sep
+                storeFileName = javaHome + sep + "lib" + sep
                                                 + "security" + sep +
-                                                "jssecacerts");
-                if ((fis = GetFileInputStream(storeFile)) == null)
-                    return ValidateCacerts();
+                                                "jssecacerts";
+                if ((fis = GetFileInputStream(new File(storeFileName))) == null)
+                {
+                    storeFileName = javaHome + sep + "lib" + sep
+                                          + "security" + sep +
+                                            "cacerts";
+                }
+                return storeFileName;
             }
 
             if (fis != null)
                 fis.close();
 
-            return null;
+            return storeFileName;
         }
 
-        private static Dictionary<X509Certificate2, System.Exception> ValidateCacerts()
+        public static Dictionary<X509Certificate2, System.Exception> ValidateCacerts()
         {
             var dic = new Dictionary<X509Certificate2, System.Exception>();
             var jstore = KeyStore.getInstance("jks");
@@ -83,13 +89,27 @@ namespace WiremockUI
                         cf.generateCertificate(new ByteArrayInputStream(cert.RawData));
                     }
                 }
-                catch (Exception ex)
+                catch (System.Exception ex)
                 {
                     dic[cert] = ex;
                 }
             }
             store.Close();
             return dic;
+        }
+
+        public static void SetTrustStore()
+        {
+            java.lang.System.getProperties().remove("javax.net.ssl.trustStore");
+            java.lang.System.getProperties().remove("javax.net.ssl.trustStorePassword");
+
+            var settings = SettingsUtils.GetSettings();
+            if (settings.TrustStoreDefault != SslHelper.GLOBAL)
+            {
+                java.lang.System.setProperty("javax.net.ssl.trustStore", settings.TrustStoreDefault);
+                if (!string.IsNullOrWhiteSpace(settings.TrustStorePwdDefault))
+                    java.lang.System.setProperty("javax.net.ssl.trustStorePassword", settings.TrustStorePwdDefault);
+            }
         }
 
         private static FileInputStream GetFileInputStream(File file)

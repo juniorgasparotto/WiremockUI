@@ -5,32 +5,39 @@ using WiremockUI.Languages;
 
 namespace WiremockUI
 {
-    public partial class FormSslSettings : Form
+    public partial class frmSslSettings : Form
     {
         private FormMaster master;
         private Settings settings;
 
-        public FormSslSettings(FormMaster master)
+        public frmSslSettings(FormMaster master)
         {
             this.master = master;
             InitializeComponent();
 
-            Text = Resource.formServerTitle;
-            btnSave.Text = Resource.btnSaveFile;
-            btnCancel.Text = Resource.btnCancel;
+            Text = Resource.certificatesFrmSslSettings;
+            btnSave.Text = Resource.certificatesBtnSave;
+            btnCancel.Text = Resource.certificatesBtnCancel;
+            groupOptions.Text = Resource.certificatesGroupOptions;
+            optCacerts.Text = Resource.certificatesOptCacerts;
+            optSslEmptyStore.Text = Resource.certificatesOptSslEmptyStore;
+            optOther.Text = Resource.certificatesOptOther;
 
             this.settings = SettingsUtils.GetSettings();
-            ucKeyStoreView1.SetTrustStore(settings.TrustStoreDefault);
+
+            if (settings.TrustStoreDefault == SslHelper.GLOBAL)
+                optCacerts.Checked = true;
+            else if (settings.TrustStoreDefault == SslHelper.NONE)
+                optSslEmptyStore.Checked = true;
+            else
+                optOther.Checked = true;
+
+            ucKeyStoreView1.SetTrustStore(settings.TrustStoreDefault, this.settings.TrustStorePwdDefault);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void FormServer_Load(object sender, EventArgs e)
-        {
-            //this.ActiveControl = txtName;
         }
 
         private void optSslEmptyStore_CheckedChanged(object sender, EventArgs e)
@@ -55,6 +62,29 @@ namespace WiremockUI
             {
                 ucKeyStoreView1.SetTrustStore("");
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (optCacerts.Checked)
+            {
+                this.settings.TrustStoreDefault = SslHelper.GLOBAL;
+                this.settings.TrustStorePwdDefault = null;
+            }
+            else if (optSslEmptyStore.Checked)
+            {
+                this.settings.TrustStoreDefault = SslHelper.NONE;
+                this.settings.TrustStorePwdDefault = null;
+            }
+            else if (optOther.Checked)
+            {
+                this.settings.TrustStoreDefault = ucKeyStoreView1.KeyStorePath;
+                this.settings.TrustStorePwdDefault = ucKeyStoreView1.Pwd;
+            }
+
+            SettingsUtils.SaveSettings(this.settings);
+            SslHelper.SetTrustStore();
+            this.Close();
         }
     }
 }

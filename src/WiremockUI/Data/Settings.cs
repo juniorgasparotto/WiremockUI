@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace WiremockUI.Data
 {
@@ -11,5 +9,6 @@ namespace WiremockUI.Data
         public Dictionary<string, string> Languages { get; set; } = new Dictionary<string, string>();
         public string DefaultLanguage { get; set; }
         public string TrustStoreDefault { get; set; }
+        public string TrustStorePwdDefault { get; set; }
     }
 }

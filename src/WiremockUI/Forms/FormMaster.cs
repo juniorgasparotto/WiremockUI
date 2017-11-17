@@ -73,6 +73,9 @@ namespace WiremockUI
                 mnuLanguages.Visible = false;
             }
 
+            // set trust store configuration
+            SslHelper.SetTrustStore();
+
             // set labels
             UpdateLabels();
         }
@@ -95,6 +98,7 @@ namespace WiremockUI
             menuTextCompare.Text = Resource.menuTextCompare;
             menuTextEditor.Text = Resource.menuTextEditor;
             menuJsonVisualizer.Text = Resource.menuJsonVisualizer;
+            menuCertificates.Text = Resource.menuCertificates;
             menuOpenFilesFolder.Text = Resource.menuOpenFilesFolder;
             menuFindInFiles.Text = Resource.menuFindInFiles;
             lblSelectFileCompare.Text = Resource.lblSelectFileCompare;
@@ -1307,6 +1311,11 @@ namespace WiremockUI
                 string details = Helper.GetExceptionDetails(ex);
                 frmStart.LogWriter.Error(details, false, true);
                 Helper.MessageBoxError(string.Format(Resource.startServerError, ex.GetType().Name, ex.Message));
+
+                if (ex is java.security.KeyStoreException)
+                {
+                    
+                }
             }
 
             var recordText = "";
@@ -1901,6 +1910,12 @@ namespace WiremockUI
             var title = GetMenuNameAsTabName(menuFindInFiles.Text);
             var frm = new FormFindInFiles(this, Helper.GetDbFilePath());
             TabMaster.AddTab(frm, null, title);
+        }
+
+        private void certificateSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmSslSettings(this);
+            frm.ShowDialog();
         }
     }
 }

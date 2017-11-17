@@ -295,6 +295,123 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fechar.
+        /// </summary>
+        internal static string certificatesBtnCancel {
+            get {
+                return ResourceManager.GetString("certificatesBtnCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validar.
+        /// </summary>
+        internal static string certificatesBtnLoad {
+            get {
+                return ResourceManager.GetString("certificatesBtnLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Localizar.
+        /// </summary>
+        internal static string certificatesBtnOpen {
+            get {
+                return ResourceManager.GetString("certificatesBtnOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salvar.
+        /// </summary>
+        internal static string certificatesBtnSave {
+            get {
+                return ResourceManager.GetString("certificatesBtnSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SSL TrustStore (Global).
+        /// </summary>
+        internal static string certificatesFrmSslSettings {
+            get {
+                return ResourceManager.GetString("certificatesFrmSslSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Certificados.
+        /// </summary>
+        internal static string certificatesGroupCertificates {
+            get {
+                return ResourceManager.GetString("certificatesGroupCertificates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usar padrão.
+        /// </summary>
+        internal static string certificatesGroupOptions {
+            get {
+                return ResourceManager.GetString("certificatesGroupOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store file.
+        /// </summary>
+        internal static string certificatesGroupSelectFile {
+            get {
+                return ResourceManager.GetString("certificatesGroupSelectFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arquivo:.
+        /// </summary>
+        internal static string certificatesLblFile {
+            get {
+                return ResourceManager.GetString("certificatesLblFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Senha:.
+        /// </summary>
+        internal static string certificatesLblPwd {
+            get {
+                return ResourceManager.GetString("certificatesLblPwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sim.
+        /// </summary>
+        internal static string certificatesOptCacerts {
+            get {
+                return ResourceManager.GetString("certificatesOptCacerts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outro (Arquivo JKS).
+        /// </summary>
+        internal static string certificatesOptOther {
+            get {
+                return ResourceManager.GetString("certificatesOptOther", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Não.
+        /// </summary>
+        internal static string certificatesOptSslEmptyStore {
+            get {
+                return ResourceManager.GetString("certificatesOptSslEmptyStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 100-expect.
         /// </summary>
         internal static string chk100Expect {
@@ -813,6 +930,15 @@ namespace WiremockUI.Languages {
         internal static string menuAddServer {
             get {
                 return ResourceManager.GetString("menuAddServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SSL TrustStore (Global).
+        /// </summary>
+        internal static string menuCertificates {
+            get {
+                return ResourceManager.GetString("menuCertificates", resourceCulture);
             }
         }
         

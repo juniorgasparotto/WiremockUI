@@ -675,4 +675,46 @@
   <data name="stoppedServerText" xml:space="preserve">
     <value> (Parado)</value>
   </data>
+  <data name="certificatesBtnCancel" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="certificatesBtnLoad" xml:space="preserve">
+    <value>Validar</value>
+  </data>
+  <data name="certificatesBtnOpen" xml:space="preserve">
+    <value>Localizar</value>
+  </data>
+  <data name="certificatesBtnSave" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="certificatesFrmSslSettings" xml:space="preserve">
+    <value>SSL TrustStore (Global)</value>
+  </data>
+  <data name="certificatesGroupCertificates" xml:space="preserve">
+    <value>Certificados</value>
+  </data>
+  <data name="certificatesGroupOptions" xml:space="preserve">
+    <value>Usar padrão</value>
+  </data>
+  <data name="certificatesGroupSelectFile" xml:space="preserve">
+    <value>Store file</value>
+  </data>
+  <data name="certificatesLblFile" xml:space="preserve">
+    <value>Arquivo:</value>
+  </data>
+  <data name="certificatesLblPwd" xml:space="preserve">
+    <value>Senha:</value>
+  </data>
+  <data name="certificatesOptCacerts" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="certificatesOptOther" xml:space="preserve">
+    <value>Outro (Arquivo JKS)</value>
+  </data>
+  <data name="certificatesOptSslEmptyStore" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="menuCertificates" xml:space="preserve">
+    <value>SSL TrustStore (Global)</value>
+  </data>
 </root>

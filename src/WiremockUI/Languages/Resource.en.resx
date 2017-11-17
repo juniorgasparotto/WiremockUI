@@ -675,4 +675,46 @@
   <data name="stoppedServerText" xml:space="preserve">
     <value> (Stopped)</value>
   </data>
+  <data name="certificatesBtnCancel" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="certificatesBtnLoad" xml:space="preserve">
+    <value>Validate</value>
+  </data>
+  <data name="certificatesBtnOpen" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="certificatesBtnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="certificatesFrmSslSettings" xml:space="preserve">
+    <value>SSL TrustStore (Global)</value>
+  </data>
+  <data name="certificatesGroupCertificates" xml:space="preserve">
+    <value>Certificates</value>
+  </data>
+  <data name="certificatesGroupOptions" xml:space="preserve">
+    <value>Use default</value>
+  </data>
+  <data name="certificatesLblFile" xml:space="preserve">
+    <value>File:</value>
+  </data>
+  <data name="certificatesLblPwd" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="certificatesOptCacerts" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="certificatesOptOther" xml:space="preserve">
+    <value>Other (JKS file)</value>
+  </data>
+  <data name="certificatesOptSslEmptyStore" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="groupSelectFile" xml:space="preserve">
+    <value>Store file</value>
+  </data>
+  <data name="menuCertificates" xml:space="preserve">
+    <value>SSL TrustStore (Global)</value>
+  </data>
 </root>

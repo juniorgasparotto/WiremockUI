@@ -4,7 +4,6 @@ using System.Diagnostics;
 using WiremockUI.Data;
 using System.IO;
 using WiremockUI.Languages;
-using java.security;
 
 namespace WiremockUI
 {
@@ -102,14 +101,7 @@ namespace WiremockUI
         
         public void Play()
         {
-            try
-            {
-                master.Dashboard.Play(server, scenario, playType, LogWriter, logTable);
-            }
-            catch (KeyStoreException ex)
-            {
-
-            }
+            master.Dashboard.Play(server, scenario, playType, LogWriter, logTable);
         }
         
         private void lblUrlTarget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
