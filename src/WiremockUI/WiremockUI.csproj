@@ -245,6 +245,12 @@
     <Compile Include="Forms\FormCompare.Designer.cs">
       <DependentUpon>FormCompare.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormSslFix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSslFix.Designer.cs">
+      <DependentUpon>FormSslFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormSslSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -416,6 +422,9 @@
     <EmbeddedResource Include="Forms\FormCompareResult.resx">
       <DependentUpon>FormCompareResult.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSslFix.resx">
+      <DependentUpon>FormSslFix.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSslSettings.resx">
       <DependentUpon>FormSslSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -496,6 +505,7 @@
     <None Include=".app\db.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="InvalidCertificates\Warsaw.cer" />
     <None Include="Jar\convert-to-dotnet.bat" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -512,6 +522,37 @@
     <None Include="Images\close-2.png" />
     <None Include="Images\check.png" />
     <None Include="FodyWeavers.xml" />
+    <Content Include="Dlls\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="Dlls\ikvm-native-win32-x64.dll" />
+    <Content Include="Dlls\ikvm-native-win32-x86.dll" />
+    <Content Include="Dlls\IKVM.AWT.WinForms.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Beans.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Charsets.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Corba.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Core.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Jdbc.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Management.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Media.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Misc.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Naming.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Remoting.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Security.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.SwingAWT.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Text.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Tools.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.Util.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.XML.API.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.XML.Bind.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.XML.Crypto.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.XML.Parse.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.XML.Transform.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.XML.WebServices.dll" />
+    <Content Include="Dlls\IKVM.OpenJDK.XML.XPath.dll" />
+    <Content Include="Dlls\IKVM.Reflection.dll" />
+    <Content Include="Dlls\IKVM.Runtime.dll" />
+    <Content Include="Dlls\IKVM.Runtime.JNI.dll" />
+    <Content Include="Dlls\wiremock-standalone-2.7.1.dll" />
+    <Content Include="Dlls\wiremock-standalone-2.8.0.dll" />
     <Content Include="Jar\wiremock-standalone-2.8.0.jar">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

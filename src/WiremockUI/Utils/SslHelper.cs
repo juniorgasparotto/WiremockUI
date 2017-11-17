@@ -98,6 +98,25 @@ namespace WiremockUI
             return dic;
         }
 
+        public static void UseTrustStoreCacerts()
+        {
+            SaveTrustStore(SslHelper.GLOBAL, null);
+        }
+
+        public static void UseTrustStoreEmpty()
+        {
+            SaveTrustStore(SslHelper.NONE, null);
+        }
+
+        public static void SaveTrustStore(string trustStore, string pwd)
+        {
+            var settings = SettingsUtils.GetSettings();
+            settings.TrustStoreDefault = trustStore;
+            settings.TrustStorePwdDefault = pwd;
+            SettingsUtils.SaveSettings(settings);
+            SetTrustStore();
+        }
+
         public static void SetTrustStore()
         {
             java.lang.System.getProperties().remove("javax.net.ssl.trustStore");

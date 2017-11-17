@@ -1,4 +1,5 @@
-﻿using System;
+﻿using java.security;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -30,7 +31,7 @@ namespace WiremockUI
 
         public FormMaster()
         {
-            InitializeComponent();
+            InitializeComponent();            
             Current = this;
 
             // language feature
@@ -755,6 +756,12 @@ namespace WiremockUI
             }
         }
 
+        private void OpenSslSettings()
+        {
+            var frm = new frmSslSettings(this);
+            frm.ShowDialog();
+        }
+
         private TreeNode AddMappingNode(TreeNode nodeScenario, Data.Scenario scenario, string mapFile, int index = -1)
         {
             var server = (Server)nodeScenario.Parent.Tag;
@@ -1298,8 +1305,10 @@ namespace WiremockUI
             var nodeServer = nodeScenario.Parent;
             var server = (Server)nodeServer.Tag;
 
+            Play:
+
             var frmStart = new FormStartWiremockService(this, server, scenario, playType);
-            
+
             try
             {
                 frmStart.Play();
@@ -1307,15 +1316,41 @@ namespace WiremockUI
             catch (Exception ex)
             {
                 StopService(scenario);
+                var isKeyStoreExeception = ex is KeyStoreException;
+
+                if (isKeyStoreExeception)
+                {
+                    var frm = new FormSslFix(ex);
+                    frm.ShowDialog();
+                    var result = frm.Result;
+
+                    if (result != FormSslFix.UserFixOption.None)
+                    {
+                        frmStart.Close();
+
+                        switch (result)
+                        {
+                            case FormSslFix.UserFixOption.DisableSSLTrustStore:
+                                SslHelper.UseTrustStoreEmpty();
+                                goto Play;
+                            case FormSslFix.UserFixOption.OpenServerSettings:
+                                OpenAddOrEditServer(server);
+                                break;
+                            case FormSslFix.UserFixOption.OpenSSLTrustStoreSettings:
+                                OpenSslSettings();
+                                break;
+                        }
+
+                        return;
+                    }
+                }
+
                 playType = Server.PlayType.Stopped;
                 string details = Helper.GetExceptionDetails(ex);
                 frmStart.LogWriter.Error(details, false, true);
-                Helper.MessageBoxError(string.Format(Resource.startServerError, ex.GetType().Name, ex.Message));
 
-                if (ex is java.security.KeyStoreException)
-                {
-                    
-                }
+                if (!isKeyStoreExeception)
+                    Helper.MessageBoxError(string.Format(Resource.startServerError, ex.GetType().Name, ex.Message));
             }
 
             var recordText = "";
@@ -1914,8 +1949,7 @@ namespace WiremockUI
 
         private void certificateSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmSslSettings(this);
-            frm.ShowDialog();
+            OpenSslSettings();
         }
     }
 }

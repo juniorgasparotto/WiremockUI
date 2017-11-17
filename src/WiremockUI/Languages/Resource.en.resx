@@ -717,4 +717,25 @@
   <data name="menuCertificates" xml:space="preserve">
     <value>SSL TrustStore (Global)</value>
   </data>
+  <data name="fixSslBtnCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="fixSslBtnFix" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="fixSslGroupFixOptions" xml:space="preserve">
+    <value>Choose one of the options below to try to resolve the error:</value>
+  </data>
+  <data name="fixSslLblError" xml:space="preserve">
+    <value>There was an error while trying to load the certificates:</value>
+  </data>
+  <data name="fixSslOptDisableCacerts" xml:space="preserve">
+    <value>Disable "SSL TrustStore Global"</value>
+  </data>
+  <data name="fixSslOptOpenServerSettings" xml:space="preserve">
+    <value>Verify that the "HttpsTrustSore", "HttpsKeyStore" settings are populated and if these KeyStore are valid</value>
+  </data>
+  <data name="fixSslOptOpenSslSettings" xml:space="preserve">
+    <value>Check for any invalid certificates in the "SSL TrustStore Global" settings</value>
+  </data>
 </root>

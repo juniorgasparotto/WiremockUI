@@ -8,7 +8,6 @@ namespace WiremockUI
     public partial class frmSslSettings : Form
     {
         private FormMaster master;
-        private Settings settings;
 
         public frmSslSettings(FormMaster master)
         {
@@ -23,7 +22,7 @@ namespace WiremockUI
             optSslEmptyStore.Text = Resource.certificatesOptSslEmptyStore;
             optOther.Text = Resource.certificatesOptOther;
 
-            this.settings = SettingsUtils.GetSettings();
+            var settings = SettingsUtils.GetSettings();
 
             if (settings.TrustStoreDefault == SslHelper.GLOBAL)
                 optCacerts.Checked = true;
@@ -32,7 +31,7 @@ namespace WiremockUI
             else
                 optOther.Checked = true;
 
-            ucKeyStoreView1.SetTrustStore(settings.TrustStoreDefault, this.settings.TrustStorePwdDefault);
+            ucKeyStoreView1.SetTrustStore(settings.TrustStoreDefault, settings.TrustStorePwdDefault);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -68,22 +67,17 @@ namespace WiremockUI
         {
             if (optCacerts.Checked)
             {
-                this.settings.TrustStoreDefault = SslHelper.GLOBAL;
-                this.settings.TrustStorePwdDefault = null;
+                SslHelper.UseTrustStoreCacerts();
             }
             else if (optSslEmptyStore.Checked)
             {
-                this.settings.TrustStoreDefault = SslHelper.NONE;
-                this.settings.TrustStorePwdDefault = null;
+                SslHelper.UseTrustStoreEmpty();
             }
             else if (optOther.Checked)
             {
-                this.settings.TrustStoreDefault = ucKeyStoreView1.KeyStorePath;
-                this.settings.TrustStorePwdDefault = ucKeyStoreView1.Pwd;
+                SslHelper.SaveTrustStore(ucKeyStoreView1.KeyStorePath, ucKeyStoreView1.Pwd);
             }
 
-            SettingsUtils.SaveSettings(this.settings);
-            SslHelper.SetTrustStore();
             this.Close();
         }
     }
