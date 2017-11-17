@@ -80,5 +80,10 @@ namespace WiremockUI
 
             this.Close();
         }
+
+        private void frmSslSettings_Shown(object sender, EventArgs e)
+        {
+            ucKeyStoreView1.ClearSelection();
+        }
     }
 }

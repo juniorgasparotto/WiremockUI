@@ -92,6 +92,11 @@ namespace WiremockUI
             }
         }
 
+        internal void ClearSelection()
+        {
+            gridCertificates.ClearSelection();
+        }
+
         private void Populate(Dictionary<java.security.cert.Certificate, Exception> certificatesValidateds)
         {
             if (certificatesValidateds != null)

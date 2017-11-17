@@ -164,6 +164,7 @@
             this.Name = "frmSslSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSL (Global)";
+            this.Shown += new System.EventHandler(this.frmSslSettings_Shown);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.groupOptions.ResumeLayout(false);
