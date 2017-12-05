@@ -14,6 +14,10 @@ namespace WiremockUI
             lblEmail.Text = Resource.email;
             lblUrl.Text = Resource.gitHubProjectUrl;
             btnClose.Text = Resource.btnClose;
+            var versions = Helper.GetBuildVersion();
+            lblVersion.Text = versions.InformationalVersion.ToString();
+            lblBuild.Text = $"{versions.Version.Build}.{versions.Version.Revision}";
+            lblDate.Text = versions.BuildDate.ToString();
         }
 
         private void lblEmail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

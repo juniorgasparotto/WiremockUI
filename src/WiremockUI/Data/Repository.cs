@@ -6,13 +6,13 @@ using System.Linq.Expressions;
 
 namespace WiremockUI.Data
 {
-    internal class Schema
+    public class Schema
     {
         public List<Server> Servers { get; set; }
         public List<Settings> Settings { get; set; }
     }
 
-    internal class UnitOfWork
+    public class UnitOfWork
     {
         public static PocFile<Schema> _staticPocFile;
         private readonly Dictionary<Type, object> repositories;
@@ -69,9 +69,14 @@ namespace WiremockUI.Data
             lock (_staticPocFile)
                 PocFile.Save();
         }
+
+        public static void ClearCache()
+        {
+            PocFile = null;
+        }
     }
 
-    internal class Repository<T>
+    public class Repository<T>
     {
         private PocFile<Schema> pocFile;
         private PocRepository<Schema, T> repository;

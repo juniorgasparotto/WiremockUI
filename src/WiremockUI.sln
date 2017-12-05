@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiremockUI", "WiremockUI\WiremockUI.csproj", "{4D3BB0B9-246D-493E-8B2F-6C56F00DD69F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiremockUI.WCFSample", "WiremockUI.WCFSample\WiremockUI.WCFSample.csproj", "{20ACA0D8-1638-4C9D-B11D-E475137EC1C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiremockUI.Publish", "WiremockUI.Publish\WiremockUI.Publish.csproj", "{0273EA62-19D3-4775-92F9-8C574DCC28D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,12 @@ Global
 		{20ACA0D8-1638-4C9D-B11D-E475137EC1C7}.Linux|Any CPU.Build.0 = Linux|Any CPU
 		{20ACA0D8-1638-4C9D-B11D-E475137EC1C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20ACA0D8-1638-4C9D-B11D-E475137EC1C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0273EA62-19D3-4775-92F9-8C574DCC28D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0273EA62-19D3-4775-92F9-8C574DCC28D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0273EA62-19D3-4775-92F9-8C574DCC28D5}.Linux|Any CPU.ActiveCfg = Release|Any CPU
+		{0273EA62-19D3-4775-92F9-8C574DCC28D5}.Linux|Any CPU.Build.0 = Release|Any CPU
+		{0273EA62-19D3-4775-92F9-8C574DCC28D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0273EA62-19D3-4775-92F9-8C574DCC28D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

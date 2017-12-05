@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -446,6 +448,21 @@ namespace WiremockUI
             }
 
             return strBuilder.ToString();
+        }
+
+        public static (Version Version, string FileVersion, string InformationalVersion, DateTime BuildDate) GetBuildVersion()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            var assemblyVersion = assembly.GetName().Version.ToString();
+            var fileVersion = FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion;
+            var productVersion = FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion;
+            var assemblyInformationalVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+
+            var buildDate = new DateTime(2000, 1, 1)
+                                .AddDays(version.Build).AddSeconds(version.Revision * 2);
+
+            return (version, fileVersion, productVersion, buildDate);
         }
     }
 }
