@@ -1,0 +1,36 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".ps1" #>
+<#@ parameter name="vars" type="System.Collections.Generic.Dictionary<string, string>" #>
+
+$packageName = '<#= vars["packageName"] #>'
+$title = '<#= vars["title"] #>'
+$exeName = '<#= vars["exeName"] #>'
+$url = '<#= vars["url"] #>'
+$binRoot = Get-ToolsLocation
+$installPath = Join-Path $binRoot $packageName
+
+# Download and unzip file
+Install-ChocolateyZipPackage -PackageName $packageName `
+                             -Url $url `
+                             -UnzipLocation $installPath
+
+# Create environment path in windows
+Install-ChocolateyPath $installPath 'user'
+
+# Create shortcut in desktop
+#Write-Host "Create Desktop ShortCurt..."
+#$desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::DesktopDirectory))
+#$desktop = Join-Path $desktop "$title.lnk"
+#Write-Host $desktop
+#Install-ChocolateyShortcut -shortcutFilePath $desktop -targetPath "$installPath/$exeName"
+
+# Create shortcut in start menu
+#Write-Host "Create StartMenu ShortCurt..."
+#$programs = [environment]::GetFolderPath([environment+specialfolder]::Programs)
+#$programs = Join-Path $programs "$title.lnk"
+#Write-Host $programs
+#Install-ChocolateyShortcut -shortcutFilePath $programs -targetPath "$installPath/$exeName"
