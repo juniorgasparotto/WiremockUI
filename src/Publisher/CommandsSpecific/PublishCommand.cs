@@ -15,16 +15,16 @@ namespace Publisher.CommandSpecific
             var pathCommand = App.Commands.Get<PathCommand>();
             var chocolateyCommand = App.Commands.Get<ChocolateyCommand>();
 
+            Title("SET NEXT VERSION");
+            version.Next();
+
             Title("BUILD");
             build.Clear();
             build.Build();
 
             Title("PACK");
             pack.Pack();
-
-            Title("SET NEXT VERSION");
-            version.Next();
-
+            
             if (Utils.Continue(this, "Do you create a new release in github?"))
             {
                 Title("GITHUB - CREATE NEW RELEASE");

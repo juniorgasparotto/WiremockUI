@@ -1,4 +1,5 @@
 {
+  "Version": 1,
   "Servers": [],
   "Settings": [
     {
@@ -7,7 +8,9 @@
         "pt-br": "Portuguese",
         "en-us": "English"
       },
-      "DefaultLanguage": "en-us"
+      "DefaultLanguage": "en-us",
+      "TrustStoreDefault": null,
+      "TrustStorePwdDefault": null
     }
   ]
 }

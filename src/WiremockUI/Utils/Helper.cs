@@ -217,6 +217,19 @@ namespace WiremockUI
             return json;
         }
 
+        public static bool Process(string cmd)
+        {
+            try
+            { 
+                System.Diagnostics.Process.Start(cmd);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public static string XmlEscape(string text)
         {
             string xml = text;

@@ -508,6 +508,9 @@
     <None Include=".app\db.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include=".old-test\.app\db.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="InvalidCertificates\Warsaw.cer" />
     <None Include="Jar\convert-to-dotnet.bat" />
     <None Include="packages.config" />
@@ -525,6 +528,12 @@
     <None Include="Images\close-2.png" />
     <None Include="Images\check.png" />
     <None Include="FodyWeavers.xml" />
+    <Content Include=".old-test\.app\5001\file.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include=".old-test\.app\5500\file.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dlls\ICSharpCode.SharpZipLib.dll" />
     <Content Include="Dlls\ikvm-native-win32-x64.dll" />
     <Content Include="Dlls\ikvm-native-win32-x86.dll" />

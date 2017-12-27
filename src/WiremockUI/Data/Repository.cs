@@ -1,6 +1,9 @@
-﻿using PocDatabase;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PocDatabase;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -8,6 +11,16 @@ namespace WiremockUI.Data
 {
     public class Schema
     {
+        // Change this property when the schema changes completely.
+        // Example: Some important field is renamed
+        private int _version = 1;
+
+        public int Version
+        {
+            get => _version;
+            set { }
+        }
+
         public List<Server> Servers { get; set; }
         public List<Settings> Settings { get; set; }
     }
@@ -73,6 +86,27 @@ namespace WiremockUI.Data
         public static void ClearCache()
         {
             PocFile = null;
+        }
+
+        public static int GetVersion(string path)
+        {
+            if (File.Exists(path))
+            {
+                // read JSON directly from a file
+                using (StreamReader file = File.OpenText(path))
+                {
+                    using (JsonTextReader reader = new JsonTextReader(file))
+                    {
+                        var json = (JObject)JToken.ReadFrom(reader);
+                        var version = json["Version"]?.Value<int>();
+                        if (version != null)
+                            return version.Value;
+                    }
+                }
+
+            }
+
+            return 0;
         }
     }
 

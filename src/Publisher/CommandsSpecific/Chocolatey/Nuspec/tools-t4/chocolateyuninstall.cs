@@ -35,6 +35,13 @@ namespace Publisher.CommandsSpecific.Chocolatey.Nuspec.tools_t4
             
             #line default
             #line hidden
+            this.Write("\'\r\n$title = \'");
+            
+            #line 10 "D:\Junior\Projetos\GITHUB.COM\juniorgasparotto\WiremockUI\src\Publisher\CommandsSpecific\Chocolatey\Nuspec\tools-t4\chocolateyuninstall.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(vars["title"]));
+            
+            #line default
+            #line hidden
             this.Write(@"'
 $toolsPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $unPath = Join-Path $toolsPath 'Uninstall-ChocolateyPath.psm1'
@@ -43,31 +50,30 @@ $installPath = Join-Path $binRoot $packageName
 
 # Remove environment path windows
 Import-Module $unPath
-Uninstall-ChocolateyPath $installPath 'User'
 
 # Remove folder
-Write-Host ""Remove Folder $packageName""
+Write-Host ""Remove Folder $installPath""
 if (Test-Path $installPath) {
     Remove-Item -Path $installPath -Recurse -Force
 }
 
 # Remove shortcut in desktop
-#Write-Host ""Remove Desktop ShortCurt...""
-#$desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::DesktopDirectory))
-#$desktop = Join-Path $desktop ""$packageName.lnk""
-#Write-Host $desktop
-#if (Test-Path $desktop) {   
-#    Remove-Item -Path $desktop
-#}
+Write-Host ""Remove Desktop ShortCurt...""
+$desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::DesktopDirectory))
+$desktop = Join-Path $desktop ""$title.lnk""
+Write-Host $desktop
+if (Test-Path $desktop) {   
+   Remove-Item -Path $desktop
+}
 
 # Remove shortcut in start menu
-#Write-Host ""Remove StartMenu ShortCurt...""
-#$programs = [environment]::GetFolderPath([environment+specialfolder]::Programs)
-#$programs = Join-Path $programs ""$packageName.lnk""
-#Write-Host $programs
-#if (Test-Path $programs) {
-#    Remove-Item -Path $programs
-#}");
+Write-Host ""Remove StartMenu ShortCurt...""
+$programs = [environment]::GetFolderPath([environment+specialfolder]::Programs)
+$programs = Join-Path $programs ""$title.lnk""
+Write-Host $programs
+if (Test-Path $programs) {
+   Remove-Item -Path $programs
+}");
             return this.GenerationEnvironment.ToString();
         }
         

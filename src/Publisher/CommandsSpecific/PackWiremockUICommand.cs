@@ -89,13 +89,17 @@ namespace Publisher
                 "WiremockUI.exe.config",
                 "WiremockUI.exe.manifest",
                 "WiremockUI.pdb",
+                ".old",
+                ".old-test",
             };
 
             foreach (var name in listUnused)
             {
-                var file = Path.Combine(PathCommand.BuildDirectory, config, name);
-                if (File.Exists(file))
-                    File.Delete(file);
+                var path = Path.Combine(PathCommand.BuildDirectory, config, name);
+                if (File.Exists(path))
+                    File.Delete(path);
+                else if (Directory.Exists(path))
+                    Directory.Delete(path, true);
             }
         }
 

@@ -56,31 +56,26 @@ namespace Publisher.CommandsSpecific.Chocolatey.Nuspec.tools_t4
             
             #line default
             #line hidden
-            this.Write(@"'
-$binRoot = Get-ToolsLocation
-$installPath = Join-Path $binRoot $packageName
-
-# Download and unzip file
-Install-ChocolateyZipPackage -PackageName $packageName `
-                             -Url $url `
-                             -UnzipLocation $installPath
-
-# Create environment path in windows
-Install-ChocolateyPath $installPath 'user'
-
-# Create shortcut in desktop
-#Write-Host ""Create Desktop ShortCurt...""
-#$desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::DesktopDirectory))
-#$desktop = Join-Path $desktop ""$title.lnk""
-#Write-Host $desktop
-#Install-ChocolateyShortcut -shortcutFilePath $desktop -targetPath ""$installPath/$exeName""
-
-# Create shortcut in start menu
-#Write-Host ""Create StartMenu ShortCurt...""
-#$programs = [environment]::GetFolderPath([environment+specialfolder]::Programs)
-#$programs = Join-Path $programs ""$title.lnk""
-#Write-Host $programs
-#Install-ChocolateyShortcut -shortcutFilePath $programs -targetPath ""$installPath/$exeName""");
+            this.Write("\'\r\n$binRoot = Get-ToolsLocation\r\n$installPath = Join-Path $binRoot $packageName\r\n" +
+                    "$oldVersionPath = Join-Path $installPath \".old\"\r\n\r\n# Create backup of old versio" +
+                    "n\r\nif (Test-Path $installPath) {\r\n    Write-Host \"Create backup old version\"\r\n  " +
+                    "  if (!(Test-Path $oldVersionPath)) {\r\n        New-Item $oldVersionPath -type di" +
+                    "rectory\r\n        Get-ChildItem $installPath |\r\n        Foreach-Object {\r\n       " +
+                    "     if ($_.Name -ne \".old\") {            \r\n                Move-Item $_.FullNam" +
+                    "e $oldVersionPath\r\n            }        \r\n        }\r\n    }\r\n}\r\n\r\n# Download and " +
+                    "unzip file\r\nInstall-ChocolateyZipPackage -PackageName $packageName `\r\n          " +
+                    "                   -Url $url `\r\n                             -UnzipLocation $ins" +
+                    "tallPath\r\n#Create shortcut in desktop\r\nWrite-Host \"Create Desktop ShortCurt...\"\r" +
+                    "\n$desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFol" +
+                    "der]::DesktopDirectory))\r\n$desktop = Join-Path $desktop \"$title.lnk\"\r\nWrite-Host" +
+                    " $desktop\r\nInstall-ChocolateyShortcut  -shortcutFilePath $desktop `\r\n           " +
+                    "                 -targetPath \"$installPath/$exeName\" `\r\n                        " +
+                    "    -workingDirectory $installPath\r\n\r\n#Create shortcut in start menu\r\nWrite-Host" +
+                    " \"Create StartMenu ShortCurt...\"\r\n$programs = [environment]::GetFolderPath([envi" +
+                    "ronment+specialfolder]::Programs)\r\n$programs = Join-Path $programs \"$title.lnk\"\r" +
+                    "\nWrite-Host $programs\r\nInstall-ChocolateyShortcut -shortcutFilePath $programs `\r" +
+                    "\n                           -targetPath \"$installPath/$exeName\" `\r\n             " +
+                    "              -workingDirectory $installPath");
             return this.GenerationEnvironment.ToString();
         }
         

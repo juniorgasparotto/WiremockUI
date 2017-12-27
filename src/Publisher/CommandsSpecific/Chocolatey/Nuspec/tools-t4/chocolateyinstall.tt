@@ -12,25 +12,40 @@ $exeName = '<#= vars["exeName"] #>'
 $url = '<#= vars["url"] #>'
 $binRoot = Get-ToolsLocation
 $installPath = Join-Path $binRoot $packageName
+$oldVersionPath = Join-Path $installPath ".old"
+
+# Create backup of old version
+if (Test-Path $installPath) {
+    Write-Host "Create backup old version"
+    if (!(Test-Path $oldVersionPath)) {
+        New-Item $oldVersionPath -type directory
+        Get-ChildItem $installPath |
+        Foreach-Object {
+            if ($_.Name -ne ".old") {            
+                Move-Item $_.FullName $oldVersionPath
+            }        
+        }
+    }
+}
 
 # Download and unzip file
 Install-ChocolateyZipPackage -PackageName $packageName `
                              -Url $url `
                              -UnzipLocation $installPath
+#Create shortcut in desktop
+Write-Host "Create Desktop ShortCurt..."
+$desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::DesktopDirectory))
+$desktop = Join-Path $desktop "$title.lnk"
+Write-Host $desktop
+Install-ChocolateyShortcut  -shortcutFilePath $desktop `
+                            -targetPath "$installPath/$exeName" `
+                            -workingDirectory $installPath
 
-# Create environment path in windows
-Install-ChocolateyPath $installPath 'user'
-
-# Create shortcut in desktop
-#Write-Host "Create Desktop ShortCurt..."
-#$desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::DesktopDirectory))
-#$desktop = Join-Path $desktop "$title.lnk"
-#Write-Host $desktop
-#Install-ChocolateyShortcut -shortcutFilePath $desktop -targetPath "$installPath/$exeName"
-
-# Create shortcut in start menu
-#Write-Host "Create StartMenu ShortCurt..."
-#$programs = [environment]::GetFolderPath([environment+specialfolder]::Programs)
-#$programs = Join-Path $programs "$title.lnk"
-#Write-Host $programs
-#Install-ChocolateyShortcut -shortcutFilePath $programs -targetPath "$installPath/$exeName"
+#Create shortcut in start menu
+Write-Host "Create StartMenu ShortCurt..."
+$programs = [environment]::GetFolderPath([environment+specialfolder]::Programs)
+$programs = Join-Path $programs "$title.lnk"
+Write-Host $programs
+Install-ChocolateyShortcut -shortcutFilePath $programs `
+                           -targetPath "$installPath/$exeName" `
+                           -workingDirectory $installPath

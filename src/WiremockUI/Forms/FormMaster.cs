@@ -34,6 +34,9 @@ namespace WiremockUI
             InitializeComponent();            
             Current = this;
 
+            // First - Try update version if exists old folder
+            UpdateVersion();
+
             // language feature
             var settings = SettingsUtils.GetSettings();
             if (settings?.Languages?.Count > 0)
@@ -104,6 +107,65 @@ namespace WiremockUI
             menuFindInFiles.Text = Resource.menuFindInFiles;
             lblSelectFileCompare.Text = Resource.lblSelectFileCompare;
             btnCancelFileSelectiong.Text = Resource.btnCancelFileSelectiong;
+        }
+
+        private void UpdateVersion()
+        {
+            var oldFolder = Path.Combine(Directory.GetCurrentDirectory(), ".old");
+
+            if (Directory.Exists(oldFolder))
+            {
+                try
+                {
+                    var curDbJson = Path.Combine(Directory.GetCurrentDirectory(), ".app", "db.json");
+                    var oldDbJson = Path.Combine(Directory.GetCurrentDirectory(), ".old", ".app", "db.json");
+                    var curVersion = UnitOfWork.GetVersion(curDbJson);
+                    var oldVersion = UnitOfWork.GetVersion(oldDbJson);
+                    var appOldFolder = Path.Combine(oldFolder, ".app");
+
+                    if (curVersion != oldVersion)
+                    {
+                        var folderError = string.Format(".error-{0}", DateTime.Now.ToString("yyyyMMddHHmmss"));
+                        var newLocal = Path.Combine(Directory.GetCurrentDirectory(), ".app", folderError);
+                        var msgError = string.Format("Data from the previous version is not compatible with the current version. Manual correction is required if you want to keep the data from the previous version..\r\n\r\nFolder: {0}", newLocal);
+                        Directory.Move(appOldFolder, newLocal);
+                        Helper.MessageBoxError(msgError, "Error in update");
+                    }
+                    else
+                    {
+                        var appLocal = Path.Combine(Directory.GetCurrentDirectory(), ".app");
+                        if (Directory.Exists(appLocal))
+                        {
+                            Helper.ClearFolder(appLocal);
+                            Directory.Delete(appLocal, true);
+                        }
+                        Directory.Move(appOldFolder, appLocal);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Helper.MessageBoxError(ex.Message, "Error in update");
+                }
+                finally
+                {
+                    try
+                    {
+                        Helper.ClearFolder(oldFolder);
+                        Directory.Delete(oldFolder, true);
+                    }
+                    catch (Exception ex)
+                    {
+                        Helper.MessageBoxError(ex.Message, "Error in update");
+                    }
+
+                    var url = "https://github.com/juniorgasparotto/WiremockUI/releases";
+                    var msgNewVersion = string.Format("The version has been updated successfully!\r\n\r\nTo view the changes, click 'Yes' or go to the URL below.\r\n\r\nURL: {0}", url);
+                    if (Helper.MessageBoxQuestion(msgNewVersion, "Updated version!") == DialogResult.Yes)
+                    {
+                        Helper.Process(url);
+                    }
+                }
+            }
         }
 
         private void Master_Load(object sender, EventArgs e)

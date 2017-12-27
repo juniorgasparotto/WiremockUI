@@ -7,6 +7,7 @@
 <#@ parameter name="vars" type="System.Collections.Generic.Dictionary<string, string>" #>
 
 $packageName = '<#= vars["packageName"] #>'
+$title = '<#= vars["title"] #>'
 $toolsPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $unPath = Join-Path $toolsPath 'Uninstall-ChocolateyPath.psm1'
 $binRoot = Get-ToolsLocation
@@ -14,28 +15,27 @@ $installPath = Join-Path $binRoot $packageName
 
 # Remove environment path windows
 Import-Module $unPath
-Uninstall-ChocolateyPath $installPath 'User'
 
 # Remove folder
-Write-Host "Remove Folder $packageName"
+Write-Host "Remove Folder $installPath"
 if (Test-Path $installPath) {
     Remove-Item -Path $installPath -Recurse -Force
 }
 
 # Remove shortcut in desktop
-#Write-Host "Remove Desktop ShortCurt..."
-#$desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::DesktopDirectory))
-#$desktop = Join-Path $desktop "$packageName.lnk"
-#Write-Host $desktop
-#if (Test-Path $desktop) {   
-#    Remove-Item -Path $desktop
-#}
+Write-Host "Remove Desktop ShortCurt..."
+$desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::DesktopDirectory))
+$desktop = Join-Path $desktop "$title.lnk"
+Write-Host $desktop
+if (Test-Path $desktop) {   
+   Remove-Item -Path $desktop
+}
 
 # Remove shortcut in start menu
-#Write-Host "Remove StartMenu ShortCurt..."
-#$programs = [environment]::GetFolderPath([environment+specialfolder]::Programs)
-#$programs = Join-Path $programs "$packageName.lnk"
-#Write-Host $programs
-#if (Test-Path $programs) {
-#    Remove-Item -Path $programs
-#}
+Write-Host "Remove StartMenu ShortCurt..."
+$programs = [environment]::GetFolderPath([environment+specialfolder]::Programs)
+$programs = Join-Path $programs "$title.lnk"
+Write-Host $programs
+if (Test-Path $programs) {
+   Remove-Item -Path $programs
+}

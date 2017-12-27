@@ -1,0 +1,53 @@
+{
+  "Version":  1,
+  "Servers": [
+    {
+      "Id": "86e3387c-7187-4972-b047-89041be44ac6",
+      "UrlTarget": "http://www.uol.com.br",
+      "Port": 5500,
+      "Name": "g1",
+      "Scenarios": [
+        {
+          "Id": "22bd38b4-9758-4c5d-9acc-57b9863526a4",
+          "Name": "Scenario1",
+          "IsDefault": true,
+          "ShowURL": true,
+          "Description": null,
+          "ShowName": true
+        }
+      ],
+      "Arguments": [
+        {
+          "Name": "Verbose",
+          "Value": "False",
+          "ArgName": "--verbose",
+          "Type": "Boolean"
+        },
+        {
+          "Name": "MatchHeaders",
+          "Value": "Content-Type,SOAPAction",
+          "ArgName": "--match-headers",
+          "Type": "String"
+        },
+        {
+          "Name": "PrintAllNetworkTraffic",
+          "Value": "False",
+          "ArgName": "--print-all-network-traffic",
+          "Type": "Boolean"
+        }
+      ]
+    }
+  ],
+  "Settings": [
+    {
+      "Id": "b712d615-d1d1-4f7f-ac1c-c6c72e037c5e",
+      "Languages": {
+        "pt-br": "Portuguese",
+        "en-us": "English"
+      },
+      "DefaultLanguage": "en-us",
+      "TrustStoreDefault": null,
+      "TrustStorePwdDefault": null
+    }
+  ]
+}
