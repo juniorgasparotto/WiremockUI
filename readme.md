@@ -39,6 +39,8 @@ The tool is completely visual and features of Wiremock have been enhanced:
 2. Extract the .zip anywhere
 3. Open the file`Wiremock.exe`
 
+**DOWNLOAD LINK**: https://github.com/juniorgasparotto/WiremockUI/releases/download/1.0.2/WiremockUI.zip
+
 _No need for installation_
 
 ## Installation (Chocolatey)
@@ -48,6 +50,18 @@ choco install wiremockui
 ```
 
 Url: https://chocolatey.org/packages/wiremockui
+
+**Upgrade:**
+
+```
+choco upgrade wiremockui
+```
+
+**Uninstall:**
+
+```
+choco uninstall wiremockui
+```
 
 # Demo
 
