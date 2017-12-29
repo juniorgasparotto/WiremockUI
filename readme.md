@@ -63,18 +63,18 @@ choco upgrade wiremockui
 choco uninstall wiremockui
 ```
 
-# Demo
-
-[
-  ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png)
-](https://www.youtube.com/watch?v=6d7QQqbNKhk)
-
-**Requirements:**
+## Requirements
 
 * Windows
 * .NET Framework 4.5
   * chocolatey:`choco install dotnet4.5`
   * Microsoft: https://www.microsoft.com/en-us/download/details.aspx?id=30653
+
+# Demo
+
+[
+  ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png)
+](https://www.youtube.com/watch?v=6d7QQqbNKhk)
 
 # <a name="documentation" />Documentation
 
