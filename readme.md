@@ -33,19 +33,27 @@ The tool is completely visual and features of Wiremock have been enhanced:
   * `Text editor`: Text Editor with formatting options to JSON or XML
   * `JSON Viewer`: JSON Viewer in the form of a tree.
 
-# Demo
-
-[
-  ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png)
-](https://www.youtube.com/watch?v=6d7QQqbNKhk)
-
-## Installation
+## Installation (Manual)
 
 1. Download the .zip file [by clicking here](https://github.com/juniorgasparotto/WiremockUI/releases/download/1.0.2/WiremockUI.zip)
 2. Extract the .zip anywhere
 3. Open the file`Wiremock.exe`
 
 _No need for installation_
+
+## Installation (Chocolatey)
+
+```
+choco install wiremockui
+```
+
+Url: https://chocolatey.org/packages/wiremockui
+
+# Demo
+
+[
+  ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/youtube.png)
+](https://www.youtube.com/watch?v=6d7QQqbNKhk)
 
 **Requirements:**
 
