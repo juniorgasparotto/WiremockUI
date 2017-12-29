@@ -46,7 +46,7 @@ namespace Publisher
                     UseShellExecute = false,
                     FileName = pathCommand.MsBuildPath,
                     WindowStyle = ProcessWindowStyle.Normal,
-                    Arguments = string.Format("{0} /t:Build /m /property:Configuration={1} /p:OutDir={2}", pathCommand.TargetProjectPath, config, output)
+                    Arguments = string.Format("{0} /t:Build /m /property:Configuration={1} /p:OutDir={2}", Utils.GetFullPath(this, pathCommand.TargetProjectPath), config, output)
                 };
 
                 using (Process exeProcess = Process.Start(startInfo))

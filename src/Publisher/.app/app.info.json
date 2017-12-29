@@ -25,7 +25,7 @@
       "GroupName": "version"
     }
   ],
-  "TargetProjectPath": "D:\\Junior\\Projetos\\GITHUB.COM\\juniorgasparotto\\WiremockUI\\src\\WiremockUI\\WiremockUI.csproj",
+  "TargetProjectPath": "~\\src\\WiremockUI\\WiremockUI.csproj",
   "MsBuildPath": "C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\2017\\\\Community\\\\MSBuild\\\\15.0\\\\Bin\\\\MSBuild.exe",
   "GitHubUrl": null,
   "GitHubTimeout": null,
