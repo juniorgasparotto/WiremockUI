@@ -152,7 +152,12 @@ namespace Publisher.Core
 
         public static bool Continue(Command command, string message)
         {
-            var result = command.App.Console.Read(message + " [Yes/No]: ")?.ToLower();
+            return Continue(command, message, out _);
+        }
+
+        public static bool Continue(Command command, string message, out string result)
+        {
+            result = command.App.Console.Read(message + " [Yes/No]: ")?.ToLower();
             return string.IsNullOrWhiteSpace(result) || result == "y" || result == "yes";
         }
 
@@ -171,6 +176,27 @@ namespace Publisher.Core
         public static void CopyTo(this DirectoryInfo source, string target, bool overwiteFiles = true)
         {
             CopyTo(source, new DirectoryInfo(target), overwiteFiles);
+        }
+
+        public static string GetFullPath(Command command, string relativePath)
+        {
+            var ret = relativePath;
+            if (relativePath.Length >= 2
+                && relativePath[0] == '~' 
+                && (relativePath[1] == '/' || relativePath[1] == '\\'))
+            {
+                var pathCommand = command.App.Commands.Get<PathCommand>();
+                var git = new Git(pathCommand.GitPath);
+                var root = git.GetRootFolder();
+                ret = Path.Combine(root, relativePath.Remove(0, 2));   
+            }
+
+            if (Path.DirectorySeparatorChar == '\\')
+                ret = ret.Replace('/', '\\');
+            else
+                ret = ret.Replace('\\', '/');
+
+            return Path.GetFullPath(ret);
         }
     }
 }

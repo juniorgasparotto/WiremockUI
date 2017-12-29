@@ -98,7 +98,10 @@
     </Compile>
     <Compile Include="CommandsSpecific\PackWiremockUICommand.cs" />
     <Compile Include="CommandsSpecific\PublishCommand.cs" />
+    <Compile Include="Commands\FileReplaceCommand.cs" />
     <Compile Include="Core\ConvertBase64.cs" />
+    <Compile Include="Commands\GitCommand.cs" />
+    <Compile Include="Core\Git.cs" />
     <Compile Include="Core\GitHub.cs" />
     <Compile Include="Core\MimeType.cs" />
     <Compile Include="Commands\PathCommand.cs" />

@@ -34,7 +34,7 @@ A ferramenta é totalmente visual e diversos recursos do Wiremock foram potencia
 
 ## Instalação
 
-1. Fazer o download do .zip <a href="https://github.com/juniorgasparotto/WiremockUI/releases/download/v1.0.1/WiremockUI.zip">clicando aqui</a>
+1. Fazer o download do .zip <a href="https://github.com/juniorgasparotto/WiremockUI/releases/download/1.0.2/WiremockUI.zip">clicando aqui</a>
 2. Extrair o .zip em qualquer local
 2. Abrir o arquivo `Wiremock.exe`
 

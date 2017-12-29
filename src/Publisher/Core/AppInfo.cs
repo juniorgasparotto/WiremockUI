@@ -10,6 +10,7 @@ namespace Publisher.Core
         private static AppInfo _appInfo;
 
         public List<ConfigurationInfo> Configurations;
+        public List<FileReplace> FilesReplace;
         public string TargetProjectPath { get; set; }
 
         public string MsBuildPath { get; set; }
@@ -30,10 +31,12 @@ namespace Publisher.Core
         public string ChocolateyTags { get; set; }
         public string ChocolateyDescription { get; set; }
         public string ChocolateyAuthor { get; set; }
+        public string GitPath { get; set; }
 
         public AppInfo()
         {
             Configurations = new List<ConfigurationInfo>();
+            FilesReplace = new List<FileReplace>();
         }
 
         public ConfigurationInfo GetConfiguration(string name, bool throwEx = false)
@@ -64,6 +67,14 @@ namespace Publisher.Core
         {
             public string Name { get; set; }
             public string PackName { get; set; }
+        }
+
+        public class FileReplace
+        {
+            public string Path { get; set; }
+            public string Pattern { get; set; }
+            public string Replacement { get; set; }
+            public string GroupName { get; set; }
         }
     }
 }
