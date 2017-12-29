@@ -122,7 +122,7 @@ namespace Publisher.Core
         public bool OuputIsSuccess(List<Output> output)
         {
             var line1 = output.FirstOrDefault();
-            if (line1.IsError)
+            if (line1?.IsError == true)
                 return false;
 
             return true;
