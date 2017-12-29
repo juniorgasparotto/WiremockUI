@@ -171,7 +171,7 @@ namespace Publisher
         {
             get
             {
-                return Path.GetDirectoryName(TargetProjectPath);
+                return Path.GetDirectoryName(Utils.GetFullPath(this, TargetProjectPath));
             }
         }
 
