@@ -23,6 +23,24 @@
       "Pattern": "(/releases/download/)(.+?)(/WiremockUI.zip)",
       "Replacement": "${1}{version}${3}",
       "GroupName": "version"
+    },
+    {
+      "Path": "~/doc/.generator/pages/readme.md",
+      "Pattern": "(https://chocolatey.org/packages/)(.+?/)(.+?)([\\s|$])",
+      "Replacement": "${1}${2}{version}${4}",
+      "GroupName": "version"
+    },
+    {
+      "Path": "~/readme-pt-br.md",
+      "Pattern": "(https://chocolatey.org/packages/)(.+?/)(.+?)([\\s|$])",
+      "Replacement": "${1}${2}{version}${4}",
+      "GroupName": "version"
+    },
+    {
+      "Path": "~/readme.md",
+      "Pattern": "(https://chocolatey.org/packages/)(.+?/)(.+?)([\\s|$])",
+      "Replacement": "${1}${2}{version}${4}",
+      "GroupName": "version"
     }
   ],
   "TargetProjectPath": "~\\src\\WiremockUI\\WiremockUI.csproj",
