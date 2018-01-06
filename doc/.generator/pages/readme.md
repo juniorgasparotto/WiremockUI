@@ -490,10 +490,14 @@ E tudo com apenas um objetivo: Torná-lo uma boa ferramenta de mock para melhora
 
 De qualquer forma, agradeçemos você por ter chego até aqui ;)
 
-_PayPal:_ <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BJKBZXZJFVNUL&lc=US&item_name=wiremockui&item_number=wiremockui&currency_code=BRL&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted">
+_PayPal:_ 
+
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BJKBZXZJFVNUL&lc=US&item_name=wiremockui&item_number=wiremockui&currency_code=BRL&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted">
   <img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/paypaldonate.png" />
 </a>
 
-_BitCoin:_ **19DmxWBNcaUGjm2PQAuMBD4Y8ZbrGyMLzK**
+_BitCoin:_ 
+
+**19DmxWBNcaUGjm2PQAuMBD4Y8ZbrGyMLzK**
 
 <img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/bitcoinkey.png" />
