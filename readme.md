@@ -49,15 +49,15 @@ _No need for installation_
 choco install wiremockui
 ```
 
-Url: https://chocolatey.org/packages/wiremockui
+URL: https://chocolatey.org/packages/wiremockui
 
-**Upgrade:**
+**Update**
 
 ```
 choco upgrade wiremockui
 ```
 
-**Uninstall:**
+**Uninstalling**
 
 ```
 choco uninstall wiremockui
@@ -484,6 +484,26 @@ https://github.com/juniorgasparotto/PocDatabase
 _Board_:
 
 https://github.com/juniorgasparotto/WiremockUI/projects/1?fullscreen=true
+
+# Donations
+
+WiremockUI is an open source project staff. Starting in 2017, many hours have been invested in the creation and evolution of this project.
+
+And all with only one goal: make it a good mock tool to improve the daily lives of the developers. If the WiremockUI was useful for you, or if you want to see it evolve increasingly, consider making a small donation (any amount). Help us also with ideas and possible problems.
+
+Anyway, we appreciate you for have come up here;)
+
+**PayPal:**
+
+[
+  ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/paypaldonate.png)
+](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BJKBZXZJFVNUL&lc=US&item_name=wiremockui&item_number=wiremockui&currency_code=BRL&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
+
+**Bitcoin:**
+
+_19DmxWBNcaUGjm2PQAuMBD4Y8ZbrGyMLzK_
+
+![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/bitcoinkey.png)
 
 # <a name="license" />License
 

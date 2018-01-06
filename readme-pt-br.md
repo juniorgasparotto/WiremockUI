@@ -35,7 +35,7 @@ A ferramenta é totalmente visual e diversos recursos do Wiremock foram potencia
 
 ## Instalação (Manual)
 
-1. Fazer o download do .zip <a href="https://github.com/juniorgasparotto/WiremockUI/releases/download/1.0.2/WiremockUI.zip">clicando aqui</a>
+1. Fazer o download do .zip [clicando aqui](https://github.com/juniorgasparotto/WiremockUI/releases/download/1.0.2/WiremockUI.zip)
 2. Extrair o .zip em qualquer local
 3. Abrir o arquivo `Wiremock.exe`
 
@@ -51,13 +51,13 @@ choco install wiremockui
 
 Url: https://chocolatey.org/packages/wiremockui
 
-**Atualização:**
+**Atualização**
 
 ```
 choco upgrade wiremockui
 ```
 
-**Desinstalação:**
+**Desinstalação**
 
 ```
 choco uninstall wiremockui
@@ -484,6 +484,26 @@ https://github.com/juniorgasparotto/PocDatabase
 _Board_:
 
 https://github.com/juniorgasparotto/WiremockUI/projects/1?fullscreen=true
+
+# Doações
+
+WiremockUI é um projeto de código aberto pessoal. Iniciado em 2017, muitas horas foram investidos na criação e evolução deste projeto.
+
+E tudo com apenas um objetivo: Torná-lo uma boa ferramenta de mock para melhorar o dia a dia dos desenvolvedores. Se o WiremockUI foi útil pra você, ou se você deseja ve-lo evoluir cada vez mais, considere fazer uma pequena doação (qualquer valor). Ajude-nos também com sujestões e possíveis problemas.
+
+De qualquer forma, agradeçemos você por ter chego até aqui ;)
+
+**PayPal:**
+
+[
+  ![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/paypaldonate.png)
+](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BJKBZXZJFVNUL&lc=US&item_name=wiremockui&item_number=wiremockui&currency_code=BRL&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
+
+**BitCoin:**
+
+_19DmxWBNcaUGjm2PQAuMBD4Y8ZbrGyMLzK_
+
+![](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/bitcoinkey.png)
 
 # <a name="license" />Licença
 

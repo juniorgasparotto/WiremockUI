@@ -496,6 +496,7 @@ De qualquer forma, agradeçemos você por ter chego até aqui ;)
   <img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/paypaldonate.png" />
 </a>
 
+
 **BitCoin:**
 
 _19DmxWBNcaUGjm2PQAuMBD4Y8ZbrGyMLzK_
