@@ -496,4 +496,4 @@ _PayPal:_ <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business
 
 _BitCoin:_ **19DmxWBNcaUGjm2PQAuMBD4Y8ZbrGyMLzK**
 
-<img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/bitcoinkey.jpg" />
+<img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/bitcoinkey.png" />
