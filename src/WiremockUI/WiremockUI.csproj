@@ -222,6 +222,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Settings.cs" />
+    <Compile Include="Forms\FormDonate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDonate.Designer.cs">
+      <DependentUpon>FormDonate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormDevTools.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -413,6 +419,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
     <Compile Include="Utils\XmlMinify.cs" />
+    <EmbeddedResource Include="Forms\FormDonate.resx">
+      <DependentUpon>FormDonate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDevTools.resx">
       <DependentUpon>FormDevTools.cs</DependentUpon>
     </EmbeddedResource>

@@ -53,15 +53,21 @@ namespace WiremockUI
             this.menuTextCompare = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTextEditor = new System.Windows.Forms.ToolStripMenuItem();
             this.menuJsonVisualizer = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCertificates = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.docToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.releaseNotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.treeServices = new WiremockUI.TreeViewCustom();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.tabForms = new WiremockUI.TabControlCustom();
             this.pnlSelectFile = new System.Windows.Forms.Panel();
             this.btnCancelFileSelectiong = new System.Windows.Forms.Button();
             this.lblSelectFileCompare = new System.Windows.Forms.Label();
-            this.menuCertificates = new System.Windows.Forms.ToolStripMenuItem();
-            this.treeServices = new WiremockUI.TreeViewCustom();
-            this.tabForms = new WiremockUI.TabControlCustom();
             this.menuOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -76,7 +82,7 @@ namespace WiremockUI
             this.menuFile,
             this.menuServices,
             this.menuTools,
-            this.menuAbout});
+            this.menuHelp});
             this.menuOptions.Location = new System.Drawing.Point(0, 0);
             this.menuOptions.Name = "menuOptions";
             this.menuOptions.Size = new System.Drawing.Size(675, 24);
@@ -261,12 +267,66 @@ namespace WiremockUI
             this.menuJsonVisualizer.Text = "&Visualizador de JSON";
             this.menuJsonVisualizer.Click += new System.EventHandler(this.visualizadorDeJSONToolStripMenuItem_Click);
             // 
-            // menuAbout
+            // menuCertificates
             // 
-            this.menuAbout.Name = "menuAbout";
-            this.menuAbout.Size = new System.Drawing.Size(49, 20);
-            this.menuAbout.Text = "S&obre";
-            this.menuAbout.Click += new System.EventHandler(this.aboutMenuItem_Click);
+            this.menuCertificates.Name = "menuCertificates";
+            this.menuCertificates.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.S)));
+            this.menuCertificates.Size = new System.Drawing.Size(251, 22);
+            this.menuCertificates.Text = "SSL (Global)";
+            this.menuCertificates.Click += new System.EventHandler(this.certificateSettingsToolStripMenuItem_Click);
+            // 
+            // menuHelp
+            // 
+            this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.docToolStripMenuItem,
+            this.releaseNotesToolStripMenuItem,
+            this.toolStripMenuItem6,
+            this.donateToolStripMenuItem,
+            this.toolStripMenuItem5,
+            this.aboutToolStripMenuItem});
+            this.menuHelp.Name = "menuHelp";
+            this.menuHelp.Size = new System.Drawing.Size(44, 20);
+            this.menuHelp.Text = "&Help";
+            // 
+            // docToolStripMenuItem
+            // 
+            this.docToolStripMenuItem.Name = "docToolStripMenuItem";
+            this.docToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.docToolStripMenuItem.Text = "Documentação";
+            this.docToolStripMenuItem.Click += new System.EventHandler(this.docToolStripMenuItem_Click);
+            // 
+            // releaseNotesToolStripMenuItem
+            // 
+            this.releaseNotesToolStripMenuItem.Name = "releaseNotesToolStripMenuItem";
+            this.releaseNotesToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.releaseNotesToolStripMenuItem.Text = "Notas de versões";
+            this.releaseNotesToolStripMenuItem.Click += new System.EventHandler(this.releaseNotesToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(193, 6);
+            // 
+            // donateToolStripMenuItem
+            // 
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.donateToolStripMenuItem.Text = "Doações para o projeto";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(193, 6);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.aboutToolStripMenuItem.Text = "Sobre";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // splitContainer
             // 
@@ -284,6 +344,25 @@ namespace WiremockUI
             this.splitContainer.Size = new System.Drawing.Size(675, 364);
             this.splitContainer.SplitterDistance = 200;
             this.splitContainer.TabIndex = 2;
+            // 
+            // treeServices
+            // 
+            this.treeServices.AllowDrop = true;
+            this.treeServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeServices.HideSelection = false;
+            this.treeServices.ImageIndex = 0;
+            this.treeServices.ImageList = this.imageList1;
+            this.treeServices.Location = new System.Drawing.Point(0, 0);
+            this.treeServices.Name = "treeServices";
+            this.treeServices.SelectedImageIndex = 0;
+            this.treeServices.Size = new System.Drawing.Size(200, 364);
+            this.treeServices.TabIndex = 1;
+            this.treeServices.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_BeforeLabelEdit);
+            this.treeServices.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_AfterLabelEdit);
+            this.treeServices.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeServices_BeforeCollapse);
+            this.treeServices.DoubleClick += new System.EventHandler(this.treeServices_DoubleClick);
+            this.treeServices.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeServices_KeyDown);
+            this.treeServices.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeServices_MouseMove);
             // 
             // imageList1
             // 
@@ -307,6 +386,17 @@ namespace WiremockUI
             this.imageList1.Images.SetKeyName(15, "play-proxy");
             this.imageList1.Images.SetKeyName(16, "check");
             this.imageList1.Images.SetKeyName(17, "scenario");
+            // 
+            // tabForms
+            // 
+            this.tabForms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabForms.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabForms.Location = new System.Drawing.Point(0, 0);
+            this.tabForms.Name = "tabForms";
+            this.tabForms.Padding = new System.Drawing.Point(20, 5);
+            this.tabForms.SelectedIndex = 0;
+            this.tabForms.Size = new System.Drawing.Size(471, 364);
+            this.tabForms.TabIndex = 0;
             // 
             // pnlSelectFile
             // 
@@ -342,45 +432,6 @@ namespace WiremockUI
             this.lblSelectFileCompare.Text = "Selecione na árvore ao lado  (<) um arquivo para fazer a comparação. Use dois cli" +
     "ques para selecionar.";
             this.lblSelectFileCompare.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // menuCertificates
-            // 
-            this.menuCertificates.Name = "menuCertificates";
-            this.menuCertificates.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.S)));
-            this.menuCertificates.Size = new System.Drawing.Size(251, 22);
-            this.menuCertificates.Text = "SSL (Global)";
-            this.menuCertificates.Click += new System.EventHandler(this.certificateSettingsToolStripMenuItem_Click);
-            // 
-            // treeServices
-            // 
-            this.treeServices.AllowDrop = true;
-            this.treeServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeServices.HideSelection = false;
-            this.treeServices.ImageIndex = 0;
-            this.treeServices.ImageList = this.imageList1;
-            this.treeServices.Location = new System.Drawing.Point(0, 0);
-            this.treeServices.Name = "treeServices";
-            this.treeServices.SelectedImageIndex = 0;
-            this.treeServices.Size = new System.Drawing.Size(200, 364);
-            this.treeServices.TabIndex = 1;
-            this.treeServices.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_BeforeLabelEdit);
-            this.treeServices.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeServices_AfterLabelEdit);
-            this.treeServices.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeServices_BeforeCollapse);
-            this.treeServices.DoubleClick += new System.EventHandler(this.treeServices_DoubleClick);
-            this.treeServices.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeServices_KeyDown);
-            this.treeServices.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeServices_MouseMove);
-            // 
-            // tabForms
-            // 
-            this.tabForms.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabForms.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabForms.Location = new System.Drawing.Point(0, 0);
-            this.tabForms.Name = "tabForms";
-            this.tabForms.Padding = new System.Drawing.Point(20, 5);
-            this.tabForms.SelectedIndex = 0;
-            this.tabForms.Size = new System.Drawing.Size(471, 364);
-            this.tabForms.TabIndex = 0;
             // 
             // FormMaster
             // 
@@ -428,7 +479,7 @@ namespace WiremockUI
         private System.Windows.Forms.ToolStripMenuItem menuRefresh;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem menuClose;
-        private System.Windows.Forms.ToolStripMenuItem menuAbout;
+        private System.Windows.Forms.ToolStripMenuItem menuHelp;
         private TabControlCustom tabForms;
         private System.Windows.Forms.ToolStripMenuItem menuTools;
         private System.Windows.Forms.ToolStripMenuItem menuWebRequest;
@@ -444,5 +495,11 @@ namespace WiremockUI
         private System.Windows.Forms.ToolStripMenuItem menuFindInFiles;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem menuCertificates;
+        private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem docToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem releaseNotesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
     }
 }

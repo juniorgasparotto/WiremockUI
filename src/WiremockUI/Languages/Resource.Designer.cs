@@ -1015,6 +1015,24 @@ namespace WiremockUI.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Documentação.
+        /// </summary>
+        internal static string menuDocumentation {
+            get {
+                return ResourceManager.GetString("menuDocumentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doações para o projeto.
+        /// </summary>
+        internal static string menuDonate {
+            get {
+                return ResourceManager.GetString("menuDonate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Arquivo.
         /// </summary>
         internal static string menuFile {
@@ -1029,6 +1047,15 @@ namespace WiremockUI.Languages {
         internal static string menuFindInFiles {
             get {
                 return ResourceManager.GetString("menuFindInFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ajuda.
+        /// </summary>
+        internal static string menuHelp {
+            get {
+                return ResourceManager.GetString("menuHelp", resourceCulture);
             }
         }
         
@@ -1083,6 +1110,15 @@ namespace WiremockUI.Languages {
         internal static string menuRefresh {
             get {
                 return ResourceManager.GetString("menuRefresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notas de versões.
+        /// </summary>
+        internal static string menuReleases {
+            get {
+                return ResourceManager.GetString("menuReleases", resourceCulture);
             }
         }
         

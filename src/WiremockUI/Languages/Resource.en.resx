@@ -738,4 +738,16 @@
   <data name="fixSslOptOpenSslSettings" xml:space="preserve">
     <value>Check for any invalid certificates in the "SSL TrustStore Global" settings</value>
   </data>
+  <data name="menuDocumentation" xml:space="preserve">
+    <value>Documentation</value>
+  </data>
+  <data name="menuDonate" xml:space="preserve">
+    <value>Donations for this project</value>
+  </data>
+  <data name="menuHelp" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="menuReleases" xml:space="preserve">
+    <value>Releases notes</value>
+  </data>
 </root>

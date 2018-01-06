@@ -86,27 +86,40 @@ namespace WiremockUI
 
         private void UpdateLabels()
         {
+            // Others
             Text = Resource.FormMasterTitle;
+            btnCancelFileSelectiong.Text = Resource.btnCancelFileSelectiong;
+
+            // File menu
             menuFile.Text = Resource.menuFile;
             mnuLanguages.Text = Resource.menuLanguages;
-            menuAbout.Text = Resource.menuAbout;
-            menuAddServer.Text = Resource.menuAddServer;
             menuClose.Text = Resource.menuClose;
             menuRefresh.Text = Resource.menuRefresh;
+            menuOpenFilesFolder.Text = Resource.menuOpenFilesFolder;
+            menuFindInFiles.Text = Resource.menuFindInFiles;
+
+            // Execute menu
+            menuAddServer.Text = Resource.menuAddServer;
             menuServices.Text = Resource.menuServices;
             menuPlayAll.Text = Resource.menuPlayAll;
             menuPlayAndRecordAll.Text = Resource.menuPlayAndRecordAll;
             menuStopAll.Text = Resource.menuStopAll;
+
+            // Tools menu
             menuTools.Text = Resource.menuTools;
             menuWebRequest.Text = Resource.menuWebRequest;
             menuTextCompare.Text = Resource.menuTextCompare;
             menuTextEditor.Text = Resource.menuTextEditor;
             menuJsonVisualizer.Text = Resource.menuJsonVisualizer;
-            menuCertificates.Text = Resource.menuCertificates;
-            menuOpenFilesFolder.Text = Resource.menuOpenFilesFolder;
-            menuFindInFiles.Text = Resource.menuFindInFiles;
+            menuCertificates.Text = Resource.menuCertificates;            
             lblSelectFileCompare.Text = Resource.lblSelectFileCompare;
-            btnCancelFileSelectiong.Text = Resource.btnCancelFileSelectiong;
+            
+            // help
+            menuHelp.Text = Resource.menuHelp;
+            aboutToolStripMenuItem.Text = Resource.menuAbout;
+            docToolStripMenuItem.Text = Resource.menuDocumentation;
+            donateToolStripMenuItem.Text = Resource.menuDonate;
+            releaseNotesToolStripMenuItem.Text = Resource.menuReleases;
         }
 
         private void UpdateVersion()
@@ -1745,12 +1758,7 @@ namespace WiremockUI
         {
             if (treeX > e.Node.Bounds.Left) e.Cancel = true;
         }
-
-        private void aboutMenuItem_Click(object sender, EventArgs e)
-        {
-            new FormAbout().ShowDialog();
-        }
-
+        
         private bool IsMapEnable(string fileNameWithExtension)
         {
             return Path.GetFileName(fileNameWithExtension).Split('.').Last() == "json";
@@ -2012,6 +2020,26 @@ namespace WiremockUI
         private void certificateSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenSslSettings();
+        }
+
+        private void donateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FormDonate() { Text = donateToolStripMenuItem.Text }.ShowDialog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FormAbout().ShowDialog();
+        }
+
+        private void docToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Helper.Process("https://github.com/juniorgasparotto/WiremockUI");
+        }
+
+        private void releaseNotesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Helper.Process("https://github.com/juniorgasparotto/WiremockUI/releases");
         }
     }
 }

@@ -738,4 +738,16 @@
   <data name="fixSslOptOpenSslSettings" xml:space="preserve">
     <value>Verificar se existe algum certificado inválido nas configurações de "SSL TrustStore Global"</value>
   </data>
+  <data name="menuDocumentation" xml:space="preserve">
+    <value>Documentação</value>
+  </data>
+  <data name="menuDonate" xml:space="preserve">
+    <value>Doações para o projeto</value>
+  </data>
+  <data name="menuHelp" xml:space="preserve">
+    <value>Ajuda</value>
+  </data>
+  <data name="menuReleases" xml:space="preserve">
+    <value>Notas de versões</value>
+  </data>
 </root>
