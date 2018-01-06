@@ -482,7 +482,7 @@ _Board_:
 
 https://github.com/juniorgasparotto/WiremockUI/projects/1?fullscreen=true
 
-**Doações**
+# Doações
 
 WiremockUI é um projeto de código aberto pessoal. Iniciado em 2017, muitas horas foram investidos na criação e evolução deste projeto. 
 
