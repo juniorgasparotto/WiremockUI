@@ -487,7 +487,7 @@ https://github.com/juniorgasparotto/WiremockUI/projects/1?fullscreen=true
 
 # Doações
 
-WiremockUI é um projeto de código aberto pessoal. Iniciado em 2017, muitas horas foram investidos na criação e evolução deste projeto.
+WiremockUI é um projeto de código aberto. Iniciado em 2017, muitas horas foram investidos na criação e evolução deste projeto.
 
 E tudo com apenas um objetivo: Torná-lo uma boa ferramenta de mock para melhorar o dia a dia dos desenvolvedores. Se o WiremockUI foi útil pra você, ou se você deseja ve-lo evoluir cada vez mais, considere fazer uma pequena doação (qualquer valor). Ajude-nos também com sujestões e possíveis problemas.
 

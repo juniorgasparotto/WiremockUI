@@ -487,7 +487,7 @@ https://github.com/juniorgasparotto/WiremockUI/projects/1?fullscreen=true
 
 # Donations
 
-WiremockUI is an open source project staff. Starting in 2017, many hours have been invested in the creation and evolution of this project.
+WiremockUI is an open source project. Starting in 2017, many hours have been invested in the creation and evolution of this project.
 
 And all with only one goal: make it a good mock tool to improve the daily lives of the developers. If the WiremockUI was useful for you, or if you want to see it evolve increasingly, consider making a small donation (any amount). Help us also with ideas and possible problems.
 
