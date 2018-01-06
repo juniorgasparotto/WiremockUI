@@ -481,3 +481,19 @@ https://github.com/juniorgasparotto/PocDatabase
 _Board_:
 
 https://github.com/juniorgasparotto/WiremockUI/projects/1?fullscreen=true
+
+**Doações**
+
+WiremockUI é um projeto de código aberto pessoal. Iniciado em 2017, muitas horas foram investidos na criação e evolução deste projeto. 
+
+E tudo com apenas um objetivo: Torná-lo uma boa ferramenta de mock para melhorar o dia a dia dos desenvolvedores. Se o WiremockUI foi útil pra você, ou se você deseja ve-lo evoluir cada vez mais, considere fazer uma pequena doação (qualquer valor). Ajude-nos também com sujestões e possíveis problemas.
+
+De qualquer forma, agradeçemos você por ter chego até aqui ;)
+
+_PayPal:_ <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BJKBZXZJFVNUL&lc=US&item_name=wiremockui&item_number=wiremockui&currency_code=BRL&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted">
+  <img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/paypaldonate.jpg" />
+</a>
+
+_BitCoin:_ **19DmxWBNcaUGjm2PQAuMBD4Y8ZbrGyMLzK**
+
+<img src="https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/bitcoinkey.jpg" />
