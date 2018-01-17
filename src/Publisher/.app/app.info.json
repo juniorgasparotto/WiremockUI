@@ -60,5 +60,9 @@
   "ChocolateyTags": "wiremock-ui wiremock mock mock-server stub stub-server stub-files mock-data mocking proxy-server proxy record recording server-less request-handler request-tracker request-logging response-time ikvm server-wiremock",
   "ChocolateyDescription": "Wiremock UI - Tool for creating mock servers, proxies servers and proxies servers with the option to save the data traffic from an existing API or Site.",
   "ChocolateyAuthor": "Glauber D. Gasparotto Junior",
-  "GitPath": "C:\\Program Files\\Git\\bin\\git.exe"
+  "ChocolateyPackageSourceUrl": "https://github.com/juniorgasparotto/WiremockUI/releases",
+  "ChocolateyDocsUrl": "https://github.com/juniorgasparotto/WiremockUI",
+  "ChocolateyBugTrackerUrl": "https://github.com/juniorgasparotto/WiremockUI/issues",
+  "GitPath": "C:\\Program Files\\Git\\bin\\git.exe",
+  "ChecksumToolPath": "~/src/Publisher/Tools/checksum.exe"
 }

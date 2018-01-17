@@ -13,6 +13,8 @@ $url = '<#= vars["url"] #>'
 $binRoot = Get-ToolsLocation
 $installPath = Join-Path $binRoot $packageName
 $oldVersionPath = Join-Path $installPath ".old"
+$checksum = '<#= vars["checksum"] #>'
+$checksumType = '<#= vars["checksumType"] #>'
 
 # Create backup of old version
 if (Test-Path $installPath) {
@@ -31,7 +33,10 @@ if (Test-Path $installPath) {
 # Download and unzip file
 Install-ChocolateyZipPackage -PackageName $packageName `
                              -Url $url `
-                             -UnzipLocation $installPath
+                             -UnzipLocation $installPath `
+							 -Checksum $checksum `
+                             -ChecksumType $checksumType
+
 #Create shortcut in desktop
 Write-Host "Create Desktop ShortCurt..."
 $desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::DesktopDirectory))

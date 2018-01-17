@@ -192,11 +192,11 @@ namespace Publisher
                 return release.Name;
         }
 
-        public void GetAll([Argument(ShortName = 'a', LongName = "all")]bool all = false)
+        public void GetAllReleases([Argument(ShortName = 'a', LongName = "all")]bool all = false)
         {
             var github = new GitHub(GitHubUserName, GitHubPassword, GitHubRepositoryName);
             var client = github.GetClient();
-            var result = github.GetAll(client);
+            var result = github.GetAllReleases(client);
             if (all)
                 App.Console.Write(JsonFileManager.GetContentJsonFromObject(result));
             else 
@@ -312,6 +312,14 @@ namespace Publisher
             var client = github.GetClient();
             github.DeleteAsset(client, releaseName, fileName);
             App.Console.Write($"Deleted asset: {releaseName} -> {fileName}");
+        }
+
+        public void GetAsset(int assetId)
+        {
+            var github = new GitHub(GitHubUserName, GitHubPassword, GitHubRepositoryName);
+            var client = github.GetClient();
+            var asset = github.GetAsset(client, assetId);
+            App.Console.Write(JsonFileManager.GetContentJsonFromObject(asset));
         }
     }
 }

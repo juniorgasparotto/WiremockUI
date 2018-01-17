@@ -2,6 +2,7 @@
 using SysCommand.ConsoleApp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -197,6 +198,79 @@ namespace Publisher.Core
                 ret = ret.Replace('\\', '/');
 
             return Path.GetFullPath(ret);
+        }
+
+        public static void ProcessExeOnly(string exePath, string args)
+        {
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = exePath,
+                    Arguments = args,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = false,
+                    CreateNoWindow = false
+                }
+            };
+
+            proc.Start();
+        }
+
+        public static List<ExeOutput> ProcessExeAndGetOutput(string exePath, string args)
+        {
+            var ret = new List<ExeOutput>();
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = exePath,
+                    Arguments = args,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = false
+                }
+            };
+
+            proc.Start();
+            while (!proc.StandardOutput.EndOfStream)
+                ret.Add(new ExeOutput(proc.StandardOutput.ReadLine(), false));
+
+            while (!proc.StandardError.EndOfStream)
+                ret.Add(new ExeOutput(proc.StandardError.ReadLine(), true));
+
+            return ret;
+        }
+    }
+
+    public class ExeOutput
+    {
+        public string Line { get; set; }
+        public bool IsError { get; set; }
+
+        public ExeOutput(string line, bool isError)
+        {
+            this.Line = line;
+            this.IsError = isError;
+        }
+
+        public static string AsString(List<ExeOutput> output)
+        {
+            var strBuilder = new StringBuilder();
+            foreach (var o in output)
+                strBuilder.AppendLine(o.Line);
+            return strBuilder.ToString();
+        }
+
+        public static bool IsSuccess(List<ExeOutput> output)
+        {
+            var line1 = output.FirstOrDefault();
+            if (line1?.IsError == true)
+                return false;
+
+            return true;
         }
     }
 }

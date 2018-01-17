@@ -1,11 +1,6 @@
-﻿using Publisher.Core;
-using SysCommand.ConsoleApp;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Publisher.Core
 {
@@ -20,17 +15,17 @@ namespace Publisher.Core
 
         public bool Exists()
         {
-            return OuputIsSuccess(Run("status"));
+            return ExeOutput.IsSuccess(Utils.ProcessExeAndGetOutput(gitExe, "status"));
         }
 
         public string GetRootFolder()
         {
-            var output = Run("rev-parse --show-toplevel");
+            var output = Utils.ProcessExeAndGetOutput(gitExe, "rev-parse --show-toplevel");
 
-            if (!OuputIsSuccess(output))
+            if (!ExeOutput.IsSuccess(output))
                 return null;
 
-            return GetOutputAsString(output).Trim();
+            return ExeOutput.AsString(output).Trim();
         }
 
         public List<FileStatus> GetUncommitedFiles()
@@ -42,9 +37,9 @@ namespace Publisher.Core
             cmds.Add("status -s");
             foreach (var c in cmds)
             {
-                var output = Run(c);
+                var output = Utils.ProcessExeAndGetOutput(gitExe, c);
 
-                if (rootFolder == null || !OuputIsSuccess(output))
+                if (rootFolder == null || !ExeOutput.IsSuccess(output))
                     return list;
 
                 foreach (var o in output)
@@ -65,81 +60,8 @@ namespace Publisher.Core
             return list;
         }
         
-        public List<Output> Run(string args)
-        {
-            var ret = new List<Output>();
-            var proc = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = gitExe,
-                    Arguments = args,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    CreateNoWindow = false
-                }
-            };
-
-            proc.Start();
-            while (!proc.StandardOutput.EndOfStream)
-                ret.Add(new Output(proc.StandardOutput.ReadLine(), false));
-
-            while (!proc.StandardError.EndOfStream)
-                ret.Add(new Output(proc.StandardError.ReadLine(), true));
-
-            return ret;
-        }
-
-        public void RunOutput(string args)
-        {
-            var proc = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = gitExe,
-                    Arguments = args,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = false,
-                    RedirectStandardError = false,
-                    CreateNoWindow = false
-                }
-            };
-
-            proc.Start();
-        }
-
         #region Auxs
-
-        public string GetOutputAsString(List<Output> output)
-        {
-            var strBuilder = new StringBuilder();
-            foreach (var o in output)
-                strBuilder.AppendLine(o.Line);
-            return strBuilder.ToString();
-        }
-
-        public bool OuputIsSuccess(List<Output> output)
-        {
-            var line1 = output.FirstOrDefault();
-            if (line1?.IsError == true)
-                return false;
-
-            return true;
-        }
-
-        public class Output
-        {
-            public string Line { get; set; }
-            public bool IsError { get; set; }
-
-            public Output(string line, bool isError)
-            {
-                this.Line = line;
-                this.IsError = isError;
-            }
-        }
-
+        
         public class FileStatus
         {
             public string RelativePath { get; set; }
@@ -152,8 +74,6 @@ namespace Publisher.Core
                     return " " + Type;
                 return Type;
             }
-
-           
         }
 
         #endregion

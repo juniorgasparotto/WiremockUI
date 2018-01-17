@@ -40,8 +40,7 @@ namespace Publisher
         public void Run(string args)
         {
             var pathCommand = App.Commands.Get<PathCommand>();
-            var git = new Git(pathCommand.GitPath);
-            git.RunOutput(args);
+            Utils.ProcessExeOnly(pathCommand.GitPath, args);
         }
 
         public string RootFolder()

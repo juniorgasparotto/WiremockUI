@@ -149,9 +149,14 @@ namespace Publisher.Core
             return null;
         }
 
-        public IEnumerable<Release> GetAll(GitHubClient client)
+        public IEnumerable<Release> GetAllReleases(GitHubClient client)
         {
             return client.Repository.Release.GetAll(userName, repositoryName).Result;
+        }
+
+        public ReleaseAsset GetAsset(GitHubClient client, int assetId)
+        {
+            return client.Repository.Release.GetAsset(userName, repositoryName, assetId).Result;
         }
     }
 }

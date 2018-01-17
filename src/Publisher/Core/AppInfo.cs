@@ -31,7 +31,12 @@ namespace Publisher.Core
         public string ChocolateyTags { get; set; }
         public string ChocolateyDescription { get; set; }
         public string ChocolateyAuthor { get; set; }
+        public string ChocolateyPackageSourceUrl { get; set; }
+        public string ChocolateyDocsUrl { get; set; }
+        public string ChocolateyBugTrackerUrl { get; set; }
+
         public string GitPath { get; set; }
+        public string ChecksumToolPath { get; set; }
 
         public AppInfo()
         {

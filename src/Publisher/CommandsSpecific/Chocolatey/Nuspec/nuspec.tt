@@ -15,9 +15,13 @@
     <authors><#= vars["author"] #></authors>
     <projectUrl><#= vars["projectUrl"] #></projectUrl>
     <licenseUrl><#= vars["licenceUrl"] #></licenseUrl>
+	<packageSourceUrl><#= vars["packageSourceUrl"] #></packageSourceUrl>
+	<docsUrl><#= vars["docsUrl"] #></docsUrl>
+	<bugTrackerUrl><#= vars["bugTrackerUrl"] #></bugTrackerUrl>
+	<iconUrl><#= vars["iconUrl"] #></iconUrl>
     <tags><#= vars["tags"] #></tags>
     <description><#= vars["description"] #></description>
-	<iconUrl><#= vars["iconUrl"] #></iconUrl>
+	<summary><#= vars["summary"] #></summary>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />

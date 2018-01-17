@@ -10,6 +10,7 @@ namespace Publisher
     {
         #region Constants
         private const string _targetProjectAssemblyInfoPath = @"Properties\AssemblyInfo.cs";
+        
         private const string _outputDirectory = "Output";
         private const string _buildDirectory = "Build"; 
         private const string _gitHubPackDirectory = "PacksGitHub";
@@ -167,6 +168,31 @@ namespace Publisher
             }
         }
         
+        [Argument]
+        public string ChecksumToolPath
+        {
+            get
+            {
+                var appInfo = AppInfo.GetAppInfo();
+                if (string.IsNullOrWhiteSpace(appInfo.ChecksumToolPath))
+                {
+                    appInfo.ChecksumToolPath = App.Console.Read("Checksum path: ");
+                    AppInfo.SaveAppInfo(appInfo);
+                }
+                return appInfo.ChecksumToolPath;
+            }
+            set
+            {
+                var appInfo = AppInfo.GetAppInfo();
+                appInfo.ChecksumToolPath = value;
+                AppInfo.SaveAppInfo(appInfo);
+            }
+        }
+
+        #endregion
+
+        #region Properties (normal)
+
         public string TargetProjectDirectory
         {
             get

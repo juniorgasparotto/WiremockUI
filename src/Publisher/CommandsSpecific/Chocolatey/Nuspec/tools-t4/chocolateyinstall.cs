@@ -57,25 +57,40 @@ namespace Publisher.CommandsSpecific.Chocolatey.Nuspec.tools_t4
             #line default
             #line hidden
             this.Write("\'\r\n$binRoot = Get-ToolsLocation\r\n$installPath = Join-Path $binRoot $packageName\r\n" +
-                    "$oldVersionPath = Join-Path $installPath \".old\"\r\n\r\n# Create backup of old versio" +
-                    "n\r\nif (Test-Path $installPath) {\r\n    Write-Host \"Create backup old version\"\r\n  " +
-                    "  if (!(Test-Path $oldVersionPath)) {\r\n        New-Item $oldVersionPath -type di" +
-                    "rectory\r\n        Get-ChildItem $installPath |\r\n        Foreach-Object {\r\n       " +
-                    "     if ($_.Name -ne \".old\") {            \r\n                Move-Item $_.FullNam" +
-                    "e $oldVersionPath\r\n            }        \r\n        }\r\n    }\r\n}\r\n\r\n# Download and " +
-                    "unzip file\r\nInstall-ChocolateyZipPackage -PackageName $packageName `\r\n          " +
-                    "                   -Url $url `\r\n                             -UnzipLocation $ins" +
-                    "tallPath\r\n#Create shortcut in desktop\r\nWrite-Host \"Create Desktop ShortCurt...\"\r" +
-                    "\n$desktop = $([System.Environment]::GetFolderPath([System.Environment+SpecialFol" +
-                    "der]::DesktopDirectory))\r\n$desktop = Join-Path $desktop \"$title.lnk\"\r\nWrite-Host" +
-                    " $desktop\r\nInstall-ChocolateyShortcut  -shortcutFilePath $desktop `\r\n           " +
-                    "                 -targetPath \"$installPath/$exeName\" `\r\n                        " +
-                    "    -workingDirectory $installPath\r\n\r\n#Create shortcut in start menu\r\nWrite-Host" +
-                    " \"Create StartMenu ShortCurt...\"\r\n$programs = [environment]::GetFolderPath([envi" +
-                    "ronment+specialfolder]::Programs)\r\n$programs = Join-Path $programs \"$title.lnk\"\r" +
-                    "\nWrite-Host $programs\r\nInstall-ChocolateyShortcut -shortcutFilePath $programs `\r" +
-                    "\n                           -targetPath \"$installPath/$exeName\" `\r\n             " +
-                    "              -workingDirectory $installPath");
+                    "$oldVersionPath = Join-Path $installPath \".old\"\r\n$checksum = \'");
+            
+            #line 16 "D:\Junior\Projetos\GITHUB.COM\juniorgasparotto\WiremockUI\src\Publisher\CommandsSpecific\Chocolatey\Nuspec\tools-t4\chocolateyinstall.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(vars["checksum"]));
+            
+            #line default
+            #line hidden
+            this.Write("\'\r\n$checksumType = \'");
+            
+            #line 17 "D:\Junior\Projetos\GITHUB.COM\juniorgasparotto\WiremockUI\src\Publisher\CommandsSpecific\Chocolatey\Nuspec\tools-t4\chocolateyinstall.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(vars["checksumType"]));
+            
+            #line default
+            #line hidden
+            this.Write("\'\r\n\r\n# Create backup of old version\r\nif (Test-Path $installPath) {\r\n    Write-Hos" +
+                    "t \"Create backup old version\"\r\n    if (!(Test-Path $oldVersionPath)) {\r\n        " +
+                    "New-Item $oldVersionPath -type directory\r\n        Get-ChildItem $installPath |\r\n" +
+                    "        Foreach-Object {\r\n            if ($_.Name -ne \".old\") {            \r\n   " +
+                    "             Move-Item $_.FullName $oldVersionPath\r\n            }        \r\n     " +
+                    "   }\r\n    }\r\n}\r\n\r\n# Download and unzip file\r\nInstall-ChocolateyZipPackage -Packa" +
+                    "geName $packageName `\r\n                             -Url $url `\r\n               " +
+                    "              -UnzipLocation $installPath `\r\n\t\t\t\t\t\t\t -Checksum $checksum `\r\n    " +
+                    "                         -ChecksumType $checksumType\r\n\r\n#Create shortcut in desk" +
+                    "top\r\nWrite-Host \"Create Desktop ShortCurt...\"\r\n$desktop = $([System.Environment]" +
+                    "::GetFolderPath([System.Environment+SpecialFolder]::DesktopDirectory))\r\n$desktop" +
+                    " = Join-Path $desktop \"$title.lnk\"\r\nWrite-Host $desktop\r\nInstall-ChocolateyShort" +
+                    "cut  -shortcutFilePath $desktop `\r\n                            -targetPath \"$ins" +
+                    "tallPath/$exeName\" `\r\n                            -workingDirectory $installPath" +
+                    "\r\n\r\n#Create shortcut in start menu\r\nWrite-Host \"Create StartMenu ShortCurt...\"\r\n" +
+                    "$programs = [environment]::GetFolderPath([environment+specialfolder]::Programs)\r" +
+                    "\n$programs = Join-Path $programs \"$title.lnk\"\r\nWrite-Host $programs\r\nInstall-Cho" +
+                    "colateyShortcut -shortcutFilePath $programs `\r\n                           -targe" +
+                    "tPath \"$installPath/$exeName\" `\r\n                           -workingDirectory $i" +
+                    "nstallPath");
             return this.GenerationEnvironment.ToString();
         }
         
