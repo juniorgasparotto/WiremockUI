@@ -5,6 +5,9 @@
 ![Português](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/pt-br.png)
 ](https://github.com/juniorgasparotto/WiremockUI/blob/master/readme-pt-br.md)
 
+**DOWNLOAD LINK**: https://github.com/juniorgasparotto/WiremockUI/releases/download/1.0.2/WiremockUI.zip
+**CHOCOLATEY**: `choco install wiremockui`
+
 # Wiremock UI
 
 É um projeto feito em `.NET Framework 4.5` que cria servidores de mock usando o famoso `Wiremock` (http://wiremock.org).
