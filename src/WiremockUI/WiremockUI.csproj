@@ -545,7 +545,9 @@
     <Content Include="Dlls\IKVM.Runtime.JNI.dll" />
     <Content Include="Dlls\wiremock-standalone-2.7.1.dll" />
     <Content Include="Dlls\wiremock-standalone-2.8.0.dll" />
-    <Content Include="Jar\wiremock-standalone-2.24.1.jar" />
+    <Content Include="Jar\wiremock-standalone-2.24.1.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Files\New.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
