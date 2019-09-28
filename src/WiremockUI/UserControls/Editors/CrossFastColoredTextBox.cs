@@ -112,7 +112,9 @@
 
     public class CrossSyntaxHighlighter : SyntaxHighlighter
     {
-
+        public CrossSyntaxHighlighter(FastColoredTextBox currentTb) : base(currentTb)
+        {
+        }
     }
 #endif
 }

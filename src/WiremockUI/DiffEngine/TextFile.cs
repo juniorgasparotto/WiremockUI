@@ -45,12 +45,12 @@ namespace WiremockUI
                 // the file is reached.
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.Length > MaxLineLength)
-                    {
-                        throw new InvalidOperationException(
-                            string.Format("File contains a line greater than {0} characters.",
-                            MaxLineLength.ToString()));
-                    }
+                    //if (line.Length > MaxLineLength)
+                    //{
+                    //    throw new InvalidOperationException(
+                    //        string.Format("File contains a line greater than {0} characters.",
+                    //        MaxLineLength.ToString()));
+                    //}
                     _lines.Add(new TextLine(line));
                 }
             }
