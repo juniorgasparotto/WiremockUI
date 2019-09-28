@@ -5,7 +5,7 @@
 ![Português](https://github.com/juniorgasparotto/WiremockUI/blob/master/doc/img/pt-br.png)
 ](https://github.com/juniorgasparotto/WiremockUI/blob/master/readme-pt-br.md)
 
-**DOWNLOAD LINK**: https://github.com/juniorgasparotto/WiremockUI/releases/download/1.0.2/WiremockUI.zip
+**DOWNLOAD LINK**: https://github.com/juniorgasparotto/WiremockUI/releases/download/1.1.0/WiremockUI.zip
 **CHOCOLATEY**: `choco install wiremockui`
 
 # Wiremock UI
@@ -38,11 +38,11 @@ The tool is completely visual and features of Wiremock have been enhanced:
 
 ## Installation (Manual)
 
-1. Download the .zip file [by clicking here](https://github.com/juniorgasparotto/WiremockUI/releases/download/1.0.2/WiremockUI.zip)
+1. Download the .zip file [by clicking here](https://github.com/juniorgasparotto/WiremockUI/releases/download/1.1.0/WiremockUI.zip)
 2. Extract the .zip anywhere
 3. Open the file`Wiremock.exe`
 
-**DOWNLOAD LINK**: https://github.com/juniorgasparotto/WiremockUI/releases/download/1.0.2/WiremockUI.zip
+**DOWNLOAD LINK**: https://github.com/juniorgasparotto/WiremockUI/releases/download/1.1.0/WiremockUI.zip
 
 _No need for installation_
 
