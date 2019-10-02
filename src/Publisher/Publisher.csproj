@@ -266,7 +266,6 @@
   <ItemGroup>
     <None Include=".app\app.info.json" />
     <None Include="app.config" />
-    <None Include="CommandsSpecific\Chocolatey\Nuspec\tools\Uninstall-ChocolateyPath.psm1" />
     <None Include="packages.config" />
     <None Include="push.bat" />
     <None Include="pull.bat" />
@@ -313,7 +312,6 @@
       <Name>WiremockUI</Name>
     </ProjectReference>
   </ItemGroup>
-  
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

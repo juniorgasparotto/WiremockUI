@@ -44,12 +44,8 @@ namespace Publisher.CommandsSpecific.Chocolatey.Nuspec.tools_t4
             #line hidden
             this.Write(@"'
 $toolsPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$unPath = Join-Path $toolsPath 'Uninstall-ChocolateyPath.psm1'
 $binRoot = Get-ToolsLocation
 $installPath = Join-Path $binRoot $packageName
-
-# Remove environment path windows
-Import-Module $unPath
 
 # Remove folder
 Write-Host ""Remove Folder $installPath""

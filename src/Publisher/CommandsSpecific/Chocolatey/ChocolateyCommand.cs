@@ -373,8 +373,13 @@ namespace Publisher.CommandSpecific.Chocolatey
                 var uninstallstr = uninstall.TransformText().Trim();
                 var nuspecstr = nuspec.TransformText().Trim();
 
+                // copia a pasta tools caso exista, do contrário, cria a pasta
                 var toolsFolder = Path.Combine(PathCommand.ChocolateyPackDirectory, ToolsPath.Name);
                 ToolsPath.CopyTo(toolsFolder);
+
+                // Cria o diretorio caso a pasta "tools" acima não existir nos templates
+                if (!Directory.Exists(toolsFolder))
+                    Directory.CreateDirectory(toolsFolder);
 
                 // só adiciona o modify se precisar, se não o pacote é rejeitado.
                 //File.WriteAllText(Path.Combine(toolsFolder, "chocolateybeforemodify.ps1"), modifystr);
